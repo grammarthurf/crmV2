@@ -4,6 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// import { MatToolbarModule } from '@angular/material/toolbar';
+// import { MatMenuModule } from '@angular/material/menu';
+
+// const modules = [
+//   MatToolbarModule,
+//   MatMenuModule
+// ]
 
 @NgModule({
   declarations: [
@@ -12,7 +21,9 @@ import { NavbarComponent } from './navbar/navbar.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    // modules
   ],
   providers: [],
   bootstrap: [AppComponent]
