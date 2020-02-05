@@ -26,7 +26,7 @@ class Cliente(models.Model):
     email = models.CharField(max_length=100, null=True)
     skype = models.CharField(max_length=65, null=True)
     termometro = models.CharField(max_length=15, null=True)
-    # org = models.ForeignKey(Organizacao, on_delete=models.CASCADE, null=True)
+    org = models.ForeignKey(Organizacao, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.nome
@@ -40,6 +40,13 @@ class Produto (models.Model):
         return self.nome
 
 
+class Vendedor(models.Model):
+    nome = models.CharField(max_length=155)
+
+    def __str__(self):
+        return self.nome
+
+
 class Ticket (models.Model):
     descricao = models.CharField(max_length=100)
     estagio = models.ForeignKey(Estagio, on_delete=models.CASCADE, null=True)
@@ -47,6 +54,14 @@ class Ticket (models.Model):
     org = models.ForeignKey(Organizacao, on_delete=models.CASCADE, null=True)
     produto = models.ManyToManyField(Produto)
     termometro = models.CharField(max_length=100, null=True)
+    vendedor = models.ForeignKey(Vendedor, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.descricao
+
+
+class Atividade (models.Model):
+    descricao = models.CharField(max_length=255)
+    tipo = models.CharField(max_length=64)
+    duracao = models.CharField(max_length=64)
+    ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE, null=True)

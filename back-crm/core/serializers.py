@@ -1,4 +1,4 @@
-from .models import Cliente, Estagio, Organizacao, Produto, Ticket
+from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade
 from rest_framework import serializers
 
 
@@ -26,7 +26,19 @@ class ProdutoSerializer(serializers.ModelSerializer):
         fields = ['nome']
 
 
+class VendedorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Vendedor
+        fields = ['vendedor']
+
+
 class TicketSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ticket
         fields = ['descricao', 'estagio', 'cliente', 'org', 'produto']
+
+
+class AtividadeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Atividade
+        fields = ['descricao', 'tipo', 'duracao', 'ticket']
