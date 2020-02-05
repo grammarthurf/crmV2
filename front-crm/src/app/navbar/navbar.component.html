@@ -1,31 +1,46 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <div class="col-4">
-        <img src="../../assets/logo_crm.png" />
+  <div class="col-4">
+    <img src="../../assets/logo_crm.png" />
+  </div>
+  <div class="col-7" style="display: flex;">
+    <a class="navbar-brand" href="/business">Negócio</a>
+    <a class="navbar-brand" href="/activity">Atividade</a>
+    <a class="navbar-brand" href="/produtos">Produtos</a>
+    <div class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        href="#"
+        id="navbarDropdown"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Contatos
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="/contatos">Pessoas</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/org">Organização</a>
+      </div>
     </div>
-    <div class="col-7" style="display: flex;">
-        <a class="navbar-brand" href="negocio">Negócio</a>
-        <a class="navbar-brand" href="atividade">Atividade</a>
-        <a class="navbar-brand" href="produtos">Produtos</a>
-        <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Contatos
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="pessoas">Pessoas</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="organizacao">Organização</a>
-            </div>
-        </div>
+  </div>
+
+  <div class="col-1">
+    <div class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        id="navbarDropdown"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Usuário
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item">Arthur</a>
+      </div>
     </div>
-    
-    <div class="col-1">
-        <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Usuário
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item">Arthur</a>
-            </div>
-        </div>
-    </div>
-  </nav>
+  </div>
+</nav>
