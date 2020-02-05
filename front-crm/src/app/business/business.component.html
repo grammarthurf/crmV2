@@ -1,0 +1,44 @@
+<!-- TOTAL -->
+<div>
+    <!-- TITLES -->
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-1">
+
+        </div>
+        <div class="tickets col-2" *ngFor="let i of table" style="display: flex;">
+            <div class="col-8">
+                <p> {{i.title}} </p>
+                <p> R$ {{i.value}} </p>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-secondary btn-circle btn-sm">+</button>
+            </div>
+        </div>
+        <div class="col-1">
+
+        </div>
+    </div>
+    <!-- CARDS -->
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-1">
+
+        </div>
+        <div class="cards col-2" *ngFor="let i of cards">
+            <p> <b> {{i.title}} </b> </p>
+            <p class="font-grey-cards"> {{i.subtitle}} </p>
+            <div style="display: flex;">
+                <p class="limit-word font-grey-cards"> R$ {{i.value}} </p>
+                <button class="buttons-informations bad">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <!-- <i class="fas fa-times-circle"></i> -->
+                    <!-- <i class="fas fa-check-circle"></i> -->
+                    <p> 31/01/20 </p>
+                </button>
+            </div>
+        </div>
+        <div class="col-1">
+            
+        </div>
+    </div>
+
+</div>
