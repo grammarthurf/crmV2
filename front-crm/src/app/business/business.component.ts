@@ -44,39 +44,39 @@ export class BusinessComponent implements OnInit {
     {
       title: 'Sull OEE',
       subtitle: 'Sull Automação e Tecnologia',
-      value: '0'
+      value: '15.000'
     },
     {
       title: 'Sull OEE',
       subtitle: 'Sull Automação e Tecnologia',
-      value: '0'
+      value: '4.250'
     },
     {
       title: 'Sull OEE',
       subtitle: 'Sull Automação e Tecnologia',
-      value: '0'
+      value: '7.458'
     },
     {
       title: 'Sull OEE',
       subtitle: 'Sull Automação e Tecnologia',
-      value: '0'
+      value: '60.000'
     },
     {
       title: 'Sull OEE',
       subtitle: 'Sull Automação e Tecnologia',
-      value: '0'
+      value: '19.000'
     },
     {
       title: 'Sull OEE',
       subtitle: 'Sull Automação e Tecnologia',
-      value: '0'
+      value: '1.000'
     },
     {
       title: 'Sull OEE',
       subtitle: 'Sull Automação e Tecnologia',
-      value: '0'
+      value: '17.968'
     }
-  ]
+  ];
 
   ngOnInit() {
   }

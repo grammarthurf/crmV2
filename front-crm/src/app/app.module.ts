@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BusinessComponent } from './business/business.component';
+// import { DragDropModule } from '@angular/cdk/drag-drop';
 
 // import { MatToolbarModule } from '@angular/material/toolbar';
 // import { MatMenuModule } from '@angular/material/menu';
@@ -25,6 +26,7 @@ import { BusinessComponent } from './business/business.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    // DragDropModule
     // modules
   ],
   providers: [],
