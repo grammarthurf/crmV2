@@ -1,5 +1,16 @@
 from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade
 from rest_framework import serializers
+from django.contrib.auth.models import User
+
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'password']
+
+    def create(self, validated_data):
+        user = User.objects.create(**validated_data)
+        return user
 
 
 class ClienteSerializer(serializers.ModelSerializer):

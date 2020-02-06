@@ -1,8 +1,15 @@
 
 from rest_framework import viewsets
-from .serializers import ClienteSerializer, EstagioSerializer, OrganizacaoSerializer, ProdutoSerializer, TicketSerializer, VendedorSerializer, AtividadeSerializer
+from .serializers import ClienteSerializer, EstagioSerializer, OrganizacaoSerializer, ProdutoSerializer, TicketSerializer, VendedorSerializer, AtividadeSerializer, UserSerializer
 from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade
 from django.core import serializers
+from django.contrib.auth.models import User
+
+
+class UserViewSet(viewsets.ModelViewSet):
+
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
 
 
 class ClienteViewSet(viewsets.ModelViewSet):

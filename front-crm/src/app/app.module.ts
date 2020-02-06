@@ -29,7 +29,6 @@ import { CrudComponent } from "./components/crud/crud.component";
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule
-    // modules
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
