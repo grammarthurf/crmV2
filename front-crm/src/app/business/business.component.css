@@ -1,0 +1,104 @@
+
+/* TICKETS */
+.tickets {
+    background-color: #A8A8A8;
+    color: #fff;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+div.tickets div {
+    padding: 10px;
+}
+
+.space {
+    width: 5%;
+}
+
+.row {
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    margin-left: 10px;
+    margin-right: 10px;
+    max-width: 1120px; /* false for scroll / true for single page*/
+}
+
+div p {
+    text-align: left;
+    margin-left: 5px;
+}
+
+div p + p {
+    text-align: left;
+    margin-left: 5px;
+    font-size: 14px;
+}
+
+.btn-circle.btn-sm { 
+    width: 25px;
+    height: 25px;
+    padding: 0px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 22px; /*8px for scroll / 22px for single page*/
+    color: #7e7e7e;
+    float: right;
+    background-color: #fff;
+}
+
+/* CARDS  */
+.cards {
+    border: 1px solid #C7C7C7;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-left: 1px;
+    margin-right: 1px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.font-grey-cards {
+    color: #898989;
+}
+
+.limit-words {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+.buttons-informations {
+    display: flex;
+    border: 0;
+    border-radius: 15px;
+    padding: 0px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    margin: 0 5px 3px 5px;
+}
+
+.good {
+    background-color: #4DC426;
+}
+
+.regular {
+    background-color: #E5F72B;
+}
+
+.bad {
+    background-color: #E22F2F;
+}
+
+i {
+    margin-top: 2px;
+    font-size: 14px;
+}
+
+.btn-add {
+    color: #fff;
+    background-color: #5460E0;
+    border-color: #5460E0;
+}
