@@ -1,0 +1,45 @@
+h1 {
+    margin: 10px 15px;
+    font-size: 40px;
+    background: linear-gradient( rgb(34, 58, 124), rgb(7, 20, 54));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2, h3, h4, h5, h6 {
+    margin: 8px 0;
+}
+
+.iconfiltro {
+    margin: 5px 10px;
+    color: rgb(10, 24, 64);
+}
+
+table {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 10%;
+    position: absolute;
+    right: 30px;
+    top: 112px;
+}
+
+.btn1 {
+    background-color: white;
+    color: rgb(10, 24, 64);
+    position: absolute;
+    top: 118px;
+    left: 230px;
+    box-shadow: 2px black;
+}
+
+.mat-row:nth-child(n+1){
+    background-color: #f0ecf5;
+}
+
+.mat-row:not(:nth-child(2n+1)){
+    background-color:#ffffff;
+}

@@ -1,0 +1,90 @@
+<h1 style="padding-top: 100px;"> Atividades </h1>
+
+<button mat-mini-fab class="btn1" (click)="openBottomSheet()"><mat-icon>add</mat-icon></button>
+
+<mat-form-field>
+    <input matInput type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+    <mat-icon matSuffix>search</mat-icon>
+</mat-form-field> 
+
+<mat-divider></mat-divider>
+
+<button mat-icon-button class="iconfiltro" (keyup)="applyFilter($event.target.value)" (click)="filtrolig()" (dblclick)="dblclic()"><mat-icon>phone</mat-icon></button>
+<button mat-icon-button class="iconfiltro" (keyup)="applyFilter($event.target.value)" (click)="filtroreun()" (dblclick)="dblclic()"><mat-icon>people</mat-icon></button>
+<button mat-icon-button class="iconfiltro" (keyup)="applyFilter($event.target.value)" (click)="filtrovisit()" (dblclick)="dblclic()"><mat-icon>business</mat-icon></button>
+<button mat-icon-button class="iconfiltro" (keyup)="applyFilter($event.target.value)" (click)="filtroemail()" (dblclick)="dblclic()"><mat-icon>email</mat-icon></button>
+
+
+<table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                        [aria-label]="checkboxLabel()">
+        </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)"
+                        [aria-label]="checkboxLabel(row)">
+        </mat-checkbox>
+        </td>
+    </ng-container>
+
+    <!-- Assunto Column -->
+    <ng-container matColumnDef="Assunto">
+        <th mat-header-cell *matHeaderCellDef> Assunto </th>
+        <td mat-cell *matCellDef="let element"> {{element.Assunto}} </td>
+    </ng-container>
+
+    <!-- DataVenc Column -->
+    <ng-container matColumnDef="DataVenc">
+        <th mat-header-cell *matHeaderCellDef> Data de Vencimento </th>
+        <td mat-cell *matCellDef="let element"> {{element.DataVenc}} </td>
+    </ng-container>
+
+    <!-- Duracao Column -->
+    <ng-container matColumnDef="Duracao">
+        <th mat-header-cell *matHeaderCellDef> Duração </th>
+        <td mat-cell *matCellDef="let element"> {{element.Duracao}} </td>
+    </ng-container>
+
+    <!-- Cliente Column -->
+    <ng-container matColumnDef="Cliente">
+        <th mat-header-cell *matHeaderCellDef> Cliente </th>
+        <td mat-cell *matCellDef="let element"> {{element.Cliente}} </td>
+    </ng-container>
+
+    <!-- NomeContato Column -->
+    <ng-container matColumnDef="NomeContato">
+        <th mat-header-cell *matHeaderCellDef> Nome do Contato </th>
+        <td mat-cell *matCellDef="let element"> {{element.NomeContato}} </td>
+    </ng-container> 
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="Email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+    </ng-container>
+
+    <!-- Telefone Column -->
+    <ng-container matColumnDef="Telefone">
+        <th mat-header-cell *matHeaderCellDef> Telefone </th>
+        <td mat-cell *matCellDef="let element"> {{element.Telefone}} </td>
+    </ng-container>
+
+    <!-- UserResp Column -->
+    <ng-container matColumnDef="UserResp">
+        <th mat-header-cell *matHeaderCellDef> Usuário Responsável </th>
+        <td mat-cell *matCellDef="let element"> {{element.UserResp}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+    
+
