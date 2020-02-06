@@ -5,31 +5,31 @@ from rest_framework import serializers
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
-        fields = ['nome', 'tipo', 'email', 'termometro']
+        fields = ['id', 'nome', 'tipo', 'email', 'termometro']
 
 
 class EstagioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Estagio
-        fields = ['nome']
+        fields = ['id', 'nome']
 
 
 class OrganizacaoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Organizacao
-        fields = ['nome', 'erp']
+        fields = ['id', 'nome', 'erp']
 
 
 class ProdutoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Produto
-        fields = ['nome']
+        fields = ['id', 'nome']
 
 
 class VendedorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vendedor
-        fields = ['vendedor']
+        fields = ['id', 'nome']
 
 
 class TicketSerializer(serializers.ModelSerializer):
