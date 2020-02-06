@@ -1,0 +1,98 @@
+<head>
+    <style>
+
+        .button1 {
+            width: 40%;
+            background-color: rgb(8, 167, 66);
+            color: white;
+            position: absolute;
+            right: 45px;
+            font-weight: bold;
+        }
+
+        .button2 {
+            margin-left: 26.8%;
+            border-color: rgb(185, 185, 185);
+            font-weight: bold;
+        }
+        h1 {
+            text-align: center;
+            font-family: 'Lucida Sans''Lucida Sans Regular';
+            color: rgb(5, 0, 26);
+        }
+        .grey-icon {
+            color: rgb(117, 117, 117);
+            font-size: 15px;
+        }
+
+        .grey-icon svg {
+            fill: rgb(117, 117, 117);
+        }
+
+        .margem {
+            margin-left: 40px;
+            margin-top: 20px;
+        }
+
+        .margem2 {
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<h1> Nova Atividade</h1>
+<div class="example-container">
+        <mat-form-field class="margem2">
+            <mat-icon class="grey-icon" matSuffix>contact_support</mat-icon>
+            <input matInput placeholder="Assunto">
+        </mat-form-field>
+
+        <mat-form-field class="margem">
+            <input matInput [matDatepicker]="picker" placeholder="Data Vencimento" type="datetime">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        
+        <br>
+
+        <mat-form-field class="margem2">
+            <mat-icon class="grey-icon" matSuffix>schedule</mat-icon>
+            <input matInput placeholder="Duração">
+        </mat-form-field>
+
+        <mat-form-field class="margem">
+            <mat-icon class="grey-icon" matSuffix>person</mat-icon>
+            <input matInput placeholder="Nome Contato">
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field class="margem2">
+            <mat-icon class="grey-icon" matSuffix>business</mat-icon>
+            <input matInput placeholder="Cliente">
+        </mat-form-field>
+
+        <mat-form-field class="margem">
+            <mat-icon class="grey-icon" matSuffix>alternate_email</mat-icon>
+            <input matInput placeholder="Email">
+            
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field class="margem2">
+            <mat-icon class="grey-icon" matSuffix>phone</mat-icon>
+            <input matInput placeholder="Telefone">
+        </mat-form-field>
+
+        <mat-form-field class="margem">
+            <mat-icon class="grey-icon" matSuffix>priority_high</mat-icon>
+            <input matInput placeholder="Usuário Responsável">
+        </mat-form-field>
+
+        <br>
+
+        <button class="button2" mat-stroked-button>Cancelar</button>
+        <button class="button1" mat-flat-button>Salvar</button>
+</div>
