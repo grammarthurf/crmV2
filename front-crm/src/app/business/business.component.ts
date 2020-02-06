@@ -9,7 +9,7 @@ import { CrudService } from "../services/crud.service";
 export class BusinessComponent implements OnInit {
   estagiosapi: any;
   erroEstagio: any;
-
+ 
   ticketsapi: any;
   erroTicket: any;
 

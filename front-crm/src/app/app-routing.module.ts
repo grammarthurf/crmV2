@@ -2,6 +2,7 @@ import { BusinessComponent } from "./business/business.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { CrudComponent } from "./components/crud/crud.component";
+import { AtividadesComponent } from "./atividades/atividades.component";
 
 const routes: Routes = [
   {
@@ -13,10 +14,10 @@ const routes: Routes = [
     path: "business",
     component: BusinessComponent
   },
-  // {
-  //   path: 'activity',
-  //   component: ActivityComponent
-  // },
+  {
+    path: 'activity',
+    component: AtividadesComponent
+  },
   // {
   //   path: 'produtos',
   //   component: ProdutoComponent
