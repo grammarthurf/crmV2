@@ -102,3 +102,25 @@ i {
     background-color: #5460E0;
     border-color: #5460E0;
 }
+
+/* TOPO */
+
+h1 {
+    margin-left: 20px;
+    font-size: 35px;
+    color: rgb(10, 24, 64);
+}
+
+.btn1 {
+    background-color: white;
+    color: rgb(10, 24, 64);
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    box-shadow: 2px black;
+}
+
+mat-divider {
+    margin: 20px;
+    margin-top: 10px;
+}
