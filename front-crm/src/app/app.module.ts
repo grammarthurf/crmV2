@@ -28,6 +28,7 @@ import { CrudComponent } from "./components/crud/crud.component";
 import { ProductsComponent } from './products/products.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { OrganizationComponent } from './organization/organization.component';
+import { BusinessDetailComponent } from './business-detail/business-detail.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { OrganizationComponent } from './organization/organization.component';
     CrudComponent,
     ProductsComponent,
     ContactsComponent,
-    OrganizationComponent
+    OrganizationComponent,
+    BusinessDetailComponent
   ],
   imports: [
     BrowserModule,

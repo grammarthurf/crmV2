@@ -6,6 +6,7 @@ import { AtividadesComponent } from "./atividades/atividades.component";
 import { ProductsComponent } from "./products/products.component";
 import { ContactsComponent } from "./contacts/contacts.component";
 import { OrganizationComponent } from "./organization/organization.component";
+import { BusinessDetailComponent } from "./business-detail/business-detail.component";
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: "business",
     component: BusinessComponent
+  },
+  {
+    path: "business-detail",
+    component: BusinessDetailComponent
   },
   {
     path: 'activity',
