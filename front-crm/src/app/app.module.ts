@@ -6,13 +6,6 @@ import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { RouterModule } from "@angular/router";
 
-// COMPONENTS
-import { AppComponent } from "./app.component";
-import { NavbarComponent } from "./navbar/navbar.component";
-import { AtividadesComponent } from "./atividades/atividades.component";
-import { BusinessComponent } from "./business/business.component";
-import { CrudComponent } from "./components/crud/crud.component";
-
 // ANGULAR MATERIAL
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatTableModule } from "@angular/material/table";
@@ -26,6 +19,15 @@ import { MatNativeDateModule } from "@angular/material";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatDividerModule } from "@angular/material/divider";
 
+// COMPONENTS
+import { AppComponent } from "./app.component";
+import { NavbarComponent } from "./navbar/navbar.component";
+import { AtividadesComponent } from "./atividades/atividades.component";
+import { BusinessComponent } from "./business/business.component";
+import { CrudComponent } from "./components/crud/crud.component";
+import { ProductsComponent } from './products/products.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { OrganizationComponent } from './organization/organization.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,10 @@ import { MatDividerModule } from "@angular/material/divider";
     NavbarComponent,
     AtividadesComponent,
     BusinessComponent,
-    CrudComponent
+    CrudComponent,
+    ProductsComponent,
+    ContactsComponent,
+    OrganizationComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,9 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { CrudComponent } from "./components/crud/crud.component";
 import { AtividadesComponent } from "./atividades/atividades.component";
+import { ProductsComponent } from "./products/products.component";
+import { ContactsComponent } from "./contacts/contacts.component";
+import { OrganizationComponent } from "./organization/organization.component";
 
 const routes: Routes = [
   {
@@ -18,18 +21,18 @@ const routes: Routes = [
     path: 'activity',
     component: AtividadesComponent
   },
-  // {
-  //   path: 'produtos',
-  //   component: ProdutoComponent
-  // },
-  // {
-  //   path: 'contatos',
-  //   component: ContatoComponent
-  // },
-  // {
-  //   path: 'org',
-  //   component: OrgComponent
-  // },
+  {
+    path: 'products',
+    component: ProductsComponent
+  },
+  {
+    path: 'contacts',
+    component: ContactsComponent
+  },
+  {
+    path: 'organization',
+    component: OrganizationComponent
+  },
   {
     path: "testapi",
     component: CrudComponent
