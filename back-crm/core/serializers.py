@@ -22,13 +22,13 @@ class ClienteSerializer(serializers.ModelSerializer):
 class EstagioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Estagio
-        fields = ['id', 'nome']
+        fields = ['id', 'nome', 'tickets']
 
 
 class OrganizacaoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Organizacao
-        fields = ['id', 'nome', 'erp']
+        fields = ['id', 'nome', 'erp', 'clientes']
 
 
 class ProdutoSerializer(serializers.ModelSerializer):
@@ -46,7 +46,8 @@ class VendedorSerializer(serializers.ModelSerializer):
 class TicketSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ticket
-        fields = ['descricao', 'estagio', 'cliente', 'org', 'produto']
+        fields = ['descricao', 'estagio',
+                  'cliente', 'org', 'produto', 'valorneg']
 
 
 class AtividadeSerializer(serializers.ModelSerializer):

@@ -8,9 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ["./business.component.css"]
 })
 export class BusinessComponent implements OnInit {
+  // Lista de estagios:
   estagiosapi: any;
   erroEstagio: any;
 
+  // Lista de tickets:
   ticketsapi: any;
   erroTicket: any;
 
