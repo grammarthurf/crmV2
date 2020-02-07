@@ -1,25 +1,12 @@
+/* TXT & INPUT */
 h1 {
     margin: 20px 10px 5px 20px;
     font-size: 35px;
     color: rgb(10, 24, 64);
 }
 
-mat-checkbox {
-    margin-top: 15px;
-    margin-left: 5px;
-}
-
 h2, h3, h4, h5, h6 {
     margin: 8px 0;
-}
-
-.iconfiltro {
-    margin: 5px 15.5px;
-    color: rgb(10, 24, 64);
-}
-
-table {
-    width: 100%;
 }
 
 .mat-form-field {
@@ -30,6 +17,11 @@ table {
     top: 112px;
 }
 
+.filtro {
+    position: absolute;
+    top: 170px;
+}
+/* BUTTON */
 .btn1 {
     background-color: white;
     color: rgb(10, 24, 64);
@@ -39,16 +31,55 @@ table {
     box-shadow: 2px black;
 }
 
-.filtro {
-    position: absolute;
-    /*left: 290px;*/
-    top: 170px;
+.btn-add {
+    color: #fff;
+    background-color: rgb(12, 28, 71);
+    border-color: rgb(2, 8, 26);
 }
 
-.mat-row:nth-child(n+1){
-    background-color: #f0ecf5;
+.btn-secondary {
+    background-color: white;
+    font-weight: bold;
+    color: rgb(2, 8, 26);
+    border-color: rgb(11, 26, 69);
 }
 
-.mat-row:not(:nth-child(2n+1)){
-    background-color:#ffffff;
+.iconfiltro {
+    margin: 5px 15.5px;
+    color: rgb(10, 24, 64);
+}
+/* TABLE */
+.mat-row:nth-child(1){
+    background-color: rgb(252, 237, 233);
+}
+
+.mat-row:nth-child(9){
+    background-color: rgb(252, 237, 233);
+}
+
+.mat-row:nth-child(3) {
+    background-color:rgb(242, 251, 254);
+}
+
+.mat-row:nth-child(8) {
+    background-color:rgb(242, 251, 254);
+}
+
+td {
+    padding: 0px 50px 0px 0px !important;
+}
+
+th {
+    flex-direction: column;
+    justify-content: center;
+}
+
+table {
+    width: 100%;
+}
+  
+mat-checkbox {
+    margin-top: 15px;
+    margin-left: 5px;
+    margin-right: 20px;
 }

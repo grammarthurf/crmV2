@@ -15,13 +15,13 @@ div.tickets div {
 }
 
 .row1 {
-  display: flex;
-  white-space: nowrap;
-  flex-wrap: nowrap;
-  margin-left: 10px;
-  margin-right: 10px;
-  max-width: 1120px;
-}
+    display: flex;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    margin-left: 10px;
+    margin-right: 10px;
+    max-width: 1120px;
+  }
 
 div p {
   text-align: left;
@@ -35,17 +35,17 @@ div p + p {
 }
 
 .btn-circle.btn-sm {
-  width: 25px;
-  height: 25px;
-  padding: 0px 0px;
-  border-radius: 15px;
-  text-align: center;
-  font-size: 16px;
-  margin-top: 22px;
-  color: #7e7e7e;
-  float: right;
-  background-color: #fff;
-}
+    width: 25px;
+    height: 25px;
+    padding: 0px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 22px;
+    color: #7e7e7e;
+    float: right;
+    background-color: #fff;
+  }
 
 /* CARDS  */
 .cards {
@@ -70,15 +70,15 @@ div p + p {
 }
 
 .buttons-informations {
-  display: flex;
-  border: 0;
-  border-radius: 15px;
-  padding: 0px 10px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #fff;
-  margin-left: 4px;
-}
+    display: flex;
+    border: 0;
+    border-radius: 15px;
+    padding: 0px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    margin-left: 4px;
+  }
 
 .good {
   background-color: #4dc426;
@@ -93,9 +93,9 @@ div p + p {
 }
 
 button i {
-  margin-top: 2px;
-  font-size: 14px;
-}
+    margin-top: 2px;
+    font-size: 14px;
+  }
 
 .btn-add {
     color: #fff;
@@ -112,36 +112,37 @@ h1 {
 }
 
 .thermometro {
-  background-color: #4DFF00;
-  border: 3px;
-  border-radius: 50%;
-  width: 15px;
-  height: 15px;
-  margin-left: auto;
-}
+    background-color: #4DFF00;
+    border: 3px;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    margin-left: auto;
+  }
+  
+  h1 {
+    margin-left: 20px;
+    font-size: 35px;
+    color: rgb(10, 24, 64);
+  }
 
-h1 {
-  margin-left: 20px;
-  font-size: 35px;
-  color: rgb(10, 24, 64);
-}
-
-.btn1 {
-  background-color: white;
-  color: rgb(10, 24, 64);
-  position: absolute;
-  top: 100px;
-  left: 200px;
-  box-shadow: 2px black;
+  .btn1 {
+    background-color: white;
+    color: rgb(10, 24, 64);
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    box-shadow: 2px black;
 }
 
 mat-divider {
-  margin: 20px;
-  margin-top: 10px;
+    margin: 20px;
+    margin-top: 10px;
 }
 
 @media (min-width: 1445px) {
-  .row1 {
-    max-width: 84%;
+    .row1 {
+      max-width: 84%;
+    }
   }
-}
+  

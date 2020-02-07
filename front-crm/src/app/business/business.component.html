@@ -1,39 +1,9 @@
 <div style="margin-top: 100px;">
     <h1>Negócios</h1>
-    <button mat-mini-fab class="btn1"><mat-icon>add</mat-icon></button>
+    <button mat-mini-fab class="btn1" data-toggle="modal" data-target="#exampleModalCenter"><mat-icon>add</mat-icon></button>
     <mat-divider></mat-divider>
-<!-- TITLES -->
-    <div class="row">
-        
-        <div class="tickets col-md-2" style="display: flex;" *ngFor="let i of table">
-            <div>
-                <p> {{i.title}} </p>
-                <p> R$ {{i.value}} </p>
-            </div>
-            <img src="../../assets/arrow.png" style="margin-left: auto; margin-right: -25px;"/>
-        </div>
-    </div>
-    <!-- CARDS -->
-    <div class="row" style="margin-top: 10px;">
-        <div class="cards col-md-2" *ngFor="let i of cards">
-            <p> <b> {{i.title}} </b> </p>
-            <p class="font-grey-cards limit-words"> {{i.subtitle}} </p>
-            <div style="display: flex;">
-                <p class="font-grey-cards"> R$ {{i.value}} </p>
-                <button class="buttons-informations bad">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <!-- <i class="fas fa-times-circle"></i> -->
-                    <!-- <i class="fas fa-check-circle"></i> -->
-                    <p> 31/01/20 </p>
-                </button>
-            </div>
-        </div>
-  
-  <h1>Negócios</h1>
-  <button mat-mini-fab class="btn1" data-toggle="modal" data-target="#exampleModalCenter"><mat-icon>add</mat-icon></button>
-  <mat-divider></mat-divider>
-
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!-- MODAL -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -126,6 +96,9 @@
     </div>
 </div>
 
+  
+
+  
 <!-- SEM SCROLL BAR 
     TOTAL
 <div style="margin-top: 100px;">
