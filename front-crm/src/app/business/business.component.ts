@@ -7,9 +7,11 @@ import { CrudService } from "../services/crud.service";
   styleUrls: ["./business.component.css"]
 })
 export class BusinessComponent implements OnInit {
+  // Lista de estagios:
   estagiosapi: any;
   erroEstagio: any;
 
+  // Lista de tickets:
   ticketsapi: any;
   erroTicket: any;
 

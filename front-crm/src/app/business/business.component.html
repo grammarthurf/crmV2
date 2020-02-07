@@ -12,11 +12,11 @@
     <div
       class="tickets col-md-2"
       style="display: flex;"
-      *ngFor="let i of table"
+      *ngFor="let i of estagiosapi"
     >
       <div>
-        <p>{{ i.title }}</p>
-        <p>R$ {{ i.value }}</p>
+        <p>{{ i.nome }}</p>
+        <p>{{ i.tickets.length }} Negócio</p>
       </div>
       <img
         src="../../assets/arrow.png"
@@ -35,8 +35,6 @@
         <p class="font-grey-cards">R$ {{ i.value }}</p>
         <button class="buttons-informations bad">
           <i class="fas fa-exclamation-triangle"></i>
-          <!-- <i class="fas fa-times-circle"></i> -->
-          <!-- <i class="fas fa-check-circle"></i> -->
           <p>31/01/20</p>
         </button>
       </div>
