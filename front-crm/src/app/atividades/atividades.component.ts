@@ -1,7 +1,9 @@
+
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
 import { Router } from '@angular/router';
+import { CrudService } from "../services/crud.service";
 
 export interface PeriodicElement {
   id: number;
@@ -29,22 +31,40 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {id: 11, Assunto: 'Visita', DataVenc: '08/12/2020', NomeContato: 'Maria Eduarda Silva', Cliente: 'Empresa l', Email: 'empresal@gmail.com', Telefone: '(47)99854785', UserResp: 'Daniel'},
   {id: 11, Assunto: 'Ligação', DataVenc: '03/03/2020', NomeContato: 'Gabriela Borges', Cliente: 'Empresa m', Email: 'empresam@gmail.com', Telefone: '(47)99854785', UserResp: 'João'},
   {id: 11, Assunto: 'Visita', DataVenc: '06/02/2020', NomeContato: 'Maicon Dos Santos', Cliente: 'Empresa n', Email: 'empresan@gmail.com', Telefone: '(47)99854785', UserResp: 'Bianca'},
+
 ];
 
 @Component({
-  selector: 'app-atividades',
-  templateUrl: './atividades.component.html',
-  styleUrls: ['./atividades.component.css']
+  selector: "app-atividades",
+  templateUrl: "./atividades.component.html",
+  styleUrls: ["./atividades.component.css"]
 })
 export class AtividadesComponent implements OnInit {
+  // Lista de atividades:
+  activityapi: any;
+  erroActivity: any;
 
   displayedColumns: string[] = ['select', 'Assunto', 'DataVenc', 'Cliente', 'NomeContato', 'Email', 'Telefone', 'UserResp'];
   data = Object.assign( ELEMENT_DATA);
   dataSource = new MatTableDataSource<Element>(this.data);
   selection = new SelectionModel<Element>(true, []);
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private crudService: CrudService) { 
+    this.getterActivity();
+  }
 
+  getterActivity() {
+    this.crudService.getAtividade().subscribe(
+      data => {
+        this.activityapi = data;
+        console.log(data);
+      },
+      error => {
+        this.erroActivity = error;
+        console.error(error);
+      }
+    );
+  }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -73,7 +93,7 @@ export class AtividadesComponent implements OnInit {
   removeSelectedRows() {
     this.selection.selected.forEach(item => {
       let index: number = this.data.findIndex(d => d === item);
-      this.data.splice(index,1)
+      this.data.splice(index, 1);
       this.dataSource = new MatTableDataSource<Element>(this.data);
     });
     this.selection = new SelectionModel<Element>(true, []);

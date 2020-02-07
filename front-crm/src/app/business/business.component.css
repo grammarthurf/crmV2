@@ -47,15 +47,15 @@ div p + p {
     background-color: #fff;
   }
 
-/* CARDS  */
-.cards {
+/* LEADS  */
+.leads {
   border: 1px solid #c7c7c7;
   background-color: #fff;
   border-radius: 10px;
   margin-left: 1px;
   margin-right: 1px;
   cursor: pointer;
-  padding: 10px;
+  padding: 10px 10px 10px 0px;
 }
 
 .font-grey-cards {
@@ -104,7 +104,6 @@ button i {
 }
 
 /* TOPO */
-
 h1 {
     margin-left: 20px;
     font-size: 35px;
@@ -112,27 +111,24 @@ h1 {
 }
 
 .thermometro {
-    background-color: #4DFF00;
-    border: 3px;
-    border-radius: 50%;
-    width: 15px;
-    height: 15px;
-    margin-left: auto;
-  }
-  
-  h1 {
-    margin-left: 20px;
-    font-size: 35px;
-    color: rgb(10, 24, 64);
-  }
+  background-color: #4DFF00;
+  border: 3px;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  margin-left: auto;
+}
 
-  .btn1 {
-    background-color: white;
-    color: rgb(10, 24, 64);
-    position: absolute;
-    top: 100px;
-    left: 200px;
-    box-shadow: 2px black;
+h1 {
+  font-size: 35px;
+  color: rgb(10, 24, 64);
+}
+
+.btn1 {
+  background-color: white;
+  color: rgb(10, 24, 64);
+  box-shadow: 2px black;
+  margin-left: 30px;
 }
 
 mat-divider {
@@ -144,5 +140,5 @@ mat-divider {
     .row1 {
       max-width: 84%;
     }
-  }
+}
   
