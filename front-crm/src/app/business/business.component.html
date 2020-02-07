@@ -1,16 +1,122 @@
-<!-- TOTAL -->
 <div style="margin-top: 100px;">
+  <h1>Negócios</h1>
   <button
-    type="button"
-    class="btn btn-add"
-    style="margin-bottom: 20px; margin-top: 10px; margin-left: 10px;"
+    mat-mini-fab
+    class="btn1"
+    data-toggle="modal"
+    data-target="#exampleModalCenter"
   >
-    + Negócio
+    <mat-icon>add</mat-icon>
   </button>
-  <!-- TITLES -->
-  <div class="row">
+  <mat-divider></mat-divider>
+
+  <div
+    class="modal fade"
+    id="exampleModalCenter"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            Adicione um Negócio
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="row">
+            <div class="form-group col-md-12">
+              <label for="exampleInputEmail1">Título</label>
+              <input
+                type="text"
+                class="form-control"
+                id="title"
+                aria-describedby="emailHelp"
+                placeholder="Título"
+              />
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Empresa</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                  <option>Vedois</option>
+                  <option>Sull</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlSelect2">Produto</label>
+                <select
+                  multiple
+                  class="form-control"
+                  id="exampleFormControlSelect2"
+                >
+                  <option>Vedois OEE</option>
+                  <option>Vedois Planejamento</option>
+                  <option>Vedois Saúde</option>
+                  <option>Vedois Tear</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Valor Estimado</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="value"
+                  aria-describedby="emailHelp"
+                  placeholder="Valor"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Termômetro</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="thermometer"
+                  aria-describedby="emailHelp"
+                  placeholder="Termômetro"
+                />
+              </div>
+            </div>
+
+            <div class="form-group col-md-12">
+              <label for="exampleFormControlTextarea1">Observação</label>
+              <textarea
+                class="form-control"
+                id="observation"
+                rows="3"
+              ></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Sair
+          </button>
+          <button type="button" class="btn btn-add">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row1">
     <div
-      class="tickets col-md-2"
+      class="tickets col-2"
       style="display: flex;"
       *ngFor="let i of estagiosapi"
     >
@@ -24,12 +130,15 @@
       />
     </div>
   </div>
-  <!-- CARDS -->
-  <div class="row" style="margin-top: 10px;">
-    <div class="cards col-md-2" *ngFor="let i of cards">
-      <p>
-        <b> {{ i.title }} </b>
-      </p>
+
+  <div class="row1" style="margin-top: 10px;">
+    <div class="cards col-2" *ngFor="let i of cards" (click)="goTo()">
+      <div style="display: flex;">
+        <p>
+          <b> {{ i.title }} </b>
+        </p>
+        <div class="thermometro"></div>
+      </div>
       <p class="font-grey-cards limit-words">{{ i.subtitle }}</p>
       <div style="display: flex;">
         <p class="font-grey-cards">R$ {{ i.value }}</p>
