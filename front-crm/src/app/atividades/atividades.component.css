@@ -1,9 +1,12 @@
 h1 {
-    margin: 10px 15px;
-    font-size: 40px;
-    background: linear-gradient( rgb(34, 58, 124), rgb(7, 20, 54));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    margin: 20px 10px 5px 20px;
+    font-size: 35px;
+    color: rgb(10, 24, 64);
+}
+
+mat-checkbox {
+    margin-top: 15px;
+    margin-left: 5px;
 }
 
 h2, h3, h4, h5, h6 {
@@ -11,7 +14,7 @@ h2, h3, h4, h5, h6 {
 }
 
 .iconfiltro {
-    margin: 5px 10px;
+    margin: 5px 15.5px;
     color: rgb(10, 24, 64);
 }
 
@@ -31,9 +34,15 @@ table {
     background-color: white;
     color: rgb(10, 24, 64);
     position: absolute;
-    top: 118px;
+    top: 120px;
     left: 230px;
     box-shadow: 2px black;
+}
+
+.filtro {
+    position: absolute;
+    /*left: 290px;*/
+    top: 170px;
 }
 
 .mat-row:nth-child(n+1){

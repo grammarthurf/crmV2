@@ -98,9 +98,17 @@ button i {
 }
 
 .btn-add {
-  color: #fff;
-  background-color: #5460e0;
-  border-color: #5460e0;
+    color: #fff;
+    background-color: #5460E0;
+    border-color: #5460E0;
+}
+
+/* TOPO */
+
+h1 {
+    margin-left: 20px;
+    font-size: 35px;
+    color: rgb(10, 24, 64);
 }
 
 .thermometro {
