@@ -1,0 +1,44 @@
+h1 {
+    margin-left: 20px;
+    font-size: 35px;
+    color: rgb(10, 24, 64);
+}
+
+.btn1 {
+    background-color: white;
+    color: rgb(10, 24, 64);
+    box-shadow: 2px black;
+    margin-left: 30px;
+}
+
+mat-divider {
+    margin-top: 10px;
+}
+
+table {
+    width: 100%;
+    margin-top: 40px;
+}
+
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+    text-align: center;
+}
+
+.mat-row:nth-child(even){
+    background-color: #F4F4F4;
+}
+
+.mat-row:nth-child(odd){
+    background-color: #FFFFFF;
+}
+
+::ng-deep .mat-sort-header-container {
+    display:flex;
+    justify-content:center;
+}
+
+.btn-add {
+    color: #fff;
+    background-color: #5460E0;
+    border-color: #5460E0;
+}

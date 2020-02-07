@@ -1,5 +1,5 @@
 h1 {
-    margin: 20px 10px 5px 20px;
+    margin-left: 20px;
     font-size: 35px;
     color: rgb(10, 24, 64);
 }
@@ -33,22 +33,21 @@ table {
 .btn1 {
     background-color: white;
     color: rgb(10, 24, 64);
-    position: absolute;
-    top: 120px;
-    left: 230px;
     box-shadow: 2px black;
+    margin-left: 30px;
+    margin-bottom: 5px;
 }
 
 .filtro {
     position: absolute;
     /*left: 290px;*/
-    top: 170px;
+    top: 145px;
 }
 
-.mat-row:nth-child(n+1){
-    background-color: #f0ecf5;
+.mat-row:nth-child(even){
+    background-color: #F4F4F4;
 }
 
-.mat-row:not(:nth-child(2n+1)){
-    background-color:#ffffff;
+.mat-row:nth-child(odd){
+    background-color: #FFFFFF;
 }

@@ -35,7 +35,7 @@ const routes: Routes = [
     component: ContactsComponent
   },
   {
-    path: 'organization',
+    path: 'company',
     component: OrganizationComponent
   },
   {
