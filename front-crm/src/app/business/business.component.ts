@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { CrudService } from "../services/crud.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-business",
@@ -13,7 +14,7 @@ export class BusinessComponent implements OnInit {
   ticketsapi: any;
   erroTicket: any;
 
-  constructor(private crudService: CrudService) {
+  constructor(private crudService: CrudService, private router: Router) {
     this.getterEstagios();
     this.getterTickets();
   }
@@ -45,14 +46,6 @@ export class BusinessComponent implements OnInit {
   }
 
   table = [
-    {
-      title: "Prospecções",
-      value: "0 - 1 ativ"
-    },
-    {
-      title: "Prospecções",
-      value: "0 - 1 ativ"
-    },
     {
       title: "Prospecções",
       value: "0 - 1 ativ"
@@ -120,6 +113,10 @@ export class BusinessComponent implements OnInit {
       value: "10.000"
     }
   ];
+
+  goTo() {
+    this.router.navigate(['/business-detail']);
+  }
 
   ngOnInit() {}
 }
