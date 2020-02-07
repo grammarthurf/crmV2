@@ -53,7 +53,7 @@ export class BusinessComponent implements OnInit {
       value: "0 - 1 ativ"
     },
     {
-      title: "Contratado",
+      title: "Contatado",
       value: "0 - 2 ativ"
     },
     {

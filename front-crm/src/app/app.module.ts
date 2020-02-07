@@ -18,6 +18,7 @@ import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
 import { MatNativeDateModule } from "@angular/material";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatDividerModule } from "@angular/material/divider";
+import { MatSortModule } from '@angular/material/sort';
 
 // COMPONENTS
 import { AppComponent } from "./app.component";
@@ -58,6 +59,7 @@ import { BusinessDetailComponent } from './business-detail/business-detail.compo
     MatFormFieldModule,
     MatNativeDateModule,
     MatDividerModule,
+    MatSortModule,
     HttpClientModule
   ],
   providers: [HttpClient],
