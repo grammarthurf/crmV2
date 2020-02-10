@@ -1,4 +1,4 @@
-<div style="margin-top: 100px;">
+<div style="margin-top: 100px; margin-left: 15px;">
   <div style="display: flex;">
     <h1>Negócios</h1>
     <button mat-mini-fab class="btn1" data-toggle="modal" data-target="#exampleModalCenter">
@@ -53,10 +53,13 @@
 
               <div class="form-group">
                 <label for="thermometro">Termômetro</label>
-                <input type="range" class="form-control-range" id="thermometro" />
+                <input  type="range" 
+                        class="form-control-range" 
+                        id="thermometro" 
+                        value="0" 
+                        step="50">
               </div>
             </div>
-
             <div class="form-group col-md-12">
               <label for="exampleFormControlTextarea1">Observação</label>
               <textarea class="form-control" id="observation" rows="3"></textarea>
@@ -74,24 +77,25 @@
   </div>
 
   <hr style="width: 100%;" />
-  <div class="row flex-nowrap">
-    <div class="col-md-3 align-items-center " *ngFor="let i of estagiosapi">
-      <div class="mb-4">
-        <p>{{ i.nome }}</p>
-        <p>{{ i.tickets.length }} Neg.</p>
-      </div>
-      <div class="row mb-2 col-md-11" (click)="goTo(j.id)" *ngFor="let j of i.tickets">
-        <div class="card col-md-12" style="height: 5rem; border-radius: 6%;">
-          <div class="card-body">
-            <div class="row justify-content-around">
-              <h5 class="card-title">{{ j.titulo }}</h5>
-              <div class="thermometro"></div>
-            </div>
-            <h6 class="card-subtitle mb-2 text-muted">Sull Automação</h6>
-            <a class="card-desc">R$ {{ j.valorestimado }} </a>
-            <!-- <button class="btn btn-danger">28/02/2020</button> -->
-          </div>
+  <div class="row flex-nowrap mt-4">
+    <div class="col-md-2 align-items-center" *ngFor="let i of estagiosapi">
+      
+      <div class="mb-4 tickets" style="display: flex;">
+        <div>
+          <p>{{ i.nome }}</p>
+          <p>{{ i.tickets.length }} Neg.</p>
         </div>
+          
+        <img src="../../assets/arrow.png">
+      </div>
+
+      <div class="leads" (click)="goTo(j.id)" *ngFor="let j of i.tickets">
+        <div style="display: flex;">
+          <p class="fz-15">{{ j.titulo }}</p>
+          <div class="thermometro"></div>
+        </div>
+        <p class="mb-2 limit-words fz-13">Sull Automação</p>
+        <p class="fz-13"> R$ {{ j.valorestimado }} </p>
       </div>
     </div>
   </div>
@@ -138,4 +142,20 @@
     </div>
   </div>
 </div> -->
+
+
+<!-- <div class="row mb-2 col-md-11" (click)="goTo(j.id)" *ngFor="let j of i.tickets">
+  <div class="card col-md-12" style="height: 5rem; border-radius: 6%;">
+    <div class="card-body">
+      <div class="row justify-content-around">
+        <h5 class="card-title">{{ j.titulo }}</h5>
+        <div class="thermometro"></div>
+      </div>
+      <h6 class="card-subtitle mb-2 text-muted limit-words">Sull Automação</h6>
+      <a class="card-desc">R$ {{ j.valorestimado }} </a>
+      <button class="btn btn-danger">28/02/2020</button>
+    </div>
+  </div>
+</div> -->
+
 </div>

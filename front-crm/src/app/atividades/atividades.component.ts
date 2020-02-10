@@ -1,10 +1,10 @@
 
-import { Component, OnInit, ViewChild} from '@angular/core';
-import {MatTableDataSource} from '@angular/material/table';
-import {SelectionModel} from '@angular/cdk/collections';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
 import { CrudService } from "../services/crud.service";
-import {MatSort} from '@angular/material/sort';
+import { MatSort } from '@angular/material/sort';
 
 
 export interface PeriodicElement {
@@ -57,7 +57,7 @@ export class AtividadesComponent implements OnInit {
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  
+
   getterActivity() {
     this.crudService.getAtividade().subscribe(
       data => {
@@ -108,10 +108,9 @@ export class AtividadesComponent implements OnInit {
     this.router.navigate(['/business-detail']);
   }
 
-   removechama(){
+  removechama(){
     this.removeSelectedRows();
-    
-   }
+  }
   
   ngOnInit() {
     this.dataSource.sort = this.sort;

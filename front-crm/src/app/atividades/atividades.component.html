@@ -1,6 +1,11 @@
 <div style="padding-top: 100px; display: flex;">
   <h1> Atividades </h1>
-  <button mat-mini-fab class="btn1" data-toggle="modal" data-target="#abrircadastroatv"><mat-icon>add</mat-icon></button> <!--(click)="openBottomSheet()"-->
+    <button mat-mini-fab 
+            class="btn1" 
+            data-toggle="modal" 
+            data-target="#abrircadastroatv">
+        <mat-icon>add</mat-icon>
+    </button>
 </div>
 
 <mat-divider></mat-divider>
@@ -59,10 +64,9 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
                 <button type="button" class="btn btn-primary">Salvar</button>
             </div>
-
         </div>
     </div>
-  </div>
+</div>
 
 <button mat-icon-button class="iconfiltro" (keyup)="applyFilter($event.target.value)" (click)="filtrolig()" (dblclick)="dblclic()"><mat-icon>phone</mat-icon></button>
 <button mat-icon-button class="iconfiltro" (keyup)="applyFilter($event.target.value)" (click)="filtroreun()" (dblclick)="dblclic()"><mat-icon>people</mat-icon></button>
@@ -91,46 +95,92 @@
 
     <!-- Assunto Column -->
     <ng-container matColumnDef="Assunto" >
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Assunto </th>
-        <td mat-cell *matCellDef="let element" (click)="goTo()"> {{element.Assunto}} </td>
+        <th mat-header-cell 
+            *matHeaderCellDef 
+            mat-sort-header> Assunto 
+        </th>
+        <td mat-cell 
+            *matCellDef="let element" 
+            (click)="goTo()"> {{element.Assunto}} 
+        </td>
     </ng-container>
 
     <!-- DataVenc Column -->
     <ng-container matColumnDef="DataVenc">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Data </th>
-        <td mat-cell *matCellDef="let element" (click)="goTo()"> {{element.DataVenc}} </td>
+        <th mat-header-cell 
+            *matHeaderCellDef 
+            mat-sort-header> Data 
+        </th>
+        <td mat-cell 
+            *matCellDef="let element" 
+            (click)="goTo()"> {{element.DataVenc}} 
+        </td>
     </ng-container>
 
     <!-- Cliente Column -->
     <ng-container matColumnDef="Cliente">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cliente </th>
-        <td mat-cell *matCellDef="let element" (click)="goTo()"> {{element.Cliente}} </td>
+        <th mat-header-cell 
+            *matHeaderCellDef 
+            mat-sort-header> Cliente 
+        </th>
+        <td mat-cell 
+            *matCellDef="let element" 
+            (click)="goTo()"> {{element.Cliente}} 
+        </td>
     </ng-container>
 
     <!-- NomeContato Column -->
     <ng-container matColumnDef="NomeContato" > 
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome do Contato </th>
-        <td mat-cell *matCellDef="let element" (click)="goTo()"> {{element.NomeContato}} </td>
+        <th mat-header-cell 
+            *matHeaderCellDef 
+            mat-sort-header> Nome do Contato 
+        </th>
+        <td mat-cell 
+            *matCellDef="let element" 
+            (click)="goTo()"> {{element.NomeContato}} 
+        </td>
     </ng-container> 
 
     <!-- Email Column -->
     <ng-container matColumnDef="Email">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-        <td mat-cell *matCellDef="let element" (click)="goTo()"> {{element.Email}} </td>
+        <th mat-header-cell 
+            *matHeaderCellDef 
+            mat-sort-header> Email 
+        </th>
+        <td mat-cell 
+            *matCellDef="let element" 
+            (click)="goTo()"> {{element.Email}} 
+        </td>
     </ng-container>
 
     <!-- Telefone Column -->
     <ng-container matColumnDef="Telefone">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefone </th>
-        <td mat-cell *matCellDef="let element" (click)="goTo()"> {{element.Telefone}} </td>
+        <th mat-header-cell 
+            *matHeaderCellDef 
+            mat-sort-header> Telefone 
+        </th>
+        <td mat-cell 
+            *matCellDef="let element" 
+            (click)="goTo()"> {{element.Telefone}} 
+        </td>
     </ng-container>
 
     <!-- UserResp Column -->
     <ng-container matColumnDef="UserResp">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuário Responsável </th>
-        <td mat-cell *matCellDef="let element" (click)="goTo()"> {{element.UserResp}} </td>
+        <th mat-header-cell 
+            *matHeaderCellDef 
+            mat-sort-header> Usuário Responsável 
+        </th>
+        <td mat-cell 
+            *matCellDef="let element" 
+            (click)="goTo()"> {{element.UserResp}} 
+        </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-header-row 
+        *matHeaderRowDef="displayedColumns">
+    </tr>
+    <tr mat-row 
+        *matRowDef="let row; columns: displayedColumns;">
+    </tr>
 </table>
