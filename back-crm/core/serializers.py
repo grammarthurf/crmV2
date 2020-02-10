@@ -16,7 +16,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
-        fields = ['id', 'nome', 'tipo', 'email', 'termometro']
+        fields = ['id', 'nome', 'tipo', 'fone',
+                  'celular', 'email', 'skype', 'org']
 
 
 class EstagioSerializer(serializers.ModelSerializer):
@@ -28,13 +29,14 @@ class EstagioSerializer(serializers.ModelSerializer):
 class OrganizacaoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Organizacao
-        fields = ['id', 'nome', 'erp', 'clientes']
+        fields = ['id', 'razaosocial', 'nomefantasia', 'rua',
+                  'bairro', 'cidade', 'uf', 'erp', 'clientes']
 
 
 class ProdutoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Produto
-        fields = ['id', 'nome']
+        fields = ['id', 'nome', 'modalidade']
 
 
 class VendedorSerializer(serializers.ModelSerializer):
@@ -46,11 +48,11 @@ class VendedorSerializer(serializers.ModelSerializer):
 class TicketSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ticket
-        fields = ['descricao', 'estagio',
-                  'cliente', 'org', 'produto', 'valorneg']
+        fields = ['id', 'titulo', 'estagio',
+                  'cliente', 'org', 'produto', 'valorestimado', 'termometro', 'vendedor', 'obs']
 
 
 class AtividadeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Atividade
-        fields = ['descricao', 'tipo', 'duracao', 'ticket']
+        fields = ['id', 'assunto', 'tipo', 'data', 'ticket', 'cliente', 'org']
