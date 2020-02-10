@@ -23,45 +23,46 @@
             <div class="modal-body">
                 <form class="row">
 
-                    <div class="form-group col-md-12">
-                        <label for="exampleInputEmail1">Assunto</label>
-                        <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Título">
-                    </div>
+                    <div class="form-group col-12">
+                        <label for="exampleFormControlSelect1">Assunto</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                          <option>Ligar</option>
+                          <option>Reunião</option>
+                          <option>Almoço</option>
+                          <option>Email</option>
+                          <option>Tarefa</option>
+                        </select>
+                      </div>
                     
                     <div class="form-group col-md-6">
-                        <label for="example-date-input">Date</label>
-                          <input class="form-control" type="date" value="2020-00-00" id="example-date-input">
+                        <label for="example-date-input">Data</label>
+                          <input class="form-control" type="date" value="0000-00-00" id="example-date-input">
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label for="exampleInputEmail1">Assunto</label>
-                        <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Título">
+                        <label for="exampleInputEmail1">Hora</label>
+                        <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Hora">
                     </div>
 
                     <div class="form-group col-md-12">
-                        <label for="exampleInputEmail1">Assunto</label>
-                        <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Título">
+                        <label for="exampleInputEmail1">Negócio</label>
+                        <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Negócio">
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label for="exampleInputEmail1">Assunto</label>
-                        <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Título">
+                        <label for="exampleInputEmail1">Pessoas</label>
+                        <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Pessoas">
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label for="exampleInputEmail1">Assunto</label>
-                        <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Título">
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <label for="exampleInputEmail1">Assunto</label>
-                        <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Título">
+                        <label for="exampleInputEmail1">Empresa</label>
+                        <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Empresa">
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
-                <button type="button" class="btn btn-add">Salvar</button>
+                <button type="button" class="btn btn-primary">Salvar</button>
             </div>
         </div>
     </div>
@@ -72,13 +73,9 @@
 <button mat-icon-button class="iconfiltro" (keyup)="applyFilter($event.target.value)" (click)="filtrovisit()" (dblclick)="dblclic()"><mat-icon>business</mat-icon></button>
 <button mat-icon-button class="iconfiltro" (keyup)="applyFilter($event.target.value)" (click)="filtroemail()" (dblclick)="dblclic()"><mat-icon>email</mat-icon></button>
 
-<mat-form-field class="filtro">
-    <input matInput 
-        type="text" 
-        (keyup)="applyFilter($event.target.value)" 
-        placeholder="Filtro">
-    <mat-icon matSuffix>search</mat-icon>
-</mat-form-field> 
+<div class="form-group col-3 filter">
+    <input class="form-control" type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+</div>
 
 <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort class="mat-elevation-z8">
     <!-- Checkbox Column -->

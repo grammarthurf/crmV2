@@ -20,7 +20,7 @@ div.tickets div {
   flex-wrap: nowrap;
   margin-left: 10px;
   margin-right: 10px;
-  max-width: 1120px;
+  max-width: 100%;
 }
 
 div p {
@@ -109,12 +109,13 @@ h1 {
 }
 
 .thermometro {
-  background-color: #4DFF00;
+  background-color: #4dff00;
   border: 3px;
   border-radius: 50%;
   width: 15px;
   height: 15px;
-  margin-left: auto;
+  /* margin-left: auto; */
+  float: right;
 }
 
 h1 {
@@ -146,9 +147,38 @@ input[type=range] {
 ::-webkit-slider-thumb {
   margin-top: -7px;
 }
-  
+
 @media (min-width: 1445px) {
   .row1 {
-    max-width: 84%;
+    max-width: 100%;
   }
-} 
+}
+
+.next-ativ {
+  background-color: #e22f2f;
+  border-radius: 8%;
+  padding: 2%;
+}
+
+.card h5 {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.card {
+  border-radius: 5%;
+}
+
+.card-title {
+  font-size: 13px;
+  margin-left: -23px;
+  margin-bottom: 0.5rem;
+}
+
+.card-body {
+  padding: 3%;
+}
+
+.card-desc {
+  font-size: 13px;
+}

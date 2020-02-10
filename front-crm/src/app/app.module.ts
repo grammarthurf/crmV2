@@ -27,9 +27,9 @@ import { AtividadesComponent } from "./atividades/atividades.component";
 import { BusinessComponent } from "./business/business.component";
 import { CrudComponent } from "./components/crud/crud.component";
 import { ProductsComponent } from './products/products.component';
-import { ContactsComponent } from './contacts/contacts.component';
 import { OrganizationComponent } from './organization/organization.component';
 import { BusinessDetailComponent } from './business-detail/business-detail.component';
+import { PersonComponent } from './person/person.component';
 
 @NgModule({
   declarations: [
@@ -39,9 +39,9 @@ import { BusinessDetailComponent } from './business-detail/business-detail.compo
     BusinessComponent,
     CrudComponent,
     ProductsComponent,
-    ContactsComponent,
     OrganizationComponent,
-    BusinessDetailComponent
+    BusinessDetailComponent,
+    PersonComponent
   ],
   imports: [
     BrowserModule,

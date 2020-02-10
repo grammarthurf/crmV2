@@ -20,10 +20,19 @@ class ClienteSerializer(serializers.ModelSerializer):
                   'celular', 'email', 'skype', 'org']
 
 
+class TicketSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ticket
+        fields = '__all__'
+        depth = 1
+
+
 class EstagioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Estagio
+        tickets = TicketSerializer(many=False, read_only=True)
         fields = ['id', 'nome', 'tickets']
+        depth = 1
 
 
 class OrganizacaoSerializer(serializers.ModelSerializer):
@@ -43,13 +52,6 @@ class VendedorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vendedor
         fields = ['id', 'nome']
-
-
-class TicketSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Ticket
-        fields = ['id', 'titulo', 'estagio',
-                  'cliente', 'org', 'produto', 'valorestimado', 'termometro', 'vendedor', 'obs']
 
 
 class AtividadeSerializer(serializers.ModelSerializer):

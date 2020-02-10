@@ -4,9 +4,9 @@ import { Routes, RouterModule } from "@angular/router";
 import { CrudComponent } from "./components/crud/crud.component";
 import { AtividadesComponent } from "./atividades/atividades.component";
 import { ProductsComponent } from "./products/products.component";
-import { ContactsComponent } from "./contacts/contacts.component";
 import { OrganizationComponent } from "./organization/organization.component";
 import { BusinessDetailComponent } from "./business-detail/business-detail.component";
+import { PersonComponent } from "./person/person.component";
 
 const routes: Routes = [
   {
@@ -31,8 +31,8 @@ const routes: Routes = [
     component: ProductsComponent
   },
   {
-    path: 'contacts',
-    component: ContactsComponent
+    path: 'person',
+    component: PersonComponent
   },
   {
     path: 'company',

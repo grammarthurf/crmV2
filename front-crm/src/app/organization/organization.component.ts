@@ -15,7 +15,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
     celular: '(47) 988745147',
     email: 'vedois@vedois.com.br',
     endereco: 'Rua Austrália, 211',
-    tipo: 'Tecnologia',
+    tipo: 'Parceiro',
+    erp: 'ASDASD',
+    vendedor: 'Fabiana'
+  },
+  {
+    nome_fantasia: 'Vedois Tecnologia',
+    razao_social: 'Asasasea',
+    fone: '(47) 33821475',
+    celular: '(47) 988745147',
+    email: 'vedois@vedois.com.br',
+    endereco: 'Rua Austrália, 211',
+    tipo: 'Cliente',
     erp: 'ASDASD',
     vendedor: 'Fabiana'
   },
@@ -26,7 +37,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     celular: '(47) 988745147',
     email: 'vedois@vedois.com.br',
     endereco: 'Rua Austrália, 211',
-    tipo: 'Tecnologia',
+    tipo: 'Cliente',
     erp: 'ASDASD',
     vendedor: 'Fabiana'
   },
@@ -37,7 +48,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
     celular: '(47) 988745147',
     email: 'vedois@vedois.com.br',
     endereco: 'Rua Austrália, 211',
-    tipo: 'Tecnologia',
+    tipo: 'Cliente',
+    erp: 'ASDASD',
+    vendedor: 'Fabiana'
+  },
+  {
+    nome_fantasia: 'Vedois Tecnologia',
+    razao_social: 'Asasasea',
+    fone: '(47) 33821475',
+    celular: '(47) 988745147',
+    email: 'vedois@vedois.com.br',
+    endereco: 'Rua Austrália, 211',
+    tipo: 'Parceiro',
     erp: 'ASDASD',
     vendedor: 'Fabiana'
   },
@@ -48,29 +70,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     celular: '(47) 988745147',
     email: 'vedois@vedois.com.br',
     endereco: 'Rua Austrália, 211',
-    tipo: 'Tecnologia',
-    erp: 'ASDASD',
-    vendedor: 'Fabiana'
-  },
-  {
-    nome_fantasia: 'V&a',
-    razao_social: 'Asasasea',
-    fone: '(47) 33821475',
-    celular: '(47) 988745147',
-    email: 'vedois@vedois.com.br',
-    endereco: 'Rua Austrália, 211',
-    tipo: 'Tecnologia',
-    erp: 'ASDASD',
-    vendedor: 'Fabiana'
-  },
-  {
-    nome_fantasia: 'V&V',
-    razao_social: 'Asasasea',
-    fone: '(47) 33821475',
-    celular: '(47) 988745147',
-    email: 'vedois@vedois.com.br',
-    endereco: 'Rua Austrália, 211',
-    tipo: 'Tecnologia',
+    tipo: 'Parceiro',
     erp: 'ASDASD',
     vendedor: 'Fabiana'
   },
@@ -106,6 +106,10 @@ export class OrganizationComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   ngOnInit() {
