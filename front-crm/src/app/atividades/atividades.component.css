@@ -1,82 +1,32 @@
-/* TXT & INPUT */
 h1 {
     margin-left: 20px;
     font-size: 35px;
-    color: rgb(10, 24, 64);
+    color: #232953;
 }
-
-h2, h3, h4, h5, h6 {
-    margin: 8px 0;
-}
-
-.mat-form-field {
-    font-size: 14px;
-    width: 10%;
-    position: absolute;
-    right: 30px;
-    top: 112px;
-}
-
-.filtro {
-    position: absolute;
-    top: 170px;
-}
-/* BUTTON */
 .btn1 {
     background-color: white;
-    color: rgb(10, 24, 64);
-    box-shadow: 2px black;
+    color: #232953;
+    box-shadow: 2px bla ck;
     margin-left: 30px;
     margin-bottom: 5px;
 }
 
-.btn-add {
-    color: #fff;
-    background-color: rgb(12, 28, 71);
-    border-color: rgb(2, 8, 26);
-}
-
-.btn-secondary {
-    background-color: white;
-    font-weight: bold;
-    color: rgb(2, 8, 26);
-    border-color: rgb(11, 26, 69);
-}
-
 .iconfiltro {
     margin: 5px 15.5px;
-    color: rgb(10, 24, 64);
-}
-
-.mat-row:nth-child(8){
-    background-color: rgb(255, 232, 228);
-}
-
-.mat-row:nth-child(3) {
-    background-color:rgb(255, 232, 228);
-}
-
-.mat-row:nth-child(7) {
-    background-color:rgb(255, 255, 202);
+    color: #232953;
 }
 
 td {
     padding: 0px 50px 0px 0px !important;
 }
 
-th {
-    flex-direction: column;
-    justify-content: center;
-}
-
 table {
-    width: 100%;
+    width: 98%;
+    margin: 0 auto 20px auto;
 }
   
 mat-checkbox {
-    margin-top: 15px;
-    margin-left: 5px;
-    margin-right: 20px;
+    margin: 15px 20px 0 5px;
 }
 
 .filter {
