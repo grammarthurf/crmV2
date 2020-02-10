@@ -83,10 +83,9 @@ mat-checkbox {
     margin-right: 20px;
 }
 
-.filtro {
-    position: absolute;
-    /*left: 290px;*/
-    top: 145px;
+.filter {
+    margin-top: 15px;
+    float: right;
 }
 
 .mat-row:nth-child(even){

@@ -17,7 +17,6 @@ mat-divider {
 
 table {
     width: 100%;
-    margin-top: 40px;
 }
 
 td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
@@ -41,4 +40,14 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
     color: #fff;
     background-color: #5460E0;
     border-color: #5460E0;
+}
+
+.iconfiltro {
+    margin: 5px 15.5px;
+    color: rgb(10, 24, 64);
+}
+
+.filter {
+    margin-top: 15px;
+    float: right;
 }

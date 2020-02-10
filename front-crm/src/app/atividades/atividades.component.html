@@ -68,10 +68,9 @@
 <button mat-icon-button class="iconfiltro" (keyup)="applyFilter($event.target.value)" (click)="filtrovisit()" (dblclick)="dblclic()"><mat-icon>business</mat-icon></button>
 <button mat-icon-button class="iconfiltro" (keyup)="applyFilter($event.target.value)" (click)="filtroemail()" (dblclick)="dblclic()"><mat-icon>email</mat-icon></button>
 
-<mat-form-field class="filtro">
-    <input matInput type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
-    <mat-icon matSuffix>search</mat-icon>
-</mat-form-field> 
+<div class="form-group col-3 filter">
+    <input class="form-control" type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+</div>
 
 
 <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
