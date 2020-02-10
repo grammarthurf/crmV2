@@ -49,7 +49,6 @@ div p + p {
   float: right;
   background-color: #fff;
 }
-
 /* LEADS  */
 .leads {
   border: 1px solid #c7c7c7;
@@ -105,10 +104,9 @@ button i {
 
 .btn-add {
   color: #fff;
-  background-color: #5460e0;
-  border-color: #5460e0;
+  background-color: #5460E0;
+  border-color: #5460E0;
 }
-
 /* TOPO */
 h1 {
   margin-left: 20px;
@@ -140,6 +138,19 @@ h1 {
 mat-divider {
   margin: 20px;
   margin-top: 10px;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+}
+
+::-webkit-slider-runnable-track {
+  height: 3px;
+  background-image: linear-gradient(to right, #0083FF, #F3FF00, #FF0000);
+}
+
+::-webkit-slider-thumb {
+  margin-top: -7px;
 }
 
 @media (min-width: 1445px) {

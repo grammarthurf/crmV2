@@ -20,8 +20,13 @@ nav {
     top: 0;
     width: 100%;
     z-index: 1;
+    height: 80px;
 }
 
 .navbar-brand {
     margin-right: 3rem;
+}
+
+img {
+    height: 40px;
 }
