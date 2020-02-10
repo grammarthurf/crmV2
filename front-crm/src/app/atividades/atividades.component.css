@@ -47,21 +47,17 @@ h2, h3, h4, h5, h6 {
     margin: 5px 15.5px;
     color: rgb(10, 24, 64);
 }
-/* TABLE */
-.mat-row:nth-child(1){
-    background-color: rgb(252, 237, 233);
-}
 
-.mat-row:nth-child(9){
-    background-color: rgb(252, 237, 233);
+.mat-row:nth-child(8){
+    background-color: rgb(255, 232, 228);
 }
 
 .mat-row:nth-child(3) {
-    background-color:rgb(242, 251, 254);
+    background-color:rgb(255, 232, 228);
 }
 
-.mat-row:nth-child(8) {
-    background-color:rgb(242, 251, 254);
+.mat-row:nth-child(7) {
+    background-color:rgb(255, 255, 202);
 }
 
 td {
