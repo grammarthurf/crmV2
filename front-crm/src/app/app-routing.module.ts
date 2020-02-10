@@ -19,23 +19,23 @@ const routes: Routes = [
     component: BusinessComponent
   },
   {
-    path: "business-detail",
+    path: "business-detail/:id",
     component: BusinessDetailComponent
   },
   {
-    path: 'activity',
+    path: "activity",
     component: AtividadesComponent
   },
   {
-    path: 'products',
+    path: "products",
     component: ProductsComponent
   },
   {
-    path: 'person',
+    path: "person",
     component: PersonComponent
   },
   {
-    path: 'company',
+    path: "company",
     component: OrganizationComponent
   },
   {
