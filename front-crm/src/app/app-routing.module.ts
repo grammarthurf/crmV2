@@ -19,7 +19,7 @@ const routes: Routes = [
     component: BusinessComponent
   },
   {
-    path: "business-detail",
+    path: "business-detail/:id",
     component: BusinessDetailComponent
   },
   {
