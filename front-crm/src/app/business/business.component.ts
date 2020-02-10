@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { CrudService } from "../services/crud.service";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-business",
@@ -12,6 +12,10 @@ export class BusinessComponent implements OnInit {
   estagiosapi: any;
   erroEstagio: any;
 
+  // Lista de atividades:
+  atividadesapi: any;
+  erroAtividade: any;
+
   // Lista de tickets:
   ticketsapi: any;
   erroTicket: any;
@@ -19,6 +23,23 @@ export class BusinessComponent implements OnInit {
   constructor(private crudService: CrudService, private router: Router) {
     this.getterEstagios();
     this.getterTickets();
+    this.getterAtividades();
+  }
+
+  splitTickets() {
+    this.estagiosapi.forEach(e => {});
+  }
+
+  getterAtividades() {
+    this.crudService.getAtividade().subscribe(
+      data => {
+        this.atividadesapi = data;
+        console.log(data);
+      },
+      error => {
+        this.erroAtividade = error;
+      }
+    );
   }
 
   getterEstagios() {
@@ -47,77 +68,8 @@ export class BusinessComponent implements OnInit {
     );
   }
 
-  table = [
-    {
-      title: "Prospecções",
-      value: "0 - 1 ativ"
-    },
-    {
-      title: "Contatado",
-      value: "0 - 2 ativ"
-    },
-    {
-      title: "Cliente Potencial",
-      value: "0 - 1 ativ"
-    },
-    {
-      title: "Demo Agendada",
-      value: "0 - 1 ativ"
-    },
-    {
-      title: "Proposta",
-      value: "0 - 1 ativ"
-    },
-    {
-      title: "Negoc. Iniciadas",
-      value: "0 - 1 ativ"
-    },
-    {
-      title: "Cliente",
-      value: "0 - 1 ativ"
-    }
-  ];
-
-  cards = [
-    {
-      title: "Sull OEE",
-      subtitle: "Sull Automação e Tecnologia",
-      value: "10.000"
-    },
-    {
-      title: "Sull OEE",
-      subtitle: "Sull Automação e Tecnologia",
-      value: "10.000"
-    },
-    {
-      title: "Sull OEE",
-      subtitle: "Sull Automação e Tecnologia",
-      value: "10.000"
-    },
-    {
-      title: "Sull OEE",
-      subtitle: "Sull Automação e Tecnologia",
-      value: "10.000"
-    },
-    {
-      title: "Sull OEE",
-      subtitle: "Sull Automação e Tecnologia",
-      value: "10.000"
-    },
-    {
-      title: "Sull OEE",
-      subtitle: "Sull Automação e Tecnologia",
-      value: "10.000"
-    },
-    {
-      title: "Sull OEE",
-      subtitle: "Sull Automação e Tecnologia",
-      value: "10.000"
-    }
-  ];
-
-  goTo() {
-    this.router.navigate(['/business-detail']);
+  goTo(id) {
+    this.router.navigate([`/business-detail/${id}`]);
   }
 
   ngOnInit() {}

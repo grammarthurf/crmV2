@@ -15,13 +15,13 @@ div.tickets div {
 }
 
 .row1 {
-    display: flex;
-    white-space: nowrap;
-    flex-wrap: nowrap;
-    margin-left: 10px;
-    margin-right: 10px;
-    max-width: 1120px;
-  }
+  display: flex;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  margin-left: 10px;
+  margin-right: 10px;
+  max-width: 100%;
+}
 
 div p {
   text-align: left;
@@ -35,17 +35,17 @@ div p + p {
 }
 
 .btn-circle.btn-sm {
-    width: 25px;
-    height: 25px;
-    padding: 0px 0px;
-    border-radius: 15px;
-    text-align: center;
-    font-size: 16px;
-    margin-top: 22px;
-    color: #7e7e7e;
-    float: right;
-    background-color: #fff;
-  }
+  width: 25px;
+  height: 25px;
+  padding: 0px 0px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 22px;
+  color: #7e7e7e;
+  float: right;
+  background-color: #fff;
+}
 
 /* LEADS  */
 .leads {
@@ -70,15 +70,15 @@ div p + p {
 }
 
 .buttons-informations {
-    display: flex;
-    border: 0;
-    border-radius: 15px;
-    padding: 0px 10px;
-    font-size: 12px;
-    font-weight: bold;
-    color: #fff;
-    margin-left: 4px;
-  }
+  display: flex;
+  border: 0;
+  border-radius: 15px;
+  padding: 0px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  margin-left: 4px;
+}
 
 .good {
   background-color: #4dc426;
@@ -93,30 +93,31 @@ div p + p {
 }
 
 button i {
-    margin-top: 2px;
-    font-size: 14px;
-  }
+  margin-top: 2px;
+  font-size: 14px;
+}
 
 .btn-add {
-    color: #fff;
-    background-color: #5460E0;
-    border-color: #5460E0;
+  color: #fff;
+  background-color: #5460e0;
+  border-color: #5460e0;
 }
 
 /* TOPO */
 h1 {
-    margin-left: 20px;
-    font-size: 35px;
-    color: rgb(10, 24, 64);
+  margin-left: 20px;
+  font-size: 35px;
+  color: rgb(10, 24, 64);
 }
 
 .thermometro {
-  background-color: #4DFF00;
+  background-color: #4dff00;
   border: 3px;
   border-radius: 50%;
   width: 15px;
   height: 15px;
-  margin-left: auto;
+  /* margin-left: auto; */
+  float: right;
 }
 
 h1 {
@@ -132,13 +133,41 @@ h1 {
 }
 
 mat-divider {
-    margin: 20px;
-    margin-top: 10px;
+  margin: 20px;
+  margin-top: 10px;
 }
 
 @media (min-width: 1445px) {
-    .row1 {
-      max-width: 84%;
-    }
+  .row1 {
+    max-width: 100%;
+  }
 }
-  
+
+.next-ativ {
+  background-color: #e22f2f;
+  border-radius: 8%;
+  padding: 2%;
+}
+
+.card h5 {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.card {
+  border-radius: 5%;
+}
+
+.card-title {
+  font-size: 13px;
+  margin-left: -23px;
+  margin-bottom: 0.5rem;
+}
+
+.card-body {
+  padding: 3%;
+}
+
+.card-desc {
+  font-size: 13px;
+}
