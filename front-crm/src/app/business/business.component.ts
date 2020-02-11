@@ -9,6 +9,15 @@ import swal from 'sweetalert';
   styleUrls: ["./business.component.css"]
 })
 export class BusinessComponent implements OnInit {
+  //Lista de Clientes
+  clientesapi:any;
+
+  //Lista de Produtos
+  produtosapi: any;
+
+  // Lista de Orgs:
+  orsgapi: any;
+
   // Lista de estagios:
   estagiosapi: any;
   erroEstagio: any;
@@ -21,16 +30,51 @@ export class BusinessComponent implements OnInit {
   ticketsapi: any;
   erroTicket: any;
 
-  ticket = { titulo: "", estagio: "", valorestimado: "" };
+  ticket = { titulo: "", estagio: '', cliente: '', org: '', produto: '', valorestimado: '', termometro: '', vendedor: '', obs: '' };
 
   constructor(private crudService: CrudService, private router: Router) {
     this.getterEstagios();
     this.getterTickets();
     this.getterAtividades();
+    this.getterOrgs();
+    this.getterProd();
+    this.getterCliente();
   }
 
-  splitTickets() {
-    this.estagiosapi.forEach(e => {});
+  getterCliente() {
+    this.crudService.getClientes().subscribe(
+      data => {
+        this.clientesapi = data;
+        console.log(data);
+      },
+      error => {
+        this.erroAtividade = error;
+      }
+    );
+  }
+
+  getterProd() {
+    this.crudService.getProdutos().subscribe(
+      data => {
+        this.produtosapi = data;
+        console.log(data);
+      },
+      error => {
+        this.erroAtividade = error;
+      }
+    );
+  }
+
+  getterOrgs() {
+    this.crudService.getOrgs().subscribe(
+      data => {
+        this.orsgapi = data;
+        console.log(data);
+      },
+      error => {
+        this.erroAtividade = error;
+      }
+    );
   }
 
   getterAtividades() {
@@ -72,6 +116,8 @@ export class BusinessComponent implements OnInit {
   }
 
   save() {
+    console.log(this.ticket);
+
     this.crudService.saveNewTicket(this.ticket).subscribe(
       data => {
         swal({
@@ -94,5 +140,5 @@ export class BusinessComponent implements OnInit {
     this.router.navigate([`/business-detail/${id}`]);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

@@ -26,19 +26,17 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Empresa</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option>Vedois</option>
-                  <option>Sull</option>
+                <select *ngIf="orsgapi" [(ngModel)]="ticket.org" class="form-control" id="exampleFormControlSelect1">
+                  <option  *ngFor="let orgs of orsgapi" value="{{orgs.id}}">{{orgs.razaosocial}}</option>
+
                 </select>
               </div>
 
               <div class="form-group">
                 <label for="exampleFormControlSelect2">Produto</label>
-                <select multiple class="form-control" id="exampleFormControlSelect2">
-                  <option>Vedois OEE</option>
-                  <option>Vedois Planejamento</option>
-                  <option>Vedois Saúde</option>
-                  <option>Vedois Tear</option>
+                <select [(ngModel)]="ticket.produto" multiple class="form-control" id="exampleFormControlSelect2">
+                  <option *ngFor="let prod of produtosapi" value="{{prod.id}}">{{prod.nome}}</option>
+
                 </select>
               </div>
             </div>
@@ -46,19 +44,34 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="exampleInputEmail1">Valor Estimado</label>
-                <input [(ngModel)]="ticket.valorestimado" type="text" class="form-control" id="value"
+                <input [(ngModel)]="ticket.valorestimado" type="number" class="form-control" id="value"
                   aria-describedby="emailHelp" placeholder="Valor" />
               </div>
 
               <div class="form-group">
-                <label for="thermometro">Termômetro</label>
-                <input [(ngModel)]="ticket.estagio" type="range" class="form-control-range" id="thermometro" value="1"
-                  step="50" />
+                <label for="exampleFormControlSelect1">Estágio Inicio</label>
+                <select [(ngModel)]="ticket.estagio" class="form-control" id="exampleFormControlSelect1">
+                  <option *ngFor="let est of estagiosapi" value="{{est.id}}">{{est.nome}}</option>
+
+                </select>
               </div>
             </div>
+            <div class="form-group col-md-6">
+              <label for="exampleFormControlSelect1">Contato</label>
+              <select *ngIf="clientesapi" [(ngModel)]="ticket.cliente" class="form-control" id="exampleFormControlSelect1">
+                <option  *ngFor="let cliente of clientesapi" value="{{cliente.id}}">{{cliente.nome}}</option>
+
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="thermometro">Termômetro</label>
+              <input [(ngModel)]="ticket.termometro" type="range" class="form-control-range" id="thermometro" value="1"
+                step="49" />
+            </div>
+
             <div class="form-group col-md-12">
               <label for="exampleFormControlTextarea1">Observação</label>
-              <textarea class="form-control" id="observation" rows="3"></textarea>
+              <textarea [(ngModel)]="ticket.obs" class="form-control" id="observation" rows="3"></textarea>
             </div>
           </div>
         </div>

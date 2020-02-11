@@ -4,6 +4,7 @@ from .serializers import ClienteSerializer, EstagioSerializer, OrganizacaoSerial
 from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade
 from django.core import serializers
 from django.contrib.auth.models import User
+from django.http import HttpResponse
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -40,6 +41,27 @@ class TicketViewSet(viewsets.ModelViewSet):
 
     queryset = Ticket.objects.all()
     serializer_class = TicketSerializer
+
+    def create(self, request):
+        data = request.data
+        
+        print(data['titulo']);
+        
+       
+        T = Ticket()
+        T.titulo = data['titulo']
+        T.estagio = Estagio.objects.get(id=int(data['estagio']))
+        T.cliente = Cliente.objects.get(id=int(data['cliente']))
+        T.org = Organizacao.objects.get(id=int(data['org']))
+        T.valorestimado = data['valorestimado']
+        T.termometro = data['termometro']
+        T.obs = data['obs']
+        T.save()
+        print(data);
+        return HttpResponse("Worked")
+        
+ 
+
 
 
 class VendedorViewSet(viewsets.ModelViewSet):
