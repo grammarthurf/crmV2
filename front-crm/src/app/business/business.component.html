@@ -79,7 +79,7 @@
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
             Sair
           </button>
-          <button (click)="save()" class="btn btn-primary">Salvar</button>
+          <button (click)="save()" class="btn btn-primary" data-dismiss="modal">Salvar</button>
         </div>
       </div>
     </div>
@@ -99,10 +99,10 @@
 
       <div class="leads" (click)="goTo(j.id)" *ngFor="let j of i.tickets">
         <div style="display: flex;">
-          <p class="fz-15">{{ j.titulo }}</p>
+          <p class="fz-15 limit-words">{{ j.titulo }}</p>
           <div class="thermometro"></div>
         </div>
-        <p class="mb-2 limit-words fz-13">Sull Automação</p>
+        <p class="mb-2 limit-words fz-13">{{ j.org }}</p>
         <div style="display: flex;">
           <p class="fz-13">R$ {{ j.valorestimado }}</p>
           <img src="../../assets/vermelho.png" id="red" />

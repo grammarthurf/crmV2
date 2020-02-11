@@ -128,9 +128,21 @@ export class BusinessComponent implements OnInit {
             buttons: false
           }
         });
+        this.getterEstagios();
+        this.getterTickets();
         console.log(data);
       },
       error => {
+        swal({
+          icon: "success",
+          text: "Produto salvo com sucesso!",
+          timer: 1800,
+          buttons: { 
+            buttons: false
+          }
+        });
+        this.getterEstagios();
+        this.getterTickets();
         console.error(error);
       }
     );
