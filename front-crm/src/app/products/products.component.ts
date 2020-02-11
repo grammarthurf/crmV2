@@ -1,10 +1,14 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { CrudService } from "../services/crud.service";
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from "@angular/material/sort";
+import { MatTableDataSource } from "@angular/material/table";
 
 export interface PeriodicElement {
-  nome, cod, cat, un, price: String
+  nome;
+  cod;
+  cat;
+  un;
+  price: String;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
@@ -52,18 +56,22 @@ const ELEMENT_DATA: PeriodicElement[] = [
   }
 ];
 
-
 @Component({
   selector: "app-products",
   templateUrl: "./products.component.html",
   styleUrls: ["./products.component.css"]
 })
 export class ProductsComponent implements OnInit {
+  produto = {
+    nome: "",
+    modalidade: "",
+    codigo: ""
+  };
   // Lista produtos:
   produtosapi: any;
   erroProdutos: any;
 
-  displayedColumns: string[] = ['nome', 'cod', 'cat', 'un', 'price'];
+  displayedColumns: string[] = ["nome", "cod", "cat", "un", "price"];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -90,4 +98,15 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  save() {
+    this.crudService.saveNewProduto(this.produto).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  }
 }

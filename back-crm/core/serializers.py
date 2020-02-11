@@ -45,7 +45,7 @@ class OrganizacaoSerializer(serializers.ModelSerializer):
 class ProdutoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Produto
-        fields = ['id', 'nome', 'modalidade']
+        fields = ['id', 'nome', 'codigo', 'modalidade']
 
 
 class VendedorSerializer(serializers.ModelSerializer):
