@@ -4,7 +4,7 @@ from .serializers import ClienteSerializer, EstagioSerializer, OrganizacaoSerial
 from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade
 from django.core import serializers
 from django.contrib.auth.models import User
-from django.http import HttpResponse
+from django.http import JsonResponse
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -58,7 +58,7 @@ class TicketViewSet(viewsets.ModelViewSet):
         T.obs = data['obs']
         T.save()
         print(data);
-        return HttpResponse("Worked")
+        return JsonResponse({'message': 'Worked'})
         
  
 
