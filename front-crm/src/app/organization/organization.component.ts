@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CrudService } from "../services/crud.service";
+import swal from 'sweetalert';
 
 export interface PeriodicElement {
   nome_fantasia, razao_social, fone, celular, email, endereco, tipo, erp, vendedor: String
@@ -114,5 +115,16 @@ export class OrganizationComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.sort = this.sort;
+  }
+
+  deleteItem() {
+    swal({
+      icon: "error",
+      text: "Empresa excluída com sucesso!",
+      timer: 1800,
+      buttons: { 
+        buttons: false
+      }
+    });
   }
 }
