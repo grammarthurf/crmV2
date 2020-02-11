@@ -116,9 +116,17 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ["./atividades.component.css"]
 })
 export class AtividadesComponent implements OnInit {
+  atividade = { assunto: "", data: '', tipo: '', cliente: '', org: '' };
+
   // Lista de atividades:
   activityapi: any;
   erroActivity: any;
+
+  clientesapi:any;
+
+    // Lista de Orgs:
+    orsgapi: any;
+
 
   displayedColumns: string[] = ['select', 'assunto', 'dataVenc', 'cliente', 'nomeContato', 'email', 'telefone', 'userResp', 'columnEdit', 'columnDelete'];
   data = Object.assign(ELEMENT_DATA);
@@ -127,6 +135,8 @@ export class AtividadesComponent implements OnInit {
 
   constructor(private router: Router, private crudService: CrudService) {
    this.getterActivity();
+   this.getterCliente();
+   this.getterOrgs();
   }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -143,6 +153,63 @@ export class AtividadesComponent implements OnInit {
        console.error(error);
      }
    );
+  }
+
+  getterCliente() {
+    this.crudService.getClientes().subscribe(
+      data => {
+        this.clientesapi = data;
+        console.log(data);
+      },
+      error => {
+        console.error(error);
+
+      }
+    );
+  }
+
+  getterOrgs() {
+    this.crudService.getOrgs().subscribe(
+      data => {
+        this.orsgapi = data;
+        console.log(data);
+      },
+      error => {
+
+      }
+    );
+  }
+
+
+  save() {
+    console.log(this.atividade);
+
+    this.crudService.saveNewAtividade(this.atividade).subscribe(
+      data => {
+        swal({
+          icon: "success",
+          text: "Atividade salva com sucesso!",
+          timer: 1800,
+          buttons: {
+            buttons: false
+          }
+        });
+        this.getterActivity();
+        console.log(data);
+      },
+      error => {
+        swal({
+          icon: "error",
+          text: "Falhou!",
+          timer: 1800,
+          buttons: {
+            buttons: false
+          }
+        });
+        this.getterActivity();
+        console.error(error);
+      }
+    );
   }
 
   applyFilter(filterValue: string) {
@@ -194,7 +261,7 @@ export class AtividadesComponent implements OnInit {
     var localdate =  '/' + (dNow.getFullYear()-1);
     this.dataSource.filter = localdate.trim().toLowerCase();
   }
-  
+
   dblclic() {
     this.dataSource.filter = "".trim().toLowerCase();
   }
@@ -221,7 +288,7 @@ export class AtividadesComponent implements OnInit {
      icon: "error",
      text: "Atividade excluída com sucesso!",
      timer: 1800,
-     buttons: { 
+     buttons: {
        buttons: false
      }
    });
