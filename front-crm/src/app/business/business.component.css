@@ -183,3 +183,9 @@ img {
 .fz-15 {
   font-size: 15px;
 }
+
+.loc-button-top {
+  display: flex;
+  margin-left: 25px;
+  margin-bottom: 15px;
+}
