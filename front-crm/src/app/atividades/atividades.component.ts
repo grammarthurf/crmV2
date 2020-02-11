@@ -126,24 +126,24 @@ export class AtividadesComponent implements OnInit {
   selection = new SelectionModel<Element>(true, []);
 
   constructor(private router: Router, private crudService: CrudService) {
-  //  this.getterActivity();
+   this.getterActivity();
   }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
 
-  //getterActivity() {
-  //  this.crudService.getAtividade().subscribe(
-  //    data => {
-  //      this.activityapi = data;
-  //      console.log(data);
-  //    },
-  //    error => {
-   //     this.erroActivity = error;
-  //      console.error(error);
-  //    }
-  //  );
-  //}
+  getterActivity() {
+   this.crudService.getAtividade().subscribe(
+     data => {
+       this.activityapi = data;
+       console.log(data);
+     },
+     error => {
+       this.erroActivity = error;
+       console.error(error);
+     }
+   );
+  }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
