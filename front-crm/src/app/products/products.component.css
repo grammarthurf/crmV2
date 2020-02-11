@@ -52,3 +52,9 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
     margin-top: 15px;
     float: right;
 }
+
+.loc-button-top {
+    display: flex;
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
