@@ -15,6 +15,7 @@ class Organizacao (models.Model):
     nomefantasia = models.CharField(max_length=100, blank=True, null=True)
     rua = models.CharField(max_length=100, blank=True, null=True)
     bairro = models.CharField(max_length=100, blank=True, null=True)
+    cep = models.CharField(max_length=64, null=True, blank=True)
     cidade = models.CharField(max_length=100, blank=True, null=True)
     uf = models.CharField(max_length=100, blank=True, null=True)
     erp = models.CharField(max_length=100, blank=True, null=True)
@@ -25,7 +26,7 @@ class Organizacao (models.Model):
 
 class Cliente(models.Model):
     nome = models.CharField(max_length=100, null=True)
-    tipo = models.CharField(max_length=5, null=True)
+    tipo = models.CharField(max_length=1, null=True)
     fone = models.CharField(max_length=15, null=True)
     celular = models.CharField(max_length=15, null=True)
     email = models.CharField(max_length=100, null=True)

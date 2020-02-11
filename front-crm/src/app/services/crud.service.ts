@@ -53,7 +53,7 @@ export class CrudService {
   }
 
   public saveNewTicket(ticket): Observable<any> {
-    return this.http.post(`${this.baseUrl}ticket/${ticket}`, {
+    return this.http.post(this.baseUrl + "ticket/", ticket, {
       headers: this.htttpHeaders
     });
   }
