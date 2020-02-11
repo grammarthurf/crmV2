@@ -4,7 +4,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
 import { CrudService } from "../services/crud.service";
 import { MatSort } from '@angular/material/sort';
-import swal from 'sweetalert';
+//import swal from 'sweetalert';/
 
 export interface PeriodicElement {
   id: number;
@@ -21,7 +21,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     id: 1,
     assunto: 'Ligar',
-    dataVenc: '12/10/2020',
+    dataVenc: '12/02/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
@@ -31,7 +31,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     id: 2,
     assunto: 'Reunião',
-    dataVenc: '12/10/2020',
+    dataVenc: '11/12/2019',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
@@ -41,7 +41,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     id: 3,
     assunto: 'Ligar',
-    dataVenc: '12/10/2020',
+    dataVenc: '12/10/2019',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
@@ -51,7 +51,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     id: 4,
     assunto: 'Visita',
-    dataVenc: '12/10/2020',
+    dataVenc: '12/03/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
@@ -61,7 +61,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     id: 5,
     assunto: 'Email',
-    dataVenc: '12/10/2020',
+    dataVenc: '11/02/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
@@ -71,7 +71,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     id: 6,
     assunto: 'Ligar',
-    dataVenc: '12/10/2020',
+    dataVenc: '11/02/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
@@ -81,7 +81,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     id: 7,
     assunto: 'Reunião',
-    dataVenc: '12/10/2020',
+    dataVenc: '11/02/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
@@ -91,7 +91,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     id: 8,
     assunto: 'Visita',
-    dataVenc: '12/10/2020',
+    dataVenc: '12/02/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
@@ -101,7 +101,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     id: 9,
     assunto: 'Email',
-    dataVenc: '12/10/2020',
+    dataVenc: '12/02/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
@@ -126,24 +126,24 @@ export class AtividadesComponent implements OnInit {
   selection = new SelectionModel<Element>(true, []);
 
   constructor(private router: Router, private crudService: CrudService) {
-    this.getterActivity();
+  //  this.getterActivity();
   }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
 
-  getterActivity() {
-    this.crudService.getAtividade().subscribe(
-      data => {
-        this.activityapi = data;
-        console.log(data);
-      },
-      error => {
-        this.erroActivity = error;
-        console.error(error);
-      }
-    );
-  }
+  //getterActivity() {
+  //  this.crudService.getAtividade().subscribe(
+  //    data => {
+  //      this.activityapi = data;
+  //      console.log(data);
+  //    },
+  //    error => {
+   //     this.erroActivity = error;
+  //      console.error(error);
+  //    }
+  //  );
+  //}
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -165,6 +165,36 @@ export class AtividadesComponent implements OnInit {
     this.dataSource.filter = "email".trim().toLowerCase();
   }
 
+  filtroTarefa() {
+    this.dataSource.filter = "tarefa".trim().toLowerCase();
+  }
+
+  filtrohj() {
+    var dNow = new Date();
+    this.dataSource.filter = (dNow.getDate() + '/0' + (dNow.getMonth()+1) + '/' + dNow.getFullYear()).trim().toLowerCase();
+  }
+
+  filtroamanha() {
+    var dNow = new Date();
+    this.dataSource.filter = ((dNow.getDate()+1) + '/0' + (dNow.getMonth()+1) + '/' + dNow.getFullYear()).trim().toLowerCase();
+  }
+
+  filtromes() {
+    var dNow = new Date();
+    this.dataSource.filter = ((dNow.getMonth()+1) + '/' + dNow.getFullYear()).trim().toLowerCase();
+  }
+
+  filtroproxmes() {
+    var dNow = new Date();
+    this.dataSource.filter = ((dNow.getMonth()+2) + '/' + dNow.getFullYear()).trim().toLowerCase();
+  }
+
+  filtrovenc() {
+    var dNow = new Date();
+    var localdate =  '/' + (dNow.getFullYear()-1);
+    this.dataSource.filter = localdate.trim().toLowerCase();
+  }
+  
   dblclic() {
     this.dataSource.filter = "".trim().toLowerCase();
   }
@@ -187,13 +217,13 @@ export class AtividadesComponent implements OnInit {
   }
 
   deleteItem() {
-    swal({
-      icon: "error",
-      text: "Atividade excluída com sucesso!",
-      timer: 1800,
-      buttons: { 
-        buttons: false
-      }
-    });
+  //  swal({
+  //    icon: "error",
+  //    text: "Atividade excluída com sucesso!",
+  //    timer: 1800,
+  //    buttons: { 
+  //      buttons: false
+  //    }
+  //  });
   }
 }
