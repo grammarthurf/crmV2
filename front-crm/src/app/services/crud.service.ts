@@ -11,6 +11,8 @@ export class CrudService {
 
   constructor(private http: HttpClient) {}
 
+  // GET ALL API
+
   public getClientes(): Observable<any> {
     return this.http.get(`${this.baseUrl}clientes/`, {
       headers: this.htttpHeaders
@@ -52,6 +54,8 @@ export class CrudService {
     });
   }
 
+  // POST API
+
   public saveNewTicket(ticket): Observable<any> {
     return this.http.post(this.baseUrl + "ticket/", ticket, {
       headers: this.htttpHeaders
@@ -60,6 +64,30 @@ export class CrudService {
 
   public saveNewProduto(produto): Observable<any> {
     return this.http.post(this.baseUrl + "produto/", produto, {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public saveNewAtividade(atividade): Observable<any> {
+    return this.http.post(this.baseUrl + "atividade/", atividade, {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public saveNewCliente(cliente): Observable<any> {
+    return this.http.post(this.baseUrl + "cliente/", cliente, {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public saveNewEstagio(estagio): Observable<any> {
+    return this.http.post(this.baseUrl + "estagio/", estagio, {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public saveNewOrg(org): Observable<any> {
+    return this.http.post(this.baseUrl + "orgs/", org, {
       headers: this.htttpHeaders
     });
   }
