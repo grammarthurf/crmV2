@@ -44,4 +44,15 @@ export class CrudService {
       headers: this.htttpHeaders
     });
   }
+  public getTicket(id): Observable<any> {
+    return this.http.get(`${this.baseUrl}ticket/${id}/`, {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public saveNewTicket(ticket): Observable<any> {
+    return this.http.post(`${this.baseUrl}ticket/${ticket}`, {
+      headers: this.htttpHeaders
+    });
+  }
 }

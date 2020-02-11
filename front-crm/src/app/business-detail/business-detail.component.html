@@ -1,35 +1,36 @@
 <div class="main-div">
-
-
-    <div class="col-12 div-top flex">
-        <div class="col-5 align-information-first-div">
-            <h3> Negócio Vedois </h3>
-            <h4> RS 0 </h4>
-        </div>
-        <div class="col-7 flex align-information-first-div">
-            <h3> Osmir Vieira </h3>
-            <button mat-button class="size-button win-button mg-l-10">Ganho</button>
-            <button mat-button class="size-button lose-button mg-l-10">Perdido</button>
-        </div>
+  <div class="col-12 div-top flex">
+    <div class="col-5 align-information-first-div">
+      <h3>{{ business.titulo }}</h3>
+      <h4>R$ {{ business.valorestimado }}</h4>
     </div>
-
-
-    <div class="col-12 flex">
-        <div class="col-4 div-left">
-            <div>
-                <div class="flex">
-                    <h4 class="titles-left"> Detalhes </h4>
-                    <button mat-button class="size-button buttons-left">Personalizar campos</button>
-                </div>
-                <mat-divider class="mg-t-10"></mat-divider>
-                <p class="mg-t-10"> O que mais você sabe sobre este negócio?</p>
-                <button mat-button class="size-button win-button mg-t-10">Adicionar Detalhes</button>
-            </div>
-        </div>
-        <div class="col-8 div-right">
-            <p> Teste </p>
-        </div>
+    <div class="col-7 flex align-information-first-div">
+      <h3>Osmir Vieira</h3>
+      <button mat-button class="size-button win-button mg-l-10">Ganho</button>
+      <button mat-button class="size-button lose-button mg-l-10">
+        Perdido
+      </button>
     </div>
+  </div>
 
-    
+  <div class="col-12 flex">
+    <div class="col-4 div-left">
+      <div>
+        <div class="flex">
+          <h4 class="titles-left">Detalhes</h4>
+          <button mat-button class="size-button buttons-left">
+            Personalizar campos
+          </button>
+        </div>
+        <mat-divider class="mg-t-10"></mat-divider>
+        <p class="mg-t-10">O que mais você sabe sobre este negócio?</p>
+        <button mat-button class="size-button win-button mg-t-10">
+          Adicionar Detalhes
+        </button>
+      </div>
+    </div>
+    <div class="col-8 div-right">
+      <p>Teste</p>
+    </div>
+  </div>
 </div>

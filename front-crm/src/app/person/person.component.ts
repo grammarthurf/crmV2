@@ -1,9 +1,15 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { MatSort } from "@angular/material/sort";
+import { MatTableDataSource } from "@angular/material/table";
+import { CrudService } from "../services/crud.service";
 
 export interface PeriodicElement {
-  nome, org, tel, email, neg_f, neg_a: String
+  nome;
+  org;
+  tel;
+  email;
+  neg_f;
+  neg_a: String;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
@@ -58,18 +64,44 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 @Component({
-  selector: 'app-person',
-  templateUrl: './person.component.html',
-  styleUrls: ['./person.component.css']
+  selector: "app-person",
+  templateUrl: "./person.component.html",
+  styleUrls: ["./person.component.css"]
 })
 export class PersonComponent implements OnInit {
-
-  displayedColumns: string[] = ['nome', 'org', 'tel', 'email', 'neg_f', 'neg_a'];
+  displayedColumns: string[] = [
+    "nome",
+    "org",
+    "tel",
+    "email",
+    "neg_f",
+    "neg_a"
+  ];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor() { }
+  // Lista de contatos:
+  contatosapi: any;
+
+  erroContatos: any;
+
+  constructor(private crudService: CrudService) {
+    this.getterContatos();
+  }
+
+  getterContatos() {
+    this.crudService.getClientes().subscribe(
+      data => {
+        this.contatosapi = data;
+        console.log(data);
+      },
+      error => {
+        this.erroContatos = error;
+        console.error(error);
+      }
+    );
+  }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -78,5 +110,4 @@ export class PersonComponent implements OnInit {
   ngOnInit() {
     this.dataSource.sort = this.sort;
   }
-
 }

@@ -1,6 +1,7 @@
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 
 // ROUTES
 import { AppRoutingModule } from "./app-routing.module";
@@ -18,7 +19,7 @@ import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
 import { MatNativeDateModule } from "@angular/material";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatDividerModule } from "@angular/material/divider";
-import { MatSortModule } from '@angular/material/sort';
+import { MatSortModule } from "@angular/material/sort";
 
 // COMPONENTS
 import { AppComponent } from "./app.component";
@@ -26,10 +27,10 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { AtividadesComponent } from "./atividades/atividades.component";
 import { BusinessComponent } from "./business/business.component";
 import { CrudComponent } from "./components/crud/crud.component";
-import { ProductsComponent } from './products/products.component';
-import { OrganizationComponent } from './organization/organization.component';
-import { BusinessDetailComponent } from './business-detail/business-detail.component';
-import { PersonComponent } from './person/person.component';
+import { ProductsComponent } from "./products/products.component";
+import { OrganizationComponent } from "./organization/organization.component";
+import { BusinessDetailComponent } from "./business-detail/business-detail.component";
+import { PersonComponent } from "./person/person.component";
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { PersonComponent } from './person/person.component';
     MatNativeDateModule,
     MatDividerModule,
     MatSortModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

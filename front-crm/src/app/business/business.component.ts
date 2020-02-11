@@ -20,6 +20,8 @@ export class BusinessComponent implements OnInit {
   ticketsapi: any;
   erroTicket: any;
 
+  ticket = { titulo: "", estagio: "", valorestimado: "" };
+
   constructor(private crudService: CrudService, private router: Router) {
     this.getterEstagios();
     this.getterTickets();
@@ -63,6 +65,17 @@ export class BusinessComponent implements OnInit {
       },
       error => {
         this.erroTicket = error;
+        console.error(error);
+      }
+    );
+  }
+
+  save() {
+    this.crudService.saveNewTicket(this.ticket).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
         console.error(error);
       }
     );

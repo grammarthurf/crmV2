@@ -1,23 +1,41 @@
 <div style="margin-top: 100px; margin-left: 15px;">
   <button type="button" class="btn btn-primary loc-button-top" data-toggle="modal" data-target="#exampleModalCenter"><mat-icon>add</mat-icon><p style="margin-left: 5px;">Negócio</p></button>
 
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+  <div
+    class="modal fade"
+    id="exampleModalCenter"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">
             Adicione um Negócio
           </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <form class="row">
+          <div class="row">
             <div class="form-group col-md-12">
               <label for="exampleInputEmail1">Título</label>
-              <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Título" />
+              <input
+                [(ngModel)]="ticket.titulo"
+                type="text"
+                class="form-control"
+                id="title"
+                aria-describedby="emailHelp"
+                placeholder="Título"
+              />
             </div>
 
             <div class="col-md-6">
@@ -31,7 +49,11 @@
 
               <div class="form-group">
                 <label for="exampleFormControlSelect2">Produto</label>
-                <select multiple class="form-control" id="exampleFormControlSelect2">
+                <select
+                  multiple
+                  class="form-control"
+                  id="exampleFormControlSelect2"
+                >
                   <option>Vedois OEE</option>
                   <option>Vedois Planejamento</option>
                   <option>Vedois Saúde</option>
@@ -43,29 +65,43 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="exampleInputEmail1">Valor Estimado</label>
-                <input type="text" class="form-control" id="value" aria-describedby="emailHelp" placeholder="Valor" />
+                <input
+                  [(ngModel)]="ticket.valorestimado"
+                  type="text"
+                  class="form-control"
+                  id="value"
+                  aria-describedby="emailHelp"
+                  placeholder="Valor"
+                />
               </div>
 
               <div class="form-group">
                 <label for="thermometro">Termômetro</label>
-                <input  type="range" 
-                        class="form-control-range" 
-                        id="thermometro" 
-                        value="0" 
-                        step="50">
+                <input
+                  [(ngModel)]="ticket.estagio"
+                  type="range"
+                  class="form-control-range"
+                  id="thermometro"
+                  value="1"
+                  step="50"
+                />
               </div>
             </div>
             <div class="form-group col-md-12">
               <label for="exampleFormControlTextarea1">Observação</label>
-              <textarea class="form-control" id="observation" rows="3"></textarea>
+              <textarea
+                class="form-control"
+                id="observation"
+                rows="3"
+              ></textarea>
             </div>
-          </form>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
             Sair
           </button>
-          <button type="button" class="btn btn-primary">Salvar</button>
+          <button (click)="save()" class="btn btn-primary">Salvar</button>
         </div>
       </div>
     </div>
@@ -74,14 +110,13 @@
   <hr style="width: 100%;" />
   <div class="row flex-nowrap mt-4">
     <div class="col-md-2 align-items-center" *ngFor="let i of estagiosapi">
-      
       <div class="mb-4 tickets" style="display: flex;">
         <div>
           <p>{{ i.nome }}</p>
           <p>{{ i.tickets.length }} Neg.</p>
         </div>
-          
-        <img src="../../assets/arrow.png">
+
+        <img src="../../assets/arrow.png" />
       </div>
 
       <div class="leads" (click)="goTo(j.id)" *ngFor="let j of i.tickets">
@@ -90,7 +125,7 @@
           <div class="thermometro"></div>
         </div>
         <p class="mb-2 limit-words fz-13">Sull Automação</p>
-        <p class="fz-13"> R$ {{ j.valorestimado }} </p>
+        <p class="fz-13">R$ {{ j.valorestimado }}</p>
       </div>
     </div>
   </div>
@@ -138,8 +173,7 @@
   </div>
 </div> -->
 
-
-<!-- <div class="row mb-2 col-md-11" (click)="goTo(j.id)" *ngFor="let j of i.tickets">
+  <!-- <div class="row mb-2 col-md-11" (click)="goTo(j.id)" *ngFor="let j of i.tickets">
   <div class="card col-md-12" style="height: 5rem; border-radius: 6%;">
     <div class="card-body">
       <div class="row justify-content-around">
@@ -152,5 +186,4 @@
     </div>
   </div>
 </div> -->
-
 </div>
