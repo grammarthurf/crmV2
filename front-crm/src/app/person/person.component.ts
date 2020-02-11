@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { CrudService } from "../services/crud.service";
+import swal from 'sweetalert';
 
 export interface PeriodicElement {
   nome;
@@ -102,5 +103,16 @@ export class PersonComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.sort = this.sort;
+  }
+
+  deleteItem() {
+    swal({
+      icon: "error",
+      text: "Pessoa excluída com sucesso!",
+      timer: 1800,
+      buttons: { 
+        buttons: false
+      }
+    });
   }
 }

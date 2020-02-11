@@ -1,10 +1,10 @@
-
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
 import { CrudService } from "../services/crud.service";
 import { MatSort } from '@angular/material/sort';
+//import swal from 'sweetalert';/
 
 export interface PeriodicElement {
   id: number;
@@ -214,5 +214,16 @@ export class AtividadesComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.sort = this.sort;
+  }
+
+  deleteItem() {
+  //  swal({
+  //    icon: "error",
+  //    text: "Atividade excluída com sucesso!",
+  //    timer: 1800,
+  //    buttons: { 
+  //      buttons: false
+  //    }
+  //  });
   }
 }

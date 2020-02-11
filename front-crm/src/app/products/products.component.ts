@@ -118,4 +118,15 @@ export class ProductsComponent implements OnInit {
       }
     );
   }
+
+  deleteItem() {
+    swal({
+      icon: "error",
+      text: "Produto excluído com sucesso!",
+      timer: 1800,
+      buttons: { 
+        buttons: false
+      }
+    });
+  }
 }
