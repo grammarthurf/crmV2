@@ -86,7 +86,7 @@ export class OrganizationComponent implements OnInit {
   orgapi: any;
   erroOrg: any;
 
-  displayedColumns: string[] = ['nome_fantasia', 'razao_social', 'fone', 'celular', 'email', 'endereco', 'tipo', 'erp', 'vendedor'];
+  displayedColumns: string[] = ['nome_fantasia', 'razao_social', 'fone', 'celular', 'email', 'endereco', 'tipo', 'erp', 'vendedor', 'columnEdit', 'columnDelete'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;

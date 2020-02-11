@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CrudService } from "../services/crud.service";
 import { Router } from "@angular/router";
+import swal from 'sweetalert';
 
 @Component({
   selector: "app-business",
@@ -73,6 +74,14 @@ export class BusinessComponent implements OnInit {
   save() {
     this.crudService.saveNewTicket(this.ticket).subscribe(
       data => {
+        swal({
+          icon: "success",
+          text: "Produto salvo com sucesso!",
+          timer: 1800,
+          buttons: { 
+            buttons: false
+          }
+        });
         console.log(data);
       },
       error => {

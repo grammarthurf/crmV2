@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { CrudService } from "../services/crud.service";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
+import swal from 'sweetalert';
 
 export interface PeriodicElement {
   nome;
@@ -71,7 +72,7 @@ export class ProductsComponent implements OnInit {
   produtosapi: any;
   erroProdutos: any;
 
-  displayedColumns: string[] = ["nome", "cod", "cat", "un", "price"];
+  displayedColumns: string[] = ['nome', 'cod', 'cat', 'un', 'price', 'columnEdit', 'columnDelete'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -102,6 +103,14 @@ export class ProductsComponent implements OnInit {
   save() {
     this.crudService.saveNewProduto(this.produto).subscribe(
       data => {
+        swal({
+          icon: "success",
+          text: "Produto salvo com sucesso!",
+          timer: 1800,
+          buttons: { 
+            buttons: false
+          }
+        });
         console.log(data);
       },
       error => {

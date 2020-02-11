@@ -9,31 +9,106 @@ import { MatSort } from '@angular/material/sort';
 
 export interface PeriodicElement {
   id: number;
-  Assunto: String;
-  DataVenc: string;
-  NomeContato: string;
-  Cliente: String;
-  Email: string;
-  Telefone: string;
-  UserResp: string;
+  assunto: String;
+  dataVenc: string;
+  nomeContato: string;
+  cliente: String;
+  email: string;
+  telefone: string;
+  userResp: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {id: 1, Assunto: 'Ligação', DataVenc: '12/10/2020', NomeContato: 'Maria Eduarda Silva', Cliente: 'Empresa aaaaaaaaaaaaaaaaaaaaaaaaa', Email: 'empresaa@gmail.com', Telefone: '(47)99854785', UserResp: 'Maria'},
-  {id: 2, Assunto: 'Reunião', DataVenc: '25/12/2020', NomeContato: 'Maicon Dos Santos', Cliente: 'Empresa bbbbbbbbbbbbbb', Email: 'empresab@gmail.com', Telefone: '(47)99854785', UserResp: 'João'},
-  {id: 3, Assunto: 'Email', DataVenc: '02/02/2020', NomeContato: 'Gabriela Borges', Cliente: 'Empresa ccccccccccccccc', Email: 'empresac@gmail.com', Telefone: '(47)99854785', UserResp: 'Daniel'},
-  {id: 4, Assunto: 'Ligação', DataVenc: '03/05/2020', NomeContato: 'Maicon Dos Santos', Cliente: 'Empresa ddddddddddddddd', Email: 'empresad@gmail.com', Telefone: '(47)99854785', UserResp: 'Bianca'},
-  {id: 5, Assunto: 'Reunião', DataVenc: '14/04/2020', NomeContato: 'Maria Eduarda Silva', Cliente: 'Empresa eeeeeeeeeeeee', Email: 'empresae@gmail.com', Telefone: '(47)99854785', UserResp: 'Bianca'},
-  {id: 6, Assunto: 'Visita', DataVenc: '02/05/2020', NomeContato: 'Maicon Dos Santos', Cliente: 'Empresa f', Email: 'empresaf@gmail.com', Telefone: '(47)99854785', UserResp: 'Maria'},
-  {id: 7, Assunto: 'Ligação', DataVenc: '10/02/2020', NomeContato: 'Gabriela Borges', Cliente: 'Empresa g', Email: 'empresag@gmail.com', Telefone: '(47)99854785', UserResp: 'Daniel'},
-  {id: 8, Assunto: 'Ligação', DataVenc: '07/02/2020', NomeContato: 'Gabriela Borges', Cliente: 'Empresa h', Email: 'empresah@gmail.com', Telefone: '(47)99854785', UserResp: 'João'},
-  {id: 9, Assunto: 'Visita', DataVenc: '10/04/2020', NomeContato: 'Maria Eduarda Silva', Cliente: 'Empresa i', Email: 'empresai@gmail.com', Telefone: '(47)99854785', UserResp: 'Maria'},
-  {id: 10, Assunto: 'Visita', DataVenc: '06/12/2020', NomeContato: 'Gabriela Borges', Cliente: 'Empresa j', Email: 'empresaj@gmail.com', Telefone: '(47)99854785', UserResp: 'Daniel'},
-  {id: 11, Assunto: 'Email', DataVenc: '08/02/2020', NomeContato: 'Gabriela Borges', Cliente: 'Empresa k', Email: 'empresak@gmail.com', Telefone: '(47)99854785', UserResp: 'Bianca'},
-  {id: 11, Assunto: 'Visita', DataVenc: '08/12/2020', NomeContato: 'Maria Eduarda Silva', Cliente: 'Empresa l', Email: 'empresal@gmail.com', Telefone: '(47)99854785', UserResp: 'Daniel'},
-  {id: 11, Assunto: 'Ligação', DataVenc: '03/03/2020', NomeContato: 'Gabriela Borges', Cliente: 'Empresa m', Email: 'empresam@gmail.com', Telefone: '(47)99854785', UserResp: 'João'},
-  {id: 11, Assunto: 'Visita', DataVenc: '06/02/2020', NomeContato: 'Maicon Dos Santos', Cliente: 'Empresa n', Email: 'empresan@gmail.com', Telefone: '(47)99854785', UserResp: 'Bianca'},
-
+  {
+    id: 1,
+    assunto: 'Ligar',
+    dataVenc: '12/10/2020',
+    nomeContato: 'Maria Eduarda Silva',
+    cliente: 'Vedois Tecnologia',
+    email: 'vedois@vedois.com',
+    telefone: '(47) 988457154',
+    userResp: 'Maria Silva'
+  },
+  {
+    id: 2,
+    assunto: 'Reunião',
+    dataVenc: '12/10/2020',
+    nomeContato: 'Maria Eduarda Silva',
+    cliente: 'Vedois Tecnologia',
+    email: 'vedois@vedois.com',
+    telefone: '(47) 988457154',
+    userResp: 'Maria Silva '
+  },
+  {
+    id: 3,
+    assunto: 'Ligar',
+    dataVenc: '12/10/2020',
+    nomeContato: 'Maria Eduarda Silva',
+    cliente: 'Vedois Tecnologia',
+    email: 'vedois@vedois.com',
+    telefone: '(47) 988457154',
+    userResp: 'Maria Silva '
+  },
+  {
+    id: 4,
+    assunto: 'Visita',
+    dataVenc: '12/10/2020',
+    nomeContato: 'Maria Eduarda Silva',
+    cliente: 'Vedois Tecnologia',
+    email: 'vedois@vedois.com',
+    telefone: '(47) 988457154',
+    userResp: 'Maria Silva '
+  },
+  {
+    id: 5,
+    assunto: 'Email',
+    dataVenc: '12/10/2020',
+    nomeContato: 'Maria Eduarda Silva',
+    cliente: 'Vedois Tecnologia',
+    email: 'vedois@vedois.com',
+    telefone: '(47) 988457154',
+    userResp: 'Maria Silva '
+  },
+  {
+    id: 6,
+    assunto: 'Ligar',
+    dataVenc: '12/10/2020',
+    nomeContato: 'Maria Eduarda Silva',
+    cliente: 'Vedois Tecnologia',
+    email: 'vedois@vedois.com',
+    telefone: '(47) 988457154',
+    userResp: 'Maria Silva '
+  },
+  {
+    id: 7,
+    assunto: 'Reunião',
+    dataVenc: '12/10/2020',
+    nomeContato: 'Maria Eduarda Silva',
+    cliente: 'Vedois Tecnologia',
+    email: 'vedois@vedois.com',
+    telefone: '(47) 988457154',
+    userResp: 'Maria Silva '
+  },
+  {
+    id: 8,
+    assunto: 'Visita',
+    dataVenc: '12/10/2020',
+    nomeContato: 'Maria Eduarda Silva',
+    cliente: 'Vedois Tecnologia',
+    email: 'vedois@vedois.com',
+    telefone: '(47) 988457154',
+    userResp: 'Maria Silva '
+  },
+  {
+    id: 9,
+    assunto: 'Email',
+    dataVenc: '12/10/2020',
+    nomeContato: 'Maria Eduarda Silva',
+    cliente: 'Vedois Tecnologia',
+    email: 'vedois@vedois.com',
+    telefone: '(47) 988457154',
+    userResp: 'Maria Silva '
+  },
 ];
 
 @Component({
@@ -46,16 +121,16 @@ export class AtividadesComponent implements OnInit {
   activityapi: any;
   erroActivity: any;
 
-  displayedColumns: string[] = ['select', 'Assunto', 'DataVenc', 'Cliente', 'NomeContato', 'Email', 'Telefone', 'UserResp'];
-  data = Object.assign( ELEMENT_DATA);
+  displayedColumns: string[] = ['select', 'assunto', 'dataVenc', 'cliente', 'nomeContato', 'email', 'telefone', 'userResp', 'columnEdit', 'columnDelete'];
+  data = Object.assign(ELEMENT_DATA);
   dataSource = new MatTableDataSource<Element>(this.data);
   selection = new SelectionModel<Element>(true, []);
 
-  constructor(private router: Router, private crudService: CrudService) { 
+  constructor(private router: Router, private crudService: CrudService) {
     this.getterActivity();
   }
 
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
 
   getterActivity() {
@@ -76,7 +151,7 @@ export class AtividadesComponent implements OnInit {
   }
 
   filtrolig() {
-    this.dataSource.filter = "ligação".trim().toLowerCase();
+    this.dataSource.filter = "ligar".trim().toLowerCase();
   }
 
   filtroreun() {
@@ -104,14 +179,10 @@ export class AtividadesComponent implements OnInit {
     this.selection = new SelectionModel<Element>(true, []);
   }
 
-  goTo() {
-    this.router.navigate(['/business-detail']);
-  }
-
-  removechama(){
+  removechama() {
     this.removeSelectedRows();
   }
-  
+
   ngOnInit() {
     this.dataSource.sort = this.sort;
   }

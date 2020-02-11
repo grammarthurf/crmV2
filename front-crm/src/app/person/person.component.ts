@@ -69,14 +69,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ["./person.component.css"]
 })
 export class PersonComponent implements OnInit {
-  displayedColumns: string[] = [
-    "nome",
-    "org",
-    "tel",
-    "email",
-    "neg_f",
-    "neg_a"
-  ];
+  displayedColumns: string[] = ['nome', 'org', 'tel', 'email', 'neg_f', 'neg_a', 'columnEdit', 'columnDelete'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;

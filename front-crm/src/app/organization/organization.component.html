@@ -16,9 +16,27 @@
                 </div>
                 <div class="modal-body">
                     <form class="row">
-                        <div class="form-group col-md-12">
-                            <label for="exampleInputEmail1">Razão Social</label>
-                            <input type="text" class="form-control">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Razão Social</label>
+                                <input type="text" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Rua</label>
+                                <input type="email" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">CEP</label>
+                                <input type="email" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">UF</label>
+                                <input type="email" class="form-control">
+                            </div>
                         </div>
 
                         <div class="col-md-6">
@@ -26,45 +44,13 @@
                                 <label for="exampleFormControlInput1">Nome Fantasia</label>
                                 <input type="email" class="form-control">
                             </div>
-                        </div>
 
-                        <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleFormControlInput1">Vendedor</label>
+                                <label for="exampleFormControlInput1">Bairro</label>
                                 <input type="email" class="form-control">
                             </div>
-                        </div>
-
-                        <div class="form-group col-md-12">
-                            <label for="exampleInputEmail1">Endereço</label>
-                            <input type="text" class="form-control">
-                        </div>
-
-                        <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleFormControlInput1">Telefone</label>
-                                <input type="email" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">Email</label>
-                                <input type="email" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">Tipo</label>
-                                <input type="email" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">Celular</label>
-                                <input type="email" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">Skype</label>
+                                <label for="exampleFormControlInput1">Cidade</label>
                                 <input type="email" class="form-control">
                             </div>
 
@@ -79,6 +65,30 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
                     <button type="button" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">
+                        Tem certeza que deseja excluir a empresa ?
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Não
+                    </button>
+                    <button type="button" class="btn btn-danger">
+                        Sim
+                    </button>
                 </div>
             </div>
         </div>
@@ -135,6 +145,24 @@
         <ng-container matColumnDef="vendedor">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Vendedor </th>
             <td mat-cell *matCellDef="let element"> {{element.vendedor}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="columnEdit">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let element" data-toggle="modal" data-target="#exampleModalCenter">
+                <button class="none-border-icons-action">
+                    <mat-icon class="icons-action icon-color-grey">create</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="columnDelete">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let element" data-toggle="modal" data-target="#modalDelete">
+                <button class="none-border-icons-action">
+                    <mat-icon class="icons-action icon-color-red">delete</mat-icon>
+                </button>
+            </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

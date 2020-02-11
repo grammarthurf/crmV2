@@ -72,3 +72,22 @@ mat-checkbox {
     margin-top: 5px;
     margin-left: 15px;
 }
+
+.icons-action {
+    font-size: 24px;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+.none-border-icons-action {
+    border: 0;
+    background-color: transparent;
+}
+
+.icon-color-red {
+    color: red;
+}
+
+.icon-color-grey {
+    color: #3E3F47;
+}
