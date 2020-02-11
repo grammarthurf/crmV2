@@ -12,35 +12,37 @@ export class CrudService {
   constructor(private http: HttpClient) {}
 
   public getClientes(): Observable<any> {
-    return this.http.get(`${this.baseUrl}clientes`, {
+    return this.http.get(`${this.baseUrl}clientes/`, {
       headers: this.htttpHeaders
     });
   }
   public getEstagios(): Observable<any> {
-    return this.http.get(`${this.baseUrl}estagio`, {
+    return this.http.get(`${this.baseUrl}estagio/`, {
       headers: this.htttpHeaders
     });
   }
   public getOrgs(): Observable<any> {
-    return this.http.get(`${this.baseUrl}orgs`, { headers: this.htttpHeaders });
+    return this.http.get(`${this.baseUrl}orgs/`, {
+      headers: this.htttpHeaders
+    });
   }
   public getProdutos(): Observable<any> {
-    return this.http.get(`${this.baseUrl}produto`, {
+    return this.http.get(`${this.baseUrl}produto/`, {
       headers: this.htttpHeaders
     });
   }
   public getTickets(): Observable<any> {
-    return this.http.get(`${this.baseUrl}ticket`, {
+    return this.http.get(`${this.baseUrl}ticket/`, {
       headers: this.htttpHeaders
     });
   }
   public getVendedor(): Observable<any> {
-    return this.http.get(`${this.baseUrl}vendedor`, {
+    return this.http.get(`${this.baseUrl}vendedor/`, {
       headers: this.htttpHeaders
     });
   }
   public getAtividade(): Observable<any> {
-    return this.http.get(`${this.baseUrl}atividade`, {
+    return this.http.get(`${this.baseUrl}atividade/`, {
       headers: this.htttpHeaders
     });
   }
@@ -52,6 +54,12 @@ export class CrudService {
 
   public saveNewTicket(ticket): Observable<any> {
     return this.http.post(`${this.baseUrl}ticket/${ticket}`, {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public saveNewProduto(produto): Observable<any> {
+    return this.http.post(this.baseUrl + "produto/", produto, {
       headers: this.htttpHeaders
     });
   }

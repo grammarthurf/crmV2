@@ -38,8 +38,9 @@ class Cliente(models.Model):
 
 
 class Produto (models.Model):
-    nome = models.CharField(max_length=100)
+    nome = models.CharField(max_length=255)
     modalidade = models.CharField(max_length=155, null=True)
+    codigo = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return self.nome

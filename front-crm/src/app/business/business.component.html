@@ -1,5 +1,13 @@
 <div style="margin-top: 100px; margin-left: 15px;">
-  <button type="button" class="btn btn-primary loc-button-top" data-toggle="modal" data-target="#exampleModalCenter"><mat-icon>add</mat-icon><p style="margin-left: 5px;">Negócio</p></button>
+  <button
+    type="button"
+    class="btn btn-primary loc-button-top"
+    data-toggle="modal"
+    data-target="#exampleModalCenter"
+  >
+    <mat-icon>add</mat-icon>
+    <p style="margin-left: 5px;">Negócio</p>
+  </button>
 
   <div
     class="modal fade"
@@ -78,7 +86,6 @@
               <div class="form-group">
                 <label for="thermometro">Termômetro</label>
                 <input
-                  [(ngModel)]="ticket.estagio"
                   type="range"
                   class="form-control-range"
                   id="thermometro"
