@@ -4,7 +4,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
 import { CrudService } from "../services/crud.service";
 import { MatSort } from '@angular/material/sort';
-//import swal from 'sweetalert';/
+import swal from 'sweetalert';
 
 export interface PeriodicElement {
   id: number;
@@ -217,13 +217,13 @@ export class AtividadesComponent implements OnInit {
   }
 
   deleteItem() {
-  //  swal({
-  //    icon: "error",
-  //    text: "Atividade excluída com sucesso!",
-  //    timer: 1800,
-  //    buttons: { 
-  //      buttons: false
-  //    }
-  //  });
+   swal({
+     icon: "error",
+     text: "Atividade excluída com sucesso!",
+     timer: 1800,
+     buttons: { 
+       buttons: false
+     }
+   });
   }
 }
