@@ -30,3 +30,7 @@ nav {
 img {
     height: 40px;
 }
+
+.dropdown-menu {
+    min-width: 0;
+}

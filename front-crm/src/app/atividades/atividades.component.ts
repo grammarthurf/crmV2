@@ -5,108 +5,118 @@ import { Router } from '@angular/router';
 import { CrudService } from "../services/crud.service";
 import { MatSort } from '@angular/material/sort';
 import swal from 'sweetalert';
+import { ɵAnimationGroupPlayer } from '@angular/animations';
 
 export interface PeriodicElement {
   id: number;
-  assunto: String;
+  tipo: String;
   dataVenc: string;
   nomeContato: string;
   cliente: String;
   email: string;
   telefone: string;
   userResp: string;
+  therm: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {
     id: 1,
-    assunto: 'Ligar',
+    tipo: 'Ligar',
     dataVenc: '12/02/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
-    userResp: 'Maria Silva'
-  },
+    userResp: 'Maria Silva',
+    therm: 'morno'  },
   {
     id: 2,
-    assunto: 'Reunião',
+    tipo: 'Reunião',
     dataVenc: '11/12/2019',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
-    userResp: 'Maria Silva '
+    userResp: 'Maria Silva ',
+    therm: 'quente'
   },
   {
     id: 3,
-    assunto: 'Ligar',
+    tipo: 'Ligar',
     dataVenc: '12/10/2019',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
-    userResp: 'Maria Silva '
+    userResp: 'Maria Silva ',
+    therm: 'frio'
   },
   {
     id: 4,
-    assunto: 'Visita',
+    tipo: 'Visita',
     dataVenc: '12/03/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
-    userResp: 'Maria Silva '
+    userResp: 'Maria Silva ',
+    therm: 'quente'
   },
   {
     id: 5,
-    assunto: 'Email',
+    tipo: 'Email',
     dataVenc: '11/02/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
-    userResp: 'Maria Silva '
+    userResp: 'Maria Silva ',
+    therm: 'frio'
   },
   {
     id: 6,
-    assunto: 'Ligar',
+    tipo: 'Ligar',
     dataVenc: '11/02/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
-    userResp: 'Maria Silva '
+    userResp: 'Maria Silva ',
+    therm: 'frio'
   },
   {
     id: 7,
-    assunto: 'Reunião',
+    tipo: 'Reunião',
     dataVenc: '11/02/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
-    userResp: 'Maria Silva '
+    userResp: 'Maria Silva ',
+    therm: 'quente'
   },
   {
     id: 8,
-    assunto: 'Visita',
+    tipo: 'Visita',
     dataVenc: '12/02/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
-    userResp: 'Maria Silva '
+    userResp: 'Maria Silva ',
+    therm: 'quente'
   },
   {
     id: 9,
-    assunto: 'Email',
+    tipo: 'Email',
     dataVenc: '12/02/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
-    userResp: 'Maria Silva '
+    userResp: 'Maria Silva ',
+    therm: 'frio'
   },
 ];
 
@@ -116,7 +126,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ["./atividades.component.css"]
 })
 export class AtividadesComponent implements OnInit {
-  atividade = { assunto: "", data: '', tipo: '', cliente: '', org: '' };
+  atividade = { tipo: "", data: '', assunto: '', cliente: '', org: '' };
 
   // Lista de atividades:
   activityapi: any;
@@ -128,7 +138,7 @@ export class AtividadesComponent implements OnInit {
     orsgapi: any;
 
 
-  displayedColumns: string[] = ['select', 'assunto', 'dataVenc', 'cliente', 'nomeContato', 'email', 'telefone', 'userResp', 'columnEdit', 'columnDelete'];
+  displayedColumns: string[] = ['select', 'tipo', 'dataVenc', 'cliente', 'nomeContato', 'email', 'telefone', 'userResp', 'columnEdit', 'columnDelete'];
   data = Object.assign(ELEMENT_DATA);
   dataSource = new MatTableDataSource<Element>(this.data);
   selection = new SelectionModel<Element>(true, []);
@@ -281,6 +291,7 @@ export class AtividadesComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.sort = this.sort;
+
   }
 
   deleteItem() {
