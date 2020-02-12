@@ -48,6 +48,25 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
     queryset = Organizacao.objects.all()
     serializer_class = OrganizacaoSerializer
 
+    def create(self, request):
+        data = request.data
+        print('chamou request')
+        print(data);
+        
+       
+        C = Organizacao()
+        C.razaosocial = data['razaosocial']
+        C.nomefantasia = data['nomefantasia']
+        C.rua = data['rua']
+        C.bairro = data['bairro']
+        C.cep = data['cep']
+        C.cidade = data['cidade']
+        C.uf = data['uf']
+        C.erp = data['erp']
+        C.save()
+        print(data);
+        return JsonResponse({'message': 'Worked'})
+
 
 class ProdutoViewSet(viewsets.ModelViewSet):
 
@@ -74,6 +93,12 @@ class TicketViewSet(viewsets.ModelViewSet):
         T.valorestimado = data['valorestimado']
         T.termometro = data['termometro']
         T.obs = data['obs']
+        T.save()
+
+        produtos = data['produto']
+        for prod in produtos:
+            T.produto.add(Produto.objects.get(id=prod))
+        
         T.save()
         print(data);
         return JsonResponse({'message': 'Worked'})
