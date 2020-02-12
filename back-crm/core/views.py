@@ -94,6 +94,12 @@ class TicketViewSet(viewsets.ModelViewSet):
         T.termometro = data['termometro']
         T.obs = data['obs']
         T.save()
+
+        produtos = data['produto']
+        for prod in produtos:
+            T.produto.add(Produto.objects.get(id=prod))
+        
+        T.save()
         print(data);
         return JsonResponse({'message': 'Worked'})
         
