@@ -12,6 +12,7 @@
 .div-top {
     background-color: #fff;
     height: 185px;
+    padding-top: 10px;
 }
 
 .div-left {
@@ -28,42 +29,53 @@
     padding: 10px;
 }
 
-.size-button {
-    height: 35px;
-}
-
-.win-button {
-    color: #fff;
-    background-color: #58D722;
-}
-
-.lose-button {
-    color: #fff;
-    background-color: #D72222;
-}
-
 .flex {
     display: flex;
 }
 
-.align-information-first-div {
-    margin-top: 15px;
+.bold {
+    font-weight: bold;
 }
 
-.titles-left {
-    font-size: 23px;
-    color: #721ea9;
+.fine {
+    font-weight: 100;
 }
 
-.mg-t-10 {
+.font-26 {
+    font-size: 26px;
+}
+
+img {
+    width: 30px;
     margin-top: 10px;
 }
 
-.mg-l-10 {
-    margin-left: 10px;
+img + p {
+    margin-top: 10px;
+    padding: 0 15px 0 10px;
 }
 
-.buttons-left {
-    border: 1px solid;
-    margin-left: auto;
+img + div.form-group {
+    padding: 23px 15px 0 15px;
+}
+
+p + img {
+    margin-left: 50px;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+}
+  
+::-webkit-slider-runnable-track {
+    height: 3px;
+    background-image: linear-gradient(to right, #0083FF, #F3FF00, #FF0000);
+}
+  
+::-webkit-slider-thumb {
+    margin-top: -7px;
+}
+
+.form-group {
+    margin-bottom: 0 !important;
 }
