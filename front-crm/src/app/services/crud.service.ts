@@ -75,7 +75,7 @@ export class CrudService {
   }
 
   public saveNewCliente(cliente): Observable<any> {
-    return this.http.post(this.baseUrl + "cliente/", cliente, {
+    return this.http.post(this.baseUrl + "clientes/", cliente, {
       headers: this.htttpHeaders
     });
   }
