@@ -84,6 +84,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ["./organization.component.css"]
 })
 export class OrganizationComponent implements OnInit {
+  org = {razaosocial: '', nomefantasia: '', rua: '', bairro: '', cep: '', cidade: '', uf: '', erp: ''}
+
+  // Lista orgs:
   orgapi: any;
   erroOrg: any;
 
@@ -113,6 +116,31 @@ export class OrganizationComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  save(){
+    console.log(this.org);
+
+    this.crudService.saveNewOrg(this.org).subscribe(
+      data => {
+        swal({
+          icon: "success",
+          text: "Organização salva com sucesso!",
+          timer: 1800,
+          buttons: {
+            buttons: false
+          }
+        });
+        this.getterOrg();
+
+        console.log(data);
+      },
+      error => {
+
+        this.getterOrg();
+        console.error(error);
+      }
+    );
+  }
+
   ngOnInit() {
     this.dataSource.sort = this.sort;
   }
@@ -122,7 +150,7 @@ export class OrganizationComponent implements OnInit {
       icon: "error",
       text: "Empresa excluída com sucesso!",
       timer: 1800,
-      buttons: { 
+      buttons: {
         buttons: false
       }
     });
