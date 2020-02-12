@@ -15,49 +15,56 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="row">
-                        <div class="form-group col-md-12">
+                    <div class="row">
+                        <div class="form-group col-md-9">
                             <label for="exampleInputEmail1">Nome</label>
-                            <input type="text" class="form-control">
+                            <input [(ngModel)]="contato.nome" type="text" class="form-control">
                         </div>
+                        <div class="form-group col-md-3">
+                          <label for="exampleInputEmail1">Tipo</label>
+                          <select [(ngModel)]="contato.tipo" class="form-control" id="exampleFormControlSelect1">
+                            <option value="C">Cliente</option>
+                            <option value="P">Parceiro</option>
+                          </select>
+                      </div>
 
                         <div class="form-group col-md-12">
                             <label for="exampleInputEmail1">Email</label>
-                            <input type="text" class="form-control">
+                            <input [(ngModel)]="contato.email" type="text" class="form-control">
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Telefone</label>
-                                <input type="text" class="form-control">
+                                <input [(ngModel)]="contato.fone" type="text" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Skype</label>
-                                <input type="text" class="form-control">
+                                <input [(ngModel)]="contato.skype" type="text" class="form-control">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleFormControlInput1">Celular</label>
-                                <input type="text" class="form-control">
+                                <label  for="exampleFormControlInput1">Celular</label>
+                                <input [(ngModel)]="contato.celular" type="text" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="exampleFormControlSelect1">Organização</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                  <option>Vedois Tecnologia</option>
-                                  <option>Sull Automação</option>
+                                <label for="">Organização</label>
+                                <select [(ngModel)]="contato.org" class="form-control" >
+                                  <option>Selecione ...</option>
+                                  <option *ngFor="let org of orgsapi" value="{{org.id}}">{{org.razaosocial}}</option>
                                 </select>
                               </div>
                         </div>
 
-                        
-                    </form>
+
+                      </div>
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
-                    <button type="button" class="btn btn-primary">Salvar</button>
+                    <button type="button" (click)="save()"  class="btn btn-primary" data-dismiss="modal">Salvar</button>
                 </div>
             </div>
         </div>

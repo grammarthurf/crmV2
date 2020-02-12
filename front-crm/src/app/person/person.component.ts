@@ -75,6 +75,10 @@ export class PersonComponent implements OnInit {
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
+  contato = { nome: '', tipo: '', fone: '', celular:'', email: '', skype: '', org: ''}
+
+  orgsapi:any;
+
   // Lista de contatos:
   contatosapi: any;
 
@@ -82,6 +86,19 @@ export class PersonComponent implements OnInit {
 
   constructor(private crudService: CrudService) {
     this.getterContatos();
+    this.getterOrgs();
+  }
+
+  getterOrgs() {
+    this.crudService.getOrgs().subscribe(
+      data => {
+        this.orgsapi = data;
+        console.log(data);
+      },
+      error => {
+
+      }
+    );
   }
 
   getterContatos() {
@@ -101,6 +118,31 @@ export class PersonComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  save(){
+    console.log(this.contato);
+
+    this.crudService.saveNewCliente(this.contato).subscribe(
+      data => {
+        swal({
+          icon: "success",
+          text: "Contato salvo com sucesso!",
+          timer: 1800,
+          buttons: {
+            buttons: false
+          }
+        });
+        this.getterOrgs();
+        this.getterContatos();
+        console.log(data);
+      },
+      error => {
+
+        this.getterContatos();
+        console.error(error);
+      }
+    );
+  }
+
   ngOnInit() {
     this.dataSource.sort = this.sort;
   }
@@ -110,7 +152,7 @@ export class PersonComponent implements OnInit {
       icon: "error",
       text: "Pessoa excluída com sucesso!",
       timer: 1800,
-      buttons: { 
+      buttons: {
         buttons: false
       }
     });

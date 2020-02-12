@@ -18,6 +18,24 @@ class ClienteViewSet(viewsets.ModelViewSet):
     queryset = Cliente.objects.all()
     serializer_class = ClienteSerializer
 
+    def create(self, request):
+        data = request.data
+        
+        print(data);
+        
+       
+        C = Cliente()
+        C.nome = data['nome']
+        C.tipo = data['tipo']
+        C.fone = data['fone']
+        C.celular = data['celular']
+        C.email = data['email']
+        C.skype = data['skype']
+        C.org = Organizacao.objects.get(id=data['org'])
+        C.save()
+        print(data);
+        return JsonResponse({'message': 'Worked'})
+
 
 class EstagioViewSet(viewsets.ModelViewSet):
 
