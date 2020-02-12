@@ -30,7 +30,7 @@ mat-checkbox {
     margin-left: auto;
 }
 
-.mat-row:nth-child(2){
+.mat-row:nth-child(id){
     background-color: rgb(255, 232, 228);
 }
 
@@ -104,7 +104,17 @@ mat-checkbox {
     color: #3E3F47;
 }
 
-.thermatv {
+.thermquente {
     color: #FF0000;
+    font-size: 13px;
+}
+
+.thermmorno {
+    color: #F3FF00;
+    font-size: 13px;
+}
+
+.thermfrio {
+    color: #0083FF;
     font-size: 13px;
 }
