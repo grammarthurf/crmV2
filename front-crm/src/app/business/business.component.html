@@ -49,26 +49,31 @@
               </div>
 
               <div class="form-group">
-                <label for="exampleFormControlSelect1">Estágio Inicio</label>
-                <select [(ngModel)]="ticket.estagio" class="form-control" id="exampleFormControlSelect1">
-                  <option *ngFor="let est of estagiosapi" value="{{est.id}}">{{est.nome}}</option>
-
-                </select>
+                <label for="thermometro">Termômetro</label>
+                <input [(ngModel)]="ticket.termometro" type="range" class="form-control-range" id="thermometro" value="1"
+                  step="49" />
+                <div style="display: flex;">
+                  <span>Frio</span>
+                  <span>Morno</span>
+                  <span>Quente</span>
+                </div>
               </div>
+              
             </div>
             <div class="form-group col-md-6">
               <label for="exampleFormControlSelect1">Contato</label>
               <select *ngIf="clientesapi" [(ngModel)]="ticket.cliente" class="form-control" id="exampleFormControlSelect1">
                 <option  *ngFor="let cliente of clientesapi" value="{{cliente.id}}">{{cliente.nome}}</option>
-
               </select>
             </div>
-            <div class="form-group col-md-6">
-              <label for="thermometro">Termômetro</label>
-              <input [(ngModel)]="ticket.termometro" type="range" class="form-control-range" id="thermometro" value="1"
-                step="49" />
-            </div>
 
+            <div class="form-group col-md-6">
+              <label for="exampleFormControlSelect1">Estágio Inicio</label>
+              <select [(ngModel)]="ticket.estagio" class="form-control" id="exampleFormControlSelect1">
+                <option *ngFor="let est of estagiosapi" value="{{est.id}}">{{est.nome}}</option>
+              </select>
+            </div>
+           
             <div class="form-group col-md-12">
               <label for="exampleFormControlTextarea1">Observação</label>
               <textarea [(ngModel)]="ticket.obs" class="form-control" id="observation" rows="3"></textarea>
@@ -99,14 +104,17 @@
 
       <div class="leads" (click)="goTo(j.id)" *ngFor="let j of i.tickets">
         <div style="display: flex;">
-          <p class="fz-15 limit-words">{{ j.titulo }}</p>
-          <div class="thermometro"></div>
+          <p class="fz-15 bold limit-words">{{ j.titulo }}</p>
+          <mat-icon *ngIf="(j.termometro=='1');" class="thermometro thermfrio">ac_unit</mat-icon>
+          <mat-icon *ngIf="(j.termometro=='50');" class="thermometro thermmorno">waves</mat-icon>
+          <mat-icon *ngIf="(j.termometro=='99');" class="thermometro thermquente">whatshot</mat-icon>
+          <!-- <div class="thermometro"></div> -->
         </div>
         <p class="mb-2 limit-words fz-13">{{ j.org }}</p>
         <div style="display: flex;">
           <p class="fz-13">R$ {{ j.valorestimado }}</p>
-          <img src="../../assets/vermelho.png" id="red" />
-          <!-- <img src="../../assets/verde.png" id="green" /> -->
+          <!-- <img src="../../assets/vermelho.png" id="red" /> -->
+          <img src="../../assets/verde.png" id="green" />
           <!-- <img src="../../assets/laranja.png" id="orange" /> -->
         </div>
       </div>
