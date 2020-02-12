@@ -8,105 +8,114 @@ import swal from 'sweetalert';
 
 export interface PeriodicElement {
   id: number;
-  assunto: String;
+  tipo: String;
   dataVenc: string;
   nomeContato: string;
   cliente: String;
   email: string;
   telefone: string;
   userResp: string;
+  therm: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {
     id: 1,
-    assunto: 'Ligar',
+    tipo: 'Ligar',
     dataVenc: '12/02/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
-    userResp: 'Maria Silva'
-  },
+    userResp: 'Maria Silva',
+    therm: 'cold'  },
   {
     id: 2,
-    assunto: 'Reunião',
+    tipo: 'Reunião',
     dataVenc: '11/12/2019',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
-    userResp: 'Maria Silva '
+    userResp: 'Maria Silva ',
+    therm: 'cold'
   },
   {
     id: 3,
-    assunto: 'Ligar',
+    tipo: 'Ligar',
     dataVenc: '12/10/2019',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
-    userResp: 'Maria Silva '
+    userResp: 'Maria Silva ',
+    therm: 'cold'
   },
   {
     id: 4,
-    assunto: 'Visita',
+    tipo: 'Visita',
     dataVenc: '12/03/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
-    userResp: 'Maria Silva '
+    userResp: 'Maria Silva ',
+    therm: 'cold'
   },
   {
     id: 5,
-    assunto: 'Email',
+    tipo: 'Email',
     dataVenc: '11/02/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
-    userResp: 'Maria Silva '
+    userResp: 'Maria Silva ',
+    therm: 'cold'
   },
   {
     id: 6,
-    assunto: 'Ligar',
+    tipo: 'Ligar',
     dataVenc: '11/02/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
-    userResp: 'Maria Silva '
+    userResp: 'Maria Silva ',
+    therm: 'cold'
   },
   {
     id: 7,
-    assunto: 'Reunião',
+    tipo: 'Reunião',
     dataVenc: '11/02/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
-    userResp: 'Maria Silva '
+    userResp: 'Maria Silva ',
+    therm: 'cold'
   },
   {
     id: 8,
-    assunto: 'Visita',
+    tipo: 'Visita',
     dataVenc: '12/02/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
-    userResp: 'Maria Silva '
+    userResp: 'Maria Silva ',
+    therm: 'cold'
   },
   {
     id: 9,
-    assunto: 'Email',
+    tipo: 'Email',
     dataVenc: '12/02/2020',
     nomeContato: 'Maria Eduarda Silva',
     cliente: 'Vedois Tecnologia',
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
-    userResp: 'Maria Silva '
+    userResp: 'Maria Silva ',
+    therm: 'cold'
   },
 ];
 
@@ -116,7 +125,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ["./atividades.component.css"]
 })
 export class AtividadesComponent implements OnInit {
-  atividade = { assunto: "", data: '', tipo: '', cliente: '', org: '' };
+  atividade = { tipo: "", data: '', assunto: '', cliente: '', org: '' };
 
   // Lista de atividades:
   activityapi: any;
@@ -128,7 +137,7 @@ export class AtividadesComponent implements OnInit {
     orsgapi: any;
 
 
-  displayedColumns: string[] = ['select', 'assunto', 'dataVenc', 'cliente', 'nomeContato', 'email', 'telefone', 'userResp', 'columnEdit', 'columnDelete'];
+  displayedColumns: string[] = ['select', 'tipo', 'dataVenc', 'cliente', 'nomeContato', 'email', 'telefone', 'userResp', 'columnEdit', 'columnDelete'];
   data = Object.assign(ELEMENT_DATA);
   dataSource = new MatTableDataSource<Element>(this.data);
   selection = new SelectionModel<Element>(true, []);
