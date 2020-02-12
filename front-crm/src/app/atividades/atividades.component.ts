@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { CrudService } from "../services/crud.service";
 import { MatSort } from '@angular/material/sort';
 import swal from 'sweetalert';
+import { ɵAnimationGroupPlayer } from '@angular/animations';
 
 export interface PeriodicElement {
   id: number;
@@ -28,7 +29,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
     userResp: 'Maria Silva',
-    therm: 'cold'  },
+    therm: 'morno'  },
   {
     id: 2,
     tipo: 'Reunião',
@@ -38,7 +39,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
     userResp: 'Maria Silva ',
-    therm: 'cold'
+    therm: 'quente'
   },
   {
     id: 3,
@@ -49,7 +50,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
     userResp: 'Maria Silva ',
-    therm: 'cold'
+    therm: 'frio'
   },
   {
     id: 4,
@@ -60,7 +61,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
     userResp: 'Maria Silva ',
-    therm: 'cold'
+    therm: 'quente'
   },
   {
     id: 5,
@@ -71,7 +72,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
     userResp: 'Maria Silva ',
-    therm: 'cold'
+    therm: 'frio'
   },
   {
     id: 6,
@@ -82,7 +83,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
     userResp: 'Maria Silva ',
-    therm: 'cold'
+    therm: 'frio'
   },
   {
     id: 7,
@@ -93,7 +94,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
     userResp: 'Maria Silva ',
-    therm: 'cold'
+    therm: 'quente'
   },
   {
     id: 8,
@@ -104,7 +105,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
     userResp: 'Maria Silva ',
-    therm: 'cold'
+    therm: 'quente'
   },
   {
     id: 9,
@@ -115,7 +116,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
     userResp: 'Maria Silva ',
-    therm: 'cold'
+    therm: 'frio'
   },
 ];
 
@@ -290,6 +291,7 @@ export class AtividadesComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.sort = this.sort;
+
   }
 
   deleteItem() {
