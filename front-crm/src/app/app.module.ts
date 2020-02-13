@@ -64,12 +64,8 @@ import { NgxMaskModule } from 'ngx-mask'
     MatDividerModule,
     MatSortModule,
     HttpClientModule,
-<<<<<<< HEAD
-    FormsModule
-=======
     FormsModule,
     NgxMaskModule.forRoot()
->>>>>>> 0d6d0794c312e241d7a587e064e8e82877891c43
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
