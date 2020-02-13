@@ -43,8 +43,8 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="exampleInputEmail1">Valor Estimado</label>
-                <input [(ngModel)]="ticket.valorestimado" type="number" class="form-control" id="value"
-                  aria-describedby="emailHelp" placeholder="Valor"/>
+                <input [(ngModel)]="ticket.valorestimado" type="text" class="form-control" id="value"
+                  aria-describedby="emailHelp" placeholder="Valor" mask="separator,2" thousandSeparator="." maxlength="9"/>
               </div>
 
               <div class="form-group">
@@ -111,7 +111,7 @@
         </div>
         <p class="mb-2 limit-words fz-13">{{ j.org }}</p>
         <div style="display: flex;">
-          <p class="fz-13">R$ {{ j.valorestimado }}</p>
+          <p class="fz-13">R$ {{ j.valorestimado |  mask: '00.000,00' }}</p>
           <!-- <img src="../../assets/vermelho.png" id="red" /> -->
           <img src="../../assets/verde.png" id="green" />
           <!-- <img src="../../assets/laranja.png" id="orange" /> -->
