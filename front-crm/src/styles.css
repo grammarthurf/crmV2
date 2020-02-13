@@ -22,3 +22,6 @@ body {
     margin: 0; 
     font-family: "Maven Pro"; 
 }
+
+/* angular-cli file: src/styles.css */
+@import "../node_modules/angular-calendar/css/angular-calendar.css";

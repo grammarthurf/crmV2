@@ -23,66 +23,106 @@
     <button type="button" class="btn btn-link" (click)="filtrovenc()">Vencido</button>
   </div>
   <!-- MODAL -->
-  <div class="modal fade" id="abrircadastroatv" tabindex="-1" role="dialog" aria-labelledby="abrircadastroatv"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal fade" id="abrircadastroatv" tabindex="-1" role="dialog" aria-labelledby="abrircadastroatv" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Adicionar Atividade</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+          <h5 class="modal-title" 
+              id="exampleModalLongTitle">
+              Adicione uma Atividade
+          </h5>
+          <button type="button" 
+                  class="close" 
+                  data-dismiss="modal" 
+                  aria-label="Close">
+            <span aria-hidden="true">
+              &times;
+            </span>
           </button>
         </div>
         <div class="modal-body">
-          <div class="row">
-            <div class="form-group col-md-12">
-              <label for="exampleInputEmail1">Assunto</label>
-              <input type="text" class="form-control" id="assunto" aria-describedby="emailHelp" placeholder="Assunto"
-                [(ngModel)]="atividade.assunto">
+          <div class="col-12 row">
+            <div class="col-8" style="padding: 0px;">
+              <div class="col-12 row">
+                <div class="col-6">
+                  <label for="Empresa">Empresa</label>
+                  <input type="text" name="Empresa" class="form-control" id="empresa">
+                </div>
+                <div class="col-6">
+                  <label for="Contato">Contato</label>
+                  <input type="text" name="Contato" class="form-control" id="contato">
+                </div>
+              </div>
+              <div class="col-12" style="margin-top: 20px;"> 
+                <div class="col-12 row">
+                  <p style="margin-top: 5px;"><b> Atividade: </b></p>
+                  <div class="div-modal-atv">
+                    <button mat-icon-button>
+                      <mat-icon class="icon-modal-atv">phone</mat-icon>
+                    </button>
+                  </div>
+                  <div class="div-modal-atv">
+                    <button mat-icon-button>
+                      <mat-icon class="icon-modal-atv">people</mat-icon>
+                    </button>
+                  </div>
+                  <div class="div-modal-atv">
+                    <button mat-icon-button>
+                      <mat-icon class="icon-modal-atv">business</mat-icon>
+                    </button>
+                  </div>
+                  <div class="div-modal-atv">
+                    <button mat-icon-button>
+                      <mat-icon class="icon-modal-atv">email</mat-icon>
+                    </button>
+                  </div>
+                  <div class="div-modal-atv">
+                    <button mat-icon-button>
+                      <mat-icon class="icon-modal-atv">watch_later</mat-icon>
+                    </button>
+                  </div>
+                </div>
+                <div class="col-12 row" style="margin-top: 20px;">
+                  <input type="text" disabled class="form-control" placeholder="Ligar">
+                </div>
+                <div class="col-12 row" style="margin-top: 20px; padding: 0px;">
+                  <div class="col-4" >
+                    <label for="">Início</label>
+                    <input type="text" class="form-control" placeholder="13/02/2020">
+                  </div>
+                  <div class="col-2" style="margin-top: 32px; padding: 0px;">
+                    <input type="text" class="form-control" placeholder="14:00">
+                  </div>
+                  <div class="col-4">
+                    <label for="">Fim</label>
+                    <input type="text" class="form-control" placeholder="19/02/2020">
+                  </div>
+                  <div class="col-2" style="margin-top: 32px; padding: 0px;">
+                    <input type="text" class="form-control" placeholder="14:00">
+                  </div>
+                </div>
+                <div class="col-12 row" style="margin-top: 20px;">
+                  <label for="obs">Observações</label>
+                  <textarea name="obs" id="obs" cols="50" rows="3" style="border: 1px solid rgb(206, 212, 218); border-radius: 5px;"></textarea>
+                </div>
+                <div class="col-12 row" style="margin-top: 20px; padding: 0px;">
+                  <div class="col-6">
+                    <label for="negocios">Negócio</label>
+                    <input type="text" name="negocios" class="form-control">
+                  </div>
+                  <div class="col-6">
+                    <label for="participantes">Participantes</label>
+                    <input type="text" name="participantes" class="form-control">
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="form-group col-md-12">
-              <label for="exampleInputEmail1">Negócio</label>
-              <select [(ngModel)]="atividade.negocio" class="form-control">
-                <option value="">Selecione ...</option>
-                <option *ngFor="let neg of negociosapi" value="{{neg.id}}">{{neg.titulo}}</option>
-
-              </select>
+            
+            <div class="col-4 ml-auto">
+              <div class="col-12 sp-calendar-scroll">
+                
+              </div>
             </div>
-            <div class="form-group col-6">
-              <label for="exampleFormControlSelect1">Tipo</label>
-              <select [(ngModel)]="atividade.tipo" class="form-control">
-                <option value="">Selecione ...</option>
-                <option>Ligar</option>
-                <option>Reunião</option>
-                <option>Visita</option>
-                <option>Email</option>
-                <option>Tarefa</option>
-              </select>
-            </div>
-
-            <div class="form-group col-md-6">
-              <label for="example-date-input">Data</label>
-              <input [(ngModel)]="atividade.data" class="form-control" type="date" value="0000-00-00"
-                id="example-date-input">
-            </div>
-
-            <div class="form-group col-md-6">
-              <label for="exampleInputEmail1">Cliente</label>
-              <select [(ngModel)]="atividade.cliente" class="form-control" id="exampleFormControlSelect1">
-                <option value="">Selecione ...</option>
-                <option *ngFor="let cliente of clientesapi" value="{{cliente.id}}">{{cliente.nome}}</option>
-
-              </select>
-            </div>
-            <div class="form-group col-md-6">
-              <label for="exampleInputEmail1">Empresa</label>
-              <select [(ngModel)]="atividade.org" class="form-control" id="exampleFormControlSelect1">
-                <option value="">Selecione ...</option>
-                <option *ngFor="let orgs of orsgapi" value="{{orgs.id}}">{{orgs.razaosocial}}</option>
-
-              </select>
-            </div>
-
           </div>
         </div>
         <div class="modal-footer">
@@ -166,15 +206,12 @@
     <ng-container matColumnDef="ticket">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Negócio</th>
       <td mat-cell *matCellDef="let element;">
-<<<<<<< HEAD
-        <mat-icon *ngIf="(element.therm=='ruim');" class="thermruim">lens</mat-icon>
-        <mat-icon *ngIf="(element.therm=='mediano');" class="thermmediano">lens</mat-icon>
-        <mat-icon *ngIf="(element.therm=='bom');" class="thermbom">lens</mat-icon>
-        {{element.cliente}}
-=======
-
+       <!--
+         <mat-icon *ngIf="(element.therm=='ruim');" class="thermruim">lens</mat-icon>
+          <mat-icon *ngIf="(element.therm=='mediano');" class="thermmediano">lens</mat-icon>
+          <mat-icon *ngIf="(element.therm=='bom');" class="thermbom">lens</mat-icon>
+       --> 
         {{element.ticket}}
->>>>>>> 1787e224012406128c676ac9fcf6148fa65be6b3
       </td>
     </ng-container>
 

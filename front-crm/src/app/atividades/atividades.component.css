@@ -71,6 +71,20 @@ mat-checkbox {
     margin: 10px 5px 0 15px;
 }
 
+.div-modal-atv{
+    width: 40px; 
+    height: 40px; 
+    background-color: rgb(98, 151, 189); 
+    color: white; 
+    border-radius: 50%;
+    margin-left: 26px;
+}
+
+.icon-modal-atv{
+    font-size: 20px; 
+    margin-left: 5px;
+}
+
 .mat-icon-button {
     border-radius: 0 !important;
 }

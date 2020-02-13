@@ -128,6 +128,7 @@ import { ɵAnimationGroupPlayer } from '@angular/animations';
 export class AtividadesComponent implements OnInit {
   atividade = { tipo: "", data: '', assunto: '', cliente: '', org: '', negocio: '' };
 
+  
   // Lista Ticket
   negociosapi:any;
 
