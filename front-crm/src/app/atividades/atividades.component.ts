@@ -126,7 +126,10 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ["./atividades.component.css"]
 })
 export class AtividadesComponent implements OnInit {
-  atividade = { tipo: "", data: '', assunto: '', cliente: '', org: '' };
+  atividade = { tipo: "", data: '', assunto: '', cliente: '', org: '', negocio: '' };
+
+  // Lista Ticket
+  negociosapi:any;
 
   // Lista de atividades:
   activityapi: any;
@@ -147,9 +150,24 @@ export class AtividadesComponent implements OnInit {
    this.getterActivity();
    this.getterCliente();
    this.getterOrgs();
+   this.getterTickets();
   }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
+
+
+  getterTickets() {
+    this.crudService.getTickets().subscribe(
+      data => {
+        this.negociosapi = data;
+        console.log(data);
+      },
+      error => {
+
+        console.error(error);
+      }
+    );
+  }
 
 
   getterActivity() {
