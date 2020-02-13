@@ -29,7 +29,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
     userResp: 'Maria Silva',
-    therm: 'morno'  },
+    therm: 'mediano'  },
   {
     id: 2,
     tipo: 'Reunião',
@@ -39,7 +39,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
     userResp: 'Maria Silva ',
-    therm: 'quente'
+    therm: 'ruim'
   },
   {
     id: 3,
@@ -50,7 +50,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
     userResp: 'Maria Silva ',
-    therm: 'frio'
+    therm: 'bom'
   },
   {
     id: 4,
@@ -61,7 +61,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
     userResp: 'Maria Silva ',
-    therm: 'quente'
+    therm: 'ruim'
   },
   {
     id: 5,
@@ -72,7 +72,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
     userResp: 'Maria Silva ',
-    therm: 'frio'
+    therm: 'bom'
   },
   {
     id: 6,
@@ -83,7 +83,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
     userResp: 'Maria Silva ',
-    therm: 'frio'
+    therm: 'bom'
   },
   {
     id: 7,
@@ -94,7 +94,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
     userResp: 'Maria Silva ',
-    therm: 'quente'
+    therm: 'ruim'
   },
   {
     id: 8,
@@ -105,7 +105,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
     userResp: 'Maria Silva ',
-    therm: 'quente'
+    therm: 'ruim'
   },
   {
     id: 9,
@@ -116,7 +116,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com',
     telefone: '(47) 988457154',
     userResp: 'Maria Silva ',
-    therm: 'frio'
+    therm: 'bom'
   },
 ];
 
