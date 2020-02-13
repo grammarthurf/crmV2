@@ -100,7 +100,7 @@
         <input class="form-control" type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
     </div>
 
-    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <table mat-table [dataSource]="contatosapi" matSort class="mat-elevation-z8">
 
         <ng-container matColumnDef="nome">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
@@ -114,7 +114,7 @@
 
         <ng-container matColumnDef="tel">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefone </th>
-            <td mat-cell *matCellDef="let element"> {{element.tel}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.fone}} </td>
         </ng-container>
 
         <ng-container matColumnDef="email">
@@ -122,14 +122,9 @@
             <td mat-cell *matCellDef="let element"> {{element.email}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="neg_f">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Negociações Fechadas </th>
-            <td mat-cell *matCellDef="let element"> {{element.neg_f}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="neg_a">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Negociações Abertas </th>
-            <td mat-cell *matCellDef="let element"> {{element.neg_a}} </td>
+        <ng-container matColumnDef="tipo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </th>
+            <td mat-cell *matCellDef="let element" > {{element.tipo}} </td>
         </ng-container>
 
         <ng-container matColumnDef="columnEdit">

@@ -4,78 +4,78 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CrudService } from "../services/crud.service";
 import swal from 'sweetalert';
 
-export interface PeriodicElement {
-  nome_fantasia, razao_social, fone, celular, email, endereco, tipo, erp, vendedor: String
-}
+// export interface PeriodicElement {
+//   nome_fantasia, razao_social, fone, celular, email, endereco, tipo, erp, vendedor: String
+// }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    nome_fantasia: 'V&V',
-    razao_social: 'Asasasea',
-    fone: '(47) 33821475',
-    celular: '(47) 988745147',
-    email: 'vedois@vedois.com.br',
-    endereco: 'Rua Austrália, 211',
-    tipo: 'Parceiro',
-    erp: 'Projedata',
-    vendedor: 'Fabiana'
-  },
-  {
-    nome_fantasia: 'Vedois Tecnologia',
-    razao_social: 'Asasasea',
-    fone: '(47) 33821475',
-    celular: '(47) 988745147',
-    email: 'vedois@vedois.com.br',
-    endereco: 'Rua Austrália, 211',
-    tipo: 'Cliente',
-    erp: 'Projedata',
-    vendedor: 'Clayton'
-  },
-  {
-    nome_fantasia: 'V&V',
-    razao_social: 'Asasasea',
-    fone: '(47) 33821475',
-    celular: '(47) 988745147',
-    email: 'vedois@vedois.com.br',
-    endereco: 'Rua Austrália, 211',
-    tipo: 'Cliente',
-    erp: 'Projedata',
-    vendedor: 'Clayton'
-  },
-  {
-    nome_fantasia: 'V&V',
-    razao_social: 'Asasasea',
-    fone: '(47) 33821475',
-    celular: '(47) 988745147',
-    email: 'vedois@vedois.com.br',
-    endereco: 'Rua Austrália, 211',
-    tipo: 'Cliente',
-    erp: 'SAP',
-    vendedor: 'Fabiana'
-  },
-  {
-    nome_fantasia: 'Vedois Tecnologia',
-    razao_social: 'Asasasea',
-    fone: '(47) 33821475',
-    celular: '(47) 988745147',
-    email: 'vedois@vedois.com.br',
-    endereco: 'Rua Austrália, 211',
-    tipo: 'Parceiro',
-    erp: 'SAP',
-    vendedor: 'Gisela'
-  },
-  {
-    nome_fantasia: 'V&V',
-    razao_social: 'Asasasea',
-    fone: '(47) 33821475',
-    celular: '(47) 988745147',
-    email: 'vedois@vedois.com.br',
-    endereco: 'Rua Austrália, 211',
-    tipo: 'Parceiro',
-    erp: 'SAP',
-    vendedor: 'Jéssica'
-  },
-];
+// const ELEMENT_DATA: PeriodicElement[] = [
+//   {
+//     nome_fantasia: 'V&V',
+//     razao_social: 'Asasasea',
+//     fone: '(47) 33821475',
+//     celular: '(47) 988745147',
+//     email: 'vedois@vedois.com.br',
+//     endereco: 'Rua Austrália, 211',
+//     tipo: 'Parceiro',
+//     erp: 'Projedata',
+//     vendedor: 'Fabiana'
+//   },
+//   {
+//     nome_fantasia: 'Vedois Tecnologia',
+//     razao_social: 'Asasasea',
+//     fone: '(47) 33821475',
+//     celular: '(47) 988745147',
+//     email: 'vedois@vedois.com.br',
+//     endereco: 'Rua Austrália, 211',
+//     tipo: 'Cliente',
+//     erp: 'Projedata',
+//     vendedor: 'Clayton'
+//   },
+//   {
+//     nome_fantasia: 'V&V',
+//     razao_social: 'Asasasea',
+//     fone: '(47) 33821475',
+//     celular: '(47) 988745147',
+//     email: 'vedois@vedois.com.br',
+//     endereco: 'Rua Austrália, 211',
+//     tipo: 'Cliente',
+//     erp: 'Projedata',
+//     vendedor: 'Clayton'
+//   },
+//   {
+//     nome_fantasia: 'V&V',
+//     razao_social: 'Asasasea',
+//     fone: '(47) 33821475',
+//     celular: '(47) 988745147',
+//     email: 'vedois@vedois.com.br',
+//     endereco: 'Rua Austrália, 211',
+//     tipo: 'Cliente',
+//     erp: 'SAP',
+//     vendedor: 'Fabiana'
+//   },
+//   {
+//     nome_fantasia: 'Vedois Tecnologia',
+//     razao_social: 'Asasasea',
+//     fone: '(47) 33821475',
+//     celular: '(47) 988745147',
+//     email: 'vedois@vedois.com.br',
+//     endereco: 'Rua Austrália, 211',
+//     tipo: 'Parceiro',
+//     erp: 'SAP',
+//     vendedor: 'Gisela'
+//   },
+//   {
+//     nome_fantasia: 'V&V',
+//     razao_social: 'Asasasea',
+//     fone: '(47) 33821475',
+//     celular: '(47) 988745147',
+//     email: 'vedois@vedois.com.br',
+//     endereco: 'Rua Austrália, 211',
+//     tipo: 'Parceiro',
+//     erp: 'SAP',
+//     vendedor: 'Jéssica'
+//   },
+// ];
 
 
 @Component({
@@ -87,17 +87,19 @@ export class OrganizationComponent implements OnInit {
   org = {razaosocial: '', nomefantasia: '', rua: '', bairro: '', cep: '', cidade: '', uf: '', erp: ''}
 
   // Lista orgs:
-  orgapi: any;
+
   erroOrg: any;
 
-  displayedColumns: string[] = ['nome_fantasia', 'razao_social', 'fone', 'celular', 'email', 'endereco', 'tipo', 'erp', 'vendedor', 'columnEdit', 'columnDelete'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = ['nome_fantasia', 'razao_social', 'endereco', 'tipo', 'erp', 'vendedor', 'columnEdit', 'columnDelete'];
+  // dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private crudService: CrudService) {
     this.getterOrg();
   }
+
+  orgapi: MatTableDataSource<any>;
 
   getterOrg() {
     this.crudService.getOrgs().subscribe(
@@ -113,7 +115,7 @@ export class OrganizationComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.orgapi.filter = filterValue.trim().toLowerCase();
   }
 
   save(){
@@ -142,7 +144,7 @@ export class OrganizationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSource.sort = this.sort;
+    // this.orgapi.sort = this.sort;
   }
 
   deleteItem() {
