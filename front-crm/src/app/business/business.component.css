@@ -129,7 +129,7 @@ input[type=range] {
 
 ::-webkit-slider-runnable-track {
   height: 3px;
-  background-image: linear-gradient(to right, #0083FF, #F3FF00, #FF0000);
+  background-image: linear-gradient(to right, #FF0000, #F3FF00, #23FF00);
 }
 
 ::-webkit-slider-thumb {
