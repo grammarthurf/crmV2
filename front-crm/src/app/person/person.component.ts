@@ -4,65 +4,65 @@ import { MatTableDataSource } from "@angular/material/table";
 import { CrudService } from "../services/crud.service";
 import swal from 'sweetalert';
 
-export interface PeriodicElement {
-  nome;
-  org;
-  tel;
-  email;
-  neg_f;
-  neg_a: String;
-}
+// export interface PeriodicElement {
+//   nome;
+//   org;
+//   tel;
+//   email;
+//   neg_f;
+//   neg_a: String;
+// }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    nome: "Arthur Felipe",
-    org: "Vedois Tecnologia",
-    tel: "47 988309090",
-    email: "arthurfelipe@vedois.com",
-    neg_f: "3",
-    neg_a: "2"
-  },
-  {
-    nome: "Arthur Felipe",
-    org: "Vedois Tecnologia",
-    tel: "47 988309090",
-    email: "arthurfelipe@vedois.com",
-    neg_f: "3",
-    neg_a: "2"
-  },
-  {
-    nome: "Arthur Felipe",
-    org: "Vedois Tecnologia",
-    tel: "47 988309090",
-    email: "arthurfelipe@vedois.com",
-    neg_f: "3",
-    neg_a: "2"
-  },
-  {
-    nome: "Arthur Felipe",
-    org: "Vedois Tecnologia",
-    tel: "47 988309090",
-    email: "arthurfelipe@vedois.com",
-    neg_f: "3",
-    neg_a: "2"
-  },
-  {
-    nome: "Arthur Felipe",
-    org: "Vedois Tecnologia",
-    tel: "47 988309090",
-    email: "arthurfelipe@vedois.com",
-    neg_f: "3",
-    neg_a: "2"
-  },
-  {
-    nome: "Arthur Felipe",
-    org: "Vedois Tecnologia",
-    tel: "47 988309090",
-    email: "arthurfelipe@vedois.com",
-    neg_f: "2",
-    neg_a: "1"
-  }
-];
+// const ELEMENT_DATA: PeriodicElement[] = [
+//   {
+//     nome: "Arthur Felipe",
+//     org: "Vedois Tecnologia",
+//     tel: "47 988309090",
+//     email: "arthurfelipe@vedois.com",
+//     neg_f: "3",
+//     neg_a: "2"
+//   },
+//   {
+//     nome: "Arthur Felipe",
+//     org: "Vedois Tecnologia",
+//     tel: "47 988309090",
+//     email: "arthurfelipe@vedois.com",
+//     neg_f: "3",
+//     neg_a: "2"
+//   },
+//   {
+//     nome: "Arthur Felipe",
+//     org: "Vedois Tecnologia",
+//     tel: "47 988309090",
+//     email: "arthurfelipe@vedois.com",
+//     neg_f: "3",
+//     neg_a: "2"
+//   },
+//   {
+//     nome: "Arthur Felipe",
+//     org: "Vedois Tecnologia",
+//     tel: "47 988309090",
+//     email: "arthurfelipe@vedois.com",
+//     neg_f: "3",
+//     neg_a: "2"
+//   },
+//   {
+//     nome: "Arthur Felipe",
+//     org: "Vedois Tecnologia",
+//     tel: "47 988309090",
+//     email: "arthurfelipe@vedois.com",
+//     neg_f: "3",
+//     neg_a: "2"
+//   },
+//   {
+//     nome: "Arthur Felipe",
+//     org: "Vedois Tecnologia",
+//     tel: "47 988309090",
+//     email: "arthurfelipe@vedois.com",
+//     neg_f: "2",
+//     neg_a: "1"
+//   }
+// ];
 
 @Component({
   selector: "app-person",
@@ -70,8 +70,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ["./person.component.css"]
 })
 export class PersonComponent implements OnInit {
-  displayedColumns: string[] = ['nome', 'org', 'tel', 'email', 'neg_f', 'neg_a', 'columnEdit', 'columnDelete'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = ['nome', 'org', 'tel', 'email', 'tipo', 'columnEdit', 'columnDelete'];
+  // dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
@@ -80,7 +80,7 @@ export class PersonComponent implements OnInit {
   orgsapi:any;
 
   // Lista de contatos:
-  contatosapi: any;
+  contatosapi: MatTableDataSource <any>;
 
   erroContatos: any;
 
@@ -115,7 +115,7 @@ export class PersonComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.contatosapi.filter = filterValue.trim().toLowerCase();
   }
 
   save(){
@@ -144,7 +144,7 @@ export class PersonComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSource.sort = this.sort;
+    // this.dataSource.sort = this.sort;
   }
 
   deleteItem() {

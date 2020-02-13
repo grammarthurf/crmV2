@@ -101,36 +101,22 @@
     <input class="form-control" type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
   </div>
 
-  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  <table mat-table [dataSource]="orgapi" matSort class="mat-elevation-z8">
 
     <ng-container matColumnDef="razao_social">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Razão </th>
-      <td mat-cell *matCellDef="let element"> {{element.razao_social}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.razaosocial}} </td>
     </ng-container>
 
     <ng-container matColumnDef="nome_fantasia">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome Fantasia </th>
-      <td mat-cell *matCellDef="let element"> {{element.nome_fantasia}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.nomefantasia}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="fone">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefone </th>
-      <td mat-cell *matCellDef="let element"> {{element.fone}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="celular">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Celular </th>
-      <td mat-cell *matCellDef="let element"> {{element.celular}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-    </ng-container>
 
     <ng-container matColumnDef="endereco">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Endereço </th>
-      <td mat-cell *matCellDef="let element"> {{element.endereco}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.rua}} </td>
     </ng-container>
 
     <ng-container matColumnDef="tipo">

@@ -76,7 +76,11 @@ input[type=range] {
   
 ::-webkit-slider-runnable-track {
     height: 3px;
+<<<<<<< HEAD
     background-image: linear-gradient(to right, rgb(226, 58, 58), rgb(248, 255, 151), rgb(120, 172, 120));
+=======
+    background-image: linear-gradient(to right, #FF0000, #F3FF00, #23FF00);
+>>>>>>> 1787e224012406128c676ac9fcf6148fa65be6b3
 }
   
 ::-webkit-slider-thumb {
@@ -101,6 +105,16 @@ input[type=range] {
 
 .btn1 {
 	background-color: rgb(98, 151, 189);
+}
+
+.btn-win-lose {
+	height: 40px;
+    width: 75px;
+    border-radius: 5px;
+	border: 1px solid transparent;
+	margin-left: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 /* TESTE STEPPER */

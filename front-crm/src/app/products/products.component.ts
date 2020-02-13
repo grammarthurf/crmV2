@@ -5,43 +5,47 @@ import { MatTableDataSource } from "@angular/material/table";
 import swal from 'sweetalert';
 
 export interface PeriodicElement {
-  nome;
-  cod;
-  cat: String;
+  codigo: string;
+  id: string;
+  modalidade: string;
+  nome: string;
+
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    nome: "Vedois OEE",
-    cod: "32412",
-    cat: "Indústria",
-  },
-  {
-    nome: "Vedois Planejamento",
-    cod: "51235",
-    cat: "Planejamento",
-  },
-  {
-    nome: "Vedois Tear",
-    cod: "32712",
-    cat: "Indústria",
-  },
-  {
-    nome: "Vedois Saúde",
-    cod: "12345",
-    cat: "Médica",
-  },
-  {
-    nome: "Vedois Estoque",
-    cod: "52134",
-    cat: "Estoque",
-  },
-  {
-    nome: "Vedois CRM",
-    cod: "12513",
-    cat: "Planejamento",
-  }
-];
+let produtosapi: PeriodicElement[] = []
+
+// const ELEMENT_DATA: PeriodicElement[] = [
+//   {
+//     nome: "Vedois OEE",
+//     cod: "32412",
+//     cat: "Indústria",
+//   },
+//   {
+//     nome: "Vedois Planejamento",
+//     cod: "51235",
+//     cat: "Planejamento",
+//   },
+//   {
+//     nome: "Vedois Tear",
+//     cod: "32712",
+//     cat: "Indústria",
+//   },
+//   {
+//     nome: "Vedois Saúde",
+//     cod: "12345",
+//     cat: "Médica",
+//   },
+//   {
+//     nome: "Vedois Estoque",
+//     cod: "52134",
+//     cat: "Estoque",
+//   },
+//   {
+//     nome: "Vedois CRM",
+//     cod: "12513",
+//     cat: "Planejamento",
+//   }
+// ];
 
 @Component({
   selector: "app-products",
@@ -55,23 +59,30 @@ export class ProductsComponent implements OnInit {
     codigo: ""
   };
   // Lista produtos:
-  produtosapi: any;
+  // produtosapi: any;
   erroProdutos: any;
 
-  displayedColumns: string[] = ['nome', 'cod', 'cat', 'columnEdit', 'columnDelete'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+
+
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private crudService: CrudService) {
     this.getterProdutos();
+    console.log(this.proddata);
+
   }
 
+  proddata: MatTableDataSource<any>;
+  displayedColumns: string[] = ['nome', 'codigo', 'modalidade', 'columnEdit', 'columnDelete'];
   getterProdutos() {
     this.crudService.getProdutos().subscribe(
       data => {
-        this.produtosapi = data;
-        console.log(data);
+        produtosapi = data;
+        this.proddata = data;
+        console.log('produtoslog',produtosapi);
+        console.log('proddata',produtosapi);
       },
       error => {
         this.erroProdutos = error;
@@ -81,8 +92,9 @@ export class ProductsComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.proddata.filter = filterValue.trim().toLowerCase();
   }
+
 
   ngOnInit() {}
 
@@ -93,7 +105,7 @@ export class ProductsComponent implements OnInit {
           icon: "success",
           text: "Produto salvo com sucesso!",
           timer: 1800,
-          buttons: { 
+          buttons: {
             buttons: false
           }
         });
@@ -110,7 +122,7 @@ export class ProductsComponent implements OnInit {
       icon: "error",
       text: "Produto excluído com sucesso!",
       timer: 1800,
-      buttons: { 
+      buttons: {
         buttons: false
       }
     });
