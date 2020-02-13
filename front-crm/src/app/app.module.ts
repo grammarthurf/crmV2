@@ -62,7 +62,7 @@ import { PersonComponent } from "./person/person.component";
     MatDividerModule,
     MatSortModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
