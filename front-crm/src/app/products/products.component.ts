@@ -7,9 +7,7 @@ import swal from 'sweetalert';
 export interface PeriodicElement {
   nome;
   cod;
-  cat;
-  un;
-  price: String;
+  cat: String;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
@@ -17,43 +15,31 @@ const ELEMENT_DATA: PeriodicElement[] = [
     nome: "Vedois OEE",
     cod: "32412",
     cat: "Indústria",
-    un: "1",
-    price: "3500"
   },
   {
     nome: "Vedois Planejamento",
     cod: "51235",
     cat: "Planejamento",
-    un: "1",
-    price: "3500"
   },
   {
     nome: "Vedois Tear",
     cod: "32712",
     cat: "Indústria",
-    un: "1",
-    price: "3500"
   },
   {
     nome: "Vedois Saúde",
     cod: "12345",
     cat: "Médica",
-    un: "1",
-    price: "3500"
   },
   {
     nome: "Vedois Estoque",
     cod: "52134",
     cat: "Estoque",
-    un: "1",
-    price: "3500"
   },
   {
     nome: "Vedois CRM",
     cod: "12513",
     cat: "Planejamento",
-    un: "1",
-    price: "3500"
   }
 ];
 
@@ -72,7 +58,7 @@ export class ProductsComponent implements OnInit {
   produtosapi: any;
   erroProdutos: any;
 
-  displayedColumns: string[] = ['nome', 'cod', 'cat', 'un', 'price', 'columnEdit', 'columnDelete'];
+  displayedColumns: string[] = ['nome', 'cod', 'cat', 'columnEdit', 'columnDelete'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;

@@ -40,6 +40,14 @@
               <input type="text" class="form-control" id="assunto" aria-describedby="emailHelp" placeholder="Assunto"
                 [(ngModel)]="atividade.assunto">
             </div>
+            <div class="form-group col-md-12">
+              <label for="exampleInputEmail1">Negócio</label>
+              <select [(ngModel)]="atividade.negocio" class="form-control">
+                <option value="">Selecione ...</option>
+                <option *ngFor="let neg of negociosapi" value="{{neg.id}}">{{neg.titulo}}</option>
+
+              </select>
+            </div>
             <div class="form-group col-6">
               <label for="exampleFormControlSelect1">Tipo</label>
               <select [(ngModel)]="atividade.tipo" class="form-control">

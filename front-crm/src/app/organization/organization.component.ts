@@ -17,7 +17,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com.br',
     endereco: 'Rua Austrália, 211',
     tipo: 'Parceiro',
-    erp: 'ASDASD',
+    erp: 'Projedata',
     vendedor: 'Fabiana'
   },
   {
@@ -28,8 +28,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com.br',
     endereco: 'Rua Austrália, 211',
     tipo: 'Cliente',
-    erp: 'ASDASD',
-    vendedor: 'Fabiana'
+    erp: 'Projedata',
+    vendedor: 'Clayton'
   },
   {
     nome_fantasia: 'V&V',
@@ -39,8 +39,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com.br',
     endereco: 'Rua Austrália, 211',
     tipo: 'Cliente',
-    erp: 'ASDASD',
-    vendedor: 'Fabiana'
+    erp: 'Projedata',
+    vendedor: 'Clayton'
   },
   {
     nome_fantasia: 'V&V',
@@ -50,7 +50,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com.br',
     endereco: 'Rua Austrália, 211',
     tipo: 'Cliente',
-    erp: 'ASDASD',
+    erp: 'SAP',
     vendedor: 'Fabiana'
   },
   {
@@ -61,8 +61,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com.br',
     endereco: 'Rua Austrália, 211',
     tipo: 'Parceiro',
-    erp: 'ASDASD',
-    vendedor: 'Fabiana'
+    erp: 'SAP',
+    vendedor: 'Gisela'
   },
   {
     nome_fantasia: 'V&V',
@@ -72,8 +72,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
     email: 'vedois@vedois.com.br',
     endereco: 'Rua Austrália, 211',
     tipo: 'Parceiro',
-    erp: 'ASDASD',
-    vendedor: 'Fabiana'
+    erp: 'SAP',
+    vendedor: 'Jéssica'
   },
 ];
 
@@ -123,7 +123,7 @@ export class OrganizationComponent implements OnInit {
       data => {
         swal({
           icon: "success",
-          text: "Organização salva com sucesso!",
+          text: "Empresa salva com sucesso!",
           timer: 1800,
           buttons: {
             buttons: false
