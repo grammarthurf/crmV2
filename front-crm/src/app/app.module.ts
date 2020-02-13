@@ -32,6 +32,8 @@ import { OrganizationComponent } from "./organization/organization.component";
 import { BusinessDetailComponent } from "./business-detail/business-detail.component";
 import { PersonComponent } from "./person/person.component";
 
+import { NgxMaskModule } from 'ngx-mask'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +64,12 @@ import { PersonComponent } from "./person/person.component";
     MatDividerModule,
     MatSortModule,
     HttpClientModule,
+<<<<<<< HEAD
     FormsModule
+=======
+    FormsModule,
+    NgxMaskModule.forRoot()
+>>>>>>> 0d6d0794c312e241d7a587e064e8e82877891c43
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
