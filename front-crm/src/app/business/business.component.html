@@ -36,7 +36,6 @@
                 <label for="exampleFormControlSelect2">Produto</label>
                 <select [(ngModel)]="ticket.produto" multiple class="form-control" id="exampleFormControlSelect2">
                   <option *ngFor="let prod of produtosapi" value="{{prod.id}}">{{prod.nome}}</option>
-
                 </select>
               </div>
             </div>
@@ -45,7 +44,7 @@
               <div class="form-group">
                 <label for="exampleInputEmail1">Valor Estimado</label>
                 <input [(ngModel)]="ticket.valorestimado" type="number" class="form-control" id="value"
-                  aria-describedby="emailHelp" placeholder="Valor" />
+                  aria-describedby="emailHelp" placeholder="Valor"/>
               </div>
 
               <div class="form-group">
@@ -53,9 +52,9 @@
                 <input [(ngModel)]="ticket.termometro" type="range" class="form-control-range" id="thermometro" value="1"
                   step="49" />
                 <div style="display: flex;">
-                  <span>Frio</span>
-                  <span>Morno</span>
-                  <span>Quente</span>
+                  <span>Ruim</span>
+                  <span>Médio</span>
+                  <span>Ótimo</span>
                 </div>
               </div>
               
