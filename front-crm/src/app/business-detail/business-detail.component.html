@@ -1,39 +1,137 @@
 <div class="main-div">
-  <div class="col-12 div-top row">
-    <div class="col-9">
-      <h2 class="font-26 bold"> Sull OEE </h2>
-      <div class="flex">
-        <img src="../../assets/moeda.png" />
+  <div class="col-12 div-top row" style="height: 300px; border-radius: 10px; border-style: solid; border-color: rgb(226, 226, 226); border-width: 1px;">
+    <div class="col-10">
+      <div class="col-10 row">
+        <h2 class="font-26 bold"> Sull OEE </h2> 
+        <mat-icon style=" margin-left: 5px;">create</mat-icon>
+      </div>
+      <div class="flex" style="padding: 0;">
+        <img src="../../assets/moeda.png" style="width: 2%; height: 2%;"/>
         <p class="bold"> R$ 30.000</p>
-        <img src="../../assets/contato.png" />
+        <img src="../../assets/contato.png" style="width: 2%; height: 2%;"/>
         <p> Eduardo Souza </p>
-        <img src="../../assets/empresa.png" />
+        <img src="../../assets/empresa.png" style="width: 2%; height: 2%;"/>
         <p> Sull Automação </p>
-        <img src="../../assets/termometro.png" />
-        <div class="form-group">
-          <input type="range" class="form-control-range" id="thermometro" value="1" step="49" />
+        <img src="../../assets/termometro.png" style="width: 2%; height: 2%;"/>
+        <p>Termômetro:</p>
+        <div style="margin-top: 5px;">
+          <input type="range"  id="thermometro" value="1" step="49" style="width: 150px;"/>
+          <div class=" row">
+            <p class="ptherm">Frio</p>
+            <p class="ptherm2">Morno</p>
+            <p class="ptherm">Quente</p>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-3">
-      <div style="float: right">
-        <h4> Vendedor </h4>
-        <h3> Fabiana </h3>
-        <p> Criado em 31/01/2020 </p>
+    <div class="col-2">
+      <div style="float: right; text-align: right; margin-top: 10px;">
+        <p style="font-size: 15px;"> Vendedor </p>
+        <p style="font-size: 20px;"> Fabiana </p>
+        <p style="font-size: 12px;"> Criado em 31/01/2020 </p>
       </div>
     </div>
-    <div class="col-12">
-      <!-- BARRA DE PROGRESSO -->
+
+    <!-- BARRA DE PROGRESSO -->
+    <div class="col-12 flex md-stepper-horizontal green orange">
+      <div class="md-step active">
+        <div class="md-step-circle "> <mat-icon> done </mat-icon> </div>
+        <div class="md-step-title">Prospecção</div>
+        <div class="md-step-optional">10/02/2020</div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step active">
+        <div class="md-step-circle "> <mat-icon> done </mat-icon></div>
+        <div class="md-step-title">Contatado</div>
+        <div class="md-step-optional">10/02/2020</div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step process">
+        <div class="md-step-circle "><mat-icon> priority_high </mat-icon></div>
+        <div class="md-step-title">Cliente Potencial</div>
+        <div class="md-step-optional">Em processo</div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step">
+        <div class="md-step-circle"><mat-icon>  </mat-icon></div>
+        <div class="md-step-title">Demo Agendada</div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step">
+        <div class="md-step-circle"><mat-icon>  </mat-icon></div>
+        <div class="md-step-title">Proposta</div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step">
+        <div class="md-step-circle"><mat-icon>  </mat-icon></div>
+        <div class="md-step-title">Negociações Iniciais</div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+        <div class="md-step">
+          <div class="md-step-circle"><mat-icon>  </mat-icon></div>
+          <div class="md-step-title">Cliente</div>
+          <div class="md-step-bar-left"></div>
+        </div>
+      </div>    
     </div>
 
-  </div>
+      <div class="col-4 div-left" style="border-radius: 10px; border-style: solid; border-color: rgb(226, 226, 226); border-width: 1px;">
+        <div  class=" col-12 row " >
+          <img src="../../assets/empresa.png" style="width: 20px; height: 20px; margin-right: 10px; margin-left: 15px;"/>
+          <h2 class="font-26 bold" style="margin-top: 5px;">Empresa</h2>
+          <mat-icon style="margin-left: auto; margin-top: 10px;">create</mat-icon>
+        </div>
 
-  <div class="col-12 flex">
-    <div class="col-4 div-left">
-      <p>Teste</p>
-    </div>
-    <div class="col-8 div-right">
-      <p>Teste</p>
-    </div>
-  </div>
-</div>
+        <div class=" col-10 ">
+          <h4 style="margin-top: 10px; font-size: 20px; font-weight: bold; margin-left: 15px;"> Sull Automação e Tecnologia</h4>
+          <div style="margin-top: 10px;">
+            <p style="font-size: 15px; margin-left: 15px;"> <b>Endereço:</b> Rua Austrália, 211 - Nações - Timbó/SC CEP: 89120000</p>
+          </div>
+          <div style="margin-top: 10px;">
+            <p style="font-size: 15px; margin-left: 15px;"> <b>ERP:</b> TOTVS </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-8 div-right" style="border-radius: 10px; border-style: solid; border-color: rgb(226, 226, 226); border-width: 1px;">
+        <div class="col-12 row" style="margin-left: 0px;">
+          <button type="button" style="border: none; padding: 0px; border: 2px solid white; border-radius: 7px; height: 30px; margin-top: 8px; " class="col-4 btn1 btn-primary btn-block">Observações</button>
+          <button type="button" style="border: none; padding: 0px; border: 2px solid white; border-radius: 7px; height: 30px;" class="col-4 btn1 btn-primary btn-block">Atividades</button>
+          <button type="button" style="border: none; padding: 0px; border: 2px solid white; border-radius: 7px; height: 30px;" class="col-4 btn1 btn-primary btn-block">Anexos</button>
+        </div>  
+        <div class="col-12" style="margin-top: 10px;">
+          <textarea rows="5" class="col-12" style="border-radius: 7px; border: 1px solid rgb(207, 206, 206);"></textarea>
+          <button type="button" class="btn btn-success bold btn-sm" style="float: right;">Salvar</button>
+          <button type="button" class="btn btn-outline-secondary bold btn-sm" style="float: right; margin-right: 5px;">Cancelar</button>
+        </div>
+        <div class="col-12 row" style="margin-top: 10px;">
+          <button type="submit" class="col-4 btn1 btn-primary btn-block" style="border: none; margin-left: 30%; height: 30px; padding: 0px; margin-top: 10px; border-radius: 10px;"> Histórico </button>
+        </div>
+      </div>
+    
+      <div class="col-4 div-left " style="border-radius: 10px; border-style: solid; border-color: rgb(226, 226, 226); border-width: 1px;">
+        <div class="col-12 row">
+          <img src="../../assets/contato.png" style="width: 20px; height: 20px; margin-right: 10px; margin-left: 15px;"/>
+          <h2 class="font-26 bold" style="margin-top: 5px;">Contato</h2>
+          <mat-icon style="margin-left: auto; margin-top: 10px;">create</mat-icon>
+        </div>
+
+        <div class=" col-10 ">
+          <h4 style="margin-top: 10px; font-size: 20px; font-weight: bold; margin-left: 15px;"> Eduardo Souza </h4>
+          <div style="margin-top: 10px;">
+            <p style="font-size: 15px; margin-left: 15px;"> <b>Telefone:</b> (47)99945-6214 </p>
+          </div>
+          <div style="margin-top: 10px;">
+            <p style="font-size: 15px; margin-left: 15px;"> <b>Email:</b> eduardo@sull.com </p>
+          </div>
+          <div style="margin-top: 10px;">
+            <p style="font-size: 15px; margin-left: 15px;"> <b>Skype:</b> eduardo.sull </p>
+          </div>
+        </div>
+      </div>
+</div>  
