@@ -18,6 +18,7 @@ class ClienteSerializer(serializers.ModelSerializer):
         model = Cliente
         fields = ['id', 'nome', 'tipo', 'fone',
                   'celular', 'email', 'skype', 'org']
+        depth = 1
 
 
 class TicketSerializer(serializers.ModelSerializer):
@@ -57,4 +58,6 @@ class VendedorSerializer(serializers.ModelSerializer):
 class AtividadeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Atividade
+        cliente = ClienteSerializer(many=False, read_only=True)
         fields = ['id', 'assunto', 'tipo', 'data', 'ticket', 'cliente', 'org']
+        depth = 1

@@ -75,12 +75,12 @@ export class PersonComponent implements OnInit {
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  contato = { nome: '', tipo: '', fone: '', celular:'', email: '', skype: '', org: ''}
+  contato = { nome: '', tipo: '', fone: '', celular: '', email: '', skype: '', org: '' }
 
-  orgsapi:any;
+  orgsapi: any;
 
   // Lista de contatos:
-  contatosapi: MatTableDataSource <any>;
+  contatosapi: MatTableDataSource<any>;
 
   erroContatos: any;
 
@@ -118,29 +118,41 @@ export class PersonComponent implements OnInit {
     this.contatosapi.filter = filterValue.trim().toLowerCase();
   }
 
-  save(){
+  save() {
     console.log(this.contato);
 
-    this.crudService.saveNewCliente(this.contato).subscribe(
-      data => {
-        swal({
-          icon: "success",
-          text: "Contato salvo com sucesso!",
-          timer: 1800,
-          buttons: {
-            buttons: false
-          }
-        });
-        this.getterOrgs();
-        this.getterContatos();
-        console.log(data);
-      },
-      error => {
+    let name = this.contato.nome;
 
-        this.getterContatos();
-        console.error(error);
-      }
-    );
+    if (name === '') {
+      swal({
+        icon: "error",
+        text: "Nome não preenchido!",
+        timer: 1800,
+        buttons: {
+          buttons: false
+        }
+      });
+    } else {
+      this.crudService.saveNewCliente(this.contato).subscribe(
+        data => {
+          swal({
+            icon: "success",
+            text: "Contato salvo com sucesso!",
+            timer: 1800,
+            buttons: {
+              buttons: false
+            }
+          });
+          this.getterOrgs();
+          this.getterContatos();
+          console.log(data);
+        },
+        error => {
+          this.getterContatos();
+          console.error(error);
+        }
+      );
+    }
   }
 
   ngOnInit() {
