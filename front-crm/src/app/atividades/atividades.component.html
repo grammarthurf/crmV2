@@ -44,11 +44,11 @@
           <div class="col-12 row">
             <div class="col-8" style="padding: 0px;">
               <div class="col-12 row">
-                <div class="col-6">
+                <div class="col-6" >
                   <label for="Empresa">Empresa</label>
                   <input type="text" name="Empresa" class="form-control" id="empresa">
                 </div>
-                <div class="col-6">
+                <div class="col-6" style="padding: 0px;">
                   <label for="Contato">Contato</label>
                   <input type="text" name="Contato" class="form-control" id="contato">
                 </div>
@@ -57,60 +57,60 @@
                 <div class="col-12 row">
                   <p style="margin-top: 5px;"><b> Atividade: </b></p>
                   <div class="div-modal-atv">
-                    <button mat-icon-button>
+                    <button mat-icon-button (click)="atvchoose(1)">
                       <mat-icon class="icon-modal-atv">phone</mat-icon>
                     </button>
                   </div>
                   <div class="div-modal-atv">
-                    <button mat-icon-button>
+                    <button mat-icon-button (click)="atvchoose(2)">
                       <mat-icon class="icon-modal-atv">people</mat-icon>
                     </button>
                   </div>
                   <div class="div-modal-atv">
-                    <button mat-icon-button>
+                    <button mat-icon-button (click)="atvchoose(3)">
                       <mat-icon class="icon-modal-atv">business</mat-icon>
                     </button>
                   </div>
                   <div class="div-modal-atv">
-                    <button mat-icon-button>
+                    <button mat-icon-button (click)="atvchoose(4)">
                       <mat-icon class="icon-modal-atv">email</mat-icon>
                     </button>
                   </div>
                   <div class="div-modal-atv">
-                    <button mat-icon-button>
+                    <button mat-icon-button (click)="atvchoose(5)">
                       <mat-icon class="icon-modal-atv">watch_later</mat-icon>
                     </button>
                   </div>
                 </div>
-                <div class="col-12 row" style="margin-top: 20px;">
+                <div class="col-12 row" style="margin-top: 20px; padding: 0px 0px 0px 15px;">
                   <input type="text" disabled class="form-control" placeholder="Ligar">
                 </div>
                 <div class="col-12 row" style="margin-top: 20px; padding: 0px;">
                   <div class="col-4" >
                     <label for="">Início</label>
-                    <input type="text" class="form-control" placeholder="13/02/2020">
+                    <input type="text" class="form-control" placeholder="{{catchday()}}">
                   </div>
                   <div class="col-2" style="margin-top: 32px; padding: 0px;">
                     <input type="text" class="form-control" placeholder="14:00">
                   </div>
                   <div class="col-4">
                     <label for="">Fim</label>
-                    <input type="text" class="form-control" placeholder="19/02/2020">
+                    <input type="text" class="form-control" placeholder="{{catchtmrw()}}">
                   </div>
                   <div class="col-2" style="margin-top: 32px; padding: 0px;">
                     <input type="text" class="form-control" placeholder="14:00">
                   </div>
                 </div>
-                <div class="col-12 row" style="margin-top: 20px;">
+                <div class="col-12 row" style="margin-top: 20px; padding: 0px 0px 0px 15px;">
                   <label for="obs">Observações</label>
                   <textarea name="obs" id="obs" cols="50" rows="3" style="border: 1px solid rgb(206, 212, 218); border-radius: 5px;"></textarea>
                 </div>
                 <div class="col-12 row" style="margin-top: 20px; padding: 0px;">
                   <div class="col-6">
-                    <label for="negocios">Negócio</label>
+                    <label for="negocios" >Negócio</label>
                     <input type="text" name="negocios" class="form-control">
                   </div>
-                  <div class="col-6">
+                  <div class="col-6" style="padding: 0px;">
                     <label for="participantes">Participantes</label>
                     <input type="text" name="participantes" class="form-control">
                   </div>
@@ -119,8 +119,15 @@
             </div>
             
             <div class="col-4 ml-auto">
-              <div class="col-12 sp-calendar-scroll">
-                
+              <div class="col-12 row" style="margin-left: 15px; font-weight: bold; width: 82%; color: #317ae2; background: #deeafa;">
+                <label for="scrollbardif" style="margin-left: 30px; margin-top: 5px;"> {{catchday()}} </label>
+              </div>
+              <div class="col-12 scrollbardif" style="height: 490px; overflow: auto;">
+                <mwl-calendar-day-view
+                  [viewDate]="viewDate"
+                  [events]="events"
+                  [refresh]="refresh">
+                </mwl-calendar-day-view>
               </div>
             </div>
           </div>

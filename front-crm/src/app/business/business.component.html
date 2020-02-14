@@ -53,13 +53,8 @@
                   step="49" />
                 <div style="display: flex;">
                   <span>Ruim</span>
-<<<<<<< HEAD
-                  <span>Mediano</span>
-                  <span>Bom</span>
-=======
                   <span>Médio</span>
                   <span>Ótimo</span>
->>>>>>> 1787e224012406128c676ac9fcf6148fa65be6b3
                 </div>
               </div>
               
@@ -106,7 +101,7 @@
         <img src="../../assets/arrow.png" id="arrow" />
       </div>
 
-      <div class="leads" (click)="goTo(j.id)" *ngFor="let j of i.tickets">
+      <div class="leads" class="leads" cdkDrag *ngFor="let j of i.tickets"> <!-- (click)="goTo(j.id)" class="example-box" cdkDrag-->
         <div style="display: flex;">
           <p class="fz-15 bold limit-words">{{ j.titulo }}</p>
           <mat-icon *ngIf="(j.termometro=='1');" class="thermometro thermfrio">ac_unit</mat-icon>
