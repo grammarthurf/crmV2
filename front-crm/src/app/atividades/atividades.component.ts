@@ -6,119 +6,7 @@ import { CrudService } from "../services/crud.service";
 import { MatSort } from '@angular/material/sort';
 import swal from 'sweetalert';
 import { ɵAnimationGroupPlayer } from '@angular/animations';
-
-// export interface PeriodicElement {
-//   id: number;
-//   tipo: String;
-//   dataVenc: string;
-//   nomeContato: string;
-//   cliente: String;
-//   email: string;
-//   telefone: string;
-//   userResp: string;
-//   therm: string;
-// }
-
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {
-//     id: 1,
-//     tipo: 'Ligar',
-//     dataVenc: '12/02/2020',
-//     nomeContato: 'Maria Eduarda Silva',
-//     cliente: 'Vedois Tecnologia',
-//     email: 'vedois@vedois.com',
-//     telefone: '(47) 988457154',
-//     userResp: 'Maria Silva',
-//     therm: 'morno'  },
-//   {
-//     id: 2,
-//     tipo: 'Reunião',
-//     dataVenc: '11/12/2019',
-//     nomeContato: 'Maria Eduarda Silva',
-//     cliente: 'Vedois Tecnologia',
-//     email: 'vedois@vedois.com',
-//     telefone: '(47) 988457154',
-//     userResp: 'Maria Silva ',
-//     therm: 'quente'
-//   },
-//   {
-//     id: 3,
-//     tipo: 'Ligar',
-//     dataVenc: '12/10/2019',
-//     nomeContato: 'Maria Eduarda Silva',
-//     cliente: 'Vedois Tecnologia',
-//     email: 'vedois@vedois.com',
-//     telefone: '(47) 988457154',
-//     userResp: 'Maria Silva ',
-//     therm: 'frio'
-//   },
-//   {
-//     id: 4,
-//     tipo: 'Visita',
-//     dataVenc: '12/03/2020',
-//     nomeContato: 'Maria Eduarda Silva',
-//     cliente: 'Vedois Tecnologia',
-//     email: 'vedois@vedois.com',
-//     telefone: '(47) 988457154',
-//     userResp: 'Maria Silva ',
-//     therm: 'quente'
-//   },
-//   {
-//     id: 5,
-//     tipo: 'Email',
-//     dataVenc: '11/02/2020',
-//     nomeContato: 'Maria Eduarda Silva',
-//     cliente: 'Vedois Tecnologia',
-//     email: 'vedois@vedois.com',
-//     telefone: '(47) 988457154',
-//     userResp: 'Maria Silva ',
-//     therm: 'frio'
-//   },
-//   {
-//     id: 6,
-//     tipo: 'Ligar',
-//     dataVenc: '11/02/2020',
-//     nomeContato: 'Maria Eduarda Silva',
-//     cliente: 'Vedois Tecnologia',
-//     email: 'vedois@vedois.com',
-//     telefone: '(47) 988457154',
-//     userResp: 'Maria Silva ',
-//     therm: 'frio'
-//   },
-//   {
-//     id: 7,
-//     tipo: 'Reunião',
-//     dataVenc: '11/02/2020',
-//     nomeContato: 'Maria Eduarda Silva',
-//     cliente: 'Vedois Tecnologia',
-//     email: 'vedois@vedois.com',
-//     telefone: '(47) 988457154',
-//     userResp: 'Maria Silva ',
-//     therm: 'quente'
-//   },
-//   {
-//     id: 8,
-//     tipo: 'Visita',
-//     dataVenc: '12/02/2020',
-//     nomeContato: 'Maria Eduarda Silva',
-//     cliente: 'Vedois Tecnologia',
-//     email: 'vedois@vedois.com',
-//     telefone: '(47) 988457154',
-//     userResp: 'Maria Silva ',
-//     therm: 'quente'
-//   },
-//   {
-//     id: 9,
-//     tipo: 'Email',
-//     dataVenc: '12/02/2020',
-//     nomeContato: 'Maria Eduarda Silva',
-//     cliente: 'Vedois Tecnologia',
-//     email: 'vedois@vedois.com',
-//     telefone: '(47) 988457154',
-//     userResp: 'Maria Silva ',
-//     therm: 'frio'
-//   },
-// ];
+import { CalendarEvent, CalendarView } from 'angular-calendar';
 
 @Component({
   selector: "app-atividades",
@@ -128,19 +16,21 @@ import { ɵAnimationGroupPlayer } from '@angular/animations';
 export class AtividadesComponent implements OnInit {
   atividade = { tipo: "", data: '', assunto: '', cliente: '', org: '', negocio: '' };
 
-  
+  //CALENDARIO
+  view: CalendarView = CalendarView.Day;
+  viewDate: Date = new Date();
+  events: CalendarEvent[] = [];
+
   // Lista Ticket
   negociosapi:any;
 
   // Lista de atividades:
 
   erroActivity: any;
-
   clientesapi:any;
 
-    // Lista de Orgs:
-    orsgapi: any;
-
+  // Lista de Orgs:
+  orsgapi: any;
 
   displayedColumns: string[] = ['select', 'assunto', 'data', 'cliente', 'org',
    'ticket', 'userResp', 'columnEdit', 'columnDelete'];
@@ -172,7 +62,6 @@ export class AtividadesComponent implements OnInit {
       }
     );
   }
-
 
   getterActivity() {
    this.crudService.getAtividade().subscribe(
@@ -244,6 +133,8 @@ export class AtividadesComponent implements OnInit {
     );
   }
 
+  
+
   applyFilter(filterValue: string) {
     this.activityapi.filter = filterValue.trim().toLowerCase();
   }
@@ -298,6 +189,26 @@ export class AtividadesComponent implements OnInit {
     this.activityapi.filter = "".trim().toLowerCase();
   }
 
+  catchday(){
+    var dNow = new Date();
+    var periodo = dNow.getDate() + '/0' + (dNow.getMonth()+1) + '/' + dNow.getFullYear();
+    return periodo;
+  }
+
+  catchtmrw(){
+    var dNow = new Date();
+    var periodo = (dNow.getDate()+1) + '/0' + (dNow.getMonth()+1) + '/' + dNow.getFullYear();
+    return periodo;
+  }
+
+  atvchoose(id:number){
+    if(id == 1){
+      return "Ligar";
+    }
+    
+  }
+
+
   // removeSelectedRows() {
   //   this.selection.selected.forEach(item => {
   //     let index: number = this.data.findIndex(d => d === item);
@@ -312,8 +223,7 @@ export class AtividadesComponent implements OnInit {
   // }
 
   ngOnInit() {
-    // this.activityapi.sort = this.sort;
-
+   // this.activityapi.sort = this.sort;
   }
 
   deleteItem() {
