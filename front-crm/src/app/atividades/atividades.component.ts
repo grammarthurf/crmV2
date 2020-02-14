@@ -7,8 +7,8 @@ import { MatSort } from '@angular/material/sort';
 import swal from 'sweetalert';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 
-export interface AtvData {
-  tipo: string;
+export interface PeriodicElement {
+  id: string;
   data: string;
   assunto: string;
   cliente: string;
@@ -16,14 +16,17 @@ export interface AtvData {
   negocio: string;
 }
 
+const atividade: PeriodicElement[] = [
+  {id: "", data: '', assunto: '', cliente: 'H', org: '', negocio: ''},
+];
+
 @Component({
   selector: "app-atividades",
   templateUrl: "./atividades.component.html",
   styleUrls: ["./atividades.component.css"]
 })
 export class AtividadesComponent implements OnInit {
-  atividade = { tipo: "", data: '', assunto: '', cliente: '', org: '', negocio: '' };
-
+  
   //CALENDARIO
   view: CalendarView = CalendarView.Day;
   viewDate: Date = new Date();
@@ -42,97 +45,88 @@ export class AtividadesComponent implements OnInit {
   displayedColumns: string[] = ['select', 'assunto', 'data', 'cliente', 'org',
    'ticket', 'userResp', 'columnEdit', 'columnDelete'];
 
-  activityapi: MatTableDataSource<AtvData>;
+  dataSource = new MatTableDataSource(atividade);
   selection = new SelectionModel<Element>(true, []);
-
-  constructor(private router: Router, private crudService: CrudService) {
-   this.getterActivity();
-
-  }
-  //data = Object.assign(this.activityapi);
-  //dataSource = new MatTableDataSource<Element>(this.data);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  //ATIVIDADE
-  getterActivity() {
-   this.crudService.getAtividade().subscribe(
-     data => {
-       this.activityapi = data;
-       console.log('activity',this.activityapi);
+  constructor(private router: Router, public crudService: CrudService) {
+    this.getterActivity();
+  }
+
+  getterActivity(){
+    this.crudService.getAtividade().subscribe(
+      data => {
+       //this.dataSource = data;
+       this.dataSource = new MatTableDataSource(data);
      },
-     error => {
+      error => {
        this.erroActivity = error;
        console.error(error);
      }
    );
   }
 
-
-  save() {
-    console.log(this.atividade);
-
-    this.crudService.saveNewAtividade(this.atividade).subscribe(
-      data => {
-        swal({
-          icon: "success",
-          text: "Atividade salva com sucesso!",
-          timer: 1800,
-          buttons: {
-            buttons: false
-          }
-        });
-        this.getterActivity();
-        console.log(data);
-      },
-      error => {
-        swal({
-          icon: "error",
-          text: "Falhou!",
-          timer: 1800,
-          buttons: {
-            buttons: false
-          }
-        });
-        this.getterActivity();
-        console.error(error);
-      }
-    );
+  applyFilter(value: string) {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
-  filtrolig() {
-    this.activityapi.filter = "Ligação".trim().toLowerCase();
-    console.log(this.activityapi.filter);
-  }
-
-  filtroreun(event: Event) {
-    this.activityapi.filter = "Reunião".trim().toLowerCase();
-    console.log(this.activityapi.filter);
-  }
-
-  filtrovisit(){
-    this.activityapi.filter = "Visita".trim().toLowerCase();
-    console.log(this.activityapi.filter);
-  }
-
-  filtroemail() {
-    this.activityapi.filter = "Email".trim().toLowerCase();
-    console.log(this.activityapi.filter);
-  }
-
-  filtroTarefa(){
-    this.activityapi.filter = "Tarefa".trim().toLowerCase();
-    console.log(this.activityapi.filter);
-  }
-
-  filtrovenc() {
-    var dNow = new Date();
-    var localdate =  '/' + (dNow.getFullYear()-1);
-    this.activityapi.filter = localdate.trim().toLowerCase();
+  ngOnInit() {
+    
   }
 
   dblclic() {
-    this.activityapi.filter = "".trim().toLowerCase();
+   this.dataSource .filter = "".trim().toLowerCase();
+  }
+
+  filtroLiga(){
+    this.dataSource.filter = "liga".trim().toLowerCase();
+  }
+
+  filtroReuniao(){
+    this.dataSource.filter = "reunião".trim().toLowerCase();
+  }
+
+  filtroVisita(){
+    this.dataSource.filter = "visita".trim().toLowerCase();
+  }
+
+  filtroEmail(){
+    this.dataSource.filter = "email".trim().toLowerCase();
+  }
+
+  filtroTarefa(){
+    this.dataSource.filter = "Tarefa".trim().toLowerCase();
+  }
+
+  filtroday(){
+    var dNow = new Date();
+    var periodo = dNow.getDate() + '/0' + (dNow.getMonth()+1) + '/' + dNow.getFullYear();
+    this.dataSource.filter = periodo.trim().toLowerCase();
+  }
+
+  filtrotmrw(){
+    var dNow = new Date();
+    var periodo = (dNow.getDate()+1) + '/0' + (dNow.getMonth()+1) + '/' + dNow.getFullYear();
+    this.dataSource.filter = periodo.trim().toLowerCase();
+  }
+
+  filtromes(){
+    var dNow = new Date();
+    var periodo = '/0' + (dNow.getMonth()+1) + '/' + dNow.getFullYear();
+    this.dataSource.filter = periodo.trim().toLowerCase();
+  }
+
+  filtroproxmes(){
+    var dNow = new Date();
+    var periodo = '/0' + (dNow.getMonth()+2) + '/' + dNow.getFullYear();
+    this.dataSource.filter = periodo.trim().toLowerCase();
+  }
+
+  filtrovenc(){
+    var dNow = new Date();
+    var periodo = '/' + (dNow.getFullYear()-1);
+    this.dataSource.filter = periodo.trim().toLowerCase();
   }
 
   catchday(){
@@ -147,22 +141,7 @@ export class AtividadesComponent implements OnInit {
     return periodo;
   }
 
-  atvchoose(id:number){
-    if(id == 1){
-      return "Ligar";
-    }
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.activityapi.filter = filterValue.trim().toLowerCase();
-  console.log("oi brenda" + this.activityapi.filter);
-  }
-
-  ngOnInit() {
-   // this.activityapi.sort = this.sort;
-  }
-
+  
   deleteItem() {
    swal({
      icon: "error",
