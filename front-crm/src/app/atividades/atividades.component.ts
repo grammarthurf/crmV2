@@ -5,8 +5,16 @@ import { Router } from '@angular/router';
 import { CrudService } from "../services/crud.service";
 import { MatSort } from '@angular/material/sort';
 import swal from 'sweetalert';
-import { ɵAnimationGroupPlayer } from '@angular/animations';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
+
+export interface AtvData {
+  tipo: string;
+  data: string;
+  assunto: string;
+  cliente: string;
+  org: string;
+  negocio: string;
+}
 
 @Component({
   selector: "app-atividades",
@@ -23,46 +31,30 @@ export class AtividadesComponent implements OnInit {
 
   // Lista Ticket
   negociosapi:any;
-
-  // Lista de atividades:
-
-  erroActivity: any;
-  clientesapi:any;
-
-  // Lista de Orgs:
+ // Lista de Orgs:
   orsgapi: any;
-
+  // Lista de atividades:
+  erroActivity: any;
+  
+  //Lista de Clientes:
+  clientesapi:any;
+  
   displayedColumns: string[] = ['select', 'assunto', 'data', 'cliente', 'org',
    'ticket', 'userResp', 'columnEdit', 'columnDelete'];
-  // data = Object.assign(ELEMENT_DATA);
-  // dataSource = new MatTableDataSource<Element>(this.data);
+
+  activityapi: MatTableDataSource<AtvData>;
   selection = new SelectionModel<Element>(true, []);
 
   constructor(private router: Router, private crudService: CrudService) {
    this.getterActivity();
-   this.getterCliente();
-   this.getterOrgs();
-   this.getterTickets();
-  }
 
-  activityapi: MatTableDataSource<any>;
+  }
+  //data = Object.assign(this.activityapi);
+  //dataSource = new MatTableDataSource<Element>(this.data);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-
-  getterTickets() {
-    this.crudService.getTickets().subscribe(
-      data => {
-        this.negociosapi = data;
-        console.log(data);
-      },
-      error => {
-
-        console.error(error);
-      }
-    );
-  }
-
+  //ATIVIDADE
   getterActivity() {
    this.crudService.getAtividade().subscribe(
      data => {
@@ -74,31 +66,6 @@ export class AtividadesComponent implements OnInit {
        console.error(error);
      }
    );
-  }
-
-  getterCliente() {
-    this.crudService.getClientes().subscribe(
-      data => {
-        this.clientesapi = data;
-        console.log(data);
-      },
-      error => {
-        console.error(error);
-
-      }
-    );
-  }
-
-  getterOrgs() {
-    this.crudService.getOrgs().subscribe(
-      data => {
-        this.orsgapi = data;
-        console.log(data);
-      },
-      error => {
-
-      }
-    );
   }
 
 
@@ -133,50 +100,29 @@ export class AtividadesComponent implements OnInit {
     );
   }
 
-  
-
-  applyFilter(filterValue: string) {
-    this.activityapi.filter = filterValue.trim().toLowerCase();
-  }
-
   filtrolig() {
-    this.activityapi.filter = "ligar".trim().toLowerCase();
+    this.activityapi.filter = "Ligação".trim().toLowerCase();
+    console.log(this.activityapi.filter);
   }
 
-  filtroreun() {
-    this.activityapi.filter = "reunião".trim().toLowerCase();
+  filtroreun(event: Event) {
+    this.activityapi.filter = "Reunião".trim().toLowerCase();
+    console.log(this.activityapi.filter);
   }
 
-  filtrovisit() {
-    this.activityapi.filter = "visita".trim().toLowerCase();
+  filtrovisit(){
+    this.activityapi.filter = "Visita".trim().toLowerCase();
+    console.log(this.activityapi.filter);
   }
 
   filtroemail() {
-    this.activityapi.filter = "email".trim().toLowerCase();
+    this.activityapi.filter = "Email".trim().toLowerCase();
+    console.log(this.activityapi.filter);
   }
 
-  filtroTarefa() {
-    this.activityapi.filter = "tarefa".trim().toLowerCase();
-  }
-
-  filtrohj() {
-    var dNow = new Date();
-    this.activityapi.filter = (dNow.getDate() + '/0' + (dNow.getMonth()+1) + '/' + dNow.getFullYear()).trim().toLowerCase();
-  }
-
-  filtroamanha() {
-    var dNow = new Date();
-    this.activityapi.filter = ((dNow.getDate()+1) + '/0' + (dNow.getMonth()+1) + '/' + dNow.getFullYear()).trim().toLowerCase();
-  }
-
-  filtromes() {
-    var dNow = new Date();
-    this.activityapi.filter = ((dNow.getMonth()+1) + '/' + dNow.getFullYear()).trim().toLowerCase();
-  }
-
-  filtroproxmes() {
-    var dNow = new Date();
-    this.activityapi.filter = ((dNow.getMonth()+2) + '/' + dNow.getFullYear()).trim().toLowerCase();
+  filtroTarefa(){
+    this.activityapi.filter = "Tarefa".trim().toLowerCase();
+    console.log(this.activityapi.filter);
   }
 
   filtrovenc() {
@@ -205,27 +151,16 @@ export class AtividadesComponent implements OnInit {
     if(id == 1){
       return "Ligar";
     }
-    
   }
 
-
-  // removeSelectedRows() {
-  //   this.selection.selected.forEach(item => {
-  //     let index: number = this.data.findIndex(d => d === item);
-  //     this.data.splice(index, 1);
-  //     this.activityapi = new MatTableDataSource<Element>(this.data);
-  //   });
-  //   this.selection = new SelectionModel<Element>(true, []);
-  // }
-
-  // removechama() {
-  //   this.removeSelectedRows();
-  // }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.activityapi.filter = filterValue.trim().toLowerCase();
+  console.log("oi brenda" + this.activityapi.filter);
+  }
 
   ngOnInit() {
-   // this.activityapi.sort = this.sort;
-
-   
+   this.activityapi.sort = this.sort;
   }
 
   deleteItem() {

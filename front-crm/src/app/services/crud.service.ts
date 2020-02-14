@@ -56,8 +56,6 @@ export class CrudService {
     });
   }
 
-
-
   // POST API
 
   public saveNewTicket(ticket): Observable<any> {
