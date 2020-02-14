@@ -84,7 +84,7 @@ import swal from 'sweetalert';
   styleUrls: ["./organization.component.css"]
 })
 export class OrganizationComponent implements OnInit {
-  org = {razaosocial: '', nomefantasia: '', rua: '', bairro: '', cep: '', cidade: '', uf: '', erp: ''}
+  org = { razaosocial: '', nomefantasia: '', rua: '', bairro: '', cep: '', cidade: '', uf: '', erp: '' }
 
   // Lista orgs:
 
@@ -118,29 +118,42 @@ export class OrganizationComponent implements OnInit {
     this.orgapi.filter = filterValue.trim().toLowerCase();
   }
 
-  save(){
+  save() {
     console.log(this.org);
 
-    this.crudService.saveNewOrg(this.org).subscribe(
-      data => {
-        swal({
-          icon: "success",
-          text: "Empresa salva com sucesso!",
-          timer: 1800,
-          buttons: {
-            buttons: false
-          }
-        });
-        this.getterOrg();
+    let razao_s = this.org.razaosocial;
 
-        console.log(data);
-      },
-      error => {
+    if (razao_s === '') {
+      swal({
+        icon: "error",
+        text: "Razão Social não preenchida!",
+        timer: 1800,
+        buttons: {
+          buttons: false
+        }
+      });
+    } else {
+      this.crudService.saveNewOrg(this.org).subscribe(
+        data => {
+          swal({
+            icon: "success",
+            text: "Empresa salva com sucesso!",
+            timer: 1800,
+            buttons: {
+              buttons: false
+            }
+          });
+          this.getterOrg();
 
-        this.getterOrg();
-        console.error(error);
-      }
-    );
+          console.log(data);
+        },
+        error => {
+
+          this.getterOrg();
+          console.error(error);
+        }
+      );
+    }
   }
 
   ngOnInit() {

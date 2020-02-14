@@ -81,8 +81,8 @@ export class ProductsComponent implements OnInit {
       data => {
         produtosapi = data;
         this.proddata = data;
-        console.log('produtoslog',produtosapi);
-        console.log('proddata',produtosapi);
+        console.log('produtoslog', produtosapi);
+        console.log('proddata', produtosapi);
       },
       error => {
         this.erroProdutos = error;
@@ -96,25 +96,39 @@ export class ProductsComponent implements OnInit {
   }
 
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   save() {
-    this.crudService.saveNewProduto(this.produto).subscribe(
-      data => {
-        swal({
-          icon: "success",
-          text: "Produto salvo com sucesso!",
-          timer: 1800,
-          buttons: {
-            buttons: false
-          }
-        });
-        console.log(data);
-      },
-      error => {
-        console.error(error);
-      }
-    );
+    let descricao = this.produto.nome;
+
+    if (descricao === '') {
+      swal({
+        icon: "error",
+        text: "Descrição não preenchida!",
+        timer: 1800,
+        buttons: {
+          buttons: false
+        }
+      });
+    } else {
+      this.crudService.saveNewProduto(this.produto).subscribe(
+        data => {
+          swal({
+            icon: "success",
+            text: "Produto salvo com sucesso!",
+            timer: 1800,
+            buttons: {
+              buttons: false
+            }
+          });
+          console.log(data);
+          this.getterProdutos();
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }
   }
 
   deleteItem() {
