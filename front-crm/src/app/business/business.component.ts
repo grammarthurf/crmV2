@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { CrudService } from "../services/crud.service";
 import { Router } from "@angular/router";
 import swal from 'sweetalert';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: "app-business",
@@ -9,8 +10,32 @@ import swal from 'sweetalert';
   styleUrls: ["./business.component.css"]
 })
 export class BusinessComponent implements OnInit {
+
+  todo = [
+    'Get to work',
+    'Pick up groceries',
+    'Go home',
+    'Fall asleep'
+  ];
+
+  done = [
+    'Get up',
+    'Brush teeth',
+    'Take a shower',
+    'Check e-mail',
+    'Walk dog'
+  ];
+
+  tickets1: any = [];
+  tickets3: any = [];
+  tickets4: any = [];
+  tickets5: any = [];
+  tickets6: any = [];
+  tickets7: any = [];
+  tickets8: any = [];
+
   //Lista de Clientes
-  clientesapi:any;
+  clientesapi: any;
 
   //Lista de Produtos
   produtosapi: any;
@@ -39,7 +64,13 @@ export class BusinessComponent implements OnInit {
     this.getterOrgs();
     this.getterProd();
     this.getterCliente();
+
+
+
   }
+
+
+
 
   getterCliente() {
     this.crudService.getClientes().subscribe(
@@ -106,7 +137,41 @@ export class BusinessComponent implements OnInit {
     this.crudService.getTickets().subscribe(
       data => {
         this.ticketsapi = data;
-        console.log(data);
+        console.log('data', data);
+        data.forEach(e => {
+
+
+          switch (e.estagio.id) {
+            case 1:
+
+
+              this.tickets1.push(e);
+              break;
+            case 3:
+              this.tickets3.push(e);
+              break;
+            case 4:
+              this.tickets4.push(e);
+              break;
+            case 5:
+              this.tickets5.push(e);
+              break;
+            case 6:
+              this.tickets6.push(e);
+              break;
+            case 7:
+              this.tickets7.push(e);
+              break;
+            case 8:
+              this.tickets8.push(e);
+              break;
+
+            default:
+              break;
+          }
+        });
+
+
       },
       error => {
         this.erroTicket = error;
@@ -114,6 +179,8 @@ export class BusinessComponent implements OnInit {
       }
     );
   }
+
+
 
   save() {
     console.log(this.ticket);
@@ -124,20 +191,20 @@ export class BusinessComponent implements OnInit {
           icon: "success",
           text: "Produto salvo com sucesso!",
           timer: 1800,
-          buttons: { 
+          buttons: {
             buttons: false
           }
         });
         this.getterEstagios();
         this.getterTickets();
-        console.log(data);
+
       },
       error => {
         swal({
           icon: "success",
           text: "Produto salvo com sucesso!",
           timer: 1800,
-          buttons: { 
+          buttons: {
             buttons: false
           }
         });
@@ -150,6 +217,25 @@ export class BusinessComponent implements OnInit {
 
   goTo(id) {
     this.router.navigate([`/business-detail/${id}`]);
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    console.log(event.previousContainer);
+    console.log(event.container);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      console.log(event.previousContainer);
+      console.log(event.container);
+      console.log(this.todo);
+      console.log(this.done);
+    } else {
+      console.log(this.todo);
+      console.log(this.done);
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
 
   ngOnInit() { }
