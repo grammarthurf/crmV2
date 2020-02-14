@@ -184,35 +184,58 @@ export class BusinessComponent implements OnInit {
 
   save() {
     console.log(this.ticket);
+    let title = this.ticket.titulo;
+    let stage = this.ticket.estagio;
 
-    this.crudService.saveNewTicket(this.ticket).subscribe(
-      data => {
-        swal({
-          icon: "success",
-          text: "Produto salvo com sucesso!",
-          timer: 1800,
-          buttons: {
-            buttons: false
-          }
-        });
-        this.getterEstagios();
-        this.getterTickets();
-
-      },
-      error => {
-        swal({
-          icon: "success",
-          text: "Produto salvo com sucesso!",
-          timer: 1800,
-          buttons: {
-            buttons: false
-          }
-        });
-        this.getterEstagios();
-        this.getterTickets();
-        console.error(error);
-      }
-    );
+    if (title === '' && stage === '') {
+      swal({
+        icon: "error",
+        text: "Título e Estágio não preenchido!",
+        timer: 1800,
+        buttons: {
+          buttons: false
+        }
+      });
+    } else if (stage === '') {
+      swal({
+        icon: "error",
+        text: "Estágio não preenchido!",
+        timer: 1800,
+        buttons: {
+          buttons: false
+        }
+      });
+    } else if (title === '') {
+      swal({
+        icon: "error",
+        text: "Título não preenchido!",
+        timer: 1800,
+        buttons: {
+          buttons: false
+        }
+      });
+    } else {
+      this.crudService.saveNewTicket(this.ticket).subscribe(
+        data => {
+          swal({
+            icon: "success",
+            text: "Produto salvo com sucesso!",
+            timer: 1800,
+            buttons: {
+              buttons: false
+            }
+          });
+          this.getterEstagios();
+          this.getterTickets();
+          console.log(data);
+        },
+        error => {
+          this.getterEstagios();
+          this.getterTickets();
+          console.error(error);
+        }
+      );
+    }
   }
 
   goTo(id) {
@@ -238,6 +261,8 @@ export class BusinessComponent implements OnInit {
     }
   }
 
-  ngOnInit() { }
+
+  ngOnInit() {
+  }
 
 }

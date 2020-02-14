@@ -20,7 +20,7 @@
             <div class="form-group col-md-12">
               <label for="exampleInputEmail1">Título</label>
               <input [(ngModel)]="ticket.titulo" type="text" class="form-control" id="title"
-                aria-describedby="emailHelp" placeholder="Título" />
+                aria-describedby="emailHelp" placeholder="Título" required/>
             </div>
 
             <div class="col-md-6">
@@ -70,7 +70,7 @@
 
             <div class="form-group col-md-6">
               <label for="exampleFormControlSelect1">Estágio Inicio</label>
-              <select [(ngModel)]="ticket.estagio" class="form-control" id="exampleFormControlSelect1">
+              <select [(ngModel)]="ticket.estagio" class="form-control" id="exampleFormControlSelect1" required>
                 <option *ngFor="let est of estagiosapi" value="{{est.id}}">{{est.nome}}</option>
               </select>
             </div>
