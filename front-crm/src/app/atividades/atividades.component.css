@@ -71,6 +71,20 @@ mat-checkbox {
     margin: 10px 5px 0 15px;
 }
 
+.div-modal-atv{
+    width: 40px; 
+    height: 40px; 
+    background-color: rgb(98, 151, 189); 
+    color: white; 
+    border-radius: 50%;
+    margin-left: 26px;
+}
+
+.icon-modal-atv{
+    font-size: 20px; 
+    margin-left: 5px;
+}
+
 .mat-icon-button {
     border-radius: 0 !important;
 }
@@ -104,17 +118,17 @@ mat-checkbox {
     color: #3E3F47;
 }
 
-.thermquente {
-    color: #FF0000;
+.thermruim {
+    color: rgb(226, 58, 58);
     font-size: 13px;
 }
 
-.thermmorno {
-    color: #F3FF00;
+.thermmediano {
+    color: rgb(248, 255, 151);
     font-size: 13px;
 }
 
-.thermfrio {
-    color: #0083FF;
+.thermbom {
+    color: rgb(120, 172, 120);
     font-size: 13px;
 }

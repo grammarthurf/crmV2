@@ -1,3 +1,7 @@
+/* angular-cli file: src/styles.css */
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+
 * {
     margin: 0;
     padding: 0;
@@ -14,11 +18,12 @@ body {
     background-color: #F3F2F2;
 }
 
-html, body { 
+html, body {
     height: 100%;
 }
 
-body { 
-    margin: 0; 
-    font-family: "Maven Pro"; 
+body {
+    margin: 0;
+    font-family: "Maven Pro";
 }
+
