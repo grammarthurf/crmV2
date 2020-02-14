@@ -313,7 +313,6 @@ export class AtividadesComponent implements OnInit {
 
   ngOnInit() {
     // this.activityapi.sort = this.sort;
-
   }
 
   deleteItem() {
