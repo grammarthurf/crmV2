@@ -21,6 +21,13 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatSortModule } from "@angular/material/sort";
 
+//CALENDAR
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
+//DRAG AND DROP
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
 // COMPONENTS
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./navbar/navbar.component";
@@ -31,7 +38,6 @@ import { ProductsComponent } from "./products/products.component";
 import { OrganizationComponent } from "./organization/organization.component";
 import { BusinessDetailComponent } from "./business-detail/business-detail.component";
 import { PersonComponent } from "./person/person.component";
-
 import { NgxMaskModule } from 'ngx-mask'
 
 @NgModule({
@@ -65,7 +71,12 @@ import { NgxMaskModule } from 'ngx-mask'
     MatSortModule,
     HttpClientModule,
     FormsModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
+    DragDropModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
