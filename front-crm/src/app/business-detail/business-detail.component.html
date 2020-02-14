@@ -26,14 +26,20 @@
       </div>
     </div>
     <div class="col-2 row">
-      <button class="btn-win-lose btn-success">Ganho</button>
+      <button class="btn-win-lose btn-success" (click)="ganhou()" >Ganho</button>
       <button class="btn-win-lose btn-danger">Perdido</button>
     </div>
+    <lottie-animation-view
+    [options]="lottieConfig"
+    [width]="1500"
+    [height]="1600"
+    (animCreated)="handleAnimation($event)">
+</lottie-animation-view>
     <div class="col-1">
       <div style="float: right; text-align: right; margin-top: 10px;">
         <p style="font-size: 15px;"> Vendedor </p>
         <p style="font-size: 20px;"> {{business.vendedor}} </p>
-        <p style="font-size: 12px;" mask="9999-99-99"> Criado em {{business.created.datetime}} </p>
+        <p style="font-size: 12px;" mask="9999-99-99" *ngIf="(business.created)" > Criado em {{business.created.datetime}} </p>
       </div>
     </div>
 

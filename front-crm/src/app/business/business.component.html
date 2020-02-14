@@ -99,7 +99,7 @@
     <div class="example-container">
       <h2>Prospecção</h2>
       <div cdkDropList [cdkDropListData]="tickets1" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets1" cdkDrag>
+        <div class="leads" *ngFor="let item of tickets1" id="{{item.id}}" cdkDrag>
           <p>{{item.titulo}}</p>
           {{item.org.razaosocial}}
           {{item.valorestimado}}
@@ -110,7 +110,7 @@
     <div class="example-container">
       <h2>Contatado</h2>
       <div cdkDropList [cdkDropListData]="tickets3" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets3" cdkDrag>
+        <div class="leads" *ngFor="let item of tickets3" id="{{item.id}}" cdkDrag>
           <p>{{item.titulo}}</p>
           {{item.org.razaosocial}}
           {{item.valorestimado}}
@@ -121,7 +121,7 @@
     <div class="example-container">
       <h2>Cliente Potencial</h2>
       <div cdkDropList [cdkDropListData]="tickets4" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets4" cdkDrag>
+        <div class="leads" *ngFor="let item of tickets4" id="{{item.id}}" cdkDrag>
           <p>{{item.titulo}}</p>
           {{item.org.razaosocial}}
           {{item.valorestimado}}
@@ -133,7 +133,7 @@
     <div class="example-container">
       <h2>Demo Agendada</h2>
       <div cdkDropList [cdkDropListData]="tickets5" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets5" cdkDrag>
+        <div class="leads" *ngFor="let item of tickets5" id="{{item.id}}" cdkDrag>
           <p>{{item.titulo}}</p>
           {{item.org.razaosocial}}
           {{item.valorestimado}}
@@ -144,7 +144,7 @@
     <div class="example-container">
       <h2>Proposta</h2>
       <div cdkDropList [cdkDropListData]="tickets6" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets6" cdkDrag>
+        <div class="leads" *ngFor="let item of tickets6" id="{{item.id}}" cdkDrag>
           <p>{{item.titulo}}</p>
           {{item.org.razaosocial}}
           {{item.valorestimado}}
@@ -155,7 +155,7 @@
     <div class="example-container">
       <h2>Negociações Inic.</h2>
       <div cdkDropList [cdkDropListData]="tickets7" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets7" cdkDrag>
+        <div class="leads" *ngFor="let item of tickets7" id="{{item.id}}" cdkDrag>
           <p>{{item.titulo}}</p>
           {{item.org.razaosocial}}
           {{item.valorestimado}}
@@ -166,7 +166,7 @@
     <div class="example-container">
       <h2>Clientes</h2>
       <div cdkDropList [cdkDropListData]="tickets8" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets8" cdkDrag>
+        <div class="leads" *ngFor="let item of tickets8" id="{{item.id}}" cdkDrag>
           <p>{{item.titulo}}</p>
           {{item.org.razaosocial}}
           {{item.valorestimado}}
@@ -174,6 +174,13 @@
       </div>
     </div>
 
+              <lottie-animation-view
+                    [options]="lottieConfig"
+                    [width]="400"
+                    [height]="300"
+                    (animCreated)="handleAnimation($event)">
+
+              </lottie-animation-view>
 
 
 

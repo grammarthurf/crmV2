@@ -11,20 +11,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class BusinessComponent implements OnInit {
 
-  todo = [
-    'Get to work',
-    'Pick up groceries',
-    'Go home',
-    'Fall asleep'
-  ];
 
-  done = [
-    'Get up',
-    'Brush teeth',
-    'Take a shower',
-    'Check e-mail',
-    'Walk dog'
-  ];
 
   tickets1: any = [];
   tickets3: any = [];
@@ -57,6 +44,12 @@ export class BusinessComponent implements OnInit {
 
   ticket = { titulo: "", estagio: '', cliente: '', org: '', produto: '', valorestimado: '', termometro: '', vendedor: '', obs: '' };
 
+  // Lottie:
+
+  public lottieConfig: Object;
+  private anim: any;
+  private animationSpeed: number = 1;
+
   constructor(private crudService: CrudService, private router: Router) {
     this.getterEstagios();
     this.getterTickets();
@@ -65,9 +58,35 @@ export class BusinessComponent implements OnInit {
     this.getterProd();
     this.getterCliente();
 
+    this.lottieConfig = {
+      path: 'assets/soccerplayer.json',
+      renderer: 'canvas',
+      autoplay: false,
+      loop: false  };}
+
+    handleAnimation(anim: any) {
+      this.anim = anim;
+    }
+
+    stop() {
+      this.anim.stop();
+    }
+
+    play() {
+      this.anim.play();
+    }
+
+    pause() {
+      this.anim.pause();
+    }
+
+    setSpeed(speed: number) {
+      this.animationSpeed = speed;
+      this.anim.setSpeed(speed);
+    }
 
 
-  }
+
 
 
 
@@ -243,17 +262,22 @@ export class BusinessComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
+    console.log('EVENTO:', event);
+    if ( event.distance.x > 600) {
+      console.log('CHAMOU ARTHUR ');
+
+      this.play();
+    }
+
     console.log(event.previousContainer);
     console.log(event.container);
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
       console.log(event.previousContainer);
       console.log(event.container);
-      console.log(this.todo);
-      console.log(this.done);
+
     } else {
-      console.log(this.todo);
-      console.log(this.done);
+
       transferArrayItem(event.previousContainer.data,
         event.container.data,
         event.previousIndex,

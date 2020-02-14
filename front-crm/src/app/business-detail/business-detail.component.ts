@@ -10,12 +10,21 @@ import { ActivatedRoute } from "@angular/router";
 export class BusinessDetailComponent implements OnInit {
   id: any;
   business: any;
-  estagiosapi:any;
+  estagiosapi: any;
+
+  public lottieConfig: Object;
+  private anim: any;
 
   constructor(
     private route: ActivatedRoute,
     private crudService: CrudService
   ) {
+    this.lottieConfig = {
+      path: 'assets/congrats.json',
+      renderer: 'canvas',
+      autoplay: false,
+      loop: false
+  };
     this.getterEstagio()
   }
 
@@ -36,6 +45,26 @@ export class BusinessDetailComponent implements OnInit {
     );
   }
 
+  handleAnimation(anim: any) {
+    this.anim = anim;
+}
+
+stop() {
+    this.anim.stop();
+}
+
+play() {
+    this.anim.play();
+}
+
+pause() {
+    this.anim.pause();
+}
+
+  ganhou() {
+    this.play()
+  }
+
   getterEstagio() {
     this.crudService.getEstagios().subscribe(
       data => {
@@ -48,7 +77,7 @@ export class BusinessDetailComponent implements OnInit {
     );
   }
 
-  ticketstage(ticket){
+  ticketstage(ticket) {
 
 
   }

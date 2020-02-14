@@ -2,6 +2,7 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
+import { LottieAnimationViewModule } from 'ng-lottie';
 
 // ROUTES
 import { AppRoutingModule } from "./app-routing.module";
@@ -76,7 +77,8 @@ import { NgxMaskModule } from 'ngx-mask'
       provide: DateAdapter,
       useFactory: adapterFactory
     }),
-    DragDropModule
+    DragDropModule,
+    LottieAnimationViewModule.forRoot()
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
