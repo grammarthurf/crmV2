@@ -10,11 +10,14 @@ import { ActivatedRoute } from "@angular/router";
 export class BusinessDetailComponent implements OnInit {
   id: any;
   business: any;
+  estagiosapi:any;
 
   constructor(
     private route: ActivatedRoute,
     private crudService: CrudService
-  ) {}
+  ) {
+    this.getterEstagio()
+  }
 
   loadBusiness() {
     const id = this.route.snapshot.paramMap.get("id");
@@ -31,6 +34,23 @@ export class BusinessDetailComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  getterEstagio() {
+    this.crudService.getEstagios().subscribe(
+      data => {
+        this.estagiosapi = data;
+        console.log("id", data);
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  }
+
+  ticketstage(ticket){
+
+
   }
 
   ngOnInit() {

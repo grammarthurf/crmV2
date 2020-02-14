@@ -1,7 +1,7 @@
 
 from rest_framework import viewsets
 from .serializers import ClienteSerializer, EstagioSerializer, OrganizacaoSerializer, ProdutoSerializer, TicketSerializer, VendedorSerializer, AtividadeSerializer, UserSerializer
-from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade
+from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade, Created, Updated
 from django.core import serializers
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -84,7 +84,8 @@ class TicketViewSet(viewsets.ModelViewSet):
         
         print(data['titulo']);
         
-       
+        c = Created()
+        c.save()
         T = Ticket()
         T.titulo = data['titulo']
         T.estagio = Estagio.objects.get(id=int(data['estagio']))
@@ -93,6 +94,7 @@ class TicketViewSet(viewsets.ModelViewSet):
         T.valorestimado = data['valorestimado']
         T.termometro = data['termometro']
         T.obs = data['obs']
+        T.created = c
         T.save()
 
         produtos = data['produto']
