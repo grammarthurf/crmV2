@@ -77,10 +77,6 @@ pause() {
     );
   }
 
-  ticketstage(ticket) {
-
-
-  }
 
   ngOnInit() {
     this.loadBusiness();

@@ -26,7 +26,7 @@ const atividade: PeriodicElement[] = [
   styleUrls: ["./atividades.component.css"]
 })
 export class AtividadesComponent implements OnInit {
-  
+
   //CALENDARIO
   view: CalendarView = CalendarView.Day;
   viewDate: Date = new Date();
@@ -38,10 +38,10 @@ export class AtividadesComponent implements OnInit {
   orsgapi: any;
   // Lista de atividades:
   erroActivity: any;
-  
+
   //Lista de Clientes:
   clientesapi:any;
-  
+
   displayedColumns: string[] = ['select', 'assunto', 'data', 'cliente', 'org',
    'ticket', 'userResp', 'columnEdit', 'columnDelete'];
 
@@ -72,7 +72,7 @@ export class AtividadesComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
 
   dblclic() {
@@ -141,7 +141,7 @@ export class AtividadesComponent implements OnInit {
     return periodo;
   }
 
-  
+
   deleteItem() {
    swal({
      icon: "error",

@@ -103,10 +103,20 @@ class TicketViewSet(viewsets.ModelViewSet):
         
         T.save()
         print(data);
-        return JsonResponse({'message': 'Worked'})
-        
- 
+        return JsonResponse({'message': 'Saved'})
 
+
+        
+    def update(self, request, pk):
+      data = request.data
+      print(data);
+
+      T = Ticket.objects.get(id=data['id'])
+      T.estagio = Estagio.objects.get(id=data['estagio'])
+      T.save()
+
+      return JsonResponse({'message': 'Updated'})
+      
 
 
 class VendedorViewSet(viewsets.ModelViewSet):
