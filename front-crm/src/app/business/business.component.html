@@ -20,7 +20,7 @@
             <div class="form-group col-md-12">
               <label for="exampleInputEmail1">Título</label>
               <input [(ngModel)]="ticket.titulo" type="text" class="form-control" id="title"
-                aria-describedby="emailHelp" placeholder="Título" required/>
+                aria-describedby="emailHelp" placeholder="Título" required />
             </div>
 
             <div class="col-md-6">
@@ -97,92 +97,116 @@
   <div cdkDropListGroup class="nowrap">
 
     <div class="example-container">
-      <h2>Prospecção</h2>
+      <div class="tickets test">
+        <p class="align-title">Prospecção</p>
+        <img src="../../assets/arrow.png" />
+      </div>
+      
       <div cdkDropList [cdkDropListData]="tickets1" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets1" id="{{item.id}}" cdkDrag>
-          <p>{{item.titulo}}</p>
-          {{item.org.razaosocial}}
-          {{item.valorestimado}}
+          <p class="limit-words">{{item.titulo}}</p>
+          <p class="limit-words">{{item.org.razaosocial}}</p>
+          <p>{{item.valorestimado}}</p>
         </div>
       </div>
     </div>
 
     <div class="example-container">
-      <h2>Contatado</h2>
+      <div class="tickets test">
+        <p class="align-title">Contatado</p>
+        <img src="../../assets/arrow.png" />
+      </div>
+      
       <div cdkDropList [cdkDropListData]="tickets3" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets3" id="{{item.id}}" cdkDrag>
-          <p>{{item.titulo}}</p>
-          {{item.org.razaosocial}}
-          {{item.valorestimado}}
+          <p class="limit-words">{{item.titulo}}</p>
+          <p class="limit-words">{{item.org.razaosocial}}</p>
+          <p>{{item.valorestimado}}</p>
         </div>
       </div>
     </div>
 
     <div class="example-container">
-      <h2>Cliente Potencial</h2>
+      <div class="tickets test">
+        <p class="align-title">Cliente Potencial</p>
+        <img src="../../assets/arrow.png" />
+      </div>
+      
       <div cdkDropList [cdkDropListData]="tickets4" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets4" id="{{item.id}}" cdkDrag>
-          <p>{{item.titulo}}</p>
-          {{item.org.razaosocial}}
-          {{item.valorestimado}}
-
+          <p class="limit-words">{{item.titulo}}</p>
+          <p class="limit-words">{{item.org.razaosocial}}</p>
+          <p>{{item.valorestimado}}</p>
         </div>
       </div>
     </div>
 
     <div class="example-container">
-      <h2>Demo Agendada</h2>
+      <div class="tickets test">
+        <p class="align-title">Demo Agendada</p>
+        <img src="../../assets/arrow.png" />
+      </div>
+      
       <div cdkDropList [cdkDropListData]="tickets5" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets5" id="{{item.id}}" cdkDrag>
-          <p>{{item.titulo}}</p>
-          {{item.org.razaosocial}}
-          {{item.valorestimado}}
+          <p class="limit-words">{{item.titulo}}</p>
+          <p class="limit-words">{{item.org.razaosocial}}</p>
+          <p>{{item.valorestimado}}</p>
         </div>
       </div>
     </div>
 
     <div class="example-container">
-      <h2>Proposta</h2>
+      <div class="tickets test">
+        <p class="align-title">Proposta</p>
+        <img src="../../assets/arrow.png" />
+      </div>
+      
       <div cdkDropList [cdkDropListData]="tickets6" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets6" id="{{item.id}}" cdkDrag>
-          <p>{{item.titulo}}</p>
-          {{item.org.razaosocial}}
-          {{item.valorestimado}}
+          <p class="limit-words">{{item.titulo}}</p>
+          <p class="limit-words">{{item.org.razaosocial}}</p>
+          <p>{{item.valorestimado}}</p>
         </div>
       </div>
     </div>
 
     <div class="example-container">
-      <h2>Negociações Inic.</h2>
+      <div class="tickets test">
+        <p class="align-title">Negociações Inic.</p>
+        <img src="../../assets/arrow.png" />
+      </div>
+      
       <div cdkDropList [cdkDropListData]="tickets7" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets7" id="{{item.id}}" cdkDrag>
-          <p>{{item.titulo}}</p>
-          {{item.org.razaosocial}}
-          {{item.valorestimado}}
+          <p class="limit-words">{{item.titulo}}</p>
+          <p class="limit-words">{{item.org.razaosocial}}</p>
+          <p>{{item.valorestimado}}</p>
         </div>
       </div>
     </div>
 
     <div class="example-container">
-      <h2>Clientes</h2>
+      <div class="tickets test">
+        <p class="align-title">Clientes</p>
+        <img src="../../assets/arrow.png" />
+      </div>
+      
       <div cdkDropList [cdkDropListData]="tickets8" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets8" id="{{item.id}}" cdkDrag>
-          <p>{{item.titulo}}</p>
-          {{item.org.razaosocial}}
-          {{item.valorestimado}}
+          <p class="limit-words">{{item.titulo}}</p>
+          <p class="limit-words">{{item.org.razaosocial}}</p>
+          <p>{{item.valorestimado}}</p>
         </div>
       </div>
     </div>
 
-              <lottie-animation-view
-                    [options]="lottieConfig"
-                    [width]="400"
-                    [height]="300"
-                    (animCreated)="handleAnimation($event)">
+    <lottie-animation-view [options]="lottieConfig" [width]="250" [height]="250"
+      (animCreated)="handleAnimation($event)">
 
-              </lottie-animation-view>
+    </lottie-animation-view>
 
-
+  </div>
 
 
 
@@ -211,7 +235,7 @@
         <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
       </div>
     </div> -->
-  </div>
+
 
   <!-- <div class="row flex-nowrap mt-4">
 
