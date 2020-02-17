@@ -17,7 +17,7 @@
   <div (keyup)="applyFilter($event)" class="btn-group btn-group" role="group" aria-label="btngroup"
     style="float: right; margin: 20px 10px 3px;">
     <button type="button" class="btn btn-link" (click)="filtroday()">Hoje</button>
-    <button type="button" class="btn btn-link" (click)="filtroamanha()">Amanhã</button>
+    <button type="button" class="btn btn-link" (click)="filtrotmrw()">Amanhã</button>
     <button type="button" class="btn btn-link" (click)="filtromes()">Este mês</button>
     <button type="button" class="btn btn-link" (click)="filtroproxmes()">Próximo mês</button>
     <button type="button" class="btn btn-link" (click)="filtrovenc()">Vencido</button>
@@ -83,7 +83,7 @@
                   </div>
                 </div>
                 <div class="col-12 row" style="margin-top: 20px; padding: 0px 0px 0px 15px;">
-                  <input type="text" disabled class="form-control" placeholder="Ligar">
+                  <input type="text" disabled class="form-control" *ngIf="atvchoose()" placeholder="{{atvchoose(id)}}">
                 </div>
                 <div class="col-12 row" style="margin-top: 20px; padding: 0px;">
                   <div class="col-4" >
@@ -108,11 +108,15 @@
                 <div class="col-12 row" style="margin-top: 20px; padding: 0px;">
                   <div class="col-6">
                     <label for="negocios" >Negócio</label>
-                    <input type="text" name="negocios" class="form-control">
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option *ngFor="let item of atvapi">{{item.cliente.nome}}</option>
+                    </select>
                   </div>
                   <div class="col-6" style="padding: 0px;">
                     <label for="participantes">Participantes</label>
-                    <input type="text" name="participantes" class="form-control">
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option *ngFor="let item of atvapi">{{item.cliente.nome}}</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -126,9 +130,8 @@
                 <mwl-calendar-day-view
                   [viewDate]="viewDate"
                   [events]="events"
-                  [dayStartHour]="8"
-                  [dayEndHour]="18"
-                  [refresh]="refresh">
+                  [dayStartHour]="6"
+                  [dayEndHour]="23">
                 </mwl-calendar-day-view>
               </div>
             </div>
@@ -193,9 +196,11 @@
       <th mat-header-cell *matHeaderCellDef> Feito? </th>
 
       <mat-cell *matCellDef="let row">
-        <mat-checkbox  (change)="$event ? selection.toggle(row) : null"
-         data-toggle="modal" data-target="#abrircadastroatv">
-        </mat-checkbox>
+        <mat-checkbox   (change)="$event ? selection.toggle(row) : null"
+                        [checked]="removeSelectedRows()"
+                        data-toggle="modal"
+                        data-target="#abrircadastroatv">
+          </mat-checkbox>
       </mat-cell>
     </ng-container>
 

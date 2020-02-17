@@ -85,12 +85,6 @@ export class BusinessComponent implements OnInit {
       this.anim.setSpeed(speed);
     }
 
-
-
-
-
-
-
   getterCliente() {
     this.crudService.getClientes().subscribe(
       data => {

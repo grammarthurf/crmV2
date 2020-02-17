@@ -17,7 +17,7 @@ export interface PeriodicElement {
 }
 
 const atividade: PeriodicElement[] = [
-  {id: "", data: '', assunto: '', cliente: 'H', org: '', negocio: ''},
+  {id: "", data: '', assunto: '', cliente: '', org: '', negocio: ''},
 ];
 
 @Component({
@@ -34,6 +34,7 @@ export class AtividadesComponent implements OnInit {
 
   // Lista Ticket
   negociosapi:any;
+
  // Lista de Orgs:
   orsgapi: any;
   // Lista de atividades:
@@ -45,7 +46,10 @@ export class AtividadesComponent implements OnInit {
   displayedColumns: string[] = ['select', 'assunto', 'data', 'cliente', 'org',
    'ticket', 'userResp', 'columnEdit', 'columnDelete'];
 
-  dataSource = new MatTableDataSource(atividade);
+    data = Object.assign( atividade);
+    dataSource = new MatTableDataSource<Element>(this.data);
+
+  //dataSource = new MatTableDataSource(atividade);
   selection = new SelectionModel<Element>(true, []);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -66,6 +70,7 @@ export class AtividadesComponent implements OnInit {
      }
    );
   }
+
 
   applyFilter(value: string) {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
@@ -91,7 +96,7 @@ export class AtividadesComponent implements OnInit {
     this.dataSource.filter = "visita".trim().toLowerCase();
   }
 
-  filtroEmail(){
+  filtroemail(){
     this.dataSource.filter = "email".trim().toLowerCase();
   }
 
@@ -113,7 +118,7 @@ export class AtividadesComponent implements OnInit {
 
   filtromes(){
     var dNow = new Date();
-    var periodo = '/0' + (dNow.getMonth()+1) + '/' + dNow.getFullYear();
+    var periodo = dNow.getFullYear() + '-0' + (dNow.getMonth()+1) ;
     this.dataSource.filter = periodo.trim().toLowerCase();
   }
 
@@ -141,7 +146,33 @@ export class AtividadesComponent implements OnInit {
     return periodo;
   }
 
-  
+  removeSelectedRows() {
+    this.selection.selected.forEach(item => {
+      let index: number = this.data.findIndex(d => d === item);
+       console.log(this.data.findIndex(d => d === item));
+       this.data.splice(index,1);
+       this.dataSource = new MatTableDataSource<Element>(this.data);
+    });
+    this.selection = new SelectionModel<Element>(true, []);
+  }
+
+  atvchoose = function(num: number){
+    console.log(num);
+    if(num == 1){
+      return "Ligar";
+    } else if (num == 2 ) {
+      return "Reunião";
+    } else if (num == 3 ) {
+      return "Visita";
+    } else if (num == 4 ) {
+      return "Email";
+    } else if (num == 5) {
+      return "Tarefa";
+    } else if(num == undefined || 0) {
+      return "indefinido";
+    }
+  }
+
   deleteItem() {
    swal({
      icon: "error",
