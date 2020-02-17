@@ -27,7 +27,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" 
+          <h5 class="modal-title font1 font1b" 
               id="exampleModalLongTitle">
               Adicione uma Atividade
           </h5>
@@ -44,18 +44,21 @@
           <div class="col-12 row">
             <div class="col-8" style="padding: 0px;">
               <div class="col-12 row">
-                <div class="col-6" >
-                  <label for="Empresa">Empresa</label>
+                <div class="col-6" style="margin-top: 7px;">
+                  <label for="Empresa" >Empresa</label>
                   <input type="text" name="Empresa" class="form-control" id="empresa">
                 </div>
                 <div class="col-6" style="padding: 0px;">
-                  <label for="Contato">Contato</label>
+                  <label for="Contato" >Contato</label>
+                  <button mat-icon-button >
+                    <mat-icon class="icon-modal-atv" style="margin-right: 10px; font-weight: bold; width: 21px; height: 21px; font-size: 18px; border-radius: 100px; background-color: #c2c2c2; color: #ffffff;">add</mat-icon>
+                  </button>
                   <input type="text" name="Contato" class="form-control" id="contato">
                 </div>
               </div>
               <div class="col-12" style="margin-top: 20px;"> 
                 <div class="col-12 row">
-                  <p style="margin-top: 5px;"><b> Atividade: </b></p>
+                  <p style="margin-top: 5px; font-size: 12.5pt; font-weight: bold;"><b> Atividade: </b></p>
                   <div class="div-modal-atv">
                     <button mat-icon-button (click)="atvchoose(1)">
                       <mat-icon class="icon-modal-atv">phone</mat-icon>
@@ -83,19 +86,19 @@
                   </div>
                 </div>
                 <div class="col-12 row" style="margin-top: 20px; padding: 0px 0px 0px 15px;">
-                  <input type="text" disabled class="form-control" *ngIf="atvchoose()" placeholder="{{atvchoose(id)}}">
+                  <input type="text" disabled class="form-control" placeholder="{{this.numm}}">
                 </div>
                 <div class="col-12 row" style="margin-top: 20px; padding: 0px;">
                   <div class="col-4" >
                     <label for="">Início</label>
-                    <input type="text" class="form-control" placeholder="{{catchday()}}">
+                    <input type="date" class="form-control" placeholder="{{catchday()}}">
                   </div>
                   <div class="col-2" style="margin-top: 32px; padding: 0px;">
                     <input type="text" class="form-control" placeholder="14:00">
                   </div>
                   <div class="col-4">
                     <label for="">Fim</label>
-                    <input type="text" class="form-control" placeholder="{{catchtmrw()}}">
+                    <input type="date" class="form-control" placeholder="{{catchtmrw()}}">
                   </div>
                   <div class="col-2" style="margin-top: 32px; padding: 0px;">
                     <input type="text" class="form-control" placeholder="14:00">
@@ -106,14 +109,17 @@
                   <textarea name="obs" id="obs" cols="50" rows="3" style="border: 1px solid rgb(206, 212, 218); border-radius: 5px;"></textarea>
                 </div>
                 <div class="col-12 row" style="margin-top: 20px; padding: 0px;">
-                  <div class="col-6">
-                    <label for="negocios" >Negócio</label>
+                  <div class="col-6" style="margin-top: 8px;">
+                    <label for="negocios"  >Negócio</label>
                     <select class="form-control" id="exampleFormControlSelect1">
                       <option *ngFor="let item of atvapi">{{item.cliente.nome}}</option>
                     </select>
                   </div>
                   <div class="col-6" style="padding: 0px;">
-                    <label for="participantes">Participantes</label>
+                    <label for="participantes" >Vendedor(es)</label>
+                    <button mat-icon-button >
+                      <mat-icon class="icon-modal-atv" style="margin-right: 10px; font-weight: bold; width: 21px; height: 21px; font-size: 18px; border-radius: 100px; background-color: #c2c2c2; color: #ffffff;">add</mat-icon>
+                    </button>
                     <select class="form-control" id="exampleFormControlSelect1">
                       <option *ngFor="let item of atvapi">{{item.cliente.nome}}</option>
                     </select>
@@ -130,7 +136,7 @@
                 <mwl-calendar-day-view
                   [viewDate]="viewDate"
                   [events]="events"
-                  [dayStartHour]="6"
+                  [dayStartHour]="00"
                   [dayEndHour]="23">
                 </mwl-calendar-day-view>
               </div>

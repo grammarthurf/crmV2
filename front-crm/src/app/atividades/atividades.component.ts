@@ -26,25 +26,23 @@ const atividade: PeriodicElement[] = [
   styleUrls: ["./atividades.component.css"]
 })
 export class AtividadesComponent implements OnInit {
-  
+
+  numm: string;
   //CALENDARIO
   view: CalendarView = CalendarView.Day;
   viewDate: Date = new Date();
   events: CalendarEvent[] = [];
-
   // Lista Ticket
   negociosapi:any;
-
  // Lista de Orgs:
   orsgapi: any;
   // Lista de atividades:
   erroActivity: any;
-  
   //Lista de Clientes:
   clientesapi:any;
-  
-  displayedColumns: string[] = ['select', 'assunto', 'data', 'cliente', 'org',
-   'ticket', 'userResp', 'columnEdit', 'columnDelete'];
+
+  displayedColumns: string[] = ['select', 'assunto', 'data', 'cliente', 'org', 'ticket',
+                                'userResp', 'columnEdit', 'columnDelete'];
 
     data = Object.assign( atividade);
     dataSource = new MatTableDataSource<Element>(this.data);
@@ -56,6 +54,7 @@ export class AtividadesComponent implements OnInit {
 
   constructor(private router: Router, public crudService: CrudService) {
     this.getterActivity();
+    this.numm = 'Indefinido';
   }
 
   getterActivity(){
@@ -71,13 +70,11 @@ export class AtividadesComponent implements OnInit {
    );
   }
 
-
   applyFilter(value: string) {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
   ngOnInit() {
-    
   }
 
   dblclic() {
@@ -156,21 +153,18 @@ export class AtividadesComponent implements OnInit {
     this.selection = new SelectionModel<Element>(true, []);
   }
 
-  atvchoose = function(num: number){
-    console.log(num);
-    if(num == 1){
-      return "Ligar";
-    } else if (num == 2 ) {
-      return "Reunião";
-    } else if (num == 3 ) {
-      return "Visita";
-    } else if (num == 4 ) {
-      return "Email";
-    } else if (num == 5) {
-      return "Tarefa";
-    } else if(num == undefined || 0) {
-      return "indefinido";
-    }
+  atvchoose(id: number){
+    if(id == 1){
+      this.numm = "Ligar";
+    } else if (id == 2 ) {
+      this.numm = "Reunião";
+    } else if (id == 3 ) {
+      this.numm = "Visita";
+    } else if (id == 4 ) {
+      this.numm = "Email";
+    } else if (id == 5) {
+      this.numm = "Tarefa";
+    } 
   }
 
   deleteItem() {

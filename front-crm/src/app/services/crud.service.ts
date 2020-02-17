@@ -93,4 +93,20 @@ export class CrudService {
       headers: this.htttpHeaders
     });
   }
+
+  // PUT API
+
+  public updateTicket(estagioUpdate, ticket): Observable<any> {
+
+    console.log('ESTAGIOUPDADE :' , typeof(estagioUpdate));
+    const body = { id: parseInt(ticket.id), titulo: ticket.titulo, estagio: estagioUpdate.toString(), cliente: ticket.cliente.id.toString(), org: ticket.org.id.toString(),
+       produto: ticket.produto, valorestimado: ticket.valorestimado, termometro: ticket.termometro,
+        vendedor: ticket.vendedor, obs: ticket.obs, status: ticket.status  };
+    console.log('body:', body);
+
+    return this.http.put(this.baseUrl + 'ticket/' + ticket.id + '/' , body, {
+      headers: this.htttpHeaders
+    });
+  }
+
 }

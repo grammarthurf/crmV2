@@ -11,7 +11,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class BusinessComponent implements OnInit {
 
-
+  selectedBusiness: any
 
   tickets1: any = [];
   tickets3: any = [];
@@ -42,6 +42,8 @@ export class BusinessComponent implements OnInit {
   ticketsapi: any;
   erroTicket: any;
 
+  selectedTicket: any;
+
   ticket = { titulo: "", estagio: '', cliente: '', org: '', produto: '', valorestimado: '', termometro: '', vendedor: '', obs: '' };
 
   // Lottie:
@@ -62,28 +64,43 @@ export class BusinessComponent implements OnInit {
       path: 'assets/soccerplayer.json',
       renderer: 'canvas',
       autoplay: false,
-      loop: false  };}
+      loop: false
+    };
+  }
 
-    handleAnimation(anim: any) {
-      this.anim = anim;
-    }
+  handleAnimation(anim: any) {
+    this.anim = anim;
+  }
 
-    stop() {
-      this.anim.stop();
-    }
+  stop() {
+    this.anim.stop();
+  }
 
-    play() {
-      this.anim.play();
-    }
+  play() {
+    this.anim.play();
+  }
 
-    pause() {
-      this.anim.pause();
-    }
+  pause() {
+    this.anim.pause();
+  }
 
-    setSpeed(speed: number) {
-      this.animationSpeed = speed;
-      this.anim.setSpeed(speed);
-    }
+  setSpeed(speed: number) {
+    this.animationSpeed = speed;
+    this.anim.setSpeed(speed);
+  }
+
+  updatedTicket(id, ticket) {
+    this.crudService.updateTicket(id, ticket).subscribe(
+      data => {
+        console.log(data);
+        this.getterTickets();
+
+      }, error => {
+        console.error(error);
+
+      }
+    )
+  }
 
   getterCliente() {
     this.crudService.getClientes().subscribe(
@@ -153,11 +170,8 @@ export class BusinessComponent implements OnInit {
         console.log('data', data);
         data.forEach(e => {
 
-
           switch (e.estagio.id) {
             case 1:
-
-
               this.tickets1.push(e);
               break;
             case 3:
@@ -183,8 +197,6 @@ export class BusinessComponent implements OnInit {
               break;
           }
         });
-
-
       },
       error => {
         this.erroTicket = error;
@@ -251,18 +263,70 @@ export class BusinessComponent implements OnInit {
     }
   }
 
+
+
   goTo(id) {
     this.router.navigate([`/business-detail/${id}`]);
   }
 
   drop(event: CdkDragDrop<string[]>) {
     console.log('EVENTO:', event);
-    if ( event.distance.x > 600) {
+    if (event.distance.x > 600) {
       console.log('CHAMOU ARTHUR ');
 
       this.play();
     }
+    this.ticketsapi.forEach(e => {
+      if (e.id == event.item.element.nativeElement.id) {
+        this.selectedBusiness = e;
+        console.log('selecionado', this.selectedBusiness);
+      }
+    });
 
+    console.log(event.item.element.nativeElement.id);
+    console.log(event.container.id);
+
+    switch (event.container.id) {
+      case 'cdk-drop-list-6':
+        console.log('8');
+
+        this.updatedTicket(8, this.selectedBusiness)
+        break;
+      case 'cdk-drop-list-5':
+        console.log('7');
+
+        this.updatedTicket(7, this.selectedBusiness)
+        break;
+      case 'cdk-drop-list-4':
+        console.log('6');
+
+        this.updatedTicket(6, this.selectedBusiness)
+        break;
+      case 'cdk-drop-list-3':
+        console.log('5');
+
+        this.updatedTicket(5, this.selectedBusiness)
+        break;
+      case 'cdk-drop-list-2':
+        console.log('4');
+
+        this.updatedTicket(4, this.selectedBusiness)
+        break;
+      case 'cdk-drop-list-1':
+        console.log('3');
+
+        this.updatedTicket(3, this.selectedBusiness)
+        break;
+        case 'cdk-drop-list-0':
+          console.log('1');
+
+          this.updatedTicket(1, this.selectedBusiness)
+          break;
+
+        default:
+        break;
+    }
+    // this.updatedTicket()
     console.log(event.previousContainer);
     console.log(event.container);
     if (event.previousContainer === event.container) {
@@ -279,8 +343,6 @@ export class BusinessComponent implements OnInit {
     }
   }
 
-
   ngOnInit() {
   }
-
 }
