@@ -35,10 +35,10 @@ export class AtividadesComponent implements OnInit {
   orsgapi: any;
   // Lista de atividades:
   erroActivity: any;
-  
+
   //Lista de Clientes:
   clientesapi:any;
-  
+
   displayedColumns: string[] = ['select', 'assunto', 'data', 'cliente', 'org',
    'ticket', 'userResp', 'columnEdit', 'columnDelete'];
 
@@ -49,12 +49,12 @@ export class AtividadesComponent implements OnInit {
    this.getterActivity();
 
   }
-  //data = Object.assign(this.activityapi);
-  //dataSource = new MatTableDataSource<Element>(this.data);
+  // data = Object.assign(this.activityapi);
+  // dataSource = new MatTableDataSource<Element>(this.data);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  //ATIVIDADE
+  // ATIVIDADE
   getterActivity() {
    this.crudService.getAtividade().subscribe(
      data => {

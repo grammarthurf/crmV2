@@ -79,7 +79,7 @@ class Ticket (models.Model):
     org = models.ForeignKey(Organizacao, on_delete=models.CASCADE, null=True)
     produto = models.ManyToManyField(Produto)
     valorestimado = models.IntegerField(null=True)
-    termometro = models.CharField(max_length=100, null=True)
+    termometro = models.CharField(max_length=100, null=True, blank=True)
     vendedor = models.ForeignKey(
         Vendedor,  on_delete=models.CASCADE, null=True)
     obs = models.CharField(max_length=100, blank=True)
