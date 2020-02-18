@@ -39,7 +39,7 @@ mat-checkbox {
     margin-top: 15px;
     margin-left: auto;
 }
-
+/*
 .mat-row:nth-child(id){
     background-color: rgb(255, 232, 228);
 }
@@ -59,7 +59,7 @@ mat-checkbox {
 .mat-row:nth-child(7){
     background-color: rgb(242, 251, 254);
 }
-
+*/
 .loc-button-top {
     display: flex;
     margin-left: 25px;
