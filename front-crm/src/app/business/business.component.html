@@ -39,7 +39,6 @@
                 <label for="exampleFormControlSelect1">Empresa</label>
                 <select *ngIf="orsgapi" [(ngModel)]="ticket.org" class="form-control" id="exampleFormControlSelect1">
                   <option *ngFor="let orgs of orsgapi" value="{{orgs.id}}">{{orgs.razaosocial}}</option>
-
                 </select>
               </div>
 

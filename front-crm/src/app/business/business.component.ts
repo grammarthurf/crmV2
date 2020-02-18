@@ -339,7 +339,6 @@ export class BusinessComponent implements OnInit {
     }
 
     // this.updatedTicket()
-
     console.log(event.previousContainer);
     console.log(event.container);
     if (event.previousContainer === event.container) {
@@ -356,5 +355,4 @@ export class BusinessComponent implements OnInit {
   
   ngOnInit() {
   }
-
 }
