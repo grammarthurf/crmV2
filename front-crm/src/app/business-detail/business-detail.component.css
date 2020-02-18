@@ -243,11 +243,18 @@ input[type=range] {
 }
 
 lottie-animation-view {
-  position: absolute;
-  top: 20%;
-  left: 20%;
-  z-index: 1;
+	position: absolute;
+    top: 60%;
+    z-index: 1;
+	left: 0;
+	/* animation: css 0s 3s forwards; */
 }
+/* 
+@keyframes css {
+	to { 
+		transform: translateX(300px) 
+	}
+} */
 
 #null {
 	display: none;
