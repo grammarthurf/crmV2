@@ -110,4 +110,8 @@ export class CrudService {
     });
   }
 
+  //DELETE API
+  //public deleteAtividade(id: number): Observable<any> {
+    //return this.http.delete(`${this.baseUrl}/${id}`);
+  //}
 }

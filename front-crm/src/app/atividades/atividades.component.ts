@@ -25,12 +25,12 @@ const atividade: PeriodicElement[] = [
   templateUrl: "./atividades.component.html",
   styleUrls: ["./atividades.component.css"]
 })
+
 export class AtividadesComponent implements OnInit {
 
   count: number = 0;
-
-
   numm: string;
+
   //CALENDARIO
   view: CalendarView = CalendarView.Day;
   viewDate: Date = new Date();
@@ -55,6 +55,8 @@ export class AtividadesComponent implements OnInit {
   //Lista de vendedor:
   vendedorapi: any;
 
+  atv = {id: "", data: '', assunto: '', cliente: '', org: '', ticket: '', tipo: ''};
+
   displayedColumns: string[] = ['select',   'assunto',    'date',       'cliente',   'org', 
                                 'ticket',   'userResp',   'columnEdit', 'columnDelete'];
 
@@ -76,9 +78,9 @@ export class AtividadesComponent implements OnInit {
   getColor(data) { (2)
     switch (data) {
       case this.daymes:
-        return 'rgb(242, 251, 254)';
+        return '#deeafa';
       case this.daytmrw:
-        return 'rgb(255, 232, 228)';
+        return '#deeafa';
       case this.dayhj:
         return 'rgb(255, 232, 228)';
     }
@@ -145,7 +147,8 @@ export class AtividadesComponent implements OnInit {
   }
 
   save() {
-    this.crudService.saveNewAtividade(this.dataSource).subscribe(
+    console.log(this.atv)
+    this.crudService.saveNewAtividade(this.atv).subscribe(
       data => {
         swal({
           icon: "success",
@@ -184,7 +187,7 @@ export class AtividadesComponent implements OnInit {
   }
 
   dblclic() {
-   this.dataSource .filter = "".trim().toLowerCase();
+    this.dataSource .filter = "".trim().toLowerCase();
   }
 
   filtroLiga(){
@@ -209,13 +212,13 @@ export class AtividadesComponent implements OnInit {
 
   filtroday(){
     var dNow = new Date();
-    var periodo = dNow.getDate() + '/0' + (dNow.getMonth()+1) + '/' + dNow.getFullYear();
+    var periodo = dNow.getFullYear() + '-0' + (dNow.getMonth()+1) + '-' +  dNow.getDate();
     this.dataSource.filter = periodo.trim().toLowerCase();
   }
 
   filtrotmrw(){
     var dNow = new Date();
-    var periodo = (dNow.getDate()+1) + '/0' + (dNow.getMonth()+1) + '/' + dNow.getFullYear();
+    var periodo = dNow.getFullYear() + '-0' + (dNow.getMonth()+1) + '-' +  (dNow.getDate()+1);
     this.dataSource.filter = periodo.trim().toLowerCase();
   }
 
@@ -227,7 +230,7 @@ export class AtividadesComponent implements OnInit {
 
   filtroproxmes(){
     var dNow = new Date();
-    var periodo = '/0' + (dNow.getMonth()+2) + '/' + dNow.getFullYear();
+    var periodo = dNow.getFullYear() + '-0' + (dNow.getMonth()+2);
     this.dataSource.filter = periodo.trim().toLowerCase();
   }
 
@@ -273,12 +276,15 @@ export class AtividadesComponent implements OnInit {
   removeSelectedRows() {
     this.selection.selected.forEach(item => {
       let index: number = this.data.findIndex(d => d === item);
-       console.log(this.data.findIndex(d => d === item));
-       this.data.splice(index,1);
-       this.dataSource = new MatTableDataSource<Element>(this.data);
+      if (index > -1) {
+        this.data.splice(index, 1);
+      }
     });
     this.selection = new SelectionModel<Element>(true, []);
+    this.dataSource = new MatTableDataSource<Element>(this.data);
+    console.log(this.data);
   }
+
 
   atvchoose(id: number){
     if(id == 1){
@@ -294,14 +300,26 @@ export class AtividadesComponent implements OnInit {
     } 
   }
 
+  //deleteActivity(id){
+    //this.crudService.deleteAtividade(id).subscribe(
+      //data => {
+        //this.dataSource = new MatTableDataSource(data);
+      //},
+      //error => {
+       //this.erroAtividade = error;
+       //console.error(error);
+      //}
+    //);
+  //}
+
   deleteItem() {
-   swal({
-     icon: "error",
-     text: "Atividade excluída com sucesso!",
-     timer: 1800,
-     buttons: {
-       buttons: false
-     }
-   });
+    swal({
+      icon: "error",
+      text: "Atividade excluída com sucesso!",
+      timer: 1800,
+      buttons: {
+        buttons: false
+      }
+    });
   }
 }

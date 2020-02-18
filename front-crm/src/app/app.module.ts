@@ -6,7 +6,7 @@ import { LottieAnimationViewModule } from 'ng-lottie';
 
 // ROUTES
 import { AppRoutingModule } from "./app-routing.module";
-import { RouterModule } from "@angular/router";
+//import { RouterModule } from "@angular/router";
 
 // ANGULAR MATERIAL
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
