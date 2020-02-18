@@ -46,7 +46,7 @@
               <div class="col-12 row">
                 <div class="col-6">
                   <label for="Empresa" >Empresa</label>
-                  <button mat-icon-button (click)="testebtn2()">
+                  <button mat-icon-button (click)="redirectToAdd('/company')">
                     <mat-icon class="icon-modal-atv" style="margin-right: 10px; font-weight: bold; width: 21px; height: 21px; font-size: 18px; border-radius: 100px; background-color: #c2c2c2; color: #ffffff;">add</mat-icon>
                   </button>
                   <select [(ngModel)]="atv.org" *ngIf="orsgapi" class="form-control" id="exampleFormControlSelect1">
@@ -55,7 +55,7 @@
                 </div>
                 <div class="col-6" style="padding: 0px;">
                   <label for="Contato" >Contato</label>
-                  <button mat-icon-button (click)="testebtn()">
+                  <button mat-icon-button (click)="redirectToAdd('/person')">
                     <mat-icon class="icon-modal-atv" style="margin-right: 10px; font-weight: bold; width: 21px; height: 21px; font-size: 18px; border-radius: 100px; background-color: #c2c2c2; color: #ffffff;">add</mat-icon>
                   </button>
                   <select [(ngModel)]="atv.cliente" *ngIf="clientesapi" class="form-control" id="exampleFormControlSelect1">
@@ -123,11 +123,8 @@
                       <option *ngFor="let ticket of negociosapi" value="{{ticket.id}}">{{ticket.titulo}}</option>
                     </select>
                   </div>
-                  <div class="col-6" style="padding: 0px;">
+                  <div class="col-6" style="padding: 0px; margin-top: 8px;">
                     <label for="participantes" >Vendedor(es)</label>
-                    <button mat-icon-button (click)="testebtn3()">
-                      <mat-icon class="icon-modal-atv" style="margin-right: 10px; font-weight: bold; width: 21px; height: 21px; font-size: 18px; border-radius: 100px; background-color: #c2c2c2; color: #ffffff;">add</mat-icon>
-                    </button>
                     <select *ngIf="vendedorapi" class="form-control" id="exampleFormControlSelect1">
                       <option *ngFor="let vendedor of vendedorapi" value="{{vendedor.id}}">{{vendedor.nome}}</option>
                     </select>

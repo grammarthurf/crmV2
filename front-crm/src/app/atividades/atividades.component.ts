@@ -322,4 +322,9 @@ export class AtividadesComponent implements OnInit {
       }
     });
   }
+
+  redirectToAdd(url): void {
+    window.open(url, '_blank');
+    window.focus();
+  }
 }
