@@ -109,4 +109,16 @@ export class CrudService {
     });
   }
 
+  public updateTicketDetails(ticket): Observable<any> {
+
+    const body = { id: parseInt(ticket.id), titulo: ticket.titulo, estagio: ticket.estagio.id, cliente: ticket.cliente.id.toString(), org: ticket.org.id.toString(),
+       produto: ticket.produto, valorestimado: ticket.valorestimado, termometro: ticket.termometro,
+        vendedor: ticket.vendedor, obs: ticket.obs, status: ticket.status  };
+    console.log('body:', body);
+
+    return this.http.put(this.baseUrl + 'ticket/' + ticket.id + '/' , body, {
+      headers: this.htttpHeaders
+    });
+  }
+
 }
