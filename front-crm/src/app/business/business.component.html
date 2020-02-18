@@ -1,8 +1,19 @@
-<div style="margin-top: 100px; margin-left: 15px;">
-  <button type="button" class="btn btn-primary loc-button-top" data-toggle="modal" data-target="#exampleModalCenter">
-    <mat-icon>add</mat-icon>
-    <p style="margin-left: 5px;">Negócio</p>
-  </button>
+<div style="margin-top: 100px; margin-left: 15px;" (click)="stop()">
+
+  <div class="flex">
+    <button type="button" class="btn btn-primary loc-button-top" data-toggle="modal" data-target="#exampleModalCenter">
+      <mat-icon>add</mat-icon>
+      <p style="margin-left: 5px;">Negócio</p>
+    </button>
+
+    <div style="margin-left: auto; margin-right: 20px;">
+      <button class="btn btn-link">Negócios Abertos</button>
+      <button class="btn btn-link">Ganhos</button>
+      <button class="btn btn-link">Perdidos</button>
+      <button class="btn btn-link">Excluídos</button>
+    </div>
+  </div>
+  
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -98,107 +109,207 @@
 
     <div class="example-container">
       <div class="tickets test">
-        <p class="align-title">Prospecção</p>
+        <div class="col-md-8">
+          <p>Prospecção</p>
+          <p>2 Neg.</p>
+        </div>
         <img src="../../assets/arrow.png" />
       </div>
       
       <div cdkDropList [cdkDropListData]="tickets1" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets1" id="{{item.id}}" cdkDrag>
-          <p class="limit-words">{{item.titulo}}</p>
+          <div class="flex">
+            <p class="limit-words">{{item.titulo}}</p>
+            <mat-icon class="thermometro thermfrio">ac_unit</mat-icon>
+            <!-- <mat-icon *ngIf="(j.termometro=='1');" class="thermometro thermfrio">ac_unit</mat-icon>
+            <mat-icon *ngIf="(j.termometro=='50');" class="thermometro thermmorno">waves</mat-icon>
+            <mat-icon *ngIf="(j.termometro=='99');" class="thermometro thermquente">whatshot</mat-icon> -->
+          </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
-          <p>{{item.valorestimado}}</p>
+          <div class="flex">
+            <p>{{item.valorestimado}}</p>
+            <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
+            <mat-icon id="orange">error_outline</mat-icon>
+            <!-- <mat-icon id="red">highlight_off</mat-icon> -->
+          </div>
         </div>
       </div>
     </div>
 
     <div class="example-container">
       <div class="tickets test">
-        <p class="align-title">Contatado</p>
+        <div class="col-md-8">
+          <p>Contatado</p>
+          <p>2 Neg.</p>
+        </div>
         <img src="../../assets/arrow.png" />
       </div>
       
       <div cdkDropList [cdkDropListData]="tickets3" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets3" id="{{item.id}}" cdkDrag>
-          <p class="limit-words">{{item.titulo}}</p>
+          <div class="flex">
+            <p class="limit-words">{{item.titulo}}</p>
+            <mat-icon class="thermometro thermfrio">ac_unit</mat-icon>
+            <!-- <mat-icon *ngIf="(j.termometro=='1');" class="thermometro thermfrio">ac_unit</mat-icon>
+            <mat-icon *ngIf="(j.termometro=='50');" class="thermometro thermmorno">waves</mat-icon>
+            <mat-icon *ngIf="(j.termometro=='99');" class="thermometro thermquente">whatshot</mat-icon> -->
+          </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
-          <p>{{item.valorestimado}}</p>
+          <div class="flex">
+            <p>{{item.valorestimado}}</p>
+            <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
+            <!-- <mat-icon id="orange">error_outline</mat-icon> -->
+            <mat-icon id="red">highlight_off</mat-icon>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="example-container">
       <div class="tickets test">
-        <p class="align-title">Cliente Potencial</p>
+        <div class="col-md-8">
+          <p>Cliente Potencial</p>
+          <p>2 Neg.</p>
+        </div>
         <img src="../../assets/arrow.png" />
       </div>
       
       <div cdkDropList [cdkDropListData]="tickets4" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets4" id="{{item.id}}" cdkDrag>
-          <p class="limit-words">{{item.titulo}}</p>
+          <div class="flex">
+            <p class="limit-words">{{item.titulo}}</p>
+            <mat-icon class="thermometro thermfrio">ac_unit</mat-icon>
+            <!-- <mat-icon *ngIf="(j.termometro=='1');" class="thermometro thermfrio">ac_unit</mat-icon>
+            <mat-icon *ngIf="(j.termometro=='50');" class="thermometro thermmorno">waves</mat-icon>
+            <mat-icon *ngIf="(j.termometro=='99');" class="thermometro thermquente">whatshot</mat-icon> -->
+          </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
-          <p>{{item.valorestimado}}</p>
+          <div class="flex">
+            <p>{{item.valorestimado}}</p>
+            <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
+            <mat-icon id="orange">error_outline</mat-icon>
+            <!-- <mat-icon id="red">highlight_off</mat-icon> -->
+          </div>
         </div>
       </div>
     </div>
 
     <div class="example-container">
       <div class="tickets test">
-        <p class="align-title">Demo Agendada</p>
+        <div class="col-md-8">
+          <p>Demo Agendada</p>
+          <p>2 Neg.</p>
+        </div>
         <img src="../../assets/arrow.png" />
       </div>
       
       <div cdkDropList [cdkDropListData]="tickets5" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets5" id="{{item.id}}" cdkDrag>
-          <p class="limit-words">{{item.titulo}}</p>
+          <div class="flex">
+            <p class="limit-words">{{item.titulo}}</p>
+            <mat-icon class="thermometro thermfrio">ac_unit</mat-icon>
+            <!-- <mat-icon *ngIf="(j.termometro=='1');" class="thermometro thermfrio">ac_unit</mat-icon>
+            <mat-icon *ngIf="(j.termometro=='50');" class="thermometro thermmorno">waves</mat-icon>
+            <mat-icon *ngIf="(j.termometro=='99');" class="thermometro thermquente">whatshot</mat-icon> -->
+          </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
-          <p>{{item.valorestimado}}</p>
+          <div class="flex">
+            <p>{{item.valorestimado}}</p>
+            <mat-icon id="green">check_circle_outline</mat-icon>
+            <!-- <mat-icon id="orange">error_outline</mat-icon> -->
+            <!-- <mat-icon id="red">highlight_off</mat-icon> -->
+          </div>
         </div>
       </div>
     </div>
 
     <div class="example-container">
       <div class="tickets test">
-        <p class="align-title">Proposta</p>
+        <div class="col-md-8">
+          <p>Proposta</p>
+          <p>2 Neg.</p>
+        </div>
         <img src="../../assets/arrow.png" />
       </div>
       
       <div cdkDropList [cdkDropListData]="tickets6" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets6" id="{{item.id}}" cdkDrag>
-          <p class="limit-words">{{item.titulo}}</p>
+          <div class="flex">
+            <p class="limit-words">{{item.titulo}}</p>
+            <mat-icon class="thermometro thermfrio">ac_unit</mat-icon>
+            <!-- <mat-icon *ngIf="(j.termometro=='1');" class="thermometro thermfrio">ac_unit</mat-icon>
+            <mat-icon *ngIf="(j.termometro=='50');" class="thermometro thermmorno">waves</mat-icon>
+            <mat-icon *ngIf="(j.termometro=='99');" class="thermometro thermquente">whatshot</mat-icon> -->
+          </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
-          <p>{{item.valorestimado}}</p>
+          <div class="flex">
+            <p>{{item.valorestimado}}</p>
+            <mat-icon id="green">check_circle_outline</mat-icon>
+            <!-- <mat-icon id="orange">error_outline</mat-icon> -->
+            <!-- <mat-icon id="red">highlight_off</mat-icon> -->
+          </div>
         </div>
       </div>
     </div>
 
     <div class="example-container">
       <div class="tickets test">
-        <p class="align-title">Negociações Inic.</p>
+        <div class="col-md-8">
+          <p>Negociações Inic.</p>
+          <p>2 Neg.</p>
+        </div>
         <img src="../../assets/arrow.png" />
       </div>
       
       <div cdkDropList [cdkDropListData]="tickets7" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets7" id="{{item.id}}" cdkDrag>
-          <p class="limit-words">{{item.titulo}}</p>
+          <div class="flex">
+            <p class="limit-words">{{item.titulo}}</p>
+            <mat-icon class="thermometro thermfrio">ac_unit</mat-icon>
+            <!-- <mat-icon *ngIf="(j.termometro=='1');" class="thermometro thermfrio">ac_unit</mat-icon>
+            <mat-icon *ngIf="(j.termometro=='50');" class="thermometro thermmorno">waves</mat-icon>
+            <mat-icon *ngIf="(j.termometro=='99');" class="thermometro thermquente">whatshot</mat-icon> -->
+          </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
-          <p>{{item.valorestimado}}</p>
+          <div class="flex">
+            <p>{{item.valorestimado}}</p>
+            <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
+            <!-- <mat-icon id="orange">error_outline</mat-icon> -->
+            <mat-icon id="red">highlight_off</mat-icon>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="example-container">
       <div class="tickets test">
-        <p class="align-title">Clientes</p>
+        <div class="col-md-8">
+          <p>Clientes</p>
+          <p>2 Neg.</p>
+        </div>
         <img src="../../assets/arrow.png" />
       </div>
       
       <div cdkDropList [cdkDropListData]="tickets8" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets8" id="{{item.id}}" cdkDrag>
-          <p class="limit-words">{{item.titulo}}</p>
+          <div class="flex">
+            <p class="limit-words">{{item.titulo}}</p>
+            <mat-icon class="thermometro thermfrio">ac_unit</mat-icon>
+            <!-- <mat-icon *ngIf="(j.termometro=='1');" class="thermometro thermfrio">ac_unit</mat-icon>
+            <mat-icon *ngIf="(j.termometro=='50');" class="thermometro thermmorno">waves</mat-icon>
+            <mat-icon *ngIf="(j.termometro=='99');" class="thermometro thermquente">whatshot</mat-icon> -->
+          </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
-          <p>{{item.valorestimado}}</p>
+          <div class="flex">
+            <p>{{item.valorestimado}}</p>
+            <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
+            <mat-icon id="orange">error_outline</mat-icon>
+            <!-- <mat-icon id="red">highlight_off</mat-icon> -->
+          </div>
         </div>
+        
       </div>
+      
     </div>
 
     <lottie-animation-view [options]="lottieConfig" [width]="250" [height]="250"

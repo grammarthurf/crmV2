@@ -21,12 +21,12 @@
                             <input [(ngModel)]="contato.nome" type="text" class="form-control">
                         </div>
                         <div class="form-group col-md-3">
-                          <label for="exampleInputEmail1">Tipo</label>
-                          <select [(ngModel)]="contato.tipo" class="form-control" id="exampleFormControlSelect1">
-                            <option value="C">Cliente</option>
-                            <option value="P">Parceiro</option>
-                          </select>
-                      </div>
+                            <label for="exampleInputEmail1">Tipo</label>
+                            <select [(ngModel)]="contato.tipo" class="form-control" id="exampleFormControlSelect1">
+                                <option value="C">Cliente</option>
+                                <option value="P">Parceiro</option>
+                            </select>
+                        </div>
 
                         <div class="form-group col-md-12">
                             <label for="exampleInputEmail1">Email</label>
@@ -36,7 +36,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Telefone</label>
-                                <input [(ngModel)]="contato.fone" type="text" class="form-control">
+                                <input [(ngModel)]="contato.fone" type="text" class="form-control"
+                                    mask="(AA) AAAA-AAAA">
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Skype</label>
@@ -46,25 +47,25 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label  for="exampleFormControlInput1">Celular</label>
-                                <input [(ngModel)]="contato.celular" type="text" class="form-control">
+                                <label for="exampleFormControlInput1">Celular</label>
+                                <input [(ngModel)]="contato.celular" type="text" class="form-control" mask="(AA) AAAAA-AAAA">
                             </div>
                             <div class="form-group">
                                 <label for="">Organização</label>
-                                <select [(ngModel)]="contato.org" class="form-control" >
-                                  <option>Selecione ...</option>
-                                  <option *ngFor="let org of orgsapi" value="{{org.id}}">{{org.razaosocial}}</option>
+                                <select [(ngModel)]="contato.org" class="form-control">
+                                    <option>Selecione ...</option>
+                                    <option *ngFor="let org of orgsapi" value="{{org.id}}">{{org.razaosocial}}</option>
                                 </select>
-                              </div>
+                            </div>
                         </div>
 
 
-                      </div>
+                    </div>
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
-                    <button type="button" (click)="save()"  class="btn btn-primary" data-dismiss="modal">Salvar</button>
+                    <button type="button" (click)="save()" class="btn btn-primary" data-dismiss="modal">Salvar</button>
                 </div>
             </div>
         </div>
@@ -114,7 +115,7 @@
 
         <ng-container matColumnDef="tel">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefone </th>
-            <td mat-cell *matCellDef="let element"> {{element.fone}} </td>
+            <td mat-cell *matCellDef="let element"> {{formatPhoneNumber(element.fone)}} </td>
         </ng-container>
 
         <ng-container matColumnDef="email">
@@ -124,7 +125,7 @@
 
         <ng-container matColumnDef="tipo">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </th>
-            <td mat-cell *matCellDef="let element" > {{element.tipo}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
         </ng-container>
 
         <ng-container matColumnDef="columnEdit">
