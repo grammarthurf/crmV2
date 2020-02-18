@@ -29,15 +29,35 @@ export class BusinessDetailComponent implements OnInit {
     this.getterEstagio()
   }
 
+  updatedTicketStatus(ticket) {
+    this.crudService.updateTicketDetails(ticket).subscribe(
+      data => {
+        console.log(data);
+      }, error => {
+        console.error(error);
+      }
+    );
+  }
+
+
+
   loadBusiness() {
     const id = this.route.snapshot.paramMap.get("id");
     this.getterTicket(id);
+
   }
 
   getterTicket(id) {
     this.crudService.getTicket(id).subscribe(
       data => {
         this.business = data;
+        if (this.business.status == 'Ganhou') {
+          this.stageWin();
+        } else if ( this.business.status == 'Perdido') {
+          this.stageLose();
+        } else {
+          this.stageNull();
+        }
         console.log("id", data);
       },
       error => {
@@ -90,6 +110,8 @@ export class BusinessDetailComponent implements OnInit {
     btnWin.style.borderRadius = '20px';
     btnWin.style.cursor = 'none';
     btnWin.style.outline = 'none';
+    this.business.status = 'Ganhou';
+    this.updatedTicketStatus(this.business);
 
     this.play();
     setTimeout(() => {
@@ -110,6 +132,8 @@ export class BusinessDetailComponent implements OnInit {
     btnLose.style.borderRadius = '20px';
     btnLose.style.cursor = 'none';
     btnLose.style.outline = 'none';
+    this.business.status = 'Perdido';
+    this.updatedTicketStatus(this.business);
   }
 
   stageNull() {
@@ -127,6 +151,8 @@ export class BusinessDetailComponent implements OnInit {
     btnLose.style.borderRadius = '5px';
     btnLose.style.cursor = 'pointer';
     btnLose.style.outline = 'solid';
+    this.business.status = 'Aberto';
+    this.updatedTicketStatus(this.business);
   }
 
 

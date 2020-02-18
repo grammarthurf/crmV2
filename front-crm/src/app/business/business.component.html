@@ -8,12 +8,12 @@
 
     <div style="margin-left: auto; margin-right: 20px;">
       <button class="btn btn-link">Negócios Abertos</button>
-      <button class="btn btn-link">Ganhos</button>
+      <button class="btn btn-link" (click)="showWin()" >Ganhos</button>
       <button class="btn btn-link">Perdidos</button>
       <button class="btn btn-link">Excluídos</button>
     </div>
   </div>
-  
+
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -116,7 +116,7 @@
         </div>
         <img src="../../assets/arrow.png" />
       </div>
-      
+
       <div cdkDropList [cdkDropListData]="tickets1" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets1" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
@@ -144,7 +144,7 @@
         </div>
         <img src="../../assets/arrow.png" />
       </div>
-      
+
       <div cdkDropList [cdkDropListData]="tickets3" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets3" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
@@ -153,7 +153,7 @@
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
             <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
           </div>
-          <p class="limit-words">{{item.org.razaosocial}}</p>
+          <!-- <p class="limit-words" *ngIf="item.org.razaosocial">{{item.org.razaosocial}}</p> -->
           <div class="flex">
             <p>{{item.valorestimado |  mask: '00.000,00'}}</p>
             <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
@@ -172,7 +172,7 @@
         </div>
         <img src="../../assets/arrow.png" />
       </div>
-      
+
       <div cdkDropList [cdkDropListData]="tickets4" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets4" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
@@ -200,7 +200,7 @@
         </div>
         <img src="../../assets/arrow.png" />
       </div>
-      
+
       <div cdkDropList [cdkDropListData]="tickets5" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets5" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
@@ -228,7 +228,7 @@
         </div>
         <img src="../../assets/arrow.png" />
       </div>
-      
+
       <div cdkDropList [cdkDropListData]="tickets6" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets6" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
@@ -256,7 +256,7 @@
         </div>
         <img src="../../assets/arrow.png" />
       </div>
-      
+
       <div cdkDropList [cdkDropListData]="tickets7" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets7" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
@@ -284,7 +284,7 @@
         </div>
         <img src="../../assets/arrow.png" />
       </div>
-      
+
       <div cdkDropList [cdkDropListData]="tickets8" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets8" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
@@ -301,9 +301,9 @@
             <!-- <mat-icon id="red">highlight_off</mat-icon> -->
           </div>
         </div>
-        
+
       </div>
-      
+
     </div>
 
     <lottie-animation-view [options]="lottieConfig" [width]="250" [height]="250"

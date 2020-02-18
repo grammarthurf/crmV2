@@ -55,7 +55,7 @@ export class BusinessComponent implements OnInit {
 
   constructor(private crudService: CrudService, private router: Router) {
     this.getterEstagios();
-    this.getterTickets();
+    this.getterTickets('open');
     this.getterAtividades();
     this.getterOrgs();
     this.getterProd();
@@ -70,27 +70,16 @@ export class BusinessComponent implements OnInit {
   }
 
   showOpen() {
-    this.tickets1.forEach(ticket => {
-      console.log(ticket.status);
-    });
-    this.tickets3.forEach(ticket => {
-      console.log(ticket.status);
-    });
-    this.tickets4.forEach(ticket => {
-      console.log(ticket.status);
-    });
-    this.tickets5.forEach(ticket => {
-      console.log(ticket.status);
-    });
-    this.tickets6.forEach(ticket => {
-      console.log(ticket.status);
-    });
-    this.tickets7.forEach(ticket => {
-      console.log(ticket.status);
-    });
-    this.tickets8.forEach(ticket => {
-      console.log(ticket.status);
-    });
+    this.getterTickets('open');
+  }
+  showWin() {
+    this.getterTickets('win');
+  }
+  showLose() {
+    this.getterTickets('lose');
+  }
+  showExclude() {
+    this.getterTickets('exclude');
   }
 
   handleAnimation(anim: any) {
@@ -185,45 +174,167 @@ export class BusinessComponent implements OnInit {
     );
   }
 
-  getterTickets() {
-    this.crudService.getTickets().subscribe(
-      data => {
-        this.ticketsapi = data;
-        console.log('data', data);
-        data.forEach(e => {
-          switch (e.estagio.id) {
-            case 1:
-              this.tickets1.push(e);
-              break;
-            case 3:
-              this.tickets3.push(e);
-              break;
-            case 4:
-              this.tickets4.push(e);
-              break;
-            case 5:
-              this.tickets5.push(e);
-              break;
-            case 6:
-              this.tickets6.push(e);
-              break;
-            case 7:
-              this.tickets7.push(e);
-              break;
-            case 8:
-              this.tickets8.push(e);
-              break;
-            default:
-              break;
-          }
-        });
-        this.showOpen();
-      },
-      error => {
-        this.erroTicket = error;
-        console.error(error);
-      }
-    );
+  removeAllArray(array) {
+    array = []
+  }
+
+  getterTickets(status) {
+    console.log('status: ', status);
+
+    if (status == undefined || status == 'open') {
+      this.crudService.getTickets().subscribe(
+        data => {
+          this.ticketsapi = data;
+          console.log('data', data);
+          data.forEach(e => {
+            if (e.status == 'Aberto') {
+              switch (e.estagio.id) {
+                case 1:
+                  this.tickets1 = [];
+                  this.tickets1.push(e);
+                  break;
+                case 3:
+                  this.tickets3 = [];
+                  this.tickets3.push(e);
+                  break;
+                case 4:
+                  this.tickets4 = [];
+                  this.tickets4.push(e);
+                  break;
+                case 5:
+                  this.tickets5 = [];
+                  this.tickets5.push(e);
+                  break;
+                case 6:
+                  this.tickets6 = [];
+                  this.tickets6.push(e);
+                  break;
+                case 7:
+                  this.tickets7 = [];
+                  this.tickets7.push(e);
+                  break;
+                case 8:
+                  this.tickets8 = [];
+                  this.tickets8.push(e);
+                  break;
+                default:
+                  break;
+              }
+            }
+          });
+          // this.showOpen();
+        },
+        error => {
+          this.erroTicket = error;
+          console.error(error);
+        }
+      );
+    }
+
+
+    if (status == 'lose') {
+      this.crudService.getTickets().subscribe(
+        data => {
+          this.ticketsapi = data;
+          console.log('data', data);
+          data.forEach(e => {
+            if (e.status == 'Perdido') {
+              switch (e.estagio.id) {
+                case 1:
+                  this.tickets1 = [];
+                  this.tickets1.push(e);
+                  break;
+                case 3:
+                  this.tickets3 = [];
+                  this.tickets3.push(e);
+                  break;
+                case 4:
+                  this.tickets4 = [];
+                  this.tickets4.push(e);
+                  break;
+                case 5:
+                  this.tickets5 = [];
+                  this.tickets5.push(e);
+                  break;
+                case 6:
+                  this.tickets6 = [];
+                  this.tickets6.push(e);
+                  break;
+                case 7:
+                  this.tickets7 = [];
+                  this.tickets7.push(e);
+                  break;
+                case 8:
+                  this.tickets8 = [];
+                  this.tickets8.push(e);
+                  break;
+                default:
+                  break;
+              }
+            }
+          });
+          // this.showOpen();
+        },
+        error => {
+          this.erroTicket = error;
+          console.error(error);
+        }
+      );
+    }
+
+
+
+    if (status == 'win') {
+      this.crudService.getTickets().subscribe(
+        data => {
+          this.ticketsapi = data;
+          console.log('data', data);
+          data.forEach(e => {
+            if (e.status == 'Ganho') {
+              switch (e.estagio.id) {
+                case 1:
+                  this.tickets1 = [];
+                  this.tickets1.push(e);
+                  break;
+                case 3:
+                  this.tickets3 = [];
+                  this.tickets3.push(e);
+                  break;
+                case 4:
+                  this.tickets4 = [];
+                  this.tickets4.push(e);
+                  break;
+                case 5:
+                  this.tickets5 = [];
+                  this.tickets5.push(e);
+                  break;
+                case 6:
+                  this.tickets6 = [];
+                  this.tickets6.push(e);
+                  break;
+                case 7:
+                  this.tickets7 = [];
+                  this.tickets7.push(e);
+                  break;
+                case 8:
+                  this.tickets8 = [];
+                  this.tickets8.push(e);
+                  break;
+                default:
+                  break;
+              }
+            }
+          });
+          // this.showOpen();
+        },
+        error => {
+          this.erroTicket = error;
+          console.error(error);
+        }
+      );
+    }
+
+
   }
 
   save() {
@@ -270,12 +381,12 @@ export class BusinessComponent implements OnInit {
             }
           });
           this.getterEstagios();
-          this.getterTickets();
+          this.getterTickets('open');
           console.log(data);
         },
         error => {
           this.getterEstagios();
-          this.getterTickets();
+          this.getterTickets('open');
           console.error(error);
         }
       );
@@ -331,10 +442,10 @@ export class BusinessComponent implements OnInit {
         console.log('3');
         this.updatedTicket(3, this.selectedBusiness)
         break;
-        case 'cdk-drop-list-0':
-          console.log('1');
-          this.updatedTicket(1, this.selectedBusiness)
-          break;
+      case 'cdk-drop-list-0':
+        console.log('1');
+        this.updatedTicket(1, this.selectedBusiness)
+        break;
       default:
         break;
     }
