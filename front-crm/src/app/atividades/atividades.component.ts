@@ -9,7 +9,7 @@ import { CalendarEvent, CalendarView } from 'angular-calendar';
 
 export interface PeriodicElement {
   id: string;
-  data: string;
+  date: string;
   assunto: string;
   cliente: string;
   org: string;
@@ -17,7 +17,7 @@ export interface PeriodicElement {
 }
 
 const atividade: PeriodicElement[] = [
-  {id: "", data: '', assunto: '', cliente: '', org: '', negocio: ''},
+  {id: "", date: '', assunto: '', cliente: '', org: '', negocio: ''},
 ];
 
 @Component({
@@ -27,47 +27,153 @@ const atividade: PeriodicElement[] = [
 })
 export class AtividadesComponent implements OnInit {
 
+  count: number = 0;
+
+
   numm: string;
   //CALENDARIO
   view: CalendarView = CalendarView.Day;
   viewDate: Date = new Date();
   events: CalendarEvent[] = [];
+  dNow = new Date();
+  dayhj = this.dNow.getFullYear() +  '-0' + (this.dNow.getMonth()+1) +  '-'  + this.dNow.getDate();
+  daytmrw = this.dNow.getFullYear() +  '-0' + (this.dNow.getMonth()+1) +  '-'  + (this.dNow.getDate()+1);
+  daymes = this.dNow.getFullYear() +  '-0' + (this.dNow.getMonth()+1) +  '-'  + (this.dNow.getDate()+2); 
+ 
   // Lista Ticket
   negociosapi:any;
+
  // Lista de Orgs:
   orsgapi: any;
+
   // Lista de atividades:
-  erroActivity: any;
+  erroAtividade: any;
+
   //Lista de Clientes:
-  clientesapi:any;
+  clientesapi: any;
 
-  displayedColumns: string[] = ['select', 'assunto', 'data', 'cliente', 'org', 'ticket',
-                                'userResp', 'columnEdit', 'columnDelete'];
+  //Lista de vendedor:
+  vendedorapi: any;
 
-    data = Object.assign( atividade);
-    dataSource = new MatTableDataSource<Element>(this.data);
+  displayedColumns: string[] = ['select',   'assunto',    'date',       'cliente',   'org', 
+                                'ticket',   'userResp',   'columnEdit', 'columnDelete'];
 
-  //dataSource = new MatTableDataSource(atividade);
+  data = Object.assign( atividade);
+  dataSource = new MatTableDataSource<Element>(this.data);
+
   selection = new SelectionModel<Element>(true, []);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private router: Router, public crudService: CrudService) {
     this.getterActivity();
-    this.numm = 'Indefinido';
+    this.getterCliente();
+    this.getterOrgs();
+    this.getterVendedor();
+    this.getterTickets();
+  }
+
+  getColor(data) { (2)
+    switch (data) {
+      case this.daymes:
+        return 'rgb(242, 251, 254)';
+      case this.daytmrw:
+        return 'rgb(255, 232, 228)';
+      case this.dayhj:
+        return 'rgb(255, 232, 228)';
+    }
   }
 
   getterActivity(){
     this.crudService.getAtividade().subscribe(
       data => {
-       //this.dataSource = data;
        this.dataSource = new MatTableDataSource(data);
      },
       error => {
-       this.erroActivity = error;
+       this.erroAtividade = error;
        console.error(error);
      }
    );
+  }
+
+  getterCliente() {
+    this.crudService.getClientes().subscribe(
+      data => {
+        this.clientesapi = data;
+        console.log(data);
+      },
+      error => {
+        this.erroAtividade = error;
+      }
+    );
+  }
+
+  getterVendedor() {
+    this.crudService.getVendedor().subscribe(
+      data => {
+        this.vendedorapi = data;
+        console.log(data);
+      },
+      error => {
+        this.erroAtividade = error;
+      }
+    );
+  }
+
+  getterOrgs() {
+    this.crudService.getOrgs().subscribe(
+      data => {
+        this.orsgapi = data;
+        console.log(data);
+      },
+      error => {
+        this.erroAtividade = error;
+      }
+    );
+  }
+
+  getterTickets() {
+    this.crudService.getTickets().subscribe(
+      data => {
+        this.negociosapi = data;
+        console.log(data);
+      },
+      error => {
+        this.erroAtividade = error;
+      }
+    );
+  }
+
+  save() {
+    this.crudService.saveNewAtividade(this.dataSource).subscribe(
+      data => {
+        swal({
+          icon: "success",
+          text: "Produto salvo com sucesso!",
+          timer: 1800,
+          buttons: {
+            buttons: false
+          }
+        });
+        this.getterActivity();
+      },
+      error => {
+        this.getterActivity();
+        console.error(error);
+      }
+    );
+  }
+
+  testebtn(){
+    this.router.navigate([]).then(result => {  window.open('/person/', '_blank'); });
+  }
+
+  testebtn2(){
+    this.router.navigate([]).then(result => {  window.open('/company/', '_blank'); });
+  }
+
+  testebtn3(){
+    this.router.navigate([]).then(result => {  window.open('/products/', '_blank'); });
   }
 
   applyFilter(value: string) {
@@ -126,9 +232,13 @@ export class AtividadesComponent implements OnInit {
   }
 
   filtrovenc(){
+    var i = this.count++;
     var dNow = new Date();
-    var periodo = '/' + (dNow.getFullYear()-1);
-    this.dataSource.filter = periodo.trim().toLowerCase();
+    var day = dNow.getDate()
+    var periodo =  '/0' + (dNow.getMonth()+1) + '/' + dNow.getFullYear();
+    var datef = (day - i) + periodo;
+    this.dataSource.filter = datef.trim().toLowerCase();
+    console.log(this.dataSource.filter);
   }
 
   catchday(){
@@ -141,6 +251,23 @@ export class AtividadesComponent implements OnInit {
     var dNow = new Date();
     var periodo = (dNow.getDate()+1) + '/0' + (dNow.getMonth()+1) + '/' + dNow.getFullYear();
     return periodo;
+  }
+
+  diadepois(id){
+    var dNow = new Date();
+    var day = dNow.getDate()
+    
+    var datei = '/0' + (dNow.getMonth()+1) + '/' + dNow.getFullYear();
+    if(id == +1){
+      var i = this.count++;
+      var datef = (day + i) + datei;
+    } else if (id == -1) {
+      var ii = this.count++;
+      var datef = (day - ii) + datei;
+    }
+    console.log(datef);
+    var x = document.getElementById("labeldata");
+    x.innerHTML = datef; 
   }
 
   removeSelectedRows() {
