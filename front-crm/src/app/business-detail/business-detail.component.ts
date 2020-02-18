@@ -61,9 +61,9 @@ pause() {
     this.anim.pause();
 }
 
-  ganhou() {
-    this.play()
-  }
+  // ganhou() {
+  //   this.play()
+  // }
 
   getterEstagio() {
     this.crudService.getEstagios().subscribe(
@@ -75,6 +75,51 @@ pause() {
         console.error(error);
       }
     );
+  }
+
+  stageWin() {
+    let btnLose = document.getElementById('lose');
+    let btnWin = document.getElementById('win');
+    btnLose.style.display = 'none';
+    console.log('GANHOU!!!!');
+
+    let btnNull = document.getElementById('null');
+    btnNull.style.display = 'block';
+
+    btnWin.style.borderRadius = '20px';
+    btnWin.style.cursor = 'none';
+    btnWin.style.outline = 'none';
+  }
+
+  stageLose() {
+    let btnWin = document.getElementById('win');
+    let btnLose = document.getElementById('lose');
+    btnWin.style.display = 'none';
+    console.log('PERDEU!!!!');
+
+    let btnNull = document.getElementById('null');
+    btnNull.style.display = 'block';
+
+    btnLose.style.borderRadius = '20px';
+    btnLose.style.cursor = 'none';
+    btnLose.style.outline = 'none';
+  }
+
+  stageNull() {
+    let btnWin = document.getElementById('win');
+    let btnLose = document.getElementById('lose');
+    let btnNull = document.getElementById('null');
+    btnWin.style.display = 'block';
+    btnLose.style.display = 'block';
+    btnNull.style.display = 'none';
+
+    btnWin.style.borderRadius = '5px';
+    btnWin.style.cursor = 'pointer';
+    btnWin.style.outline = 'solid';
+
+    btnLose.style.borderRadius = '5px';
+    btnLose.style.cursor = 'pointer';
+    btnLose.style.outline = 'solid';
   }
 
 

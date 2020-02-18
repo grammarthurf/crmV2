@@ -17,7 +17,7 @@ export interface PeriodicElement {
 }
 
 const atividade: PeriodicElement[] = [
-  {id: "", data: '', assunto: '', cliente: 'H', org: '', negocio: ''},
+  {id: "", data: '', assunto: '', cliente: '', org: '', negocio: ''},
 ];
 
 @Component({
@@ -27,31 +27,34 @@ const atividade: PeriodicElement[] = [
 })
 export class AtividadesComponent implements OnInit {
 
+  numm: string;
   //CALENDARIO
   view: CalendarView = CalendarView.Day;
   viewDate: Date = new Date();
   events: CalendarEvent[] = [];
-
   // Lista Ticket
   negociosapi:any;
  // Lista de Orgs:
   orsgapi: any;
   // Lista de atividades:
   erroActivity: any;
-
   //Lista de Clientes:
   clientesapi:any;
 
-  displayedColumns: string[] = ['select', 'assunto', 'data', 'cliente', 'org',
-   'ticket', 'userResp', 'columnEdit', 'columnDelete'];
+  displayedColumns: string[] = ['select', 'assunto', 'data', 'cliente', 'org', 'ticket',
+                                'userResp', 'columnEdit', 'columnDelete'];
 
-  dataSource = new MatTableDataSource(atividade);
+    data = Object.assign( atividade);
+    dataSource = new MatTableDataSource<Element>(this.data);
+
+  //dataSource = new MatTableDataSource(atividade);
   selection = new SelectionModel<Element>(true, []);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private router: Router, public crudService: CrudService) {
     this.getterActivity();
+    this.numm = 'Indefinido';
   }
 
   getterActivity(){
@@ -72,7 +75,6 @@ export class AtividadesComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
   dblclic() {
@@ -91,7 +93,7 @@ export class AtividadesComponent implements OnInit {
     this.dataSource.filter = "visita".trim().toLowerCase();
   }
 
-  filtroEmail(){
+  filtroemail(){
     this.dataSource.filter = "email".trim().toLowerCase();
   }
 
@@ -113,7 +115,7 @@ export class AtividadesComponent implements OnInit {
 
   filtromes(){
     var dNow = new Date();
-    var periodo = '/0' + (dNow.getMonth()+1) + '/' + dNow.getFullYear();
+    var periodo = dNow.getFullYear() + '-0' + (dNow.getMonth()+1) ;
     this.dataSource.filter = periodo.trim().toLowerCase();
   }
 
@@ -141,6 +143,29 @@ export class AtividadesComponent implements OnInit {
     return periodo;
   }
 
+  removeSelectedRows() {
+    this.selection.selected.forEach(item => {
+      let index: number = this.data.findIndex(d => d === item);
+       console.log(this.data.findIndex(d => d === item));
+       this.data.splice(index,1);
+       this.dataSource = new MatTableDataSource<Element>(this.data);
+    });
+    this.selection = new SelectionModel<Element>(true, []);
+  }
+
+  atvchoose(id: number){
+    if(id == 1){
+      this.numm = "Ligar";
+    } else if (id == 2 ) {
+      this.numm = "Reunião";
+    } else if (id == 3 ) {
+      this.numm = "Visita";
+    } else if (id == 4 ) {
+      this.numm = "Email";
+    } else if (id == 5) {
+      this.numm = "Tarefa";
+    } 
+  }
 
   deleteItem() {
    swal({
