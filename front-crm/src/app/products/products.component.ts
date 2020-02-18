@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { CrudService } from "../services/crud.service";
-import { MatSort } from "@angular/material/sort";
-import { MatTableDataSource } from "@angular/material/table";
+import { MatTableDataSource, MatSort } from "@angular/material";
 import swal from 'sweetalert';
 
 export interface PeriodicElement {
@@ -14,39 +13,6 @@ export interface PeriodicElement {
 
 let produtosapi: PeriodicElement[] = []
 
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {
-//     nome: "Vedois OEE",
-//     cod: "32412",
-//     cat: "Indústria",
-//   },
-//   {
-//     nome: "Vedois Planejamento",
-//     cod: "51235",
-//     cat: "Planejamento",
-//   },
-//   {
-//     nome: "Vedois Tear",
-//     cod: "32712",
-//     cat: "Indústria",
-//   },
-//   {
-//     nome: "Vedois Saúde",
-//     cod: "12345",
-//     cat: "Médica",
-//   },
-//   {
-//     nome: "Vedois Estoque",
-//     cod: "52134",
-//     cat: "Estoque",
-//   },
-//   {
-//     nome: "Vedois CRM",
-//     cod: "12513",
-//     cat: "Planejamento",
-//   }
-// ];
-
 @Component({
   selector: "app-products",
   templateUrl: "./products.component.html",
@@ -58,20 +24,14 @@ export class ProductsComponent implements OnInit {
     modalidade: "",
     codigo: ""
   };
-  // Lista produtos:
-  // produtosapi: any;
+
   erroProdutos: any;
-
-
-
-
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private crudService: CrudService) {
     this.getterProdutos();
     console.log(this.proddata);
-
   }
 
   proddata: MatTableDataSource<any>;
@@ -94,7 +54,6 @@ export class ProductsComponent implements OnInit {
   applyFilter(filterValue: string) {
     this.proddata.filter = filterValue.trim().toLowerCase();
   }
-
 
   ngOnInit() { }
 

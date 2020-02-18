@@ -15,16 +15,13 @@ export class BusinessDetailComponent implements OnInit {
   public lottieConfig: Object;
   private anim: any;
 
-  constructor(
-    private route: ActivatedRoute,
-    private crudService: CrudService
-  ) {
+  constructor(private route: ActivatedRoute, private crudService: CrudService) {
     this.lottieConfig = {
       path: 'assets/congrats.json',
       renderer: 'canvas',
       autoplay: false,
       loop: false
-  };
+    };
     this.getterEstagio()
   }
 
@@ -47,19 +44,19 @@ export class BusinessDetailComponent implements OnInit {
 
   handleAnimation(anim: any) {
     this.anim = anim;
-}
+  }
 
-stop() {
+  stop() {
     this.anim.stop();
-}
+  }
 
-play() {
+  play() {
     this.anim.play();
-}
+  }
 
-pause() {
+  pause() {
     this.anim.pause();
-}
+  }
 
   // ganhou() {
   //   this.play()
