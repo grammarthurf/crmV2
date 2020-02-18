@@ -86,6 +86,10 @@ div p + p {
   background-color: #e22f2f;
 }
 
+.flex {
+  display: flex;
+}
+
 button i {
   margin-top: 2px;
   font-size: 14px;
@@ -166,7 +170,6 @@ img#arrow {
 .loc-button-top {
   display: flex;
   margin-left: 25px;
-  margin-bottom: 15px;
 }
 
 #red, #green, #orange {
@@ -177,15 +180,15 @@ img#arrow {
 }
 
 #red {
-  background-color: red;
+  color: red;
 }
 
 #green {
-  background-color: green;
+  color: green;
 }
 
 #orange {
-  background-color: orange;
+  color: orange;
 }
 
 .thermometro {
@@ -269,10 +272,6 @@ img {
   margin-left: auto;
 }
 
-.align-title {
-  margin-top: 10px;
-}
-
 .example-list {
   min-height: 60px;
   background: transparent;
@@ -324,7 +323,7 @@ img {
 
 lottie-animation-view {
   position: absolute;
-  left: 70%;
-  top: 2%;
+  left: 40%;
+  top: -4%;
   z-index: -1;
 }

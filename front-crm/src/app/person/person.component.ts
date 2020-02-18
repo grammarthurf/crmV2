@@ -155,6 +155,18 @@ export class PersonComponent implements OnInit {
     }
   }
 
+  formatPhoneNumber(str) {
+    let cleaned = ('' + str).replace(/\D/g, '');
+    
+    let match = cleaned.match(/^(\d{2})(\d{4})(\d{4})$/);
+  
+    if (match) {
+      return '(' + match[1] + ') ' + match[2] + '-' + match[3]
+    };
+  
+    return null
+  }
+
   ngOnInit() {
     // this.dataSource.sort = this.sort;
   }
