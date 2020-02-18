@@ -191,12 +191,12 @@ img#arrow {
   color: orange;
 }
 
-.thermometro {
+/* .thermometro {
   border: 3px;
   border-radius: 50%;
   width: 15px;
   height: 15px;
-  margin-left: auto;
+  
 }
 
 .thermquente {
@@ -212,6 +212,26 @@ img#arrow {
 .thermfrio {
   color: #0083FF;
   font-size: 16px;
+} */
+
+.termometro {
+  margin-left: auto;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  background-color: #FF0000;
+}
+
+.ruim {
+  background-color: red;
+}
+
+.medio {
+  background-color: yellow;
+}
+
+.otimo {
+  background-color: green;
 }
 
 span {

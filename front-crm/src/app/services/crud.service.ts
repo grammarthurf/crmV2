@@ -74,6 +74,7 @@ export class CrudService {
     return this.http.post(this.baseUrl + "atividade/", atividade, {
       headers: this.htttpHeaders
     });
+
   }
 
   public saveNewCliente(cliente): Observable<any> {
@@ -121,4 +122,8 @@ export class CrudService {
     });
   }
 
+  //DELETE API
+  //public deleteAtividade(id: number): Observable<any> {
+    //return this.http.delete(`${this.baseUrl}/${id}`);
+  //}
 }

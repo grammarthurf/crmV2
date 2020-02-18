@@ -7,6 +7,7 @@ import { ActivatedRoute } from "@angular/router";
   templateUrl: "./business-detail.component.html",
   styleUrls: ["./business-detail.component.css"]
 })
+
 export class BusinessDetailComponent implements OnInit {
   id: any;
   business: any;
@@ -20,12 +21,11 @@ export class BusinessDetailComponent implements OnInit {
     private crudService: CrudService
   ) {
     this.lottieConfig = {
-      path: 'assets/congrats.json',
+      path: 'assets/bike.json',
       renderer: 'canvas',
       autoplay: false,
       loop: false
-  };
-    // this.stageWin();
+    };
     this.getterEstagio()
   }
 
@@ -68,23 +68,23 @@ export class BusinessDetailComponent implements OnInit {
 
   handleAnimation(anim: any) {
     this.anim = anim;
-}
+  }
 
-stop() {
+  stop() {
     this.anim.stop();
-}
+  }
 
-play() {
+  play() {
     this.anim.play();
-}
+  }
 
-pause() {
+  pause() {
     this.anim.pause();
-}
+  }
 
-  // ganhou() {
-  //   this.play()
-  // }
+  ganhou() {
+    this.play()
+  }
 
   getterEstagio() {
     this.crudService.getEstagios().subscribe(
@@ -112,6 +112,12 @@ pause() {
     btnWin.style.outline = 'none';
     this.business.status = 'Ganhou';
     this.updatedTicketStatus(this.business);
+
+    this.play();
+    setTimeout(() => {
+      this.stop()
+      console.log('funcionou')
+    }, 7000);
   }
 
   stageLose() {

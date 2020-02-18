@@ -3,6 +3,7 @@ import { CrudService } from "../services/crud.service";
 import { Router } from "@angular/router";
 import swal from 'sweetalert';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import * as Inputmask from "inputmask"
 
 @Component({
   selector: "app-business",
@@ -404,7 +405,7 @@ export class BusinessComponent implements OnInit {
       setTimeout(() => {
         this.stop()
         console.log('funcionou')
-      }, 4500);
+      }, 4000);
     }
     this.ticketsapi.forEach(e => {
       if (e.id == event.item.element.nativeElement.id) {
@@ -465,5 +466,7 @@ export class BusinessComponent implements OnInit {
   }
 
   ngOnInit() {
+    Inputmask().mask(document.getElementById("value"));
   }
+  
 }

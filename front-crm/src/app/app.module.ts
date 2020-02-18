@@ -6,7 +6,7 @@ import { LottieAnimationViewModule } from 'ng-lottie';
 
 // ROUTES
 import { AppRoutingModule } from "./app-routing.module";
-import { RouterModule } from "@angular/router";
+//import { RouterModule } from "@angular/router";
 
 // ANGULAR MATERIAL
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -25,7 +25,6 @@ import { MatSortModule } from "@angular/material/sort";
 //CALENDAR
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-
 
 //DRAG AND DROP
 import {DragDropModule} from '@angular/cdk/drag-drop';
