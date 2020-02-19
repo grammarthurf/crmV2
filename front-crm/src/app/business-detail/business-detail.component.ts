@@ -16,10 +16,7 @@ export class BusinessDetailComponent implements OnInit {
   public lottieConfig: Object;
   private anim: any;
 
-  constructor(
-    private route: ActivatedRoute,
-    private crudService: CrudService
-  ) {
+  constructor(private route: ActivatedRoute, private crudService: CrudService) {
     this.lottieConfig = {
       path: 'assets/bike.json',
       renderer: 'canvas',

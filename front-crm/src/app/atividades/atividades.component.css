@@ -39,27 +39,7 @@ mat-checkbox {
     margin-top: 15px;
     margin-left: auto;
 }
-/*
-.mat-row:nth-child(id){
-    background-color: rgb(255, 232, 228);
-}
 
-.mat-row:nth-child(3){
-    background-color: rgb(255, 232, 228);
-}
-
-.mat-row:nth-child(5){
-    background-color: rgb(242, 251, 254);
-}
-
-.mat-row:nth-child(6){
-    background-color: rgb(242, 251, 254);
-}
-
-.mat-row:nth-child(7){
-    background-color: rgb(242, 251, 254);
-}
-*/
 .loc-button-top {
     display: flex;
     margin-left: 25px;
@@ -149,9 +129,9 @@ mat-checkbox {
     background: rgb(241, 241, 241); 
     border: 0.5px solid rgb(206, 212, 218);
     border-radius: 5px;
-  }::-webkit-scrollbar-thumb {
+}::-webkit-scrollbar-thumb {
     background: rgb(98, 151, 189); 
     border-radius: 5px;
-  }::-webkit-scrollbar-thumb:hover {
+}::-webkit-scrollbar-thumb:hover {
     background: rgb(103, 130, 148); 
-  }
+}
