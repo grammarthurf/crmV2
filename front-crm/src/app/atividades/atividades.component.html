@@ -27,13 +27,13 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title font1 font1b" 
+          <h5 class="modal-title font1 font1b"
               id="exampleModalLongTitle">
               Adicione uma Atividade
           </h5>
-          <button type="button" 
-                  class="close" 
-                  data-dismiss="modal" 
+          <button type="button"
+                  class="close"
+                  data-dismiss="modal"
                   aria-label="Close">
             <span aria-hidden="true">
               &times;
@@ -63,7 +63,7 @@
                   </select>
                 </div>
               </div>
-              <div class="col-12" style="margin-top: 20px;"> 
+              <div class="col-12" style="margin-top: 20px;">
                 <div class="col-12 row">
                   <p style="margin-top: 5px; font-size: 12.5pt; font-weight: bold;"><b> Atividade: </b></p>
                   <div class="div-modal-atv">
@@ -135,7 +135,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="col-4 ml-auto">
               <div class="col-12 row" style="margin-left: 15px; font-weight: bold; width: 82%; color: #317ae2; background: #deeafa;">
                 <button mat-icon-button style="width: 10px; height: 10px;" (click)="diadepois(-1) ">
@@ -240,19 +240,19 @@
     <!-- Ticket Column -->
     <ng-container matColumnDef="ticket">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Negócio</th>
-      <td mat-cell *matCellDef="let element;" [style.background-color]="getColor(element.data)"> {{element.ticket}}</td>
+      <td mat-cell *matCellDef="let element;" [style.background-color]="getColor(element.data)"> {{element.ticket.titulo}}</td>
     </ng-container>
 
     <!-- NomeContato Column -->
     <ng-container matColumnDef="cliente">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome do Contato</th>
-      <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.data)"> {{element.cliente}}</td> <!--.nome-->
+      <td mat-cell *matCellDef="let element"  [style.background-color]="getColor(element.data)"> {{element.cliente.nome }}</td> <!--.nome-->
     </ng-container>
 
     <!-- Email Column -->
     <ng-container matColumnDef="org">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Organização</th>
-      <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.data)"> {{element.org}}</td> <!--.razaosocial-->
+      <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.data)"> {{element.org.razaosocial}}</td> <!--.razaosocial-->
     </ng-container>
 
     <!-- Telefone Column -->

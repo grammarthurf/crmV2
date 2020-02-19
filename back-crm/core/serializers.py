@@ -12,12 +12,20 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         user = User.objects.create(**validated_data)
         return user
 
+class AtividadeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Atividade
+        # cliente = ClienteSerializer(many=False, read_only=True)
+        fields = '__all__'
+        depth = 1
+
+
 
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
-        fields = ['id', 'nome', 'tipo', 'fone',
-                  'celular', 'email', 'skype', 'org']
+        atividade = AtividadeSerializer(many=False, read_only=True)
+        fields = '__all__'
         depth = 1
 
 
@@ -55,9 +63,4 @@ class VendedorSerializer(serializers.ModelSerializer):
         fields = ['id', 'nome']
 
 
-class AtividadeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Atividade
-        cliente = ClienteSerializer(many=False, read_only=True)
-        fields = ['id', 'assunto', 'tipo', 'data', 'ticket', 'cliente', 'org']
-        depth = 1
+
