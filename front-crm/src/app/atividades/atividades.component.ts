@@ -1,23 +1,22 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource, MatSort } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
 import { CrudService } from "../services/crud.service";
-import { MatSort } from '@angular/material/sort';
 import swal from 'sweetalert';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 
 export interface PeriodicElement {
   id: string;
   date: string;
-  assunto: string;
+  tipo: string;
   cliente: string;
   org: string;
-  negocio: string;
+  ticket: string;
 }
 
 const atividade: PeriodicElement[] = [
-  { id: "", date: '', assunto: '', cliente: '', org: '', negocio: '' },
+  { id: "", date: '', tipo: '', cliente: '', org: '', ticket: '' },
 ];
 
 @Component({
@@ -57,17 +56,23 @@ export class AtividadesComponent implements OnInit {
   //Lista de vendedor:
   vendedorapi: any;
 
-  atv = { id: "", data: '', assunto: '', cliente: '', org: '', ticket: '', tipo: '' };
+  atv = { id: "", data: '', tipo: '', cliente: '', org: '', ticket: '', assunto: '' };
 
-  displayedColumns: string[] = ['select', 'assunto', 'date', 'cliente', 'org',
-    'ticket', 'userResp', 'columnEdit', 'columnDelete'];
+  displayedColumns: string[] = ['select', 'tipo', 'date', 'cliente', 'org',
+    'ticket', 'assunto', 'columnEdit', 'columnDelete'];
 
   data = Object.assign(atividade);
-  dataSource = new MatTableDataSource<Element>(this.data);
+  dataSource = new MatTableDataSource(this.data);
+
+  // dataSource = new MatTableDataSource<Element>(this.data);
 
   selection = new SelectionModel<Element>(true, []);
 
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+
+  ngOnInit() {
+    this.dataSource.sort = this.sort;
+  }
 
   constructor(private router: Router, public crudService: CrudService) {
     this.getterActivity();
@@ -197,7 +202,6 @@ export class AtividadesComponent implements OnInit {
     this.crudService.getClientes().subscribe(
       data => {
         this.clientesapi = data;
-        console.log(data);
       },
       error => {
         this.erroAtividade = error;
@@ -209,7 +213,6 @@ export class AtividadesComponent implements OnInit {
     this.crudService.getVendedor().subscribe(
       data => {
         this.vendedorapi = data;
-        console.log(data);
       },
       error => {
         this.erroAtividade = error;
@@ -221,7 +224,6 @@ export class AtividadesComponent implements OnInit {
     this.crudService.getOrgs().subscribe(
       data => {
         this.orsgapi = data;
-        console.log(data);
       },
       error => {
         this.erroAtividade = error;
@@ -233,7 +235,6 @@ export class AtividadesComponent implements OnInit {
     this.crudService.getTickets().subscribe(
       data => {
         this.negociosapi = data;
-        console.log(data);
       },
       error => {
         this.erroAtividade = error;
@@ -281,9 +282,6 @@ export class AtividadesComponent implements OnInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
-  ngOnInit() {
-  }
-
   dblclic() {
     this.dataSource.filter = "".trim().toLowerCase();
   }
@@ -308,63 +306,38 @@ export class AtividadesComponent implements OnInit {
     this.dataSource.filter = "Tarefa".trim().toLowerCase();
   }
 
-  filtroday() {
-    var dNow = new Date();
-    var periodo = dNow.getFullYear() + '-0' + (dNow.getMonth() + 1) + '-' + dNow.getDate();
+  filtroday(){
+    this.dataSource.filter = this.dayhj.trim().toLowerCase();
+  }
+
+  filtrotmrw(){
+    this.dataSource.filter = this.daytmrw.trim().toLowerCase();
+  }
+
+  filtromes(){
+    var periodo = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth()+1) ;
     this.dataSource.filter = periodo.trim().toLowerCase();
   }
 
-  filtrotmrw() {
-    var dNow = new Date();
-    var periodo = dNow.getFullYear() + '-0' + (dNow.getMonth() + 1) + '-' + (dNow.getDate() + 1);
+  filtroproxmes(){
+    var periodo = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth()+2);
     this.dataSource.filter = periodo.trim().toLowerCase();
   }
 
-  filtromes() {
-    var dNow = new Date();
-    var periodo = dNow.getFullYear() + '-0' + (dNow.getMonth() + 1);
-    this.dataSource.filter = periodo.trim().toLowerCase();
+  filtrovenc(){
+    // um filtro que pegue todas as datas antes de this.dayhj
   }
 
-  filtroproxmes() {
-    var dNow = new Date();
-    var periodo = dNow.getFullYear() + '-0' + (dNow.getMonth() + 2);
-    this.dataSource.filter = periodo.trim().toLowerCase();
-  }
-
-  filtrovenc() {
-    var i = this.count++;
-    var dNow = new Date();
-    var day = dNow.getDate()
-    var periodo = '/0' + (dNow.getMonth() + 1) + '/' + dNow.getFullYear();
-    var datef = (day - i) + periodo;
-    this.dataSource.filter = datef.trim().toLowerCase();
-    console.log(this.dataSource.filter);
-  }
-
-  catchday() {
-    var dNow = new Date();
-    var periodo = dNow.getDate() + '/0' + (dNow.getMonth() + 1) + '/' + dNow.getFullYear();
-    return periodo;
-  }
-
-  catchtmrw() {
-    var dNow = new Date();
-    var periodo = (dNow.getDate() + 1) + '/0' + (dNow.getMonth() + 1) + '/' + dNow.getFullYear();
-    return periodo;
-  }
-
-  diadepois(id) {
-    var dNow = new Date();
-    var day = dNow.getDate()
-
-    var datei = '/0' + (dNow.getMonth() + 1) + '/' + dNow.getFullYear();
-    if (id == +1) {
+  countday(id){
+    var day = this.dNow.getDate()
+    
+    var datei = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth()+1) + '-';
+    if(id == +1){
       var i = this.count++;
-      var datef = (day + i) + datei;
+      var datef =  datei + (day + i) ;
     } else if (id == -1) {
       var ii = this.count++;
-      var datef = (day - ii) + datei;
+      var datef =  datei + (day - ii);
     }
     console.log(datef);
     var x = document.getElementById("labeldata");
@@ -398,17 +371,17 @@ export class AtividadesComponent implements OnInit {
     }
   }
 
-  //deleteActivity(id){
-  //this.crudService.deleteAtividade(id).subscribe(
-  //data => {
-  //this.dataSource = new MatTableDataSource(data);
-  //},
-  //error => {
-  //this.erroAtividade = error;
-  //console.error(error);
-  //}
-  //);
-  //}
+  // deleteActivity(id){
+  //   this.crudService.deleteAtividade(id).subscribe(
+  //     data => {
+  //       this.dataSource = new MatTableDataSource(data);
+  //     },
+  //     error => {
+  //      this.erroAtividade = error;
+  //      console.error(error);
+  //     }
+  //   );
+  // }
 
   deleteItem() {
     swal({
@@ -425,7 +398,6 @@ export class AtividadesComponent implements OnInit {
     window.open(url, '_blank');
     window.focus();
   }
-
 }
 
 

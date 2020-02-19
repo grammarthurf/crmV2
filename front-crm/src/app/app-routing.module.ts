@@ -7,6 +7,7 @@ import { ProductsComponent } from "./products/products.component";
 import { OrganizationComponent } from "./organization/organization.component";
 import { BusinessDetailComponent } from "./business-detail/business-detail.component";
 import { PersonComponent } from "./person/person.component";
+import { OrganizationDetailComponent } from './organization-detail/organization-detail.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: "company",
     component: OrganizationComponent
+  },
+  {
+    path: "company-detail",
+    component: OrganizationDetailComponent
   },
   {
     path: "testapi",
