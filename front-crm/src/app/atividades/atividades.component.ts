@@ -16,7 +16,7 @@ export interface PeriodicElement {
 }
 
 const atividade: PeriodicElement[] = [
-  {id: "", date: '', assunto: '', cliente: '', org: '', negocio: ''},
+  { id: "", date: '', assunto: '', cliente: '', org: '', negocio: '' },
 ];
 
 @Component({
@@ -29,20 +29,22 @@ export class AtividadesComponent implements OnInit {
 
   count: number = 0;
   numm: string;
+  matdata: any = [];
+  datamat: any = [];
 
   //CALENDARIO
   view: CalendarView = CalendarView.Day;
   viewDate: Date = new Date();
   events: CalendarEvent[] = [];
   dNow = new Date();
-  dayhj = this.dNow.getFullYear() +  '-0' + (this.dNow.getMonth()+1) +  '-'  + this.dNow.getDate();
-  daytmrw = this.dNow.getFullYear() +  '-0' + (this.dNow.getMonth()+1) +  '-'  + (this.dNow.getDate()+1);
-  daymes = this.dNow.getFullYear() +  '-0' + (this.dNow.getMonth()+1) +  '-'  + (this.dNow.getDate()+2); 
- 
-  // Lista Ticket
-  negociosapi:any;
+  dayhj = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + this.dNow.getDate();
+  daytmrw = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + (this.dNow.getDate() + 1);
+  daymes = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + (this.dNow.getDate() + 2);
 
- // Lista de Orgs:
+  // Lista Ticket
+  negociosapi: any;
+
+  // Lista de Orgs:
   orsgapi: any;
 
   // Lista de atividades:
@@ -54,13 +56,16 @@ export class AtividadesComponent implements OnInit {
   //Lista de vendedor:
   vendedorapi: any;
 
-  atv = {id: "", data: '', assunto: '', cliente: '', org: '', ticket: '', tipo: ''};
+  atv = { id: "", data: '', assunto: '', cliente: '', org: '', ticket: '', tipo: '' };
 
-  displayedColumns: string[] = ['select',   'assunto',    'date',       'cliente',   'org', 
-                                'ticket',   'userResp',   'columnEdit', 'columnDelete'];
+  displayedColumns: string[] = ['select', 'assunto', 'date', 'cliente', 'org',
+    'ticket', 'userResp', 'columnEdit', 'columnDelete'];
 
   data = Object.assign(atividade);
   dataSource = new MatTableDataSource(this.data);
+  
+  // dataSource = new MatTableDataSource<Element>(this.data);
+
   selection = new SelectionModel<Element>(true, []);
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -77,7 +82,8 @@ export class AtividadesComponent implements OnInit {
     this.getterTickets();
   }
 
-  getColor(data) { (2)
+  getColor(data) {
+
     switch (data) {
       case this.daymes:
         return '#deeafa';
@@ -88,16 +94,108 @@ export class AtividadesComponent implements OnInit {
     }
   }
 
-  getterActivity(){
+  getterActivity() {
     this.crudService.getAtividade().subscribe(
       data => {
-       this.dataSource = new MatTableDataSource(data);
-     },
+        data.forEach(e => {
+          try {
+
+            if (e.cliente == null && e.org == null && e.ticket == null) {
+              console.log();
+
+              this.matdata.push({
+                id: e.id,
+                assunto: e.assunto,
+                data: e.data,
+                tipo: e.tipo,
+                ticket: {
+                  titulo: ''
+                },
+                cliente: {
+                  nome: ''
+                },
+                org: {
+                  razaosocial: ''
+                }
+
+              });
+            } else if (e.cliente == null) {
+              this.matdata.push({
+                id: e.id,
+                assunto: e.assunto,
+                data: e.data,
+                tipo: e.tipo,
+                // ticket: e.ticket,
+                // cliente: {
+                //   nome: ''
+                // },
+                // org: e.org
+
+              });
+            } else if (e.org == null) {
+              this.matdata.push({
+                id: e.id,
+                assunto: e.assunto,
+                data: e.data,
+                tipo: e.tipo,
+                ticket: e.ticket,
+                cliente: e.cliente,
+                org: {
+                  razaosocial: ''
+                }
+
+              });
+            } else if (e.ticket == null) {
+              this.matdata.push({
+                id: e.id,
+                assunto: e.assunto,
+                data: e.data,
+                tipo: e.tipo,
+                ticket: {
+                  titulo: ''
+                },
+                cliente: e.cliente,
+                org: e.org
+
+              });
+
+            } else {
+              this.matdata.push({
+                id: e.id,
+                assunto: e.assunto,
+                data: e.data,
+                tipo: e.tipo,
+                ticket: e.ticket,
+                cliente: e.cliente,
+                org: e.org
+
+              });
+            }
+
+
+
+          } catch (error) {
+            console.log(error);
+
+          }
+
+
+
+
+        });
+        console.log('MATDATASOURCE: ', this.matdata);
+        console.log(this.datamat);
+
+
+        this.dataSource = new MatTableDataSource(this.matdata);
+        console.log('dataSource: ', this.dataSource);
+
+      },
       error => {
-       this.erroAtividade = error;
-       console.error(error);
-     }
-   );
+        this.erroAtividade = error;
+        console.error(error);
+      }
+    );
   }
 
   getterCliente() {
@@ -165,45 +263,43 @@ export class AtividadesComponent implements OnInit {
     );
   }
 
-  testebtn(){
-    this.router.navigate([]).then(result => {  window.open('/person/', '_blank'); });
+  testebtn() {
+    this.router.navigate([]).then(result => { window.open('/person/', '_blank'); });
   }
 
-  testebtn2(){
-    this.router.navigate([]).then(result => {  window.open('/company/', '_blank'); });
+  testebtn2() {
+    this.router.navigate([]).then(result => { window.open('/company/', '_blank'); });
   }
 
-  testebtn3(){
-    this.router.navigate([]).then(result => {  window.open('/products/', '_blank'); });
+  testebtn3() {
+    this.router.navigate([]).then(result => { window.open('/products/', '_blank'); });
   }
 
   applyFilter(value: string) {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
-  
-
   dblclic() {
-    this.dataSource .filter = "".trim().toLowerCase();
+    this.dataSource.filter = "".trim().toLowerCase();
   }
 
-  filtroLiga(){
+  filtroLiga() {
     this.dataSource.filter = "liga".trim().toLowerCase();
   }
 
-  filtroReuniao(){
+  filtroReuniao() {
     this.dataSource.filter = "reunião".trim().toLowerCase();
   }
 
-  filtroVisita(){
+  filtroVisita() {
     this.dataSource.filter = "visita".trim().toLowerCase();
   }
 
-  filtroemail(){
+  filtroemail() {
     this.dataSource.filter = "email".trim().toLowerCase();
   }
 
-  filtroTarefa(){
+  filtroTarefa() {
     this.dataSource.filter = "Tarefa".trim().toLowerCase();
   }
 
@@ -242,7 +338,7 @@ export class AtividadesComponent implements OnInit {
     }
     console.log(datef);
     var x = document.getElementById("labeldata");
-    x.innerHTML = datef; 
+    x.innerHTML = datef;
   }
 
   removeSelectedRows() {
@@ -258,18 +354,18 @@ export class AtividadesComponent implements OnInit {
   }
 
 
-  atvchoose(id: number){
-    if(id == 1){
+  atvchoose(id: number) {
+    if (id == 1) {
       this.numm = "Ligar";
-    } else if (id == 2 ) {
+    } else if (id == 2) {
       this.numm = "Reunião";
-    } else if (id == 3 ) {
+    } else if (id == 3) {
       this.numm = "Visita";
-    } else if (id == 4 ) {
+    } else if (id == 4) {
       this.numm = "Email";
     } else if (id == 5) {
       this.numm = "Tarefa";
-    } 
+    }
   }
 
   // deleteActivity(id){
@@ -300,3 +396,5 @@ export class AtividadesComponent implements OnInit {
     window.focus();
   }
 }
+
+

@@ -3,65 +3,19 @@ import { MatTableDataSource, MatSort } from "@angular/material";
 import { CrudService } from "../services/crud.service";
 import swal from 'sweetalert';
 
-// export interface PeriodicElement {
-//   nome;
-//   org;
-//   tel;
-//   email;
-//   neg_f;
-//   neg_a: String;
-// }
+export interface PeriodicElement {
+  id: any;
+  nome: any;
+  org: any;
+  tel: any;
+  email: any;
+  tipo: any;
 
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {
-//     nome: "Arthur Felipe",
-//     org: "Vedois Tecnologia",
-//     tel: "47 988309090",
-//     email: "arthurfelipe@vedois.com",
-//     neg_f: "3",
-//     neg_a: "2"
-//   },
-//   {
-//     nome: "Arthur Felipe",
-//     org: "Vedois Tecnologia",
-//     tel: "47 988309090",
-//     email: "arthurfelipe@vedois.com",
-//     neg_f: "3",
-//     neg_a: "2"
-//   },
-//   {
-//     nome: "Arthur Felipe",
-//     org: "Vedois Tecnologia",
-//     tel: "47 988309090",
-//     email: "arthurfelipe@vedois.com",
-//     neg_f: "3",
-//     neg_a: "2"
-//   },
-//   {
-//     nome: "Arthur Felipe",
-//     org: "Vedois Tecnologia",
-//     tel: "47 988309090",
-//     email: "arthurfelipe@vedois.com",
-//     neg_f: "3",
-//     neg_a: "2"
-//   },
-//   {
-//     nome: "Arthur Felipe",
-//     org: "Vedois Tecnologia",
-//     tel: "47 988309090",
-//     email: "arthurfelipe@vedois.com",
-//     neg_f: "3",
-//     neg_a: "2"
-//   },
-//   {
-//     nome: "Arthur Felipe",
-//     org: "Vedois Tecnologia",
-//     tel: "47 988309090",
-//     email: "arthurfelipe@vedois.com",
-//     neg_f: "2",
-//     neg_a: "1"
-//   }
-// ];
+}
+
+const contatos: PeriodicElement[] = [
+  { id: "", nome: '', org: '', tel: '', email: '', tipo: '' },
+];
 
 @Component({
   selector: "app-person",
@@ -74,7 +28,8 @@ export class PersonComponent implements OnInit {
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  contato = { nome: '', tipo: '', fone: '', celular: '', email: '', skype: '', org: '' }
+  contato = { nome: '', tipo: '', fone: '', celular: '', email: '', skype: '', org: '' };
+  matdata: any = [];
 
   orgsapi: any;
 
@@ -82,6 +37,11 @@ export class PersonComponent implements OnInit {
   contatosapi: MatTableDataSource<any>;
 
   erroContatos: any;
+
+
+  data = Object.assign(contatos);
+  dataSource = new MatTableDataSource<Element>(this.data);
+
 
   constructor(private crudService: CrudService) {
     this.getterContatos();
@@ -103,6 +63,46 @@ export class PersonComponent implements OnInit {
   getterContatos() {
     this.crudService.getClientes().subscribe(
       data => {
+        data.forEach(e => {
+          if (e.org == null) {
+            console.log();
+
+            this.matdata.push({
+              id: e.id,
+              nome: e.nome,
+              fone: e.fone,
+              celular: e.celular,
+              email: e.email,
+              skype: e.skype,
+              tipo: e.tipo,
+              org: {
+                razaosocial: ''
+              }
+
+            });
+          }
+
+          if (e.org != null) {
+            console.log();
+
+            this.matdata.push({
+              id: e.id,
+              nome: e.nome,
+              fone: e.fone,
+              celular: e.celular,
+              email: e.email,
+              skype: e.skype,
+              tipo: e.tipo,
+              org: e.org,
+
+            });
+          }
+        });
+
+
+        this.dataSource = new MatTableDataSource(this.matdata);
+        console.log(this.dataSource);
+
         this.contatosapi = data;
         console.log(data);
       },
@@ -156,13 +156,13 @@ export class PersonComponent implements OnInit {
 
   formatPhoneNumber(str) {
     let cleaned = ('' + str).replace(/\D/g, '');
-    
+
     let match = cleaned.match(/^(\d{2})(\d{4})(\d{4})$/);
-  
+
     if (match) {
       return '(' + match[1] + ') ' + match[2] + '-' + match[3]
     };
-  
+
     return null
   }
 

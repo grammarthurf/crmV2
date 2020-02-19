@@ -101,7 +101,7 @@
         <input class="form-control" type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
     </div>
 
-    <table mat-table [dataSource]="contatosapi" matSort class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
         <ng-container matColumnDef="nome">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
@@ -110,7 +110,7 @@
 
         <ng-container matColumnDef="org">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Organização </th>
-            <td mat-cell *matCellDef="let element"> {{element.org}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.org.razaosocial}} </td>
         </ng-container>
 
         <ng-container matColumnDef="tel">
