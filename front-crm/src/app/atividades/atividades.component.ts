@@ -8,7 +8,7 @@ import { CalendarEvent, CalendarView } from 'angular-calendar';
 
 export interface PeriodicElement {
   position: number;
-  date: string;
+  data: string;
   tipo: string;
   cliente: string;
   org: string;
@@ -16,7 +16,7 @@ export interface PeriodicElement {
 }
 
 const atividade: PeriodicElement[] = [
-  {position: 0, date: '', tipo: '', cliente: '', org: '', ticket: '' },
+  {position: 0, data: '', tipo: '', cliente: '', org: '', ticket: '' },
 ];
 
 @Component({
@@ -29,7 +29,7 @@ export class AtividadesComponent implements OnInit {
 
   count: number = 0;
   numm: string;
-  matdata: any = [];
+  matdata:  any = [];
   datamat: any = [];
 
   //CALENDARIO
@@ -58,7 +58,7 @@ export class AtividadesComponent implements OnInit {
 
   atv = {position: 0, data: '', tipo: '', cliente: '', org: '', ticket: '', assunto: '' };
 
-  displayedColumns: string[] = ['select', 'tipo', 'date', 'cliente', 'org',
+  displayedColumns: string[] = ['select', 'tipo', 'data', 'cliente', 'org',
     'ticket', 'assunto', 'columnEdit', 'columnDelete'];
 
   data = Object.assign(atividade);
@@ -70,17 +70,19 @@ export class AtividadesComponent implements OnInit {
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  ngOnInit() {
-    this.dataSource.sort = this.sort;
-  }
+ 
 
   constructor(private router: Router, public crudService: CrudService) {
-    this.getterActivity();
     this.getterCliente();
     this.getterOrgs();
     this.getterVendedor();
     this.getterTickets();
-    
+    this.getterActivity();
+
+     
+  }
+  
+  ngOnInit() {
   }
 
   getColor(data) {
@@ -189,6 +191,7 @@ export class AtividadesComponent implements OnInit {
 
 
         this.dataSource = new MatTableDataSource(this.matdata);
+        this.dataSource.sort = this.sort;
         console.log('dataSource: ', this.dataSource);
 
       },
@@ -348,14 +351,13 @@ export class AtividadesComponent implements OnInit {
       let index: number = this.matdata.findIndex(d => d === item);
       console.log(index);
       if(index > -1) {
-         this.matdata.splice(index, 1);
-         console.log(index);
+          this.matdata.splice(index, 1);
+          this.dataSource = new MatTableDataSource(this.matdata);
+          this.selection = new SelectionModel<Element>(true, []);
       }
     });
-    this.dataSource = new MatTableDataSource(this.matdata);
-    this.selection = new SelectionModel<Element>(true, []);
+    
   }
-
 
   atvchoose(id: number) {
     if (id == 1) {
@@ -370,18 +372,6 @@ export class AtividadesComponent implements OnInit {
       this.numm = "Tarefa";
     }
   }
-
-  // deleteActivity(id){
-  //   this.crudService.deleteAtividade(id).subscribe(
-  //     data => {
-  //       this.dataSource = new MatTableDataSource(data);
-  //     },
-  //     error => {
-  //      this.erroAtividade = error;
-  //      console.error(error);
-  //     }
-  //   );
-  // }
 
   deleteItem() {
     swal({
