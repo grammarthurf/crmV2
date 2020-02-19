@@ -26,6 +26,9 @@ import { MatSortModule } from "@angular/material/sort";
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
+//MASK
+import { NgxCurrencyModule } from "ngx-currency";
+
 //DRAG AND DROP
 import {DragDropModule} from '@angular/cdk/drag-drop';
 
@@ -82,7 +85,8 @@ import { PersonDetailComponent } from './person-detail/person-detail.component'
       useFactory: adapterFactory
     }),
     DragDropModule,
-    LottieAnimationViewModule.forRoot()
+    LottieAnimationViewModule.forRoot(),
+    NgxCurrencyModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
