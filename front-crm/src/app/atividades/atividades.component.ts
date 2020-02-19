@@ -9,14 +9,14 @@ import { CalendarEvent, CalendarView } from 'angular-calendar';
 export interface PeriodicElement {
   id: string;
   date: string;
-  assunto: string;
+  tipo: string;
   cliente: string;
   org: string;
-  negocio: string;
+  ticket: string;
 }
 
 const atividade: PeriodicElement[] = [
-  { id: "", date: '', assunto: '', cliente: '', org: '', negocio: '' },
+  { id: "", date: '', tipo: '', cliente: '', org: '', ticket: '' },
 ];
 
 @Component({
@@ -56,14 +56,14 @@ export class AtividadesComponent implements OnInit {
   //Lista de vendedor:
   vendedorapi: any;
 
-  atv = { id: "", data: '', assunto: '', cliente: '', org: '', ticket: '', tipo: '' };
+  atv = { id: "", data: '', tipo: '', cliente: '', org: '', ticket: '', assunto: '' };
 
-  displayedColumns: string[] = ['select', 'assunto', 'date', 'cliente', 'org',
-    'ticket', 'userResp', 'columnEdit', 'columnDelete'];
+  displayedColumns: string[] = ['select', 'tipo', 'date', 'cliente', 'org',
+    'ticket', 'assunto', 'columnEdit', 'columnDelete'];
 
   data = Object.assign(atividade);
   dataSource = new MatTableDataSource(this.data);
-  
+
   // dataSource = new MatTableDataSource<Element>(this.data);
 
   selection = new SelectionModel<Element>(true, []);

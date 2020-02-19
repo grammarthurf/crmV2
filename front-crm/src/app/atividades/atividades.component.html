@@ -19,7 +19,7 @@
     <button type="button" class="btn btn-link" (click)="filtrotmrw()">Amanhã</button>
     <button type="button" class="btn btn-link" (click)="filtromes()">Este mês</button>
     <button type="button" class="btn btn-link" (click)="filtroproxmes()">Próximo mês</button>
-    <button type="button" class="btn btn-link" (click)="filtrovenc()">Vencido</button>
+    <!-- <button type="button" class="btn btn-link" (click)="filtrovenc()">Vencido</button> -->
   </div>
 
   <!-- MODAL -->
@@ -223,8 +223,8 @@
     </ng-container>
 
     <!-- tipo Column -->
-    <ng-container matColumnDef="assunto">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Assunto</th>
+    <ng-container matColumnDef="tipo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo</th>
       <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.data)"> {{element.tipo}}</td>
     </ng-container>
 
@@ -234,34 +234,28 @@
       <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.data)"> {{element.data}}</td>
     </ng-container>
 
-    <!-- Ticket Column -->
-    <ng-container matColumnDef="ticket">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Negócio</th>
-      <td mat-cell *matCellDef="let element;" [style.background-color]="getColor(element.data)"> {{element.ticket.titulo}}</td>
-    </ng-container>
-
     <!-- NomeContato Column -->
     <ng-container matColumnDef="cliente">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome do Contato</th>
       <td mat-cell *matCellDef="let element"  [style.background-color]="getColor(element.data)"> {{element.cliente.nome }}</td> <!--.nome-->
     </ng-container>
 
-    <!-- Email Column -->
+    <!-- Org Column -->
     <ng-container matColumnDef="org">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Organização</th>
       <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.data)"> {{element.org.razaosocial}}</td> <!--.razaosocial-->
     </ng-container>
 
-    <!-- Telefone Column -->
-    <ng-container matColumnDef="telefone">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefone</th>
-      <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.data)"> {{element.telefone}}</td>
+    <!-- Ticket Column -->
+    <ng-container matColumnDef="ticket">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Negócio</th>
+      <td mat-cell *matCellDef="let element;" [style.background-color]="getColor(element.data)"> {{element.ticket}}</td>
     </ng-container>
 
     <!-- UserResp Column -->
-    <ng-container matColumnDef="userResp">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuário Responsável</th>
-      <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.data)"> {{element.userResp}}</td>
+    <ng-container matColumnDef="assunto">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Assunto</th>
+      <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.data)"> {{element.assunto}}</td>
     </ng-container>
 
     <ng-container matColumnDef="columnEdit">
