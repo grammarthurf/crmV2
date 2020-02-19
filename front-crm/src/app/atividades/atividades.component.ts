@@ -31,7 +31,7 @@ export class AtividadesComponent implements OnInit {
   count: number = 0;
   numm: string;
   matdata: any = [];
-  datamat:any = [];
+  datamat: any = [];
 
   //CALENDARIO
   view: CalendarView = CalendarView.Day;
@@ -78,7 +78,7 @@ export class AtividadesComponent implements OnInit {
   }
 
   getColor(data) {
-    (2)
+
     switch (data) {
       case this.daymes:
         return '#deeafa';
@@ -93,10 +93,6 @@ export class AtividadesComponent implements OnInit {
     this.crudService.getAtividade().subscribe(
       data => {
         data.forEach(e => {
-          console.log(e);
-          this.datamat.push(e);
-
-
           try {
 
             if (e.cliente == null && e.org == null && e.ticket == null) {
@@ -131,7 +127,7 @@ export class AtividadesComponent implements OnInit {
                 // org: e.org
 
               });
-            } else if (e.org == null){
+            } else if (e.org == null) {
               this.matdata.push({
                 id: e.id,
                 assunto: e.assunto,
@@ -182,7 +178,7 @@ export class AtividadesComponent implements OnInit {
 
 
         });
-        console.log('MATDATASOURCE: ', this.matdata );
+        console.log('MATDATASOURCE: ', this.matdata);
         console.log(this.datamat);
 
 
@@ -421,4 +417,12 @@ export class AtividadesComponent implements OnInit {
       }
     });
   }
+
+  redirectToAdd(url): void {
+    window.open(url, '_blank');
+    window.focus();
+  }
+
 }
+
+
