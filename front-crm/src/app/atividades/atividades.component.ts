@@ -242,7 +242,7 @@ export class AtividadesComponent implements OnInit {
   }
 
   save() {
-    console.log(this.atv)
+    console.log('Atividade do Post',this.atv)
     this.crudService.saveNewAtividade(this.atv).subscribe(
       data => {
         swal({
@@ -261,6 +261,9 @@ export class AtividadesComponent implements OnInit {
       }
     );
   }
+
+
+
 
   testebtn() {
     this.router.navigate([]).then(result => { window.open('/person/', '_blank'); });
