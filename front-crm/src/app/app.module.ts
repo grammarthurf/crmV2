@@ -39,7 +39,9 @@ import { ProductsComponent } from "./products/products.component";
 import { OrganizationComponent } from "./organization/organization.component";
 import { BusinessDetailComponent } from "./business-detail/business-detail.component";
 import { PersonComponent } from "./person/person.component";
-import { NgxMaskModule } from 'ngx-mask'
+import { NgxMaskModule } from 'ngx-mask';
+import { OrganizationDetailComponent } from './organization-detail/organization-detail.component';
+import { PersonDetailComponent } from './person-detail/person-detail.component'
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { NgxMaskModule } from 'ngx-mask'
     ProductsComponent,
     OrganizationComponent,
     BusinessDetailComponent,
-    PersonComponent
+    PersonComponent,
+    OrganizationDetailComponent,
+    PersonDetailComponent
   ],
   imports: [
     BrowserModule,
