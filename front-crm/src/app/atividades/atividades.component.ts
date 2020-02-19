@@ -7,7 +7,7 @@ import swal from 'sweetalert';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 
 export interface PeriodicElement {
-  id: string;
+  position: number;
   date: string;
   tipo: string;
   cliente: string;
@@ -16,7 +16,7 @@ export interface PeriodicElement {
 }
 
 const atividade: PeriodicElement[] = [
-  { id: "", date: '', tipo: '', cliente: '', org: '', ticket: '' },
+  {position: 0, date: '', tipo: '', cliente: '', org: '', ticket: '' },
 ];
 
 @Component({
@@ -56,7 +56,7 @@ export class AtividadesComponent implements OnInit {
   //Lista de vendedor:
   vendedorapi: any;
 
-  atv = { id: "", data: '', tipo: '', cliente: '', org: '', ticket: '', assunto: '' };
+  atv = {position: 0, data: '', tipo: '', cliente: '', org: '', ticket: '', assunto: '' };
 
   displayedColumns: string[] = ['select', 'tipo', 'date', 'cliente', 'org',
     'ticket', 'assunto', 'columnEdit', 'columnDelete'];
@@ -80,6 +80,7 @@ export class AtividadesComponent implements OnInit {
     this.getterOrgs();
     this.getterVendedor();
     this.getterTickets();
+    
   }
 
   getColor(data) {
@@ -104,7 +105,7 @@ export class AtividadesComponent implements OnInit {
               console.log();
 
               this.matdata.push({
-                id: e.id,
+               position: e.id,
                 assunto: e.assunto,
                 data: e.data,
                 tipo: e.tipo,
@@ -121,7 +122,7 @@ export class AtividadesComponent implements OnInit {
               });
             } else if (e.cliente == null) {
               this.matdata.push({
-                id: e.id,
+               position: e.id,
                 assunto: e.assunto,
                 data: e.data,
                 tipo: e.tipo,
@@ -134,7 +135,7 @@ export class AtividadesComponent implements OnInit {
               });
             } else if (e.org == null) {
               this.matdata.push({
-                id: e.id,
+               position: e.id,
                 assunto: e.assunto,
                 data: e.data,
                 tipo: e.tipo,
@@ -147,7 +148,7 @@ export class AtividadesComponent implements OnInit {
               });
             } else if (e.ticket == null) {
               this.matdata.push({
-                id: e.id,
+               position: e.id,
                 assunto: e.assunto,
                 data: e.data,
                 tipo: e.tipo,
@@ -161,7 +162,7 @@ export class AtividadesComponent implements OnInit {
 
             } else {
               this.matdata.push({
-                id: e.id,
+               position: e.id,
                 assunto: e.assunto,
                 data: e.data,
                 tipo: e.tipo,
@@ -241,6 +242,7 @@ export class AtividadesComponent implements OnInit {
       }
     );
   }
+
 
   save() {
     console.log(this.atv)
@@ -343,14 +345,15 @@ export class AtividadesComponent implements OnInit {
 
   removeSelectedRows() {
     this.selection.selected.forEach(item => {
-      let index: number = this.data.findIndex(d => d === item);
-      if (index > -1) {
-        this.data.splice(index, 1);
+      let index: number = this.matdata.findIndex(d => d === item);
+      console.log(index);
+      if(index > -1) {
+         this.matdata.splice(index, 1);
+         console.log(index);
       }
     });
+    this.dataSource = new MatTableDataSource(this.matdata);
     this.selection = new SelectionModel<Element>(true, []);
-    this.dataSource = new MatTableDataSource<Element>(this.data);
-    console.log(this.data);
   }
 
 

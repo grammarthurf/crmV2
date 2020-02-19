@@ -214,8 +214,8 @@
       <th mat-header-cell *matHeaderCellDef > Feito? </th>
 
       <mat-cell *matCellDef="let row">
-        <mat-checkbox (change)="$event ? selection.toggle(row) : null"
-                      (click)="removeSelectedRows()"
+        <mat-checkbox [checked]="removeSelectedRows()"
+                      (change)="$event ? selection.toggle(row) : null"
                       data-toggle="modal"
                       data-target="#abrircadastroatv">
         </mat-checkbox>
