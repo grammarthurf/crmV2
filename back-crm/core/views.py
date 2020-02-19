@@ -91,7 +91,7 @@ class TicketViewSet(viewsets.ModelViewSet):
         T.estagio = Estagio.objects.get(id=int(data['estagio']))
         T.cliente = Cliente.objects.get(id=int(data['cliente']))
         T.org = Organizacao.objects.get(id=int(data['org']))
-        T.valorestimado = data['valorestimado']
+        T.valorestimado = int(data['valorestimado'])
         T.termometro = data['termometro']
         T.obs = data['obs']
         T.created = c
