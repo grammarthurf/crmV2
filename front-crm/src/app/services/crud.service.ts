@@ -74,7 +74,7 @@ export class CrudService {
     return this.http.post(this.baseUrl + "atividade/", atividade, {
       headers: this.htttpHeaders
     });
-    
+
   }
 
   public saveNewCliente(cliente): Observable<any> {
@@ -101,6 +101,18 @@ export class CrudService {
 
     console.log('ESTAGIOUPDADE :' , typeof(estagioUpdate));
     const body = { id: parseInt(ticket.id), titulo: ticket.titulo, estagio: estagioUpdate.toString(), cliente: ticket.cliente.id.toString(), org: ticket.org.id.toString(),
+       produto: ticket.produto, valorestimado: ticket.valorestimado, termometro: ticket.termometro,
+        vendedor: ticket.vendedor, obs: ticket.obs, status: ticket.status  };
+    console.log('body:', body);
+
+    return this.http.put(this.baseUrl + 'ticket/' + ticket.id + '/' , body, {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public updateTicketDetails(ticket): Observable<any> {
+
+    const body = { id: parseInt(ticket.id), titulo: ticket.titulo, estagio: ticket.estagio.id, cliente: ticket.cliente.id.toString(), org: ticket.org.id.toString(),
        produto: ticket.produto, valorestimado: ticket.valorestimado, termometro: ticket.termometro,
         vendedor: ticket.vendedor, obs: ticket.obs, status: ticket.status  };
     console.log('body:', body);

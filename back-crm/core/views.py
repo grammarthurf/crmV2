@@ -113,6 +113,7 @@ class TicketViewSet(viewsets.ModelViewSet):
 
       T = Ticket.objects.get(id=data['id'])
       T.estagio = Estagio.objects.get(id=data['estagio'])
+      T.status = data['status']
       T.save()
 
       return JsonResponse({'message': 'Updated'})

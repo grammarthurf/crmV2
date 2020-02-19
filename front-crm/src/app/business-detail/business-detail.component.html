@@ -57,20 +57,20 @@
         </div>
       </div>
     </div>
-    <div class="col-2 row">
+    <div class="col-2 row" style="padding-left: 0; margin-left: -25px; margin-right: 20px;">
       <button class="btn-win-lose btn-success" id="win" (click)="stageWin()">Ganho</button>
       <button class="btn-win-lose" id="null" (click)="stageNull()">Reabrir</button>
       <button class="btn-win-lose btn-danger" id="lose" (click)="stageLose()" data-toggle="modal" data-target="#loseModal">Perdido</button>
     </div>
-    <!-- <lottie-animation-view [options]="lottieConfig" [width]="1500" [height]="1600"
+    <lottie-animation-view [options]="lottieConfig" [width]="1000" [height]="500"
       (animCreated)="handleAnimation($event)">
-    </lottie-animation-view> -->
+    </lottie-animation-view>
     <div class="col-1">
       <div style="float: right; text-align: right; margin-top: 10px;">
         <p style="font-size: 15px;"> Vendedor </p>
         <p style="font-size: 20px;"> {{business.vendedor}} </p>
-        <p style="font-size: 12px;" mask="9999-99-99" *ngIf="(business.created)"> Criado em
-          {{business.created.datetime}} </p>
+        <!-- <p style="font-size: 12px;" mask="9999-99-99" *ngIf="(business.created)"> Criado em
+          {{business.created.datetime}} </p> -->
       </div>
     </div>
 
