@@ -54,10 +54,8 @@
               <div class="form-group">
                 <label for="exampleInputEmail1">Valor Estimado</label>
                 <input [(ngModel)]="ticket.valorestimado" type="text" class="form-control" id="value"
-                  aria-describedby="emailHelp" placeholder="Valor" data-inputmask="'mask': '99.999,99'"/>
-                <!-- <input [(ngModel)]="ticket.valorestimado" type="text" class="form-control" id="value"
-                  aria-describedby="emailHelp" placeholder="Valor" mask="separator,2" thousandSeparator="."
-                  maxlength="9"/> -->
+                  aria-describedby="emailHelp" placeholder="Valor" currencyMask 
+                  [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"/>
               </div>
 
               <div class="form-group">
