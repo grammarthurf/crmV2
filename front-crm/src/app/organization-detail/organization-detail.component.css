@@ -168,7 +168,7 @@ div.flex p#created_at {
     margin-left: 16px;
 }
 
-div.flex p + p {
+div.flex p#created_at + p {
     margin-left: auto;
     margin-right: 16px;
 }
@@ -190,7 +190,7 @@ li {
     height: 47px;
 }
 
-a {
+div.tabs ul.headers li a {
     position: relative;
     font-weight: 600;
     background: #fff;
@@ -247,4 +247,58 @@ input[type=file] + button + button {
 
 input[type=file] + button {
     margin-left: 64px;
+}
+
+.align-button-icons-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.row.col-12 + div.row.col-12 {
+    margin-top: 16px;
+}
+
+div.col-10.bg-white {
+    padding: 10px 0 15px 25px;
+}
+
+.div-plan {
+    width: 100px;
+    height: 30px;
+    margin: 32px auto 32px auto;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #747678;
+    color: white;
+    border-radius: 35px;
+}
+
+.icons-hist {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #5F6A6A;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+}
+
+mat-checkbox {
+    margin-top: 6px;
+    margin-right: 16px;
+}
+
+#day {
+    color: green;
+    font-size: 14px;
+}
+
+p#day + span {
+    margin-left: 16px;
+    margin-right: 16px;
 }
