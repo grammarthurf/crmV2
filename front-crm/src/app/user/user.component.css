@@ -1,6 +1,6 @@
 .main-div {
     margin-top: 100px;
-    width: 95%;
+    width: 97%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -10,7 +10,20 @@
 }
 
 .div-right {
-	float: right;
+    float: right;
+    overflow: auto;
+    height: 530px;
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 10px;
+}::-webkit-scrollbar-track {
+    background: transparent; 
+}::-webkit-scrollbar-thumb {
+    background: transparent; 
+    border-radius: 5px;
+}::-webkit-scrollbar-thumb:hover {
+    background: transparent; 
 }
 
 .real-div {
@@ -23,11 +36,18 @@
 }
 
 .p {
+    padding-top: 25px;
     font-size: 13px;
+    margin: 1px;
+}
+
+.p1 {
+    color: rgb(156, 156, 156);
 }
 
 mat-icon {
-    display: inline;
+    float: left;
+    margin-right: 10px;
     font-size: 25px;
     color: rgb(60, 152, 192);
 }
@@ -37,6 +57,7 @@ mat-icon {
     height: 100px; 
     margin-left: 15px;
     margin-top: 15px;
+    border-radius: 100px;
 }
 
 .img2 {
