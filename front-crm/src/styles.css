@@ -28,3 +28,6 @@ body {
     font-family: "Maven Pro";
 }
 
+.flex {
+    display: flex;
+}
