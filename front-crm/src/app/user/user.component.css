@@ -25,3 +25,9 @@
 .p {
     font-size: 13px;
 }
+
+mat-icon {
+    display: inline;
+    font-size: 25px;
+    color: rgb(60, 152, 192);
+}

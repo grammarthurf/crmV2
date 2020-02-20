@@ -1,8 +1,250 @@
-header div button {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    color: rgb(125, 125, 235);
+/* HEADER */
+header {
     background-color: #fff;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    align-content: center;
+}
+
+header div button#button-icon {
+    color: #3498DB;
     border: 1px solid rgb(165, 163, 163);
+}
+
+button#button-icon mat-icon {
+    margin-bottom: 2px;
+}
+
+header div#button {
+    justify-content: center;
+    display: flex;
+}
+
+div.col-md-4.flex h5 {
+    margin-top: 8px;
+}
+
+div + mat-icon {
+    margin-top: 8px;
+    margin-left: 16px;
+    color: #515A5A;
+}
+
+img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: auto;
+}
+
+img + div {
+    margin-left: 8px;
+}
+
+button#add + button {
+    margin-left: 16px;
+    margin-top: 8px;
+    color: #ff0f0f;
+    outline: none;
+}
+
+.btn {
+    height: 40px;
+}
+
+div.col-md-4.flex + div.col-md-3.flex {
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* MAIN */
+main {
+    margin: 32px auto 0 auto;
+    padding: 0;
+}
+
+h5 + button {
+    margin-left: auto;
+    border: 1px solid rgb(165, 163, 163);
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    border-radius: 5px;
+    margin-right: 16px;
+}
+
+main div div div h5 {
+    margin-left: 16px;
+}
+
+button mat-icon#edit {
+    font-size: 20px;
+}
+
+div h5 + button, div.flex h5, div.bg-white div.flex {
+    margin-top: 10px;
+}
+
+.no-pd-l {
+    padding-left: 0;
+} 
+
+div.no-pd-l div.bg-white {
+    padding-top: 1px;
+}
+
+hr + div.form-group {
+    padding-bottom: 16px;
+} 
+
+.only-select {}
+
+div.only-select {
+    justify-content: center;
+}
+
+div.only-select mat-icon {
+    color: #5F6A6A
+}
+
+div.only-select mat-icon + p{
+    color: #5DADE2;
+    font-weight: bold;
+}
+
+hr + div.row {
+    padding-bottom: 16px;
+}
+
+.align-divs {
+    margin-top: 16px;
+    padding-bottom: 16px;
+}
+
+.leads {
+    border: 1px solid #c7c7c7;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 10px auto 5px auto;
+    cursor: pointer;
+    padding: 10px;
+    width: 170px;
+    height: 85px;
+}
+
+#red, #green, #orange {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin-left: auto;
+}
+  
+#red {
+    color: red;
+}
+  
+#green {
+    color: green;
+}
+  
+#orange {
+    color: orange;
+}
+
+.progress {
+    height: 2px;
+    background-color: green;
+    margin-top: 4px;
+}
+
+h5#vision {
+    margin: 10px 0 0 16px;
+}
+
+div.flex p#created_at {
+    margin-left: 16px;
+}
+
+div.flex p + p {
+    margin-left: auto;
+    margin-right: 16px;
+}
+
+/* COLUMN RIGHT */
+.tabs {
+    background-color: #fff;
+}
+
+.headers {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #dcdddd;
+}
+
+li {
+    display: flex;
+    position: relative;
+    height: 47px;
+}
+
+a {
+    position: relative;
+    font-weight: 600;
+    background: #fff;
+    color: #747678;
+    outline: 0;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    transition: background-color .1s ease;
+    background: #eff5fd;
+    color: #317ae2;
+}
+
+@media (min-width: 800px) {
+    a {
+        padding: 8px 63.76px 7px;
+    }
+}
+
+@media (min-width: 1445px) {
+
+    a {
+        padding: 8px 113.1px 7px;
+    }
+}
+
+a mat-icon {
+    margin-right: 4px;
+}
+
+div.fakeInput {
+    align-items: center;
+    padding-left: 16px;
+    color: #b9babb;
+    background-color: #fff;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+div.fakeInput div:nth-child(2) {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding-bottom: 16px;
+}
+
+input[type=file] {
+    margin-right: 16px;
+}
+
+input[type=file] + button + button {
+    margin-left: 16px;
+}
+
+input[type=file] + button {
+    margin-left: 64px;
 }
