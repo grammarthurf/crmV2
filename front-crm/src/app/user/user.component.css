@@ -31,3 +31,16 @@ mat-icon {
     font-size: 25px;
     color: rgb(60, 152, 192);
 }
+
+.img1 {
+    width: 100px; 
+    height: 100px; 
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.img2 {
+    width: 25px; 
+    height: 25px; 
+    margin-right: 15px;
+}
