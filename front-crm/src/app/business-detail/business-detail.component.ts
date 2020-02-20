@@ -116,7 +116,7 @@ export class BusinessDetailComponent implements OnInit {
     setTimeout(() => {
       this.stop()
       console.log('funcionou')
-    }, 7000);
+    }, 5000);
   }
 
   stageLose() {
