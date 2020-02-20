@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { CrudService } from "../services/crud.service";
 import swal from 'sweetalert';
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-organization",
@@ -17,7 +18,7 @@ export class OrganizationComponent implements OnInit {
   
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private crudService: CrudService) {
+  constructor(private crudService: CrudService, private router: Router) {
     this.getterOrg();
   }
 
@@ -80,6 +81,14 @@ export class OrganizationComponent implements OnInit {
 
   ngOnInit() {
     // this.orgapi.sort = this.sort;
+  }
+
+  // goTo(id) {
+  //   this.router.navigate([`/organization-detail/${id}`]);
+  // }
+
+  goTo() {
+    this.router.navigate([`/company-detail/`]);
   }
 
   deleteItem() {
