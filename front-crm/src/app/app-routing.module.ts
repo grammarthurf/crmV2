@@ -8,6 +8,7 @@ import { OrganizationComponent } from "./organization/organization.component";
 import { BusinessDetailComponent } from "./business-detail/business-detail.component";
 import { PersonComponent } from "./person/person.component";
 import { OrganizationDetailComponent } from './organization-detail/organization-detail.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: "testapi",
     component: CrudComponent
+  },
+  {
+    path: "user",
+    component: UserComponent
   }
 ];
 

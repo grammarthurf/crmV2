@@ -21,6 +21,7 @@ import { MatNativeDateModule } from "@angular/material";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatSortModule } from "@angular/material/sort";
+import {MatTabsModule} from '@angular/material/tabs';
 
 //CALENDAR
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -44,7 +45,8 @@ import { BusinessDetailComponent } from "./business-detail/business-detail.compo
 import { PersonComponent } from "./person/person.component";
 import { NgxMaskModule } from 'ngx-mask';
 import { OrganizationDetailComponent } from './organization-detail/organization-detail.component';
-import { PersonDetailComponent } from './person-detail/person-detail.component'
+import { PersonDetailComponent } from './person-detail/person-detail.component';
+import { UserComponent } from './user/user.component'
 
 @NgModule({
   declarations: [
@@ -58,7 +60,8 @@ import { PersonDetailComponent } from './person-detail/person-detail.component'
     BusinessDetailComponent,
     PersonComponent,
     OrganizationDetailComponent,
-    PersonDetailComponent
+    PersonDetailComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +89,8 @@ import { PersonDetailComponent } from './person-detail/person-detail.component'
     }),
     DragDropModule,
     LottieAnimationViewModule.forRoot(),
-    NgxCurrencyModule
+    NgxCurrencyModule,
+    MatTabsModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

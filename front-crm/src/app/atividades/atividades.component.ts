@@ -4,7 +4,9 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
 import { CrudService } from "../services/crud.service";
 import swal from 'sweetalert';
-import { CalendarEvent, CalendarView } from 'angular-calendar';
+import { CalendarEvent, CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
+import { setHours, setMinutes } from 'date-fns';
+import { Subject } from 'rxjs';
 
 export interface PeriodicElement {
   position: number;
@@ -35,7 +37,32 @@ export class AtividadesComponent implements OnInit {
   //CALENDARIO
   view: CalendarView = CalendarView.Day;
   viewDate: Date = new Date();
-  events: CalendarEvent[] = [];
+  events: CalendarEvent[] = [
+    {title: 'Reunião',
+    start: setHours(setMinutes(new Date(), 0), 7),
+    color: {primary: '#6297bd', secondary: '#deeafa'},
+    draggable: true,
+    id:1},
+    {title: 'Reunião',
+    start: setHours(setMinutes(new Date(), 0), 10),
+    color: {primary: '#6297bd', secondary: '#deeafa'},
+    draggable: true,
+    id:2}
+  ];
+
+  refresh: Subject<any> = new Subject();
+
+  eventTimesChanged({
+    event,
+    newStart,
+    newEnd
+  }: CalendarEventTimesChangedEvent): void {
+    event.start = newStart;
+    event.end = newEnd;
+    this.refresh.next();
+  }
+
+
   dNow = new Date();
   dayhj = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + this.dNow.getDate();
   daytmrw = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + (this.dNow.getDate() + 1);
@@ -70,23 +97,18 @@ export class AtividadesComponent implements OnInit {
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
- 
-
   constructor(private router: Router, public crudService: CrudService) {
     this.getterCliente();
     this.getterOrgs();
     this.getterVendedor();
     this.getterTickets();
     this.getterActivity();
-
-     
   }
   
   ngOnInit() {
   }
 
   getColor(data) {
-
     switch (data) {
       case this.daymes:
         return '#deeafa';
@@ -193,7 +215,6 @@ export class AtividadesComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.matdata);
         this.dataSource.sort = this.sort;
         console.log('dataSource: ', this.dataSource);
-
       },
       error => {
         this.erroAtividade = error;
@@ -248,7 +269,7 @@ export class AtividadesComponent implements OnInit {
 
 
   save() {
-    console.log(this.atv)
+    console.log("save" + this.atv)
     this.crudService.saveNewAtividade(this.atv).subscribe(
       data => {
         swal({
