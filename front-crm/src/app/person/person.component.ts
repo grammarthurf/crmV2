@@ -182,6 +182,11 @@ export class PersonComponent implements OnInit {
     // this.dataSource.sort = this.sort;
   }
 
+  redirectToAdd(url): void {
+    window.open(url, '_blank');
+    window.focus();
+  }
+
   deleteItem() {
     swal({
       icon: "error",

@@ -101,3 +101,8 @@ table {
 .icon-color-grey {
     color: #3E3F47;
 }
+
+.icon-modal-ctt{
+    font-size: 20px; 
+    margin-left: 5px;
+  }

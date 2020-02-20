@@ -57,6 +57,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Organização</label>
+                                <button mat-icon-button style="width: 40px;" (click)="redirectToAdd('/company')">
+                                    <mat-icon class="icon-modal-ctt" style="margin-right: 10px; font-weight: bold; width: 21px; height: 21px; font-size: 18px; border-radius: 100px; background-color: #c2c2c2; color: #ffffff;">add</mat-icon>
+                                </button>
                                 <select [(ngModel)]="contato.org" class="form-control">
                                     <option>Selecione ...</option>
                                     <option *ngFor="let org of orgsapi" value="{{org.id}}">{{org.razaosocial}}</option>

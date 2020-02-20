@@ -219,13 +219,14 @@
 
       <th mat-header-cell *matHeaderCellDef > Feito? </th>
 
-      <mat-cell *matCellDef="let row">
+      <td [style.background-color]="getColor(element.data)" mat-cell *matCellDef="let element let row" >
         <mat-checkbox [checked]="removeSelectedRows()"
                       (change)="$event ? selection.toggle(row) : null"
                       data-toggle="modal"
-                      data-target="#abrircadastroatv">
+                      data-target="#abrircadastroatv"
+                      style="padding-left: 30px;">
         </mat-checkbox>
-      </mat-cell>
+      </td>
     </ng-container>
 
     <!-- tipo Column -->
@@ -283,7 +284,7 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns; " ></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
 </div>
