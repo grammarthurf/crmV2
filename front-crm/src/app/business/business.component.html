@@ -3,14 +3,14 @@
   <div class="flex">
     <button type="button" class="btn btn-primary loc-button-top" data-toggle="modal" data-target="#exampleModalCenter">
       <mat-icon>add</mat-icon>
-      <p style="margin-left: 5px;">Negócio</p>
+      <p style="margin-left: 5px;">Lead</p>
     </button>
 
     <div style="margin-left: auto; margin-right: 20px;">
-      <button class="btn btn-link">Negócios Abertos</button>
-      <button class="btn btn-link" (click)="showWin()" >Ganhos</button>
-      <button class="btn btn-link">Perdidos</button>
-      <button class="btn btn-link">Excluídos</button>
+      <button class="btn btn-link">Leads Abertas</button>
+      <button class="btn btn-link" (click)="showWin()" >Ganhas</button>
+      <button class="btn btn-link">Perdidas</button>
+      <button class="btn btn-link">Excluídas</button>
     </div>
   </div>
 
@@ -20,7 +20,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">
-            Adicione um Negócio
+            Adicione uma Lead
           </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -37,6 +37,9 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Empresa</label>
+                <button mat-icon-button (click)="redirectToAdd('/company')">
+                  <mat-icon class="icon-modal-lead" style="margin-right: 10px; font-weight: bold; width: 21px; height: 21px; font-size: 18px; border-radius: 100px; background-color: #c2c2c2; color: #ffffff;">add</mat-icon>
+                </button>
                 <select *ngIf="orsgapi" [(ngModel)]="ticket.org" class="form-control" id="exampleFormControlSelect1">
                   <option *ngFor="let orgs of orsgapi" value="{{orgs.id}}">{{orgs.razaosocial}}</option>
                 </select>
@@ -44,6 +47,9 @@
 
               <div class="form-group">
                 <label for="exampleFormControlSelect2">Produto</label>
+                <button mat-icon-button (click)="redirectToAdd('/products')">
+                  <mat-icon class="icon-modal-lead" style="margin-right: 10px; font-weight: bold; width: 21px; height: 21px; font-size: 18px; border-radius: 100px; background-color: #c2c2c2; color: #ffffff;">add</mat-icon>
+                </button>
                 <select [(ngModel)]="ticket.produto" multiple class="form-control" id="exampleFormControlSelect2">
                   <option *ngFor="let prod of produtosapi" value="{{prod.id}}">{{prod.nome}}</option>
                 </select>
@@ -72,6 +78,9 @@
             </div>
             <div class="form-group col-md-6">
               <label for="exampleFormControlSelect1">Contato</label>
+              <button mat-icon-button (click)="redirectToAdd('/person')">
+                <mat-icon class="icon-modal-lead" style="margin-right: 10px; font-weight: bold; width: 21px; height: 21px; font-size: 18px; border-radius: 100px; background-color: #c2c2c2; color: #ffffff;">add</mat-icon>
+              </button>
               <select *ngIf="clientesapi" [(ngModel)]="ticket.cliente" class="form-control"
                 id="exampleFormControlSelect1">
                 <option *ngFor="let cliente of clientesapi" value="{{cliente.id}}">{{cliente.nome}}</option>

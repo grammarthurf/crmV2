@@ -76,7 +76,7 @@ export class PersonComponent implements OnInit {
               skype: e.skype,
               tipo: e.tipo,
               org: {
-                razaosocial: ''
+                nomefantasia: ''
               }
 
             });
@@ -114,7 +114,7 @@ export class PersonComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
-    this.contatosapi.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   save() {
@@ -164,6 +164,18 @@ export class PersonComponent implements OnInit {
     };
 
     return null
+  }
+
+  filtroCli() {
+    this.dataSource.filter = "Cliente".trim().toLowerCase();
+  }
+
+  filtroPar() {
+    this.dataSource.filter = "Parceiro".trim().toLowerCase();
+  }
+
+  dblclic(){
+    this.dataSource.filter = "".trim().toLowerCase();
   }
 
   ngOnInit() {

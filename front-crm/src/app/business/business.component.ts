@@ -465,6 +465,11 @@ export class BusinessComponent implements OnInit {
     }
   }
 
+  redirectToAdd(url): void {
+    window.open(url, '_blank');
+    window.focus();
+  }
+
   ngOnInit() {
     Inputmask().mask(document.getElementById("value"));
   }
