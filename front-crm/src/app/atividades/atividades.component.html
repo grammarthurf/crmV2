@@ -249,7 +249,7 @@
     <!-- Ticket Column -->
     <ng-container matColumnDef="ticket">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Negócio</th>
-      <td mat-cell *matCellDef="let element;" [style.background-color]="getColor(element.data)"> {{element.ticket}}</td>
+      <td mat-cell *matCellDef="let element;" [style.background-color]="getColor(element.data)"> {{element.ticket.titulo}}</td>
     </ng-container>
 
     <!-- UserResp Column -->

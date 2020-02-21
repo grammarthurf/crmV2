@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CrudService } from '../services/crud.service';
 
 @Component({
   selector: 'app-organization-detail',
@@ -7,9 +9,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrganizationDetailComponent implements OnInit {
 
-  constructor() { }
+  org:any;
+
+  constructor( private route: ActivatedRoute, private crudService: CrudService) {
+
+   }
+
+
+  loadOrg() {
+    const id = this.route.snapshot.paramMap.get("id");
+    this.getterOrg(id);
+
+  }
+
+  getterOrg(id) {
+    this.crudService.getOrg(id).subscribe(
+      data => {
+        this.org = data;
+        console.log(this.org);
+
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  }
 
   ngOnInit() {
+  this.loadOrg();
   }
 
 }
