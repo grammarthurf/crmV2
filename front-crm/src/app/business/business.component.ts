@@ -348,7 +348,7 @@ export class BusinessComponent implements OnInit {
           this.ticketsapi = data;
           console.log('data', data);
           data.forEach(e => {
-            if (e.status == 'Ganho') {
+            if (e.status == 'Ganhou') {
               switch (e.estagio.id) {
                 case 1:
 
