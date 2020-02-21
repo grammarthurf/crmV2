@@ -288,9 +288,8 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Clientes</p>
-          <p>R$ {{tickets8.valor}} {{tickets8.tickets.length}} Neg. </p>
+          <p>R$ {{formatNumberBR(tickets8.valor)}} {{tickets8.tickets.length}} Neg. </p>
         </div>
-        <img src="../../assets/arrow.png" />
       </div>
 
       <div cdkDropList [cdkDropListData]="tickets8.tickets" class="example-list" (cdkDropListDropped)="drop($event)">

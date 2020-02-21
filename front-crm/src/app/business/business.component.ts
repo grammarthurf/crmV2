@@ -534,4 +534,10 @@ export class BusinessComponent implements OnInit {
     Inputmask().mask(document.getElementById("value"));
   }
 
+  formatNumberBR(value) {
+    let result = value.format('0.0,')
+    
+    return result
+  }
+
 }

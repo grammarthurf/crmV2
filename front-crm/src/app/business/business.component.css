@@ -243,7 +243,7 @@ span:nth-child(2) {
 
 span:nth-child(3) {
   margin-left: 40px;
-}
+}z
 
 .example-box:active {
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
@@ -284,6 +284,11 @@ span:nth-child(3) {
 }
 
 img {
+  margin-left: auto;
+}
+
+img#arrow {
+  height: 64px;
   margin-left: auto;
 }
 
