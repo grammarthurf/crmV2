@@ -10,7 +10,6 @@ export interface PeriodicElement {
   tel: any;
   email: any;
   tipo: any;
-
 }
 
 const contatos: PeriodicElement[] = [
@@ -24,7 +23,7 @@ const contatos: PeriodicElement[] = [
 })
 export class PersonComponent implements OnInit {
   displayedColumns: string[] = ['nome', 'org', 'tel', 'email', 'tipo', 'columnEdit', 'columnDelete'];
-  // dataSource = new MatTableDataSource(ELEMENT_DATA);
+  //dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
@@ -33,7 +32,7 @@ export class PersonComponent implements OnInit {
 
   orgsapi: any;
 
-  // Lista de contatos:
+  //Lista de contatos:
   contatosapi: MatTableDataSource<any>;
 
   erroContatos: any;

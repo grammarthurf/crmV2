@@ -4,9 +4,8 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
 import { CrudService } from "../services/crud.service";
 import swal from 'sweetalert';
-import { CalendarEvent, CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
-import { setHours, setMinutes } from 'date-fns';
-import { Subject } from 'rxjs';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import bootstrapPlugin from '@fullcalendar/bootstrap';
 
 export interface PeriodicElement {
   position: number;
@@ -21,6 +20,8 @@ const atividade: PeriodicElement[] = [
   {position: 0, data: '', tipo: '', cliente: '', org: '', ticket: '' },
 ];
 
+
+
 @Component({
   selector: "app-atividades",
   templateUrl: "./atividades.component.html",
@@ -34,34 +35,7 @@ export class AtividadesComponent implements OnInit {
   matdata:  any = [];
   datamat: any = [];
 
-  //CALENDARIO
-  view: CalendarView = CalendarView.Day;
-  viewDate: Date = new Date();
-  events: CalendarEvent[] = [
-    {title: 'Reunião',
-    start: setHours(setMinutes(new Date(), 0), 7),
-    color: {primary: '#6297bd', secondary: '#deeafa'},
-    draggable: true,
-    id:1},
-    {title: 'Reunião',
-    start: setHours(setMinutes(new Date(), 0), 10),
-    color: {primary: '#6297bd', secondary: '#deeafa'},
-    draggable: true,
-    id:2}
-  ];
-
-  refresh: Subject<any> = new Subject();
-
-  eventTimesChanged({
-    event,
-    newStart,
-    newEnd
-  }: CalendarEventTimesChangedEvent): void {
-    event.start = newStart;
-    event.end = newEnd;
-    this.refresh.next();
-  }
-
+  calendarPlugins = [ timeGridPlugin, bootstrapPlugin ];
 
   dNow = new Date();
   dayhj = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + this.dNow.getDate();
@@ -104,9 +78,11 @@ export class AtividadesComponent implements OnInit {
     this.getterTickets();
     this.getterActivity();
   }
-
+  
   ngOnInit() {
+    
   }
+
 
   getColor(data) {
     switch (data) {
@@ -118,6 +94,7 @@ export class AtividadesComponent implements OnInit {
         return 'rgb(255, 232, 228)';
     }
   }
+
 
   getterActivity() {
     this.crudService.getAtividade().subscribe(
@@ -269,7 +246,6 @@ export class AtividadesComponent implements OnInit {
 
 
   save() {
-    console.log('Atividade do Post',this.atv)
     console.log("save" + this.atv)
     this.crudService.saveNewAtividade(this.atv).subscribe(
       data => {
@@ -289,9 +265,6 @@ export class AtividadesComponent implements OnInit {
       }
     );
   }
-
-
-
 
   testebtn() {
     this.router.navigate([]).then(result => { window.open('/person/', '_blank'); });
@@ -355,22 +328,6 @@ export class AtividadesComponent implements OnInit {
     // um filtro que pegue todas as datas antes de this.dayhj
   }
 
-  countday(id){
-    var day = this.dNow.getDate()
-
-    var datei = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth()+1) + '-';
-    if(id == +1){
-      var i = this.count++;
-      var datef =  datei + (day + i) ;
-    } else if (id == -1) {
-      var ii = this.count++;
-      var datef =  datei + (day - ii);
-    }
-    console.log(datef);
-    var x = document.getElementById("labeldata");
-    x.innerHTML = datef;
-  }
-
   removeSelectedRows() {
     this.selection.selected.forEach(item => {
       let index: number = this.matdata.findIndex(d => d === item);
@@ -381,7 +338,7 @@ export class AtividadesComponent implements OnInit {
           this.selection = new SelectionModel<Element>(true, []);
       }
     });
-
+    
   }
 
   atvchoose(id: number) {

@@ -150,11 +150,6 @@ input[type=range] {
   max-width: 14.29% !important;
 }
 
-img#arrow {
-  height: 64px;
-  margin-left: auto;
-}
-
 .fz-13 {
   font-size: 13px;
 }

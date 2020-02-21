@@ -18,12 +18,12 @@
 .scrollbar::-webkit-scrollbar {
     width: 10px;
 }::-webkit-scrollbar-track {
-    background: transparent; 
+    background: rgb(238, 238, 238); 
 }::-webkit-scrollbar-thumb {
-    background: transparent; 
+    background: rgb(204, 204, 204); 
     border-radius: 5px;
 }::-webkit-scrollbar-thumb:hover {
-    background: transparent; 
+    background: rgba(204, 204, 204, 0.623); 
 }
 
 .real-div {
