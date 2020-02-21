@@ -9,8 +9,8 @@
     <div style="margin-left: auto; margin-right: 20px;">
       <button class="btn btn-link" (click)="showOpen()" >Leads Abertas</button>
       <button class="btn btn-link" (click)="showWin()" >Ganhas</button>
-      <button class="btn btn-link" (click)="showLose()"  >Perdidas</button>
-      <button class="btn btn-link"(click)="showExclude()" >Excluídas</button>
+      <button class="btn btn-link" (click)="showLose()">Perdidas</button>
+      <button class="btn btn-link"(click)="showExclude()">Excluídas</button>
     </div>
   </div>
 
@@ -119,13 +119,13 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Prospecção</p>
-          <p>2 Neg.</p>
+          <p>R$ {{tickets1.valor}} {{tickets1.tickets.length}} Neg.  </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
 
-      <div cdkDropList [cdkDropListData]="tickets1" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets1" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+      <div cdkDropList [cdkDropListData]="tickets1.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="leads" *ngFor="let item of tickets1.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
@@ -147,13 +147,13 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Contatado</p>
-          <p>2 Neg.</p>
+          <p>R$ {{tickets3.valor}} {{tickets3.tickets.length}} Neg. </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
 
-      <div cdkDropList [cdkDropListData]="tickets3" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets3" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+      <div cdkDropList [cdkDropListData]="tickets3.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="leads" *ngFor="let item of tickets3.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
@@ -175,13 +175,13 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Cliente Potencial</p>
-          <p>2 Neg.</p>
+          <p>R$ {{tickets4.valor}} {{tickets4.tickets.length}} Neg. </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
 
-      <div cdkDropList [cdkDropListData]="tickets4" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets4" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+      <div cdkDropList [cdkDropListData]="tickets4.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="leads" *ngFor="let item of tickets4.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
@@ -203,13 +203,13 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Demo Agendada</p>
-          <p>2 Neg.</p>
+          <p>R$ {{tickets5.valor}} {{tickets5.tickets.length}} Neg. </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
 
-      <div cdkDropList [cdkDropListData]="tickets5" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets5" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+      <div cdkDropList [cdkDropListData]="tickets5.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="leads" *ngFor="let item of tickets5.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
@@ -231,13 +231,13 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Proposta</p>
-          <p>2 Neg.</p>
+          <p>R$ {{tickets6.valor}} {{tickets6.tickets.length}} Neg. </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
 
-      <div cdkDropList [cdkDropListData]="tickets6" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets6" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+      <div cdkDropList [cdkDropListData]="tickets6.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="leads" *ngFor="let item of tickets6.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
@@ -259,13 +259,13 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Negociações Inic.</p>
-          <p>2 Neg.</p>
+          <p>R$ {{tickets7.valor}} {{tickets7.tickets.length}} Neg. </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
 
-      <div cdkDropList [cdkDropListData]="tickets7" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets7" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+      <div cdkDropList [cdkDropListData]="tickets7.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="leads" *ngFor="let item of tickets7.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
@@ -287,13 +287,13 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Clientes</p>
-          <p>2 Neg.</p>
+          <p>R$ {{tickets8.valor}} {{tickets8.tickets.length}} Neg. </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
 
-      <div cdkDropList [cdkDropListData]="tickets8" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets8" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+      <div cdkDropList [cdkDropListData]="tickets8.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="leads" *ngFor="let item of tickets8.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
