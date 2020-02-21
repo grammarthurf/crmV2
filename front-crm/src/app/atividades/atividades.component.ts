@@ -6,6 +6,7 @@ import { CrudService } from "../services/crud.service";
 import swal from 'sweetalert';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import bootstrapPlugin from '@fullcalendar/bootstrap';
+import listPlugin from '@fullcalendar/list';
 
 export interface PeriodicElement {
   position: number;
@@ -35,7 +36,7 @@ export class AtividadesComponent implements OnInit {
   matdata:  any = [];
   datamat: any = [];
 
-  calendarPlugins = [ timeGridPlugin, bootstrapPlugin ];
+  calendarPlugins = [ listPlugin , bootstrapPlugin ];
 
   dNow = new Date();
   dayhj = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + this.dNow.getDate();

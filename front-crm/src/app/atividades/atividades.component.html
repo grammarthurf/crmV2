@@ -135,9 +135,9 @@
                 </div>
               </div>
             </div>
-            <div class="col-5 ml-auto" style="height: 520px; overflow: auto; font-size: 12px;">
+            <div class="col-5 ml-auto" style="height: 520px; overflow: auto; font-size: 10px; align-items: flex-end;">
               <full-calendar
-                defaultView="timeGridDay"
+                defaultView="listWeek"
                 views="{
                   week: {
                     titleFormat: { year: 'numeric', month: 'long' }
@@ -145,12 +145,19 @@
                 }" 
                 titleFormat=""
                 [plugins]="calendarPlugins"
+                droppable="true" 
                 themeSystem= "bootstrap"
                 [events]="[
-                  { title: 'event 1', date: '2020-02-21' },
-                  { title: 'event 2', date: '2020-02-22' },
-                  { title: 'event 3', date: '2020-02-21' },
-                  { title: 'event 4', date: '2020-02-21' }
+                  { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
+                  { title: 'Ligação', start: '2020-02-21T11:45:00', end: '2020-02-21T11:50:00' },
+                  { title: 'Tarefa', start: '2020-02-21T13:00:00', end: '2020-02-21T13:10:00' },
+                  { title: 'Ligação', start: '2020-02-21T14:30:00', end: '2020-02-21T14:40:00' },
+                  { title: 'Reunião', start: '2020-02-23T10:30:00', end: '2020-02-23T11:30:00' },
+                  { title: 'Ligação', start: '2020-02-25T11:30:00', end: '2020-02-25T11:45:00' },
+                  { title: 'Reunião', start: '2020-02-25T13:30:00', end: '2020-02-25T14:30:00' },
+                  { title: 'Visita', start: '2020-02-26T14:30:00', end: '2020-02-26T16:30:00' },
+                  { title: 'Email', start: '2020-02-23T16:30:00', end: '2020-02-23T16:40:00' },
+                  { title: 'Tarefa', start: '2020-02-24T16:45:00', end: '2020-02-24T17:00:00' }
                 ]" 
                 locale="pt-br">
               </full-calendar>   

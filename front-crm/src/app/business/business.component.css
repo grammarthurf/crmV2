@@ -186,29 +186,6 @@ input[type=range] {
   color: orange;
 }
 
-/* .thermometro {
-  border: 3px;
-  border-radius: 50%;
-  width: 15px;
-  height: 15px;
-  
-}
-
-.thermquente {
-  color: #FF0000;
-  font-size: 16px;
-}
-
-.thermmorno {
-  color: #F3FF00;
-  font-size: 16px;
-}
-
-.thermfrio {
-  color: #0083FF;
-  font-size: 16px;
-} */
-
 .termometro {
   margin-left: auto;
   border-radius: 50%;
@@ -316,7 +293,6 @@ img {
 .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
-
 
 .nowrap {
   white-space: nowrap;
