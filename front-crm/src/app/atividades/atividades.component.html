@@ -42,7 +42,7 @@
         </div>
         <div class="modal-body">
           <div class="col-12 row">
-            <div class="col-8" style="padding: 0px;">
+            <div class="col-7" style="padding: 0px;">
               <div class="col-12 row">
                 <div class="col-6">
                   <label for="Empresa" >Empresa</label>
@@ -135,29 +135,16 @@
                 </div>
               </div>
             </div>
-
-            <div class="col-4 ml-auto">
-              <div class="col-12 row" style="margin-left: 15px; font-weight: bold; width: 82%; color: #317ae2; background: #deeafa;">
-                <button mat-icon-button style="width: 10px; height: 10px;" (click)="countday(-1) ">
-                  <mat-icon class="icon-modal-atv" style="font-size: 15px; font-weight: bold;">keyboard_arrow_left</mat-icon>
-                </button>
-
-                <label id="labeldata" style="margin-left: 20px; margin-top: 8px;"> {{this.dayhj}} </label>
-
-                <button mat-icon-button style="width: 10px; height: 10px;" (click)="countday(+1)">
-                  <mat-icon class="icon-modal-atv" style="font-size: 15px; font-weight: bold;">keyboard_arrow_right</mat-icon>
-                </button>
-              </div>
-              <div class="col-12 scrollbardif" style="height: 490px; overflow: auto;">
-                <mwl-calendar-day-view
-                  [viewDate]="viewDate"
-                  [dayStartHour]="6"
-                  [dayEndHour]="23"
-                  [events]="events"
-                  [refresh]="refresh"
-                  (eventTimesChanged)="eventTimesChanged($event)">
-                </mwl-calendar-day-view>
-              </div>
+            <div class="col-5 ml-auto">
+              <full-calendar
+                defaultView="timeGridDay"
+                [plugins]="calendarPlugins"
+                [events]="[
+                  { title: 'event 1', date: '2020-02-21' },
+                  { title: 'event 2', date: '2020-02-22' }
+                ]" 
+                locale="pt-br">
+              </full-calendar>    
             </div>
           </div>
         </div>

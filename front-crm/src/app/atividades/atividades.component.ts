@@ -4,9 +4,8 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
 import { CrudService } from "../services/crud.service";
 import swal from 'sweetalert';
-import { CalendarEvent, CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
-import { setHours, setMinutes } from 'date-fns';
-import { Subject } from 'rxjs';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
 
 export interface PeriodicElement {
   position: number;
@@ -21,6 +20,8 @@ const atividade: PeriodicElement[] = [
   {position: 0, data: '', tipo: '', cliente: '', org: '', ticket: '' },
 ];
 
+
+
 @Component({
   selector: "app-atividades",
   templateUrl: "./atividades.component.html",
@@ -34,34 +35,38 @@ export class AtividadesComponent implements OnInit {
   matdata:  any = [];
   datamat: any = [];
 
+  
+
   //CALENDARIO
-  view: CalendarView = CalendarView.Day;
-  viewDate: Date = new Date();
-  events: CalendarEvent[] = [
-    {title: 'Reunião',
-    start: setHours(setMinutes(new Date(), 0), 7),
-    color: {primary: '#6297bd', secondary: '#deeafa'},
-    draggable: true,
-    id:1},
-    {title: 'Reunião',
-    start: setHours(setMinutes(new Date(), 0), 10),
-    color: {primary: '#6297bd', secondary: '#deeafa'},
-    draggable: true,
-    id:2}
-  ];
+  // view: CalendarView = CalendarView.Day;
+  // viewDate: Date = new Date();
+  // events: CalendarEvent[] = [
+  //   {title: 'Reunião',
+  //   start: setHours(setMinutes(new Date(), 0), 7),
+  //   color: {primary: '#6297bd', secondary: '#deeafa'},
+  //   draggable: true,
+  //   id:1},
+  //   {title: 'Reunião',
+  //   start: setHours(setMinutes(new Date(), 0), 10),
+  //   color: {primary: '#6297bd', secondary: '#deeafa'},
+  //   draggable: true,
+  //   id:2}
+  // ];
 
-  refresh: Subject<any> = new Subject();
+  //refresh: Subject<any> = new Subject();
 
-  eventTimesChanged({
-    event,
-    newStart,
-    newEnd
-  }: CalendarEventTimesChangedEvent): void {
-    event.start = newStart;
-    event.end = newEnd;
-    this.refresh.next();
-  }
+  // eventTimesChanged({
+  //   event,
+  //   newStart,
+  //   newEnd
+  // }: CalendarEventTimesChangedEvent): void {
+  //   event.start = newStart;
+  //   event.end = newEnd;
+  //   this.refresh.next();
+  // }
 
+
+  calendarPlugins = [ timeGridPlugin];
 
   dNow = new Date();
   dayhj = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + this.dNow.getDate();
@@ -106,7 +111,9 @@ export class AtividadesComponent implements OnInit {
   }
   
   ngOnInit() {
+    
   }
+
 
   getColor(data) {
     switch (data) {
@@ -118,6 +125,7 @@ export class AtividadesComponent implements OnInit {
         return 'rgb(255, 232, 228)';
     }
   }
+
 
   getterActivity() {
     this.crudService.getAtividade().subscribe(

@@ -133,3 +133,9 @@ table {
 }::-webkit-scrollbar-thumb:hover {
     background: rgb(103, 130, 148); 
 }
+
+.fullcalendar {
+    width: 500px;
+    height: 100px !important;
+    margin: 1px auto;
+  }

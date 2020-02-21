@@ -32,12 +32,10 @@
                                 <option value="Parceiro">Parceiro</option>
                             </select>
                         </div>
-
                         <div class="form-group col-md-12">
                             <label for="exampleInputEmail1">Email</label>
                             <input [(ngModel)]="contato.email" type="text" class="form-control">
                         </div>
-
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Telefone</label>
@@ -49,7 +47,6 @@
                                 <input [(ngModel)]="contato.skype" type="text" class="form-control">
                             </div>
                         </div>
-
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Celular</label>
@@ -66,11 +63,8 @@
                                 </select>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
                     <button type="button" (click)="save()" class="btn btn-primary" data-dismiss="modal">Salvar</button>
@@ -78,7 +72,6 @@
             </div>
         </div>
     </div>
-
     <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -102,9 +95,7 @@
             </div>
         </div>
     </div>
-
     <mat-divider></mat-divider>
-
     <div style="display: flex; margin-bottom: 5px;">
         <button type="button" class="btn btn-outline-dark button-all" (click)="dblclic()">Todos</button>
         <mat-divider [vertical]="true" class="divider-vertical"></mat-divider>
@@ -115,34 +106,27 @@
           <mat-icon>business</mat-icon>Parceiros
         </button>
     </div>
-
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-
         <ng-container matColumnDef="nome">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
             <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
         </ng-container>
-
         <ng-container matColumnDef="org">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Organização </th>
             <td mat-cell *matCellDef="let element"> {{element.org.nomefantasia}} </td>
         </ng-container>
-
         <ng-container matColumnDef="tel">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefone </th>
             <td mat-cell *matCellDef="let element"> {{formatPhoneNumber(element.fone)}} </td>
         </ng-container>
-
         <ng-container matColumnDef="email">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
             <td mat-cell *matCellDef="let element"> {{element.email}} </td>
         </ng-container>
-
         <ng-container matColumnDef="tipo">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </th>
             <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
         </ng-container>
-
         <ng-container matColumnDef="columnEdit">
             <th mat-header-cell *matHeaderCellDef> </th>
             <td mat-cell *matCellDef="let element" data-toggle="modal" data-target="#exampleModalCenter">
@@ -151,7 +135,6 @@
                 </button>
             </td>
         </ng-container>
-
         <ng-container matColumnDef="columnDelete">
             <th mat-header-cell *matHeaderCellDef> </th>
             <td mat-cell *matCellDef="let element" data-toggle="modal" data-target="#modalDelete">
@@ -160,7 +143,6 @@
                 </button>
             </td>
         </ng-container>
-
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
