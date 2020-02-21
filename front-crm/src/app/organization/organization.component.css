@@ -43,14 +43,13 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
     border-color: #5460E0;
 }
 
-.iconfiltro {
-    margin: 5px 15.5px;
-    color: rgb(10, 24, 64);
-}
+
+/* FILTROS */
+
 
 .filter {
     margin-top: 15px;
-    float: right;
+    margin-left: auto;
 }
 
 .loc-button-top {

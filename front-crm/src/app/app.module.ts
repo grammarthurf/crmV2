@@ -26,6 +26,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 //CALENDAR
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 //MASK
 import { NgxCurrencyModule } from "ngx-currency";
@@ -90,7 +91,8 @@ import { UserComponent } from './user/user.component'
     DragDropModule,
     LottieAnimationViewModule.forRoot(),
     NgxCurrencyModule,
-    MatTabsModule
+    MatTabsModule,
+    FullCalendarModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

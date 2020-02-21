@@ -4,6 +4,10 @@ h1 {
     color: #232953;
 }
 
+.modal-body {
+    height: 550px;
+}
+
 .font1 {
     font-family: 'Open Sans';
     
@@ -31,9 +35,6 @@ table {
     margin: 0 auto 20px auto;
 }
   
-mat-checkbox {
-    margin: 15px 20px 0 5px;
-}
 
 .filter {
     margin-top: 15px;
@@ -55,6 +56,7 @@ mat-checkbox {
     width: 85px;
 }
 
+
 .button-all {
     width: 85px;
     height: 40px;
@@ -62,12 +64,12 @@ mat-checkbox {
 }
 
 .div-modal-atv{
-    width: 40px; 
+    width: 40x; 
     height: 40px; 
     background-color: #6297bd; 
     color: white; 
     border-radius: 50%;
-    margin-left: 26px;
+    margin-left: 15px;
 }
 
 .icon-modal-atv{
@@ -135,3 +137,9 @@ mat-checkbox {
 }::-webkit-scrollbar-thumb:hover {
     background: rgb(103, 130, 148); 
 }
+
+.fullcalendar {
+    width: 500px;
+    height: 100px !important;
+    margin: 1px auto;
+  }

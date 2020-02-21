@@ -46,7 +46,7 @@ const routes: Routes = [
     component: OrganizationComponent
   },
   {
-    path: "company-detail",
+    path: "company-detail/:id",
     component: OrganizationDetailComponent
   },
   {

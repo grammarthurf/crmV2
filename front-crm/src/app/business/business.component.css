@@ -150,11 +150,6 @@ input[type=range] {
   max-width: 14.29% !important;
 }
 
-img#arrow {
-  height: 64px;
-  margin-left: auto;
-}
-
 .fz-13 {
   font-size: 13px;
 }
@@ -346,4 +341,9 @@ lottie-animation-view {
   left: 40%;
   top: -4%;
   z-index: -1;
+}
+
+.icon-modal-lead{
+  font-size: 20px; 
+  margin-left: 5px;
 }

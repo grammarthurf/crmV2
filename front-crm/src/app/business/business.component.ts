@@ -14,13 +14,13 @@ export class BusinessComponent implements OnInit {
 
   selectedBusiness: any
 
-  tickets1: any = [];
-  tickets3: any = [];
-  tickets4: any = [];
-  tickets5: any = [];
-  tickets6: any = [];
-  tickets7: any = [];
-  tickets8: any = [];
+  tickets1: any = { tickets: [], valor: '' };
+  tickets3: any = { tickets: [], valor: '' };
+  tickets4: any = { tickets: [], valor: '' };
+  tickets5: any = { tickets: [], valor: '' };
+  tickets6: any = { tickets: [], valor: '' };
+  tickets7: any = { tickets: [], valor: '' };
+  tickets8: any = { tickets: [], valor: '' };
 
   //Lista de Clientes
   clientesapi: any;
@@ -61,12 +61,44 @@ export class BusinessComponent implements OnInit {
     this.getterProd();
     this.getterCliente();
 
+
     this.lottieConfig = {
       path: 'assets/handshake.json',
       renderer: 'canvas',
       autoplay: false,
       loop: false
     };
+  }
+
+  calcAllValue() {
+    const listaTicketslist: any = [this.tickets1, this.tickets3, this.tickets4, this.tickets5,
+    this.tickets6, this.tickets7, this.tickets8]
+
+    listaTicketslist.forEach(e => {
+      this.calcValueestagio(e);
+    });
+
+  }
+
+  calcValueestagio(ticketest) {
+    console.log('ticketque pegou: ', ticketest);
+    let i = 0;
+    ticketest.valor = i;
+    console.log( 'Tickets: '  , ticketest.tickets);
+    ticketest.tickets.forEach(e => {
+      console.log('ENTROU');
+
+      console.log( 'Tickets: '  , e);
+
+      i += e.valorestimado;
+      console.log(e.valorestimado);
+
+    });
+
+    console.log(i);
+    ticketest.valor = i;
+
+
   }
 
   showOpen() {
@@ -182,6 +214,14 @@ export class BusinessComponent implements OnInit {
     console.log('status: ', status);
 
     if (status == undefined || status == 'open') {
+
+      this.tickets1.tickets = [];
+      this.tickets3.tickets = [];
+      this.tickets4.tickets = [];
+      this.tickets5.tickets = [];
+      this.tickets6.tickets = [];
+      this.tickets7.tickets = [];
+      this.tickets8.tickets = [];
       this.crudService.getTickets().subscribe(
         data => {
           this.ticketsapi = data;
@@ -190,36 +230,37 @@ export class BusinessComponent implements OnInit {
             if (e.status == 'Aberto') {
               switch (e.estagio.id) {
                 case 1:
-                  this.tickets1 = [];
-                  this.tickets1.push(e);
+
+                  this.tickets1.tickets.push(e);
                   break;
                 case 3:
-                  this.tickets3 = [];
-                  this.tickets3.push(e);
+
+                  this.tickets3.tickets.push(e);
                   break;
                 case 4:
-                  this.tickets4 = [];
-                  this.tickets4.push(e);
+
+                  this.tickets4.tickets.push(e);
                   break;
                 case 5:
-                  this.tickets5 = [];
-                  this.tickets5.push(e);
+
+                  this.tickets5.tickets.push(e);
                   break;
                 case 6:
-                  this.tickets6 = [];
-                  this.tickets6.push(e);
+
+                  this.tickets6.tickets.push(e);
                   break;
                 case 7:
-                  this.tickets7 = [];
-                  this.tickets7.push(e);
+
+                  this.tickets7.tickets.push(e);
                   break;
                 case 8:
-                  this.tickets8 = [];
-                  this.tickets8.push(e);
+
+                  this.tickets8.tickets.push(e);
                   break;
                 default:
                   break;
               }
+              this.calcAllValue();
             }
           });
           // this.showOpen();
@@ -233,6 +274,14 @@ export class BusinessComponent implements OnInit {
 
 
     if (status == 'lose') {
+
+      this.tickets1.tickets = [];
+      this.tickets3.tickets = [];
+      this.tickets4.tickets = [];
+      this.tickets5.tickets = [];
+      this.tickets6.tickets = [];
+      this.tickets7.tickets = [];
+      this.tickets8.tickets = [];
       this.crudService.getTickets().subscribe(
         data => {
           this.ticketsapi = data;
@@ -241,36 +290,37 @@ export class BusinessComponent implements OnInit {
             if (e.status == 'Perdido') {
               switch (e.estagio.id) {
                 case 1:
-                  this.tickets1 = [];
-                  this.tickets1.push(e);
+
+                  this.tickets1.tickets.push(e);
                   break;
                 case 3:
-                  this.tickets3 = [];
-                  this.tickets3.push(e);
+
+                  this.tickets3.tickets.push(e);
                   break;
                 case 4:
-                  this.tickets4 = [];
-                  this.tickets4.push(e);
+
+                  this.tickets4.tickets.push(e);
                   break;
                 case 5:
-                  this.tickets5 = [];
-                  this.tickets5.push(e);
+
+                  this.tickets5.tickets.push(e);
                   break;
                 case 6:
-                  this.tickets6 = [];
-                  this.tickets6.push(e);
+
+                  this.tickets6.tickets.push(e);
                   break;
                 case 7:
-                  this.tickets7 = [];
-                  this.tickets7.push(e);
+
+                  this.tickets7.tickets.push(e);
                   break;
                 case 8:
-                  this.tickets8 = [];
-                  this.tickets8.push(e);
+
+                  this.tickets8.tickets.push(e);
                   break;
                 default:
                   break;
               }
+              this.calcAllValue();
             }
           });
           // this.showOpen();
@@ -285,6 +335,14 @@ export class BusinessComponent implements OnInit {
 
 
     if (status == 'win') {
+
+      this.tickets1.tickets = [];
+      this.tickets3.tickets = [];
+      this.tickets4.tickets = [];
+      this.tickets5.tickets = [];
+      this.tickets6.tickets = [];
+      this.tickets7.tickets = [];
+      this.tickets8.tickets = [];
       this.crudService.getTickets().subscribe(
         data => {
           this.ticketsapi = data;
@@ -293,37 +351,39 @@ export class BusinessComponent implements OnInit {
             if (e.status == 'Ganho') {
               switch (e.estagio.id) {
                 case 1:
-                  this.tickets1 = [];
-                  this.tickets1.push(e);
+
+                  this.tickets1.tickets.push(e);
                   break;
                 case 3:
-                  this.tickets3 = [];
-                  this.tickets3.push(e);
+
+                  this.tickets3.tickets.push(e);
                   break;
                 case 4:
-                  this.tickets4 = [];
-                  this.tickets4.push(e);
+
+                  this.tickets4.tickets.push(e);
                   break;
                 case 5:
-                  this.tickets5 = [];
-                  this.tickets5.push(e);
+
+                  this.tickets5.tickets.push(e);
                   break;
                 case 6:
-                  this.tickets6 = [];
-                  this.tickets6.push(e);
+
+                  this.tickets6.tickets.push(e);
                   break;
                 case 7:
-                  this.tickets7 = [];
-                  this.tickets7.push(e);
+
+                  this.tickets7.tickets.push(e);
                   break;
                 case 8:
-                  this.tickets8 = [];
-                  this.tickets8.push(e);
+
+                  this.tickets8.tickets.push(e);
                   break;
                 default:
                   break;
               }
+              this.calcAllValue();
             }
+
           });
           // this.showOpen();
         },
@@ -465,8 +525,13 @@ export class BusinessComponent implements OnInit {
     }
   }
 
+  redirectToAdd(url): void {
+    window.open(url, '_blank');
+    window.focus();
+  }
+
   ngOnInit() {
     Inputmask().mask(document.getElementById("value"));
   }
-  
+
 }

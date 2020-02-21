@@ -11,7 +11,6 @@ export interface PeriodicElement {
   tel: any;
   email: any;
   tipo: any;
-
 }
 
 const contatos: PeriodicElement[] = [
@@ -25,7 +24,7 @@ const contatos: PeriodicElement[] = [
 })
 export class PersonComponent implements OnInit {
   displayedColumns: string[] = ['nome', 'org', 'tel', 'email', 'tipo', 'columnEdit', 'columnDelete'];
-  // dataSource = new MatTableDataSource(ELEMENT_DATA);
+  //dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
@@ -34,7 +33,7 @@ export class PersonComponent implements OnInit {
 
   orgsapi: any;
 
-  // Lista de contatos:
+  //Lista de contatos:
   contatosapi: MatTableDataSource<any>;
 
   erroContatos: any;
@@ -77,7 +76,7 @@ export class PersonComponent implements OnInit {
               skype: e.skype,
               tipo: e.tipo,
               org: {
-                razaosocial: ''
+                nomefantasia: ''
               }
 
             });
@@ -115,7 +114,7 @@ export class PersonComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
-    this.contatosapi.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   save() {
@@ -170,9 +169,26 @@ export class PersonComponent implements OnInit {
   goTo() {
     this.router.navigate([`/person-detail/`]);
   }
+  
+  filtroCli() {
+    this.dataSource.filter = "Cliente".trim().toLowerCase();
+  }
+
+  filtroPar() {
+    this.dataSource.filter = "Parceiro".trim().toLowerCase();
+  }
+
+  dblclic(){
+    this.dataSource.filter = "".trim().toLowerCase();
+  }
 
   ngOnInit() {
     // this.dataSource.sort = this.sort;
+  }
+
+  redirectToAdd(url): void {
+    window.open(url, '_blank');
+    window.focus();
   }
 
   deleteItem() {
