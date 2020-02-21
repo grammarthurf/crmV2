@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatTableDataSource, MatSort } from "@angular/material";
 import { CrudService } from "../services/crud.service";
 import swal from 'sweetalert';
+import { Router } from "@angular/router";
 
 export interface PeriodicElement {
   id: any;
@@ -43,7 +44,7 @@ export class PersonComponent implements OnInit {
   dataSource = new MatTableDataSource<Element>(this.data);
 
 
-  constructor(private crudService: CrudService) {
+  constructor(private crudService: CrudService, private router: Router) {
     this.getterContatos();
     this.getterOrgs();
   }
@@ -164,6 +165,10 @@ export class PersonComponent implements OnInit {
     };
 
     return null
+  }
+
+  goTo() {
+    this.router.navigate([`/person-detail/`]);
   }
 
   ngOnInit() {

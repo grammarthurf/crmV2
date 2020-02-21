@@ -135,6 +135,13 @@ hr + div.row {
     height: 85px;
 }
 
+.limit-words {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
 #red, #green, #orange {
     border-radius: 50%;
     width: 20px;
