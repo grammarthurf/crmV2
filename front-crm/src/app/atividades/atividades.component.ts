@@ -4,8 +4,9 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
 import { CrudService } from "../services/crud.service";
 import swal from 'sweetalert';
-import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
+import bootstrapPlugin from '@fullcalendar/bootstrap';
+import momentPlugin from '@fullcalendar/moment';
 
 export interface PeriodicElement {
   position: number;
@@ -35,38 +36,7 @@ export class AtividadesComponent implements OnInit {
   matdata:  any = [];
   datamat: any = [];
 
-  
-
-  //CALENDARIO
-  // view: CalendarView = CalendarView.Day;
-  // viewDate: Date = new Date();
-  // events: CalendarEvent[] = [
-  //   {title: 'Reunião',
-  //   start: setHours(setMinutes(new Date(), 0), 7),
-  //   color: {primary: '#6297bd', secondary: '#deeafa'},
-  //   draggable: true,
-  //   id:1},
-  //   {title: 'Reunião',
-  //   start: setHours(setMinutes(new Date(), 0), 10),
-  //   color: {primary: '#6297bd', secondary: '#deeafa'},
-  //   draggable: true,
-  //   id:2}
-  // ];
-
-  //refresh: Subject<any> = new Subject();
-
-  // eventTimesChanged({
-  //   event,
-  //   newStart,
-  //   newEnd
-  // }: CalendarEventTimesChangedEvent): void {
-  //   event.start = newStart;
-  //   event.end = newEnd;
-  //   this.refresh.next();
-  // }
-
-
-  calendarPlugins = [ timeGridPlugin];
+  calendarPlugins = [ timeGridPlugin, bootstrapPlugin ];
 
   dNow = new Date();
   dayhj = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + this.dNow.getDate();
@@ -357,22 +327,6 @@ export class AtividadesComponent implements OnInit {
 
   filtrovenc(){
     // um filtro que pegue todas as datas antes de this.dayhj
-  }
-
-  countday(id){
-    var day = this.dNow.getDate()
-    
-    var datei = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth()+1) + '-';
-    if(id == +1){
-      var i = this.count++;
-      var datef =  datei + (day + i) ;
-    } else if (id == -1) {
-      var ii = this.count++;
-      var datef =  datei + (day - ii);
-    }
-    console.log(datef);
-    var x = document.getElementById("labeldata");
-    x.innerHTML = datef;
   }
 
   removeSelectedRows() {

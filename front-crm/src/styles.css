@@ -5,6 +5,8 @@
 
 @import '~@fullcalendar/core/main.css';
 @import '~@fullcalendar/timegrid/main.css';
+@import '~@fullcalendar/bootstrap/main.css';
+
 
 * {
     margin: 0;

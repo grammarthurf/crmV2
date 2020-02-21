@@ -1,3 +1,4 @@
+import { PersonDetailComponent } from './person-detail/person-detail.component';
 import { BusinessComponent } from "./business/business.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
@@ -37,11 +38,15 @@ const routes: Routes = [
     component: PersonComponent
   },
   {
+    path: "person-detail/:id",
+    component: PersonDetailComponent
+  },
+  {
     path: "company",
     component: OrganizationComponent
   },
   {
-    path: "company-detail",
+    path: "company-detail/:id",
     component: OrganizationDetailComponent
   },
   {

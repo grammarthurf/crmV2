@@ -182,6 +182,13 @@ export class BusinessComponent implements OnInit {
     console.log('status: ', status);
 
     if (status == undefined || status == 'open') {
+      this.tickets1 = [];
+      this.tickets3 = [];
+      this.tickets4 = [];
+      this.tickets5 = [];
+      this.tickets6 = [];
+      this.tickets7 = [];
+      this.tickets8 = [];
       this.crudService.getTickets().subscribe(
         data => {
           this.ticketsapi = data;
@@ -190,31 +197,31 @@ export class BusinessComponent implements OnInit {
             if (e.status == 'Aberto') {
               switch (e.estagio.id) {
                 case 1:
-                  this.tickets1 = [];
+
                   this.tickets1.push(e);
                   break;
                 case 3:
-                  this.tickets3 = [];
+
                   this.tickets3.push(e);
                   break;
                 case 4:
-                  this.tickets4 = [];
+
                   this.tickets4.push(e);
                   break;
                 case 5:
-                  this.tickets5 = [];
+
                   this.tickets5.push(e);
                   break;
                 case 6:
-                  this.tickets6 = [];
+
                   this.tickets6.push(e);
                   break;
                 case 7:
-                  this.tickets7 = [];
+
                   this.tickets7.push(e);
                   break;
                 case 8:
-                  this.tickets8 = [];
+
                   this.tickets8.push(e);
                   break;
                 default:
@@ -233,6 +240,13 @@ export class BusinessComponent implements OnInit {
 
 
     if (status == 'lose') {
+      this.tickets1 = [];
+      this.tickets3 = [];
+      this.tickets4 = [];
+      this.tickets5 = [];
+      this.tickets6 = [];
+      this.tickets7 = [];
+      this.tickets8 = [];
       this.crudService.getTickets().subscribe(
         data => {
           this.ticketsapi = data;
@@ -241,31 +255,31 @@ export class BusinessComponent implements OnInit {
             if (e.status == 'Perdido') {
               switch (e.estagio.id) {
                 case 1:
-                  this.tickets1 = [];
+
                   this.tickets1.push(e);
                   break;
                 case 3:
-                  this.tickets3 = [];
+
                   this.tickets3.push(e);
                   break;
                 case 4:
-                  this.tickets4 = [];
+
                   this.tickets4.push(e);
                   break;
                 case 5:
-                  this.tickets5 = [];
+
                   this.tickets5.push(e);
                   break;
                 case 6:
-                  this.tickets6 = [];
+
                   this.tickets6.push(e);
                   break;
                 case 7:
-                  this.tickets7 = [];
+
                   this.tickets7.push(e);
                   break;
                 case 8:
-                  this.tickets8 = [];
+
                   this.tickets8.push(e);
                   break;
                 default:
@@ -285,6 +299,13 @@ export class BusinessComponent implements OnInit {
 
 
     if (status == 'win') {
+      this.tickets1 = [];
+      this.tickets3 = [];
+      this.tickets4 = [];
+      this.tickets5 = [];
+      this.tickets6 = [];
+      this.tickets7 = [];
+      this.tickets8 = [];
       this.crudService.getTickets().subscribe(
         data => {
           this.ticketsapi = data;
@@ -293,31 +314,31 @@ export class BusinessComponent implements OnInit {
             if (e.status == 'Ganho') {
               switch (e.estagio.id) {
                 case 1:
-                  this.tickets1 = [];
+
                   this.tickets1.push(e);
                   break;
                 case 3:
-                  this.tickets3 = [];
+
                   this.tickets3.push(e);
                   break;
                 case 4:
-                  this.tickets4 = [];
+
                   this.tickets4.push(e);
                   break;
                 case 5:
-                  this.tickets5 = [];
+
                   this.tickets5.push(e);
                   break;
                 case 6:
-                  this.tickets6 = [];
+
                   this.tickets6.push(e);
                   break;
                 case 7:
-                  this.tickets7 = [];
+
                   this.tickets7.push(e);
                   break;
                 case 8:
-                  this.tickets8 = [];
+
                   this.tickets8.push(e);
                   break;
                 default:
@@ -473,5 +494,5 @@ export class BusinessComponent implements OnInit {
   ngOnInit() {
     Inputmask().mask(document.getElementById("value"));
   }
-  
+
 }

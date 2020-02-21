@@ -50,6 +50,8 @@ class Cliente(models.Model):
     skype = models.CharField(max_length=65, null=True)
     org = models.ForeignKey(
         Organizacao, related_name='clientes', on_delete=models.CASCADE, null=True)
+    created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True)
+    updated = models.ForeignKey(Updated, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return str(self.nome) if self.nome else ' '
@@ -59,6 +61,8 @@ class Produto (models.Model):
     nome = models.CharField(max_length=255)
     modalidade = models.CharField(max_length=155, null=True)
     codigo = models.CharField(max_length=255, blank=True, null=True)
+    created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True)
+    updated = models.ForeignKey(Updated, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.nome
@@ -99,6 +103,8 @@ class Atividade (models.Model):
     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE, null=True)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True)
     org = models.ForeignKey(Organizacao, on_delete=models.CASCADE, null=True)
+    created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True)
+    updated = models.ForeignKey(Updated, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.assunto

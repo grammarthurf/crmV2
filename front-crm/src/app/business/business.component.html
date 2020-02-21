@@ -7,10 +7,10 @@
     </button>
 
     <div style="margin-left: auto; margin-right: 20px;">
-      <button class="btn btn-link">Leads Abertas</button>
+      <button class="btn btn-link" (click)="showOpen()" >Leads Abertas</button>
       <button class="btn btn-link" (click)="showWin()" >Ganhas</button>
-      <button class="btn btn-link">Perdidas</button>
-      <button class="btn btn-link">Excluídas</button>
+      <button class="btn btn-link" (click)="showLose()"  >Perdidas</button>
+      <button class="btn btn-link"(click)="showExclude()" >Excluídas</button>
     </div>
   </div>
 
@@ -60,7 +60,7 @@
               <div class="form-group">
                 <label for="exampleInputEmail1">Valor Estimado</label>
                 <input [(ngModel)]="ticket.valorestimado" type="text" class="form-control" id="value"
-                  aria-describedby="emailHelp" placeholder="Valor" currencyMask 
+                  aria-describedby="emailHelp" placeholder="Valor" currencyMask
                   [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"/>
               </div>
 

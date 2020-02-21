@@ -56,6 +56,18 @@ export class CrudService {
     });
   }
 
+  public getPerson(id): Observable<any> {
+    return this.http.get(`${this.baseUrl}clientes/${id}/`, {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public getOrg(id): Observable<any> {
+    return this.http.get(`${this.baseUrl}orgs/${id}/`, {
+      headers: this.htttpHeaders
+    });
+  }
+
   // POST API
 
   public saveNewTicket(ticket): Observable<any> {
@@ -100,7 +112,8 @@ export class CrudService {
   public updateTicket(estagioUpdate, ticket): Observable<any> {
 
     console.log('ESTAGIOUPDADE :' , typeof(estagioUpdate));
-    const body = { id: parseInt(ticket.id), titulo: ticket.titulo, estagio: estagioUpdate.toString(), cliente: ticket.cliente.id.toString(), org: ticket.org.id.toString(),
+    const body = { id: parseInt(ticket.id), titulo: ticket.titulo, estagio: estagioUpdate.toString(),
+      cliente: ticket.cliente.id.toString(), org: ticket.org.id.toString(),
        produto: ticket.produto, valorestimado: ticket.valorestimado, termometro: ticket.termometro,
         vendedor: ticket.vendedor, obs: ticket.obs, status: ticket.status  };
     console.log('body:', body);
@@ -118,6 +131,29 @@ export class CrudService {
     console.log('body:', body);
 
     return this.http.put(this.baseUrl + 'ticket/' + ticket.id + '/' , body, {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public updatePerson(person): Observable<any> {
+
+    const body = { id: parseInt(person.id), nome: person.nome, tipo: person.tipo, fone: person.fone, celular: person.celular.id,
+       email: person.email, skype: person.skype, org: person.org.id };
+    console.log('body:', body);
+
+    return this.http.put(this.baseUrl + 'clientes/' + person.id + '/' , body, {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public updateOrg(org): Observable<any> {
+
+    const body = { id: parseInt(org.id), codigo: org.codigo, razaosocial: org.razaosocial, nomefantasia: org.nomefantasia, rua: org.rua,
+       bairro: org.bairro, cep: org.cep, cidade: org.cidade,
+        uf: org.uf, erp: org.erp };
+    console.log('body:', body);
+
+    return this.http.put(this.baseUrl + 'orgs/' + org.id + '/' , body, {
       headers: this.htttpHeaders
     });
   }

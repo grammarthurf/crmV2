@@ -65,7 +65,7 @@
               </div>
               <div class="col-12" style="margin-top: 20px;">
                 <div class="col-12 row">
-                  <p style="margin-top: 5px; font-size: 12.5pt; font-weight: bold;"><b> Atividade: </b></p>
+                  <p style="margin-top: 5px; font-size: 12.5pt; font-weight: bold;"><b>Atividade: </b></p>
                   <div class="div-modal-atv">
                     <button mat-icon-button (click)="atvchoose(1)">
                       <mat-icon class="icon-modal-atv">phone</mat-icon>
@@ -93,7 +93,7 @@
                   </div>
                 </div>
                 <div class="col-12 row" style="margin-top: 20px; padding: 0px 0px 0px 15px;">
-                  <input [(ngModel)]="atv.tipo" type="text" class="form-control" value="{{this.numm}}"  placeholder="Indefinido">
+                  <input [(ngModel)]="atv.tipo" type="text" class="form-control" value="{{this.numm}}"  placeholder="">
                 </div>
                 <div class="col-12 row" style="margin-top: 20px; padding: 0px;">
                   <div class="col-4" >
@@ -117,13 +117,13 @@
                   <textarea [(ngModel)]="atv.assunto" name="obs" id="obs" cols="50" rows="3" class="form-control"></textarea>
                 </div>
                 <div class="col-12 row" style="margin-top: 20px; padding: 0px;">
-                  <div class="col-6" style="margin-top: 8px;">
+                  <div class="col-6" style="margin-top: 7px;">
                     <label for="negocios" >Negócio</label>
                     <select [(ngModel)]="atv.ticket" *ngIf="negociosapi" class="form-control" id="exampleFormControlSelect1">
                       <option *ngFor="let ticket of negociosapi" value="{{ticket.id}}">{{ticket.titulo}}</option>
                     </select>
                   </div>
-                  <div class="col-6" style="padding: 0px; margin-top: 8px;">
+                  <div class="col-6" style="padding: 0px; margin-top: 0px;">
                     <label for="participantes" >Vendedor(es)</label>
                     <button mat-icon-button (click)="redirectToAdd('/user')">
                       <mat-icon class="icon-modal-atv" style="margin-right: 10px; font-weight: bold; width: 21px; height: 21px; font-size: 18px; border-radius: 100px; background-color: #c2c2c2; color: #ffffff;">add</mat-icon>
@@ -135,16 +135,27 @@
                 </div>
               </div>
             </div>
-            <div class="col-5 ml-auto">
+            <div class="col-5 ml-auto" style="height: 520px; overflow: auto; font-size: 12px;">
               <full-calendar
                 defaultView="timeGridDay"
+                views="{
+                  week: {
+                    titleFormat: { year: 'numeric', month: 'long' }
+                  }
+                }" 
+                titleFormat=""
                 [plugins]="calendarPlugins"
+                themeSystem= "bootstrap"
                 [events]="[
                   { title: 'event 1', date: '2020-02-21' },
-                  { title: 'event 2', date: '2020-02-22' }
+                  { title: 'event 2', date: '2020-02-22' },
+                  { title: 'event 3', date: '2020-02-21' },
+                  { title: 'event 4', date: '2020-02-21' }
                 ]" 
                 locale="pt-br">
-              </full-calendar>    
+              </full-calendar>   
+              
+              
             </div>
           </div>
         </div>
