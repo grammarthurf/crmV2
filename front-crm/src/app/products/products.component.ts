@@ -11,7 +11,10 @@ export interface PeriodicElement {
 
 }
 
-let produtosapi: PeriodicElement[] = []
+const produto: PeriodicElement[] = [
+  {codigo: '', id: '', modalidade: '', nome: '' },
+];
+
 
 @Component({
   selector: "app-products",
@@ -20,29 +23,42 @@ let produtosapi: PeriodicElement[] = []
 })
 export class ProductsComponent implements OnInit {
   produto = {
+    id: "",
     nome: "",
     modalidade: "",
     codigo: ""
   };
 
+  matdata: any = [];
+  produtosapi: any;
+
   erroProdutos: any;
+
+  data = Object.assign(produto);
+  dataSource = new MatTableDataSource(this.data);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private crudService: CrudService) {
     this.getterProdutos();
-    console.log(this.proddata);
   }
 
-  proddata: MatTableDataSource<any>;
   displayedColumns: string[] = ['nome', 'codigo', 'modalidade', 'columnEdit', 'columnDelete'];
+
   getterProdutos() {
     this.crudService.getProdutos().subscribe(
       data => {
-        produtosapi = data;
-        this.proddata = data;
-        console.log('produtoslog', produtosapi);
-        console.log('proddata', produtosapi);
+        data.forEach(e => {
+            console.log();
+            this.matdata.push({
+              id: e.id,
+              nome: e.nome,
+              codigo: e.codigo,
+              modalidade: e.modalidade
+          });
+        });
+        this.dataSource = new MatTableDataSource(this.matdata);
+        this.produtosapi = data;
       },
       error => {
         this.erroProdutos = error;
@@ -52,7 +68,19 @@ export class ProductsComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
-    this.proddata.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  filterCrtl(){
+    this.dataSource.filter = "Controle".trim().toLowerCase();
+  }
+
+  filterPlan(){
+    this.dataSource.filter = "Planejamento".trim().toLowerCase();
+  }
+
+  dblclic(){
+    this.dataSource.filter = "".trim().toLowerCase();
   }
 
   ngOnInit() { }

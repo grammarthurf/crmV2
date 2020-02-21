@@ -21,10 +21,14 @@ import { MatNativeDateModule } from "@angular/material";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatSortModule } from "@angular/material/sort";
+import {MatTabsModule} from '@angular/material/tabs';
 
 //CALENDAR
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
+//MASK
+import { NgxCurrencyModule } from "ngx-currency";
 
 //DRAG AND DROP
 import {DragDropModule} from '@angular/cdk/drag-drop';
@@ -41,7 +45,8 @@ import { BusinessDetailComponent } from "./business-detail/business-detail.compo
 import { PersonComponent } from "./person/person.component";
 import { NgxMaskModule } from 'ngx-mask';
 import { OrganizationDetailComponent } from './organization-detail/organization-detail.component';
-import { PersonDetailComponent } from './person-detail/person-detail.component'
+import { PersonDetailComponent } from './person-detail/person-detail.component';
+import { UserComponent } from './user/user.component'
 
 @NgModule({
   declarations: [
@@ -55,7 +60,8 @@ import { PersonDetailComponent } from './person-detail/person-detail.component'
     BusinessDetailComponent,
     PersonComponent,
     OrganizationDetailComponent,
-    PersonDetailComponent
+    PersonDetailComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +88,9 @@ import { PersonDetailComponent } from './person-detail/person-detail.component'
       useFactory: adapterFactory
     }),
     DragDropModule,
-    LottieAnimationViewModule.forRoot()
+    LottieAnimationViewModule.forRoot(),
+    NgxCurrencyModule,
+    MatTabsModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

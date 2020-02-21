@@ -36,6 +36,7 @@
     "jquery-mask-plugin": "^1.14.16",
     "moment": "^2.24.0",
     "ng-lottie": "^0.3.2",
+    "ngx-currency": "^2.2.2",
     "ngx-mask": "^8.1.7",
     "open-iconic": "^1.1.1",
     "rxjs": "~6.4.0",

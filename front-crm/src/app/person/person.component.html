@@ -1,9 +1,14 @@
 <div style="padding-top: 100px;">
-    <button type="button" class="btn btn-primary loc-button-top" data-toggle="modal" data-target="#exampleModalCenter">
-        <mat-icon>add</mat-icon>
-        <p style="margin-left: 5px;">Pessoa</p>
-    </button>
-
+    <div style="display: flex;">
+        <button style="padding-left: 5px; margin-left: 15px;" type="button" class="btn btn-primary loc-button-top "
+                data-toggle="modal" data-target="#exampleModalCenter">
+            <mat-icon>add</mat-icon>
+            <p style="margin-left: 5px;">Contato</p>
+        </button>
+        <div style="margin-left: auto; margin-right: 15px; width: 185px;">
+          <input class="form-control" type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+        </div>
+    </div>
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -23,8 +28,8 @@
                         <div class="form-group col-md-3">
                             <label for="exampleInputEmail1">Tipo</label>
                             <select [(ngModel)]="contato.tipo" class="form-control" id="exampleFormControlSelect1">
-                                <option value="C">Cliente</option>
-                                <option value="P">Parceiro</option>
+                                <option value="Cliente">Cliente</option>
+                                <option value="Parceiro">Parceiro</option>
                             </select>
                         </div>
 
@@ -52,6 +57,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Organização</label>
+                                <button mat-icon-button style="width: 40px;" (click)="redirectToAdd('/company')">
+                                    <mat-icon class="icon-modal-ctt" style="margin-right: 10px; font-weight: bold; width: 21px; height: 21px; font-size: 18px; border-radius: 100px; background-color: #c2c2c2; color: #ffffff;">add</mat-icon>
+                                </button>
                                 <select [(ngModel)]="contato.org" class="form-control">
                                     <option>Selecione ...</option>
                                     <option *ngFor="let org of orgsapi" value="{{org.id}}">{{org.razaosocial}}</option>
@@ -97,8 +105,15 @@
 
     <mat-divider></mat-divider>
 
-    <div class="form-group col-3 filter">
-        <input class="form-control" type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+    <div style="display: flex; margin-bottom: 5px;">
+        <button type="button" class="btn btn-outline-dark button-all" (click)="dblclic()">Todos</button>
+        <mat-divider [vertical]="true" class="divider-vertical"></mat-divider>
+        <button mat-icon-button class="buttons-filter" (keyup)="applyFilter($event)" (click)="filtroCli()">
+          <mat-icon>people</mat-icon>Clientes
+        </button>
+        <button mat-icon-button class="buttons-filter" (keyup)="applyFilter($event)" (click)="filtroPar()">
+          <mat-icon>business</mat-icon>Parceiros
+        </button>
     </div>
 
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
@@ -110,7 +125,7 @@
 
         <ng-container matColumnDef="org">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Organização </th>
-            <td mat-cell *matCellDef="let element"> {{element.org.razaosocial}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.org.nomefantasia}} </td>
         </ng-container>
 
         <ng-container matColumnDef="tel">

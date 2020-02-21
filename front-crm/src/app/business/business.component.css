@@ -347,3 +347,8 @@ lottie-animation-view {
   top: -4%;
   z-index: -1;
 }
+
+.icon-modal-lead{
+  font-size: 20px; 
+  margin-left: 5px;
+}

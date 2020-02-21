@@ -50,9 +50,9 @@
         <div style="margin-top: 5px;">
           <input type="range" id="thermometro" value="{{business.termometro}}" step="49" style="width: 150px;" />
           <div class=" row">
-            <p class="ptherm">Ruim</p>
-            <p class="ptherm2">Médio</p>
-            <p class="ptherm">Ótimo</p>
+            <p class="ptherm" > Ruim  </p>
+            <p class="ptherm2"> Médio </p>
+            <p class="ptherm" > Ótimo </p>
           </div>
         </div>
       </div>
@@ -62,7 +62,7 @@
       <button class="btn-win-lose" id="null" (click)="stageNull()">Reabrir</button>
       <button class="btn-win-lose btn-danger" id="lose" (click)="stageLose()" data-toggle="modal" data-target="#loseModal">Perdido</button>
     </div>
-    <lottie-animation-view [options]="lottieConfig" [width]="1000" [height]="500"
+    <lottie-animation-view [options]="lottieConfig" [width]="500" [height]="350"
       (animCreated)="handleAnimation($event)">
     </lottie-animation-view>
     <div class="col-1">
@@ -75,18 +75,12 @@
     </div>
 
     <!-- BARRA DE PROGRESSO -->
-    <div class="col-12 flex md-stepper-horizontal green orange">
-      <!-- <div class="md-step active">
-        <div class="md-step-circle "> <mat-icon> done </mat-icon> </div>
-        <div class="md-step-title">Negócio Registrado</div>
-        <div class="md-step-optional">10/02/2020</div>
-        <div class="md-step-bar-right"></div>
-      </div> -->
+    <div class="col-12 flex md-stepper-horizontal green orange">      
       <div class="md-step active" *ngIf="(business.estagio.id != 1 && business.estagio.id > 1)" id="1">
         <div class="md-step-circle ">
           <mat-icon> done </mat-icon>
         </div>
-        <div class="md-step-title">Prospecção</div>
+        <div class="md-step-title">   Prospecção</div>
         <div class="md-step-optional">10/02/2020</div>
         <div class="md-step-bar-right"></div>
       </div>
@@ -94,8 +88,8 @@
         <div class="md-step-circle ">
           <mat-icon> priority_high </mat-icon>
         </div>
-        <div class="md-step-title">Prospecção</div>
-        <div class="md-step-optional">Em processo</div>
+        <div class="md-step-title">   Prospecção  </div>
+        <div class="md-step-optional">Em processo </div>
         <div class="md-step-bar-right"></div>
       </div>
       <div class="md-step " *ngIf="(business.estagio.id != 1 && business.estagio.id < 1)" id="1">
@@ -103,7 +97,6 @@
           <mat-icon> </mat-icon>
         </div>
         <div class="md-step-title">Prospecção</div>
-
         <div class="md-step-bar-right"></div>
       </div>
 
@@ -112,7 +105,7 @@
         <div class="md-step-circle ">
           <mat-icon> done </mat-icon>
         </div>
-        <div class="md-step-title">Contatado</div>
+        <div class="md-step-title">   Contatado </div>
         <div class="md-step-optional">10/02/2020</div>
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
@@ -121,8 +114,8 @@
         <div class="md-step-circle ">
           <mat-icon> priority_high </mat-icon>
         </div>
-        <div class="md-step-title">Contatado</div>
-        <div class="md-step-optional">Em processo</div>
+        <div class="md-step-title">   Contatado   </div>
+        <div class="md-step-optional">Em processo </div>
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
@@ -132,7 +125,7 @@
         </div>
         <div class="md-step-title">Contatado</div>
 
-        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-left"> </div>
         <div class="md-step-bar-right"></div>
       </div>
 
@@ -141,8 +134,8 @@
         <div class="md-step-circle ">
           <mat-icon> priority_high </mat-icon>
         </div>
-        <div class="md-step-title">Cliente Potencial</div>
-        <div class="md-step-optional">Em processo</div>
+        <div class="md-step-title">   Cliente Potencial </div>
+        <div class="md-step-optional">Em processo       </div>
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
@@ -159,8 +152,8 @@
         <div class="md-step-circle ">
           <mat-icon> done </mat-icon>
         </div>
-        <div class="md-step-title">Cliente Potencial</div>
-        <div class="md-step-optional">10/02/2020</div>
+        <div class="md-step-title">   Cliente Potencial </div>
+        <div class="md-step-optional">10/02/2020        </div>
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
@@ -170,8 +163,8 @@
         <div class="md-step-circle">
           <mat-icon> done </mat-icon>
         </div>
-        <div class="md-step-title">Demo Agendada</div>
-        <div class="md-step-optional">10/02/2020</div>
+        <div class="md-step-title">   Demo Agendada </div>
+        <div class="md-step-optional">10/02/2020    </div>
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
@@ -179,8 +172,8 @@
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
         </div>
-        <div class="md-step-title">Demo Agendada</div>
-        <div class="md-step-optional">Em processo</div>
+        <div class="md-step-title">   Demo Agendada </div>
+        <div class="md-step-optional">Em processo   </div>
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
@@ -197,7 +190,7 @@
         <div class="md-step-circle">
           <mat-icon> done </mat-icon>
         </div>
-        <div class="md-step-title">Proposta</div>
+        <div class="md-step-title">   Proposta  </div>
         <div class="md-step-optional">10/02/2020</div>
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
@@ -206,8 +199,8 @@
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
         </div>
-        <div class="md-step-title">Proposta</div>
-        <div class="md-step-optional">Em processo</div>
+        <div class="md-step-title">   Proposta    </div>
+        <div class="md-step-optional">Em processo </div>
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
@@ -224,8 +217,8 @@
         <div class="md-step-circle">
           <mat-icon> done </mat-icon>
         </div>
-        <div class="md-step-title">Negociações Iniciais</div>
-        <div class="md-step-optional">10/02/2020</div>
+        <div class="md-step-title">   Negociações Iniciais</div>
+        <div class="md-step-optional">10/02/2020          </div>
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
@@ -233,8 +226,8 @@
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
         </div>
-        <div class="md-step-title">Negociações Iniciais</div>
-        <div class="md-step-optional">Em processo</div>
+        <div class="md-step-title">   Negociações Iniciais</div>
+        <div class="md-step-optional">Em processo         </div>
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
@@ -251,7 +244,7 @@
         <div class="md-step-circle">
           <mat-icon> done </mat-icon>
         </div>
-        <div class="md-step-title">Cliente</div>
+        <div class="md-step-title">   Cliente   </div>
         <div class="md-step-optional">10/02/2020</div>
         <div class="md-step-bar-left"></div>
       </div>
@@ -259,7 +252,7 @@
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
         </div>
-        <div class="md-step-title">Cliente</div>
+        <div class="md-step-title">   Cliente    </div>
         <div class="md-step-optional">Em processo</div>
         <div class="md-step-bar-left"></div>
       </div>
@@ -287,8 +280,8 @@
       <h4 style="margin-top: 10px; font-size: 20px; font-weight: bold; margin-left: 15px;"> {{business.org.razaosocial}}
       </h4>
       <div style="margin-top: 10px;">
-        <p style="font-size: 15px; margin-left: 15px;"> <b>Endereço:</b> {{business.org.rua}} - {{business.org.rua}}-
-          {{business.org.bairro}} - {{business.org.cidade}}/{{business.org.uf}}</p>
+        <p  style="font-size: 15px; margin-left: 15px;"> <b>Endereço:</b> </p>
+        <!-- {{org.rua}} - {{org.bairro}} - {{org.cidade}}/{{org.uf}} -->
       </div>
       <div style="margin-top: 10px;">
         <p style="font-size: 15px; margin-left: 15px;"> <b>ERP:</b> {{business.org.erp}} </p>
