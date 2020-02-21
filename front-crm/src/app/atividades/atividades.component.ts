@@ -6,7 +6,6 @@ import { CrudService } from "../services/crud.service";
 import swal from 'sweetalert';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import bootstrapPlugin from '@fullcalendar/bootstrap';
-import momentPlugin from '@fullcalendar/moment';
 
 export interface PeriodicElement {
   position: number;
