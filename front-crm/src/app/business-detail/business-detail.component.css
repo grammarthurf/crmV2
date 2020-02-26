@@ -266,3 +266,13 @@ lottie-animation-view {
 #null {
 	display: none;
 }
+
+div.col-8.div-right div.col-10.bg-white.row div.row.col-12 h5 {
+	color: #283747;
+}
+
+div.col-8.div-right div.col-10.bg-white.row div.row.col-12 h5 + p {
+	font-size: 16px;
+	color: rgb(98, 151, 189);
+	font-weight: bold;
+}

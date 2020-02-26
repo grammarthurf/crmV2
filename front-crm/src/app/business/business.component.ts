@@ -45,7 +45,7 @@ export class BusinessComponent implements OnInit {
 
   selectedTicket: any;
 
-  ticket = { titulo: "", estagio: '', cliente: '', org: '', produto: '', valorestimado: '', termometro: '', vendedor: '', obs: '' };
+  ticket = { titulo: "", estagio: '', cliente: '', org: '', produto: '', valorestimado: 0, termometro: '', vendedor: '', obs: '' };
 
   // Lottie:
 
