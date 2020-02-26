@@ -26,6 +26,7 @@
         </div>
         <div class="modal-body">
           <div class="row">
+<<<<<<< HEAD
 
             <div class="row col-md-12 align-cod-button">
               <div class="form-group col-md-3">
@@ -121,11 +122,104 @@
               <div class="form-group col-md-4">
                 <label for="erp">ERP</label>
                 <input [(ngModel)]="org.erp" type="text" class="form-control">
+=======
+            <div class="col-md-6">
+              <div class="form-group col-12 row">
+                <div class="col-10" style="margin-left: -15px;">
+                  <label for="exampleInputEmail1">Código</label>
+                  <input [(ngModel)]="org.cod" type="text" class="form-control">
+                </div>
+                <div class="col-2" style="height: 40px; margin-top: 35px; margin-left: 0px;">
+                  <button style="border: none;"> 
+                    <img style="border-radius: 5px; background-color: rgb(0, 124, 255); width: 35px; height: 35px; padding: 7px;" src="../../assets/atua.png">
+                  </button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Nome Fantasia</label>
+                <input [(ngModel)]="org.nomefantasia" type="email" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">IE</label>
+                <input [(ngModel)]="org.ie" type="email" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">CNPJ</label>
+                <input [(ngModel)]="org.cnpj" type="email" class="form-control" placeholder="__.__.__/___-_">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Razão Social</label>
+                <input [(ngModel)]="org.razaosocial" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Atividade</label>
+                <button mat-icon-button (click)="redirectToAdd('/user')">
+                  <mat-icon class="icon-modal-atv" style="margin-right: 10px; font-weight: bold; width: 21px; height: 21px; font-size: 18px; border-radius: 100px; background-color: #c2c2c2; color: #ffffff;">add</mat-icon>
+                </button>
+                <input [(ngModel)]="org.atividade" type="email" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">ERP</label>
+                <input [(ngModel)]="org.erp" type="email" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">CEP</label>
+                <input [(ngModel)]="org.cep" type="email" class="form-control" placeholder="__.___-___">
+              </div>  
+            </div>
+            <div class="col-3">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">UF</label>
+                <input [(ngModel)]="org.uf" type="email" class="form-control" placeholder="SC">
+              </div>
+            </div>
+            <div class="col-9">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Endereço</label>
+                <input [(ngModel)]="org.rua" type="email" class="form-control" placeholder="Rua, av., beco...">
+              </div> 
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Bairro</label>
+                <input [(ngModel)]="org.bairro" type="email" class="form-control">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Complemento</label>
+                <input [(ngModel)]="org.complemento" type="email" class="form-control" >
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Cidade</label>
+                <input [(ngModel)]="org.cidade" type="email" class="form-control">
+              </div>
+            </div> 
+            <div class="col-6">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Telefone</label>
+                <input [(ngModel)]="org.tel" type="email" class="form-control" placeholder="(xx)xxxxx-xxxx">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Email</label>
+                <input [(ngModel)]="org.tel" type="email" class="form-control" placeholder="exemplo@email.com.br">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Site</label>
+                <input [(ngModel)]="org.tel" type="email" class="form-control" placeholder="www.emeplo.com.br">
+>>>>>>> c2fd063b5326f5cd29284235f569183852e83b36
               </div>
             </div>
           </div>
         </div>
-
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
           <button type="button" (click)="save()" class="btn btn-primary" data-dismiss="modal">Salvar</button>
@@ -133,7 +227,6 @@
       </div>
     </div>
   </div>
-
   <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -156,39 +249,35 @@
       </div>
     </div>
   </div>
-
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-
     <ng-container matColumnDef="razao_social">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Razão </th>
       <td mat-cell *matCellDef="let element" (click)="goTo()"> {{element.razaosocial}} </td>
     </ng-container>
-
     <ng-container matColumnDef="nome_fantasia">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome Fantasia </th>
       <td mat-cell *matCellDef="let element" (click)="goTo()"> {{element.nomefantasia}} </td>
     </ng-container>
+<<<<<<< HEAD
 
+=======
+>>>>>>> c2fd063b5326f5cd29284235f569183852e83b36
     <ng-container matColumnDef="endereco">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Endereço </th>
       <td mat-cell *matCellDef="let element" (click)="goTo()"> {{element.rua}} </td>
     </ng-container>
-
     <ng-container matColumnDef="tipo">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </th>
       <td mat-cell *matCellDef="let element" (click)="goTo()"> {{element.tipo}} </td>
     </ng-container>
-
     <ng-container matColumnDef="erp">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> ERP </th>
       <td mat-cell *matCellDef="let element" (click)="goTo()"> {{element.erp}} </td>
     </ng-container>
-
     <ng-container matColumnDef="vendedor">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Vendedor </th>
       <td mat-cell *matCellDef="let element" (click)="goTo()"> {{element.vendedor}} </td>
     </ng-container>
-
     <ng-container matColumnDef="columnEdit">
       <th mat-header-cell *matHeaderCellDef> </th>
       <td mat-cell *matCellDef="let element" data-toggle="modal" data-target="#exampleModalCenter">
@@ -197,7 +286,6 @@
         </button>
       </td>
     </ng-container>
-
     <ng-container matColumnDef="columnDelete">
       <th mat-header-cell *matHeaderCellDef> </th>
       <td mat-cell *matCellDef="let element" data-toggle="modal" data-target="#modalDelete">
@@ -206,9 +294,12 @@
         </button>
       </td>
     </ng-container>
-
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+<<<<<<< HEAD
 
 </div>
+=======
+</div>
+>>>>>>> c2fd063b5326f5cd29284235f569183852e83b36

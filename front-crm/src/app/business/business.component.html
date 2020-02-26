@@ -114,7 +114,7 @@
   <hr style="width: 100%;" />
 
 
-  <div cdkDropListGroup class="nowrap">
+  <div cdkDropListGroup class="nowrap" style="width: 100%;">
 
     <div class="example-container">
       <div class="tickets test">
@@ -161,7 +161,7 @@
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
             <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
           </div>
-          <!-- <p class="limit-words" *ngIf="item.org.razaosocial">{{item.org.razaosocial}}</p> -->
+          <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
             <p>R$ {{item.valorestimado}}</p>
             <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->

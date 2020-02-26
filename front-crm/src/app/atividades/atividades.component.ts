@@ -4,8 +4,9 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
 import { CrudService } from "../services/crud.service";
 import swal from 'sweetalert';
-import timeGridPlugin from '@fullcalendar/timegrid';
+// import timeGridPlugin from '@fullcalendar/timegrid';
 import bootstrapPlugin from '@fullcalendar/bootstrap';
+import listPlugin from '@fullcalendar/list';
 
 export interface PeriodicElement {
   position: number;
@@ -20,12 +21,10 @@ const atividade: PeriodicElement[] = [
   {position: 0, data: '', tipo: '', cliente: '', org: '', ticket: '' },
 ];
 
-
-
 @Component({
   selector: "app-atividades",
   templateUrl: "./atividades.component.html",
-  styleUrls: ["./atividades.component.css"]
+  styleUrls: ["./atividades.component.css"],
 })
 
 export class AtividadesComponent implements OnInit {
@@ -34,8 +33,7 @@ export class AtividadesComponent implements OnInit {
   numm: string;
   matdata:  any = [];
   datamat: any = [];
-
-  calendarPlugins = [ timeGridPlugin, bootstrapPlugin ];
+  calendarPlugins: any = [];
 
   dNow = new Date();
   dayhj = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + this.dNow.getDate();
@@ -62,10 +60,7 @@ export class AtividadesComponent implements OnInit {
   displayedColumns: string[] = ['select', 'tipo', 'data', 'cliente', 'org',
     'ticket', 'assunto', 'columnEdit', 'columnDelete'];
 
-  data = Object.assign(atividade);
-  dataSource = new MatTableDataSource(this.data);
-
-  // dataSource = new MatTableDataSource<Element>(this.data);
+  dataSource: any;
 
   selection = new SelectionModel<Element>(true, []);
 
@@ -77,12 +72,12 @@ export class AtividadesComponent implements OnInit {
     this.getterVendedor();
     this.getterTickets();
     this.getterActivity();
+    this.calendarPlugins = [ listPlugin , bootstrapPlugin ];
   }
   
   ngOnInit() {
-    
+  this.dataSource = new MatTableDataSource(this.matdata);
   }
-
 
   getColor(data) {
     switch (data) {
@@ -94,7 +89,6 @@ export class AtividadesComponent implements OnInit {
         return 'rgb(255, 232, 228)';
     }
   }
-
 
   getterActivity() {
     this.crudService.getAtividade().subscribe(
@@ -119,7 +113,6 @@ export class AtividadesComponent implements OnInit {
                 org: {
                   razaosocial: ''
                 }
-
               });
             } else if (e.cliente == null) {
               this.matdata.push({
@@ -158,7 +151,6 @@ export class AtividadesComponent implements OnInit {
                 },
                 cliente: e.cliente,
                 org: e.org
-
               });
 
             } else {
@@ -173,23 +165,14 @@ export class AtividadesComponent implements OnInit {
 
               });
             }
-
-
-
           } catch (error) {
             console.log(error);
-
           }
-
-
-
-
         });
         console.log('MATDATASOURCE: ', this.matdata);
-        console.log(this.datamat);
-
-
+        
         this.dataSource = new MatTableDataSource(this.matdata);
+        console.log(this.datamat);
         this.dataSource.sort = this.sort;
         console.log('dataSource: ', this.dataSource);
       },
@@ -252,18 +235,24 @@ export class AtividadesComponent implements OnInit {
         swal({
           icon: "success",
           text: "Produto salvo com sucesso!",
-          timer: 1800,
+          timer: 1000,
           buttons: {
             buttons: false
           }
         });
+        setTimeout(this.reiniciar, 1001);
         this.getterActivity();
       },
       error => {
         this.getterActivity();
         console.error(error);
-      }
+        setTimeout(this.reiniciar, 1001);
+      },
     );
+  }
+
+  reiniciar(){
+    location.reload()
   }
 
   testebtn() {
