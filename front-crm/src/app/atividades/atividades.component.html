@@ -95,23 +95,36 @@
                 <div class="col-12 row" style="margin-top: 20px; padding: 0px 0px 0px 15px;">
                   <input [(ngModel)]="atv.tipo" type="text" class="form-control" value="{{this.numm}}"  placeholder="">
                 </div>
+
+
+
+
                 <div class="col-12 row" style="margin-top: 20px; padding: 0px;">
-                  <div class="col-4" >
+                  <div class="col-6" >
                     <label for="">Início</label>
                     <input [(ngModel)]="atv.data" type="date" class="form-control">
                   </div>
 
-                  <div class="col-2" style="margin-top: 32px; padding: 0px;">
-                    <input type="text" class="form-control" placeholder="14:00" mask="99:99">
-                  </div>
-                  <div class="col-4">
+                  
+                  <div class="col-6">
                     <label for="">Fim</label>
                     <input type="date" class="form-control">
                   </div>
-                  <div class="col-2" style="margin-top: 32px; padding: 0px;">
+                  
+                </div>
+
+
+                <div class="col-12 row">
+                  <div class="col-6" style="margin-top: 32px; padding: 0 1rem 0 0;">
+                    <input type="text" class="form-control" placeholder="14:00" mask="99:99">
+                  </div>
+                  <div class="col-6" style="margin-top: 32px; padding: 0 0 0 1rem;">
                     <input type="text" class="form-control" placeholder="14:00" mask="99:99">
                   </div>
                 </div>
+
+
+
                 <div class="col-12 row" style="margin-top: 20px; padding: 0px 0px 0px 15px;">
                   <label for="obs">Assunto</label>
                   <textarea [(ngModel)]="atv.assunto" name="obs" id="obs" cols="50" rows="3" class="form-control"></textarea>
@@ -236,7 +249,7 @@
     <!-- DataVenc Column -->
     <ng-container matColumnDef="data">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Data</th>
-      <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.data)"> {{element.data}}</td>
+      <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.data)"> {{formatDate(element.data)}}</td>
     </ng-container>
 
     <!-- NomeContato Column -->

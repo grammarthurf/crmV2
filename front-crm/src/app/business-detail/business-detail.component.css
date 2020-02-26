@@ -28,12 +28,19 @@ mat-icon {
 }
 
 .div-right {
-    background-color: #fff;
 	padding: 10px;
 	float: right;
-	margin-top: 30px;
+	
 	margin-right: 10px;
 	width: 820px;
+}
+
+.mg-t-30 {
+	margin-top: 30px;
+}
+
+.bg-white {
+	background-color: #fff;
 }
 
 .flex {

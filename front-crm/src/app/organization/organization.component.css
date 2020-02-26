@@ -76,3 +76,22 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
 .icon-color-grey {
     color: #3E3F47;
 }
+
+.align-cod-button {
+    display: flex;
+    align-items: center;
+}
+
+img#codigo {
+    height: 20px;
+    margin-bottom: 8px;
+}
+
+div.row.col-md-12.align-cod-button button.btn {
+    height: 35px;
+    margin-top: 15px;
+}
+
+img#empresa {
+    width: 30px;
+}
