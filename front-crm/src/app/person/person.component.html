@@ -109,23 +109,23 @@
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
         <ng-container matColumnDef="nome">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
-            <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+            <td mat-cell *matCellDef="let element" (click)="goTo()"> {{element.nome}} </td>
         </ng-container>
         <ng-container matColumnDef="org">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Organização </th>
-            <td mat-cell *matCellDef="let element"> {{element.org.nomefantasia}} </td>
+            <td mat-cell *matCellDef="let element" (click)="goTo()"> {{element.org.nomefantasia}} </td>
         </ng-container>
         <ng-container matColumnDef="tel">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefone </th>
-            <td mat-cell *matCellDef="let element"> {{formatPhoneNumber(element.fone)}} </td>
+            <td mat-cell *matCellDef="let element" (click)="goTo()"> {{formatPhoneNumber(element.fone)}} </td>
         </ng-container>
         <ng-container matColumnDef="email">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            <td mat-cell *matCellDef="let element" (click)="goTo()"> {{element.email}} </td>
         </ng-container>
         <ng-container matColumnDef="tipo">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </th>
-            <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+            <td mat-cell *matCellDef="let element" (click)="goTo()"> {{element.tipo}} </td>
         </ng-container>
         <ng-container matColumnDef="columnEdit">
             <th mat-header-cell *matHeaderCellDef> </th>

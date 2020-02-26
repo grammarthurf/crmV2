@@ -4,10 +4,6 @@ h1 {
     color: #232953;
 }
 
-.modal-body {
-    height: 550px;
-}
-
 .font1 {
     font-family: 'Open Sans';
     
@@ -138,8 +134,14 @@ table {
     background: rgb(103, 130, 148); 
 }
 
+/* calendar */
+
 .fullcalendar {
     width: 500px;
     height: 100px !important;
     margin: 1px auto;
-  }
+}
+
+.fc-today-button .btn .btn-primary{
+    margin-left: 10px;
+}

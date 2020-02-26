@@ -98,7 +98,7 @@
                 <div class="col-12 row" style="margin-top: 20px; padding: 0px;">
                   <div class="col-4" >
                     <label for="">Início</label>
-                    <input [(ngModel)]="atv.data" type="date" class="form-control">
+                      <input [(ngModel)]="atv.data" type="date" class="form-control">
                   </div>
 
                   <div class="col-2" style="margin-top: 32px; padding: 0px;">
@@ -137,17 +137,60 @@
             </div>
             <div class="col-5 ml-auto" style="height: 520px; overflow: auto; font-size: 10px; align-items: flex-end;">
               <full-calendar
-                defaultView="listWeek"
-                views="{
-                  week: {
-                    titleFormat: { year: 'numeric', month: 'long' }
-                  }
-                }" 
-                titleFormat=""
+                [defaultView]="'listWeek'"
                 [plugins]="calendarPlugins"
-                droppable="true" 
                 themeSystem= "bootstrap"
                 [events]="[
+                  { title: 'Reunião', start: '2020-02-18T10:30:00', end: '2020-02-18T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-18T10:30:00', end: '2020-02-18T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-18T10:30:00', end: '2020-02-18T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-18T10:30:00', end: '2020-02-18T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-18T10:30:00', end: '2020-02-18T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-18T10:30:00', end: '2020-02-18T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-18T10:30:00', end: '2020-02-18T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-17T10:30:00', end: '2020-02-17T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-17T10:30:00', end: '2020-02-17T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-17T10:30:00', end: '2020-02-17T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-17T10:30:00', end: '2020-02-17T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-17T10:30:00', end: '2020-02-17T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-17T10:30:00', end: '2020-02-17T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-17T10:30:00', end: '2020-02-17T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-19T10:30:00', end: '2020-02-19T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-19T10:30:00', end: '2020-02-19T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-19T10:30:00', end: '2020-02-19T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-19T10:30:00', end: '2020-02-19T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-19T10:30:00', end: '2020-02-19T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-19T10:30:00', end: '2020-02-19T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-18T10:30:00', end: '2020-02-18T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-18T10:30:00', end: '2020-02-18T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-18T10:30:00', end: '2020-02-18T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-18T10:30:00', end: '2020-02-18T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-18T10:30:00', end: '2020-02-18T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-18T10:30:00', end: '2020-02-18T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-18T10:30:00', end: '2020-02-18T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-18T10:30:00', end: '2020-02-18T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-20T10:30:00', end: '2020-02-20T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-20T10:30:00', end: '2020-02-20T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-20T10:30:00', end: '2020-02-20T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-20T10:30:00', end: '2020-02-20T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-20T10:30:00', end: '2020-02-20T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-20T10:30:00', end: '2020-02-20T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
                   { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
                   { title: 'Ligação', start: '2020-02-21T11:45:00', end: '2020-02-21T11:50:00' },
                   { title: 'Tarefa', start: '2020-02-21T13:00:00', end: '2020-02-21T13:10:00' },

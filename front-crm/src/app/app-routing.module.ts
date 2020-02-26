@@ -1,4 +1,3 @@
-import { PersonDetailComponent } from './person-detail/person-detail.component';
 import { BusinessComponent } from "./business/business.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
@@ -10,6 +9,7 @@ import { BusinessDetailComponent } from "./business-detail/business-detail.compo
 import { PersonComponent } from "./person/person.component";
 import { OrganizationDetailComponent } from './organization-detail/organization-detail.component';
 import { UserComponent } from './user/user.component';
+import { PersonDetailComponent } from './person-detail/person-detail.component';
 
 const routes: Routes = [
   {
@@ -38,7 +38,7 @@ const routes: Routes = [
     component: PersonComponent
   },
   {
-    path: "person-detail/:id",
+    path: "person-detail",
     component: PersonDetailComponent
   },
   {

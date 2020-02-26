@@ -458,6 +458,7 @@ export class BusinessComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
+    this.calcAllValue();
     console.log('EVENTO:', event);
     if (event.distance.x > 600) {
       console.log('CHAMOU ARTHUR ');
