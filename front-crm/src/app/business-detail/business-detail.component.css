@@ -35,11 +35,13 @@ mat-icon {
 	float: right;
 	margin-right: 10px;
 	width: 820px;
+	margin-top: 30px;
 }
 
 .div-border {
 	border-radius: 10px; 
 	border: 1px solid rgb(226, 226, 226);
+	background-color: #fff
 }
 
 .div-choice {
@@ -63,9 +65,6 @@ mat-icon {
 	margin-top: 30px;
 }
 
-.bg-white {
-	background-color: #fff;
-}
 
 .flex {
     display: flex;
