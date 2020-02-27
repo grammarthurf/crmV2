@@ -328,3 +328,7 @@ lottie-animation-view {
   font-size: 20px; 
   margin-left: 5px;
 }
+
+.limit-value {
+  overflow: hidden;
+}

@@ -120,7 +120,7 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Prospecção</p>
-          <p>R$ {{tickets1.valor}} {{tickets1.tickets.length}} Neg.  </p>
+          <p>{{tickets1.valor | currency:'BRL':'symbol':'0.2-2':'pt'}} • {{tickets1.tickets.length}} Neg.  </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
@@ -135,7 +135,7 @@
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
-            <p>{{item.valorestimado | currency:'BRL':'symbol':'0.2-2':'pt'}}</p>
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2-2':'pt'}}</p>
             <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
             <mat-icon id="orange">error_outline</mat-icon>
             <!-- <mat-icon id="red">highlight_off</mat-icon> -->
@@ -148,7 +148,7 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Contatado</p>
-          <p>R$ {{tickets3.valor}} {{tickets3.tickets.length}} Neg. </p>
+          <p>{{tickets3.valor | currency:'BRL':'symbol':'0.2-2':'pt'}} • {{tickets3.tickets.length}} Neg. </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
@@ -163,7 +163,7 @@
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
-            <p>{{item.valorestimado | currency:'BRL':'symbol':'0.2-2':'pt'}}</p>
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2-2':'pt'}}</p>
             <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
             <!-- <mat-icon id="orange">error_outline</mat-icon> -->
             <mat-icon id="red">highlight_off</mat-icon>
@@ -176,7 +176,7 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Cliente Potencial</p>
-          <p>R$ {{tickets4.valor}} {{tickets4.tickets.length}} Neg. </p>
+          <p>{{tickets4.valor | currency:'BRL':'symbol':'0.2-2':'pt'}} • {{tickets4.tickets.length}} Neg. </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
@@ -191,7 +191,7 @@
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
-            <p>{{item.valorestimado | currency:'BRL':'symbol':'0.2-2':'pt'}}</p>
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2-2':'pt'}}</p>
             <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
             <mat-icon id="orange">error_outline</mat-icon>
             <!-- <mat-icon id="red">highlight_off</mat-icon> -->
@@ -204,7 +204,7 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Demo Agendada</p>
-          <p>R$ {{tickets5.valor}} {{tickets5.tickets.length}} Neg. </p>
+          <p>{{tickets5.valor | currency:'BRL':'symbol':'0.2-2':'pt'}} • {{tickets5.tickets.length}} Neg. </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
@@ -219,7 +219,7 @@
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
-            <p>{{item.valorestimado | currency:'BRL':'symbol':'0.2-2':'pt'}}</p>
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2-2':'pt'}}</p>
             <mat-icon id="green">check_circle_outline</mat-icon>
             <!-- <mat-icon id="orange">error_outline</mat-icon> -->
             <!-- <mat-icon id="red">highlight_off</mat-icon> -->
@@ -232,7 +232,7 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Proposta</p>
-          <p>R$ {{tickets6.valor}} {{tickets6.tickets.length}} Neg. </p>
+          <p>{{tickets6.valor | currency:'BRL':'symbol':'0.2-2':'pt'}} • {{tickets6.tickets.length}} Neg. </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
@@ -247,7 +247,7 @@
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
-            <p>{{item.valorestimado | currency:'BRL':'symbol':'0.2-2':'pt'}}</p>
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2-2':'pt'}}</p>
             <mat-icon id="green">check_circle_outline</mat-icon>
             <!-- <mat-icon id="orange">error_outline</mat-icon> -->
             <!-- <mat-icon id="red">highlight_off</mat-icon> -->
@@ -260,7 +260,7 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Negociações Inic.</p>
-          <p>R$ {{tickets7.valor}} {{tickets7.tickets.length}} Neg. </p>
+          <p>{{tickets7.valor | currency:'BRL':'symbol':'0.2-2':'pt'}} • {{tickets7.tickets.length}} Neg. </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
@@ -275,7 +275,7 @@
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
-            <p>{{item.valorestimado | currency:'BRL':'symbol':'0.2-2':'pt'}}</p>
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2-2':'pt'}}</p>
             <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
             <!-- <mat-icon id="orange">error_outline</mat-icon> -->
             <mat-icon id="red">highlight_off</mat-icon>
@@ -288,7 +288,7 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Clientes</p>
-          <p>R$ {{tickets8.valor}} {{tickets8.tickets.length}} Neg. </p>
+          <p>{{tickets8.valor | currency:'BRL':'symbol':'0.2-2':'pt'}} • {{tickets8.tickets.length}} Neg. </p>
         </div>
       </div>
 
@@ -302,7 +302,7 @@
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
-            <p>{{item.valorestimado | currency:'BRL':'symbol':'0.2-2':'pt'}}</p>
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2-2':'pt'}}</p>
             <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
             <mat-icon id="orange">error_outline</mat-icon>
             <!-- <mat-icon id="red">highlight_off</mat-icon> -->

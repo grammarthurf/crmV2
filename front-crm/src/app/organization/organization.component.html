@@ -32,7 +32,7 @@
                 <label for="cod">Código</label>
                 <input type="text" class="form-control">
               </div>
-              <button class="btn btn-primary">
+              <button class="btn btn-primary" (click)="generateCode()">
                 <img src="../../assets/cod.png" id="codigo">  
               </button>
             </div>
@@ -96,7 +96,7 @@
 
               <div class="form-group col-md-2">
                 <label for="estado">Estado</label>
-                <input [(ngModel)]="org.uf" type="text" class="form-control" placeholder="SC">
+                <input [(ngModel)]="org.uf" type="text" class="form-control" placeholder="SC" maxlength="2">
               </div>
 
               <div class="form-group col-md-3">
