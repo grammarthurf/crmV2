@@ -48,7 +48,6 @@ export class BusinessComponent implements OnInit {
   ticket = { titulo: "", estagio: '', cliente: '', org: '', produto: '', valorestimado: 0, termometro: '', vendedor: '', obs: '' };
 
   // Lottie:
-
   public lottieConfig: Object;
   private anim: any;
   private animationSpeed: number = 1;
@@ -60,7 +59,6 @@ export class BusinessComponent implements OnInit {
     this.getterOrgs();
     this.getterProd();
     this.getterCliente();
-
 
     this.lottieConfig = {
       path: 'assets/handshake.json',
@@ -110,9 +108,9 @@ export class BusinessComponent implements OnInit {
   showLose() {
     this.getterTickets('lose');
   }
-  showExclude() {
-    this.getterTickets('exclude');
-  }
+  // showExclude() {
+  //   this.getterTickets('exclude');
+  // }
 
   handleAnimation(anim: any) {
     this.anim = anim;
@@ -538,6 +536,7 @@ export class BusinessComponent implements OnInit {
     Inputmask().mask(document.getElementById("value"));
   }
 
+<<<<<<< HEAD
   formatNumberBR(value) {
     let result = value.format('0.0,')
 
@@ -545,3 +544,11 @@ export class BusinessComponent implements OnInit {
   }
 
 }
+=======
+  // formatNumberBR(value) {
+  //   let result = value.format('0.0,')
+    
+  //   return result
+  // }
+}
+>>>>>>> 6faa8e32c8642bf4dabd8a4fbbffe7cb8d20dd86

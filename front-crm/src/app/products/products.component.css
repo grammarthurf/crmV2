@@ -1,31 +1,14 @@
-td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
-    text-align: start;
-}
-
-.mat-row:nth-child(even){
-    background-color: #F4F4F4;
-}
-
-.mat-row:nth-child(odd){
-    background-color: #FFFFFF;
-}
-
-.btn-add {
-    color: #fff;
-    background-color: #5460E0;
-    border-color: #5460E0;
-}
-
 /* FILTROS */
+
+.div-filter {
+    margin-left: auto;
+    margin-right: 15px; 
+    width: 185px;
+}
 
 .iconfiltro {
     margin: 5px 15.5px;
     color: rgb(10, 24, 64);
-}
-
-.filter {
-    margin-top: 15px;
-    margin-left: auto;
 }
 
 .divider-vertical {
@@ -34,10 +17,53 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
     margin-left: 15px;
 }
 
+.div-filters {
+    display: flex; 
+    margin-bottom: 5px;
+}
+
+/* BUTTONS */
+
+.buttons-filter {
+    background: #deeafa;
+    box-shadow: none;
+    border: none;
+    color: #317ae2;
+    margin: 10px 0px 0 15px;
+    width: 85px;
+}
+
 .loc-button-top {
     display: flex;
-    margin-left: 25px;
     margin-bottom: 15px;
+    padding-left: 5px; 
+    margin-left: 15px;
+}
+
+.btn-add {
+    color: #fff;
+    background-color: #5460E0;
+    border-color: #5460E0;
+}
+
+.btn1 {
+    background-color: white;
+    color: #232953;
+    box-shadow: 2px black;
+    margin-left: 30px;
+    margin-bottom: 5px;
+}
+
+.button-all {
+    width: 85px;
+    height: 40px;
+    margin: 10px 5px 0 15px;
+}
+
+/* ICONS */
+.mat-icon-button {
+    border-radius: 0 !important;
+    width: 120px;
 }
 
 .icons-action {
@@ -51,45 +77,6 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
     background-color: transparent;
 }
 
-h1 {
-    margin-left: 20px;
-    font-size: 35px;
-    color: #232953;
-}
-
-.btn1 {
-    background-color: white;
-    color: #232953;
-    box-shadow: 2px black;
-    margin-left: 30px;
-    margin-bottom: 5px;
-}
-
-table {
-    width: 98%;
-    margin: 0 auto 20px auto;
-}
-
-.buttons-filter {
-    background: #deeafa;
-    box-shadow: none;
-    border: none;
-    color: #317ae2;
-    margin: 10px 5px 0 5px;
-    width: 85px;
-}
-
-.button-all {
-    width: 85px;
-    height: 40px;
-    margin: 10px 5px 0 15px;
-}
-
-.mat-icon-button {
-    border-radius: 0 !important;
-    width: 120px;
-}
-
 .mat-icon {
     margin-right: 5px; 
 }
@@ -100,4 +87,36 @@ table {
 
 .icon-color-grey {
     color: #3E3F47;
+}
+
+/* TABLE */
+
+table {
+    width: 98%;
+    margin: 0 auto 20px auto;
+}
+
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+    text-align: start;
+}
+
+.mat-row:nth-child(even){
+    background-color: #F4F4F4;
+}
+
+.mat-row:nth-child(odd){
+    background-color: #FFFFFF;
+}
+
+/* MODAL */
+
+.img-prod{
+    width: 20px; 
+    height: 20px; 
+    margin-top: 5px; 
+    margin-right: 5px;
+}
+
+.modal-title {
+    font-weight: bold;
 }

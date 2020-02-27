@@ -33,6 +33,8 @@ export class OrganizationComponent implements OnInit {
   displayedColumns: string[] = ['nome_fantasia', 'razao_social', 'endereco', 'tipo', 'erp', 'vendedor', 'columnEdit', 'columnDelete'];
   erroOrgs: any;
 
+  code: any;
+  
   data = Object.assign(org);
   dataSource = new MatTableDataSource<Element>(this.data);
 
@@ -63,6 +65,7 @@ export class OrganizationComponent implements OnInit {
 
         this.dataSource = new MatTableDataSource(this.matdata);
         console.log("DATASOURCE" + this.dataSource);
+        this.dataSource.sort = this.sort;
 
         this.orgapi = data;
         console.log(data);
@@ -104,20 +107,30 @@ export class OrganizationComponent implements OnInit {
             }
           });
           this.getterOrg();
-
+          setTimeout(this.reiniciar, 1001);
           console.log(data);
         },
         error => {
-
           this.getterOrg();
           console.error(error);
+          setTimeout(this.reiniciar, 1001);
         }
       );
     }
   }
 
+  reiniciar(){
+    location.reload()
+  }
+
+  newcode(){
+    this.code = Math.floor(Math.random() * (999 - 100) + 100);
+    console.log(this.code);
+    return this.code;
+  }
+
   ngOnInit() {
-    // this.orgapi.sort = this.sort;
+    
   }
 
 
@@ -140,20 +153,20 @@ export class OrganizationComponent implements OnInit {
     });
   }
 
-  generateCode() {
-    let randomString = function(lenght) {
-      let text = "";
-      let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&"
+  // generateCode() {
+  //   let randomString = function(lenght) {
+  //     let text = "";
+  //     let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&"
 
-      for(let i = 0; i < lenght; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-      }
-      return text;
-    }
+  //     for(let i = 0; i < lenght; i++) {
+  //       text += possible.charAt(Math.floor(Math.random() * possible.length));
+  //     }
+  //     return text;
+  //   }
 
-    this.org.cep = randomString(10);
-    console.log(this.org.cep);
-  }
+  //   this.org.cep = randomString(10);
+  //   console.log(this.org.cep);
+  // }
 
 
 }

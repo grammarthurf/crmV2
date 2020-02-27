@@ -131,7 +131,7 @@ input[type=range] {
 
 ::-webkit-slider-runnable-track {
   height: 3px;
-  background-image: linear-gradient(to right, rgb(226, 58, 58), rgb(248, 255, 151), rgb(120, 172, 120));
+  background-image: linear-gradient(to right, #e23a3a, #f8ff97, #78ac78);
 }
 
 ::-webkit-slider-thumb {
@@ -164,7 +164,7 @@ input[type=range] {
 
 .loc-button-top {
   display: flex;
-  margin-left: 25px;
+  padding-left: 5px;
 }
 
 #red, #green, #orange {
@@ -325,6 +325,14 @@ lottie-animation-view {
 }
 
 .icon-modal-lead{
+  margin-right: 10px; 
+  font-weight: bold; 
+  width: 21px; 
+  height: 21px; 
+  font-size: 18px; 
+  border-radius: 100px; 
+  background-color: #c2c2c2; 
+  color: #ffffff;
   font-size: 20px; 
   margin-left: 5px;
 }

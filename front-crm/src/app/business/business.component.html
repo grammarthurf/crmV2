@@ -1,22 +1,26 @@
 <div style="margin-top: 100px; margin-left: 15px;" (click)="stop()">
 
   <div class="flex">
-    <button style="padding-left: 5px; margin-left: 0px;" type="button" class="btn btn-primary loc-button-top "
+    <button type="button" class="btn btn-primary loc-button-top"
       data-toggle="modal" data-target="#exampleModalCenter">
       <mat-icon>add</mat-icon>
       <p style="margin-left: 5px;">Lead</p>
     </button>
 
     <div style="margin-left: auto; margin-right: 20px;">
-      <button class="btn btn-link" (click)="showOpen()" >Leads Abertas</button>
-      <button class="btn btn-link" (click)="showWin()" >Ganhas</button>
-      <button class="btn btn-link" (click)="showLose()">Perdidas</button>
-      <button class="btn btn-link"(click)="showExclude()">Excluídas</button>
+      <button class="btn btn-link"  (click)="showOpen()"   >Leads Abertas </button>
+      <button class="btn btn-link"  (click)="showWin()"    >Ganhas        </button>
+      <button class="btn btn-link"  (click)="showLose()"   >Perdidas      </button>
+      <!-- <button class="btn btn-link"  (click)="showExclude()">Excluídas     </button> -->
     </div>
   </div>
 
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+  <div  class="modal fade" 
+        id="exampleModalCenter" 
+        tabindex="-1" 
+        role="dialog" 
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -31,28 +35,41 @@
           <div class="row">
             <div class="form-group col-md-12">
               <label for="exampleInputEmail1">Título</label>
-              <input [(ngModel)]="ticket.titulo" type="text" class="form-control" id="title"
-                aria-describedby="emailHelp" placeholder="Título" required />
+              <input  [(ngModel)]="ticket.titulo" 
+                      type="text" class="form-control" 
+                      id="title"
+                      aria-describedby="emailHelp" 
+                      placeholder="Título" 
+                      required />
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Empresa</label>
                 <button mat-icon-button (click)="redirectToAdd('/company')">
-                  <mat-icon class="icon-modal-lead" style="margin-right: 10px; font-weight: bold; width: 21px; height: 21px; font-size: 18px; border-radius: 100px; background-color: #c2c2c2; color: #ffffff;">add</mat-icon>
+                  <mat-icon class="icon-modal-lead">add</mat-icon>
                 </button>
-                <select *ngIf="orsgapi" [(ngModel)]="ticket.org" class="form-control" id="exampleFormControlSelect1">
-                  <option *ngFor="let orgs of orsgapi" value="{{orgs.id}}">{{orgs.razaosocial}}</option>
+                <select *ngIf="orsgapi" 
+                        [(ngModel)]="ticket.org" 
+                        class="form-control" 
+                        id="exampleFormControlSelect1">
+                  <option *ngFor="let orgs of orsgapi" value="{{orgs.id}}">
+                    {{orgs.razaosocial}}
+                  </option>
                 </select>
               </div>
 
               <div class="form-group">
                 <label for="exampleFormControlSelect2">Produto</label>
                 <button mat-icon-button (click)="redirectToAdd('/products')">
-                  <mat-icon class="icon-modal-lead" style="margin-right: 10px; font-weight: bold; width: 21px; height: 21px; font-size: 18px; border-radius: 100px; background-color: #c2c2c2; color: #ffffff;">add</mat-icon>
+                  <mat-icon class="icon-modal-lead">add</mat-icon>
                 </button>
-                <select [(ngModel)]="ticket.produto" multiple class="form-control" id="exampleFormControlSelect2">
-                  <option *ngFor="let prod of produtosapi" value="{{prod.id}}">{{prod.nome}}</option>
+                <select [(ngModel)]="ticket.produto" 
+                        multiple class="form-control" 
+                        id="exampleFormControlSelect2">
+                  <option *ngFor="let prod of produtosapi" value="{{prod.id}}">
+                    {{prod.nome}}
+                  </option>
                 </select>
               </div>
             </div>
@@ -67,7 +84,10 @@
 
               <div class="form-group">
                 <label for="thermometro">Termômetro</label>
-                <input [(ngModel)]="ticket.termometro" type="range" class="form-control-range" id="thermometro"
+                <input  [(ngModel)]="ticket.termometro" 
+                        type="range" 
+                        class="form-control-range" 
+                        id="thermometro"
                   value="1" step="49"/>
                 <div style="display: flex;">
                   <span>Ruim</span>
@@ -80,24 +100,35 @@
             <div class="form-group col-md-6">
               <label for="exampleFormControlSelect1">Contato</label>
               <button mat-icon-button (click)="redirectToAdd('/person')">
-                <mat-icon class="icon-modal-lead" style="margin-right: 10px; font-weight: bold; width: 21px; height: 21px; font-size: 18px; border-radius: 100px; background-color: #c2c2c2; color: #ffffff;">add</mat-icon>
+                <mat-icon class="icon-modal-lead">add</mat-icon>
               </button>
               <select *ngIf="clientesapi" [(ngModel)]="ticket.cliente" class="form-control"
                 id="exampleFormControlSelect1">
-                <option *ngFor="let cliente of clientesapi" value="{{cliente.id}}">{{cliente.nome}}</option>
+                <option *ngFor="let cliente of clientesapi" value="{{cliente.id}}">
+                  {{cliente.nome}}
+                </option>
               </select>
             </div>
 
             <div class="form-group col-md-6">
               <label for="exampleFormControlSelect1">Estágio Inicio</label>
-              <select [(ngModel)]="ticket.estagio" class="form-control" id="exampleFormControlSelect1" required>
-                <option *ngFor="let est of estagiosapi" value="{{est.id}}">{{est.nome}}</option>
+              <select [(ngModel)]="ticket.estagio" 
+                      class="form-control" 
+                      id="exampleFormControlSelect1" 
+                      required>
+                <option *ngFor="let est of estagiosapi" value="{{est.id}}">
+                  {{est.nome}}
+                </option>
               </select>
             </div>
 
             <div class="form-group col-md-12">
               <label for="exampleFormControlTextarea1">Observação</label>
-              <textarea [(ngModel)]="ticket.obs" class="form-control" id="observation" rows="3"></textarea>
+              <textarea [(ngModel)]="ticket.obs" 
+                        class="form-control" 
+                        id="observation" 
+                        rows="3">
+              </textarea>
             </div>
           </div>
         </div>
@@ -113,9 +144,7 @@
 
   <hr style="width: 100%;" />
 
-
   <div cdkDropListGroup class="nowrap" style="width: 100%;">
-
     <div class="example-container">
       <div class="tickets test">
         <div class="col-md-8">
@@ -125,8 +154,15 @@
         <img src="../../assets/arrow.png" />
       </div>
 
-      <div cdkDropList [cdkDropListData]="tickets1.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets1.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+      <div  cdkDropList 
+            [cdkDropListData]="tickets1.tickets" 
+            class="example-list" 
+            (cdkDropListDropped)="drop($event)">
+        <div  class="leads" 
+              *ngFor="let item of tickets1.tickets" 
+              id="{{item.id}}" 
+              cdkDrag 
+              (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
@@ -153,8 +189,15 @@
         <img src="../../assets/arrow.png" />
       </div>
 
-      <div cdkDropList [cdkDropListData]="tickets3.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets3.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+      <div  cdkDropList 
+            [cdkDropListData]="tickets3.tickets" 
+            class="example-list" 
+            (cdkDropListDropped)="drop($event)">
+        <div  class="leads" 
+              *ngFor="let item of tickets3.tickets" 
+              id="{{item.id}}" 
+              cdkDrag 
+              (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
@@ -181,8 +224,14 @@
         <img src="../../assets/arrow.png" />
       </div>
 
-      <div cdkDropList [cdkDropListData]="tickets4.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets4.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+      <div  cdkDropList 
+            [cdkDropListData]="tickets4.tickets" 
+            class="example-list" 
+            (cdkDropListDropped)="drop($event)">
+        <div  class="leads" 
+              *ngFor="let item of tickets4.tickets" 
+              id="{{item.id}}" 
+              cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
@@ -209,8 +258,14 @@
         <img src="../../assets/arrow.png" />
       </div>
 
-      <div cdkDropList [cdkDropListData]="tickets5.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets5.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+      <div  cdkDropList 
+            [cdkDropListData]="tickets5.tickets" 
+            class="example-list" 
+            (cdkDropListDropped)="drop($event)">
+        <div  class="leads" 
+              *ngFor="let item of tickets5.tickets" 
+              id="{{item.id}}" 
+              cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
@@ -237,8 +292,15 @@
         <img src="../../assets/arrow.png" />
       </div>
 
-      <div cdkDropList [cdkDropListData]="tickets6.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets6.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+      <div  cdkDropList 
+            [cdkDropListData]="tickets6.tickets" 
+            class="example-list" 
+            (cdkDropListDropped)="drop($event)">
+        <div  class="leads" 
+              *ngFor="let item of tickets6.tickets" 
+              id="{{item.id}}" 
+              cdkDrag 
+              (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
@@ -265,8 +327,15 @@
         <img src="../../assets/arrow.png" />
       </div>
 
-      <div cdkDropList [cdkDropListData]="tickets7.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets7.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+      <div  cdkDropList 
+            [cdkDropListData]="tickets7.tickets" 
+            class="example-list" 
+            (cdkDropListDropped)="drop($event)">
+        <div  class="leads" 
+              *ngFor="let item of tickets7.tickets" 
+              id="{{item.id}}" 
+              cdkDrag 
+              (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
@@ -292,8 +361,15 @@
         </div>
       </div>
 
-      <div cdkDropList [cdkDropListData]="tickets8.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets8.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+      <div  cdkDropList 
+            [cdkDropListData]="tickets8.tickets" 
+            class="example-list" 
+            (cdkDropListDropped)="drop($event)">
+        <div  class="leads" 
+              *ngFor="let item of tickets8.tickets" 
+              id="{{item.id}}" 
+              cdkDrag 
+              (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
@@ -315,70 +391,5 @@
 
     <lottie-animation-view [options]="lottieConfig" [width]="250" [height]="250"
       (animCreated)="handleAnimation($event)">
-
     </lottie-animation-view>
-
   </div>
-
-
-
-
-    <!-- <div *ngFor="let estagio of estagiosapi" class="example-container">
-      <h2>{{estagio.nome}}</h2>
-
-      <div
-        cdkDropList
-        [cdkDropListData]="todo"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of todo" cdkDrag>
-          {{item}}</div>
-      </div>
-    </div>
-
-    <div class="example-container">
-      <h2>Done</h2>
-
-      <div
-        cdkDropList
-        [cdkDropListData]="done"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
-      </div>
-    </div> -->
-
-
-  <!-- <div class="row flex-nowrap mt-4">
-
-    <div cdkDropList class="col-md-2 align-items-center" *ngFor="let i of estagiosapi">
-      <div class="mb-4 tickets" style="display: flex;">
-        <div>
-          <p>{{ i.nome }}</p>
-          <p>{{ i.tickets.length }} Neg.</p>
-        </div>
-
-        <img src="../../assets/arrow.png" id="arrow" />
-      </div>
-
-      <div cdkDropListGroup>
-      <div class="leads" class="leads" cdkDrag *ngFor="let j of i.tickets" id="{{j.id}}">
-        <div style="display: flex;">
-          <p class="fz-15 bold limit-words">{{ j.titulo }}</p>
-          <mat-icon *ngIf="(j.termometro=='1');" class="thermometro thermfrio">ac_unit</mat-icon>
-          <mat-icon *ngIf="(j.termometro=='50');" class="thermometro thermmorno">waves</mat-icon>
-          <mat-icon *ngIf="(j.termometro=='99');" class="thermometro thermquente">whatshot</mat-icon>
-
-        </div>
-        <p class="mb-2 limit-words fz-13">{{ j.org }}</p>
-        <div style="display: flex;">
-          <p class="fz-13">R$ {{ j.valorestimado }}</p>
-
-          <img src="../../assets/verde.png" id="green" />
-
-        </div>
-      </div>
-    </div>
-    </div>
-  </div>
-  </div> -->

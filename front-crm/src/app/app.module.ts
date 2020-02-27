@@ -48,10 +48,12 @@ import { PersonComponent } from "./person/person.component";
 import { NgxMaskModule } from 'ngx-mask';
 import { OrganizationDetailComponent } from './organization-detail/organization-detail.component';
 import { PersonDetailComponent } from './person-detail/person-detail.component';
+import { CalendarComponent } from './calendar/calendar.component'
 import { UserComponent } from './user/user.component'
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 registerLocaleData(localePt);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +67,8 @@ registerLocaleData(localePt);
     PersonComponent,
     OrganizationDetailComponent,
     PersonDetailComponent,
-    UserComponent
+    UserComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,

@@ -30,17 +30,18 @@ table {
     width: 98%;
     margin: 0 auto 20px auto;
 }
-  
+
+/* FILTER */
+
+.div-filter{
+    margin-left: auto; 
+    margin-right: 15px; 
+    width: 185px;
+}  
 
 .filter {
     margin-top: 15px;
     margin-left: auto;
-}
-
-.loc-button-top {
-    display: flex;
-    margin-left: 25px;
-    margin-bottom: 15px;
 }
 
 .buttons-filter {
@@ -49,15 +50,30 @@ table {
     border: none;
     color: #317ae2;
     margin: 10px 5px 0 5px;
-    width: 85px;
+    width: 90px;
+} 
+
+.dif {
+    margin-left: 15px;
 }
 
+/* ADD ATV */
+
+.loc-button-top {
+    display: flex;
+    margin-left: 25px;
+    margin-bottom: 15px;
+    padding-left: 5px; 
+    margin-left: 15px;
+}
 
 .button-all {
     width: 85px;
     height: 40px;
     margin: 10px 5px 0 15px;
 }
+
+/* MODAL */
 
 .div-modal-atv{
     width: 40x; 
@@ -71,6 +87,34 @@ table {
 .icon-modal-atv{
     font-size: 20px; 
     margin-left: 5px;
+    
+}
+
+.icon-dif {
+    margin-right: 10px; 
+    font-weight: bold; 
+    width: 21px; 
+    height: 21px; 
+    font-size: 18px; 
+    border-radius: 100px; 
+    background-color: #c2c2c2; 
+    color: #ffffff;
+}
+
+.atvinput {
+    margin-top: 5px; 
+    font-size: 12.5pt; 
+    font-weight: bold;
+}
+
+.inputmargin {
+    margin-top: 20px; 
+    padding: 0px;
+}
+
+.inputmargin2{
+    margin-top: 20px; 
+    padding: 0px 0px 0px 15px;
 }
 
 .mat-icon-button {
@@ -85,6 +129,44 @@ table {
     height: 50px;
     margin-top: 5px;
     margin-left: 15px;
+}
+
+.close {
+    margin: 0px;
+}
+
+/* calendar */
+
+.viewcalendar{
+    margin-left: 100px; 
+    color: #007bff; 
+    margin-top: 40px;
+}
+
+.div-calendar{
+    height: 570px; 
+    overflow: auto; 
+    font-size: 10px; 
+    align-items: flex-end;
+}
+
+.div-calendar::-webkit-scrollbar {
+    width: 10px;
+}::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border: 0.5px solid #ced4da;
+    border-radius: 5px;
+}::-webkit-scrollbar-thumb {
+    background: #6297bd; 
+    border-radius: 5px;
+}::-webkit-scrollbar-thumb:hover {
+    background: #678294; 
+}
+
+.fullcalendar {
+    width: 500px;
+    height: 100px !important;
+    margin: 1px auto;
 }
 
 .icons-action {
@@ -106,42 +188,3 @@ table {
     color: #3E3F47;
 }
 
-.thermruim {
-    color: rgb(226, 58, 58);
-    font-size: 13px;
-}
-
-.thermmediano {
-    color: rgb(248, 255, 151);
-    font-size: 13px;
-}
-
-.thermbom {
-    color: rgb(120, 172, 120);
-    font-size: 13px;
-}
-
-.scrollbardif::-webkit-scrollbar {
-    width: 10px;
-}::-webkit-scrollbar-track {
-    background: rgb(241, 241, 241); 
-    border: 0.5px solid rgb(206, 212, 218);
-    border-radius: 5px;
-}::-webkit-scrollbar-thumb {
-    background: rgb(98, 151, 189); 
-    border-radius: 5px;
-}::-webkit-scrollbar-thumb:hover {
-    background: rgb(103, 130, 148); 
-}
-
-/* calendar */
-
-.fullcalendar {
-    width: 500px;
-    height: 100px !important;
-    margin: 1px auto;
-}
-
-.fc-today-button .btn .btn-primary{
-    margin-left: 10px;
-}

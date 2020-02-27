@@ -29,7 +29,6 @@ const atividade: PeriodicElement[] = [
 
 export class AtividadesComponent implements OnInit {
 
-  count: number = 0;
   numm: string;
   matdata:  any = [];
   datamat: any = [];
@@ -76,7 +75,11 @@ export class AtividadesComponent implements OnInit {
   }
   
   ngOnInit() {
-  this.dataSource = new MatTableDataSource(this.matdata);
+    this.dataSource = new MatTableDataSource(this.matdata);
+  }
+
+  gotocalendar(){
+    this.router.navigate([]).then(result => { window.open('/calendar/', '_blank'); });
   }
 
   getColor(data) {
