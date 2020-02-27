@@ -110,12 +110,18 @@ export class ProductsComponent implements OnInit {
           });
           console.log(data);
           this.getterProdutos();
+          setTimeout(this.reiniciar, 1001);
         },
         error => {
           console.error(error);
+          setTimeout(this.reiniciar, 1001);
         }
       );
     }
+  }
+
+  reiniciar(){
+    location.reload()
   }
 
   deleteItem() {

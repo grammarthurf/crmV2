@@ -1,10 +1,17 @@
 <div class="main-div">
 
-  <div class="modal fade" id="loseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div  class="modal fade" 
+        id="loseModal" 
+        tabindex="-1" 
+        role="dialog" 
+        aria-labelledby="exampleModalLabel" 
+        aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Marcar como Perdido</h5>
+          <h5 class="modal-title" id="exampleModalLabel">
+            Marcar como Perdido
+          </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -31,24 +38,29 @@
   </div>
 
 
-  <div class="col-12 div-top row"
-    style="height: 300px; border-radius: 10px; border-style: solid; border-color: rgb(226, 226, 226); border-width: 1px;">
+  <div class="col-12 div-top row div-border">
     <div class="col-9">
       <div class="col-10 row">
-        <h2 class="font-26 bold"> {{business.titulo}} </h2>
+        <h2 class="font-26 bold"> 
+          {{business.titulo}} 
+        </h2>
         <mat-icon style=" margin-left: 5px;">create</mat-icon>
       </div>
       <div class="flex" style="padding: 0;">
-        <img src="../../assets/moeda.png" style="width: 2%; height: 2%;" />
+        <img src="../../assets/moeda.png" class="img1" />
         <p class="bold"> R$ {{business.valorestimado}}</p>
-        <img src="../../assets/contato.png" style="width: 2%; height: 2%;" />
+        <img src="../../assets/contato.png" class="img1" />
         <p> {{business.cliente.nome}} </p>
-        <img src="../../assets/empresa.png" style="width: 2%; height: 2%;" />
+        <img src="../../assets/empresa.png" class="img1" />
         <p> {{business.org.razaosocial}} </p>
-        <img src="../../assets/termometro.png" style="width: 2%; height: 2%;" />
+        <img src="../../assets/termometro.png" class="img1" />
         <p>Termômetro:</p>
-        <div style="margin-top: 5px;">
-          <input type="range" id="thermometro" value="{{business.termometro}}" step="49" style="width: 150px;" />
+        <div class="margin5">
+          <input  type="range" 
+                  id="thermometro" 
+                  value="{{business.termometro}}" 
+                  step="49" 
+                  style="width: 150px;"/>
           <div class=" row">
             <p class="ptherm" > Ruim  </p>
             <p class="ptherm2"> Médio </p>
@@ -57,16 +69,32 @@
         </div>
       </div>
     </div>
-    <div class="col-2 row" style="padding-left: 0; margin-left: -25px; margin-right: 20px;">
-      <button class="btn-win-lose btn-success" id="win" (click)="stageWin()">Ganho</button>
-      <button class="btn-win-lose" id="null" (click)="stageNull()">Reabrir</button>
-      <button class="btn-win-lose btn-danger" id="lose" (click)="stageLose()" data-toggle="modal" data-target="#loseModal">Perdido</button>
+    <div class="col-2 row div-choice">
+      <button class="btn-win-lose btn-success" 
+              id="win" 
+              (click)="stageWin()">
+        Ganho
+      </button>
+      <button class="btn-win-lose" 
+              id="null" 
+              (click)="stageNull()">
+        Reabrir
+      </button>
+      <button class="btn-win-lose btn-danger" 
+              id="lose" 
+              (click)="stageLose()" 
+              data-toggle="modal" 
+              data-target="#loseModal">
+        Perdido
+      </button>
     </div>
-    <lottie-animation-view [options]="lottieConfig" [width]="500" [height]="350"
-      (animCreated)="handleAnimation($event)">
+    <lottie-animation-view  [options]="lottieConfig" 
+                            [width]="500" 
+                            [height]="350"
+                            (animCreated)="handleAnimation($event)">
     </lottie-animation-view>
     <div class="col-1">
-      <div style="float: right; text-align: right; margin-top: 10px;">
+      <div class="div-vendedor">
         <p style="font-size: 15px;"> Vendedor </p>
         <p style="font-size: 20px;"> {{business.vendedor}} </p>
         <!-- <p style="font-size: 12px;" mask="9999-99-99" *ngIf="(business.created)"> Criado em
@@ -76,7 +104,9 @@
 
     <!-- BARRA DE PROGRESSO -->
     <div class="col-12 flex md-stepper-horizontal green orange">      
-      <div class="md-step active" *ngIf="(business.estagio.id != 1 && business.estagio.id > 1)" id="1">
+      <div  class="md-step active" 
+            *ngIf="(business.estagio.id != 1 && business.estagio.id > 1)" 
+            id="1">
         <div class="md-step-circle ">
           <mat-icon> done </mat-icon>
         </div>
@@ -84,7 +114,9 @@
         <div class="md-step-optional">10/02/2020</div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div class="md-step process" *ngIf="(business.estagio.id == 1)" id="1">
+      <div  class="md-step process" 
+            *ngIf="(business.estagio.id == 1)" 
+            id="1">
         <div class="md-step-circle ">
           <mat-icon> priority_high </mat-icon>
         </div>
@@ -92,16 +124,18 @@
         <div class="md-step-optional">Em processo </div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div class="md-step " *ngIf="(business.estagio.id != 1 && business.estagio.id < 1)" id="1">
-        <div class="md-step-circle ">
-          <mat-icon> </mat-icon>
-        </div>
+      <div  class="md-step " 
+            *ngIf="(business.estagio.id != 1 && business.estagio.id < 1)" 
+            id="1">
+        <div class="md-step-circle"></div>
         <div class="md-step-title">Prospecção</div>
         <div class="md-step-bar-right"></div>
       </div>
 
 
-      <div class="md-step active " *ngIf="(business.estagio.id != 3 && business.estagio.id > 3)" id="3">
+      <div  class="md-step active " 
+            *ngIf="(business.estagio.id != 3 && business.estagio.id > 3)" 
+            id="3">
         <div class="md-step-circle ">
           <mat-icon> done </mat-icon>
         </div>
@@ -110,8 +144,10 @@
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div class="md-step process " *ngIf="(business.estagio.id == 3)" id="3">
-        <div class="md-step-circle ">
+      <div  class="md-step process" 
+            *ngIf="(business.estagio.id == 3)" 
+            id="3">
+        <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
         </div>
         <div class="md-step-title">   Contatado   </div>
@@ -119,10 +155,10 @@
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div class="md-step  " *ngIf="(business.estagio.id != 3 && business.estagio.id < 3)" id="3">
-        <div class="md-step-circle ">
-          <mat-icon> </mat-icon>
-        </div>
+      <div  class="md-step" 
+            *ngIf="(business.estagio.id != 3 && business.estagio.id < 3)" 
+            id="3">
+        <div class="md-step-circle"></div>
         <div class="md-step-title">Contatado</div>
 
         <div class="md-step-bar-left"> </div>
@@ -130,7 +166,9 @@
       </div>
 
 
-      <div class="md-step process" *ngIf="(business.estagio.id==4)" id="4">
+      <div  class="md-step process" 
+            *ngIf="(business.estagio.id==4)" 
+            id="4">
         <div class="md-step-circle ">
           <mat-icon> priority_high </mat-icon>
         </div>
@@ -139,7 +177,9 @@
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div class="md-step" *ngIf="(business.estagio.id!=4 && business.estagio.id < 4)" id="4">
+      <div  class="md-step" 
+            *ngIf="(business.estagio.id!=4 && business.estagio.id < 4)" 
+            id="4">
         <div class="md-step-circle ">
           <mat-icon> </mat-icon>
         </div>
@@ -148,7 +188,9 @@
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div class="md-step active" *ngIf="(business.estagio.id!=4 && business.estagio.id > 4)" id="4">
+      <div  class="md-step active" 
+            *ngIf="(business.estagio.id!=4 && business.estagio.id > 4)" 
+            id="4">
         <div class="md-step-circle ">
           <mat-icon> done </mat-icon>
         </div>
@@ -159,7 +201,9 @@
       </div>
 
 
-      <div class="md-step active" *ngIf="(business.estagio.id != 5 && business.estagio.id > 5)" id="5">
+      <div  class="md-step active" 
+            *ngIf="(business.estagio.id != 5 && business.estagio.id > 5)" 
+            id="5">
         <div class="md-step-circle">
           <mat-icon> done </mat-icon>
         </div>
@@ -168,7 +212,9 @@
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div class="md-step process" *ngIf="(business.estagio.id == 5)" id="5">
+      <div  class="md-step process" 
+            *ngIf="(business.estagio.id == 5)" 
+            id="5">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
         </div>
@@ -177,7 +223,9 @@
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div class="md-step" *ngIf="(business.estagio.id != 5 && business.estagio.id < 5)" id="5">
+      <div  class="md-step" 
+            *ngIf="(business.estagio.id != 5 && business.estagio.id < 5)" 
+            id="5">
         <div class="md-step-circle">
           <mat-icon> </mat-icon>
         </div>
@@ -186,7 +234,9 @@
         <div class="md-step-bar-right"></div>
       </div>
 
-      <div class="md-step active" *ngIf="(business.estagio.id != 6 && business.estagio.id > 6)" id="6">
+      <div  class="md-step active" 
+            *ngIf="(business.estagio.id != 6 && business.estagio.id > 6)" 
+            id="6">
         <div class="md-step-circle">
           <mat-icon> done </mat-icon>
         </div>
@@ -195,7 +245,9 @@
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div class="md-step process" *ngIf="(business.estagio.id == 6)" id="6">
+      <div  class="md-step process" 
+            *ngIf="(business.estagio.id == 6)" 
+            id="6">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
         </div>
@@ -204,7 +256,9 @@
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div class="md-step" *ngIf="(business.estagio.id != 6 && business.estagio.id < 6)" id="6">
+      <div  class="md-step" 
+            *ngIf="(business.estagio.id != 6 && business.estagio.id < 6)" 
+            id="6">
         <div class="md-step-circle">
           <mat-icon> </mat-icon>
         </div>
@@ -213,7 +267,9 @@
         <div class="md-step-bar-right"></div>
       </div>
 
-      <div class="md-step active" *ngIf="(business.estagio.id != 7 && business.estagio.id > 7)" id="7">
+      <div  class="md-step active" 
+            *ngIf="(business.estagio.id != 7 && business.estagio.id > 7)" 
+            id="7">
         <div class="md-step-circle">
           <mat-icon> done </mat-icon>
         </div>
@@ -268,11 +324,12 @@
   </div>
 
 
-  <div class="col-4 div-left"
-    style="border-radius: 10px; border-style: solid; border-color: rgb(226, 226, 226); border-width: 1px;">
+  <div class="col-4 div-left div-border">
     <div class=" col-12 row ">
-      <img src="../../assets/empresa.png" style="width: 20px; height: 20px; margin-right: 10px; margin-left: 15px;" />
-      <h2 class="font-26 bold" style="margin-top: 5px;">Empresa</h2>
+      <img class="img-empresa" src="../../assets/empresa.png"/>
+      <h2 class="font-26 bold margin5">
+        Empresa
+      </h2>
       <mat-icon style="margin-left: auto; margin-top: 10px;">create</mat-icon>
     </div>
 
@@ -289,38 +346,40 @@
     </div>
   </div>
 
-  <div class="col-8 div-right"
-    style="border-radius: 10px; border-style: solid; border-color: rgb(226, 226, 226); border-width: 1px;">
-    <div class="col-12 row" style="margin-left: 0px;">
-      <button type="button"
-        style="border: none; padding: 0px; border: 2px solid white; border-radius: 7px; height: 30px; margin-top: 8px; "
-        class="col-4 btn1 btn-primary btn-block">Observações</button>
-      <button type="button"
-        style="border: none; padding: 0px; border: 2px solid white; border-radius: 7px; height: 30px;"
-        class="col-4 btn1 btn-primary btn-block">Atividades</button>
-      <button type="button"
-        style="border: none; padding: 0px; border: 2px solid white; border-radius: 7px; height: 30px;"
-        class="col-4 btn1 btn-primary btn-block">Anexos</button>
+  <div class="col-8 div-right div-border">
+    <div class="col-12 row margin0">
+      <button type="button" class="col-4 btn1 btn-primary btn-block btn-3 margin8">
+        Observações
+      </button>
+      <button type="button" class="col-4 btn1 btn-primary btn-block btn-3">
+        Atividades
+      </button>
+      <button type="button" class="col-4 btn1 btn-primary btn-block btn-3">
+        Anexos
+      </button>
     </div>
-    <div class="col-12" style="margin-top: 10px;">
-      <textarea rows="5" class="col-12"
-        style="border-radius: 7px; border: 1px solid rgb(207, 206, 206);">{{business.obs}}</textarea>
-      <button type="button" class="btn btn-success bold btn-sm" style="float: right;">Salvar</button>
-      <button type="button" class="btn btn-outline-secondary bold btn-sm"
-        style="float: right; margin-right: 5px;">Cancelar</button>
+    <div class="col-12 margin10">
+      <textarea rows="5" class="col-12 txtarea">
+        {{business.obs}}
+      </textarea>
+      <button type="button" class="btn btn-success bold btn-sm fltright">
+        Salvar
+      </button>
+      <button type="button" class="btn btn-outline-secondary bold btn-sm fltright margin52">
+        Cancelar
+      </button>
     </div>
-    <div class="col-12 row" style="margin-top: 10px;">
-      <button type="submit" class="col-4 btn1 btn-primary btn-block"
-        style="border: none; margin-left: 30%; height: 30px; padding: 0px; margin-top: 10px; border-radius: 10px;">
-        Histórico </button>
+    <div class="col-12 row margin10">
+      <button type="submit" class="col-4 btn1 margin10 btn-hist">
+        Histórico 
+      </button>
     </div>
   </div>
 
-  <div class="col-4 div-left "
-    style="border-radius: 10px; border-style: solid; border-color: rgb(226, 226, 226); border-width: 1px;">
+  <div class="col-4 div-left div-border">
     <div class="col-12 row">
       <img src="../../assets/contato.png" style="width: 20px; height: 20px; margin-right: 10px; margin-left: 15px;" />
-      <h2 class="font-26 bold" style="margin-top: 5px;">Contato</h2>
+      <h2 class="font-26 bold margin5">Contato</h2>
       <mat-icon style="margin-left: auto; margin-top: 10px;">create</mat-icon>
     </div>
 

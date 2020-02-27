@@ -33,6 +33,8 @@ export class OrganizationComponent implements OnInit {
   displayedColumns: string[] = ['nome_fantasia', 'razao_social', 'endereco', 'tipo', 'erp', 'vendedor', 'columnEdit', 'columnDelete'];
   erroOrgs: any;
 
+  code: any;
+  
   data = Object.assign(org);
   dataSource = new MatTableDataSource<Element>(this.data);
 
@@ -104,16 +106,26 @@ export class OrganizationComponent implements OnInit {
             }
           });
           this.getterOrg();
-
+          setTimeout(this.reiniciar, 1001);
           console.log(data);
         },
         error => {
-
           this.getterOrg();
           console.error(error);
+          setTimeout(this.reiniciar, 1001);
         }
       );
     }
+  }
+
+  reiniciar(){
+    location.reload()
+  }
+
+  newcode(){
+    this.code = Math.floor(Math.random() * (999 - 100) + 100);
+    console.log(this.code);
+    return this.code;
   }
 
   ngOnInit() {

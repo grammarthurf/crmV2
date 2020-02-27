@@ -47,7 +47,8 @@ import { PersonComponent } from "./person/person.component";
 import { NgxMaskModule } from 'ngx-mask';
 import { OrganizationDetailComponent } from './organization-detail/organization-detail.component';
 import { PersonDetailComponent } from './person-detail/person-detail.component';
-import { UserComponent } from './user/user.component'
+import { UserComponent } from './user/user.component';
+import { CalendarComponent } from './calendar/calendar.component'
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { UserComponent } from './user/user.component'
     PersonComponent,
     OrganizationDetailComponent,
     PersonDetailComponent,
-    UserComponent
+    UserComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,

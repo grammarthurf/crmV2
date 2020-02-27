@@ -48,7 +48,6 @@ export class BusinessComponent implements OnInit {
   ticket = { titulo: "", estagio: '', cliente: '', org: '', produto: '', valorestimado: '', termometro: '', vendedor: '', obs: '' };
 
   // Lottie:
-
   public lottieConfig: Object;
   private anim: any;
   private animationSpeed: number = 1;
@@ -60,7 +59,6 @@ export class BusinessComponent implements OnInit {
     this.getterOrgs();
     this.getterProd();
     this.getterCliente();
-
 
     this.lottieConfig = {
       path: 'assets/handshake.json',
@@ -535,10 +533,9 @@ export class BusinessComponent implements OnInit {
     Inputmask().mask(document.getElementById("value"));
   }
 
-  formatNumberBR(value) {
-    let result = value.format('0.0,')
+  // formatNumberBR(value) {
+  //   let result = value.format('0.0,')
     
-    return result
-  }
-
+  //   return result
+  // }
 }

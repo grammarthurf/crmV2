@@ -144,14 +144,20 @@ export class PersonComponent implements OnInit {
           });
           this.getterOrgs();
           this.getterContatos();
+          setTimeout(this.reiniciar, 1001);
           console.log(data);
         },
         error => {
           this.getterContatos();
           console.error(error);
+          setTimeout(this.reiniciar, 1001);
         }
       );
     }
+  }
+
+  reiniciar(){
+    location.reload()
   }
 
   formatPhoneNumber(str) {
