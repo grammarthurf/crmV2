@@ -20,16 +20,17 @@
 
   <div (keyup)="applyFilter($event)" class="btn-group btn-group" role="group" aria-label="btngroup"
     style="float: right; margin: 20px 10px 3px;">
-    <button type="button" class="btn btn-link" (click)="filtroday()">Hoje</button>
-    <button type="button" class="btn btn-link" (click)="filtrotmrw()">Amanhã</button>
-    <button type="button" class="btn btn-link" (click)="filtromes()">Este mês</button>
+    <button type="button" class="btn btn-link" (click)="filtroday()"    >Hoje       </button>
+    <button type="button" class="btn btn-link" (click)="filtrotmrw()"   >Amanhã     </button>
+    <button type="button" class="btn btn-link" (click)="filtromes()"    >Este mês   </button>
     <button type="button" class="btn btn-link" (click)="filtroproxmes()">Próximo mês</button>
   </div>
 
   <!-- MODAL -->
   <div  class="modal fade" 
         id="abrircadastroatv" 
-        tabindex="-1" role="dialog" 
+        tabindex="-1" 
+        role="dialog" 
         aria-labelledby="abrircadastroatv" 
         aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -38,7 +39,9 @@
           <h5 class="modal-title font1 font1b" id="exampleModalLongTitle">
               Adicione uma Atividade
           </h5>
-          <a href="calendar/" target="blank_" class="viewcalendar"> Visualizar Calendário </a>
+          <a href="calendar/" target="blank_" class="viewcalendar"> 
+            Visualizar Calendário 
+          </a>
           <button type="button"
                   class="close"
                   data-dismiss="modal"
