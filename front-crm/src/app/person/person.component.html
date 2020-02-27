@@ -23,6 +23,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
+                    <img src="../../assets/contato.png" id="contato">
                     <h5 class="modal-title" id="exampleModalLongTitle">
                         Adicione uma Pessoa
                     </h5>
@@ -32,69 +33,60 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="form-group col-md-9">
-                            <label for="exampleInputEmail1">Nome</label>
-                            <input [(ngModel)]="contato.nome" type="text" class="form-control">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="exampleInputEmail1">Tipo</label>
-                            <select [(ngModel)]="contato.tipo" 
-                                    class="form-control" 
-                                    id="exampleFormControlSelect1">
-                                <option>Cliente </option>
-                                <option>Parceiro</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-12">
-                            <label for="exampleInputEmail1">Email</label>
-                            <input [(ngModel)]="contato.email" type="text" class="form-control">
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">Telefone</label>
-                                <input [(ngModel)]="contato.fone" type="text" class="form-control"
-                                    mask="(AA) AAAA-AAAA">
+
+                        <div class="row col-md-12">
+                            <div class="form-group col-md-6">
+                                <label for="name">Nome</label>
+                                <input [(ngModel)]="contato.nome" type="text" class="form-control">
                             </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">Skype</label>
+
+                            <div class="form-group col-md-6">
+                                <label for="email">Email</label>
+                                <input [(ngModel)]="contato.email" type="text" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <div class="form-group col-md-4">
+                                <label for="email">Cargo</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="email">Departamento</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="email">Data Aniversário</label>
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <div class="form-group col-md-4">
+                                <label for="email">Telefone</label>
+                                <input [(ngModel)]="contato.fone" type="text" class="form-control" mask="(AA) AAAA-AAAA" placeholder="(  )          - ">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="email">Celular/WhatsApp</label>
+                                <input [(ngModel)]="contato.celular" type="text" class="form-control" mask="(AA) AAAAA-AAAA" placeholder="(  )          - ">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="email">Skype</label>
                                 <input [(ngModel)]="contato.skype" type="text" class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">Celular</label>
-                                <input  [(ngModel)]="contato.celular" 
-                                        type="text" 
-                                        class="form-control" 
-                                        mask="(AA) AAAAA-AAAA">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Organização</label>
-                                <button mat-icon-button 
-                                        style="width: 40px;" 
-                                        (click)="redirectToAdd('/company')">
-                                    <mat-icon class="icon-modal-ctt">add</mat-icon>
-                                </button>
-                                <select [(ngModel)]="contato.org" class="form-control">
-                                    <option>Selecione ...</option>
-                                    <option *ngFor="let org of orgsapi" value="{{org.id}}">
-                                        {{org.razaosocial}}
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        Sair
-                    </button>
-                    <button type="button" 
-                            (click)="save()" 
-                            class="btn btn-primary" 
-                            data-dismiss="modal">
-                        Salvar
-                    </button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            Sair
+                        </button>
+                        <button type="button" 
+                                (click)="save()" 
+                                class="btn btn-primary" 
+                                data-dismiss="modal">
+                            Salvar
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -31,112 +31,97 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <div class="col-md-6">
-              <div class="form-group col-12 row">
-                <div class="col-10" style="margin-left: -15px;">
-                  <label for="exampleInputEmail1">Código</label>
-                  <input [(ngModel)]="org.cod" type="text" class="form-control" value="{{this.code}}">
-                </div>
-                <div class="col-2 div-img">
-                  <button style="border: none;" (click)="newcode()"> 
-                    <img class="imgatua" src="../../assets/atua.png">
-                  </button>
-                </div>
+            <div class="row col-md-12 align-cod-button">
+              <div class="form-group col-md-3">
+                <label for="cod">Código</label>
+                <input type="text" class="form-control" value="{{this.code}}">
               </div>
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Nome Fantasia</label>
-                <input [(ngModel)]="org.nomefantasia"  class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="exampleFormControlInput1">IE</label>
-                <input [(ngModel)]="org.ie"  class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="exampleFormControlInput1">CNPJ</label>
-                <input  [(ngModel)]="org.cnpj" 
-                        class="form-control" 
-                        mask="00.00.00/000-0"
-                        placeholder="__.__.__/___-_">
-              </div>
+              <button class="btn btn-primary" (click)="newcode()">
+                <img src="../../assets/cod.png" id="codigo">  
+              </button>
             </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Razão Social</label>
+
+            <div class="row col-md-12">
+              <div class="form-group col-md-6">
+                <label for="raz">Razão Social</label>
                 <input [(ngModel)]="org.razaosocial" type="text" class="form-control">
               </div>
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Atividade</label>
-                <button mat-icon-button (click)="redirectToAdd('/user')">
-                  <mat-icon class="icon-modal-atv">add</mat-icon>
-                </button>
-                <input [(ngModel)]="org.atividade"  class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="exampleFormControlInput1">ERP</label>
-                <input [(ngModel)]="org.erp"  class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="exampleFormControlInput1">CEP</label>
-                <input  [(ngModel)]="org.cep" 
-                        class="form-control" 
-                        mask="00.000-000"
-                        placeholder="__.___-___">
-              </div>  
-            </div>
-            <div class="col-3">
-              <div class="form-group">
-                <label for="exampleFormControlInput1">UF</label>
-                <input  [(ngModel)]="org.uf" 
-                        class="form-control"
-                        mask="AA"
-                        placeholder="SC">
+              <div class="form-group col-md-6">
+                <label for="name">Nome Fantasia</label>
+                <input [(ngModel)]="org.nomefantasia" type="email" class="form-control">
               </div>
             </div>
-            <div class="col-9">
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Endereço</label>
-                <input  [(ngModel)]="org.rua"
-                        class="form-control" 
-                        placeholder="Rua, av., beco...">
+
+            <div class="row col-md-12">
+              <div class="form-group col-md-4">
+                <label for="cnpj">CNPJ</label>
+                <input type="text" class="form-control" mask="AA.AAA.AAA/AAAA-AA" placeholder="00.000.000/0000-00">
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="ie">IE</label>
+                <input type="text" class="form-control">
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="ativ">Atividade</label>
+                <input type="text" class="form-control">
               </div>
             </div>
-            <div class="col-6">
-              <div class="form-group">
+
+            <div class="row col-md-12">
+              <div class="form-group col-md-3">
+                <label for="cep">CEP</label>
+                <input [(ngModel)]="org.cep" type="email" class="form-control" mask="AA.AAA-AAA" placeholder="00.000-000">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="end">Endereço</label>
+                <input [(ngModel)]="org.rua" type="text" class="form-control">
+              </div>
+
+              <div class="form-group col-md-3">
                 <label for="exampleFormControlInput1">Bairro</label>
                 <input [(ngModel)]="org.bairro" class="form-control">
               </div>
             </div>
-            <div class="col-6">
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Complemento</label>
-                <input [(ngModel)]="org.complemento"  class="form-control" >
+
+            <div class="row col-md-12">
+              <div class="form-group col-md-4">
+                <label for="comp">Complemento</label>
+                <input type="text" class="form-control">
+              </div>
+
+              <div class="form-group col-md-3">
+                <label for="cidade">Cidade</label>
+                <input [(ngModel)]="org.cidade" type="text" class="form-control">
+              </div>
+
+              <div class="form-group col-md-2">
+                <label for="estado">Estado</label>
+                <input [(ngModel)]="org.uf" type="text" class="form-control" placeholder="SC" maxlength="2">
+              </div>
+
+              <div class="form-group col-md-3">
+                <label for="telefone">Telefone</label>
+                <input type="text" class="form-control" mask="(AA) AAAA-AAAA" placeholder="(  )          - ">
               </div>
             </div>
-            <div class="col-6">
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Cidade</label>
-                <input [(ngModel)]="org.cidade"  class="form-control">
+
+            <div class="row col-md-12">
+              <div class="form-group col-md-5">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" placeholder="exemplo@exemplo.com.br">
               </div>
-            </div> 
-            <div class="col-6">
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Telefone</label>
-                <input  [(ngModel)]="org.tel"
-                        class="form-control"
-                        mask="(00)00000-0000" 
-                        placeholder="(xx)xxxxx-xxxx">
+
+              <div class="form-group col-md-4">
+                <label for="site">Site</label>
+                <input type="text" class="form-control" placeholder="www.site.com.br">
               </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Email</label>
-                <input class="form-control" placeholder="exemplo@email.com.br">
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Site</label>
-                <input class="form-control" placeholder="www.exemplo.com.br">
+
+              <div class="form-group col-md-3">
+                <label for="erp">ERP</label>
+                <input [(ngModel)]="org.erp" type="text" class="form-control">
               </div>
             </div>
           </div>

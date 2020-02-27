@@ -151,4 +151,21 @@ export class OrganizationComponent implements OnInit {
       }
     });
   }
+
+  // generateCode() {
+  //   let randomString = function(lenght) {
+  //     let text = "";
+  //     let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&"
+
+  //     for(let i = 0; i < lenght; i++) {
+  //       text += possible.charAt(Math.floor(Math.random() * possible.length));
+  //     }
+  //     return text;
+  //   }
+
+  //   this.org.cep = randomString(10);
+  //   console.log(this.org.cep);
+  // }
+
+
 }

@@ -131,7 +131,7 @@ input[type=range] {
 
 ::-webkit-slider-runnable-track {
   height: 3px;
-  background-image: linear-gradient(to right, rgb(226, 58, 58), rgb(248, 255, 151), rgb(120, 172, 120));
+  background-image: linear-gradient(to right, #e23a3a, #f8ff97, #78ac78);
 }
 
 ::-webkit-slider-thumb {
@@ -333,4 +333,10 @@ lottie-animation-view {
   border-radius: 100px; 
   background-color: #c2c2c2; 
   color: #ffffff;
+  font-size: 20px; 
+  margin-left: 5px;
+}
+
+.limit-value {
+  overflow: hidden;
 }

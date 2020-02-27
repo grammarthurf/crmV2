@@ -33,22 +33,15 @@
           </button>
         </div>
         <div class="modal-body row">
-          <div class="form-group col-md-12">
-            <label for="nomeprod"> Descrição</label>
-            <input  type="text" 
-                    class="form-control" 
-                    [(ngModel)]="produto.nome" 
-                    id="nomeprod" 
-                    required />
-          </div>
           <div class="form-group col-md-6">
             <label for="codeprod"> Código</label>
             <input type="text" class="form-control" [(ngModel)]="produto.codigo" id="codeprod" />
           </div>
 
-          <div class="form-group col-md-6">
-            <label for="modeprod"> Modalidade</label>
-            <input type="text" class="form-control" [(ngModel)]="produto.modalidade" id="modeprod" />
+
+          <div class="form-group col-md-12">
+            <label for="nomeprod"> Descrição</label>
+            <input type="text" class="form-control" [(ngModel)]="produto.nome" id="nomeprod" required />
           </div>
         </div>
 

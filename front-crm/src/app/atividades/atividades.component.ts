@@ -362,6 +362,12 @@ export class AtividadesComponent implements OnInit {
     window.open(url, '_blank');
     window.focus();
   }
+
+  formatDate(date) {
+    let result = date.split('-').reverse().join('/');
+
+    return result
+  }
 }
 
 

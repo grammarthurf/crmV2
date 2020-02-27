@@ -120,4 +120,8 @@ table {
     border-radius: 100px; 
     background-color: #c2c2c2; 
     color: #ffffff;
-  }
+}
+
+img#contato {
+    width: 30px;
+}

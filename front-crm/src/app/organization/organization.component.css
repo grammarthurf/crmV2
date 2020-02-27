@@ -116,3 +116,22 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
     background-color: #c2c2c2; 
     color: #ffffff;
 }
+
+.align-cod-button {
+    display: flex;
+    align-items: center;
+}
+
+img#codigo {
+    height: 20px;
+    margin-bottom: 8px;
+}
+
+div.row.col-md-12.align-cod-button button.btn {
+    height: 35px;
+    margin-top: 15px;
+}
+
+img#empresa {
+    width: 30px;
+}

@@ -3,6 +3,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { LottieAnimationViewModule } from 'ng-lottie';
+import { LOCALE_ID } from '@angular/core';
 
 // ROUTES
 import { AppRoutingModule } from "./app-routing.module";
@@ -47,8 +48,11 @@ import { PersonComponent } from "./person/person.component";
 import { NgxMaskModule } from 'ngx-mask';
 import { OrganizationDetailComponent } from './organization-detail/organization-detail.component';
 import { PersonDetailComponent } from './person-detail/person-detail.component';
-import { UserComponent } from './user/user.component';
 import { CalendarComponent } from './calendar/calendar.component'
+import { UserComponent } from './user/user.component'
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -96,7 +100,13 @@ import { CalendarComponent } from './calendar/calendar.component'
     MatTabsModule,
     FullCalendarModule
   ],
-  providers: [HttpClient],
+  providers: [
+    HttpClient,
+    {
+      provide: LOCALE_ID, 
+      useValue: 'pt-BR'
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

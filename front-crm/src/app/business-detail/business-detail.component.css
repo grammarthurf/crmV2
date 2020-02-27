@@ -33,7 +33,6 @@ mat-icon {
 .div-right {
 	padding: 10px;
 	float: right;
-	margin-top: 30px;
 	margin-right: 10px;
 	width: 820px;
 }
@@ -41,7 +40,6 @@ mat-icon {
 .div-border {
 	border-radius: 10px; 
 	border: 1px solid rgb(226, 226, 226);
-	background-color: #fff;
 }
 
 .div-choice {
@@ -59,6 +57,14 @@ mat-icon {
 .txtarea {
 	border-radius: 7px; 
 	border: 1px solid rgb(207, 206, 206);
+}
+
+.mg-t-30 {
+	margin-top: 30px;
+}
+
+.bg-white {
+	background-color: #fff;
 }
 
 .flex {
@@ -115,7 +121,7 @@ input[type=range] {
 
 ::-webkit-slider-runnable-track {
     height: 3px;
-    background-image: linear-gradient(to right, rgb(226, 58, 58), rgb(248, 255, 151), rgb(120, 172, 120));
+    background-image: linear-gradient(to right, #e23a3a, #f8ff97, #78ac78);
 }
 
 ::-webkit-slider-thumb {
@@ -338,4 +344,14 @@ lottie-animation-view {
 
 #null {
 	display: none;
+}
+
+div.col-8.div-right div.col-10.bg-white.row div.row.col-12 h5 {
+	color: #283747;
+}
+
+div.col-8.div-right div.col-10.bg-white.row div.row.col-12 h5 + p {
+	font-size: 16px;
+	color: rgb(98, 151, 189);
+	font-weight: bold;
 }
