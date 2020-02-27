@@ -136,8 +136,10 @@ export class BusinessComponent implements OnInit {
   }
 
   updatedTicket(id, ticket) {
+    this.calcAllValue();
     this.crudService.updateTicket(id, ticket).subscribe(
       data => {
+        this.calcAllValue();
         console.log(data);
       }, error => {
         console.error(error);
@@ -461,6 +463,7 @@ export class BusinessComponent implements OnInit {
     this.calcAllValue();
     console.log('EVENTO:', event);
     if (event.distance.x > 600) {
+      this.calcAllValue();
       console.log('CHAMOU ARTHUR ');
       this.play();
       setTimeout(() => {
@@ -537,7 +540,7 @@ export class BusinessComponent implements OnInit {
 
   formatNumberBR(value) {
     let result = value.format('0.0,')
-    
+
     return result
   }
 

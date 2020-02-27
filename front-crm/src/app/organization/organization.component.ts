@@ -26,7 +26,7 @@ const org: PeriodicElement[] = [
   styleUrls: ["./organization.component.css"]
 })
 export class OrganizationComponent implements OnInit {
-  org = { razaosocial: '', nomefantasia: '', rua: '', bairro: '', cep: '', cidade: '', uf: '', erp: '' }
+  org = { codigo: '', razaosocial: '', nomefantasia: '', cnpj: '', ie: '',  rua: '', complemento: '', bairro: '', cep: '', cidade: '', uf: '', telefone: '', erp: '', email: '', site: '' }
   matdata: any = [];
   // Lista orgs:
   erroOrg: any;
@@ -120,7 +120,7 @@ export class OrganizationComponent implements OnInit {
     // this.orgapi.sort = this.sort;
   }
 
-  
+
   // goTo(id) {
   //   this.router.navigate([`/organization-detail/${id}`]);
   // }
