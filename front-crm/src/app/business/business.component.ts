@@ -108,9 +108,9 @@ export class BusinessComponent implements OnInit {
   showLose() {
     this.getterTickets('lose');
   }
-  showExclude() {
-    this.getterTickets('exclude');
-  }
+  // showExclude() {
+  //   this.getterTickets('exclude');
+  // }
 
   handleAnimation(anim: any) {
     this.anim = anim;
