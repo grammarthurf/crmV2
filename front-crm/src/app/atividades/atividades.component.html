@@ -38,14 +38,7 @@
           <h5 class="modal-title font1 font1b" id="exampleModalLongTitle">
               Adicione uma Atividade
           </h5>
-          <button mat-icon-button class="viewcalendar" (click)="gotocalendar()">
-            <span>
-              Visualizar Calendário
-            </span>
-            <mat-icon> 
-              today 
-            </mat-icon>
-          </button>
+          <a href="calendar/" target="blank_" class="viewcalendar"> Visualizar Calendário </a>
           <button type="button"
                   class="close"
                   data-dismiss="modal"
@@ -194,10 +187,10 @@
                   { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
                   { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
                   { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
-                  { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
-                  { title: 'Reunião', start: '2020-02-17T10:30:00', end: '2020-02-17T11:30:00' },
-                  { title: 'Reunião', start: '2020-02-17T10:30:00', end: '2020-02-17T11:30:00' },
-                  { title: 'Reunião', start: '2020-02-17T10:30:00', end: '2020-02-17T11:30:00' },
+                  { title: 'Email  ', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
+                  { title: 'Email  ', start: '2020-02-17T10:30:00', end: '2020-02-17T11:30:00' },
+                  { title: 'Email  ', start: '2020-02-17T10:30:00', end: '2020-02-17T11:30:00' },
+                  { title: 'Email  ', start: '2020-02-17T10:30:00', end: '2020-02-17T11:30:00' },
                   { title: 'Reunião', start: '2020-02-17T10:30:00', end: '2020-02-17T11:30:00' },
                   { title: 'Reunião', start: '2020-02-17T10:30:00', end: '2020-02-17T11:30:00' },
                   { title: 'Reunião', start: '2020-02-17T10:30:00', end: '2020-02-17T11:30:00' },
@@ -235,15 +228,43 @@
                   { title: 'Reunião', start: '2020-02-20T10:30:00', end: '2020-02-20T11:30:00' },
                   { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
                   { title: 'Reunião', start: '2020-02-21T10:30:00', end: '2020-02-21T11:30:00' },
-                  { title: 'Ligação', start: '2020-02-21T11:45:00', end: '2020-02-21T11:50:00' },
-                  { title: 'Tarefa', start: '2020-02-21T13:00:00', end: '2020-02-21T13:10:00' },
-                  { title: 'Ligação', start: '2020-02-21T14:30:00', end: '2020-02-21T14:40:00' },
-                  { title: 'Reunião', start: '2020-02-23T10:30:00', end: '2020-02-23T11:30:00' },
-                  { title: 'Ligação', start: '2020-02-25T11:30:00', end: '2020-02-25T11:45:00' },
-                  { title: 'Reunião', start: '2020-02-25T13:30:00', end: '2020-02-25T14:30:00' },
-                  { title: 'Visita', start: '2020-02-26T14:30:00', end: '2020-02-26T16:30:00' },
-                  { title: 'Email', start: '2020-02-23T16:30:00', end: '2020-02-23T16:40:00' },
-                  { title: 'Tarefa', start: '2020-02-24T16:45:00', end: '2020-02-24T17:00:00' }
+                  { title: 'Tarefa ', start: '2020-02-21T11:45:00', end: '2020-02-21T11:50:00' },
+                  { title: 'Tarefa ', start: '2020-02-21T13:00:00', end: '2020-02-21T13:10:00' },
+                  { title: 'Tarefa ', start: '2020-02-21T14:30:00', end: '2020-02-21T14:40:00' },
+                  { title: 'Reunião', start: '2020-02-24T10:30:00', end: '2020-02-24T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-24T10:30:00', end: '2020-02-24T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-24T10:30:00', end: '2020-02-24T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-24T10:30:00', end: '2020-02-24T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-24T10:30:00', end: '2020-02-24T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-24T10:30:00', end: '2020-02-24T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-24T10:30:00', end: '2020-02-24T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-24T10:30:00', end: '2020-02-24T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-24T10:30:00', end: '2020-02-24T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-24T10:30:00', end: '2020-02-24T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-26T10:30:00', end: '2020-02-26T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-26T10:30:00', end: '2020-02-26T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-26T10:30:00', end: '2020-02-26T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-28T10:30:00', end: '2020-02-28T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-28T10:30:00', end: '2020-02-28T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-27T10:30:00', end: '2020-02-27T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-27T10:30:00', end: '2020-02-27T11:30:00' },
+                  { title: 'Reunião', start: '2020-02-27T10:30:00', end: '2020-02-27T11:30:00' },
+                  { title: 'Ligação', start: '2020-03-25T11:30:00', end: '2020-03-25T11:45:00' },
+                  { title: 'Ligação', start: '2020-03-25T13:30:00', end: '2020-03-25T14:30:00' },
+                  { title: 'Ligação', start: '2020-03-26T14:30:00', end: '2020-03-26T16:30:00' },
+                  { title: 'Email  ', start: '2020-03-23T16:30:00', end: '2020-03-23T16:40:00' },
+                  { title: 'Email  ', start: '2020-03-24T16:45:00', end: '2020-03-24T17:00:00' },
+                  { title: 'Reunião', start: '2020-03-02T10:30:00', end: '2020-03-02T11:30:00' },
+                  { title: 'Reunião', start: '2020-03-02T10:30:00', end: '2020-03-02T11:30:00' },
+                  { title: 'Ligação', start: '2020-03-02T11:45:00', end: '2020-03-02T11:50:00' },
+                  { title: 'Tarefa ', start: '2020-03-02T13:00:00', end: '2020-03-02T13:10:00' },
+                  { title: 'Ligação', start: '2020-03-02T14:30:00', end: '2020-03-02T14:40:00' },
+                  { title: 'Reunião', start: '2020-03-11T10:30:00', end: '2020-03-11T11:30:00' },
+                  { title: 'Ligação', start: '2020-03-05T11:30:00', end: '2020-03-05T11:45:00' },
+                  { title: 'Reunião', start: '2020-03-05T13:30:00', end: '2020-03-05T14:30:00' },
+                  { title: 'Visita ', start: '2020-03-26T14:30:00', end: '2020-03-26T16:30:00' },
+                  { title: 'Email  ', start: '2020-03-11T16:30:00', end: '2020-03-11T16:40:00' },
+                  { title: 'Tarefa ', start: '2020-03-24T16:45:00', end: '2020-03-24T17:00:00' }
                 ]" 
                 locale="pt-br">
               </full-calendar>
@@ -305,7 +326,7 @@
             (keyup)="applyFilter($event)" 
             (click)="filtroLiga()">
       <mat-icon>phone</mat-icon>
-      Ligar
+      Ligação
     </button>
     <button mat-icon-button 
             class="buttons-filter" 

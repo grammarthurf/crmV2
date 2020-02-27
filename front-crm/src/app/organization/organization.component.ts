@@ -65,6 +65,7 @@ export class OrganizationComponent implements OnInit {
 
         this.dataSource = new MatTableDataSource(this.matdata);
         console.log("DATASOURCE" + this.dataSource);
+        this.dataSource.sort = this.sort;
 
         this.orgapi = data;
         console.log(data);
@@ -129,7 +130,7 @@ export class OrganizationComponent implements OnInit {
   // }
 
   ngOnInit() {
-    // this.orgapi.sort = this.sort;
+    
   }
 
   
