@@ -10,19 +10,6 @@
 
 .div-right {
     float: right;
-    overflow: auto;
-    height: 530px;
-}
-
-.scrollbar::-webkit-scrollbar {
-    width: 10px;
-}::-webkit-scrollbar-track {
-    background: rgb(238, 238, 238); 
-}::-webkit-scrollbar-thumb {
-    background: rgb(204, 204, 204); 
-    border-radius: 5px;
-}::-webkit-scrollbar-thumb:hover {
-    background: rgba(204, 204, 204, 0.623); 
 }
 
 .real-div {

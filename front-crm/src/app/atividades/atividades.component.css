@@ -135,7 +135,7 @@ table {
     margin: 0px;
 }
 
-/* calendar */
+/* CALENDAR */
 
 .viewcalendar{
     margin-left: 100px; 
@@ -144,7 +144,7 @@ table {
 }
 
 .div-calendar{
-    height: 570px; 
+    height: 590px; 
     overflow: auto; 
     font-size: 10px; 
     align-items: flex-end;

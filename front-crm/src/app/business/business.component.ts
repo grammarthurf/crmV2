@@ -406,6 +406,7 @@ export class BusinessComponent implements OnInit {
     let therm = this.ticket.termometro;
     let contact = this.ticket.cliente;
     let stage = this.ticket.estagio;
+    let valor = this.ticket.valorestimado
 
     if(title === '' || org === '' || value === 0 || product === '' || therm === '' || contact === '' || stage === '') {
       swal({
@@ -436,7 +437,6 @@ export class BusinessComponent implements OnInit {
           this.getterEstagios();
           this.getterTickets('open');
           console.error(error);
-          setTimeout(this.reiniciar, 1001);
         }
       );
     }
