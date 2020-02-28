@@ -46,6 +46,7 @@ export class ProductsComponent implements OnInit {
   displayedColumns: string[] = ['nome', 'codigo', 'modalidade', 'columnEdit', 'columnDelete'];
 
   getterProdutos() {
+    this.matdata = [];
     this.crudService.getProdutos().subscribe(
       data => {
         data.forEach(e => {
@@ -111,11 +112,11 @@ export class ProductsComponent implements OnInit {
           });
           console.log(data);
           this.getterProdutos();
-          setTimeout(this.reiniciar, 1001);
+          // setTimeout(this.reiniciar, 1001);
         },
         error => {
           console.error(error);
-          setTimeout(this.reiniciar, 1001);
+          // setTimeout(this.reiniciar, 1001);
         }
       );
     }
