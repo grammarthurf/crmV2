@@ -536,7 +536,6 @@ export class BusinessComponent implements OnInit {
     Inputmask().mask(document.getElementById("value"));
   }
 
-<<<<<<< HEAD
   formatNumberBR(value) {
     let result = value.format('0.0,')
 
@@ -544,11 +543,3 @@ export class BusinessComponent implements OnInit {
   }
 
 }
-=======
-  // formatNumberBR(value) {
-  //   let result = value.format('0.0,')
-    
-  //   return result
-  // }
-}
->>>>>>> 6faa8e32c8642bf4dabd8a4fbbffe7cb8d20dd86

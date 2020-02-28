@@ -123,11 +123,11 @@ export class OrganizationComponent implements OnInit {
     location.reload()
   }
 
-  newcode(){
-    this.code = Math.floor(Math.random() * (999 - 100) + 100);
-    console.log(this.code);
-    return this.code;
-  }
+  // newcode(){
+  //   this.code = Math.floor(Math.random() * (999 - 100) + 100);
+  //   console.log(this.code);
+  //   return this.code;
+  // }
 
   ngOnInit() {
     
@@ -153,20 +153,20 @@ export class OrganizationComponent implements OnInit {
     });
   }
 
-  // generateCode() {
-  //   let randomString = function(lenght) {
-  //     let text = "";
-  //     let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&"
+  generateCode() {
+    let randomString = function(lenght) {
+      let text = "";
+      let possible = "0123456789"
 
-  //     for(let i = 0; i < lenght; i++) {
-  //       text += possible.charAt(Math.floor(Math.random() * possible.length));
-  //     }
-  //     return text;
-  //   }
+      for(let i = 0; i < lenght; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return text;
+    }
 
-  //   this.org.cep = randomString(10);
-  //   console.log(this.org.cep);
-  // }
+    this.code = randomString(8);
+    console.log(this.code);
+  }
 
 
 }

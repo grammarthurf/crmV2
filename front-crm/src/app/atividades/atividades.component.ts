@@ -54,7 +54,7 @@ export class AtividadesComponent implements OnInit {
   //Lista de vendedor:
   vendedorapi: any;
 
-  atv = {position: 0, data: '', tipo: '', cliente: '', org: '', ticket: '', assunto: '' };
+  atv = {position: 0, dataini: '', horaini: '', datafim: '', horafim: '', tipo: '', cliente: '', org: '', ticket: '', assunto: '' };
 
   displayedColumns: string[] = ['select', 'tipo', 'data', 'cliente', 'org',
     'ticket', 'assunto', 'columnEdit', 'columnDelete'];
@@ -73,7 +73,7 @@ export class AtividadesComponent implements OnInit {
     this.getterActivity();
     this.calendarPlugins = [ listPlugin , bootstrapPlugin ];
   }
-  
+
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.matdata);
   }
@@ -173,7 +173,7 @@ export class AtividadesComponent implements OnInit {
           }
         });
         console.log('MATDATASOURCE: ', this.matdata);
-        
+
         this.dataSource = new MatTableDataSource(this.matdata);
         console.log(this.datamat);
         this.dataSource.sort = this.sort;
@@ -243,13 +243,13 @@ export class AtividadesComponent implements OnInit {
             buttons: false
           }
         });
-        setTimeout(this.reiniciar, 1001);
+        // setTimeout(this.reiniciar, 1001);
         this.getterActivity();
       },
       error => {
         this.getterActivity();
         console.error(error);
-        setTimeout(this.reiniciar, 1001);
+        // setTimeout(this.reiniciar, 1001);
       },
     );
   }
@@ -330,7 +330,7 @@ export class AtividadesComponent implements OnInit {
           this.selection = new SelectionModel<Element>(true, []);
       }
     });
-    
+
   }
 
   atvchoose(id: number) {

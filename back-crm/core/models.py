@@ -109,7 +109,7 @@ class Atividade (models.Model):
     datafim = models.CharField(max_length=64 , null=True)
     horafim = models.CharField(max_length=64 , null=True)
     tipo = models.CharField(max_length=64)
-    ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE, null=True)
+    ticket = models.ForeignKey(Ticket, related_name='atividades', on_delete=models.CASCADE, null=True)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True)
     org = models.ForeignKey(Organizacao, on_delete=models.CASCADE, null=True)
     created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True)
