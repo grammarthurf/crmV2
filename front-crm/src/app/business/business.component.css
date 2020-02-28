@@ -234,7 +234,7 @@ span:nth-child(3) {
   .example-container {
     width: 12.4%;
     max-width: 100%;
-    margin: 0 25px 25px 0;
+    margin: 0 23px 25px 0;
     display: inline-block;
     vertical-align: top;
   }
@@ -249,7 +249,7 @@ span:nth-child(3) {
   .example-container {
     width: 12.95%;
     max-width: 100%;
-    margin: 0 25px 25px 0;
+    margin: 0 23px 25px 0;
     display: inline-block;
     vertical-align: top;
   }
