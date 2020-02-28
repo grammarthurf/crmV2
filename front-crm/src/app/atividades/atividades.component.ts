@@ -124,12 +124,13 @@ export class AtividadesComponent implements OnInit {
   getterActivity() {
     this.crudService.getAtividade().subscribe(
       data => {
+        this.matdata = []
         data.forEach(e => {
           try {
 
             if (e.cliente == null && e.org == null && e.ticket == null) {
               console.log();
-
+              
               this.matdata.push({
                position: e.id,
                 assunto: e.assunto,

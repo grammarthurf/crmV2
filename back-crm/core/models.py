@@ -103,7 +103,7 @@ class Ticket (models.Model):
 
 
 class Atividade (models.Model):
-    assunto = models.CharField(max_length=255)
+    assunto = models.CharField(max_length=255, null=True)
     dataini = models.CharField(max_length=64 , null=True)
     horaini = models.CharField(max_length=64 , null=True)
     datafim = models.CharField(max_length=64 , null=True)
