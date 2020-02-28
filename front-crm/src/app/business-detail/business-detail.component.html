@@ -1,5 +1,4 @@
 <div class="main-div">
-
   <div  class="modal fade" 
         id="loseModal" 
         tabindex="-1" 
@@ -23,7 +22,7 @@
             <input type="text" class="form-control" id="motivo">
           </div>
 
-          <div class="form-group" style="margin-top: 10px;">
+          <div class="form-group mg-t-10">
             <label for="exampleFormControlTextarea1">Comentários (opcional) </label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
           </div>
@@ -63,7 +62,7 @@
                   style="width: 150px;"/>
           <div class=" row">
             <p class="ptherm" > Ruim  </p>
-            <p class="ptherm2"> Médio </p>
+            <p class="ptherm2"> Bom   </p>
             <p class="ptherm" > Ótimo </p>
           </div>
         </div>
@@ -105,7 +104,7 @@
     <!-- BARRA DE PROGRESSO -->
     <div class="col-12 flex md-stepper-horizontal green orange">      
       <div  class="md-step active" 
-            *ngIf="(business.estagio.id != 1 && business.estagio.id > 1)" 
+            *ngIf="(business.estagio.id > 1)" 
             id="1">
         <div class="md-step-circle ">
           <mat-icon> done </mat-icon>
@@ -141,7 +140,7 @@
         </div>
         <div class="md-step-title">   Contatado </div>
         <div class="md-step-optional">10/02/2020</div>
-        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-left"> </div>
         <div class="md-step-bar-right"></div>
       </div>
       <div  class="md-step process" 
@@ -155,7 +154,7 @@
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div  class="md-step" 
+      <div  class="md-step md-step-1" 
             *ngIf="(business.estagio.id != 3 && business.estagio.id < 3)" 
             id="3">
         <div class="md-step-circle"></div>
@@ -174,8 +173,8 @@
         </div>
         <div class="md-step-title">   Cliente Potencial </div>
         <div class="md-step-optional">Em processo       </div>
-        <div class="md-step-bar-left"></div>
-        <div class="md-step-bar-right"></div>
+        <div class="md-step-bar-left">  </div>
+        <div class="md-step-bar-right"> </div>
       </div>
       <div  class="md-step" 
             *ngIf="(business.estagio.id!=4 && business.estagio.id < 4)" 
@@ -185,8 +184,8 @@
         </div>
         <div class="md-step-title">Cliente Potencial</div>
 
-        <div class="md-step-bar-left"></div>
-        <div class="md-step-bar-right"></div>
+        <div class="md-step-bar-left">  </div>
+        <div class="md-step-bar-right"> </div>
       </div>
       <div  class="md-step active" 
             *ngIf="(business.estagio.id!=4 && business.estagio.id > 4)" 
@@ -196,8 +195,8 @@
         </div>
         <div class="md-step-title">   Cliente Potencial </div>
         <div class="md-step-optional">10/02/2020        </div>
-        <div class="md-step-bar-left"></div>
-        <div class="md-step-bar-right"></div>
+        <div class="md-step-bar-left">  </div>
+        <div class="md-step-bar-right"> </div>
       </div>
 
 
@@ -209,8 +208,8 @@
         </div>
         <div class="md-step-title">   Demo Agendada </div>
         <div class="md-step-optional">10/02/2020    </div>
-        <div class="md-step-bar-left"></div>
-        <div class="md-step-bar-right"></div>
+        <div class="md-step-bar-left">  </div>
+        <div class="md-step-bar-right"> </div>
       </div>
       <div  class="md-step process" 
             *ngIf="(business.estagio.id == 5)" 
@@ -220,8 +219,8 @@
         </div>
         <div class="md-step-title">   Demo Agendada </div>
         <div class="md-step-optional">Em processo   </div>
-        <div class="md-step-bar-left"></div>
-        <div class="md-step-bar-right"></div>
+        <div class="md-step-bar-left">  </div>
+        <div class="md-step-bar-right"> </div>
       </div>
       <div  class="md-step" 
             *ngIf="(business.estagio.id != 5 && business.estagio.id < 5)" 
@@ -230,8 +229,8 @@
           <mat-icon> </mat-icon>
         </div>
         <div class="md-step-title">Demo Agendada</div>
-        <div class="md-step-bar-left"></div>
-        <div class="md-step-bar-right"></div>
+        <div class="md-step-bar-left">  </div>
+        <div class="md-step-bar-right"> </div>
       </div>
 
       <div  class="md-step active" 
@@ -242,8 +241,8 @@
         </div>
         <div class="md-step-title">   Proposta  </div>
         <div class="md-step-optional">10/02/2020</div>
-        <div class="md-step-bar-left"></div>
-        <div class="md-step-bar-right"></div>
+        <div class="md-step-bar-left">  </div>
+        <div class="md-step-bar-right"> </div>
       </div>
       <div  class="md-step process" 
             *ngIf="(business.estagio.id == 6)" 
@@ -253,8 +252,8 @@
         </div>
         <div class="md-step-title">   Proposta    </div>
         <div class="md-step-optional">Em processo </div>
-        <div class="md-step-bar-left"></div>
-        <div class="md-step-bar-right"></div>
+        <div class="md-step-bar-left">  </div>
+        <div class="md-step-bar-right"> </div>
       </div>
       <div  class="md-step" 
             *ngIf="(business.estagio.id != 6 && business.estagio.id < 6)" 
@@ -263,8 +262,8 @@
           <mat-icon> </mat-icon>
         </div>
         <div class="md-step-title">Proposta</div>
-        <div class="md-step-bar-left"></div>
-        <div class="md-step-bar-right"></div>
+        <div class="md-step-bar-left">  </div>
+        <div class="md-step-bar-right"> </div>
       </div>
 
       <div  class="md-step active" 
@@ -275,8 +274,8 @@
         </div>
         <div class="md-step-title">   Negociações Iniciais</div>
         <div class="md-step-optional">10/02/2020          </div>
-        <div class="md-step-bar-left"></div>
-        <div class="md-step-bar-right"></div>
+        <div class="md-step-bar-left">  </div>
+        <div class="md-step-bar-right"> </div>
       </div>
       <div class="md-step process" *ngIf="(business.estagio.id == 7)" id="7">
         <div class="md-step-circle">
@@ -284,16 +283,16 @@
         </div>
         <div class="md-step-title">   Negociações Iniciais</div>
         <div class="md-step-optional">Em processo         </div>
-        <div class="md-step-bar-left"></div>
-        <div class="md-step-bar-right"></div>
+        <div class="md-step-bar-left">  </div>
+        <div class="md-step-bar-right"> </div>
       </div>
       <div class="md-step" *ngIf="(business.estagio.id != 7 && business.estagio.id < 7)" id="7">
         <div class="md-step-circle">
           <mat-icon> </mat-icon>
         </div>
         <div class="md-step-title">Negociações Iniciais</div>
-        <div class="md-step-bar-left"></div>
-        <div class="md-step-bar-right"></div>
+        <div class="md-step-bar-left">  </div>
+        <div class="md-step-bar-right"> </div>
       </div>
 
       <div class="md-step active" *ngIf="(business.estagio.id != 8 && business.estagio.id > 8)" id="8">
@@ -330,99 +329,163 @@
       <h2 class="font-26 bold margin5">
         Empresa
       </h2>
-      <mat-icon style="margin-left: auto; margin-top: 10px;">create</mat-icon>
+      <mat-icon class="mg-t-10 mg-l-auto">create</mat-icon>
     </div>
 
     <div class=" col-10 ">
-      <h4 style="margin-top: 10px; font-size: 20px; font-weight: bold; margin-left: 15px;"> {{business.org.razaosocial}}
-      </h4>
-      <div style="margin-top: 10px;">
-        <p  style="font-size: 15px; margin-left: 15px;"> <b>Endereço:</b> </p>
+      <h4> {{business.org.razaosocial}}</h4>
+      <div class="mg-t-10">
+        <p  class="pdiv"> <b>Endereço:</b> </p>
         <!-- {{org.rua}} - {{org.bairro}} - {{org.cidade}}/{{org.uf}} -->
       </div>
-      <div style="margin-top: 10px;">
-        <p style="font-size: 15px; margin-left: 15px;"> <b>ERP:</b> {{business.org.erp}} </p>
+      <div class="mg-t-10">
+        <p class="pdiv"> <b>ERP:</b> {{business.org.erp}} </p>
       </div>
     </div>
   </div>
 
   <div class="col-8 div-right div-border">
-    <div class="col-12 row margin0">
-      <button type="button" class="col-4 btn1 btn-primary btn-block btn-3 margin8">
-        Observações
-      </button>
-      <button type="button" class="col-4 btn1 btn-primary btn-block btn-3">
-        Atividades
-      </button>
-      <button type="button" class="col-4 btn1 btn-primary btn-block btn-3">
-        Anexos
-      </button>
-    </div>
-    <div class="col-12 margin10">
-      <textarea rows="5" class="col-12 txtarea">
-        {{business.obs}}
-      </textarea>
-      <button type="button" class="btn btn-success bold btn-sm fltright">
-        Salvar
-      </button>
-      <button type="button" class="btn btn-outline-secondary bold btn-sm fltright margin52">
-        Cancelar
-      </button>
-    </div>
-    <div class="col-12 row margin10">
-      <button type="submit" class="col-4 btn1 margin10 btn-hist">
-        Histórico 
-      </button>
-    </div>
-  </div>
+      <mat-tab-group mat-stretch-tabs class="col-12">
+        <mat-tab label="Observações">
+          <div class="col-12 mg-t-10 divtab">
+            <textarea rows="5" class="col-12 txtarea">
+              {{business.obs}}
+            </textarea>
+            <button type="button" class="btn btn-success bold btn-sm fltright">
+              Salvar
+            </button>
+            <button type="button" class="btn btn-outline-secondary bold btn-sm fltright mg-r-5">
+              Cancelar
+            </button>
+          </div>
+          <div class="col-12 row">
+            <h2 style="margin-left: auto; margin-right: auto;">Histórico</h2>
+          </div>
+          <div class="col-12 mg-t-10">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item p">
+                  <b class="b-b">28/02/2020 10:57</b> <br>
+                  <label class="b">Antes: </label> <label> Demo agendada para dia 28/02 às 9h</label>
+                  <br>
+                  <label class="b">Depois:</label> <label> Demo aprensentada dia 28/02 às 9h</label>
+              </li>
 
+              <li class="list-group-item p">
+                <b class="b-b">25/02/2020 17:11</b> <br>
+                <label class="b">Antes: </label> <label>Cliente Contatado</label>
+                <br>
+                <label class="b">Depois: </label> <label>Demo agendada para dia 28/02 às 9h</label>
+              </li>
+            </ul>
+          </div>
+        </mat-tab>
+        <mat-tab label="Atividades">
+          <div class="col-12 mg-t-10 divtab">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item p">
+                  <b>Planilha clientes ativos: </b>
+                  <a href=""> Tarefa</a>
+              </li>
+              <li class="list-group-item">
+                  <b>Ligar para cliente: </b>
+                  <a href=""> Ligação</a>
+              </li>
+              <li class="list-group-item">
+                  <b>Falar sobre negócio teste: </b>
+                  <a href=""> Reunião</a>
+              </li>
+              <li class="list-group-item">
+                  <b>Apresentar proposta: </b>
+                  <a href=""> Email</a>
+              </li>
+              <li class="list-group-item">
+                  <b>Ligar para cliente: </b>
+                  <a href=""> Ligação</a>
+              </li>
+              <li class="list-group-item">
+                  <b>Falar sobre negócio teste: </b>
+                  <a href=""> Reunião</a>
+              </li>
+              <li class="list-group-item">
+                  <b>Visitar empresa x: </b>
+                  <a href=""> Visita</a>
+              </li>
+              <li class="list-group-item">
+                  <b>Apresentar proposta: </b>
+                  <a href=""> Email</a>
+              </li>
+              <li class="list-group-item">
+                  <b>Ligar para cliente: </b>
+                  <a href=""> Ligação</a>
+              </li>
+              <li class="list-group-item">
+                  <b>Planilha clientes ativos: </b>
+                  <a href=""> Tarefa</a>
+              </li>
+              <li class="list-group-item">
+                  <b>Visitar empresa x: </b>
+                  <a href=""> Visita</a>
+              </li>
+              <li class="list-group-item">
+                  <b>Planilha clientes ativos: </b>
+                  <a href=""> Tarefa</a>
+              </li>
+              <li class="list-group-item">
+                  <b>Apresentar proposta: </b>
+                  <a href=""> Email</a>
+              </li>
+            </ul>
+          </div>
+        </mat-tab>
+        <mat-tab label="Anexos">
+          <div class="col-12 mg-t-10 divtab">
+            <mat-list>
+              <h3 mat-subheader>Pastas</h3>
+              <mat-list-item >
+                <mat-icon mat-list-icon>folder</mat-icon>
+                <h4 mat-line>Fotos</h4>
+                <p mat-line> Jan 1, 2020 </p>
+              </mat-list-item>
+              <mat-list-item >
+                <mat-icon mat-list-icon>folder</mat-icon>
+                <h4 mat-line>Projetos</h4>
+                <p mat-line> Fev 3, 2020 </p>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+              <h3 mat-subheader>Arquivos</h3>
+              <mat-list-item >
+                <mat-icon mat-list-icon>note</mat-icon>
+                <h4 mat-line>Contrato</h4>
+                <p mat-line> Feb 20, 2020 </p>
+              </mat-list-item>
+              <mat-list-item >
+                <mat-icon mat-list-icon>note</mat-icon>
+                <h4 mat-line>Requisitos Instalação</h4>
+                <p mat-line> Feb 22, 2020 </p>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+  </div>
   <div class="col-4 div-left div-border">
     <div class="col-12 row">
-      <img src="../../assets/contato.png" style="width: 20px; height: 20px; margin-right: 10px; margin-left: 15px;" />
+      <img src="../../assets/contato.png" class="img-empresa"/>
       <h2 class="font-26 bold margin5">Contato</h2>
-      <mat-icon style="margin-left: auto; margin-top: 10px;">create</mat-icon>
+      <mat-icon class="mg-t-10 mg-l-auto">create</mat-icon>
     </div>
 
     <div class=" col-10 ">
-      <h4 style="margin-top: 10px; font-size: 20px; font-weight: bold; margin-left: 15px;"> {{business.cliente.nome}}
-      </h4>
-      <div style="margin-top: 10px;">
-        <p style="font-size: 15px; margin-left: 15px;"> <b>Telefone:</b> {{business.cliente.fone}} </p>
+      <h4> {{business.cliente.nome}}</h4>
+      <div class="mg-t-10">
+        <p class="pdiv"> <b>Telefone:</b> {{business.cliente.fone}} </p>
       </div>
-      <div style="margin-top: 10px;">
-        <p style="font-size: 15px; margin-left: 15px;"> <b>Email:</b> {{business.cliente.email}} </p>
+      <div class="mg-t-10">
+        <p class="pdiv"> <b>Email:</b> {{business.cliente.email}} </p>
       </div>
-      <div style="margin-top: 10px;">
-        <p style="font-size: 15px; margin-left: 15px;"> <b>Skype:</b> {{business.cliente.skype}} </p>
+      <div class="mg-t-10">
+        <p class="pdiv"> <b>Skype:</b> {{business.cliente.skype}} </p>
       </div>
     </div>
   </div>
-
-  <div class="col-8 div-right">
-    <div class="col-10 bg-white row" style="margin-left: auto; margin-right: auto; border-radius: 10px; padding: 10px;">
-        <div class="row col-12">
-          <h5 class="col-3">25/02/2020</h5>
-          <p class="col-9">Ligação não atendida - Interlink</p>
-        </div>
-    </div>
-  </div>
-
-  <div class="col-8 div-right">
-    <div class="col-10 bg-white row" style="margin-left: auto; margin-right: auto; border-radius: 10px; padding: 10px;">
-        <div class="row col-12">
-          <h5 class="col-3">25/02/2020</h5>
-          <p class="col-9">Ligação não atendida - Interlink</p>
-        </div>
-    </div>
-  </div>
-  
-  <div class="col-8 div-right">
-    <div class="col-10 bg-white row" style="margin-left: auto; margin-right: auto; border-radius: 10px; padding: 10px;">
-        <div class="row col-12">
-          <h5 class="col-3">25/02/2020</h5>
-          <p class="col-9">Ligação não atendida - Interlink</p>
-        </div>
-    </div>
-  </div>
-
 </div>

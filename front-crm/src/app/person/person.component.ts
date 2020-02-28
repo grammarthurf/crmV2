@@ -101,6 +101,7 @@ export class PersonComponent implements OnInit {
 
 
         this.dataSource = new MatTableDataSource(this.matdata);
+        this.dataSource.sort = this.sort;
         console.log(this.dataSource);
 
         this.contatosapi = data;

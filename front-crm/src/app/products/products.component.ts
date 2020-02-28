@@ -58,6 +58,7 @@ export class ProductsComponent implements OnInit {
           });
         });
         this.dataSource = new MatTableDataSource(this.matdata);
+        this.dataSource.sort = this.sort;
         this.produtosapi = data;
       },
       error => {

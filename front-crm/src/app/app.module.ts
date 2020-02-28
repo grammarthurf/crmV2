@@ -23,6 +23,10 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatSortModule } from "@angular/material/sort";
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatListModule} from '@angular/material/list';
+
+
 
 //CALENDAR
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -98,6 +102,8 @@ registerLocaleData(localePt);
     LottieAnimationViewModule.forRoot(),
     NgxCurrencyModule,
     MatTabsModule,
+    MatChipsModule,
+    MatListModule,
     FullCalendarModule
   ],
   providers: [

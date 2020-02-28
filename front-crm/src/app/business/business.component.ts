@@ -399,11 +399,21 @@ export class BusinessComponent implements OnInit {
     console.log(this.ticket);
     let title = this.ticket.titulo;
     let stage = this.ticket.estagio;
+    let valor = this.ticket.valorestimado
 
-    if (title === '' && stage === '') {
+    if (title === '') {
       swal({
         icon: "error",
-        text: "Título e Estágio não preenchido!",
+        text: "Título não preenchido!",
+        timer: 1800,
+        buttons: {
+          buttons: false
+        }
+      });
+    } else if (valor <= 0) {
+      swal({
+        icon: "error",
+        text: "Valor Estimado não preenchido!",
         timer: 1800,
         buttons: {
           buttons: false
@@ -413,15 +423,6 @@ export class BusinessComponent implements OnInit {
       swal({
         icon: "error",
         text: "Estágio não preenchido!",
-        timer: 1800,
-        buttons: {
-          buttons: false
-        }
-      });
-    } else if (title === '') {
-      swal({
-        icon: "error",
-        text: "Título não preenchido!",
         timer: 1800,
         buttons: {
           buttons: false
@@ -447,7 +448,6 @@ export class BusinessComponent implements OnInit {
           this.getterEstagios();
           this.getterTickets('open');
           console.error(error);
-          setTimeout(this.reiniciar, 1001);
         }
       );
     }

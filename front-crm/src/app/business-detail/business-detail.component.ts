@@ -25,6 +25,7 @@ export class BusinessDetailComponent implements OnInit {
       autoplay: false,
       loop: false
     };
+    
     this.getterEstagio()
   }
 
@@ -38,12 +39,9 @@ export class BusinessDetailComponent implements OnInit {
     );
   }
 
-
-
   loadBusiness() {
     const id = this.route.snapshot.paramMap.get("id");
     this.getterTicket(id);
-
   }
 
   getterTicket(id) {
@@ -89,7 +87,7 @@ export class BusinessDetailComponent implements OnInit {
     this.crudService.getEstagios().subscribe(
       data => {
         this.estagiosapi = data;
-        console.log("id", data);
+        console.log("idest", data);
       },
       error => {
         console.error(error);
