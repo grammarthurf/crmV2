@@ -92,7 +92,7 @@
       Todos
     </button>
     <mat-divider [vertical]="true" class="divider-vertical"></mat-divider>
-    <button mat-icon-button 
+    <!-- <button mat-icon-button 
             class="buttons-filter" 
             (keyup)="applyFilter($event)" 
             (click)="filterCrtl()">
@@ -105,7 +105,7 @@
             (click)="filterPlan()">
       <mat-icon>business</mat-icon>
       Planejamento
-    </button>
+    </button> -->
   </div>
 
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
@@ -127,16 +127,14 @@
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="modalidade">
+    <!-- <ng-container matColumnDef="modalidade">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         Modalidade
       </th>
       <td mat-cell *matCellDef="let element">
         {{ element.modalidade }}
       </td>
-    </ng-container>
-
-
+    </ng-container> -->
 
     <ng-container matColumnDef="columnEdit">
       <th mat-header-cell *matHeaderCellDef> 

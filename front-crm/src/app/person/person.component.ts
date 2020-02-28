@@ -23,7 +23,7 @@ const contatos: PeriodicElement[] = [
   styleUrls: ["./person.component.css"]
 })
 export class PersonComponent implements OnInit {
-  displayedColumns: string[] = ['nome', 'org', 'tel', 'email', 'tipo', 'columnEdit', 'columnDelete'];
+  displayedColumns: string[] = ['nome', 'skype', 'tel', 'email', 'columnEdit', 'columnDelete'];
   //dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
