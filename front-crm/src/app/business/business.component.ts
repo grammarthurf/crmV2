@@ -443,15 +443,22 @@ export class BusinessComponent implements OnInit {
           this.getterEstagios();
           this.getterTickets('open');
           console.log(data);
+          setTimeout(this.reiniciar, 1001);
         },
         error => {
           this.getterEstagios();
           this.getterTickets('open');
           console.error(error);
+          setTimeout(this.reiniciar, 1001);
         }
       );
     }
   }
+
+  reiniciar(){
+    location.reload()
+  }
+
 
   goTo(id) {
     this.router.navigate([`/business-detail/${id}`]);

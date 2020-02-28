@@ -1,8 +1,13 @@
 <div style="padding-top: 100px;">
   <div style="display: flex;">
-    <button type="button" class="btn btn-primary loc-button-top " data-toggle="modal" data-target="#exampleModalCenter">
-      <mat-icon>add</mat-icon>
-      <p style="margin-left: 5px;">Empresa</p>
+    <button type="button"
+            class="btn btn-primary loc-button-top "
+            data-toggle="modal"
+            data-target="#exampleModalCenter">
+        <mat-icon>add</mat-icon>
+        <p style="margin-left: 5px;">
+          Empresa
+        </p>
     </button>
     <div class="div-filter">
       <input class="form-control" type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
@@ -48,12 +53,14 @@
             </div>
           </div>
 
-          <div class="row col-md-12">
-            <div class="form-group col-md-4">
-              <label for="cnpj">CNPJ</label>
-              <input [(ngModel)]="org.cnpj" type="text" class="form-control" mask="AA.AAA.AAA/AAAA-AA"
-                placeholder="00.000.000/0000-00">
-            </div>
+            <div class="row col-md-12">
+              <div class="form-group col-md-4">
+                <label for="cnpj">CNPJ</label>
+                <input  type="text"
+                        class="form-control"
+                        mask="AA.AAA.AAA/AAAA-AA"
+                        placeholder="00.000.000/0000-00">
+              </div>
 
             <div class="form-group col-md-4">
               <label for="ie">IE</label>
@@ -66,11 +73,15 @@
             </div>
           </div>
 
-          <div class="row col-md-12">
-            <div class="form-group col-md-3">
-              <label for="cep">CEP</label>
-              <input [(ngModel)]="org.cep" type="email" class="form-control" mask="AA.AAA-AAA" placeholder="00.000-000">
-            </div>
+            <div class="row col-md-12">
+              <div class="form-group col-md-3">
+                <label for="cep">CEP</label>
+                <input  [(ngModel)]="org.cep"
+                        type="email"
+                        class="form-control"
+                        mask="AA.AAA-AAA"
+                        placeholder="00.000-000">
+              </div>
 
             <div class="form-group col-md-6">
               <label for="end">Endereço</label>
