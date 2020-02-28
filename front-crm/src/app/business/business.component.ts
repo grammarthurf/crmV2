@@ -405,7 +405,7 @@ export class BusinessComponent implements OnInit {
     let contact = this.ticket.cliente;
     let stage = this.ticket.estagio;
 
-    if(title === '' || org === '' || value === null || product === '' || therm === '' || contact === '' || stage === '') {
+    if(title === '' || org === '' || value === 0 || product === '' || therm === '' || contact === '' || stage === '') {
       swal({
         icon: "error",
         text: "Todos os campos são obrigatórios!",
