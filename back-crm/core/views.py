@@ -130,3 +130,20 @@ class AtividadeViewSet(viewsets.ModelViewSet):
 
     queryset = Atividade.objects.all()
     serializer_class = AtividadeSerializer
+
+    def create(self, request):
+        data = request.data
+        print(data)
+
+        A = Atividade()
+        A.dataini = data['dataini']
+        A.datafim = data['datafim']
+        A.horaini = data['horaini']
+        A.horafim = data['horafim']
+        A.assunto = data['assunto']
+        A.ticket = Ticket.objects.get(id=int(data['ticket']))
+        A.cliente = Cliente.objects.get(id=int(data['cliente']))
+        A.org = Organizacao.objects.get(id=int(data['org']))
+        A.tipo = data['tipo']
+        A.save()
+        return JsonResponse({'message': 'atividadecreated'})

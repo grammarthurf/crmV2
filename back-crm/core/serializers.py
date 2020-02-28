@@ -32,7 +32,7 @@ class ClienteSerializer(serializers.ModelSerializer):
 class TicketSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ticket
-        fields = '__all__'
+        fields = ['id', 'titulo', 'estagio', 'cliente', 'org', 'produto', 'valorestimado' ,'termometro' , 'vendedor', 'obs', 'status', 'created', 'updated', 'atividades']
         depth = 1
 
 

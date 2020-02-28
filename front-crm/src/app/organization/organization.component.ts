@@ -26,7 +26,7 @@ const org: PeriodicElement[] = [
   styleUrls: ["./organization.component.css"]
 })
 export class OrganizationComponent implements OnInit {
-  org = { razaosocial: '', nomefantasia: '', rua: '', bairro: '', cep: '', cidade: '', uf: '', erp: '' }
+  org = { codigo: '', razaosocial: '', nomefantasia: '', cnpj: '', ie: '',  rua: '', complemento: '', bairro: '', cep: '', cidade: '', uf: '', telefone: '', erp: '', email: '', site: '' }
   matdata: any = [];
   // Lista orgs:
   erroOrg: any;
@@ -34,7 +34,7 @@ export class OrganizationComponent implements OnInit {
   erroOrgs: any;
 
   code: any;
-  
+
   data = Object.assign(org);
   dataSource = new MatTableDataSource<Element>(this.data);
 
@@ -107,13 +107,13 @@ export class OrganizationComponent implements OnInit {
             }
           });
           this.getterOrg();
-          setTimeout(this.reiniciar, 1001);
+          // setTimeout(this.reiniciar, 1001);
           console.log(data);
         },
         error => {
           this.getterOrg();
           console.error(error);
-          setTimeout(this.reiniciar, 1001);
+          // setTimeout(this.reiniciar, 1001);
         }
       );
     }
@@ -130,10 +130,10 @@ export class OrganizationComponent implements OnInit {
   // }
 
   ngOnInit() {
-    
+
   }
 
-  
+
   // goTo(id) {
   //   this.router.navigate([`/organization-detail/${id}`]);
   // }
