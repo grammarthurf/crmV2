@@ -54,6 +54,8 @@ export class AtividadesComponent implements OnInit {
   //Lista de vendedor:
   vendedorapi: any;
 
+  calendarEvents = [{title: '', start: ''}];
+
   atv = {position: 0, dataini: '', horaini: '', datafim: '', horafim: '', tipo: '', cliente: '', org: '', ticket: '', assunto: '' };
 
   displayedColumns: string[] = ['select', 'tipo', 'data', 'cliente', 'org',
@@ -62,7 +64,6 @@ export class AtividadesComponent implements OnInit {
   dataSource: any;
 
   selection = new SelectionModel<Element>(true, []);
-
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
@@ -75,8 +76,12 @@ export class AtividadesComponent implements OnInit {
     this.calendarPlugins = [ listPlugin , bootstrapPlugin ];
   }
 
+  
+
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.matdata);
+
+    
   }
 
   gotocalendar(){
@@ -176,6 +181,8 @@ export class AtividadesComponent implements OnInit {
         });
         this.dataSource = new MatTableDataSource(this.matdata);
         this.dataSource.sort = this.sort;
+        this.calendarEvents= [{ title: this.matdata.tipo, start: this.matdata.dataini }];
+        console.log(this.calendarEvents)
         console.log('dataSource: ', this.dataSource);
       },
       error => {
