@@ -63,6 +63,7 @@ export class PersonComponent implements OnInit {
   getterContatos() {
     this.crudService.getClientes().subscribe(
       data => {
+        this.matdata = [];
         data.forEach(e => {
           if (e.org == null) {
             console.log();
@@ -145,13 +146,13 @@ export class PersonComponent implements OnInit {
           });
           this.getterOrgs();
           this.getterContatos();
-          setTimeout(this.reiniciar, 1001);
+          // setTimeout(this.reiniciar, 1001);
           console.log(data);
         },
         error => {
           this.getterContatos();
           console.error(error);
-          setTimeout(this.reiniciar, 1001);
+          // setTimeout(this.reiniciar, 1001);
         }
       );
     }
@@ -176,7 +177,7 @@ export class PersonComponent implements OnInit {
   goTo() {
     this.router.navigate([`/person-detail/`]);
   }
-  
+
   filtroCli() {
     this.dataSource.filter = "Cliente".trim().toLowerCase();
   }
