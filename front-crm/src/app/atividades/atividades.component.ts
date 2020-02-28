@@ -83,8 +83,8 @@ export class AtividadesComponent implements OnInit {
     this.router.navigate([]).then(result => { window.open('/calendar/', '_blank'); });
   }
 
-  getColor(data) {
-    switch (data) {
+  getColor(dataini) {
+    switch (dataini) {
       case this.daymes:
         return '#deeafa';
       case this.daytmrw:
@@ -97,12 +97,13 @@ export class AtividadesComponent implements OnInit {
   getterActivity() {
     this.crudService.getAtividade().subscribe(
       data => {
+        this.matdata = []
         data.forEach(e => {
           try {
 
             if (e.cliente == null && e.org == null && e.ticket == null) {
               console.log();
-
+              
               this.matdata.push({
                position: e.id,
                 assunto: e.assunto,
