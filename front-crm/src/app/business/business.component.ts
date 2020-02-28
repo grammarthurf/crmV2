@@ -400,30 +400,17 @@ export class BusinessComponent implements OnInit {
   save() {
     console.log(this.ticket);
     let title = this.ticket.titulo;
+    let org = this.ticket.org;
+    let value = this.ticket.valorestimado;
+    let product = this.ticket.produto;
+    let therm = this.ticket.termometro;
+    let contact = this.ticket.cliente;
     let stage = this.ticket.estagio;
 
-    if (title === '' && stage === '') {
+    if(title === '' || org === '' || value === 0 || product === '' || therm === '' || contact === '' || stage === '') {
       swal({
         icon: "error",
-        text: "Título e Estágio não preenchido!",
-        timer: 1800,
-        buttons: {
-          buttons: false
-        }
-      });
-    } else if (stage === '') {
-      swal({
-        icon: "error",
-        text: "Estágio não preenchido!",
-        timer: 1800,
-        buttons: {
-          buttons: false
-        }
-      });
-    } else if (title === '') {
-      swal({
-        icon: "error",
-        text: "Título não preenchido!",
+        text: "Todos os campos são obrigatórios!",
         timer: 1800,
         buttons: {
           buttons: false
@@ -434,7 +421,7 @@ export class BusinessComponent implements OnInit {
         data => {
           swal({
             icon: "success",
-            text: "Produto salvo com sucesso!",
+            text: "Lead criada com sucesso!",
             timer: 1800,
             buttons: {
               buttons: false

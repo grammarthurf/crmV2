@@ -1,4 +1,4 @@
-#navbarDropdown {
+/* #navbarDropdown {
     font-size: 1.25rem;
     margin-left: -15px;
 }
@@ -33,4 +33,29 @@ img {
 
 .dropdown-menu {
     min-width: 0;
+} */
+
+img {
+    height: 40px;
+}
+
+a {
+    font-size: 23px;
+}
+
+.dropdown-item {
+    font-size: 20px;
+}
+
+.nav-item {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.show {
+    margin-left: -15px;
+}
+
+.navbar {
+    padding: 0.8rem 1rem;
 }

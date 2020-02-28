@@ -19,7 +19,7 @@ class Estagio (models.Model):
     nome = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.nome
+        return str(self.nome)
 
 
 
@@ -44,7 +44,7 @@ class Organizacao (models.Model):
     updated = models.ForeignKey(Updated, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return self.razaosocial
+        return str(self.razaosocial)
 
 
 class Cliente(models.Model):
@@ -71,14 +71,14 @@ class Produto (models.Model):
     updated = models.ForeignKey(Updated, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return self.nome
+        return str(self.nome)
 
 
 class Vendedor(models.Model):
     nome = models.CharField(max_length=155)
 
     def __str__(self):
-        return self.nome
+        return str(self.nome)
 
 
 class Ticket (models.Model):
@@ -92,14 +92,14 @@ class Ticket (models.Model):
     termometro = models.CharField(max_length=100, null=True, blank=True)
     vendedor = models.ForeignKey(
         Vendedor,  on_delete=models.CASCADE, null=True)
-    obs = models.CharField(max_length=100, blank=True)
+    obs = models.CharField(max_length=100, blank=True, null=True)
     status = models.CharField(max_length=155, blank=True, default='Aberto')
     created = models.ForeignKey(Created, on_delete=models.CASCADE, null=True)
     updated = models.ForeignKey(Updated, on_delete=models.CASCADE, null=True)
 
 
     def __str__(self):
-        return self.titulo
+        return str(self.titulo)
 
 
 class Atividade (models.Model):
@@ -112,10 +112,10 @@ class Atividade (models.Model):
     ticket = models.ForeignKey(Ticket, related_name='atividades', on_delete=models.CASCADE, null=True)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True)
     org = models.ForeignKey(Organizacao, on_delete=models.CASCADE, null=True)
-    created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True)
-    updated = models.ForeignKey(Updated, on_delete=models.CASCADE, null=True)
+    created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True, blank=True)
+    updated = models.ForeignKey(Updated, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return self.assunto
+        return str(self.assunto)
 
 
