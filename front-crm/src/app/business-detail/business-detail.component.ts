@@ -16,6 +16,8 @@ export class BusinessDetailComponent implements OnInit {
   public lottieConfig: Object;
   private anim: any;
 
+  numm: number;
+
   businesss = { id: "", titulo: '', valorestimado: '', termometro: '', obs: '', status: '', estagio: '', cliente: '', org: '', vendedor: '', created: '', updated: '', produto: ''};
 
   constructor(private route: ActivatedRoute, private crudService: CrudService) {
@@ -93,6 +95,12 @@ export class BusinessDetailComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  changeid(idd: number) {
+    if (idd == 2) {
+      this.id = 2;
+    } 
   }
 
   stageWin() {

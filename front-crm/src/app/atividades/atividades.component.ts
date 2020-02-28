@@ -63,33 +63,6 @@ export class AtividadesComponent implements OnInit {
 
   selection = new SelectionModel<Element>(true, []);
 
-  calendarEvents = [
-    { title: 'Reunião', start: '2020-02-27T08:30:00', end: '2020-02-27T09:00:00' },
-    { title: 'Reunião', start: '2020-02-27T14:30:00', end: '2020-02-27T15:30:00' },
-    { title: 'Reunião', start: '2020-02-27T15:30:00', end: '2020-02-27T16:30:00' },
-    { title: 'Reunião', start: '2020-02-27T16:50:00', end: '2020-02-27T17:30:00' },
-    { title: 'Reunião', start: '2020-02-28T09:30:00', end: '2020-02-28T11:30:00' },
-    { title: 'Reunião', start: '2020-02-28T15:30:00', end: '2020-02-28T16:30:00' },
-    { title: 'Reunião', start: '2020-02-28T17:00:00', end: '2020-02-28T17:30:00' },
-    { title: 'Reunião', start: '2020-03-02T08:30:00', end: '2020-03-02T09:30:00' },
-    { title: 'Reunião', start: '2020-03-02T10:00:00', end: '2020-03-02T10:30:00' },
-    { title: 'Reunião', start: '2020-03-02T13:30:00', end: '2020-03-02T15:00:00' },
-    { title: 'Reunião', start: '2020-03-02T15:30:00', end: '2020-03-02T17:00:00' },
-    { title: 'Reunião', start: '2020-03-03T10:30:00', end: '2020-03-03T11:30:00' },
-    { title: 'Ligação', start: '2020-02-27T10:30:00', end: '2020-02-27T10:40:00' },
-    { title: 'Ligação', start: '2020-02-27T10:50:00', end: '2020-02-27T11:00:00' },
-    { title: 'Ligação', start: '2020-02-28T08:30:00', end: '2020-02-28T08:40:00' },
-    { title: 'Ligação', start: '2020-02-28T11:30:00', end: '2020-02-28T11:35:00' },
-    { title: 'Ligação', start: '2020-02-28T13:30:00', end: '2020-02-28T13:50:00' },
-    { title: 'Ligação', start: '2020-02-28T14:30:00', end: '2020-02-28T14:40:00' },
-    { title: 'Ligação', start: '2020-03-02T09:40:00', end: '2020-03-02T09:50:00' },
-    { title: 'Email  ', start: '2020-02-28T14:00:00', end: '2020-02-28T14:00:00' },
-    { title: 'Email  ', start: '2020-02-27T11:00:00', end: '2020-02-27T11:00:00' },
-    { title: 'Email  ', start: '2020-02-27T11:30:00', end: '2020-02-27T11:30:00' },
-    { title: 'Email  ', start: '2020-03-02T11:30:00', end: '2020-03-02T11:30:00' },
-    { title: 'Email  ', start: '2020-03-02T11:40:00', end: '2020-03-02T11:40:00' }
-    
-  ];
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
@@ -110,8 +83,8 @@ export class AtividadesComponent implements OnInit {
     this.router.navigate([]).then(result => { window.open('/calendar/', '_blank'); });
   }
 
-  getColor(data) {
-    switch (data) {
+  getColor(dataini) {
+    switch (dataini) {
       case this.daymes:
         return '#deeafa';
       case this.daytmrw:
@@ -124,16 +97,17 @@ export class AtividadesComponent implements OnInit {
   getterActivity() {
     this.crudService.getAtividade().subscribe(
       data => {
+        this.matdata = []
         data.forEach(e => {
           try {
 
             if (e.cliente == null && e.org == null && e.ticket == null) {
               console.log();
-
+              
               this.matdata.push({
                position: e.id,
                 assunto: e.assunto,
-                data: e.data,
+                dataini: e.dataini,
                 tipo: e.tipo,
                 ticket: {
                   titulo: ''
@@ -149,7 +123,7 @@ export class AtividadesComponent implements OnInit {
               this.matdata.push({
                position: e.id,
                 assunto: e.assunto,
-                data: e.data,
+                dataini: e.data,
                 tipo: e.tipo,
                 // ticket: e.ticket,
                 // cliente: {
@@ -162,7 +136,7 @@ export class AtividadesComponent implements OnInit {
               this.matdata.push({
                position: e.id,
                 assunto: e.assunto,
-                data: e.data,
+                dataini: e.dataini,
                 tipo: e.tipo,
                 ticket: e.ticket,
                 cliente: e.cliente,
@@ -175,7 +149,7 @@ export class AtividadesComponent implements OnInit {
               this.matdata.push({
                position: e.id,
                 assunto: e.assunto,
-                data: e.data,
+                dataini: e.dataini,
                 tipo: e.tipo,
                 ticket: {
                   titulo: ''
@@ -188,7 +162,7 @@ export class AtividadesComponent implements OnInit {
               this.matdata.push({
                position: e.id,
                 assunto: e.assunto,
-                data: e.data,
+                dataini: e.dataini,
                 tipo: e.tipo,
                 ticket: e.ticket,
                 cliente: e.cliente,
@@ -200,10 +174,7 @@ export class AtividadesComponent implements OnInit {
             console.log(error);
           }
         });
-        console.log('MATDATASOURCE: ', this.matdata);
-
         this.dataSource = new MatTableDataSource(this.matdata);
-        console.log(this.datamat);
         this.dataSource.sort = this.sort;
         console.log('dataSource: ', this.dataSource);
       },
