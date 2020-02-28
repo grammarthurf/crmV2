@@ -31,7 +31,7 @@ class ClienteViewSet(viewsets.ModelViewSet):
         C.celular = data['celular']
         C.email = data['email']
         C.skype = data['skype']
-        C.org = Organizacao.objects.get(id=data['org'])
+        # C.org = Organizacao.objects.get(id=data['org'])
         C.save()
         print(data);
         return JsonResponse({'message': 'Worked'})
