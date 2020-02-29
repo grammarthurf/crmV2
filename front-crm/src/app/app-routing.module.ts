@@ -11,6 +11,9 @@ import { OrganizationDetailComponent } from './organization-detail/organization-
 import { UserComponent } from './user/user.component';
 import { PersonDetailComponent } from './person-detail/person-detail.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { OrganizationRegisterComponent } from './organization-register/organization-register.component';
+import { ErpComponent } from './erp/erp.component';
+import { RamoComponent } from './ramo/ramo.component';
 
 const routes: Routes = [
   {
@@ -51,6 +54,10 @@ const routes: Routes = [
     component: OrganizationDetailComponent
   },
   {
+    path: "company-register",
+    component: OrganizationRegisterComponent
+  },
+  {
     path: "testapi",
     component: CrudComponent
   },
@@ -61,6 +68,14 @@ const routes: Routes = [
   {
     path: "calendar",
     component: CalendarComponent
+  },
+  {
+    path: "erp",
+    component: ErpComponent
+  },
+  {
+    path: "ramo",
+    component: RamoComponent
   }
 ];
 
