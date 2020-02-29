@@ -1,9 +1,9 @@
 <div class="main-div">
-  <div  class="modal fade" 
-        id="loseModal" 
-        tabindex="-1" 
-        role="dialog" 
-        aria-labelledby="exampleModalLabel" 
+  <div  class="modal fade"
+        id="loseModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
         aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -40,8 +40,8 @@
   <div class="col-12 div-top row div-border">
     <div class="col-9">
       <div class="col-10 row">
-        <h2 class="font-26 bold"> 
-          {{business.titulo}} 
+        <h2 class="font-26 bold">
+          {{business.titulo}}
         </h2>
         <mat-icon style=" margin-left: 5px;">create</mat-icon>
       </div>
@@ -55,10 +55,10 @@
         <img src="../../assets/termometro.png" class="img1" />
         <p>Termômetro:</p>
         <div class="margin5">
-          <input  type="range" 
-                  id="thermometro" 
-                  value="{{business.termometro}}" 
-                  step="49" 
+          <input  type="range"
+                  id="thermometro"
+                  value="{{business.termometro}}"
+                  step="49"
                   style="width: 150px;"/>
           <div class=" row">
             <p class="ptherm" > Ruim  </p>
@@ -69,26 +69,26 @@
       </div>
     </div>
     <div class="col-2 row div-choice">
-      <button class="btn-win-lose btn-success" 
-              id="win" 
+      <button class="btn-win-lose btn-success"
+              id="win"
               (click)="stageWin()">
         Ganho
       </button>
-      <button class="btn-win-lose" 
-              id="null" 
+      <button class="btn-win-lose"
+              id="null"
               (click)="stageNull()">
         Reabrir
       </button>
-      <button class="btn-win-lose btn-danger" 
-              id="lose" 
-              (click)="stageLose()" 
-              data-toggle="modal" 
+      <button class="btn-win-lose btn-danger"
+              id="lose"
+              (click)="stageLose()"
+              data-toggle="modal"
               data-target="#loseModal">
         Perdido
       </button>
     </div>
-    <lottie-animation-view  [options]="lottieConfig" 
-                            [width]="500" 
+    <lottie-animation-view  [options]="lottieConfig"
+                            [width]="500"
                             [height]="350"
                             (animCreated)="handleAnimation($event)">
     </lottie-animation-view>
@@ -102,9 +102,9 @@
     </div>
 
     <!-- BARRA DE PROGRESSO -->
-    <div class="col-12 flex md-stepper-horizontal green orange">      
-      <div  class="md-step active" 
-            *ngIf="(business.estagio.id > 1)" 
+    <div class="col-12 flex md-stepper-horizontal green orange">
+      <div  class="md-step active"
+            *ngIf="(business.estagio.id > 1)"
             id="1">
         <div class="md-step-circle ">
           <mat-icon> done </mat-icon>
@@ -113,8 +113,8 @@
         <div class="md-step-optional">10/02/2020</div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div  class="md-step process" 
-            *ngIf="(business.estagio.id == 1)" 
+      <div  class="md-step process"
+            *ngIf="(business.estagio.id == 1)"
             id="1"
             (click)="changeid(2)">
         <div class="md-step-circle ">
@@ -124,8 +124,8 @@
         <div class="md-step-optional">Em processo </div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div  class="md-step " 
-            *ngIf="(business.estagio.id != 1 && business.estagio.id < 1)" 
+      <div  class="md-step "
+            *ngIf="(business.estagio.id != 1 && business.estagio.id < 1)"
             id="1"
             (click)="changeid()">
         <div class="md-step-circle"></div>
@@ -134,8 +134,8 @@
       </div>
 
 
-      <div  class="md-step active " 
-            *ngIf="(business.estagio.id != 3 && business.estagio.id > 3)" 
+      <div  class="md-step active "
+            *ngIf="(business.estagio.id != 3 && business.estagio.id > 3)"
             id="3">
         <div class="md-step-circle ">
           <mat-icon> done </mat-icon>
@@ -145,8 +145,8 @@
         <div class="md-step-bar-left"> </div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div  class="md-step process" 
-            *ngIf="(business.estagio.id == 3)" 
+      <div  class="md-step process"
+            *ngIf="(business.estagio.id == 3)"
             id="3">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
@@ -156,8 +156,8 @@
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div  class="md-step md-step-1" 
-            *ngIf="(business.estagio.id != 3 && business.estagio.id < 3)" 
+      <div  class="md-step md-step-1"
+            *ngIf="(business.estagio.id != 3 && business.estagio.id < 3)"
             id="3">
         <div class="md-step-circle"></div>
         <div class="md-step-title">Contatado</div>
@@ -167,8 +167,8 @@
       </div>
 
 
-      <div  class="md-step process" 
-            *ngIf="(business.estagio.id==4)" 
+      <div  class="md-step process"
+            *ngIf="(business.estagio.id==4)"
             id="4">
         <div class="md-step-circle ">
           <mat-icon> priority_high </mat-icon>
@@ -178,8 +178,8 @@
         <div class="md-step-bar-left">  </div>
         <div class="md-step-bar-right"> </div>
       </div>
-      <div  class="md-step" 
-            *ngIf="(business.estagio.id!=4 && business.estagio.id < 4)" 
+      <div  class="md-step"
+            *ngIf="(business.estagio.id!=4 && business.estagio.id < 4)"
             id="4">
         <div class="md-step-circle ">
           <mat-icon> </mat-icon>
@@ -189,8 +189,8 @@
         <div class="md-step-bar-left">  </div>
         <div class="md-step-bar-right"> </div>
       </div>
-      <div  class="md-step active" 
-            *ngIf="(business.estagio.id!=4 && business.estagio.id > 4)" 
+      <div  class="md-step active"
+            *ngIf="(business.estagio.id!=4 && business.estagio.id > 4)"
             id="4">
         <div class="md-step-circle ">
           <mat-icon> done </mat-icon>
@@ -202,8 +202,8 @@
       </div>
 
 
-      <div  class="md-step active" 
-            *ngIf="(business.estagio.id != 5 && business.estagio.id > 5)" 
+      <div  class="md-step active"
+            *ngIf="(business.estagio.id != 5 && business.estagio.id > 5)"
             id="5">
         <div class="md-step-circle">
           <mat-icon> done </mat-icon>
@@ -213,8 +213,8 @@
         <div class="md-step-bar-left">  </div>
         <div class="md-step-bar-right"> </div>
       </div>
-      <div  class="md-step process" 
-            *ngIf="(business.estagio.id == 5)" 
+      <div  class="md-step process"
+            *ngIf="(business.estagio.id == 5)"
             id="5">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
@@ -224,8 +224,8 @@
         <div class="md-step-bar-left">  </div>
         <div class="md-step-bar-right"> </div>
       </div>
-      <div  class="md-step" 
-            *ngIf="(business.estagio.id != 5 && business.estagio.id < 5)" 
+      <div  class="md-step"
+            *ngIf="(business.estagio.id != 5 && business.estagio.id < 5)"
             id="5">
         <div class="md-step-circle">
           <mat-icon> </mat-icon>
@@ -235,8 +235,8 @@
         <div class="md-step-bar-right"> </div>
       </div>
 
-      <div  class="md-step active" 
-            *ngIf="(business.estagio.id != 6 && business.estagio.id > 6)" 
+      <div  class="md-step active"
+            *ngIf="(business.estagio.id != 6 && business.estagio.id > 6)"
             id="6">
         <div class="md-step-circle">
           <mat-icon> done </mat-icon>
@@ -246,8 +246,8 @@
         <div class="md-step-bar-left">  </div>
         <div class="md-step-bar-right"> </div>
       </div>
-      <div  class="md-step process" 
-            *ngIf="(business.estagio.id == 6)" 
+      <div  class="md-step process"
+            *ngIf="(business.estagio.id == 6)"
             id="6">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
@@ -257,8 +257,8 @@
         <div class="md-step-bar-left">  </div>
         <div class="md-step-bar-right"> </div>
       </div>
-      <div  class="md-step" 
-            *ngIf="(business.estagio.id != 6 && business.estagio.id < 6)" 
+      <div  class="md-step"
+            *ngIf="(business.estagio.id != 6 && business.estagio.id < 6)"
             id="6">
         <div class="md-step-circle">
           <mat-icon> </mat-icon>
@@ -268,8 +268,8 @@
         <div class="md-step-bar-right"> </div>
       </div>
 
-      <div  class="md-step active" 
-            *ngIf="(business.estagio.id != 7 && business.estagio.id > 7)" 
+      <div  class="md-step active"
+            *ngIf="(business.estagio.id != 7 && business.estagio.id > 7)"
             id="7">
         <div class="md-step-circle">
           <mat-icon> done </mat-icon>
@@ -383,59 +383,16 @@
         </mat-tab>
         <mat-tab label="Atividades">
           <div class="col-12 mg-t-10 divtab">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item p">
-                  <b>Planilha clientes ativos: </b>
-                  <a href=""> Tarefa</a>
+            <div *ngIf="(business.atividades == 0)" >
+              <h4>Sem atividades ativas</h4>
+            </div>
+            <ul *ngIf="(business.atividades.length > 0)"  class="list-group list-group-flush">
+              <li *ngFor="let item of business.atividades"  class="list-group-item p">
+                <p> {{item.dataini}} - {{item.tipo}}</p>
+                <b>{{item.assunto}}</b>
+
               </li>
-              <li class="list-group-item">
-                  <b>Ligar para cliente: </b>
-                  <a href=""> Ligação</a>
-              </li>
-              <li class="list-group-item">
-                  <b>Falar sobre negócio teste: </b>
-                  <a href=""> Reunião</a>
-              </li>
-              <li class="list-group-item">
-                  <b>Apresentar proposta: </b>
-                  <a href=""> Email</a>
-              </li>
-              <li class="list-group-item">
-                  <b>Ligar para cliente: </b>
-                  <a href=""> Ligação</a>
-              </li>
-              <li class="list-group-item">
-                  <b>Falar sobre negócio teste: </b>
-                  <a href=""> Reunião</a>
-              </li>
-              <li class="list-group-item">
-                  <b>Visitar empresa x: </b>
-                  <a href=""> Visita</a>
-              </li>
-              <li class="list-group-item">
-                  <b>Apresentar proposta: </b>
-                  <a href=""> Email</a>
-              </li>
-              <li class="list-group-item">
-                  <b>Ligar para cliente: </b>
-                  <a href=""> Ligação</a>
-              </li>
-              <li class="list-group-item">
-                  <b>Planilha clientes ativos: </b>
-                  <a href=""> Tarefa</a>
-              </li>
-              <li class="list-group-item">
-                  <b>Visitar empresa x: </b>
-                  <a href=""> Visita</a>
-              </li>
-              <li class="list-group-item">
-                  <b>Planilha clientes ativos: </b>
-                  <a href=""> Tarefa</a>
-              </li>
-              <li class="list-group-item">
-                  <b>Apresentar proposta: </b>
-                  <a href=""> Email</a>
-              </li>
+
             </ul>
           </div>
         </mat-tab>

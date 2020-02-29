@@ -27,7 +27,7 @@ export class BusinessDetailComponent implements OnInit {
       autoplay: false,
       loop: false
     };
-    
+
     this.getterEstagio()
   }
 
@@ -57,7 +57,7 @@ export class BusinessDetailComponent implements OnInit {
         } else {
           this.stageNull();
         }
-        console.log("id", data);
+        console.log("business: ", this.business);
       },
       error => {
         console.error(error);
@@ -100,7 +100,7 @@ export class BusinessDetailComponent implements OnInit {
   changeid(idd: number) {
     if (idd == 2) {
       this.id = 2;
-    } 
+    }
   }
 
   stageWin() {
