@@ -12,6 +12,7 @@ import * as Inputmask from "inputmask"
 })
 export class BusinessComponent implements OnInit {
 
+  dNow = new Date();
   selectedBusiness: any
 
   tickets1: any = { tickets: [], valor: '' };
@@ -68,6 +69,12 @@ export class BusinessComponent implements OnInit {
     };
   }
 
+  dataCheck(dataini){
+    console.log( 'dataini: ' , dataini);
+
+    return true;
+  }
+
   calcAllValue() {
     const listaTicketslist: any = [this.tickets1, this.tickets3, this.tickets4, this.tickets5,
     this.tickets6, this.tickets7, this.tickets8]
@@ -76,24 +83,27 @@ export class BusinessComponent implements OnInit {
       this.calcValueestagio(e);
     });
 
+    console.log(this.dNow);
+
+
   }
 
   calcValueestagio(ticketest) {
-    console.log('ticketque pegou: ', ticketest);
+    // console.log('ticketque pegou: ', ticketest);
     let i = 0;
     ticketest.valor = i;
-    console.log( 'Tickets: '  , ticketest.tickets);
+    // console.log( 'Tickets: '  , ticketest.tickets);
     ticketest.tickets.forEach(e => {
-      console.log('ENTROU');
+      // console.log('ENTROU');
 
-      console.log( 'Tickets: '  , e);
+      // console.log( 'Tickets: '  , e);
 
       i += e.valorestimado;
-      console.log(e.valorestimado);
+      // console.log(e.valorestimado);
 
     });
 
-    console.log(i);
+    // console.log(i);
     ticketest.valor = i;
 
 
