@@ -39,11 +39,13 @@
 
         <div class="form-group col-md-4">
             <label for="ramo">Ramo</label>
-            <button mat-icon-button>
+            <button mat-icon-button (click)="goToRamo()">
                 <mat-icon class="icon-modal-atv icon-dif">+</mat-icon>
             </button>
             <select class="form-control">
               <option>Plástico</option>
+              <option>Vidro</option>
+              <option>Têxtil</option>
             </select>
         </div>
     </div>
@@ -101,13 +103,15 @@
 
         <div class="form-group col-md-3">
             <label for="erp">ERP</label>
-            <button mat-icon-button>
+            <button mat-icon-button (click)="goToERP()">
                 <mat-icon class="icon-modal-atv icon-dif">+</mat-icon>
             </button>
             <select [(ngModel)]="org.erp" class="form-control">
               <option>TOTVS</option>
             </select>
         </div>
+
+        <button class="btn btn-primary" style="margin-left: 15px;">Salvar</button>
     </div>
 
 
