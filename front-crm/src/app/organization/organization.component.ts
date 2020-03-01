@@ -142,6 +142,10 @@ export class OrganizationComponent implements OnInit {
     this.router.navigate([`/company-detail/`]);
   }
 
+  goToRegister() {
+    this.router.navigate([`/company-register/`]);
+  }
+
   deleteItem() {
     swal({
       icon: "error",
