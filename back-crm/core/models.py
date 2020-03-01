@@ -54,8 +54,6 @@ class Cliente(models.Model):
     celular = models.CharField(max_length=15, null=True)
     email = models.CharField(max_length=100, null=True)
     skype = models.CharField(max_length=65, null=True)
-    org = models.ForeignKey(
-        Organizacao, related_name='clientes', on_delete=models.CASCADE, null=True)
     created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True)
     updated = models.ForeignKey(Updated, on_delete=models.CASCADE, null=True)
 
