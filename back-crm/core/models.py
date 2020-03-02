@@ -65,7 +65,7 @@ class Cliente(models.Model):
 
 class Produto (models.Model):
     nome = models.CharField(max_length=255)
-    modalidade = models.CharField(max_length=155, null=True)
+    modalidade = models.CharField(max_length=155, null=True, blank=True)
     codigo = models.CharField(max_length=255, blank=True, null=True)
     created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True)
     updated = models.ForeignKey(Updated, on_delete=models.CASCADE, null=True)

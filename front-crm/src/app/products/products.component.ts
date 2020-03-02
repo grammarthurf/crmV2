@@ -46,6 +46,7 @@ export class ProductsComponent implements OnInit {
   displayedColumns: string[] = ['nome', 'codigo', 'columnEdit', 'columnDelete'];
 
   getterProdutos() {
+    this.matdata = [];
     this.crudService.getProdutos().subscribe(
       data => {
         data.forEach(e => {
@@ -87,11 +88,21 @@ export class ProductsComponent implements OnInit {
 
   save() {
     let descricao = this.produto.nome;
+    let codigo = this.produto.codigo;
 
     if (descricao === '') {
       swal({
         icon: "error",
         text: "Descrição não preenchida!",
+        timer: 1800,
+        buttons: {
+          buttons: false
+        }
+      });
+    } else if (codigo === '') {
+      swal({
+        icon: "error",
+        text: "Código não preenchido!",
         timer: 1800,
         buttons: {
           buttons: false
@@ -113,6 +124,7 @@ export class ProductsComponent implements OnInit {
         },
         error => {
           console.error(error);
+
         }
       );
     }
