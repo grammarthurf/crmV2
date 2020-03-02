@@ -97,11 +97,11 @@ export class BusinessDetailComponent implements OnInit {
     );
   }
 
-  changeid(idd: number) {
-    if (idd == 2) {
-      this.id = 2;
-    } 
-  }
+   changeid(idd: number) {
+     if (idd == 2) {
+       this.business.estagio.id != 7;
+     } 
+   }
 
   stageWin() {
     let btnLose = document.getElementById('lose');

@@ -56,6 +56,9 @@ import { CalendarComponent } from './calendar/calendar.component'
 import { UserComponent } from './user/user.component'
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { OrganizationRegisterComponent } from './organization-register/organization-register.component';
+import { ErpComponent } from './erp/erp.component';
+import { RamoComponent } from './ramo/ramo.component';
 registerLocaleData(localePt);
 
 @NgModule({
@@ -72,7 +75,10 @@ registerLocaleData(localePt);
     OrganizationDetailComponent,
     PersonDetailComponent,
     UserComponent,
-    CalendarComponent
+    CalendarComponent,
+    OrganizationRegisterComponent,
+    ErpComponent,
+    RamoComponent
   ],
   imports: [
     BrowserModule,

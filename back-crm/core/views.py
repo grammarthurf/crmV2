@@ -1,7 +1,7 @@
 
 from rest_framework import viewsets
-from .serializers import ClienteSerializer, EstagioSerializer, OrganizacaoSerializer, ProdutoSerializer, TicketSerializer, VendedorSerializer, AtividadeSerializer, UserSerializer
-from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade, Created, Updated
+from .serializers import ClienteSerializer, EstagioSerializer, OrganizacaoSerializer, ProdutoSerializer, TicketSerializer, VendedorSerializer, ErpSerializer, RamoSerializer , AtividadeSerializer, UserSerializer
+from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade, Created, Updated, Erp, Ramo
 from django.core import serializers
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -12,6 +12,15 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
 
+class RamoViewSet(viewsets.ModelViewSet):
+
+    queryset = Ramo.objects.all()
+    serializer_class = RamoSerializer
+
+class ErpViewSet(viewsets.ModelViewSet):
+
+    queryset = Erp.objects.all()
+    serializer_class = ErpSerializer
 
 class ClienteViewSet(viewsets.ModelViewSet):
 
@@ -55,15 +64,36 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
         
        
         C = Organizacao()
+        C.codigo = data['codigo']
         C.razaosocial = data['razaosocial']
         C.nomefantasia = data['nomefantasia']
+        C.telefone = data['telefone']
         C.rua = data['rua']
         C.bairro = data['bairro']
         C.cep = data['cep']
         C.cidade = data['cidade']
         C.uf = data['uf']
-        C.erp = data['erp']
+        C.ramo = Ramo.objects.get(id=int(data['ramo']))
+        C.ie = data['ie']
+        C.erp = Erp.objects.get(id=int(data['erp']))
         C.save()
+        contatos = data['contatos']
+        for i in contatos:
+            print('CONTATOS : ' , i);
+            
+            o = Cliente()
+            o.nome = i['nome']
+            o.email = i['email']
+            o.cargo = i['cargo']
+            o.dep = i['dep']
+            o.birth = i['birth']
+            o.tel = i['tel']
+            o.cel = i['cel']
+            o.skp = i['skp']
+            o.save()
+            C.contatos.add(o)
+            C.save()
+
         print(data);
         return JsonResponse({'message': 'Worked'})
 

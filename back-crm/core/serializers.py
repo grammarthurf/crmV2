@@ -1,4 +1,4 @@
-from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade
+from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade, Erp, Ramo
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
@@ -11,6 +11,21 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     def create(self, validated_data):
         user = User.objects.create(**validated_data)
         return user
+
+
+class RamoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ramo
+        fields = '__all__'
+        depth = 1
+
+
+
+class ErpSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Erp
+        fields = '__all__'
+        depth = 1
 
 class AtividadeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -48,7 +63,8 @@ class OrganizacaoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Organizacao
         fields = ['id', 'razaosocial', 'nomefantasia', 'rua',
-                  'bairro', 'cidade', 'uf', 'erp', 'clientes']
+                  'bairro', 'cidade', 'uf', 'erpe', 'ramo', 'telefone' ,  'contatos']
+        depth = 1
 
 
 class ProdutoSerializer(serializers.ModelSerializer):
