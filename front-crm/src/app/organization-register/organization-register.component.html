@@ -264,14 +264,14 @@
         <div class="col-md-12">
           <div class="form-group col-md-12">
             <label for="nome">Nome</label>
-            <input type="text" class="form-control">
+            <input [(ngModel)]="ramo.desc" type="text" class="form-control">
           </div>
         </div>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
-        <button type="button" class="btn btn-primary">Salvar</button>
+        <button type="button" (click)="saveRamo()" data-dismiss="modal" class="btn btn-primary">Salvar</button>
       </div>
     </div>
   </div>
@@ -292,7 +292,7 @@
         <div class="row col-md-12 align-cod-button">
           <div class="form-group col-md-3">
             <label for="cod">Código</label>
-            <input value="{{this.code2}}" type="text" class="form-control">
+            <input [(ngModel)]="erp.codigo" value="{{this.code2}}" type="text" class="form-control">
           </div>
           <button class="btn btn-primary" (click)="generateCode2()" id="code">
             <img src="../../assets/cod.png" id="codigo">
@@ -302,18 +302,18 @@
         <div class="row col-md-12">
           <div class="form-group col-md-6">
             <label for="empresa">Empresa</label>
-            <input type="text" class="form-control">
+            <input [(ngModel)]="erp.empresa" type="text" class="form-control">
           </div>
           <div class="form-group col-md-6">
             <label for="erp">ERP</label>
-            <input type="text" class="form-control">
+            <input [(ngModel)]="erp.desc" type="text" class="form-control">
           </div>
         </div>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
-        <button type="button" class="btn btn-primary">Salvar</button>
+        <button type="button" (click)="saveErp()" data-dismiss="modal"  class="btn btn-primary">Salvar</button>
       </div>
     </div>
   </div>

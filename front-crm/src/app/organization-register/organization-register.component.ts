@@ -13,13 +13,13 @@ export class OrganizationRegisterComponent implements OnInit {
   org = {
     codigo: '', razaosocial: '', nomefantasia: '', ramo: '',
     cnpj: '', ie: '', rua: '', complemento: '', bairro: '', cep: '',
-    cidade: '', uf: '', telefone: '', erp: '', email: '', site: '', contatos: []
+    cidade: '', uf: '', telefone: '', erp: '', email: '', site: '', contatos: [], erpe: [], ramos: []
   };
 
   contato = { nome: '', email: '', cargo: '', dep: '', birth: '', tel: '', cel: '', skp: '' }
 
   ramosapi: any;
-  ramo = { nome: '' };
+  ramo = { desc: '' };
 
   erpsapi: any;
   erp = { codigo: '', desc: '', empresa: '' };
@@ -112,6 +112,56 @@ export class OrganizationRegisterComponent implements OnInit {
     this.router.navigate([`/company/`]);
   }
 
+  saveRamo(){
+    this.crudService.saveNewRamo(this.ramo).subscribe(
+      data => {
+        swal({
+          icon: "success",
+          text: "Ramo salvo com sucesso!",
+          timer: 1800,
+          buttons: {
+            buttons: false
+          }
+        });
+        // this.getterOrg();
+        // setTimeout(this.reiniciar, 1001);
+        console.log(data);
+        this.getterErp();
+        this.getterRamo();
+      },
+      error => {
+        // this.getterOrg();
+        console.error(error);
+        // setTimeout(this.reiniciar, 1001);
+      }
+    );
+  }
+
+  saveErp(){
+    this.crudService.saveNewErp(this.erp).subscribe(
+      data => {
+        swal({
+          icon: "success",
+          text: "Erp salvo com sucesso!",
+          timer: 1800,
+          buttons: {
+            buttons: false
+          }
+        });
+        // this.getterOrg();
+        // setTimeout(this.reiniciar, 1001);
+        console.log(data);
+        this.getterErp();
+        this.getterRamo();
+      },
+      error => {
+        // this.getterOrg();
+        console.error(error);
+        // setTimeout(this.reiniciar, 1001);
+      }
+    );
+  }
+
   save() {
     console.log(this.org);
     console.log(this.contato);
@@ -144,6 +194,8 @@ export class OrganizationRegisterComponent implements OnInit {
         }
       });
     } else {
+      this.org.erpe.push(this.erp);
+      this.org.ramos.push(this.ramo);
       this.crudService.saveNewOrg(this.org).subscribe(
         data => {
           swal({

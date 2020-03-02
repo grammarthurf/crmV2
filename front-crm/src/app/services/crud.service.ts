@@ -82,6 +82,18 @@ export class CrudService {
 
   // POST API
 
+  public saveNewRamo(ramo): Observable<any> {
+    return this.http.post(this.baseUrl + "ramo/", ramo, {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public saveNewErp(erp): Observable<any> {
+    return this.http.post(this.baseUrl + "erp/", erp, {
+      headers: this.htttpHeaders
+    });
+  }
+
   public saveNewTicket(ticket): Observable<any> {
     return this.http.post(this.baseUrl + "ticket/", ticket, {
       headers: this.htttpHeaders
