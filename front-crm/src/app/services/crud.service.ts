@@ -13,6 +13,18 @@ export class CrudService {
 
   // GET ALL API
 
+  public getErp(): Observable<any> {
+    return this.http.get(`${this.baseUrl}erp/`, {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public getRamo(): Observable<any> {
+    return this.http.get(`${this.baseUrl}ramo/`, {
+      headers: this.htttpHeaders
+    });
+  }
+
   public getClientes(): Observable<any> {
     return this.http.get(`${this.baseUrl}clientes/`, {
       headers: this.htttpHeaders

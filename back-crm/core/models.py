@@ -13,6 +13,21 @@ class Updated (models.Model):
     user = models.CharField(max_length=255, null=True)
 
 
+class Ramo(models.Model):
+    desc = models.CharField(max_length=65, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.desc)
+
+class Erp(models.Model):
+    codigo = models.CharField(max_length=64, null=True, blank=True)
+    desc = models.CharField(max_length=65, null=True, blank=True)
+    empresa = models.CharField(max_length=65, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.desc)
+
+
 
 
 class Estagio (models.Model):
@@ -22,6 +37,22 @@ class Estagio (models.Model):
         return str(self.nome)
 
 
+class Cliente(models.Model):
+    nome = models.CharField(max_length=100, null=True, blank=True)
+    cargo = models.CharField(max_length=1, null=True, blank=True)
+    tel = models.CharField(max_length=15, null=True, blank=True)
+    cel = models.CharField(max_length=15, null=True, blank=True)
+    dep = models.CharField(max_length=100, null=True, blank=True)
+    birth = models.CharField(max_length=55, null=True, blank=True)
+    email = models.CharField(max_length=100, null=True, blank=True)
+    skype = models.CharField(max_length=65, null=True, blank=True)
+    created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True)
+    updated = models.ForeignKey(Updated, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return str(self.nome) if self.nome else ' '
+
+
 
 
 class Organizacao (models.Model):
@@ -29,6 +60,7 @@ class Organizacao (models.Model):
     razaosocial = models.CharField(max_length=100, null=True)
     nomefantasia = models.CharField(max_length=100, blank=True, null=True)
     cnpj = models.CharField(max_length=15, null=True)
+    ramo = models.ForeignKey(Ramo, related_name='orgs', null=True, on_delete=models.CASCADE)
     ie = models.CharField(max_length=55, null=True)
     site= models.CharField(max_length=155, null=True)
     email = models.EmailField(blank=True, null=True)
@@ -39,26 +71,14 @@ class Organizacao (models.Model):
     cep = models.CharField(max_length=64, null=True, blank=True)
     cidade = models.CharField(max_length=100, blank=True, null=True)
     uf = models.CharField(max_length=100, blank=True, null=True)
-    erp = models.CharField(max_length=100, blank=True, null=True)
+    erpe = models.ForeignKey(Erp, related_name='orgs', blank=True,null=True ,on_delete=models.CASCADE)
+    contatos = models.ManyToManyField(Cliente, related_name='orgs',blank=True)
     created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True)
     updated = models.ForeignKey(Updated, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return str(self.razaosocial)
 
-
-class Cliente(models.Model):
-    nome = models.CharField(max_length=100, null=True)
-    tipo = models.CharField(max_length=1, null=True)
-    fone = models.CharField(max_length=15, null=True)
-    celular = models.CharField(max_length=15, null=True)
-    email = models.CharField(max_length=100, null=True)
-    skype = models.CharField(max_length=65, null=True)
-    created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True)
-    updated = models.ForeignKey(Updated, on_delete=models.CASCADE, null=True)
-
-    def __str__(self):
-        return str(self.nome) if self.nome else ' '
 
 
 class Produto (models.Model):
@@ -78,6 +98,13 @@ class Vendedor(models.Model):
     def __str__(self):
         return str(self.nome)
 
+class Obs(models.Model):
+    texto = models.CharField(max_length=255, null=True)
+    data = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.data)
+
 
 class Ticket (models.Model):
     titulo = models.CharField(max_length=100, blank=True)
@@ -90,7 +117,7 @@ class Ticket (models.Model):
     termometro = models.CharField(max_length=100, null=True, blank=True)
     vendedor = models.ForeignKey(
         Vendedor,  on_delete=models.CASCADE, null=True)
-    obs = models.CharField(max_length=100, blank=True, null=True)
+    obs = models.ManyToManyField(Obs, related_name='tickets')
     status = models.CharField(max_length=155, blank=True, default='Aberto')
     created = models.ForeignKey(Created, on_delete=models.CASCADE, null=True)
     updated = models.ForeignKey(Updated, on_delete=models.CASCADE, null=True)
@@ -98,6 +125,7 @@ class Ticket (models.Model):
 
     def __str__(self):
         return str(self.titulo)
+
 
 
 class Atividade (models.Model):

@@ -9,7 +9,7 @@ import { CrudService } from '../services/crud.service';
 })
 export class OrganizationDetailComponent implements OnInit {
 
-  org:any;
+  org: any;
 
   constructor( private route: ActivatedRoute, private crudService: CrudService) {
 
