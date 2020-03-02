@@ -43,7 +43,7 @@ export class ProductsComponent implements OnInit {
     this.getterProdutos();
   }
 
-  displayedColumns: string[] = ['nome', 'codigo', 'modalidade', 'columnEdit', 'columnDelete'];
+  displayedColumns: string[] = ['nome', 'codigo', 'columnEdit', 'columnDelete'];
 
   getterProdutos() {
     this.matdata = [];
