@@ -111,40 +111,45 @@ export class OrganizationRegisterComponent implements OnInit {
     console.log(this.org);
     console.log(this.contato);
 
+    if (this.org.codigo || this.org.razaosocial || this.org.nomefantasia || this.org.cnpj || this.org.ie || this.org.ramo || this.org.cep
+      || this.org.rua || this.org.bairro || this.org.complemento || this.org.cidade || this.org.uf || this.org.telefone || this.org.email
+      || this.org.site || this.org.erp === '') {
+        swal({
+          icon: "error",
+          text: "Todos dados devem ser preenchidos",
+          timer: 1800,
+          buttons: {
+            buttons: false
+          }
+        });
+      } else {
+        this.crudService.saveNewOrg(this.org).subscribe(
+          data => {
+            swal({
+              icon: "success",
+              text: "Empresa salva com sucesso!",
+              timer: 1800,
+              buttons: {
+                buttons: false
+              }
+            });
+            // this.getterOrg();
+            // setTimeout(this.reiniciar, 1001);
+            console.log(data);
+          },
+          error => {
+            // this.getterOrg();
+            console.error(error);
+            // setTimeout(this.reiniciar, 1001);
+          }
+        );
+      }
+  }
 
-    let razao_s = this.org.razaosocial;
-
-    if (razao_s === '') {
-      swal({
-        icon: "error",
-        text: "Razão Social não preenchida!",
-        timer: 1800,
-        buttons: {
-          buttons: false
-        }
-      });
-    } else {
-      this.crudService.saveNewOrg(this.org).subscribe(
-        data => {
-          swal({
-            icon: "success",
-            text: "Empresa salva com sucesso!",
-            timer: 1800,
-            buttons: {
-              buttons: false
-            }
-          });
-          // this.getterOrg();
-          // setTimeout(this.reiniciar, 1001);
-          console.log(data);
-        },
-        error => {
-          // this.getterOrg();
-          console.error(error);
-          // setTimeout(this.reiniciar, 1001);
-        }
-      );
-    }
+  addFields() {
+    var currentDiv = document.getElementById('duplicate');
+    var clonedDiv = currentDiv.cloneNode(true);
+    currentDiv.parentNode.insertBefore(clonedDiv, currentDiv.nextSibling);
   }
 
 }
