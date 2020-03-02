@@ -85,28 +85,7 @@
     </div>
   </div>
 
-  <mat-divider></mat-divider>
-
-  <div class="div-filters">
-    <button type="button" class="btn btn-outline-dark button-all" (click)="dblclic()">
-      Todos
-    </button>
-    <mat-divider [vertical]="true" class="divider-vertical"></mat-divider>
-    <!-- <button mat-icon-button 
-            class="buttons-filter" 
-            (keyup)="applyFilter($event)" 
-            (click)="filterCrtl()">
-      <mat-icon>people</mat-icon>
-      Controle
-    </button>
-    <button mat-icon-button 
-            class="buttons-filter" 
-            (keyup)="applyFilter($event)" 
-            (click)="filterPlan()">
-      <mat-icon>business</mat-icon>
-      Planejamento
-    </button> -->
-  </div>
+  <mat-divider style="margin-bottom: 15px;"></mat-divider>
 
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="nome">
@@ -127,8 +106,6 @@
       </td>
     </ng-container>
 
-<<<<<<< HEAD
-=======
     <!-- <ng-container matColumnDef="modalidade">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         Modalidade
@@ -138,7 +115,6 @@
       </td>
     </ng-container> -->
 
->>>>>>> 99cf12304c04bb4784ec9b49784d1011eb67af42
     <ng-container matColumnDef="columnEdit">
       <th mat-header-cell *matHeaderCellDef> 
         Editar 
