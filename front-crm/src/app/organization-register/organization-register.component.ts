@@ -30,8 +30,8 @@ export class OrganizationRegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  code: any;
-  generateCode() {
+  code1: any;
+  generateCode1() {
     let randomString = function(lenght) {
       let text = "";
       let possible = "0123456789"
@@ -42,8 +42,24 @@ export class OrganizationRegisterComponent implements OnInit {
       return text;
     }
 
-    this.code = randomString(8);
-    console.log(this.code);
+    this.code1 = randomString(8);
+    console.log(this.code1);
+  }
+
+  code2: any;
+  generateCode2() {
+    let randomString = function(lenght) {
+      let text = "";
+      let possible = "0123456789"
+
+      for(let i = 0; i < lenght; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return text;
+    }
+
+    this.code2 = randomString(8);
+    console.log(this.code2);
   }
 
   getterRamo() {
@@ -89,14 +105,6 @@ export class OrganizationRegisterComponent implements OnInit {
 
   exit() {
     this.router.navigate([`/company/`]);
-  }
-
-  goToRamo() {
-    window.open('/ramo');
-  }
-
-  goToERP() {
-    window.open('/erp');
   }
 
   save() {
