@@ -29,8 +29,12 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-danger">Marcar como Perdido</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Cancelar
+          </button>
+          <button type="button" class="btn btn-danger">
+            Marcar como Perdido
+          </button>
         </div>
       </div>
     </div>
@@ -47,11 +51,17 @@
       </div>
       <div class="flex" style="padding: 0;">
         <img src="../../assets/moeda.png" class="img1" />
-        <p class="bold"> R$ {{business.valorestimado}}</p>
+        <p class="bold"> 
+          R$ {{business.valorestimado}}
+        </p>
         <img src="../../assets/contato.png" class="img1" />
-        <p> {{business.cliente.nome}} </p>
+        <p> 
+          {{business.cliente.nome}} 
+        </p>
         <img src="../../assets/empresa.png" class="img1" />
-        <p> {{business.org.razaosocial}} </p>
+        <p> 
+          {{business.org.razaosocial}} 
+        </p>
         <img src="../../assets/termometro.png" class="img1" />
         <p>Termômetro:</p>
         <div class="margin5">
@@ -94,8 +104,12 @@
     </lottie-animation-view>
     <div class="col-1">
       <div class="div-vendedor">
-        <p style="font-size: 15px;"> Vendedor </p>
-        <p style="font-size: 20px;"> {{business.vendedor}} </p>
+        <p style="font-size: 15px;"> 
+          Vendedor 
+        </p>
+        <p style="font-size: 20px;"> 
+          {{business.vendedor}} 
+        </p>
         <!-- <p style="font-size: 12px;" mask="9999-99-99" *ngIf="(business.created)"> Criado em
           {{business.created.datetime}} </p> -->
       </div>
@@ -115,8 +129,8 @@
       </div>
       <div  class="md-step process"
             *ngIf="(business.estagio.id == 1)"
-            id="1"
-            (click)="changeid(2)">
+            (click)="changeid(3)"
+            id="1">
         <div class="md-step-circle ">
           <mat-icon> priority_high </mat-icon>
         </div>
@@ -125,18 +139,17 @@
         <div class="md-step-bar-right"></div>
       </div>
       <div  class="md-step "
-            *ngIf="(business.estagio.id != 1 && business.estagio.id < 1)"
-            id="1"
-            (click)="changeid()">
+            *ngIf="(business.estagio.id < 1)"
+            (click)="changeid()"
+            id="1"><!-- business.estagio.id != 1 &&  -->
         <div class="md-step-circle"></div>
         <div class="md-step-title">Prospecção</div>
         <div class="md-step-bar-right"></div>
       </div>
 
-
       <div  class="md-step active "
-            *ngIf="(business.estagio.id != 3 && business.estagio.id > 3)"
-            id="3">
+            *ngIf="(business.estagio.id > 3)"
+            id="3"><!--  business.estagio.id != 3 &&  -->
         <div class="md-step-circle ">
           <mat-icon> done </mat-icon>
         </div>
@@ -147,6 +160,7 @@
       </div>
       <div  class="md-step process"
             *ngIf="(business.estagio.id == 3)"
+            (click)="changeid(4)"
             id="3">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
@@ -157,8 +171,8 @@
         <div class="md-step-bar-right"></div>
       </div>
       <div  class="md-step md-step-1"
-            *ngIf="(business.estagio.id != 3 && business.estagio.id < 3)"
-            id="3">
+            *ngIf="(business.estagio.id < 3)"
+            id="3"><!-- business.estagio.id != 3 &&  -->
         <div class="md-step-circle"></div>
         <div class="md-step-title">Contatado</div>
 
@@ -166,9 +180,9 @@
         <div class="md-step-bar-right"></div>
       </div>
 
-
       <div  class="md-step process"
             *ngIf="(business.estagio.id==4)"
+            (click)="changeid(5)"
             id="4">
         <div class="md-step-circle ">
           <mat-icon> priority_high </mat-icon>
@@ -179,9 +193,9 @@
         <div class="md-step-bar-right"> </div>
       </div>
       <div  class="md-step"
-            *ngIf="(business.estagio.id!=4 && business.estagio.id < 4)"
-            id="4">
-        <div class="md-step-circle ">
+            *ngIf="(business.estagio.id < 4)"
+            id="4"><!--business.estagio.id!=4 &&  -->
+         <div class="md-step-circle ">
           <mat-icon> </mat-icon>
         </div>
         <div class="md-step-title">Cliente Potencial</div>
@@ -190,9 +204,9 @@
         <div class="md-step-bar-right"> </div>
       </div>
       <div  class="md-step active"
-            *ngIf="(business.estagio.id!=4 && business.estagio.id > 4)"
+            *ngIf="(business.estagio.id > 4)"
             id="4">
-        <div class="md-step-circle ">
+        <div class="md-step-circle "><!-- business.estagio.id!=4 &&  -->
           <mat-icon> done </mat-icon>
         </div>
         <div class="md-step-title">   Cliente Potencial </div>
@@ -201,10 +215,9 @@
         <div class="md-step-bar-right"> </div>
       </div>
 
-
       <div  class="md-step active"
-            *ngIf="(business.estagio.id != 5 && business.estagio.id > 5)"
-            id="5">
+            *ngIf="(business.estagio.id > 5)"
+            id="5"><!--business.estagio.id != 5 &&  -->
         <div class="md-step-circle">
           <mat-icon> done </mat-icon>
         </div>
@@ -215,29 +228,30 @@
       </div>
       <div  class="md-step process"
             *ngIf="(business.estagio.id == 5)"
+            (click)="changeid(6)"
             id="5">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
         </div>
-        <div class="md-step-title">   Demo Agendada </div>
+        <div class="md-step-title"   >Demo Agendada </div>
         <div class="md-step-optional">Em processo   </div>
-        <div class="md-step-bar-left">  </div>
+        <div class="md-step-bar-left" > </div>
         <div class="md-step-bar-right"> </div>
       </div>
       <div  class="md-step"
-            *ngIf="(business.estagio.id != 5 && business.estagio.id < 5)"
-            id="5">
+            *ngIf="(business.estagio.id < 5)"
+            id="5"><!-- business.estagio.id != 5 &&  -->
         <div class="md-step-circle">
           <mat-icon> </mat-icon>
         </div>
         <div class="md-step-title">Demo Agendada</div>
-        <div class="md-step-bar-left">  </div>
+        <div class="md-step-bar-left" > </div>
         <div class="md-step-bar-right"> </div>
       </div>
 
       <div  class="md-step active"
-            *ngIf="(business.estagio.id != 6 && business.estagio.id > 6)"
-            id="6">
+            *ngIf="(business.estagio.id > 6)"
+            id="6"><!-- business.estagio.id != 6 &&  -->
         <div class="md-step-circle">
           <mat-icon> done </mat-icon>
         </div>
@@ -248,6 +262,7 @@
       </div>
       <div  class="md-step process"
             *ngIf="(business.estagio.id == 6)"
+            (click)="changeid(7)"
             id="6">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
@@ -258,8 +273,8 @@
         <div class="md-step-bar-right"> </div>
       </div>
       <div  class="md-step"
-            *ngIf="(business.estagio.id != 6 && business.estagio.id < 6)"
-            id="6">
+            *ngIf="(business.estagio.id < 6)"
+            id="6"><!-- business.estagio.id != 6 &&  -->
         <div class="md-step-circle">
           <mat-icon> </mat-icon>
         </div>
@@ -269,8 +284,8 @@
       </div>
 
       <div  class="md-step active"
-            *ngIf="(business.estagio.id != 7 && business.estagio.id > 7)"
-            id="7">
+            *ngIf="(business.estagio.id > 7)"
+            id="7"><!-- business.estagio.id != 7 &&  -->
         <div class="md-step-circle">
           <mat-icon> done </mat-icon>
         </div>
@@ -279,7 +294,10 @@
         <div class="md-step-bar-left">  </div>
         <div class="md-step-bar-right"> </div>
       </div>
-      <div class="md-step process" *ngIf="(business.estagio.id == 7)" id="7">
+      <div  class="md-step process" 
+            *ngIf="(business.estagio.id == 7)" 
+            (click)="changeid(8)"
+            id="7">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
         </div>
@@ -288,8 +306,10 @@
         <div class="md-step-bar-left">  </div>
         <div class="md-step-bar-right"> </div>
       </div>
-      <div class="md-step" *ngIf="(business.estagio.id != 7 && business.estagio.id < 7)" id="7">
-        <div class="md-step-circle">
+      <div  class="md-step" 
+            *ngIf="(business.estagio.id < 7)" 
+            id="7"><!--business.estagio.id != 7 &&  -->
+        <div class="md-step-circle"> 
           <mat-icon> </mat-icon>
         </div>
         <div class="md-step-title">Negociações Iniciais</div>
@@ -297,15 +317,20 @@
         <div class="md-step-bar-right"> </div>
       </div>
 
-      <div class="md-step active" *ngIf="(business.estagio.id != 8 && business.estagio.id > 8)" id="8">
-        <div class="md-step-circle">
+      <div  class="md-step active" 
+            *ngIf="(business.estagio.id > 8)" 
+            id="8"> <!-- business.estagio.id != 8 &&  -->
+       <div class="md-step-circle">
           <mat-icon> done </mat-icon>
         </div>
         <div class="md-step-title">   Cliente   </div>
         <div class="md-step-optional">10/02/2020</div>
         <div class="md-step-bar-left"></div>
       </div>
-      <div class="md-step process" *ngIf="(business.estagio.id == 8 )" id="8">
+      <div  class="md-step process" 
+            *ngIf="(business.estagio.id == 8 )" 
+            (click)="changeid(9)"
+            id="8">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
         </div>
@@ -313,14 +338,15 @@
         <div class="md-step-optional">Em processo</div>
         <div class="md-step-bar-left"></div>
       </div>
-      <div class="md-step" *ngIf="(business.estagio.id != 8 && business.estagio.id < 8)" id="8">
+      <div  class="md-step" 
+            *ngIf="(business.estagio.id < 8)" 
+            id="8"><!-- business.estagio.id != 8 &&  -->
         <div class="md-step-circle">
           <mat-icon> </mat-icon>
         </div>
         <div class="md-step-title">Cliente</div>
         <div class="md-step-bar-left"></div>
       </div>
-
     </div>
   </div>
 
@@ -366,17 +392,41 @@
           <div class="col-12 mg-t-10">
             <ul class="list-group list-group-flush">
               <li class="list-group-item p">
-                  <b class="b-b">28/02/2020 10:57</b> <br>
-                  <label class="b">Antes: </label> <label> Demo agendada para dia 28/02 às 9h</label>
+                  <b class="b-b">
+                    28/02/2020 10:57
+                  </b> 
                   <br>
-                  <label class="b">Depois:</label> <label> Demo aprensentada dia 28/02 às 9h</label>
+                  <label class="b">
+                    Antes: 
+                  </label> 
+                  <label> 
+                    Demo agendada para dia 28/02 às 9h
+                  </label>
+                  <br>
+                  <label class="b">Depois:</label> 
+                  <label> 
+                    Demo aprensentada dia 28/02 às 9h
+                  </label>
               </li>
 
               <li class="list-group-item p">
-                <b class="b-b">25/02/2020 17:11</b> <br>
-                <label class="b">Antes: </label> <label>Cliente Contatado</label>
+                <b class="b-b">
+                  25/02/2020 17:11
+                </b> 
                 <br>
-                <label class="b">Depois: </label> <label>Demo agendada para dia 28/02 às 9h</label>
+                <label class="b">
+                  Antes: 
+                </label> 
+                <label>
+                  Cliente Contatado
+                </label>
+                <br>
+                <label class="b">
+                  Depois: 
+                </label> 
+                <label>
+                  Demo agendada para dia 28/02 às 9h
+                </label>
               </li>
             </ul>
           </div>
@@ -388,11 +438,13 @@
             </div>
             <ul *ngIf="(business.atividades.length > 0)"  class="list-group list-group-flush">
               <li *ngFor="let item of business.atividades"  class="list-group-item p">
-                <p> {{item.dataini}} - {{item.tipo}}</p>
-                <b>{{item.assunto}}</b>
-
+                <p> 
+                  {{item.dataini}} - {{item.tipo}}
+                </p>
+                <b>
+                  {{item.assunto}}
+                </b>
               </li>
-
             </ul>
           </div>
         </mat-tab>
@@ -435,15 +487,32 @@
     </div>
 
     <div class=" col-10 ">
-      <h4> {{business.cliente.nome}}</h4>
+      <h4> 
+        {{business.cliente.nome}}
+      </h4>
       <div class="mg-t-10">
-        <p class="pdiv"> <b>Telefone:</b> {{business.cliente.fone}} </p>
+        <p class="pdiv"> 
+          <b>
+            Telefone:
+          </b> 
+          {{business.cliente.fone}} 
+        </p>
       </div>
       <div class="mg-t-10">
-        <p class="pdiv"> <b>Email:</b> {{business.cliente.email}} </p>
+        <p class="pdiv"> 
+          <b>
+            Email:
+          </b> 
+          {{business.cliente.email}} 
+        </p>
       </div>
       <div class="mg-t-10">
-        <p class="pdiv"> <b>Skype:</b> {{business.cliente.skype}} </p>
+        <p class="pdiv"> 
+          <b>
+            Skype:
+          </b> 
+          {{business.cliente.skype}} 
+        </p>
       </div>
     </div>
   </div>

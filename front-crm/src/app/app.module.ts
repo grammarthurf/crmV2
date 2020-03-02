@@ -59,6 +59,7 @@ import { registerLocaleData } from '@angular/common';
 import { OrganizationRegisterComponent } from './organization-register/organization-register.component';
 import { ErpComponent } from './erp/erp.component';
 import { RamoComponent } from './ramo/ramo.component';
+import { LoginComponent } from './login/login.component';
 registerLocaleData(localePt);
 
 @NgModule({
@@ -78,7 +79,8 @@ registerLocaleData(localePt);
     CalendarComponent,
     OrganizationRegisterComponent,
     ErpComponent,
-    RamoComponent
+    RamoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

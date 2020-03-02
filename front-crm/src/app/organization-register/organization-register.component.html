@@ -110,8 +110,6 @@
         <option *ngFor="let item of erpsapi" value="{{item.id}}">{{item.desc}}</option>
       </select>
     </div>
-
-    <button class="btn btn-primary" (click)="save()" style="margin-left: 15px;">Salvar</button>
   </div>
 
 
@@ -169,7 +167,7 @@
         </div>
       </div>
       <button class="btn btn-secondary" (click)="exit()">Sair</button>
-      <button class="btn btn-primary" (click)="addContato()">Adicionar Contato</button>
+      <button class="btn btn-primary" (click)="save()" style="margin-left: 10px;">Salvar</button>
     </div>
     <div class="col-md-6">
       <div *ngFor="let item of org.contatos" class="col-sm-12">

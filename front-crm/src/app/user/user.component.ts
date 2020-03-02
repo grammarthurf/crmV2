@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CrudService } from '../services/crud.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -6,10 +8,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  id: any;
+  user:any;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private crudService: CrudService) {
+  }
 
   ngOnInit() {
+    this.loadUser();
+  }
+
+  loadUser(){
+    const id = this.route.snapshot.paramMap.get("id");
+    this.getterUser(id);
+  }
+
+  getterUser(id) {
+    this.crudService.getVendedores(id).subscribe(
+      data => {
+        this.user = data;
+        console.log(this.user);
+
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 
 }

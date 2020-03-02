@@ -68,6 +68,12 @@ export class CrudService {
     });
   }
 
+  public getVendedores(id): Observable<any> {
+    return this.http.get(`${this.baseUrl}vendedor/${id}/`, {
+      headers: this.htttpHeaders
+    });
+  }
+
   public getPerson(id): Observable<any> {
     return this.http.get(`${this.baseUrl}clientes/${id}/`, {
       headers: this.htttpHeaders
@@ -124,10 +130,17 @@ export class CrudService {
   public updateTicket(estagioUpdate, ticket): Observable<any> {
 
     console.log('ESTAGIOUPDADE :' , typeof(estagioUpdate));
-    const body = { id: parseInt(ticket.id), titulo: ticket.titulo, estagio: estagioUpdate.toString(),
-      cliente: ticket.cliente.id.toString(), org: ticket.org.id.toString(),
-       produto: ticket.produto, valorestimado: ticket.valorestimado, termometro: ticket.termometro,
-        vendedor: ticket.vendedor, obs: ticket.obs, status: ticket.status  };
+    const body =  { id: parseInt(ticket.id), 
+                    titulo: ticket.titulo, 
+                    estagio: estagioUpdate.toString(),
+                    cliente: ticket.cliente.id.toString(), 
+                    org: ticket.org.id.toString(),
+                    produto: ticket.produto, 
+                    valorestimado: ticket.valorestimado, 
+                    termometro: ticket.termometro,
+                    vendedor: ticket.vendedor, 
+                    obs: ticket.obs, 
+                    status: ticket.status};
     console.log('body:', body);
 
     return this.http.put(this.baseUrl + 'ticket/' + ticket.id + '/' , body, {
@@ -137,9 +150,17 @@ export class CrudService {
 
   public updateTicketDetails(ticket): Observable<any> {
 
-    const body = { id: parseInt(ticket.id), titulo: ticket.titulo, estagio: ticket.estagio.id, cliente: ticket.cliente.id.toString(), org: ticket.org.id.toString(),
-       produto: ticket.produto, valorestimado: ticket.valorestimado, termometro: ticket.termometro,
-        vendedor: ticket.vendedor, obs: ticket.obs, status: ticket.status  };
+    const body =  { id: parseInt(ticket.id), 
+                    titulo: ticket.titulo, 
+                    estagio: ticket.estagio.id, 
+                    cliente: ticket.cliente.id.toString(), 
+                    org: ticket.org.id.toString(),
+                    produto: ticket.produto, 
+                    valorestimado: ticket.valorestimado, 
+                    termometro: ticket.termometro,
+                    vendedor: ticket.vendedor, 
+                    obs: ticket.obs, 
+                    status: ticket.status };
     console.log('body:', body);
 
     return this.http.put(this.baseUrl + 'ticket/' + ticket.id + '/' , body, {
@@ -149,8 +170,14 @@ export class CrudService {
 
   public updatePerson(person): Observable<any> {
 
-    const body = { id: parseInt(person.id), nome: person.nome, tipo: person.tipo, fone: person.fone, celular: person.celular.id,
-       email: person.email, skype: person.skype, org: person.org.id };
+    const body =  { id: parseInt(person.id), 
+                    nome: person.nome, 
+                    tipo: person.tipo, 
+                    fone: person.fone, 
+                    celular: person.celular.id,
+                    email: person.email, 
+                    skype: person.skype, 
+                    org: person.org.id };
     console.log('body:', body);
 
     return this.http.put(this.baseUrl + 'clientes/' + person.id + '/' , body, {
@@ -160,9 +187,16 @@ export class CrudService {
 
   public updateOrg(org): Observable<any> {
 
-    const body = { id: parseInt(org.id), codigo: org.codigo, razaosocial: org.razaosocial, nomefantasia: org.nomefantasia, rua: org.rua,
-       bairro: org.bairro, cep: org.cep, cidade: org.cidade,
-        uf: org.uf, erp: org.erp };
+    const body =  { id: parseInt(org.id), 
+                    codigo: org.codigo, 
+                    razaosocial: org.razaosocial, 
+                    nomefantasia: org.nomefantasia, 
+                    rua: org.rua,
+                    bairro: org.bairro, 
+                    cep: org.cep, 
+                    cidade: org.cidade,
+                    uf: org.uf, 
+                    erp: org.erp };
     console.log('body:', body);
 
     return this.http.put(this.baseUrl + 'orgs/' + org.id + '/' , body, {
