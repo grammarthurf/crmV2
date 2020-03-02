@@ -149,7 +149,7 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Prospecção</p>
-          <p>{{tickets1.valor | currency:'BRL':'symbol':'0.0':'pt'}} • {{tickets1.tickets.length}} Neg.  </p>
+          <p>{{tickets1.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets1.tickets.length}} Neg.  </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
@@ -171,7 +171,7 @@
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
-            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.0':'pt'}}</p>
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0)"  id="green">check_circle_outline</mat-icon>
             <mat-icon  *ngIf="(item.atividades.length == 0)" id="orange">error_outline</mat-icon>
             <mat-icon *ngIf="( item.atividades.length > 0 && dataCheck(item.atividades.dataini))"  id="red">highlight_off</mat-icon>
@@ -184,17 +184,17 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Contatado</p>
-          <p>{{tickets3.valor | currency:'BRL':'symbol':'0.0':'pt'}} • {{tickets3.tickets.length}} Neg. </p>
+          <p>{{tickets2.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets2.tickets.length}} Neg. </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
 
       <div  cdkDropList
-            [cdkDropListData]="tickets3.tickets"
+            [cdkDropListData]="tickets2.tickets"
             class="example-list"
             (cdkDropListDropped)="drop($event)">
         <div  class="leads"
-              *ngFor="let item of tickets3.tickets"
+              *ngFor="let item of tickets2.tickets"
               id="{{item.id}}"
               cdkDrag
               (dblclick)="goTo(item.id)">
@@ -206,7 +206,7 @@
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
-            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.0':'pt'}}</p>
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
             <!-- <mat-icon id="orange">error_outline</mat-icon> -->
             <mat-icon id="red">highlight_off</mat-icon>
@@ -219,7 +219,41 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Cliente Potencial</p>
-          <p>{{tickets4.valor | currency:'BRL':'symbol':'0.0':'pt'}} • {{tickets4.tickets.length}} Neg. </p>
+          <p>{{tickets3.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets3.tickets.length}} Neg. </p>
+        </div>
+        <img src="../../assets/arrow.png" />
+      </div>
+
+      <div  cdkDropList
+            [cdkDropListData]="tickets3.tickets"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+        <div  class="leads"
+              *ngFor="let item of tickets3.tickets"
+              id="{{item.id}}"
+              cdkDrag (dblclick)="goTo(item.id)">
+          <div class="flex">
+            <p class="limit-words">{{item.titulo}}</p>
+            <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
+            <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
+          </div>
+          <p class="limit-words">{{item.org.razaosocial}}</p>
+          <div class="flex">
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
+            <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
+            <mat-icon id="orange">error_outline</mat-icon>
+            <!-- <mat-icon id="red">highlight_off</mat-icon> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <div class="tickets test">
+        <div class="col-md-8">
+          <p>Demo Agendada</p>
+          <p>{{tickets4.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets4.tickets.length}} Neg. </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
@@ -240,41 +274,7 @@
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
-            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.0':'pt'}}</p>
-            <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
-            <mat-icon id="orange">error_outline</mat-icon>
-            <!-- <mat-icon id="red">highlight_off</mat-icon> -->
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="example-container">
-      <div class="tickets test">
-        <div class="col-md-8">
-          <p>Demo Agendada</p>
-          <p>{{tickets5.valor | currency:'BRL':'symbol':'0.0':'pt'}} • {{tickets5.tickets.length}} Neg. </p>
-        </div>
-        <img src="../../assets/arrow.png" />
-      </div>
-
-      <div  cdkDropList
-            [cdkDropListData]="tickets5.tickets"
-            class="example-list"
-            (cdkDropListDropped)="drop($event)">
-        <div  class="leads"
-              *ngFor="let item of tickets5.tickets"
-              id="{{item.id}}"
-              cdkDrag (dblclick)="goTo(item.id)">
-          <div class="flex">
-            <p class="limit-words">{{item.titulo}}</p>
-            <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
-            <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
-          </div>
-          <p class="limit-words">{{item.org.razaosocial}}</p>
-          <div class="flex">
-            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.0':'pt'}}</p>
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon id="green">check_circle_outline</mat-icon>
             <!-- <mat-icon id="orange">error_outline</mat-icon> -->
             <!-- <mat-icon id="red">highlight_off</mat-icon> -->
@@ -287,7 +287,42 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Proposta</p>
-          <p>{{tickets6.valor | currency:'BRL':'symbol':'0.0':'pt'}} • {{tickets6.tickets.length}} Neg. </p>
+          <p>{{tickets5.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets5.tickets.length}} Neg. </p>
+        </div>
+        <img src="../../assets/arrow.png" />
+      </div>
+
+      <div  cdkDropList
+            [cdkDropListData]="tickets5.tickets"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+        <div  class="leads"
+              *ngFor="let item of tickets5.tickets"
+              id="{{item.id}}"
+              cdkDrag
+              (dblclick)="goTo(item.id)">
+          <div class="flex">
+            <p class="limit-words">{{item.titulo}}</p>
+            <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
+            <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
+          </div>
+          <p class="limit-words">{{item.org.razaosocial}}</p>
+          <div class="flex">
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
+            <mat-icon id="green">check_circle_outline</mat-icon>
+            <!-- <mat-icon id="orange">error_outline</mat-icon> -->
+            <!-- <mat-icon id="red">highlight_off</mat-icon> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <div class="tickets test">
+        <div class="col-md-8">
+          <p>Negociações Inic.</p>
+          <p>{{tickets6.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets6.tickets.length}} Neg. </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
@@ -309,10 +344,10 @@
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
-            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.0':'pt'}}</p>
-            <mat-icon id="green">check_circle_outline</mat-icon>
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
+            <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
             <!-- <mat-icon id="orange">error_outline</mat-icon> -->
-            <!-- <mat-icon id="red">highlight_off</mat-icon> -->
+            <mat-icon id="red">highlight_off</mat-icon>
           </div>
         </div>
       </div>
@@ -321,10 +356,9 @@
     <div class="example-container">
       <div class="tickets test">
         <div class="col-md-8">
-          <p>Negociações Inic.</p>
-          <p>{{tickets7.valor | currency:'BRL':'symbol':'0.0':'pt'}} • {{tickets7.tickets.length}} Neg. </p>
+          <p>Clientes</p>
+          <p>{{tickets7.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets7.tickets.length}} Neg. </p>
         </div>
-        <img src="../../assets/arrow.png" />
       </div>
 
       <div  cdkDropList
@@ -344,41 +378,7 @@
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
-            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.0':'pt'}}</p>
-            <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
-            <!-- <mat-icon id="orange">error_outline</mat-icon> -->
-            <mat-icon id="red">highlight_off</mat-icon>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="example-container">
-      <div class="tickets test">
-        <div class="col-md-8">
-          <p>Clientes</p>
-          <p>{{tickets8.valor | currency:'BRL':'symbol':'0.0':'pt'}} • {{tickets8.tickets.length}} Neg. </p>
-        </div>
-      </div>
-
-      <div  cdkDropList
-            [cdkDropListData]="tickets8.tickets"
-            class="example-list"
-            (cdkDropListDropped)="drop($event)">
-        <div  class="leads"
-              *ngFor="let item of tickets8.tickets"
-              id="{{item.id}}"
-              cdkDrag
-              (dblclick)="goTo(item.id)">
-          <div class="flex">
-            <p class="limit-words">{{item.titulo}}</p>
-            <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
-            <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
-          </div>
-          <p class="limit-words">{{item.org.razaosocial}}</p>
-          <div class="flex">
-            <p class="limit-value">{{ item.valorestimado | currency:'BRL':'symbol':'0.0':'pt'}}</p>
+            <p class="limit-value">{{ item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
             <mat-icon id="orange">error_outline</mat-icon>
             <!-- <mat-icon id="red">highlight_off</mat-icon> -->
