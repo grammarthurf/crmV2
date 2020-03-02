@@ -172,5 +172,4 @@ export class OrganizationRegisterComponent implements OnInit {
     var clonedDiv = currentDiv.cloneNode(true);
     currentDiv.parentNode.insertBefore(clonedDiv, currentDiv.nextSibling);
   }
-
 }
