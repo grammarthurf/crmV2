@@ -1,3 +1,4 @@
+import { CrudService } from 'src/app/services/crud.service';
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { CrudService } from "../services/crud.service";
 import { MatTableDataSource, MatSort } from "@angular/material";
@@ -26,7 +27,7 @@ export class RamoComponent implements OnInit {
   displayedColumns: string[] = ['nome', 'columnEdit', 'columnDelete'];
   dataSource = ELEMENT_DATA;
 
-  constructor() { }
+  constructor(private crudservice: CrudService) { }
 
   deleteItem() {
     swal({
