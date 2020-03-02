@@ -10,49 +10,52 @@ import swal from 'sweetalert';
 })
 export class OrganizationRegisterComponent implements OnInit {
 
-  org = { codigo: '', razaosocial: '', nomefantasia: '', ramo: '' ,
-   cnpj: '', ie: '',  rua: '', complemento: '', bairro: '', cep: '',
-   cidade: '', uf: '', telefone: '', erp: '', email: '', site: '', contatos: [] };
+  org = {
+    codigo: '', razaosocial: '', nomefantasia: '', ramo: '',
+    cnpj: '', ie: '', rua: '', complemento: '', bairro: '', cep: '',
+    cidade: '', uf: '', telefone: '', erp: '', email: '', site: '', contatos: []
+  };
 
-  contato = { nome: '', email: '', cargo: '', dep: '', birth: '', tel: '', cel: '', skp: ''}
+  contato = { nome: '', email: '', cargo: '', dep: '', birth: '', tel: '', cel: '', skp: '' }
 
   ramosapi: any;
-  ramo = { nome: ''};
+  ramo = { nome: '' };
 
-  erpsapi:any;
-  erp = { codigo: '', desc: '', empresa: ''};
+  erpsapi: any;
+  erp = { codigo: '', desc: '', empresa: '' };
 
-  constructor(private crudService: CrudService,private router: Router) {
+  constructor(private crudService: CrudService, private router: Router) {
     this.getterErp();
     this.getterRamo();
-   }
+  }
 
   ngOnInit() {
   }
 
   code1: any;
   generateCode1() {
-    let randomString = function(lenght) {
+    let randomString = function (lenght) {
       let text = "";
       let possible = "0123456789"
 
-      for(let i = 0; i < lenght; i++) {
+      for (let i = 0; i < lenght; i++) {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
       }
       return text;
     }
 
     this.code1 = randomString(8);
+    this.org.codigo = this.code1;
     console.log(this.code1);
   }
 
   code2: any;
   generateCode2() {
-    let randomString = function(lenght) {
+    let randomString = function (lenght) {
       let text = "";
       let possible = "0123456789"
 
-      for(let i = 0; i < lenght; i++) {
+      for (let i = 0; i < lenght; i++) {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
       }
       return text;
@@ -87,8 +90,10 @@ export class OrganizationRegisterComponent implements OnInit {
 
   addContato() {
 
-    const contatovar = {nome: this.contato.nome , email: this.contato.email, cargo: this.contato.cargo,
-    dep: this.contato.dep, birth: this.contato.birth, tel: this.contato.tel, cel: this.contato.cel, skp: this.contato.skp}
+    const contatovar = {
+      nome: this.contato.nome, email: this.contato.email, cargo: this.contato.cargo,
+      dep: this.contato.dep, birth: this.contato.birth, tel: this.contato.tel, cel: this.contato.cel, skp: this.contato.skp
+    }
 
     this.org.contatos.push(contatovar)
     console.log(this.org);
@@ -111,39 +116,55 @@ export class OrganizationRegisterComponent implements OnInit {
     console.log(this.org);
     console.log(this.contato);
 
-    if (this.org.codigo || this.org.razaosocial || this.org.nomefantasia || this.org.cnpj || this.org.ie || this.org.ramo || this.org.cep
-      || this.org.rua || this.org.bairro || this.org.complemento || this.org.cidade || this.org.uf || this.org.telefone || this.org.email
-      || this.org.site || this.org.erp === '') {
-        swal({
-          icon: "error",
-          text: "Todos dados devem ser preenchidos",
-          timer: 1800,
-          buttons: {
-            buttons: false
-          }
-        });
-      } else {
-        this.crudService.saveNewOrg(this.org).subscribe(
-          data => {
-            swal({
-              icon: "success",
-              text: "Empresa salva com sucesso!",
-              timer: 1800,
-              buttons: {
-                buttons: false
-              }
-            });
-            // this.getterOrg();
-            // setTimeout(this.reiniciar, 1001);
-            console.log(data);
-          },
-          error => {
-            // this.getterOrg();
-            console.error(error);
-            // setTimeout(this.reiniciar, 1001);
-          }
-        );
-      }
+    if (this.org.razaosocial === '') {
+      swal({
+        icon: "error",
+        text: "Razão Social deve ser preenchida!",
+        timer: 1800,
+        buttons: {
+          buttons: false
+        }
+      });
+    } else if (this.org.codigo === '') {
+      swal({
+        icon: "error",
+        text: "Código deve ser preenchida!",
+        timer: 1800,
+        buttons: {
+          buttons: false
+        }
+      });
+    } else if (this.org.razaosocial === '' || this.org.codigo === '') {
+      swal({
+        icon: "error",
+        text: "Código e Razão Social devem ser preenchidos!",
+        timer: 1800,
+        buttons: {
+          buttons: false
+        }
+      });
+    } else {
+      this.crudService.saveNewOrg(this.org).subscribe(
+        data => {
+          swal({
+            icon: "success",
+            text: "Empresa salva com sucesso!",
+            timer: 1800,
+            buttons: {
+              buttons: false
+            }
+          });
+          // this.getterOrg();
+          // setTimeout(this.reiniciar, 1001);
+          console.log(data);
+        },
+        error => {
+          // this.getterOrg();
+          console.error(error);
+          // setTimeout(this.reiniciar, 1001);
+        }
+      );
+    }
   }
 
   addFields() {

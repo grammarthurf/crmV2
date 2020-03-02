@@ -30,7 +30,7 @@ export class OrganizationComponent implements OnInit {
   matdata: any = [];
   // Lista orgs:
   erroOrg: any;
-  displayedColumns: string[] = ['nome_fantasia', 'razao_social', 'endereco', 'tipo', 'erp', 'vendedor', 'columnEdit', 'columnDelete'];
+  displayedColumns: string[] = ['nome_fantasia', 'razao_social', 'endereco', 'erp', 'columnEdit', 'columnDelete'];
   erroOrgs: any;
 
   code: any;

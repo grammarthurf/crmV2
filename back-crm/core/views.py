@@ -73,9 +73,15 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
         C.cep = data['cep']
         C.cidade = data['cidade']
         C.uf = data['uf']
-        C.ramo = Ramo.objects.get(id=int(data['ramo']))
+        try: 
+            C.ramo = Ramo.objects.get(id=int(data['ramo']))
+        except:
+            pass
         C.ie = data['ie']
-        C.erp = Erp.objects.get(id=int(data['erp']))
+        try:
+            C.erpe = Erp.objects.get(id=int(data['erp']))
+        except:
+            pass
         C.save()
         contatos = data['contatos']
         for i in contatos:
