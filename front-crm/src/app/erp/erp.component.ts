@@ -50,6 +50,17 @@ export class ErpComponent implements OnInit {
     console.log(this.code);
   }
 
+  deleteItem() {
+    swal({
+      icon: "error",
+      text: "Produto excluído com sucesso!",
+      timer: 1800,
+      buttons: {
+        buttons: false
+      }
+    });
+  }
+
   ngOnInit() {
   }
 

@@ -1,7 +1,7 @@
 
 from rest_framework import viewsets
 from .serializers import ClienteSerializer, EstagioSerializer, OrganizacaoSerializer, ProdutoSerializer, TicketSerializer, VendedorSerializer, ErpSerializer, RamoSerializer , AtividadeSerializer, UserSerializer
-from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade, Created, Updated, Erp, Ramo
+from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade, Created, Updated, Erp, Ramo, Obs
 from django.core import serializers
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -73,9 +73,15 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
         C.cep = data['cep']
         C.cidade = data['cidade']
         C.uf = data['uf']
-        C.ramo = Ramo.objects.get(id=int(data['ramo']))
+        try: 
+            C.ramo = Ramo.objects.get(id=int(data['ramo']))
+        except:
+            pass
         C.ie = data['ie']
-        C.erp = Erp.objects.get(id=int(data['erp']))
+        try:
+            C.erpe = Erp.objects.get(id=int(data['erp']))
+        except:
+            pass
         C.save()
         contatos = data['contatos']
         for i in contatos:
@@ -123,9 +129,15 @@ class TicketViewSet(viewsets.ModelViewSet):
         T.org = Organizacao.objects.get(id=int(data['org']))
         T.valorestimado = int(data['valorestimado'])
         T.termometro = data['termometro']
-        T.obs = data['obs']
+        
         T.created = c
         T.save()
+        for i in data['obs']:
+            k = Obs()
+            k.texto =  i
+            k.save()
+            T.obs.add(k)
+            T.save()
 
         produtos = data['produto']
         for prod in produtos:

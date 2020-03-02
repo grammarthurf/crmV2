@@ -26,7 +26,18 @@ export class RamoComponent implements OnInit {
   displayedColumns: string[] = ['nome', 'columnEdit', 'columnDelete'];
   dataSource = ELEMENT_DATA;
 
-  constructor() { }
+  constructor(private crudservice: CrudService) { }
+
+  deleteItem() {
+    swal({
+      icon: "error",
+      text: "Produto excluído com sucesso!",
+      timer: 1800,
+      buttons: {
+        buttons: false
+      }
+    });
+  }
 
   ngOnInit() {
   }

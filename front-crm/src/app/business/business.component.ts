@@ -16,12 +16,12 @@ export class BusinessComponent implements OnInit {
   selectedBusiness: any
 
   tickets1: any = { tickets: [], valor: '' };
+  tickets2: any = { tickets: [], valor: '' };
   tickets3: any = { tickets: [], valor: '' };
   tickets4: any = { tickets: [], valor: '' };
   tickets5: any = { tickets: [], valor: '' };
   tickets6: any = { tickets: [], valor: '' };
   tickets7: any = { tickets: [], valor: '' };
-  tickets8: any = { tickets: [], valor: '' };
 
   //Lista de Clientes
   clientesapi: any;
@@ -76,8 +76,8 @@ export class BusinessComponent implements OnInit {
   }
 
   calcAllValue() {
-    const listaTicketslist: any = [this.tickets1, this.tickets3, this.tickets4, this.tickets5,
-    this.tickets6, this.tickets7, this.tickets8]
+    const listaTicketslist: any = [this.tickets1, this.tickets2, this.tickets3, this.tickets4,
+    this.tickets5, this.tickets6, this.tickets7]
 
     listaTicketslist.forEach(e => {
       this.calcValueestagio(e);
@@ -226,12 +226,12 @@ export class BusinessComponent implements OnInit {
     if (status == undefined || status == 'open') {
 
       this.tickets1.tickets = [];
+      this.tickets2.tickets = [];
       this.tickets3.tickets = [];
       this.tickets4.tickets = [];
       this.tickets5.tickets = [];
       this.tickets6.tickets = [];
       this.tickets7.tickets = [];
-      this.tickets8.tickets = [];
       this.crudService.getTickets().subscribe(
         data => {
           this.ticketsapi = data;
@@ -245,27 +245,27 @@ export class BusinessComponent implements OnInit {
                   break;
                 case 3:
 
-                  this.tickets3.tickets.push(e);
+                  this.tickets2.tickets.push(e);
                   break;
                 case 4:
 
-                  this.tickets4.tickets.push(e);
+                  this.tickets3.tickets.push(e);
                   break;
                 case 5:
 
-                  this.tickets5.tickets.push(e);
+                  this.tickets4.tickets.push(e);
                   break;
                 case 6:
 
-                  this.tickets6.tickets.push(e);
+                  this.tickets5.tickets.push(e);
                   break;
                 case 7:
 
-                  this.tickets7.tickets.push(e);
+                  this.tickets6.tickets.push(e);
                   break;
                 case 8:
 
-                  this.tickets8.tickets.push(e);
+                  this.tickets7.tickets.push(e);
                   break;
                 default:
                   break;
@@ -286,12 +286,12 @@ export class BusinessComponent implements OnInit {
     if (status == 'lose') {
 
       this.tickets1.tickets = [];
+      this.tickets2.tickets = [];
       this.tickets3.tickets = [];
       this.tickets4.tickets = [];
       this.tickets5.tickets = [];
       this.tickets6.tickets = [];
       this.tickets7.tickets = [];
-      this.tickets8.tickets = [];
       this.crudService.getTickets().subscribe(
         data => {
           this.ticketsapi = data;
@@ -305,27 +305,27 @@ export class BusinessComponent implements OnInit {
                   break;
                 case 3:
 
-                  this.tickets3.tickets.push(e);
+                  this.tickets2.tickets.push(e);
                   break;
                 case 4:
 
-                  this.tickets4.tickets.push(e);
+                  this.tickets3.tickets.push(e);
                   break;
                 case 5:
 
-                  this.tickets5.tickets.push(e);
+                  this.tickets4.tickets.push(e);
                   break;
                 case 6:
 
-                  this.tickets6.tickets.push(e);
+                  this.tickets5.tickets.push(e);
                   break;
                 case 7:
 
-                  this.tickets7.tickets.push(e);
+                  this.tickets6.tickets.push(e);
                   break;
                 case 8:
 
-                  this.tickets8.tickets.push(e);
+                  this.tickets7.tickets.push(e);
                   break;
                 default:
                   break;
@@ -347,12 +347,12 @@ export class BusinessComponent implements OnInit {
     if (status == 'win') {
 
       this.tickets1.tickets = [];
+      this.tickets2.tickets = [];
       this.tickets3.tickets = [];
       this.tickets4.tickets = [];
       this.tickets5.tickets = [];
       this.tickets6.tickets = [];
       this.tickets7.tickets = [];
-      this.tickets8.tickets = [];
       this.crudService.getTickets().subscribe(
         data => {
           this.ticketsapi = data;
@@ -366,27 +366,27 @@ export class BusinessComponent implements OnInit {
                   break;
                 case 3:
 
-                  this.tickets3.tickets.push(e);
+                  this.tickets2.tickets.push(e);
                   break;
                 case 4:
 
-                  this.tickets4.tickets.push(e);
+                  this.tickets3.tickets.push(e);
                   break;
                 case 5:
 
-                  this.tickets5.tickets.push(e);
+                  this.tickets4.tickets.push(e);
                   break;
                 case 6:
 
-                  this.tickets6.tickets.push(e);
+                  this.tickets5.tickets.push(e);
                   break;
                 case 7:
 
-                  this.tickets7.tickets.push(e);
+                  this.tickets6.tickets.push(e);
                   break;
                 case 8:
 
-                  this.tickets8.tickets.push(e);
+                  this.tickets7.tickets.push(e);
                   break;
                 default:
                   break;
@@ -441,7 +441,7 @@ export class BusinessComponent implements OnInit {
           this.getterEstagios();
           this.getterTickets('open');
           console.log(data);
-          setTimeout(this.reiniciar, 1001);
+          // setTimeout(this.reiniciar, 1001);
         },
         error => {
           this.getterEstagios();
@@ -452,10 +452,9 @@ export class BusinessComponent implements OnInit {
     }
   }
 
-  reiniciar(){
-    location.reload()
-  }
-
+  // reiniciar(){
+  //   location.reload()
+  // }
 
   goTo(id) {
     this.router.navigate([`/business-detail/${id}`]);
@@ -487,30 +486,37 @@ export class BusinessComponent implements OnInit {
       case 'cdk-drop-list-6':
         console.log('8');
         this.updatedTicket(8, this.selectedBusiness)
+        this.calcAllValue();
         break;
       case 'cdk-drop-list-5':
         console.log('7');
         this.updatedTicket(7, this.selectedBusiness)
+        this.calcAllValue();
         break;
       case 'cdk-drop-list-4':
         console.log('6');
         this.updatedTicket(6, this.selectedBusiness)
+        this.calcAllValue();
         break;
       case 'cdk-drop-list-3':
         console.log('5');
         this.updatedTicket(5, this.selectedBusiness)
+        this.calcAllValue();
         break;
       case 'cdk-drop-list-2':
         console.log('4');
         this.updatedTicket(4, this.selectedBusiness)
+        this.calcAllValue();
         break;
       case 'cdk-drop-list-1':
         console.log('3');
         this.updatedTicket(3, this.selectedBusiness)
+        this.calcAllValue();
         break;
       case 'cdk-drop-list-0':
         console.log('1');
         this.updatedTicket(1, this.selectedBusiness)
+        this.calcAllValue();
         break;
       default:
         break;
