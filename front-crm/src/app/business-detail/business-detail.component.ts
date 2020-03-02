@@ -10,6 +10,7 @@ import { ActivatedRoute } from "@angular/router";
 
 export class BusinessDetailComponent implements OnInit {
   id: any;
+  
   business: any;
   estagiosapi: any;
 
@@ -98,10 +99,23 @@ export class BusinessDetailComponent implements OnInit {
   }
 
    changeid(idd: number) {
-     if (idd == 2) {
-       this.business.estagio.id != 7;
-     } 
+     if (idd == 3) {
+       this.business.estagio.id == 3;
+     } else if (idd == 4) {
+      this.business.estagio.id == 4;
+     } else if (idd == 5) {
+      this.business.estagio.id == 5;
+     } else if (idd == 6) {
+      this.business.estagio.id == 6;
+     } else if (idd == 7) {
+      this.business.estagio.id == 7;
+     } else if (idd == 8) {
+      this.business.estagio.id == 8;
+     } else if (idd == 9) {
+      this.business.estagio.id == 9;
+     }
    }
+
 
   stageWin() {
     let btnLose = document.getElementById('lose');

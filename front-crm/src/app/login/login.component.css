@@ -1,0 +1,54 @@
+/* DIVS */
+.maindiv {
+    background-image: url(../../assets/bg-login.png);
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: repeat-x;
+    padding-top: 200px;
+}
+
+.container {
+    width: 400px;
+    height: 260px;
+    background-color: #efefef;
+    border: #b6b6b6 1px solid;
+}
+
+.divright {
+    padding: 0 0 0 10px;
+}
+
+/* TXT */
+.title {
+    margin-top: 30px;
+    color: #1857a6;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: sans-serif;
+}
+
+.toright {
+    float: right;
+}
+
+/* IMG */
+.imglogo {
+    margin-top: 60px;
+} 
+
+/* INPUT */
+.mg-tp-70 {
+    margin-top: 70px;
+}
+
+.mg-tp-10 {
+    margin-top: 10px;
+}
+
+/* BTN */
+.btn1 {
+    width: 100px;
+    background-color: rgb(24, 87, 166);
+    color: #fff;
+    font-family: sans-serif;
+}

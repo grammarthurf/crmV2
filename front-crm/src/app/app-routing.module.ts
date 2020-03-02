@@ -14,6 +14,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { OrganizationRegisterComponent } from './organization-register/organization-register.component';
 import { ErpComponent } from './erp/erp.component';
 import { RamoComponent } from './ramo/ramo.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -62,7 +63,7 @@ const routes: Routes = [
     component: CrudComponent
   },
   {
-    path: "user",
+    path: "user/:id",
     component: UserComponent
   },
   {
@@ -76,6 +77,10 @@ const routes: Routes = [
   {
     path: "ramo",
     component: RamoComponent
+  },
+  {
+    path: "login",
+    component: LoginComponent
   }
 ];
 

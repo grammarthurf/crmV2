@@ -34,6 +34,22 @@ export class ErpComponent implements OnInit {
 
   constructor() { }
 
+  code: any;
+  generateCode() {
+    let randomString = function(lenght) {
+      let text = "";
+      let possible = "0123456789"
+
+      for(let i = 0; i < lenght; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return text;
+    }
+
+    this.code = randomString(8);
+    console.log(this.code);
+  }
+
   ngOnInit() {
   }
 

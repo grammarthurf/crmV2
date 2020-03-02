@@ -8,9 +8,9 @@
   <div class="row col-md-12 align-cod-button">
     <div class="form-group col-md-3">
       <label for="cod">Código</label>
-      <input [(ngModel)]="org.codigo" value="{{this.code}}" type="text" class="form-control">
+      <input [(ngModel)]="org.codigo" value="{{this.code1}}" type="text" class="form-control">
     </div>
-    <button class="btn btn-primary" (click)="generateCode()" id="code">
+    <button class="btn btn-primary" (click)="generateCode1()" id="code">
       <img src="../../assets/cod.png" id="codigo">
     </button>
   </div>
@@ -40,11 +40,11 @@
 
     <div class="form-group col-md-4">
       <label for="ramo">Ramo</label>
-      <button mat-icon-button (click)="goToRamo()">
-        <mat-icon class="icon-modal-atv icon-dif">+</mat-icon>
+      <button mat-icon-button data-toggle="modal" data-target="#ramo">
+        <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
       </button>
       <select [(ngModel)]="org.ramo" class="form-control">
-        <option *ngFor="let item of ramosapi" value="{{item.id}}" >{{item.desc}}</option>
+        <option *ngFor="let item of ramosapi" value="{{item.id}}">{{item.desc}}</option>
 
       </select>
     </div>
@@ -103,15 +103,13 @@
 
     <div class="form-group col-md-3">
       <label for="erp">ERP</label>
-      <button mat-icon-button (click)="goToERP()">
-        <mat-icon class="icon-modal-atv icon-dif">+</mat-icon>
+      <button mat-icon-button data-toggle="modal" data-target="#erp">
+        <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
       </button>
       <select [(ngModel)]="org.erp" class="form-control">
-        <option *ngFor="let item of erpsapi" value="{{item.id}}"  >{{item.desc}}</option>
+        <option *ngFor="let item of erpsapi" value="{{item.id}}">{{item.desc}}</option>
       </select>
     </div>
-
-    <button class="btn btn-primary" (click)="save()"  style="margin-left: 15px;">Salvar</button>
   </div>
 
 
@@ -120,8 +118,8 @@
   <div class="flex">
     <img src="../../assets/contato.png">
     <h5>Cadastrar Contato</h5>
-    <button mat-icon-button>
-      <mat-icon class="icon-modal-atv icon-dif">+</mat-icon>
+    <button mat-icon-button (click)="addContato()">
+      <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
     </button>
   </div>
   <div class="row">
@@ -170,23 +168,88 @@
         </div>
       </div>
       <button class="btn btn-secondary" (click)="exit()">Sair</button>
-      <button class="btn btn-primary" (click)="addContato()" >Adicionar Contato</button>
+      <button class="btn btn-primary" (click)="save()" style="margin-left: 10px;">Salvar</button>
     </div>
-  <div class="col-md-6">
-    <div *ngFor="let item of org.contatos"  class="col-sm-12">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{item.nome}}</h5>
-          <p class="card-text">{{item.cargo}}</p>
-          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    <div class="col-md-6">
+      <div *ngFor="let item of org.contatos" class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{item.nome}}</h5>
+            <p class="card-text">{{item.cargo}}</p>
+            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+          </div>
         </div>
       </div>
     </div>
-
   </div>
-
-
 </div>
 
+<div class="modal fade bd-example-modal-lg" id="ramo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ramo">Adicionar Ramo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
 
+        <div class="col-md-12">
+          <div class="form-group col-md-12">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
+        <button type="button" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="erp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="erp">Adicionar ERP</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="row col-md-12 align-cod-button">
+          <div class="form-group col-md-3">
+            <label for="cod">Código</label>
+            <input value="{{this.code2}}" type="text" class="form-control">
+          </div>
+          <button class="btn btn-primary" (click)="generateCode2()" id="code">
+            <img src="../../assets/cod.png" id="codigo">
+          </button>
+        </div>
+
+        <div class="row col-md-12">
+          <div class="form-group col-md-6">
+            <label for="empresa">Empresa</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="erp">ERP</label>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
+        <button type="button" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
 </div>

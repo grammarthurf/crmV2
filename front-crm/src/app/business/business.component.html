@@ -1,16 +1,24 @@
-<div style="margin-top: 15px; margin-left: 15px;" (click)="stop()">
+<div class="maindiv" (click)="stop()">
 
   <div class="flex">
-    <button type="button" class="btn btn-primary loc-button-top"
-      data-toggle="modal" data-target="#exampleModalCenter">
+    <button type="button" 
+            class="btn btn-primary loc-button-top" 
+            data-toggle="modal" 
+            data-target="#exampleModalCenter">
       <mat-icon>add</mat-icon>
       <p style="margin-left: 5px;">Lead</p>
     </button>
 
     <div style="margin-left: auto; margin-right: 20px;">
-      <button class="btn btn-link"  (click)="showOpen()"   >Leads Abertas </button>
-      <button class="btn btn-link"  (click)="showWin()"    >Ganhas        </button>
-      <button class="btn btn-link"  (click)="showLose()"   >Perdidas      </button>
+      <button class="btn btn-link"  (click)="showOpen()">
+        Leads Abertas 
+      </button>
+      <button class="btn btn-link"  (click)="showWin()">
+        Ganhas
+      </button>
+      <button class="btn btn-link"  (click)="showLose()">
+        Perdidas      
+      </button>
       <!-- <button class="btn btn-link"  (click)="showExclude()">Excluídas     </button> -->
     </div>
   </div>
@@ -77,9 +85,14 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="exampleInputEmail1">Valor Estimado</label>
-                <input [(ngModel)]="ticket.valorestimado" type="text" class="form-control" id="value"
-                  aria-describedby="emailHelp" placeholder="Valor" currencyMask
-                  [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"/>
+                <input  [(ngModel)]="ticket.valorestimado" 
+                        type="text" 
+                        class="form-control" 
+                        id="value" 
+                        aria-describedby="emailHelp" 
+                        placeholder="Valor" 
+                        currencyMask
+                        [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"/>
               </div>
 
               <div class="form-group">
@@ -88,7 +101,8 @@
                         type="range"
                         class="form-control-range"
                         id="thermometro"
-                  value="1" step="49"/>
+                        value="1" 
+                        step="49"/>
                 <div style="display: flex;">
                   <span>Ruim  </span>
                   <span>Bom   </span>
@@ -102,8 +116,10 @@
               <button mat-icon-button (click)="redirectToAdd('/person')">
                 <mat-icon class="icon-modal-lead">add</mat-icon>
               </button>
-              <select *ngIf="clientesapi" [(ngModel)]="ticket.cliente" class="form-control"
-                id="exampleFormControlSelect1">
+              <select *ngIf="clientesapi" 
+                      [(ngModel)]="ticket.cliente" 
+                      class="form-control" 
+                      id="exampleFormControlSelect1">
                 <option *ngFor="let cliente of clientesapi" value="{{cliente.id}}">
                   {{cliente.nome}}
                 </option>
@@ -136,7 +152,9 @@
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
             Sair
           </button>
-          <button (click)="save()" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+          <button (click)="save()" class="btn btn-primary" data-dismiss="modal">
+            Salvar
+          </button>
         </div>
       </div>
     </div>
@@ -149,7 +167,9 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Prospecção</p>
-          <p>{{tickets1.valor | currency:'BRL':'symbol':'0.0':'pt'}} • {{tickets1.tickets.length}} Neg.  </p>
+          <p>
+            {{tickets1.valor | currency:'BRL':'symbol':'0.0':'pt'}} • {{tickets1.tickets.length}} Neg. 
+          </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
@@ -169,12 +189,16 @@
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
             <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
           </div>
-          <p class="limit-words">{{item.org.razaosocial}}</p>
+          <p class="limit-words">
+            {{item.org.razaosocial}}
+          </p>
           <div class="flex">
-            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.0':'pt'}}</p>
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.0,':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0)"  id="green">check_circle_outline</mat-icon>
             <mat-icon  *ngIf="(item.atividades.length == 0)" id="orange">error_outline</mat-icon>
-            <mat-icon *ngIf="( item.atividades.length > 0 && dataCheck(item.atividades.dataini))"  id="red">highlight_off</mat-icon>
+            <mat-icon *ngIf="( item.atividades.length > 0 && dataCheck(item.atividades.dataini))" id="red">
+              highlight_off
+            </mat-icon>
           </div>
         </div>
       </div>
@@ -184,7 +208,9 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Contatado</p>
-          <p>{{tickets3.valor | currency:'BRL':'symbol':'0.0':'pt'}} • {{tickets3.tickets.length}} Neg. </p>
+          <p>
+            {{tickets3.valor | currency:'BRL':'symbol':'0.0,':'pt'}} • {{tickets3.tickets.length}} Neg. 
+          </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
@@ -199,17 +225,21 @@
               cdkDrag
               (dblclick)="goTo(item.id)">
           <div class="flex">
-            <p class="limit-words">{{item.titulo}}</p>
+            <p class="limit-words">
+              {{item.titulo}}
+            </p>
             <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
             <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
-            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.0':'pt'}}</p>
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.0,':'pt'}}</p>
             <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
             <!-- <mat-icon id="orange">error_outline</mat-icon> -->
-            <mat-icon id="red">highlight_off</mat-icon>
+            <mat-icon id="red">
+              highlight_off
+            </mat-icon>
           </div>
         </div>
       </div>
@@ -219,7 +249,9 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Cliente Potencial</p>
-          <p>{{tickets4.valor | currency:'BRL':'symbol':'0.0':'pt'}} • {{tickets4.tickets.length}} Neg. </p>
+          <p>
+            {{tickets4.valor | currency:'BRL':'symbol':'0.0,':'pt'}} • {{tickets4.tickets.length}} Neg. 
+          </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
@@ -240,9 +272,13 @@
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
-            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.0':'pt'}}</p>
+            <p class="limit-value">
+              {{item.valorestimado | currency:'BRL':'symbol':'0.0':'pt'}}
+            </p>
             <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
-            <mat-icon id="orange">error_outline</mat-icon>
+            <mat-icon id="orange">
+              error_outline
+            </mat-icon>
             <!-- <mat-icon id="red">highlight_off</mat-icon> -->
           </div>
         </div>
@@ -253,7 +289,7 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Demo Agendada</p>
-          <p>{{tickets5.valor | currency:'BRL':'symbol':'0.0':'pt'}} • {{tickets5.tickets.length}} Neg. </p>
+          <p>{{tickets5.valor | currency:'BRL':'symbol':'0.0,':'pt'}} • {{tickets5.tickets.length}} Neg. </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
@@ -274,7 +310,7 @@
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
-            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.0':'pt'}}</p>
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.0,':'pt'}}</p>
             <mat-icon id="green">check_circle_outline</mat-icon>
             <!-- <mat-icon id="orange">error_outline</mat-icon> -->
             <!-- <mat-icon id="red">highlight_off</mat-icon> -->
@@ -287,7 +323,7 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Proposta</p>
-          <p>{{tickets6.valor | currency:'BRL':'symbol':'0.0':'pt'}} • {{tickets6.tickets.length}} Neg. </p>
+          <p>{{tickets6.valor | currency:'BRL':'symbol':'0.0,':'pt'}} • {{tickets6.tickets.length}} Neg. </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>
@@ -322,7 +358,7 @@
       <div class="tickets test">
         <div class="col-md-8">
           <p>Negociações Inic.</p>
-          <p>{{tickets7.valor | currency:'BRL':'symbol':'0.0':'pt'}} • {{tickets7.tickets.length}} Neg. </p>
+          <p>{{tickets7.valor | currency:'BRL':'symbol':'0.0,':'pt'}} • {{tickets7.tickets.length}} Neg. </p>
         </div>
         <img src="../../assets/arrow.png" />
       </div>

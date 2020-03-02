@@ -58,3 +58,8 @@ button.btn-secondary {
 button.btn-secondary + button.btn-primary {
     margin-left: 10px;
 }
+
+.btns {
+    display: flex;
+    justify-content: flex-end;
+}
