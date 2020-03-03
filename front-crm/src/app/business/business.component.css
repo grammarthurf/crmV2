@@ -271,6 +271,13 @@ img {
   margin-left: auto;
 }
 
+.img-prod{
+  width: 20px; 
+  height: 20px; 
+  margin-top: 5px; 
+  margin-right: 5px;
+}
+
 img#arrow {
   height: 64px;
   margin-left: auto;
@@ -346,4 +353,16 @@ lottie-animation-view {
 
 .limit-value {
   overflow: hidden;
+}
+
+.modal-title {
+  font-weight: bold;
+}
+
+.fade1 {
+  background-color: rgba(0, 0, 0, 0.11);
+  /* opacity: 1;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out; */
 }

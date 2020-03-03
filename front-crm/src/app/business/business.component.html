@@ -54,7 +54,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Empresa</label>
-                <button mat-icon-button (click)="redirectToAdd('/company')">
+                <button mat-icon-button (click)="redirectToAdd('/company-register')">
                   <mat-icon class="icon-modal-lead">add</mat-icon>
                 </button>
                 <select *ngIf="orsgapi"
@@ -70,7 +70,7 @@
 
               <div class="form-group">
                 <label for="exampleFormControlSelect2">Produto</label>
-                <button mat-icon-button (click)="redirectToAdd('/products')">
+                <button mat-icon-button data-toggle="modal" data-target="#exampleModalProd">
                   <mat-icon class="icon-modal-lead">add</mat-icon>
                 </button>
                 <select [(ngModel)]="ticket.produto"
@@ -114,10 +114,10 @@
             </div>
             <div class="form-group col-md-6">
               <label for="exampleFormControlSelect1">Contato</label>
-              <button mat-icon-button (click)="redirectToAdd('/person')">
+              <!--<button mat-icon-button (click)="redirectToAdd('/person')">
                 <mat-icon class="icon-modal-lead">add</mat-icon>
               </button>
-               <!-- <select *ngIf="orgapi"
+                <select *ngIf="orgapi"
                       [(ngModel)]="ticket.cliente"
                       class="form-control"
                       id="exampleFormControlSelect1">
@@ -168,6 +168,50 @@
       </div>
     </div>
   </div>
+
+  <div  class="modal fade1" 
+        id="exampleModalProd" 
+        tabindex="-1" 
+        role="dialog" 
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <img src="../../assets/icone-produto.png" class="img-prod"/>
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            Cadastrar Produto
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body row">
+          <div class="form-group col-md-6">
+            <label for="codeprod"> Código</label>
+            <input type="text" class="form-control" id="codeprod" /><!-- [(ngModel)]="produto.codigo" -->
+          </div>
+ 
+
+          <div class="form-group col-md-12">
+            <label for="nomeprod"> Descrição</label>
+            <input type="text" class="form-control" id="nomeprod" required /> <!-- [(ngModel)]="produto.nome" -->
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Sair
+          </button>
+          <button type="button" (click)="save()" class="btn btn-primary" data-dismiss="modal">
+            Salvar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
 
   <hr style="width: 100%;" />
 
