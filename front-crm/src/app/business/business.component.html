@@ -20,8 +20,12 @@
     </div>
   </div>
 
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+  <div  class="modal fade" 
+        id="exampleModalCenter" 
+        tabindex="-1" 
+        role="dialog" 
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -63,7 +67,7 @@
           <div class="row">
             <div class="form-group col-md-6">
               <label for="exampleFormControlSelect2">Produto</label>
-              <button mat-icon-button (click)="redirectToAdd('/products')">
+              <button mat-icon-button data-toggle="modal" data-target="#exampleModalProd">
                 <mat-icon class="icon-modal-lead">add</mat-icon>
               </button>
               <select [(ngModel)]="ticket.produto" multiple class="form-control" id="exampleFormControlSelect2">
@@ -145,7 +149,7 @@
     </div>
   </div>
 
-  <div  class="modal fade1" 
+  <div  class="modal fade"  
         id="exampleModalProd" 
         tabindex="-1" 
         role="dialog" 
@@ -166,9 +170,10 @@
           <div class="form-group col-md-6">
             <label for="codeprod"> Código</label>
             <input type="text" class="form-control" id="codeprod" /><!-- [(ngModel)]="produto.codigo" -->
-          </div>
- 
-
+            </div>
+            <button class="btn btn-primary" (click)="generateCode1()" id="code">
+              <img src="../../assets/cod.png" id="codigo">
+            </button>
           <div class="form-group col-md-12">
             <label for="nomeprod"> Descrição</label>
             <input type="text" class="form-control" id="nomeprod" required /> <!-- [(ngModel)]="produto.nome" -->

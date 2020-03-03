@@ -1,23 +1,18 @@
+import { CrudService } from './../services/crud.service';
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { CrudService } from "../services/crud.service";
+
 import { MatTableDataSource, MatSort } from "@angular/material";
 import swal from 'sweetalert';
 
 export interface PeriodicElement {
   codigo: string;
   empresa: string;
-  erp: string;
+  desc: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {codigo: '123', empresa: 'Vedois Tecnologia', erp: 'Vedois OEE'},
-  {codigo: '123', empresa: 'Vedois Tecnologia', erp: 'Vedois OEE'},
-  {codigo: '123', empresa: 'Vedois Tecnologia', erp: 'Vedois OEE'},
-  {codigo: '123', empresa: 'Vedois Tecnologia', erp: 'Vedois OEE'},
-  {codigo: '123', empresa: 'Vedois Tecnologia', erp: 'Vedois OEE'},
-  {codigo: '123', empresa: 'Vedois Tecnologia', erp: 'Vedois OEE'},
-  {codigo: '123', empresa: 'Vedois Tecnologia', erp: 'Vedois OEE'},
-  {codigo: '123', empresa: 'Vedois Tecnologia', erp: 'Vedois OEE'}
+const erps: PeriodicElement[] = [
+  {codigo: '', empresa: '', desc: ''},
+
 ];
 
 @Component({
@@ -27,12 +22,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class ErpComponent implements OnInit {
 
+  erpsapi:any;
+  erp: any = { codigo: '', desc: '', empresa: ''}
+
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  displayedColumns: string[] = ['codigo', 'empresa', 'erp', 'columnEdit', 'columnDelete'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['codigo', 'empresa', 'desc', 'columnEdit', 'columnDelete'];
 
-  constructor() { }
+  data = Object.assign(erps);
+  dataSource = new MatTableDataSource<Element>(this.data);
+  constructor(private crudservice: CrudService) {
+    this.getterErp();
+   }
 
   code: any;
   generateCode() {
@@ -48,6 +49,44 @@ export class ErpComponent implements OnInit {
 
     this.code = randomString(8);
     console.log(this.code);
+  }
+
+  saveErp(){
+    this.crudservice.saveNewErp(this.erp).subscribe(
+      data => {
+        swal({
+          icon: "success",
+          text: "Erp salvo com sucesso!",
+          timer: 1800,
+          buttons: {
+            buttons: false
+          }
+        });
+        // this.getterOrg();
+        // setTimeout(this.reiniciar, 1001);
+        console.log(data);
+        this.getterErp();
+
+      },
+      error => {
+        // this.getterOrg();
+        console.error(error);
+        // setTimeout(this.reiniciar, 1001);
+      }
+    );
+  }
+
+  getterErp() {
+    this.crudservice.getErp().subscribe(
+      data => {
+        this.erpsapi = data;
+        console.log(data);
+        this.dataSource = new MatTableDataSource(this.erpsapi);
+      },
+      error => {
+        // this.erroAtividade = error;
+      }
+    );
   }
 
   deleteItem() {
