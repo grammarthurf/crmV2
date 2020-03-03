@@ -43,7 +43,7 @@ export class ProductsComponent implements OnInit {
     this.getterProdutos();
   }
 
-  displayedColumns: string[] = ['nome', 'codigo', 'modalidade', 'columnEdit', 'columnDelete'];
+  displayedColumns: string[] = ['nome', 'codigo', 'columnEdit', 'columnDelete'];
 
   getterProdutos() {
     this.matdata = [];
@@ -54,8 +54,7 @@ export class ProductsComponent implements OnInit {
             this.matdata.push({
               id: e.id,
               nome: e.nome,
-              codigo: e.codigo,
-              modalidade: e.modalidade
+              codigo: e.codigo
           });
         });
         this.dataSource = new MatTableDataSource(this.matdata);
@@ -73,13 +72,13 @@ export class ProductsComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  filterCrtl(){
-    this.dataSource.filter = "Controle".trim().toLowerCase();
-  }
+  // filterCrtl(){
+  //   this.dataSource.filter = "Controle".trim().toLowerCase();
+  // }
 
-  filterPlan(){
-    this.dataSource.filter = "Planejamento".trim().toLowerCase();
-  }
+  // filterPlan(){
+  //   this.dataSource.filter = "Planejamento".trim().toLowerCase();
+  // }
 
   dblclic(){
     this.dataSource.filter = "".trim().toLowerCase();
@@ -122,18 +121,13 @@ export class ProductsComponent implements OnInit {
           });
           console.log(data);
           this.getterProdutos();
-          // setTimeout(this.reiniciar, 1001);
         },
         error => {
           console.error(error);
-          // setTimeout(this.reiniciar, 1001);
+
         }
       );
     }
-  }
-
-  reiniciar(){
-    location.reload()
   }
 
   deleteItem() {

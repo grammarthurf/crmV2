@@ -544,6 +544,7 @@ export class BusinessComponent implements OnInit {
 
   ngOnInit() {
     Inputmask().mask(document.getElementById("value"));
+    
   }
 
   formatNumberBR(value) {

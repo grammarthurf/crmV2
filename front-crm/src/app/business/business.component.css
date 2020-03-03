@@ -17,6 +17,13 @@ div.tickets div {
   margin-left: 0 !important;
 }
 
+/* DIV */
+
+.maindiv {
+  margin-top: 15px; 
+  margin-left: 15px;
+}
+
 div p {
   text-align: left;
   margin-left: 5px;
@@ -39,8 +46,8 @@ div p + p {
   color: #7e7e7e;
   float: right;
   background-color: #fff;
-}
-/* LEADS  */
+} 
+
 .leads {
   border: 1px solid #c7c7c7;
   background-color: #fff;
