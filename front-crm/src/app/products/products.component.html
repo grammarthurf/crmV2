@@ -37,7 +37,9 @@
             <label for="codeprod"> Código</label>
             <input type="text" class="form-control" [(ngModel)]="produto.codigo" id="codeprod" />
           </div>
-
+          <button class="btn btn-primary" (click)="generateCode1()" id="code">
+            <img src="../../assets/cod.png" id="codigo">
+          </button>
 
           <div class="form-group col-md-12">
             <label for="nomeprod"> Descrição</label>

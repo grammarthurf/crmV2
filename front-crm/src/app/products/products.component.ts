@@ -43,6 +43,23 @@ export class ProductsComponent implements OnInit {
     this.getterProdutos();
   }
 
+  code1: any;
+  generateCode1() {
+    let randomString = function (lenght) {
+      let text = "";
+      let possible = "0123456789"
+
+      for (let i = 0; i < lenght; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return text;
+    }
+
+    this.code1 = randomString(3);
+    this.produto.codigo = this.code1;
+    console.log(this.code1);
+  }
+
   displayedColumns: string[] = ['nome', 'codigo', 'columnEdit', 'columnDelete'];
 
   getterProdutos() {

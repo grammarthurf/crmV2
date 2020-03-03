@@ -70,6 +70,23 @@ export class BusinessComponent implements OnInit {
     };
   }
 
+  // code1: any;
+  // generateCode1() {
+  //   let randomString = function (lenght) {
+  //     let text = "";
+  //     let possible = "0123456789"
+
+  //     for (let i = 0; i < lenght; i++) {
+  //       text += possible.charAt(Math.floor(Math.random() * possible.length));
+  //     }
+  //     return text;
+  //   }
+
+  //   this.code1 = randomString(3);
+  //   this.produtosapi.codigo = this.code1;
+  //   console.log(this.code1);
+  // }
+
   //FILTRAR SELECT DOS CONTATOS DE ACORDO COM O SELECIONADO EM EMPRESAS
   gettercliorg(id) {
     // console.log(id)
@@ -504,32 +521,32 @@ export class BusinessComponent implements OnInit {
     switch (event.container.id) {
       case 'cdk-drop-list-6':
         console.log('8');
-        this.updatedTicket(8, this.selectedBusiness)
+        this.updatedTicket(7, this.selectedBusiness)
         this.calcAllValue();
         break;
       case 'cdk-drop-list-5':
         console.log('7');
-        this.updatedTicket(7, this.selectedBusiness)
+        this.updatedTicket(6, this.selectedBusiness)
         this.calcAllValue();
         break;
       case 'cdk-drop-list-4':
         console.log('6');
-        this.updatedTicket(6, this.selectedBusiness)
+        this.updatedTicket(5, this.selectedBusiness)
         this.calcAllValue();
         break;
       case 'cdk-drop-list-3':
         console.log('5');
-        this.updatedTicket(5, this.selectedBusiness)
+        this.updatedTicket(4, this.selectedBusiness)
         this.calcAllValue();
         break;
       case 'cdk-drop-list-2':
         console.log('4');
-        this.updatedTicket(4, this.selectedBusiness)
+        this.updatedTicket(3, this.selectedBusiness)
         this.calcAllValue();
         break;
       case 'cdk-drop-list-1':
         console.log('3');
-        this.updatedTicket(3, this.selectedBusiness)
+        this.updatedTicket(2, this.selectedBusiness)
         this.calcAllValue();
         break;
       case 'cdk-drop-list-0':
