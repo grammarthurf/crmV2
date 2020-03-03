@@ -42,6 +42,7 @@
             </div>
           </div>
 
+<<<<<<< HEAD
           <div class="row">
             <div class="form-group col-md-6">
               <label for="exampleFormControlSelect1">Empresa</label>
@@ -59,6 +60,38 @@
               <input [(ngModel)]="ticket.valorestimado" type="text" class="form-control" id="value"
                 aria-describedby="emailHelp" placeholder="Valor" currencyMask
                 [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" />
+=======
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Empresa</label>
+                <button mat-icon-button (click)="redirectToAdd('/company')">
+                  <mat-icon class="icon-modal-lead">add</mat-icon>
+                </button>
+                <select *ngIf="orsgapi"
+                        [(ngModel)]="ticket.org"
+                        class="form-control"
+                        id="exampleFormControlSelect1"
+                        (change)="gettercliorg($event.target.value)">
+                  <option *ngFor="let orgs of orsgapi" value="{{orgs.id}}">
+                    {{orgs.razaosocial}}
+                  </option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlSelect2">Produto</label>
+                <button mat-icon-button (click)="redirectToAdd('/products')">
+                  <mat-icon class="icon-modal-lead">add</mat-icon>
+                </button>
+                <select [(ngModel)]="ticket.produto"
+                        multiple class="form-control"
+                        id="exampleFormControlSelect2">
+                  <option *ngFor="let prod of produtosapi" value="{{prod.id}}">
+                    {{prod.nome}}
+                  </option>
+                </select>
+              </div>
+>>>>>>> 681fbd85f05b6ae757ccfc0d1aebfab72964210e
             </div>
           </div>
 
@@ -93,8 +126,23 @@
               <button mat-icon-button (click)="redirectToAdd('/person')">
                 <mat-icon class="icon-modal-lead">add</mat-icon>
               </button>
+<<<<<<< HEAD
               <select *ngIf="clientesapi" [(ngModel)]="ticket.cliente" class="form-control"
                 id="exampleFormControlSelect1">
+=======
+               <!-- <select *ngIf="orgapi"
+                      [(ngModel)]="ticket.cliente"
+                      class="form-control"
+                      id="exampleFormControlSelect1">
+                <option *ngFor="let orgs of orgapi" value="{{orgs.id}}">
+                  {{orgs.contatos.nome}}
+                </option>
+              </select> -->
+             <select *ngIf="clientesapi" 
+                      [(ngModel)]="ticket.cliente" 
+                      class="form-control" 
+                      id="exampleFormControlSelect1">
+>>>>>>> 681fbd85f05b6ae757ccfc0d1aebfab72964210e
                 <option *ngFor="let cliente of clientesapi" value="{{cliente.id}}">
                   {{cliente.nome}}
                 </option>

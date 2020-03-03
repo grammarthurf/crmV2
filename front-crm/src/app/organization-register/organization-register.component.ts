@@ -167,6 +167,7 @@ export class OrganizationRegisterComponent implements OnInit {
     }
   }
 
+
   // addFields() {
   //   var currentDiv = document.getElementById('duplicate');
   //   var clonedDiv = currentDiv.cloneNode(true);
