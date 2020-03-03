@@ -174,7 +174,17 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">{{item.nome}}</h5>
-            <p class="card-text">{{item.cargo}}</p>
+            <p class="card-text">
+              {{item.email}} | 
+              {{item.cargo}} | 
+        dep.  {{item.dep}}   |
+              {{item.skp}}   |
+            </p>
+            <p class="card-text">
+              {{item.birth   | date:'dd/MM/yyyy'}} | 
+              {{item.tel}}   | 
+              {{item.cel}}
+            </p>
             <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
           </div>
         </div>

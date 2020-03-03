@@ -24,14 +24,14 @@
           <div class="col-md-12">
             <div class="form-group col-md-12">
               <label for="nome">Nome</label>
-              <input type="text" class="form-control">
+              <input [(ngModel)]="ramo.desc" type="text" class="form-control">
             </div>
           </div>
 
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
-          <button type="button" class="btn btn-primary">Salvar</button>
+          <button type="button" (click)="saveRamo()" data-dismiss="modal"  class="btn btn-primary">Salvar</button>
         </div>
       </div>
     </div>
@@ -45,7 +45,7 @@
         Nome
       </th>
       <td mat-cell *matCellDef="let element">
-        {{ element.nome }}
+        {{ element.desc }}
       </td>
     </ng-container>
 
@@ -53,7 +53,7 @@
       <th mat-header-cell *matHeaderCellDef>
         Editar
       </th>
-      <td mat-cell *matCellDef="let element" data-toggle="modal" data-target="#exampleModalCenter">
+      <td mat-cell *matCellDef="let element" data-toggle="modal" data-target="#exampleModalCenter" class="columnIcon">
         <button class="none-border-icons-action">
           <mat-icon class="icons-action icon-color-grey">
             create
@@ -66,7 +66,7 @@
       <th mat-header-cell *matHeaderCellDef>
         Excluir
       </th>
-      <td mat-cell *matCellDef="let element">
+      <td mat-cell *matCellDef="let element" class="columnIcon">
         <button class="none-border-icons-action" data-toggle="modal" data-target="#modalDelete">
           <mat-icon class="icons-action icon-color-red">
             delete

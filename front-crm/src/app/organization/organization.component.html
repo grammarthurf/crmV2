@@ -12,135 +12,6 @@
     </div>
   </div>
 
-  <!-- <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">
-            Adicione uma Empresa
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="row col-md-12 align-cod-button">
-              <div class="form-group col-md-3">
-                <label for="cod">Código</label>
-                <input [(ngModel)]="org.codigo" value="{{this.code}}" type="text" class="form-control">
-              </div>
-              <button class="btn btn-primary" (click)="generateCode()">
-                <img src="../../assets/cod.png" id="codigo">
-            </button>
-          </div>
-
-          <div class="row col-md-12">
-            <div class="form-group col-md-6">
-              <label for="raz">Razão Social</label>
-              <input [(ngModel)]="org.razaosocial" type="text" class="form-control">
-            </div>
-
-            <div class="row col-md-12">
-              <div class="form-group col-md-6">
-                <label for="raz">Razão Social</label>
-                <input [(ngModel)]="org.razaosocial" type="text" class="form-control">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="name">Nome Fantasia</label>
-                <input [(ngModel)]="org.nomefantasia" type="text" class="form-control">
-              </div>
-            </div>
-
-            <div class="row col-md-12">
-              <div class="form-group col-md-4">
-                <label for="cnpj">CNPJ</label>
-                <input type="text" class="form-control" mask="AA.AAA.AAA/AAAA-AA" placeholder="00.000.000/0000-00">
-            </div>
-
-              <div class="form-group col-md-4">
-                <label for="ie">IE</label>
-                <input [(ngModel)]="org.ie" type="text" class="form-control">
-              </div>
-
-              <div class="form-group col-md-4">
-                <label for="ativ">Atividade</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-
-            <div class="row col-md-12">
-              <div class="form-group col-md-3">
-                <label for="cep">CEP</label>
-                <input [(ngModel)]="org.cep" type="text " class="form-control" mask="AA.AAA-AAA"
-                  placeholder="00.000-000">
-              </div>
-
-              <div class="form-group col-md-6">
-                <label for="end">Endereço</label>
-                <input [(ngModel)]="org.rua" type="text" class="form-control">
-              </div>
-
-              <div class="form-group col-md-3">
-                <label for="exampleFormControlInput1">Bairro</label>
-                <input [(ngModel)]="org.bairro" class="form-control">
-              </div>
-            </div>
-
-            <div class="row col-md-12">
-              <div class="form-group col-md-4">
-                <label for="comp">Complemento</label>
-                <input [(ngModel)]="org.complemento" type="text" class="form-control">
-              </div>
-
-              <div class="form-group col-md-3">
-                <label for="cidade">Cidade</label>
-                <input [(ngModel)]="org.cidade" type="text" class="form-control">
-              </div>
-
-              <div class="form-group col-md-2">
-                <label for="estado">Estado</label>
-                <input [(ngModel)]="org.uf" type="text" class="form-control" placeholder="SC" maxlength="2">
-              </div>
-
-              <div class="form-group col-md-3">
-                <label for="telefone">Telefone</label>
-                <input [(ngModel)]="org.telefone" type="text" class="form-control" mask="(AA) AAAA-AAAA"
-                  placeholder="(  )          - ">
-              </div>
-            </div>
-
-            <div class="row col-md-12">
-              <div class="form-group col-md-5">
-                <label for="email">Email</label>
-                <input [(ngModel)]="org.email" type="text" class="form-control" placeholder="exemplo@exemplo.com.br">
-              </div>
-
-              <div class="form-group col-md-4">
-                <label for="site">Site</label>
-                <input [(ngModel)]="org.site" type="text" class="form-control" placeholder="www.site.com.br">
-              </div>
-
-              <div class="form-group col-md-3">
-                <label for="erp">ERP</label>
-                <input [(ngModel)]="org.erp" type="text" class="form-control">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            Sair
-          </button>
-          <button type="button" (click)="save()" class="btn btn-primary" data-dismiss="modal">
-            Salvar
-          </button>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
   <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -163,25 +34,15 @@
       </div>
     </div>
   </div>
-<!-- <<<<<<< HEAD
-</div>
-
-<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">
-          Tem certeza que deseja excluir a empresa ?
-        </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          Não
-======= -->
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="codigo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Código
+      </th>
+      <td mat-cell *matCellDef="let element" (click)="goTo()">
+        {{element.cod}}
+      </td>
+    </ng-container>
     <ng-container matColumnDef="razao_social">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         Razão
@@ -218,7 +79,7 @@
       <th mat-header-cell *matHeaderCellDef>
         Editar
       </th>
-      <td mat-cell *matCellDef="let element" data-toggle="modal" data-target="#exampleModalCenter">
+      <td mat-cell *matCellDef="let element" data-toggle="modal" data-target="#exampleModalCenter" class="columnIcon">
         <button class="none-border-icons-action">
           <mat-icon class="icons-action icon-color-grey">
             create
@@ -230,82 +91,12 @@
       <th mat-header-cell *matHeaderCellDef>
         Excluir
       </th>
-      <td mat-cell *matCellDef="let element">
+      <td mat-cell *matCellDef="let element" class="columnIcon">
         <button class="none-border-icons-action" data-toggle="modal" data-target="#modalDelete">
           <mat-icon class="icons-action icon-color-red">
             delete
           </mat-icon>
         </button>
-<!-- <<<<<<< HEAD
-      </div>
-    </div>
-  </div>
-</div>
-
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-  <ng-container matColumnDef="razao_social">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>
-      Razão
-    </th>
-    <td mat-cell *matCellDef="let element" (click)="goTo()">
-      {{element.razaosocial}}
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="nome_fantasia">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>
-      Nome Fantasia
-    </th>
-    <td mat-cell *matCellDef="let element" (click)="goTo()">
-      {{element.nomefantasia}}
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="endereco">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>
-      Endereço
-    </th>
-    <td mat-cell *matCellDef="let element" (click)="goTo()">
-      {{element.rua}}
-    </td>
-  </ng-container>
-  
-  <ng-container matColumnDef="erp">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>
-      ERP
-    </th>
-    <td mat-cell *matCellDef="let element" (click)="goTo()">
-      {{element.erp}}
-    </td>
-  </ng-container>
-  
-  <ng-container matColumnDef="columnEdit">
-    <th mat-header-cell *matHeaderCellDef>
-      Editar
-    </th>
-    <td mat-cell *matCellDef="let element" data-toggle="modal" data-target="#exampleModalCenter">
-      <button class="none-border-icons-action">
-        <mat-icon class="icons-action icon-color-grey">
-          create
-        </mat-icon>
-      </button>
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="columnDelete">
-    <th mat-header-cell *matHeaderCellDef>
-      Excluir
-    </th>
-    <td mat-cell *matCellDef="let element" data-toggle="modal" data-target="#modalDelete">
-      <button class="none-border-icons-action">
-        <mat-icon class="icons-action icon-color-red">
-          delete
-        </mat-icon>
-      </button>
-    </td>
-  </ng-container>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-</div>
-======= -->
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

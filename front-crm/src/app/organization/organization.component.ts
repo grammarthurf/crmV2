@@ -30,7 +30,7 @@ export class OrganizationComponent implements OnInit {
   matdata: any = [];
   // Lista orgs:
   erroOrg: any;
-  displayedColumns: string[] = ['nome_fantasia', 'razao_social', 'endereco', 'erp', 'columnEdit', 'columnDelete'];
+  displayedColumns: string[] = ['codigo', 'nome_fantasia', 'razao_social', 'endereco', 'erp', 'columnEdit', 'columnDelete'];
   erroOrgs: any;
 
   code: any;
@@ -50,16 +50,16 @@ export class OrganizationComponent implements OnInit {
     this.crudService.getOrgs().subscribe(
       data => {
         data.forEach(e => {
-            console.log();
             this.matdata.push({
               id: e.id,
+              cod: e.codigo,
               razaosocial: e.razaosocial,
               nomefantasia: e.nomefantasia,
               rua: e.rua,
               bairro: e.bairro,
               cidade: e.cidade,
               uf: e.uf,
-              erp: e.erp
+              erp: e.erp,
           });
         });
 

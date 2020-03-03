@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { CrudService } from "../services/crud.service";
-import { Router } from "@angular/router";
+import { Router, Data } from "@angular/router";
 import swal from 'sweetalert';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import * as Inputmask from "inputmask"
@@ -31,6 +31,7 @@ export class BusinessComponent implements OnInit {
 
   // Lista de Orgs:
   orsgapi: any;
+  orgapi: any;
 
   // Lista de estagios:
   estagiosapi: any;
@@ -69,8 +70,22 @@ export class BusinessComponent implements OnInit {
     };
   }
 
+  //FILTRAR SELECT DOS CONTATOS DE ACORDO COM O SELECIONADO EM EMPRESAS
+  gettercliorg(id) {
+    // console.log(id)
+    this.crudService.getOrg(id).subscribe(
+      data => {
+        this.orgapi = data;
+        console.log(data);
+      },
+      error => {
+        this.erroAtividade = error;
+      }
+    );
+  }
+
   dataCheck(dataini){
-    console.log( 'dataini: ' , dataini);
+    //console.log( 'dataini: ' , dataini);
 
     return true;
   }
@@ -84,8 +99,6 @@ export class BusinessComponent implements OnInit {
     });
 
     console.log(this.dNow);
-
-
   }
 
   calcValueestagio(ticketest) {

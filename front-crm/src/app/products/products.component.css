@@ -113,6 +113,10 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
     justify-content:center;
 }
 
+.columnIcon {
+    width: 5%;
+}
+
 /* MODAL */
 
 .img-prod{
