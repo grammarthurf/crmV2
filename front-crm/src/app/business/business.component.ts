@@ -273,19 +273,19 @@ export class BusinessComponent implements OnInit {
 
                   this.tickets1.tickets.push(e);
                   break;
-                case 3:
+                case 2:
 
                   this.tickets2.tickets.push(e);
                   break;
-                case 4:
+                case 3:
 
                   this.tickets3.tickets.push(e);
                   break;
-                case 5:
+                case 4:
 
                   this.tickets4.tickets.push(e);
                   break;
-                case 6:
+                case 5:
 
                   this.tickets5.tickets.push(e);
                   break;
@@ -333,19 +333,19 @@ export class BusinessComponent implements OnInit {
 
                   this.tickets1.tickets.push(e);
                   break;
-                case 3:
+                case 2:
 
                   this.tickets2.tickets.push(e);
                   break;
-                case 4:
+                case 3:
 
                   this.tickets3.tickets.push(e);
                   break;
-                case 5:
+                case 4:
 
                   this.tickets4.tickets.push(e);
                   break;
-                case 6:
+                case 5:
 
                   this.tickets5.tickets.push(e);
                   break;
@@ -394,19 +394,19 @@ export class BusinessComponent implements OnInit {
 
                   this.tickets1.tickets.push(e);
                   break;
-                case 3:
+                case 2:
 
                   this.tickets2.tickets.push(e);
                   break;
-                case 4:
+                case 3:
 
                   this.tickets3.tickets.push(e);
                   break;
-                case 5:
+                case 4:
 
                   this.tickets4.tickets.push(e);
                   break;
-                case 6:
+                case 5:
 
                   this.tickets5.tickets.push(e);
                   break;
@@ -515,12 +515,12 @@ export class BusinessComponent implements OnInit {
     switch (event.container.id) {
       case 'cdk-drop-list-6':
         console.log('8');
-        this.updatedTicket(7, this.selectedBusiness)
+        this.updatedTicket(8, this.selectedBusiness)
         this.calcAllValue();
         break;
       case 'cdk-drop-list-5':
         console.log('7');
-        this.updatedTicket(6, this.selectedBusiness)
+        this.updatedTicket(7, this.selectedBusiness)
         this.calcAllValue();
         break;
       case 'cdk-drop-list-4':
