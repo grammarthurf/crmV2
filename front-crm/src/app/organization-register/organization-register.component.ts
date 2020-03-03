@@ -44,7 +44,7 @@ export class OrganizationRegisterComponent implements OnInit {
       return text;
     }
 
-    this.code1 = randomString(8);
+    this.code1 = randomString(3);
     this.org.codigo = this.code1;
     console.log(this.code1);
   }
@@ -61,7 +61,7 @@ export class OrganizationRegisterComponent implements OnInit {
       return text;
     }
 
-    this.code2 = randomString(8);
+    this.code2 = randomString(3);
     console.log(this.code2);
   }
 
