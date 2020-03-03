@@ -11,12 +11,6 @@
     color: rgb(10, 24, 64);
 }
 
-.divider-vertical {
-    height: 50px;
-    margin-top: 5px;
-    margin-left: 15px;
-}
-
 .div-filters {
     display: flex; 
     margin-bottom: 5px;
@@ -65,10 +59,6 @@ table {
     margin: 20px auto 20px auto;
 }
 
-td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
-    text-align: start;
-}
-
 .mat-row:nth-child(even){
     background-color: #F4F4F4;
 }
@@ -77,21 +67,11 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
     background-color: #FFFFFF;
 }
 
-.columnIcon {
-    width: 5%;
-}
-
 .align-cod-button {
     display: flex;
     align-items: center;
 }
 
-img#codigo {
-    height: 20px;
-    margin-bottom: 8px;
-}
-
-button#code {
-    height: 35px;
-    margin-top: 15px;
+.columnIcon {
+    width: 5%;
 }

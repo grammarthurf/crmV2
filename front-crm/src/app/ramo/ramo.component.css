@@ -77,8 +77,8 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
     background-color: #FFFFFF;
 }
 
-th:first-of-type {
-    width: 90%;
+.columnIcon {
+    width: 5%;
 }
 
 .align-cod-button {

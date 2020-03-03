@@ -48,10 +48,8 @@ import { CrudComponent } from "./components/crud/crud.component";
 import { ProductsComponent } from "./products/products.component";
 import { OrganizationComponent } from "./organization/organization.component";
 import { BusinessDetailComponent } from "./business-detail/business-detail.component";
-import { PersonComponent } from "./person/person.component";
 import { NgxMaskModule } from 'ngx-mask';
 import { OrganizationDetailComponent } from './organization-detail/organization-detail.component';
-import { PersonDetailComponent } from './person-detail/person-detail.component';
 import { CalendarComponent } from './calendar/calendar.component'
 import { UserComponent } from './user/user.component'
 import localePt from '@angular/common/locales/pt';
@@ -60,6 +58,8 @@ import { OrganizationRegisterComponent } from './organization-register/organizat
 import { ErpComponent } from './erp/erp.component';
 import { RamoComponent } from './ramo/ramo.component';
 import { LoginComponent } from './login/login.component';
+import { VendedorComponent } from './vendedor/vendedor.component';
+
 registerLocaleData(localePt);
 
 @NgModule({
@@ -72,15 +72,14 @@ registerLocaleData(localePt);
     ProductsComponent,
     OrganizationComponent,
     BusinessDetailComponent,
-    PersonComponent,
     OrganizationDetailComponent,
-    PersonDetailComponent,
     UserComponent,
     CalendarComponent,
     OrganizationRegisterComponent,
     ErpComponent,
     RamoComponent,
-    LoginComponent
+    LoginComponent,
+    VendedorComponent
   ],
   imports: [
     BrowserModule,

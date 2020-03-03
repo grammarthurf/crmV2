@@ -6,15 +6,14 @@ import { AtividadesComponent } from "./atividades/atividades.component";
 import { ProductsComponent } from "./products/products.component";
 import { OrganizationComponent } from "./organization/organization.component";
 import { BusinessDetailComponent } from "./business-detail/business-detail.component";
-import { PersonComponent } from "./person/person.component";
 import { OrganizationDetailComponent } from './organization-detail/organization-detail.component';
 import { UserComponent } from './user/user.component';
-import { PersonDetailComponent } from './person-detail/person-detail.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { OrganizationRegisterComponent } from './organization-register/organization-register.component';
 import { ErpComponent } from './erp/erp.component';
 import { RamoComponent } from './ramo/ramo.component';
 import { LoginComponent } from './login/login.component';
+import { VendedorComponent } from './vendedor/vendedor.component';
 
 const routes: Routes = [
   {
@@ -37,14 +36,6 @@ const routes: Routes = [
   {
     path: "products",
     component: ProductsComponent
-  },
-  {
-    path: "person",
-    component: PersonComponent
-  },
-  {
-    path: "person-detail",
-    component: PersonDetailComponent
   },
   {
     path: "company",
@@ -81,6 +72,10 @@ const routes: Routes = [
   {
     path: "login",
     component: LoginComponent
+  },
+  {
+    path: "vendedor",
+    component: VendedorComponent
   }
 ];
 

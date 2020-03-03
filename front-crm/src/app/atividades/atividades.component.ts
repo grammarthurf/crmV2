@@ -44,6 +44,7 @@ export class AtividadesComponent implements OnInit {
 
   // Lista de Orgs:
   orsgapi: any;
+  // orgapi: any;
 
   // Lista de atividades:
   erroAtividade: any;
@@ -114,6 +115,20 @@ export class AtividadesComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.matdata);
     
   }
+
+  //FILTRAR SELECT DOS CONTATOS DE ACORDO COM O SELECIONADO EM EMPRESAS
+  // gettercliorg(id) {
+  //   // console.log(id)
+  //   this.crudService.getOrg(id).subscribe(
+  //     data => {
+  //       this.orgapi = data;
+  //       console.log(data);
+  //     },
+  //     error => {
+  //       this.erroAtividade = error;
+  //     }
+  //   );
+  // }
 
   gotocalendar(){
     this.router.navigate([]).then(result => { window.open('/calendar/', '_blank'); });
