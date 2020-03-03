@@ -133,7 +133,7 @@ mat-divider {
 
 input[type=range] {
   -webkit-appearance: none;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
 ::-webkit-slider-runnable-track {
@@ -237,7 +237,7 @@ span:nth-child(3) {
 
 /* Teste DD */
 
-@media (max-width: 1366px) {
+/* @media (max-width: 1366px) {
   .example-container {
     width: 12.4%;
     max-width: 100%;
@@ -265,10 +265,24 @@ span:nth-child(3) {
     width: 270px;
     display: flex;
   }
+} */
+
+.example-container {
+  width: 12.4%;
+  max-width: 100%;
+  margin: 0 23px 25px 0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.test {
+  width: 114%;
+  display: flex;
 }
 
 img {
   margin-left: auto;
+  margin-right: 2px; /*teste*/
 }
 
 img#codigo {
