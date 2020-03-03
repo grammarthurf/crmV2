@@ -91,9 +91,6 @@
           <div class="row">
             <div class="form-group col-md-6">
               <label for="exampleFormControlSelect1">Contato</label>
-<<<<<<< HEAD
-              <select *ngIf="orgapi" [(ngModel)]="ticket.cliente" class="form-control" id="exampleFormControlSelect1">
-=======
               <!--<button mat-icon-button (click)="redirectToAdd('/person')">
                 <mat-icon class="icon-modal-lead">add</mat-icon>
               </button> -->
@@ -101,8 +98,7 @@
                       [(ngModel)]="ticket.cliente" 
                       class="form-control" 
                       id="exampleFormControlSelect1">
->>>>>>> c93f2487bcdcb6430757c5e834def7b0313afd39
-                <option *ngFor="let orgs of orgapi.contatos">
+                <option *ngFor="let orgs of orgapi.contatos" value="{{orgs.id}}">
                   {{orgs.nome}}
                 </option>
               </select>
