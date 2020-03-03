@@ -72,7 +72,7 @@ export class BusinessComponent implements OnInit {
 
   //FILTRAR SELECT DOS CONTATOS DE ACORDO COM O SELECIONADO EM EMPRESAS
   gettercliorg(id) {
-    console.log(id)
+    // console.log(id)
     this.crudService.getOrg(id).subscribe(
       data => {
         this.orgapi = data;
