@@ -60,7 +60,8 @@
                 <select *ngIf="orsgapi"
                         [(ngModel)]="ticket.org"
                         class="form-control"
-                        id="exampleFormControlSelect1">
+                        id="exampleFormControlSelect1"
+                        (change)="gettercliorg($event.target.value)">
                   <option *ngFor="let orgs of orsgapi" value="{{orgs.id}}">
                     {{orgs.razaosocial}}
                   </option>
@@ -116,7 +117,15 @@
               <button mat-icon-button (click)="redirectToAdd('/person')">
                 <mat-icon class="icon-modal-lead">add</mat-icon>
               </button>
-              <select *ngIf="clientesapi" 
+               <!-- <select *ngIf="orgapi"
+                      [(ngModel)]="ticket.cliente"
+                      class="form-control"
+                      id="exampleFormControlSelect1">
+                <option *ngFor="let orgs of orgapi" value="{{orgs.id}}">
+                  {{orgs.contatos.nome}}
+                </option>
+              </select> -->
+             <select *ngIf="clientesapi" 
                       [(ngModel)]="ticket.cliente" 
                       class="form-control" 
                       id="exampleFormControlSelect1">
@@ -234,11 +243,9 @@
           <div class="flex">
 
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
-            <!-- <mat-icon id="orange">error_outline</mat-icon> -->
-            <mat-icon id="red">
-              highlight_off
-            </mat-icon>
+            <mat-icon *ngIf="(item.atividades.length > 0)"  id="green">check_circle_outline</mat-icon>
+            <mat-icon  *ngIf="(item.atividades.length == 0)" id="orange">error_outline</mat-icon>
+            <mat-icon *ngIf="( item.atividades.length > 0 && dataCheck(item.atividades.dataini))"  id="red">highlight_off</mat-icon>
           </div>
         </div>
       </div>
@@ -272,11 +279,9 @@
           <div class="flex">
 
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
-            <mat-icon id="orange">
-              error_outline
-            </mat-icon>
-            <!-- <mat-icon id="red">highlight_off</mat-icon> -->
+            <mat-icon *ngIf="(item.atividades.length > 0)"  id="green">check_circle_outline</mat-icon>
+            <mat-icon  *ngIf="(item.atividades.length == 0)" id="orange">error_outline</mat-icon>
+            <mat-icon *ngIf="( item.atividades.length > 0 && dataCheck(item.atividades.dataini))"  id="red">highlight_off</mat-icon>
           </div>
         </div>
       </div>
@@ -310,9 +315,9 @@
           <div class="flex">
 
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon id="green">check_circle_outline</mat-icon>
-            <!-- <mat-icon id="orange">error_outline</mat-icon> -->
-            <!-- <mat-icon id="red">highlight_off</mat-icon> -->
+            <mat-icon *ngIf="(item.atividades.length > 0)"  id="green">check_circle_outline</mat-icon>
+            <mat-icon  *ngIf="(item.atividades.length == 0)" id="orange">error_outline</mat-icon>
+            <mat-icon *ngIf="( item.atividades.length > 0 && dataCheck(item.atividades.dataini))"  id="red">highlight_off</mat-icon>
           </div>
         </div>
       </div>
@@ -346,9 +351,9 @@
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon id="green">check_circle_outline</mat-icon>
-            <!-- <mat-icon id="orange">error_outline</mat-icon> -->
-            <!-- <mat-icon id="red">highlight_off</mat-icon> -->
+            <mat-icon *ngIf="(item.atividades.length > 0)"  id="green">check_circle_outline</mat-icon>
+            <mat-icon  *ngIf="(item.atividades.length == 0)" id="orange">error_outline</mat-icon>
+            <mat-icon *ngIf="( item.atividades.length > 0 && dataCheck(item.atividades.dataini))"  id="red">highlight_off</mat-icon>
           </div>
         </div>
       </div>
@@ -381,9 +386,9 @@
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
-            <!-- <mat-icon id="orange">error_outline</mat-icon> -->
-            <mat-icon id="red">highlight_off</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length > 0)"  id="green">check_circle_outline</mat-icon>
+            <mat-icon  *ngIf="(item.atividades.length == 0)" id="orange">error_outline</mat-icon>
+            <mat-icon *ngIf="( item.atividades.length > 0 && dataCheck(item.atividades.dataini))"  id="red">highlight_off</mat-icon>
           </div>
         </div>
       </div>
@@ -415,9 +420,9 @@
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
             <p class="limit-value">{{ item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
-            <mat-icon id="orange">error_outline</mat-icon>
-            <!-- <mat-icon id="red">highlight_off</mat-icon> -->
+            <mat-icon *ngIf="(item.atividades.length > 0)"  id="green">check_circle_outline</mat-icon>
+            <mat-icon  *ngIf="(item.atividades.length == 0)" id="orange">error_outline</mat-icon>
+            <mat-icon *ngIf="( item.atividades.length > 0 && dataCheck(item.atividades.dataini))"  id="red">highlight_off</mat-icon>
           </div>
         </div>
 
