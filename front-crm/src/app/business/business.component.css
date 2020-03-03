@@ -111,17 +111,17 @@ button i {
 h1 {
   margin-left: 20px;
   font-size: 35px;
-  color: rgb(10, 24, 64);
+  color: #0a1840;
 }
 
 h1 {
   font-size: 35px;
-  color: rgb(10, 24, 64);
+  color: #0a1840;
 }
 
 .btn1 {
   background-color: white;
-  color: rgb(10, 24, 64);
+  color: #0a1840;
   box-shadow: 2px black;
   margin-left: 30px;
 }
@@ -285,6 +285,23 @@ img {
   margin-right: 2px; /*teste*/
 }
 
+img#codigo {
+  height: 20px;
+  margin-bottom: 8px;
+}
+
+button#code {
+  height: 35px;
+  margin-top: 32px;
+}
+
+.img-prod{
+  width: 20px; 
+  height: 20px; 
+  margin-top: 5px; 
+  margin-right: 5px;
+}
+
 img#arrow {
   height: 64px;
   margin-left: auto;
@@ -360,4 +377,8 @@ lottie-animation-view {
 
 .limit-value {
   overflow: hidden;
+}
+
+.modal-title {
+  font-weight: bold;
 }

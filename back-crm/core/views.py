@@ -14,17 +14,17 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class RamoViewSet(viewsets.ModelViewSet):
 
-    queryset = Ramo.objects.all()
+    queryset = Ramo.objects.all().order_by('-id')
     serializer_class = RamoSerializer
 
 class ErpViewSet(viewsets.ModelViewSet):
 
-    queryset = Erp.objects.all()
+    queryset = Erp.objects.all().order_by('-id')
     serializer_class = ErpSerializer
 
 class ClienteViewSet(viewsets.ModelViewSet):
 
-    queryset = Cliente.objects.all()
+    queryset = Cliente.objects.all().order_by('-id')
     serializer_class = ClienteSerializer
 
     def create(self, request):
@@ -54,7 +54,7 @@ class EstagioViewSet(viewsets.ModelViewSet):
 
 class OrganizacaoViewSet(viewsets.ModelViewSet):
 
-    queryset = Organizacao.objects.all()
+    queryset = Organizacao.objects.all().order_by('-id')
     serializer_class = OrganizacaoSerializer
 
     def create(self, request):
@@ -106,13 +106,13 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
 
 class ProdutoViewSet(viewsets.ModelViewSet):
 
-    queryset = Produto.objects.all()
+    queryset = Produto.objects.all().order_by('-id')
     serializer_class = ProdutoSerializer
 
 
 class TicketViewSet(viewsets.ModelViewSet):
 
-    queryset = Ticket.objects.all()
+    queryset = Ticket.objects.all().order_by('-id')
     serializer_class = TicketSerializer
 
     def create(self, request):
@@ -164,13 +164,13 @@ class TicketViewSet(viewsets.ModelViewSet):
 
 class VendedorViewSet(viewsets.ModelViewSet):
 
-    queryset = Vendedor.objects.all()
+    queryset = Vendedor.objects.all().order_by('-id')
     serializer_class = VendedorSerializer
 
 
 class AtividadeViewSet(viewsets.ModelViewSet):
 
-    queryset = Atividade.objects.all()
+    queryset = Atividade.objects.all().order_by('-id')
     serializer_class = AtividadeSerializer
 
     def create(self, request):

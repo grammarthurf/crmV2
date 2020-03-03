@@ -129,3 +129,15 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
 .modal-title {
     font-weight: bold;
 }
+
+/* button code */
+
+img#codigo {
+    height: 20px;
+    margin-bottom: 8px;
+  }
+  
+  button#code {
+    height: 35px;
+    margin-top: 32px;
+  }

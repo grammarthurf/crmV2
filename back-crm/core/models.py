@@ -14,7 +14,7 @@ class Updated (models.Model):
 
 
 class Ramo(models.Model):
-    desc = models.CharField(max_length=65, null=True, blank=True)
+    desc = models.CharField( default='Semnome' ,max_length=65, blank=True)
 
     def __str__(self):
         return str(self.desc)
