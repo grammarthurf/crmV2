@@ -250,6 +250,8 @@ export class BusinessComponent implements OnInit {
           this.ticketsapi = data;
           console.log('data', data);
           data.forEach(e => {
+            console.log(e.status);
+
             if (e.status == 'Aberto') {
               switch (e.estagio.id) {
                 case 1:
@@ -287,6 +289,7 @@ export class BusinessComponent implements OnInit {
             }
           });
           // this.showOpen();
+          console.log('tickets 1: ', this.tickets1, 'tickets 2: ', this.tickets2, 'tickets 3: ', this.tickets3, 'tickets 4: ', this.tickets4, 'tickets 5: ', this.tickets5, 'tickets 6: ', this.tickets6, 'tickets 7: ', this.tickets7);
         },
         error => {
           this.erroTicket = error;
@@ -346,6 +349,7 @@ export class BusinessComponent implements OnInit {
               this.calcAllValue();
             }
           });
+          console.log('tickets 1: ', this.tickets1, 'tickets 2: ', this.tickets2, 'tickets 3: ', this.tickets3, 'tickets 4: ', this.tickets4, 'tickets 5: ', this.tickets5, 'tickets 6: ', this.tickets6, 'tickets 7: ', this.tickets7);
           // this.showOpen();
         },
         error => {
@@ -409,6 +413,8 @@ export class BusinessComponent implements OnInit {
 
           });
           // this.showOpen();
+          console.log('tickets 1: ', this.tickets1, 'tickets 2: ', this.tickets2, 'tickets 3: ', this.tickets3, 'tickets 4: ', this.tickets4, 'tickets 5: ', this.tickets5, 'tickets 6: ', this.tickets6, 'tickets 7: ', this.tickets7);
+
         },
         error => {
           this.erroTicket = error;
@@ -557,7 +563,7 @@ export class BusinessComponent implements OnInit {
 
   ngOnInit() {
     Inputmask().mask(document.getElementById("value"));
-    
+
   }
 
   formatNumberBR(value) {
