@@ -90,9 +90,6 @@
           <div class="row">
             <div class="form-group col-md-6">
               <label for="exampleFormControlSelect1">Contato</label>
-              <button mat-icon-button (click)="redirectToAdd('/person')">
-                <mat-icon class="icon-modal-lead">add</mat-icon>
-              </button>
               <select *ngIf="orgapi" [(ngModel)]="ticket.cliente" class="form-control" id="exampleFormControlSelect1">
                 <option *ngFor="let orgs of orgapi.contatos">
                   {{orgs.nome}}
@@ -150,7 +147,7 @@
   <div cdkDropListGroup class="nowrap" style="width: 100%;">
     <div class="example-container">
       <div class="tickets test">
-        <div class="col-md-8">
+        <div>
           <p>Prospecção</p>
           <p>{{tickets1.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets1.tickets.length}} Neg. </p>
         </div>
@@ -183,7 +180,7 @@
 
     <div class="example-container">
       <div class="tickets test">
-        <div class="col-md-8">
+        <div>
           <p>Contatado</p>
 
           <p>{{tickets2.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets2.tickets.length}} Neg. </p>
@@ -216,7 +213,7 @@
 
     <div class="example-container">
       <div class="tickets test">
-        <div class="col-md-8">
+        <div>
           <p>Cliente Potencial</p>
 
           <p>{{tickets3.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets3.tickets.length}} Neg. </p>
@@ -247,7 +244,7 @@
 
     <div class="example-container">
       <div class="tickets test">
-        <div class="col-md-8">
+        <div>
           <p>Demo Agendada</p>
 
           <p>{{tickets4.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets4.tickets.length}} Neg. </p>
@@ -278,7 +275,7 @@
 
     <div class="example-container">
       <div class="tickets test">
-        <div class="col-md-8">
+        <div>
           <p>Proposta</p>
 
           <p>{{tickets5.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets5.tickets.length}} Neg. </p>
@@ -308,7 +305,7 @@
 
     <div class="example-container">
       <div class="tickets test">
-        <div class="col-md-8">
+        <div>
           <p>Negociações Inic.</p>
           <p>{{tickets6.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets6.tickets.length}} Neg. </p>
         </div>
@@ -337,7 +334,7 @@
 
     <div class="example-container">
       <div class="tickets test">
-        <div class="col-md-8">
+        <div>
           <p>Clientes</p>
           <p>{{tickets7.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets7.tickets.length}} Neg. </p>
         </div>
