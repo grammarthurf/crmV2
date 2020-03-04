@@ -65,7 +65,7 @@ class EstagioSerializer(serializers.ModelSerializer):
 class OrganizacaoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Organizacao
-        fields = ['id', 'razaosocial', 'nomefantasia', 'rua',
+        fields = ['id', 'codigo', 'razaosocial', 'nomefantasia', 'rua',
                   'bairro', 'cidade', 'uf', 'erpe', 'ramo', 'telefone' ,  'contatos']
         depth = 1
 
