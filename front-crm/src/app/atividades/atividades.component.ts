@@ -35,12 +35,12 @@ export class AtividadesComponent implements OnInit {
   calendarPlugins: any = [];
 
   dNow = new Date();
-  dayhj = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-0' + this.dNow.getDate();
-  dayhj1 = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + this.dNow.getDate();
-  daytmrw = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-0' + (this.dNow.getDate() + 1);
-  daytmrw1 = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + (this.dNow.getDate() + 1);
-  daymes = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) ;
-  dayproxmes = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 2) ;
+  today = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-0' + this.dNow.getDate();
+  today1 = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + this.dNow.getDate();
+  tomorrow = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-0' + (this.dNow.getDate() + 1);
+  tomorrow1 = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + (this.dNow.getDate() + 1);
+  dayMonth = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) ;
+  dayNextMonth = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 2) ;
 
   // Lista Ticket
   negociosapi: any;
@@ -63,9 +63,6 @@ export class AtividadesComponent implements OnInit {
   calendarEvents = [
     { title: 'event 1', date: '2019-04-01' }
   ];
-
-  
-  
 
   atv = {position: 0, dataini: '', horaini: '', datafim: '', horafim: '', tipo: '', cliente: '', org: '', ticket: '', assunto: '' };
 
@@ -126,13 +123,13 @@ export class AtividadesComponent implements OnInit {
   }
 
   getColor(dataini) {
-    if(dataini == this.dayhj){
+    if(dataini == this.today){
       return 'rgb(255, 232, 228)';
-    } else if (dataini == this.dayhj1) {
+    } else if (dataini == this.today1) {
       return 'rgb(255, 232, 228)';
-    } else if (dataini == this.daytmrw){
+    } else if (dataini == this.tomorrow){
       return '#deeafa';
-    } else if (dataini == this.daytmrw1) {
+    } else if (dataini == this.tomorrow1) {
       return '#deeafa';
     }
   }
@@ -143,10 +140,7 @@ export class AtividadesComponent implements OnInit {
         this.matdata = []
         data.forEach(e => {
           try {
-
             if (e.cliente == null && e.org == null && e.ticket == null) {
-              console.log();
-              
               this.matdata.push({
                position: e.id,
                 assunto: e.assunto,
@@ -173,7 +167,6 @@ export class AtividadesComponent implements OnInit {
                 //   nome: ''
                 // },
                 // org: e.org
-
               });
             } else if (e.org == null) {
               this.matdata.push({
@@ -186,7 +179,6 @@ export class AtividadesComponent implements OnInit {
                 org: {
                   razaosocial: ''
                 }
-
               });
             } else if (e.ticket == null) {
               this.matdata.push({
@@ -200,7 +192,6 @@ export class AtividadesComponent implements OnInit {
                 cliente: e.cliente,
                 org: e.org
               });
-
             } else {
               this.matdata.push({
                position: e.id,
@@ -210,7 +201,6 @@ export class AtividadesComponent implements OnInit {
                 ticket: e.ticket,
                 cliente: e.cliente,
                 org: e.org
-
               });
             }
           } catch (error) {
@@ -273,7 +263,6 @@ export class AtividadesComponent implements OnInit {
     );
   }
 
-
   save() {
     console.log("save" + this.atv)
     this.crudService.saveNewAtividade(this.atv).subscribe(
@@ -286,89 +275,71 @@ export class AtividadesComponent implements OnInit {
             buttons: false
           }
         });
-        // setTimeout(this.reiniciar, 1001);
         this.getterActivity();
       },
       error => {
         this.getterActivity();
         console.error(error);
-        // setTimeout(this.reiniciar, 1001);
       },
     );
-  }
-
-  reiniciar(){
-    location.reload()
-  }
-
-  testebtn() {
-    this.router.navigate([]).then(result => { window.open('/person/', '_blank'); });
-  }
-
-  testebtn2() {
-    this.router.navigate([]).then(result => { window.open('/company/', '_blank'); });
-  }
-
-  testebtn3() {
-    this.router.navigate([]).then(result => { window.open('/products/', '_blank'); });
   }
 
   applyFilter(value: string) {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
-  dblclic() {
+  filterAll() {
     this.dataSource.filter = "".trim().toLowerCase();
   }
 
-  filtroLiga() {
+  filterCall() {
     this.dataSource.filter = "liga".trim().toLowerCase();
   }
 
-  filtroReuniao() {
+  filterReunion() {
     this.dataSource.filter = "reunião".trim().toLowerCase();
   }
 
-  filtroVisita() {
+  filterVisit() {
     this.dataSource.filter = "visita".trim().toLowerCase();
   }
 
-  filtroemail() {
+  filterEmail() {
     this.dataSource.filter = "email".trim().toLowerCase();
   }
 
-  filtroTarefa() {
+  filterTask() {
     this.dataSource.filter = "Tarefa".trim().toLowerCase();
   }
 
   filtroday(){
     var day = this.dNow.getDate();
     if(day == 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9){
-      this.dataSource.filter = this.dayhj.trim().toLowerCase();
+      this.dataSource.filter = this.today.trim().toLowerCase();
     } else {
-      this.dataSource.filter = this.dayhj1.trim().toLowerCase();
+      this.dataSource.filter = this.today1.trim().toLowerCase();
     }
   }
 
   filtrotmrw(){
     var day = (this.dNow.getDate() + 1);
     if(day == 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9){
-      this.dataSource.filter = this.daytmrw.trim().toLowerCase();
+      this.dataSource.filter = this.tomorrow.trim().toLowerCase();
     } else {
-      this.dataSource.filter = this.daytmrw1.trim().toLowerCase();
+      this.dataSource.filter = this.tomorrow1.trim().toLowerCase();
     }
   }
 
   filtromes(){
-    this.dataSource.filter = this.daymes.trim().toLowerCase();
+    this.dataSource.filter = this.dayMonth.trim().toLowerCase();
   }
 
   filtroproxmes(){
-    this.dataSource.filter = this.dayproxmes.trim().toLowerCase();
+    this.dataSource.filter = this.dayNextMonth.trim().toLowerCase();
   }
 
   filtrovenc(){
-    // um filtro que pegue todas as datas antes de this.dayhj
+    // um filtro que pegue todas as datas antes de this.today
   }
 
   removeSelectedRows() {
@@ -384,7 +355,7 @@ export class AtividadesComponent implements OnInit {
 
   }
 
-  atvchoose(id: number) {
+  selectActivity(id: number) {
     if (id == 1) {
       this.numm = "Ligar";
     } else if (id == 2) {

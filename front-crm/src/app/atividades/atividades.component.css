@@ -188,3 +188,6 @@ table {
     color: #3E3F47;
 }
 
+div.fc-right {
+    display: flex;
+}
