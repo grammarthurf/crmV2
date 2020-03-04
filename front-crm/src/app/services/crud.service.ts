@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 export class CrudService {
   baseUrl = "http://127.0.0.1:8000/";
   htttpHeaders = new HttpHeaders({ "Content-Type": "application/json" });
+  body:any;
 
   constructor(private http: HttpClient) {}
 
@@ -160,22 +161,51 @@ export class CrudService {
     });
   }
 
-  public updateTicketDetails(ticket): Observable<any> {
+  public updateTicketDetails(ticket, mtvperd, cmtperd): Observable<any> {
 
-    const body =  { id: parseInt(ticket.id),
-                    titulo: ticket.titulo,
-                    estagio: ticket.estagio.id,
-                    cliente: ticket.cliente.id.toString(),
-                    org: ticket.org.id.toString(),
-                    produto: ticket.produto,
-                    valorestimado: ticket.valorestimado,
-                    termometro: ticket.termometro,
-                    vendedor: ticket.vendedor,
-                    obs: ticket.obs,
-                    status: ticket.status };
+    if (ticket.status === 'Perdido') {
+        console.log('caiu if')
+        this.body =  { id: parseInt(ticket.id),
+        titulo: ticket.titulo,
+        estagio: ticket.estagio.id,
+        cliente: ticket.cliente.id.toString(),
+        org: ticket.org.id.toString(),
+        produto: ticket.produto,
+        valorestimado: ticket.valorestimado,
+        termometro: ticket.termometro,
+        vendedor: ticket.vendedor,
+        obs: ticket.obs,
+        status: ticket.status,
+        mtvperd: mtvperd,
+        cmtperd: cmtperd };
+    } else {
+      console.log('caiu else')
+      this.body =  { id: parseInt(ticket.id),
+        titulo: ticket.titulo,
+        estagio: ticket.estagio.id,
+        cliente: ticket.cliente.id.toString(),
+        org: ticket.org.id.toString(),
+        produto: ticket.produto,
+        valorestimado: ticket.valorestimado,
+        termometro: ticket.termometro,
+        vendedor: ticket.vendedor,
+        obs: ticket.obs,
+        status: ticket.status };
+    }
+
+    console.log('body:', this.body);
+
+    return this.http.put(this.baseUrl + 'ticket/' + ticket.id + '/' , this.body, {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public updateTicketTerm(idterm): Observable<any> {
+
+    const body =  { id: parseInt(idterm.id), term: idterm.term, opt: 'term' };
     console.log('body:', body);
 
-    return this.http.put(this.baseUrl + 'ticket/' + ticket.id + '/' , body, {
+    return this.http.put(this.baseUrl + 'ticket/' + idterm.id + '/' , body, {
       headers: this.htttpHeaders
     });
   }

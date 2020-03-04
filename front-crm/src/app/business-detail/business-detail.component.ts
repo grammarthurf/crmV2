@@ -19,7 +19,7 @@ export class BusinessDetailComponent implements OnInit {
   private anim: any;
 
   numm: number;
-  idobs = { id: '', obs: ''};
+  idobs = { id: '', obs: '', term: '', mtvperd: '', cmtperd: '' };
 
   // businesss = { id: "", titulo: '', valorestimado: '', termometro: '', obs: '', status: '', estagio: '', cliente: '', org: '', vendedor: '', created: '', updated: '', produto: ''};
 
@@ -31,11 +31,25 @@ export class BusinessDetailComponent implements OnInit {
       loop: false
     };
 
-    this.getterEstagio()
+    this.getterEstagio();
+    this.loadBusiness();
   }
 
   updatedTicketStatus(ticket) {
-    this.crudService.updateTicketDetails(ticket).subscribe(
+    this.crudService.updateTicketDetails(ticket, this.idobs.mtvperd, this.idobs.cmtperd).subscribe(
+      data => {
+        console.log(data);
+
+      }, error => {
+        console.error(error);
+      }
+    );
+  }
+
+  updateTicketTerm() {
+    this.idobs.id = this.business.id;
+    // this.idobs.term = this.business.termometro;
+    this.crudService.updateTicketTerm(this.idobs).subscribe(
       data => {
         console.log(data);
 
@@ -79,7 +93,7 @@ export class BusinessDetailComponent implements OnInit {
         this.business = data;
         if (this.business.status == 'Ganhou') {
           this.stageWin();
-        } else if ( this.business.status == 'Perdido') {
+        } else if (this.business.status == 'Perdido') {
           this.stageLose();
         } else {
           this.stageNull();
@@ -125,7 +139,7 @@ export class BusinessDetailComponent implements OnInit {
   }
 
   changeid(idd: number) {
-    if(idd == 1){
+    if (idd == 1) {
       this.business.estagio.id = 1;
     } else if (idd == 2) {
       this.business.estagio.id = 2;
@@ -159,8 +173,11 @@ export class BusinessDetailComponent implements OnInit {
     btnWin.style.borderRadius = '20px';
     btnWin.style.cursor = 'none';
     btnWin.style.outline = 'none';
-    this.business.status = 'Ganhou';
-    this.updatedTicketStatus(this.business);
+    if (this.business.status != 'Ganhou') {
+      this.business.status = 'Ganhou';
+      this.updatedTicketStatus(this.business);
+    }
+
 
     this.play();
     setTimeout(() => {
@@ -181,8 +198,12 @@ export class BusinessDetailComponent implements OnInit {
     btnLose.style.borderRadius = '20px';
     btnLose.style.cursor = 'none';
     btnLose.style.outline = 'none';
-    this.business.status = 'Perdido';
-    this.updatedTicketStatus(this.business);
+    if (this.business.status != 'Perdido') {
+      this.business.status = 'Perdido';
+      this.business.mtvperd = this.idobs.mtvperd;
+      this.business.cmtperd = this.idobs.cmtperd;
+      this.updatedTicketStatus(this.business);
+    }
   }
 
   stageNull() {
@@ -200,16 +221,21 @@ export class BusinessDetailComponent implements OnInit {
     btnLose.style.borderRadius = '5px';
     btnLose.style.cursor = 'pointer';
     btnLose.style.outline = 'solid';
-    this.business.status = 'Aberto';
-    this.updatedTicketStatus(this.business);
+    if (this.business.status != 'Aberto') {
+      this.business.status = 'Aberto';
+      console.log('Business : ', this.business);
+
+      this.updatedTicketStatus(this.business);
+    }
+
   }
 
-  EditTitleLead(){
+  EditTitleLead() {
 
   }
 
 
   ngOnInit() {
-    this.loadBusiness();
+    // this.loadBusiness();
   }
 }

@@ -22,12 +22,12 @@
 
           <div class="form-group">
             <label for="motivo">Motivo da Perda</label>
-            <input type="text" class="form-control" id="motivo">
+            <input [(ngModel)]="idobs.mtvperd" type="text" class="form-control" id="motivo">
           </div>
 
           <div class="form-group mg-t-10">
             <label for="exampleFormControlTextarea1">Comentários (opcional) </label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea [(ngModel)]="idobs.cmtperd" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
           </div>
 
         </div>
@@ -35,7 +35,7 @@
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
             Cancelar
           </button>
-          <button type="button" class="btn btn-danger">
+          <button type="button" (click)="stageLose()" data-dismiss="modal" class="btn btn-danger">
             Marcar como Perdido
           </button>
         </div>
@@ -68,7 +68,7 @@
         <img src="../../assets/termometro.png" class="img1" />
         <p>Termômetro:</p>
         <div class="margin5">
-          <input  type="range"
+          <input [(ngModel)]="idobs.term" (change)="updateTicketTerm()" type="range"
                   id="thermometro"
                   value="{{business.termometro}}"
                   step="49"
@@ -94,7 +94,7 @@
       </button>
       <button class="btn-win-lose btn-danger"
               id="lose"
-              (click)="stageLose()"
+
               data-toggle="modal"
               data-target="#loseModal">
         Perdido
@@ -374,12 +374,16 @@
         </p>
       </div>
       <div class="mg-t-10">
-        <p class="pdiv"> <b>ERP:</b> <span *ngIf="business.org.erpe" >  {{business.org.erpe}}</span> </p>
+        <p class="pdiv"> <b>ERP:</b> <span *ngIf="business.org.erpe" >  {{business.org.erpe.desc}}</span> </p>
       </div>
     </div>
   </div>
 
+
   <div class="col-8 div-right div-border">
+    <div *ngIf="(business.status == 'Perdido')"  class="alert alert-danger" role="alert">
+      {{business.mtvperd}} :   {{business.cmtperd}}
+    </div>
     <mat-tab-group mat-stretch-tabs class="col-12">
       <mat-tab label="Observações">
         <div class="col-12 mg-t-10 divtab">

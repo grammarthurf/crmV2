@@ -116,7 +116,7 @@ class ProdutoViewSet(viewsets.ModelViewSet):
 
 class TicketViewSet(viewsets.ModelViewSet):
 
-    queryset = Ticket.objects.all()
+    queryset = Ticket.objects.all().order_by('-id')
     serializer_class = TicketSerializer
 
     def create(self, request):
@@ -157,6 +157,30 @@ class TicketViewSet(viewsets.ModelViewSet):
     def update(self, request, pk):
       data = request.data
       print(data);
+      
+      T = Ticket.objects.get(id=data['id'])
+      T.estagio = Estagio.objects.get(id=data['estagio'])
+      T.status = data['status']
+      if T.status == 'Perdido':
+          T.mtvperd = data['mtvperd']
+          T.cmtperd = data['cmtperd']
+      T.save()
+      print('Ticket salvo : ',T.cmtperd , T.mtvperd)
+
+
+
+      try:
+        if data['opt'] == 'term':
+            print('entrou opt ');
+            
+            T = Ticket.objects.get(id=data['id'])
+            T.termometro = data['term']
+            T.save()
+      except:
+          pass
+
+
+  
 
       try:  
         if data['opt'] == 'obs':
@@ -169,13 +193,11 @@ class TicketViewSet(viewsets.ModelViewSet):
       except:
           pass  
 
-      try:  
-        T = Ticket.objects.get(id=data['id'])
-        T.estagio = Estagio.objects.get(id=data['estagio'])
-        T.status = data['status']
-        T.save()
-      except:
-          pass
+    
+
+     
+
+
 
       return JsonResponse({'message': 'Updated'})
       
