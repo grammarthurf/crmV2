@@ -35,16 +35,21 @@ export class AtividadesComponent implements OnInit {
   calendarPlugins: any = [];
 
   dNow = new Date();
-  today = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + this.dNow.getDate();
-  tomorrow = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + (this.dNow.getDate() + 1);
-  month = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + (this.dNow.getDate() + 2);
+  today = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-0' + this.dNow.getDate();
+  today1 = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + this.dNow.getDate();
+  tomorrow = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-0' + (this.dNow.getDate() + 1);
+  tomorrow1 = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + (this.dNow.getDate() + 1);
+  dayMonth = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) ;
+  dayNextMonth = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 2) ;
 
   // Lista Ticket
   negociosapi: any;
 
   // Lista de Orgs:
   orsgapi: any;
-  // orgapi: any;
+  orgapi: any;
+
+  tckapi: any;
 
   // Lista de atividades:
   erroAtividade: any;
@@ -56,36 +61,7 @@ export class AtividadesComponent implements OnInit {
   vendedorapi: any;
 
   calendarEvents = [
-    { title: 'Reunião', start: '2020-02-27T08:30:00', end: '2020-02-27T09:00:00' },
-    { title: 'Reunião', start: '2020-02-28T15:30:00', end: '2020-02-28T16:30:00' },
-    { title: 'Reunião', start: '2020-02-28T17:00:00', end: '2020-02-28T17:30:00' },
-    { title: 'Reunião', start: '2020-03-02T08:30:00', end: '2020-03-02T09:30:00' },
-    { title: 'Reunião', start: '2020-03-04T13:30:00', end: '2020-03-04T15:00:00' },
-    { title: 'Reunião', start: '2020-03-04T15:30:00', end: '2020-03-04T17:00:00' },
-    { title: 'Reunião', start: '2020-03-03T10:30:00', end: '2020-03-03T11:30:00' },
-    { title: 'Reunião', start: '2020-02-20T14:30:00', end: '2020-02-20T15:30:00' },
-    { title: 'Reunião', start: '2020-02-20T15:30:00', end: '2020-02-20T16:30:00' },
-    { title: 'Reunião', start: '2020-02-27T16:50:00', end: '2020-02-27T17:30:00' },
-    { title: 'Reunião', start: '2020-03-02T10:00:00', end: '2020-03-02T10:30:00' },
-    { title: 'Reunião', start: '2020-02-28T09:30:00', end: '2020-02-28T11:30:00' },
-    { title: 'Ligação', start: '2020-02-28T11:30:00', end: '2020-02-28T11:35:00' },
-    { title: 'Ligação', start: '2020-02-28T13:30:00', end: '2020-02-28T13:50:00' },
-    { title: 'Ligação', start: '2020-02-27T10:30:00', end: '2020-02-27T10:40:00' },
-    { title: 'Ligação', start: '2020-02-27T10:50:00', end: '2020-02-27T11:00:00' },
-    { title: 'Ligação', start: '2020-02-28T14:30:00', end: '2020-02-28T14:40:00' },
-    { title: 'Ligação', start: '2020-02-28T08:30:00', end: '2020-02-28T08:40:00' },
-    { title: 'Ligação', start: '2020-03-09T09:40:00', end: '2020-03-09T09:50:00' },
-    { title: 'Email  ', start: '2020-03-03T11:30:00', end: '2020-03-03T11:30:00' },
-    { title: 'Email  ', start: '2020-03-05T11:40:00', end: '2020-03-05T11:40:00' },
-    { title: 'Email  ', start: '2020-02-10T14:00:00', end: '2020-02-10T14:00:00' },
-    { title: 'Email  ', start: '2020-02-14T11:00:00', end: '2020-02-14T11:00:00' },
-    { title: 'Email  ', start: '2020-02-14T11:30:00', end: '2020-02-14T11:30:00' },
-    { title: 'Email  ', start: '2020-02-18T11:30:00', end: '2020-02-18T11:30:00' },
-    { title: 'Email  ', start: '2020-02-20T11:30:00', end: '2020-02-20T11:30:00' },
-    { title: 'Email  ', start: '2020-02-20T11:30:00', end: '2020-02-20T11:30:00' },
-    { title: 'Email  ', start: '2020-02-27T11:30:00', end: '2020-02-27T11:30:00' },
-    { title: 'Email  ', start: '2020-02-27T11:30:00', end: '2020-02-27T11:30:00' },
-    { title: 'Email  ', start: '2020-02-28T11:30:00', end: '2020-02-28T11:30:00' }
+    { title: 'event 1', date: '2019-04-01' }
   ];
 
   atv = {position: 0, dataini: '', horaini: '', datafim: '', horafim: '', tipo: '', cliente: '', org: '', ticket: '', assunto: '' };
@@ -111,20 +87,50 @@ export class AtividadesComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.matdata);
+    console.log(this.calendarEvents)
   }
 
-  goToCalendar(){
+  //FILTRAR SELECT DOS CONTATOS DE ACORDO COM O SELECIONADO EM EMPRESAS
+  gettercliorg(id) {
+    // console.log(id)
+    this.crudService.getOrg(id).subscribe(
+      data => {
+        this.orgapi = data;
+        console.log(data);
+      },
+      error => {
+        this.erroAtividade = error;
+      }
+    );
+  }
+
+  //FILTRAR SELECT DAS EMPRESAS DE ACORDO COM O SELECIONADO EM NEGÓCIOS
+  // getterorgtick(id) {
+  //   // console.log(id)
+  //   this.crudService.getTicket(id).subscribe(
+  //     data => {
+  //       this.tckapi = data;
+  //       console.log(data);
+  //     },
+  //     error => {
+  //       this.erroAtividade = error;
+  //     }
+  //   );
+  // }
+
+  gotocalendar(){
     this.router.navigate([]).then(result => { window.open('/calendar/', '_blank'); });
   }
 
   getColor(dataini) {
-    switch (dataini) {
-      case this.month:
-        return '#deeafa';
-      case this.tomorrow:
-        return '#deeafa';
-      case this.today:
-        return 'rgb(255, 232, 228)';
+    if(dataini == this.today){
+      return '#deeafa';
+    } else if (dataini == this.today1) {
+      return '#deeafa';
+    } else if (dataini == this.tomorrow){
+      return 'rgb(255, 232, 228)';
+    } else if (dataini == this.tomorrow1) {
+      return 'rgb(255, 232, 228)';
     }
   }
 
@@ -306,22 +312,30 @@ export class AtividadesComponent implements OnInit {
     this.dataSource.filter = "Tarefa".trim().toLowerCase();
   }
 
-  filterDay(){
-    this.dataSource.filter = this.today.trim().toLowerCase();
+  filtroday(){
+    var day = this.dNow.getDate();
+    if(day == 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9){
+      this.dataSource.filter = this.today.trim().toLowerCase();
+    } else {
+      this.dataSource.filter = this.today1.trim().toLowerCase();
+    }
   }
 
-  filterTomorrow(){
-    this.dataSource.filter = this.tomorrow.trim().toLowerCase();
+  filtrotmrw(){
+    var day = (this.dNow.getDate() + 1);
+    if(day == 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9){
+      this.dataSource.filter = this.tomorrow.trim().toLowerCase();
+    } else {
+      this.dataSource.filter = this.tomorrow1.trim().toLowerCase();
+    }
   }
 
-  filterMonth(){
-    var periodo = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth()+1) ;
-    this.dataSource.filter = periodo.trim().toLowerCase();
+  filtromes(){
+    this.dataSource.filter = this.dayMonth.trim().toLowerCase();
   }
 
-  filterNextMonth(){
-    var periodo = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth()+2);
-    this.dataSource.filter = periodo.trim().toLowerCase();
+  filtroproxmes(){
+    this.dataSource.filter = this.dayNextMonth.trim().toLowerCase();
   }
 
   filtrovenc(){

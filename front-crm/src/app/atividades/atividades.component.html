@@ -56,8 +56,8 @@
             <div class="col-7" style="padding: 0px;">
               <div class="col-12 row">
                 <div class="col-6" style="margin-top: 8px;">
-                  <label for="negocios" >Negócio</label>
-                    <select [(ngModel)]="atv.ticket"
+                  <label for="negocios" >Negócio</label><!-- (change)="getterorg($event.target.value)" -->
+                    <select [(ngModel)]="atv.ticket" 
                             *ngIf="negociosapi"
                             class="form-control"
                             id="exampleFormControlSelect1">
@@ -146,6 +146,7 @@
                   <div class="col-6">
                     <label for="negocios" >Empresa </label>
                       <select [(ngModel)]="atv.org"
+                              (change)="gettercliorg($event.target.value)"
                               *ngIf="orsgapi"
                               class="form-control"
                               id="exampleFormControlSelect1">
@@ -153,15 +154,24 @@
                           {{org.razaosocial}}
                         </option>
                       </select>
+                      <!-- <select [(ngModel)]="atv.org"
+                              (change)="gettercliorg($event.target.value)"
+                              *ngIf="tckapi"
+                              class="form-control"
+                              id="exampleFormControlSelect1">
+                        <option *ngFor="let ticket of tckapi.org" value="{{ticket.id}}">
+                          {{ticket.razaosocial}}
+                        </option>
+                      </select> -->
                   </div>
                   <div class="col-6" style="padding: 0px;">
                     <label for="participantes" > Contato</label>
                       <select [(ngModel)]="atv.cliente" 
-                              *ngIf="clientesapi" 
+                              *ngIf="orgapi" 
                               class="form-control" 
                               id="exampleFormControlSelect1">
-                        <option *ngFor="let cliente of clientesapi" value="{{cliente.id}}">
-                          {{cliente.nome}}
+                        <option *ngFor="let orgs of orgapi.contatos" value="{{orgs.id}}">
+                          {{orgs.nome}}
                         </option>
                       </select>
                   </div>
