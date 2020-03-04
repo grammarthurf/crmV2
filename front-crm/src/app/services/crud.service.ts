@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 export class CrudService {
   baseUrl = "http://127.0.0.1:8000/";
   htttpHeaders = new HttpHeaders({ "Content-Type": "application/json" });
+  body:any;
 
   constructor(private http: HttpClient) {}
 
@@ -142,16 +143,16 @@ export class CrudService {
   public updateTicket(estagioUpdate, ticket): Observable<any> {
 
     console.log('ESTAGIOUPDADE :' , typeof(estagioUpdate));
-    const body =  { id: parseInt(ticket.id), 
-                    titulo: ticket.titulo, 
+    const body =  { id: parseInt(ticket.id),
+                    titulo: ticket.titulo,
                     estagio: estagioUpdate.toString(),
-                    cliente: ticket.cliente.id.toString(), 
+                    cliente: ticket.cliente.id.toString(),
                     org: ticket.org.id.toString(),
-                    produto: ticket.produto, 
-                    valorestimado: ticket.valorestimado, 
+                    produto: ticket.produto,
+                    valorestimado: ticket.valorestimado,
                     termometro: ticket.termometro,
-                    vendedor: ticket.vendedor, 
-                    obs: ticket.obs, 
+                    vendedor: ticket.vendedor,
+                    obs: ticket.obs,
                     status: ticket.status};
     console.log('body:', body);
 
@@ -160,35 +161,74 @@ export class CrudService {
     });
   }
 
-  public updateTicketDetails(ticket): Observable<any> {
+  public updateTicketDetails(ticket, mtvperd, cmtperd): Observable<any> {
 
-    const body =  { id: parseInt(ticket.id), 
-                    titulo: ticket.titulo, 
-                    estagio: ticket.estagio.id, 
-                    cliente: ticket.cliente.id.toString(), 
-                    org: ticket.org.id.toString(),
-                    produto: ticket.produto, 
-                    valorestimado: ticket.valorestimado, 
-                    termometro: ticket.termometro,
-                    vendedor: ticket.vendedor, 
-                    obs: ticket.obs, 
-                    status: ticket.status };
+    if (ticket.status === 'Perdido') {
+        console.log('caiu if')
+        this.body =  { id: parseInt(ticket.id),
+        titulo: ticket.titulo,
+        estagio: ticket.estagio.id,
+        cliente: ticket.cliente.id.toString(),
+        org: ticket.org.id.toString(),
+        produto: ticket.produto,
+        valorestimado: ticket.valorestimado,
+        termometro: ticket.termometro,
+        vendedor: ticket.vendedor,
+        obs: ticket.obs,
+        status: ticket.status,
+        mtvperd: mtvperd,
+        cmtperd: cmtperd };
+    } else {
+      console.log('caiu else')
+      this.body =  { id: parseInt(ticket.id),
+        titulo: ticket.titulo,
+        estagio: ticket.estagio.id,
+        cliente: ticket.cliente.id.toString(),
+        org: ticket.org.id.toString(),
+        produto: ticket.produto,
+        valorestimado: ticket.valorestimado,
+        termometro: ticket.termometro,
+        vendedor: ticket.vendedor,
+        obs: ticket.obs,
+        status: ticket.status };
+    }
+
+    console.log('body:', this.body);
+
+    return this.http.put(this.baseUrl + 'ticket/' + ticket.id + '/' , this.body, {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public updateTicketTerm(idterm): Observable<any> {
+
+    const body =  { id: parseInt(idterm.id), term: idterm.term, opt: 'term' };
     console.log('body:', body);
 
-    return this.http.put(this.baseUrl + 'ticket/' + ticket.id + '/' , body, {
+    return this.http.put(this.baseUrl + 'ticket/' + idterm.id + '/' , body, {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public updateTicketObs(idobs): Observable<any> {
+
+    const body =  { id: parseInt(idobs.id), obs: idobs.obs, opt: 'obs' };
+    console.log('body:', body);
+
+    return this.http.put(this.baseUrl + 'ticket/' + idobs.id + '/' , body, {
       headers: this.htttpHeaders
     });
   }
 
   public updatePerson(person): Observable<any> {
 
-    const body =  { id: parseInt(person.id), 
-                    nome: person.nome, 
-                    tipo: person.tipo, 
-                    fone: person.fone, 
+    const body =  { id: parseInt(person.id),
+                    nome: person.nome,
+                    tipo: person.tipo,
+                    fone: person.fone,
                     celular: person.celular.id,
-                    email: person.email, 
-                    skype: person.skype, 
+                    email: person.email,
+                    skype: person.skype,
                     org: person.org.id };
     console.log('body:', body);
 
@@ -199,15 +239,15 @@ export class CrudService {
 
   public updateOrg(org): Observable<any> {
 
-    const body =  { id: parseInt(org.id), 
-                    codigo: org.codigo, 
-                    razaosocial: org.razaosocial, 
-                    nomefantasia: org.nomefantasia, 
+    const body =  { id: parseInt(org.id),
+                    codigo: org.codigo,
+                    razaosocial: org.razaosocial,
+                    nomefantasia: org.nomefantasia,
                     rua: org.rua,
-                    bairro: org.bairro, 
-                    cep: org.cep, 
+                    bairro: org.bairro,
+                    cep: org.cep,
                     cidade: org.cidade,
-                    uf: org.uf, 
+                    uf: org.uf,
                     erp: org.erp };
     console.log('body:', body);
 

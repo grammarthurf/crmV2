@@ -1,4 +1,4 @@
-from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade, Erp, Ramo
+from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade, Erp, Ramo, Obs
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
@@ -50,8 +50,8 @@ class TicketSerializer(serializers.ModelSerializer):
         fields = ['id', 'titulo', 'estagio', 'cliente',
         'org', 'produto', 'valorestimado', 'termometro',
         'vendedor', 'obs', 'status', 'created', 'updated',
-        'atividades']
-        depth = 1
+        'atividades', 'mtvperd', 'cmtperd']
+        depth = 2
 
 
 class EstagioSerializer(serializers.ModelSerializer):
@@ -80,6 +80,13 @@ class VendedorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vendedor
         fields = ['id', 'nome']
+
+class ObsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Obs
+        fields = ['id', 'texto', 'data']
+        depth = 2
+
 
 
 

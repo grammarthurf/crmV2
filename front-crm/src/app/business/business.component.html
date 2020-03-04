@@ -115,8 +115,10 @@
           <div class="row">
             <div class="form-group col-md-6">
               <label for="ven_int">Vendedor Interno</label>
-              <select class="form-control" id="ven_int" required>
-                <option>Gisela</option>
+              <select [(ngModel)]="ticket.vendedor" class="form-control" id="ven_int" required>
+                <option *ngFor="let vendedor of userapi" value="{{vendedor.id}}">
+                  {{vendedor.nome}}
+                </option>
               </select>
             </div>
             <div class="form-group col-md-6">

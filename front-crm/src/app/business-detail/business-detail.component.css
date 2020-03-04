@@ -70,6 +70,10 @@ mat-icon {
     display: flex;
 }
 
+.txtcenter {
+	text-align: center;
+}
+
 /* TXT */
 * {
     font-family: "Maven Pro";
@@ -79,8 +83,6 @@ mat-icon {
 	border-radius: 7px; 
 	border: 1px solid rgb(207, 206, 206);
 }
-
-
 
 .pdiv {
 	font-size: 15px;

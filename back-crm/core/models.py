@@ -119,6 +119,8 @@ class Ticket (models.Model):
         Vendedor,  on_delete=models.CASCADE, null=True)
     obs = models.ManyToManyField(Obs, related_name='tickets')
     status = models.CharField(max_length=155, blank=True, default='Aberto')
+    mtvperd = models.CharField(max_length=155, null=True, blank=True)
+    cmtperd = models.CharField(max_length=155, null=True, blank=True)
     created = models.ForeignKey(Created, on_delete=models.CASCADE, null=True)
     updated = models.ForeignKey(Updated, on_delete=models.CASCADE, null=True)
 

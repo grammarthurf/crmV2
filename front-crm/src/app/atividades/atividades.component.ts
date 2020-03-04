@@ -124,13 +124,13 @@ export class AtividadesComponent implements OnInit {
 
   getColor(dataini) {
     if(dataini == this.today){
-      return '#deeafa';
+      return 'rgb(255, 232, 228)';
     } else if (dataini == this.today1) {
-      return '#deeafa';
+      return 'rgb(255, 232, 228)';
     } else if (dataini == this.tomorrow){
-      return 'rgb(255, 232, 228)';
+      return '#deeafa';
     } else if (dataini == this.tomorrow1) {
-      return 'rgb(255, 232, 228)';
+      return '#deeafa';
     }
   }
 
