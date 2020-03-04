@@ -153,10 +153,6 @@ export class BusinessDetailComponent implements OnInit {
       this.business.estagio.id = 6;
     } else if (idd == 7) {
       this.business.estagio.id = 7;
-    } else if (idd == 8) {
-      this.business.estagio.id = 8;
-    } else if (idd == 9) {
-      this.business.estagio.id = 9;
     }
   }
 

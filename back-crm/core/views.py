@@ -158,14 +158,17 @@ class TicketViewSet(viewsets.ModelViewSet):
       data = request.data
       print(data);
       
-      T = Ticket.objects.get(id=data['id'])
-      T.estagio = Estagio.objects.get(id=data['estagio'])
-      T.status = data['status']
-      if T.status == 'Perdido':
-          T.mtvperd = data['mtvperd']
-          T.cmtperd = data['cmtperd']
-      T.save()
-      print('Ticket salvo : ',T.cmtperd , T.mtvperd)
+      try:
+        T = Ticket.objects.get(id=data['id'])
+        T.estagio = Estagio.objects.get(id=data['estagio'])
+        T.status = data['status']
+        if T.status == 'Perdido':
+            T.mtvperd = data['mtvperd']
+            T.cmtperd = data['cmtperd']
+        T.save()
+        print('Ticket salvo : ',T.cmtperd , T.mtvperd)
+      except:
+          pass
 
 
 
