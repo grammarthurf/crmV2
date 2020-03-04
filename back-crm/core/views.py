@@ -112,7 +112,7 @@ class ProdutoViewSet(viewsets.ModelViewSet):
 
 class TicketViewSet(viewsets.ModelViewSet):
 
-    queryset = Ticket.objects.all().order_by('-id')
+    queryset = Ticket.objects.all()
     serializer_class = TicketSerializer
 
     def create(self, request):
@@ -129,6 +129,7 @@ class TicketViewSet(viewsets.ModelViewSet):
         T.org = Organizacao.objects.get(id=int(data['org']))
         T.valorestimado = int(data['valorestimado'])
         T.termometro = data['termometro']
+        T.status = 'Aberto'
         
         T.created = c
         T.save()
@@ -188,4 +189,4 @@ class AtividadeViewSet(viewsets.ModelViewSet):
         A.org = Organizacao.objects.get(id=int(data['org']))
         A.tipo = data['tipo']
         A.save()
-        return JsonResponse({'message': 'atividadecreated'})
+        return JsonResponse({'message': 'atividadecreated'})    
