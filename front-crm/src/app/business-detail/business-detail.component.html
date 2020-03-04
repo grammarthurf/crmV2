@@ -107,11 +107,12 @@
     </lottie-animation-view>
     <div class="col-1">
       <div class="div-vendedor">
-        <p style="font-size: 15px;"> 
-          Vendedor 
+        <p style="font-size: 13px;"> 
+          Vendedor: 
         </p>
-        <p style="font-size: 20px;"> 
-          {{business.vendedor}} 
+        <p style="font-size: 23px;"> 
+          <!-- {{business.vendedor}}  -->
+          Brenda
         </p>
         <!-- <p style="font-size: 12px;" mask="9999-99-99" *ngIf="(business.created)"> Criado em
           {{business.created.datetime}} </p> -->
@@ -260,7 +261,7 @@
 
       <div  class="md-step active"
             *ngIf="(business.estagio.id > 5)"
-            (click)="changeid(6)"
+            (click)="changeid(5)"
             id="5">
         <div class="md-step-circle">
           <mat-icon> done </mat-icon>
@@ -341,17 +342,6 @@
         <div class="md-step-optional">10/02/2020</div>
         <div class="md-step-bar-left"></div>
       </div>
-      <!-- <div  class="md-step process" 
-            *ngIf="(business.estagio.id == 8 )" 
-            (click)="changeid(9)"
-            id="8">
-        <div class="md-step-circle">
-          <mat-icon> priority_high </mat-icon>
-        </div>
-        <div class="md-step-title">   Cliente    </div>
-        <div class="md-step-optional">Em processo</div>
-        <div class="md-step-bar-left"></div>
-      </div> -->
       <div  class="md-step" 
             *ngIf="(business.estagio.id < 8)" 
             (click)="changeid(8)"
@@ -378,11 +368,13 @@
     <div class=" col-10 ">
       <h4> {{business.org.razaosocial}}</h4>
       <div class="mg-t-10">
-        <p  class="pdiv"> <b>Endereço:</b> </p>
-        <!-- {{org.rua}} - {{org.bairro}} - {{org.cidade}}/{{org.uf}} -->
+        <p  class="pdiv"> 
+          <b>Endereço:</b> 
+          {{business.org.rua}} - {{business.org.bairro}} - {{business.org.cidade}}/{{business.org.uf}} 
+        </p>
       </div>
       <div class="mg-t-10">
-        <p class="pdiv"> <b>ERP:</b> {{business.org.erp}} </p>
+        <p class="pdiv"> <b>ERP:</b> {{business.org.erpe}} </p>
       </div>
     </div>
   </div>
@@ -399,7 +391,7 @@
             Cancelar
           </button>
         </div>
-        <div class="col-12 row">
+        <div class="col-12 row txtcenter">
           <h2 style="margin-left: auto; margin-right: auto;">Histórico</h2>
         </div>
         <div class="col-12 mg-t-10">
@@ -421,17 +413,18 @@
       </mat-tab>
       <mat-tab label="Atividades">
         <div class="col-12 mg-t-10 divtab">
-          <div *ngIf="(business.atividades == 0)" >
+          <div *ngIf="(business.atividades == 0)" class="b-b txtcenter">
             <h4>Sem atividades ativas</h4>
           </div>
           <ul *ngIf="(business.atividades.length > 0)"  class="list-group list-group-flush">
             <li *ngFor="let item of business.atividades"  class="list-group-item p">
-              <p> 
-                {{item.dataini}} - {{item.tipo}}
-              </p>
-              <b>
-                {{item.assunto}}
+              <b class="b-b"> 
+                {{item.dataini | date:'dd/MM/yyyy'}} - {{item.tipo}}
               </b>
+              <br>
+              <label class="b">
+                ↪  {{item.assunto}}
+              </label>
             </li>
           </ul>
         </div>
@@ -483,7 +476,7 @@
           <b>
             Telefone:
           </b> 
-          {{business.cliente.fone}} 
+          {{business.cliente.tel}} 
         </p>
       </div>
       <div class="mg-t-10">

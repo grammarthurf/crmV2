@@ -41,6 +41,9 @@ export class BusinessComponent implements OnInit {
   atividadesapi: any;
   erroAtividade: any;
 
+  //Lista de Vendedores
+  userapi: any;
+
   // Lista de tickets:
   ticketsapi: any;
   erroTicket: any;
@@ -61,6 +64,7 @@ export class BusinessComponent implements OnInit {
     this.getterOrgs();
     this.getterProd();
     this.getterCliente();
+    this.getterUser();
 
     this.lottieConfig = {
       path: 'assets/handshake.json',
@@ -193,6 +197,19 @@ export class BusinessComponent implements OnInit {
       },
       error => {
         this.erroAtividade = error;
+      }
+    );
+  }
+
+  getterUser() {
+    this.crudService.getVendedor().subscribe(
+      data => {
+        this.userapi = data;
+        console.log(this.userapi);
+
+      },
+      error => {
+        console.error(error);
       }
     );
   }
@@ -452,9 +469,9 @@ export class BusinessComponent implements OnInit {
     let therm = this.ticket.termometro;
     let contact = this.ticket.cliente;
     let stage = this.ticket.estagio;
-    let valor = this.ticket.valorestimado
+    let vendedor = this.ticket.vendedor;
 
-    if(title === '' || org === '' || value === 0 || product === '' || therm === '' || contact === '' || stage === '') {
+    if(title === '' || org === '' || value === 0 || product === '' || therm === '' || contact === '' || stage === '' || vendedor === '') {
       swal({
         icon: "error",
         text: "Todos os campos são obrigatórios!",

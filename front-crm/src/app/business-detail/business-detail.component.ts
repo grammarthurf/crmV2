@@ -19,7 +19,7 @@ export class BusinessDetailComponent implements OnInit {
 
   numm: number;
 
-  businesss = { id: "", titulo: '', valorestimado: '', termometro: '', obs: '', status: '', estagio: '', cliente: '', org: '', vendedor: '', created: '', updated: '', produto: ''};
+  // businesss = { id: "", titulo: '', valorestimado: '', termometro: '', obs: '', status: '', estagio: '', cliente: '', org: '', vendedor: '', created: '', updated: '', produto: ''};
 
   constructor(private route: ActivatedRoute, private crudService: CrudService) {
     this.lottieConfig = {
