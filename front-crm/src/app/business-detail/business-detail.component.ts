@@ -101,32 +101,20 @@ export class BusinessDetailComponent implements OnInit {
   changeid(idd: number) {
     if(idd == 1){
       this.business.estagio.id = 1;
-    } else if (idd == 1.5) {
-      this.business.estagio.id = 1.5;
+    } else if (idd == 2) {
+      this.business.estagio.id = 2;
     } else if (idd == 3) {
       this.business.estagio.id = 3;
-    } else if (idd == 3.5) {
-      this.business.estagio.id = 3.5;
     } else if (idd == 4) {
       this.business.estagio.id = 4;
-    } else if (idd == 4.5) {
-      this.business.estagio.id = 4.5;
     } else if (idd == 5) {
       this.business.estagio.id = 5;
-    } else if (idd == 5.5) {
-      this.business.estagio.id = 5.5;
     } else if (idd == 6) {
       this.business.estagio.id = 6;
-    } else if (idd == 6.5) {
-      this.business.estagio.id = 6.5;
     } else if (idd == 7) {
       this.business.estagio.id = 7;
-    } else if (idd == 7.5) {
-      this.business.estagio.id = 7.5;
     } else if (idd == 8) {
       this.business.estagio.id = 8;
-    } else if (idd == 8.5) {
-      this.business.estagio.id = 8.5;
     } else if (idd == 9) {
       this.business.estagio.id = 9;
     } 
