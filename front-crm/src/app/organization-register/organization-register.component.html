@@ -185,76 +185,11 @@
               {{item.tel}}   | 
               {{item.cel}}
             </p>
-            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- <div id="duplicate">
-    <hr>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="row col-md-12">
-          <div class="form-group col-md-6">
-            <label for="name">Nome</label>
-            <input [(ngModel)]="contato.nome" type="text" class="form-control">
-          </div>
-
-          <div class="form-group col-md-6">
-            <label for="email">Email</label>
-            <input [(ngModel)]="contato.email" type="text" class="form-control">
-          </div>
-        </div>
-
-        <div class="row col-md-12">
-          <div class="form-group col-md-4">
-            <label for="email">Cargo</label>
-            <input [(ngModel)]="contato.cargo" type="text" class="form-control">
-          </div>
-          <div class="form-group col-md-4">
-            <label for="email">Departamento</label>
-            <input [(ngModel)]="contato.dep" type="text" class="form-control">
-          </div>
-          <div class="form-group col-md-4">
-            <label for="email">Data Aniversário</label>
-            <input [(ngModel)]="contato.birth" type="date" class="form-control">
-          </div>
-        </div>
-
-        <div class="row col-md-12">
-          <div class="form-group col-md-4">
-            <label for="email">Telefone</label>
-            <input [(ngModel)]="contato.tel" type="text" class="form-control" mask="(AA) AAAA-AAAA"
-              placeholder="(  )          - ">
-          </div>
-          <div class="form-group col-md-4">
-            <label for="email">Celular/WhatsApp</label>
-            <input [(ngModel)]="contato.cel" type="text" class="form-control" mask="(AA) AAAAA-AAAA"
-              placeholder="(  )          - ">
-          </div>
-          <div class="form-group col-md-4">
-            <label for="email">Skype</label>
-            <input [(ngModel)]="contato.skp" type="text" class="form-control">
-          </div>
-        </div>
-        <button class="btn btn-secondary" (click)="exit()">Sair</button>
-        <button class="btn btn-primary" (click)="addContato()" id="add">Adicionar Contato</button>
-      </div>
-      <div class="col-md-6">
-        <div *ngFor="let item of org.contatos" class="col-sm-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">{{item.nome}}</h5>
-              <p class="card-text">{{item.cargo}}</p>
-               <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div> -->
 </div>
 
 <div class="modal fade bd-example-modal-lg" id="ramo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -321,7 +256,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
-        <button type="button" (click)="saveErp()" data-dismiss="modal"  class="btn btn-primary">Salvar</button>
+        <button type="button" (click)="saveErp()" class="btn btn-primary">Salvar</button>
       </div>
     </div>
   </div>

@@ -6,7 +6,7 @@
       <p style="margin-left: 5px;">Lead</p>
     </button>
 
-    <div style="margin-left: auto; margin-right: 20px;">
+    <div style="margin-left: auto; margin-right: 5px;">
       <button class="btn btn-link" (click)="showOpen()">
         Leads Abertas
       </button>
@@ -19,6 +19,8 @@
       <!-- <button class="btn btn-link"  (click)="showExclude()">Excluídas     </button> -->
     </div>
   </div>
+
+  <mat-divider style="margin-left: 0px; margin-right: 18px;"></mat-divider>
 
   <div  class="modal fade" 
         id="exampleModalCenter" 
@@ -91,9 +93,6 @@
           <div class="row">
             <div class="form-group col-md-6">
               <label for="exampleFormControlSelect1">Contato</label>
-              <!--<button mat-icon-button (click)="redirectToAdd('/person')">
-                <mat-icon class="icon-modal-lead">add</mat-icon>
-              </button> -->
               <select *ngIf="orgapi" 
                       [(ngModel)]="ticket.cliente" 
                       class="form-control" 
@@ -191,10 +190,6 @@
       </div>
     </div>
   </div>
-
-  
-
-  <hr style="width: 100%;" />
 
   <div cdkDropListGroup class="nowrap" style="width: 100%;">
     <div class="example-container">

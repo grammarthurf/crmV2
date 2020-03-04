@@ -209,6 +209,7 @@ export class OrganizationRegisterComponent implements OnInit {
           // this.getterOrg();
           // setTimeout(this.reiniciar, 1001);
           console.log(data);
+          this.exit();
         },
         error => {
           // this.getterOrg();

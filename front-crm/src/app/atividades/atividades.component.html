@@ -16,14 +16,14 @@
     </div>
   </div>
 
-  <mat-divider></mat-divider>
+  <mat-divider style="margin-left: 15px; margin-right: 15px;"></mat-divider>
 
   <div (keyup)="applyFilter($event)" class="btn-group btn-group" role="group" aria-label="btngroup"
     style="float: right; margin: 20px 10px 3px;">
-    <button type="button" class="btn btn-link" (click)="filtroday()"    >Hoje       </button>
-    <button type="button" class="btn btn-link" (click)="filtrotmrw()"   >Amanhã     </button>
-    <button type="button" class="btn btn-link" (click)="filtromes()"    >Este mês   </button>
-    <button type="button" class="btn btn-link" (click)="filtroproxmes()">Próximo mês</button>
+    <button type="button" class="btn btn-link" (click)="filterDay()"    >Hoje       </button>
+    <button type="button" class="btn btn-link" (click)="filterTomorrow()"   >Amanhã     </button>
+    <button type="button" class="btn btn-link" (click)="filterMonth()"    >Este mês   </button>
+    <button type="button" class="btn btn-link" (click)="filterNextMonth()">Próximo mês</button>
   </div>
 
   <!-- MODAL -->
@@ -82,27 +82,27 @@
                 <div class="col-12 row">
                   <p class="atvinput"><b>Atividade: </b></p>
                   <div class="div-modal-atv">
-                    <button mat-icon-button (click)="atvchoose(1)">
+                    <button mat-icon-button (click)="selectActivity(1)">
                       <mat-icon class="icon-modal-atv">phone</mat-icon>
                     </button>
                   </div>
                   <div class="div-modal-atv">
-                    <button mat-icon-button (click)="atvchoose(2)">
+                    <button mat-icon-button (click)="selectActivity(2)">
                       <mat-icon class="icon-modal-atv">people</mat-icon>
                     </button>
                   </div>
                   <div class="div-modal-atv">
-                    <button mat-icon-button (click)="atvchoose(3)">
+                    <button mat-icon-button (click)="selectActivity(3)">
                       <mat-icon class="icon-modal-atv">business</mat-icon>
                     </button>
                   </div>
                   <div class="div-modal-atv">
-                    <button mat-icon-button (click)="atvchoose(4)">
+                    <button mat-icon-button (click)="selectActivity(4)">
                       <mat-icon class="icon-modal-atv">email</mat-icon>
                     </button>
                   </div>
                   <div class="div-modal-atv">
-                    <button mat-icon-button (click)="atvchoose(5)">
+                    <button mat-icon-button (click)="selectActivity(5)">
                       <mat-icon class="icon-modal-atv">watch_later</mat-icon>
                     </button>
                   </div>
@@ -225,42 +225,42 @@
   </div>
 
   <div style="display: flex;">
-    <button type="button" class="btn btn-outline-dark button-all" (click)="dblclic()">
+    <button type="button" class="btn btn-outline-dark button-all" (click)="filterAll()">
       Tudo
     </button>
     <mat-divider [vertical]="true" class="divider-vertical"></mat-divider>
     <button mat-icon-button
             class="buttons-filter dif"
             (keyup)="applyFilter($event)"
-            (click)="filtroLiga()">
+            (click)="filterCall()">
       <mat-icon>phone</mat-icon>
       Ligação
     </button>
     <button mat-icon-button
             class="buttons-filter"
             (keyup)="applyFilter($event)"
-            (click)="filtroReuniao()">
+            (click)="filterReunion()">
       <mat-icon>people</mat-icon>
       Reunião
     </button>
     <button mat-icon-button
             class="buttons-filter"
             (keyup)="applyFilter($event)"
-            (click)="filtroVisita()">
+            (click)="filterVisit()">
       <mat-icon>business</mat-icon>
       Visita
     </button>
     <button mat-icon-button
             class="buttons-filter"
             (keyup)="applyFilter($event)"
-            (click)="filtroemail()">
+            (click)="filterEmail()">
       <mat-icon>email</mat-icon>
       Email
     </button>
     <button mat-icon-button
             class="buttons-filter"
             (keyup)="applyFilter($event)"
-            (click)="filtroTarefa()">
+            (click)="filterTask()">
       <mat-icon>watch_later</mat-icon>
       Tarefa
     </button>

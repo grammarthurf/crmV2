@@ -47,7 +47,7 @@ export class ErpComponent implements OnInit {
       return text;
     }
 
-    this.code = randomString(8);
+    this.code = randomString(3);
     console.log(this.code);
   }
 

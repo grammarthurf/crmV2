@@ -138,8 +138,8 @@ export class OrganizationComponent implements OnInit {
   //   this.router.navigate([`/organization-detail/${id}`]);
   // }
 
-  goTo() {
-    this.router.navigate([`/company-detail/`]);
+  goTo(id) {
+    this.router.navigate([`/company-detail/${id}`]);
   }
 
   goToRegister() {
