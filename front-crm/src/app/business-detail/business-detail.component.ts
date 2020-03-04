@@ -138,25 +138,39 @@ export class BusinessDetailComponent implements OnInit {
     );
   }
 
+  updatedTicket(id, ticket) {
+    this.crudService.updateTicket(id, ticket).subscribe(
+      data => {
+        console.log(data);
+      }, error => {
+        console.error(error);
+      }
+    )
+  }
+
   changeid(idd: number) {
     if (idd == 1) {
+
       this.business.estagio.id = 1;
+      this.updatedTicket(this.business.estagio.id , this.business)
     } else if (idd == 2) {
       this.business.estagio.id = 2;
+      this.updatedTicket(this.business.estagio.id , this.business)
     } else if (idd == 3) {
       this.business.estagio.id = 3;
+      this.updatedTicket(this.business.estagio.id , this.business)
     } else if (idd == 4) {
       this.business.estagio.id = 4;
+      this.updatedTicket(this.business.estagio.id , this.business)
     } else if (idd == 5) {
       this.business.estagio.id = 5;
-    } else if (idd == 6) {
-      this.business.estagio.id = 6;
+      this.updatedTicket(this.business.estagio.id , this.business)
     } else if (idd == 7) {
       this.business.estagio.id = 7;
+      this.updatedTicket(this.business.estagio.id , this.business)
     } else if (idd == 8) {
       this.business.estagio.id = 8;
-    } else if (idd == 9) {
-      this.business.estagio.id = 9;
+      this.updatedTicket(this.business.estagio.id , this.business)
     }
   }
 

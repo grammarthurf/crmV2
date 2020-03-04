@@ -134,7 +134,7 @@
       </div>
       <div  class="md-step process"
             *ngIf="(business.estagio.id == 1)"
-            (click)="changeid(2)"
+            (click)="changeid(1)"
             id="1">
         <div class="md-step-circle ">
           <mat-icon> priority_high </mat-icon>
@@ -145,7 +145,7 @@
       </div>
       <div  class="md-step "
             *ngIf="(business.estagio.id < 1)"
-            id="1"><!-- business.estagio.id != 1 &&  -->
+            id="1" (click)="changeid(1)" ><!-- business.estagio.id != 1 &&  -->
         <div class="md-step-circle"></div>
         <div class="md-step-title">Prospecção</div>
         <div class="md-step-bar-right"></div>
@@ -165,7 +165,7 @@
       </div>
       <div  class="md-step process"
             *ngIf="(business.estagio.id == 2)"
-            (click)="changeid(3)"
+            (click)="changeid(2)"
             id="2">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
@@ -188,7 +188,7 @@
 
       <div  class="md-step process"
             *ngIf="(business.estagio.id==3)"
-            (click)="changeid(4)"
+            (click)="changeid(3)"
             id="3">
         <div class="md-step-circle ">
           <mat-icon> priority_high </mat-icon>
@@ -237,7 +237,7 @@
       </div>
       <div  class="md-step process"
             *ngIf="(business.estagio.id == 4)"
-            (click)="changeid(5)"
+            (click)="changeid(4)"
             id="4">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
@@ -273,7 +273,7 @@
       </div>
       <div  class="md-step process"
             *ngIf="(business.estagio.id == 5)"
-            (click)="changeid(7)"
+            (click)="changeid(5)"
             id="5">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
@@ -309,7 +309,7 @@
       </div>
       <div  class="md-step process"
             *ngIf="(business.estagio.id == 7)"
-            (click)="changeid(8)"
+            (click)="changeid(7)"
             id="7">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
@@ -333,7 +333,7 @@
 
       <div  class="md-step active"
             *ngIf="(business.estagio.id == 8)"
-            (click)="changeid(7)"
+            (click)="changeid(8)"
             id="8">
        <div class="md-step-circle">
           <mat-icon> done </mat-icon>

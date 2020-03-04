@@ -75,7 +75,7 @@
         ERP
       </th>
       <td mat-cell *matCellDef="let element" (click)="goTo()">
-        {{element.erpe}}
+        <span *ngIf="element.erp" > {{element.erp.desc}}</span>
       </td>
     </ng-container>
     <ng-container matColumnDef="columnEdit">
