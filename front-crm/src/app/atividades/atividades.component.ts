@@ -312,7 +312,7 @@ export class AtividadesComponent implements OnInit {
     this.dataSource.filter = "Tarefa".trim().toLowerCase();
   }
 
-  filtroday(){
+  filterDay(){
     var day = this.dNow.getDate();
     if(day == 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9){
       this.dataSource.filter = this.today.trim().toLowerCase();
@@ -321,7 +321,7 @@ export class AtividadesComponent implements OnInit {
     }
   }
 
-  filtrotmrw(){
+  filterTomorrow(){
     var day = (this.dNow.getDate() + 1);
     if(day == 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9){
       this.dataSource.filter = this.tomorrow.trim().toLowerCase();
@@ -330,11 +330,11 @@ export class AtividadesComponent implements OnInit {
     }
   }
 
-  filtromes(){
+  filterMonth(){
     this.dataSource.filter = this.dayMonth.trim().toLowerCase();
   }
 
-  filtroproxmes(){
+  filterNextMonth(){
     this.dataSource.filter = this.dayNextMonth.trim().toLowerCase();
   }
 
