@@ -142,16 +142,16 @@ export class CrudService {
   public updateTicket(estagioUpdate, ticket): Observable<any> {
 
     console.log('ESTAGIOUPDADE :' , typeof(estagioUpdate));
-    const body =  { id: parseInt(ticket.id), 
-                    titulo: ticket.titulo, 
+    const body =  { id: parseInt(ticket.id),
+                    titulo: ticket.titulo,
                     estagio: estagioUpdate.toString(),
-                    cliente: ticket.cliente.id.toString(), 
+                    cliente: ticket.cliente.id.toString(),
                     org: ticket.org.id.toString(),
-                    produto: ticket.produto, 
-                    valorestimado: ticket.valorestimado, 
+                    produto: ticket.produto,
+                    valorestimado: ticket.valorestimado,
                     termometro: ticket.termometro,
-                    vendedor: ticket.vendedor, 
-                    obs: ticket.obs, 
+                    vendedor: ticket.vendedor,
+                    obs: ticket.obs,
                     status: ticket.status};
     console.log('body:', body);
 
@@ -162,16 +162,16 @@ export class CrudService {
 
   public updateTicketDetails(ticket): Observable<any> {
 
-    const body =  { id: parseInt(ticket.id), 
-                    titulo: ticket.titulo, 
-                    estagio: ticket.estagio.id, 
-                    cliente: ticket.cliente.id.toString(), 
+    const body =  { id: parseInt(ticket.id),
+                    titulo: ticket.titulo,
+                    estagio: ticket.estagio.id,
+                    cliente: ticket.cliente.id.toString(),
                     org: ticket.org.id.toString(),
-                    produto: ticket.produto, 
-                    valorestimado: ticket.valorestimado, 
+                    produto: ticket.produto,
+                    valorestimado: ticket.valorestimado,
                     termometro: ticket.termometro,
-                    vendedor: ticket.vendedor, 
-                    obs: ticket.obs, 
+                    vendedor: ticket.vendedor,
+                    obs: ticket.obs,
                     status: ticket.status };
     console.log('body:', body);
 
@@ -180,15 +180,25 @@ export class CrudService {
     });
   }
 
+  public updateTicketObs(idobs): Observable<any> {
+
+    const body =  { id: parseInt(idobs.id), obs: idobs.obs, opt: 'obs' };
+    console.log('body:', body);
+
+    return this.http.put(this.baseUrl + 'ticket/' + idobs.id + '/' , body, {
+      headers: this.htttpHeaders
+    });
+  }
+
   public updatePerson(person): Observable<any> {
 
-    const body =  { id: parseInt(person.id), 
-                    nome: person.nome, 
-                    tipo: person.tipo, 
-                    fone: person.fone, 
+    const body =  { id: parseInt(person.id),
+                    nome: person.nome,
+                    tipo: person.tipo,
+                    fone: person.fone,
                     celular: person.celular.id,
-                    email: person.email, 
-                    skype: person.skype, 
+                    email: person.email,
+                    skype: person.skype,
                     org: person.org.id };
     console.log('body:', body);
 
@@ -199,15 +209,15 @@ export class CrudService {
 
   public updateOrg(org): Observable<any> {
 
-    const body =  { id: parseInt(org.id), 
-                    codigo: org.codigo, 
-                    razaosocial: org.razaosocial, 
-                    nomefantasia: org.nomefantasia, 
+    const body =  { id: parseInt(org.id),
+                    codigo: org.codigo,
+                    razaosocial: org.razaosocial,
+                    nomefantasia: org.nomefantasia,
                     rua: org.rua,
-                    bairro: org.bairro, 
-                    cep: org.cep, 
+                    bairro: org.bairro,
+                    cep: org.cep,
                     cidade: org.cidade,
-                    uf: org.uf, 
+                    uf: org.uf,
                     erp: org.erp };
     console.log('body:', body);
 

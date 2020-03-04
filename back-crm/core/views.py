@@ -1,6 +1,6 @@
 
 from rest_framework import viewsets
-from .serializers import ClienteSerializer, EstagioSerializer, OrganizacaoSerializer, ProdutoSerializer, TicketSerializer, VendedorSerializer, ErpSerializer, RamoSerializer , AtividadeSerializer, UserSerializer
+from .serializers import ClienteSerializer, EstagioSerializer, OrganizacaoSerializer, ProdutoSerializer, TicketSerializer, VendedorSerializer, ErpSerializer, RamoSerializer , AtividadeSerializer, UserSerializer, ObsSerializer
 from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade, Created, Updated, Erp, Ramo, Obs
 from django.core import serializers
 from django.contrib.auth.models import User
@@ -11,6 +11,10 @@ class UserViewSet(viewsets.ModelViewSet):
 
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
+
+class ObsViewSet(viewsets.ModelViewSet):
+    queryset = Obs.objects.all().order_by('-id')
+    serializer_class = ObsSerializer
 
 class RamoViewSet(viewsets.ModelViewSet):
 
@@ -154,10 +158,24 @@ class TicketViewSet(viewsets.ModelViewSet):
       data = request.data
       print(data);
 
-      T = Ticket.objects.get(id=data['id'])
-      T.estagio = Estagio.objects.get(id=data['estagio'])
-      T.status = data['status']
-      T.save()
+      try:  
+        if data['opt'] == 'obs':
+            o = Obs()
+            o.texto = data['obs']
+            T = Ticket.objects.get(id=data['id'])
+            o.save()
+            T.obs.add(o)
+            T.save()
+      except:
+          pass  
+
+      try:  
+        T = Ticket.objects.get(id=data['id'])
+        T.estagio = Estagio.objects.get(id=data['estagio'])
+        T.status = data['status']
+        T.save()
+      except:
+          pass
 
       return JsonResponse({'message': 'Updated'})
       

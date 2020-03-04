@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CrudService } from "../services/crud.service";
 import { ActivatedRoute } from "@angular/router";
+import swal from 'sweetalert';
 
 @Component({
   selector: "app-business-detail",
@@ -10,7 +11,7 @@ import { ActivatedRoute } from "@angular/router";
 
 export class BusinessDetailComponent implements OnInit {
   id: any;
-  
+
   business: any;
   estagiosapi: any;
 
@@ -18,6 +19,7 @@ export class BusinessDetailComponent implements OnInit {
   private anim: any;
 
   numm: number;
+  idobs = { id: '', obs: ''};
 
   // businesss = { id: "", titulo: '', valorestimado: '', termometro: '', obs: '', status: '', estagio: '', cliente: '', org: '', vendedor: '', created: '', updated: '', produto: ''};
 
@@ -28,7 +30,7 @@ export class BusinessDetailComponent implements OnInit {
       autoplay: false,
       loop: false
     };
-    
+
     this.getterEstagio()
   }
 
@@ -36,6 +38,30 @@ export class BusinessDetailComponent implements OnInit {
     this.crudService.updateTicketDetails(ticket).subscribe(
       data => {
         console.log(data);
+
+      }, error => {
+        console.error(error);
+      }
+    );
+  }
+
+  updateTicketObs() {
+    this.idobs.id = this.business.id;
+
+    this.crudService.updateTicketObs(this.idobs).subscribe(
+      data => {
+        console.log(data);
+        this.loadBusiness();
+        this.idobs.obs = '';
+        swal({
+          icon: "success",
+          text: "Observação adicionada com sucesso!",
+          timer: 1450,
+          buttons: {
+            buttons: false
+          }
+        });
+
       }, error => {
         console.error(error);
       }
@@ -117,7 +143,7 @@ export class BusinessDetailComponent implements OnInit {
       this.business.estagio.id = 8;
     } else if (idd == 9) {
       this.business.estagio.id = 9;
-    } 
+    }
   }
 
 
