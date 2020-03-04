@@ -127,13 +127,13 @@ export class AtividadesComponent implements OnInit {
 
   getColor(dataini) {
     if(dataini == this.dayhj){
-      return '#deeafa';
+      return 'rgb(255, 232, 228)';
     } else if (dataini == this.dayhj1) {
-      return '#deeafa';
+      return 'rgb(255, 232, 228)';
     } else if (dataini == this.daytmrw){
-      return 'rgb(255, 232, 228)';
+      return '#deeafa';
     } else if (dataini == this.daytmrw1) {
-      return 'rgb(255, 232, 228)';
+      return '#deeafa';
     }
   }
 
