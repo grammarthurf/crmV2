@@ -362,7 +362,7 @@
       <h2 class="font-26 bold margin5">
         Empresa
       </h2>
-      <mat-icon class="mg-t-10 mg-l-auto" (click)="goToOrg()">create</mat-icon>
+      <mat-icon style="cursor: pointer;" class="mg-t-10 mg-l-auto" >create</mat-icon>
     </div>
 
     <div class=" col-10 ">
@@ -402,7 +402,7 @@
           <ul class="list-group list-group-flush">
             <li *ngFor="let item of business.obs"  class="list-group-item p">
               <b class="b-b">
-                {{item.data | date:'dd/MM/yyyy'}} 
+                {{formatDate(item.data)}} <!--  {{this.dataslv}} -->
               </b>
               <br>
               <label class="b">

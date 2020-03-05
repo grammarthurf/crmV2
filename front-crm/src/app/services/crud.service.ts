@@ -75,6 +75,12 @@ export class CrudService {
     });
   }
 
+  public getAtividades(id): Observable<any> {
+    return this.http.get(`${this.baseUrl}atividade/${id}/`, {
+      headers: this.htttpHeaders
+    });
+  }
+
   public getPerson(id): Observable<any> {
     return this.http.get(`${this.baseUrl}clientes/${id}/`, {
       headers: this.htttpHeaders

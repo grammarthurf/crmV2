@@ -52,6 +52,9 @@ export class BusinessComponent implements OnInit {
 
   ticket = { titulo: "", estagio: '', cliente: '', org: '', produto: '', valorestimado: 0, termometro: '', vendedor: '', obs: '' };
 
+  today = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-0' + this.dNow.getDate();
+  today1 = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + this.dNow.getDate();
+
   // Lottie:
   public lottieConfig: Object;
   private anim: any;
@@ -60,7 +63,7 @@ export class BusinessComponent implements OnInit {
   constructor(private crudService: CrudService, private router: Router) {
     this.getterEstagios();
     this.getterTickets('open');
-    this.getterAtividades();
+    //this.getterAtividades(this.orsgapi.id);
     this.getterOrgs();
     this.getterProd();
     this.getterCliente();
@@ -107,8 +110,11 @@ export class BusinessComponent implements OnInit {
 
   dataCheck(dataini){
     //console.log( 'dataini: ' , dataini);
-
-    return true;
+    if (dataini.atividades > this.today || dataini.atividades > this.today1){
+      return true;
+    } else {
+      return false;
+    }
   }
 
   calcAllValue() {
@@ -238,11 +244,12 @@ export class BusinessComponent implements OnInit {
     );
   }
 
-  getterAtividades() {
-    this.crudService.getAtividade().subscribe(
+  getterAtividades(id) {
+    this.crudService.getAtividades(id).subscribe(
       data => {
         this.atividadesapi = data;
-        console.log(data);
+        console.log("atividadesapi" + data);
+
       },
       error => {
         this.erroAtividade = error;
@@ -320,6 +327,7 @@ export class BusinessComponent implements OnInit {
                   break;
               }
               this.calcAllValue();
+              //this.getterAtividades(e.id);
             }
           });
           // this.showOpen();
@@ -381,6 +389,7 @@ export class BusinessComponent implements OnInit {
                   break;
               }
               this.calcAllValue();
+              //this.getterAtividades(e.id);
             }
           });
           console.log('tickets 1: ', this.tickets1, 'tickets 2: ', this.tickets2, 'tickets 3: ', this.tickets3, 'tickets 4: ', this.tickets4, 'tickets 5: ', this.tickets5, 'tickets 6: ', this.tickets6, 'tickets 7: ', this.tickets7);
@@ -443,6 +452,7 @@ export class BusinessComponent implements OnInit {
                   break;
               }
               this.calcAllValue();
+              //this.getterAtividades(e.id);
             }
 
           });
@@ -512,6 +522,13 @@ export class BusinessComponent implements OnInit {
   goTo(id) {
     this.router.navigate([`/business-detail/${id}`]);
   }
+
+  goToAtv(){
+    this.router.navigate([`/activity/`]);
+  }
+  // goToAtv(title){
+  //   this.router.navigate([`/activity/${title}`]);
+  // }
 
   drop(event: CdkDragDrop<string[]>) {
     this.calcAllValue();
@@ -597,7 +614,6 @@ export class BusinessComponent implements OnInit {
 
   ngOnInit() {
     Inputmask().mask(document.getElementById("value"));
-
   }
 
   formatNumberBR(value) {

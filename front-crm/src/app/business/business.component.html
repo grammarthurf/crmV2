@@ -1,7 +1,7 @@
 <div class="maindiv" (click)="stop()">
 
   <div class="flex">
-    <button type="button" class="btn btn-primary loc-button-top" data-toggle="modal" data-target="#exampleModalCenter">
+    <button type="button" class="btn btn-primary loc-button-top" data-toggle="modal" data-target="#modalAddLead">
       <mat-icon>add</mat-icon>
       <p style="margin-left: 5px;">Lead</p>
     </button>
@@ -23,7 +23,7 @@
   <mat-divider style="margin-left: 0px; margin-right: 18px;"></mat-divider>
 
   <div  class="modal fade" 
-        id="exampleModalCenter" 
+        id="modalAddLead" 
         tabindex="-1" 
         role="dialog" 
         aria-labelledby="exampleModalCenterTitle"
@@ -49,7 +49,7 @@
           <div class="row">
             <div class="form-group col-md-6">
               <label for="exampleFormControlSelect1">Empresa</label>
-              <button mat-icon-button (click)="redirectToAdd('/company')">
+              <button mat-icon-button (click)="redirectToAdd('/company-register')">
                 <mat-icon class="icon-modal-lead">add</mat-icon>
               </button>
               <select *ngIf="orsgapi" [(ngModel)]="ticket.org" class="form-control" id="exampleFormControlSelect1"
@@ -69,7 +69,7 @@
           <div class="row">
             <div class="form-group col-md-6">
               <label for="exampleFormControlSelect2">Produto</label>
-              <button mat-icon-button data-toggle="modal" data-target="#exampleModalProd">
+              <button mat-icon-button data-toggle="modal" data-target="#exampleModalProd" data-dismiss="modal">
                 <mat-icon class="icon-modal-lead">add</mat-icon>
               </button>
               <select [(ngModel)]="ticket.produto" multiple class="form-control" id="exampleFormControlSelect2">
@@ -182,10 +182,10 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#modalAddLead">
             Sair
           </button>
-          <button type="button" (click)="save()" class="btn btn-primary" data-dismiss="modal">
+          <button type="button" (click)="save()" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#modalAddLead">
             Salvar
           </button>
         </div>
@@ -217,9 +217,9 @@
           <div class="flex">
 
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="(item.atividades.length > 0)" id="green">check_circle_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange">error_outline</mat-icon>
-            <mat-icon *ngIf="( item.atividades.length > 0 && dataCheck(item.atividades.dataini))" id="red">
+            <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="(dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">
               highlight_off
             </mat-icon>
           </div>
@@ -238,7 +238,7 @@
       </div>
 
       <div cdkDropList [cdkDropListData]="tickets2.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets2.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+        <div class="leads" *ngFor="let item of tickets2.tickets;" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">
               {{item.titulo}}
@@ -251,9 +251,9 @@
           <div class="flex">
 
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="(item.atividades.length > 0)" id="green">check_circle_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange">error_outline</mat-icon>
-            <mat-icon *ngIf="( item.atividades.length > 0 && dataCheck(item.atividades.dataini))" id="red">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="(dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
@@ -282,9 +282,9 @@
           <div class="flex">
 
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="(item.atividades.length > 0)" id="green">check_circle_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange">error_outline</mat-icon>
-            <mat-icon *ngIf="( item.atividades.length > 0 && dataCheck(item.atividades.dataini))" id="red">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="(dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
@@ -303,7 +303,7 @@
 
       <div cdkDropList [cdkDropListData]="tickets4.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets4.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
-          <div class="flex">
+          <div class="flex" >
             <p class="limit-words">{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
@@ -311,11 +311,10 @@
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
-
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="(item.atividades.length > 0)" id="green">check_circle_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange">error_outline</mat-icon>
-            <mat-icon *ngIf="( item.atividades.length > 0 && dataCheck(item.atividades.dataini))" id="red">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="(dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
@@ -343,9 +342,9 @@
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="(item.atividades.length > 0)" id="green">check_circle_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange">error_outline</mat-icon>
-            <mat-icon *ngIf="( item.atividades.length > 0 && dataCheck(item.atividades.dataini))" id="red">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="(dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
@@ -372,9 +371,9 @@
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="(item.atividades.length > 0)" id="green">check_circle_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange">error_outline</mat-icon>
-            <mat-icon *ngIf="( item.atividades.length > 0 && dataCheck(item.atividades.dataini))" id="red">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length > 1 && dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
@@ -400,9 +399,9 @@
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
             <p class="limit-value">{{ item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="(item.atividades.length > 0)" id="green">check_circle_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange">error_outline</mat-icon>
-            <mat-icon *ngIf="( item.atividades.length > 0 && dataCheck(item.atividades.dataini))" id="red">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0  )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="(dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
