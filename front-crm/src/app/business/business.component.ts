@@ -141,6 +141,10 @@ export class BusinessComponent implements OnInit {
     var data = dataini.split("-", 3);
      console.log("today:" + year + month + day);
      console.log( 'dataini: ' , data);
+   
+      console.log( 'tipo data ini' ,typeof(dataini));
+      console.log('tipo today: ' , typeof(day));
+
     if (data < year ){
       return true;
     } else {
