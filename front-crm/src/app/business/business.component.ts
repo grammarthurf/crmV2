@@ -28,6 +28,7 @@ export class BusinessComponent implements OnInit {
 
   //Lista de Produtos
   produtosapi: any;
+  produto: any = { nome: '', codigo: ''};
 
   // Lista de Orgs:
   orsgapi: any;
@@ -72,6 +73,30 @@ export class BusinessComponent implements OnInit {
       autoplay: false,
       loop: false
     };
+  }
+
+  saveProduto(){
+    this.crudService.saveNewProduto(this.produto).subscribe(
+      data => {
+        swal({
+          icon: "success",
+          text: "Produto criado com sucesso!",
+          timer: 1300,
+          buttons: {
+            buttons: false
+          }
+        });
+
+        this.getterProd();
+        console.log(data);
+
+      },
+      error => {
+
+        console.error(error);
+      }
+    );
+
   }
 
   // code1: any;

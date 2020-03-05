@@ -22,10 +22,10 @@
 
   <mat-divider style="margin-left: 0px; margin-right: 18px;"></mat-divider>
 
-  <div  class="modal fade" 
-        id="exampleModalCenter" 
-        tabindex="-1" 
-        role="dialog" 
+  <div  class="modal fade"
+        id="exampleModalCenter"
+        tabindex="-1"
+        role="dialog"
         aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -93,9 +93,9 @@
           <div class="row">
             <div class="form-group col-md-6">
               <label for="exampleFormControlSelect1">Contato</label>
-              <select *ngIf="orgapi" 
-                      [(ngModel)]="ticket.cliente" 
-                      class="form-control" 
+              <select *ngIf="orgapi"
+                      [(ngModel)]="ticket.cliente"
+                      class="form-control"
                       id="exampleFormControlSelect1">
                 <option *ngFor="let orgs of orgapi.contatos" value="{{orgs.id}}">
                   {{orgs.nome}}
@@ -150,10 +150,10 @@
     </div>
   </div>
 
-  <div  class="modal fade"  
-        id="exampleModalProd" 
-        tabindex="-1" 
-        role="dialog" 
+  <div  class="modal fade"
+        id="exampleModalProd"
+        tabindex="-1"
+        role="dialog"
         aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -170,14 +170,14 @@
         <div class="modal-body row">
           <div class="form-group col-md-6">
             <label for="codeprod"> Código</label>
-            <input type="text" class="form-control" id="codeprod" /><!-- [(ngModel)]="produto.codigo" -->
+            <input [(ngModel)]="produto.codigo" type="text" class="form-control" id="codeprod" />
             </div>
             <button class="btn btn-primary" (click)="generateCode1()" id="code">
               <img src="../../assets/cod.png" id="codigo">
             </button>
           <div class="form-group col-md-12">
             <label for="nomeprod"> Descrição</label>
-            <input type="text" class="form-control" id="nomeprod" required /> <!-- [(ngModel)]="produto.nome" -->
+            <input [(ngModel)]="produto.nome"  type="text" class="form-control" id="nomeprod" required />
 
           </div>
         </div>
@@ -185,7 +185,7 @@
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
             Sair
           </button>
-          <button type="button" (click)="save()" class="btn btn-primary" data-dismiss="modal">
+          <button type="button" (click)="saveProduto()" class="btn btn-primary" data-dismiss="modal">
             Salvar
           </button>
         </div>

@@ -99,7 +99,7 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
             o.birth = i['birth']
             o.tel = i['tel']
             o.cel = i['cel']
-            o.skp = i['skp']
+            o.skype = i['skp']
             o.save()
             C.contatos.add(o)
             C.save()

@@ -82,7 +82,7 @@ export class AtividadesComponent implements OnInit {
     this.getterTickets();
     this.getterActivity();
     this.calendarPlugins = [ listPlugin , bootstrapPlugin ];
-    
+
   }
 
   ngOnInit() {
@@ -137,6 +137,8 @@ export class AtividadesComponent implements OnInit {
   getterActivity() {
     this.crudService.getAtividade().subscribe(
       data => {
+        console.log( ' Atividades' ,data);
+
         this.matdata = []
         data.forEach(e => {
           try {
