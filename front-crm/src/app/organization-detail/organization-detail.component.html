@@ -1,5 +1,5 @@
-<div style="margin-top: 100px;">
-    <header class="row col-md-11">
+<div style="margin-top: 40px;">
+    <header class="row col-md-11 bg-white">
         <div class="col-md-1" id="button">
             <button mat-icon-button id="button-icon">
                 <mat-icon>business</mat-icon>
@@ -44,7 +44,7 @@
             </div>
 
 
-            <div class="bg-white">
+            <div class="bg-white  mg-tp-40">
                 <div class="flex only-select">
                     <h5>Pessoas</h5>
                     <button>
@@ -76,7 +76,7 @@
                 </div>
             </div>
 
-            <div class="bg-white align-divs">
+            <div class="bg-white  mg-tp-40">
                 <div class="flex">
                     <h5>Negócios</h5>
                     <button>
@@ -87,8 +87,9 @@
                 <div class="leads">
                     <p class="limit-words">Negócio Vedois</p>
                     <div class="flex">
-                        <p>R$ 123456</p>
-                        <!-- <mat-icon id="green">check_circle_outline</mat-icon> -->
+                        <p>{{123456 | currency:'BRL':'symbol':'0.2':'pt'}}</p>
+                        <!--{{business.valorestimado }}
+                         <mat-icon id="green">check_circle_outline</mat-icon> -->
                         <mat-icon id="orange">error_outline</mat-icon>
                         <!-- <mat-icon id="red">highlight_off</mat-icon> -->
                     </div>
@@ -98,7 +99,7 @@
                 </div>
             </div>
 
-            <div class="bg-white align-divs">
+            <div class="bg-white mg-tp-40">
                 <h5 id="vision">Visão Geral</h5>
                 <hr>
                 <div class="flex">
@@ -110,31 +111,57 @@
         <div class="col-1">
 
         </div>
-        <div class="col-7">
+        <div class="col-7 divright">
             <div class="bg-white">
-                <div class="tabs">
-                    <ul class="headers">
-                        <li>
-                            <a href=""><mat-icon>description</mat-icon>Observações</a>
-                        </li>
-                        <li>
-                            <a href=""><mat-icon>event</mat-icon>Atividade</a>
-                        </li>
-                        <li>
-                            <a href=""><mat-icon>attach_file</mat-icon>Arquivos</a>
-                        </li>
-                    </ul>
-                    <div class="fakeInput">
+                <mat-tab-group mat-stretch-tabs class="col-12">
+                    <mat-tab label="Observações">
                         <div class="form-group col-12">
-                            <textarea class="form-control" id="obs" rows="3"></textarea>
+                            <textarea rows="5" class="col-12 txtarea"></textarea>
+                            <button type="button"  class="btn btn-success bold btn-sm fltright">
+                              Adicionar
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary bold btn-sm fltright mg-r-5">
+                              Cancelar
+                            </button>
                         </div>
-                        <div>
-                            <input type="file">
-                            <button type="button" class="btn btn-outline-dark">Cancelar</button>
-                            <button type="button" class="btn btn-success">Salvar</button>
+                    </mat-tab>
+                    <mat-tab label="Atividade">
+                        <div class="col-12 mg-t-10 divtab">
+                            <div class="b-b txtcenter">
+                              <h4>Sem atividades ativas</h4>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    </mat-tab>
+                    <mat-tab label="Arquivos">
+                        <div class="col-12">
+                            <mat-list>
+                              <h3 mat-subheader>Pastas</h3>
+                              <mat-list-item >
+                                <mat-icon mat-list-icon>folder</mat-icon>
+                                <h4 mat-line>Fotos</h4>
+                                <p mat-line> Jan 1, 2020 </p>
+                              </mat-list-item>
+                              <mat-list-item >
+                                <mat-icon mat-list-icon>folder</mat-icon>
+                                <h4 mat-line>Projetos</h4>
+                                <p mat-line> Fev 3, 2020 </p>
+                              </mat-list-item>
+                              <mat-divider></mat-divider>
+                              <h3 mat-subheader>Arquivos</h3>
+                              <mat-list-item >
+                                <mat-icon mat-list-icon>note</mat-icon>
+                                <h4 mat-line>Contrato</h4>
+                                <p mat-line> Feb 20, 2020 </p>
+                              </mat-list-item>
+                              <mat-list-item >
+                                <mat-icon mat-list-icon>note</mat-icon>
+                                <h4 mat-line>Requisitos Instalação</h4>
+                                <p mat-line> Feb 22, 2020 </p>
+                              </mat-list-item>
+                            </mat-list>
+                          </div>
+                    </mat-tab>
+                </mat-tab-group>
             </div>
 
             <div class="div-plan">
