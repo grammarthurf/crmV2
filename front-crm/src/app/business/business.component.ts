@@ -134,9 +134,14 @@ export class BusinessComponent implements OnInit {
   }
 
   dataCheck(dataini){
-    console.log( 'dataini: ' , dataini);
-    console.log("today:" + this.today)
-    if (dataini < this.today || dataini < this.today1){
+
+    var year = this.dNow.getFullYear();
+    var month = this.dNow.getMonth();
+    var day = this.dNow.getDate();
+    var data = dataini.split("-", 3);
+     console.log("today:" + year + month + day);
+     console.log( 'dataini: ' , data);
+    if (data < year ){
       return true;
     } else {
       return false;

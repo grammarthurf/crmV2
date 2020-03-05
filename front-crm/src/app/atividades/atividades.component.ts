@@ -379,6 +379,10 @@ export class AtividadesComponent implements OnInit {
 
   }
 
+  goToLead(){
+    this.router.navigate([`/business/`]);
+  }
+
   selectActivity(id: number) {
     if (id == 1) {
       this.numm = "Ligar";
