@@ -1,18 +1,12 @@
 <div style="margin-top: 15px">
 
   <div style="display: flex;">
-    <button type="button"
-            class="btn btn-primary loc-button-top "
-            data-toggle="modal"
-            data-target="#abrircadastroatv">
+    <button type="button" class="btn btn-primary loc-button-top " data-toggle="modal" data-target="#abrircadastroatv">
       <mat-icon>add</mat-icon>
       <p style="margin-left: 5px;">Atividade</p>
     </button>
     <div class="div-filter">
-      <input  class="form-control"
-              type="text"
-              (keyup)="applyFilter($event.target.value)"
-              placeholder="Filtro">
+      <input class="form-control" type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
     </div>
   </div>
 
@@ -20,32 +14,25 @@
 
   <div (keyup)="applyFilter($event)" class="btn-group btn-group" role="group" aria-label="btngroup"
     style="float: right; margin: 20px 10px 3px;">
-    <button type="button" class="btn btn-link" (click)="filterDay()"    >Hoje       </button>
-    <button type="button" class="btn btn-link" (click)="filterTomorrow()"   >Amanhã     </button>
-    <button type="button" class="btn btn-link" (click)="filterMonth()"    >Este mês   </button>
+    <button type="button" class="btn btn-link" (click)="filterDay()">Hoje </button>
+    <button type="button" class="btn btn-link" (click)="filterTomorrow()">Amanhã </button>
+    <button type="button" class="btn btn-link" (click)="filterMonth()">Este mês </button>
     <button type="button" class="btn btn-link" (click)="filterNextMonth()">Próximo mês</button>
   </div>
 
   <!-- MODAL -->
-  <div  class="modal fade"
-        id="abrircadastroatv"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="abrircadastroatv"
-        aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+  <div class="modal fade bd-example-modal-lg" id="abrircadastroatv" tabindex="-1" role="dialog"
+    aria-labelledby="abrircadastroatv" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title font1 font1b" id="exampleModalLongTitle">
-              Adicione uma Atividade
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            Adicione uma Atividade
           </h5>
           <a href="/calendar" target="_blank" class="viewcalendar">
             Visualizar Calendário
           </a>
-          <button type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-label="Close">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">
               &times;
             </span>
@@ -53,34 +40,29 @@
         </div>
         <div class="modal-body">
           <div class="col-12 row">
-            <div class="col-7" style="padding: 0px;">
+            <div class="col-6" style="padding: 0px;">
               <div class="col-12 row">
                 <div class="col-6" style="margin-top: 8px;">
-                  <label for="negocios" >Negócio</label><!-- (change)="getterorg($event.target.value)" -->
-                    <select [(ngModel)]="atv.ticket" 
-                            *ngIf="negociosapi"
-                            class="form-control"
-                            id="exampleFormControlSelect1">
-                      <option *ngFor="let ticket of negociosapi" value="{{ticket.id}}">
-                        {{ticket.titulo}}
-                      </option>
-                    </select>
+                  <label for="negocios">Negócio</label><!-- (change)="getterorg($event.target.value)" -->
+                  <select [(ngModel)]="atv.ticket" *ngIf="negociosapi" class="form-control"
+                    id="exampleFormControlSelect1">
+                    <option *ngFor="let ticket of negociosapi" value="{{ticket.id}}">
+                      {{ticket.titulo}}
+                    </option>
+                  </select>
                 </div>
-                <div class="col-6" style="padding: 0px;">
-                  <label for="participantes" >Vendedor(es)</label>
-                    <button mat-icon-button (click)="redirectToAdd('/user')">
-                      <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
-                    </button>
-                    <select *ngIf="vendedorapi" class="form-control" id="exampleFormControlSelect1">
-                      <option *ngFor="let vendedor of vendedorapi" value="{{vendedor.id}}">
-                        {{vendedor.nome}}
-                      </option>
-                    </select>
+                <div class="col-6" style="padding: 0px; margin-top: 8px">
+                  <label for="participantes">Vendedor(es)</label>
+                  <select *ngIf="vendedorapi" class="form-control" id="exampleFormControlSelect1">
+                    <option *ngFor="let vendedor of vendedorapi" value="{{vendedor.id}}">
+                      {{vendedor.nome}}
+                    </option>
+                  </select>
                 </div>
               </div>
               <div class="col-12" style="margin-top: 20px;">
-                <div class="col-12 row">
-                  <p class="atvinput"><b>Atividade: </b></p>
+                <p class="atvinput"><b>Atividade: </b></p>
+                <div class="row" style="margin-left: 10px;">
                   <div class="div-modal-atv">
                     <button mat-icon-button (click)="selectActivity(1)">
                       <mat-icon class="icon-modal-atv">phone</mat-icon>
@@ -108,16 +90,12 @@
                   </div>
                 </div>
                 <div class="col-12 row inputmargin2">
-                  <input  [(ngModel)]="atv.tipo"
-                          type="text"
-                          class="form-control"
-                          value="{{this.numm}}"
-                          placeholder="">
+                  <input [(ngModel)]="atv.tipo" type="text" class="form-control" value="{{this.numm}}" placeholder="">
                 </div>
-                <div class="col-12 row inputmargin" >
-                  <div class="col-6" >
+                <div class="col-12 row inputmargin">
+                  <div class="col-6">
                     <label for="">Início</label>
-                      <input [(ngModel)]="atv.dataini" type="date" class="form-control">
+                    <input [(ngModel)]="atv.dataini" type="date" class="form-control">
                   </div>
                   <div class="col-6" style="padding: 0px;">
                     <label for="">Fim</label>
@@ -129,24 +107,19 @@
                     <input [(ngModel)]="atv.horaini" type="text" class="form-control" placeholder="14:00" mask="99:99">
                   </div>
                   <div class="col-6" style="padding: 0px">
-                    <input  [(ngModel)]="atv.horafim" type="text" class="form-control" placeholder="14:00" mask="99:99">
+                    <input [(ngModel)]="atv.horafim" type="text" class="form-control" placeholder="14:00" mask="99:99">
                   </div>
                 </div>
                 <div class="col-12 row" style="margin-top: 20px; padding: 0px 0px 0px 15px;">
                   <label for="obs">Assunto</label>
-                  <textarea [(ngModel)]="atv.assunto"
-                            name="obs"
-                            id="obs"
-                            cols="50"
-                            rows="3"
-                            class="form-control">
+                  <textarea [(ngModel)]="atv.assunto" name="obs" id="obs" cols="50" rows="3" class="form-control">
                   </textarea>
                 </div>
                 <div class="col-12 row inputmargin">
                   <div class="col-6">
                     <label for="negocios" >Empresa </label>
                       <select [(ngModel)]="atv.org"
-                              (change)="gettercliorg($event.target.value)"
+                              (change)="getterCliOrg($event.target.value)"
                               *ngIf="orsgapi"
                               class="form-control"
                               id="exampleFormControlSelect1">
@@ -155,7 +128,7 @@
                         </option>
                       </select>
                       <!-- <select [(ngModel)]="atv.org"
-                              (change)="gettercliorg($event.target.value)"
+                              (change)="getterCliOrg($event.target.value)"
                               *ngIf="tckapi"
                               class="form-control"
                               id="exampleFormControlSelect1">
@@ -178,27 +151,18 @@
                 </div>
               </div>
             </div>
-            <div class="col-5 ml-auto div-calendar">
-              <full-calendar
-                [defaultView]="'listWeek'"
-                [plugins]="calendarPlugins"
-                themeSystem= "bootstrap"
-                [events]="calendarEvents"
-                locale="pt-br">
+            <div class="col-6 ml-auto div-calendar">
+              <full-calendar [defaultView]="'listWeek'" [plugins]="calendarPlugins" themeSystem="bootstrap"
+                [events]="calendarEvents" locale="pt-br">
               </full-calendar>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button"
-                  class="btn btn-secondary"
-                  data-dismiss="modal">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
             Sair
           </button>
-          <button type="button"
-                  (click)="save()"
-                  class="btn btn-primary"
-                  data-dismiss="modal">
+          <button type="button" (click)="save()" class="btn btn-primary" data-dismiss="modal">
             Salvar
           </button>
         </div>
@@ -206,12 +170,7 @@
     </div>
   </div>
 
-  <div  class="modal fade"
-        id="modalDelete"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="modalDelete"
-        aria-hidden="true">
+  <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -239,38 +198,23 @@
       Tudo
     </button>
     <mat-divider [vertical]="true" class="divider-vertical"></mat-divider>
-    <button mat-icon-button
-            class="buttons-filter dif"
-            (keyup)="applyFilter($event)"
-            (click)="filterCall()">
+    <button mat-icon-button class="buttons-filter dif" (keyup)="applyFilter($event)" (click)="filterCall()">
       <mat-icon>phone</mat-icon>
       Ligação
     </button>
-    <button mat-icon-button
-            class="buttons-filter"
-            (keyup)="applyFilter($event)"
-            (click)="filterReunion()">
+    <button mat-icon-button class="buttons-filter" (keyup)="applyFilter($event)" (click)="filterReunion()">
       <mat-icon>people</mat-icon>
       Reunião
     </button>
-    <button mat-icon-button
-            class="buttons-filter"
-            (keyup)="applyFilter($event)"
-            (click)="filterVisit()">
+    <button mat-icon-button class="buttons-filter" (keyup)="applyFilter($event)" (click)="filterVisit()">
       <mat-icon>business</mat-icon>
       Visita
     </button>
-    <button mat-icon-button
-            class="buttons-filter"
-            (keyup)="applyFilter($event)"
-            (click)="filterEmail()">
+    <button mat-icon-button class="buttons-filter" (keyup)="applyFilter($event)" (click)="filterEmail()">
       <mat-icon>email</mat-icon>
       Email
     </button>
-    <button mat-icon-button
-            class="buttons-filter"
-            (keyup)="applyFilter($event)"
-            (click)="filterTask()">
+    <button mat-icon-button class="buttons-filter" (keyup)="applyFilter($event)" (click)="filterTask()">
       <mat-icon>watch_later</mat-icon>
       Tarefa
     </button>
@@ -279,21 +223,17 @@
   <table mat-table [dataSource]="dataSource " multiTemplateDataRows matSort class="mat-elevation-z8">
     <!-- Checkbox Column -->
     <ng-container matColumnDef="select">
-      <th mat-header-cell *matHeaderCellDef >
+      <th mat-header-cell *matHeaderCellDef>
         Feito?
       </th>
-      <td [style.background-color]="getColor(element.dataini)"
-          mat-cell *matCellDef="let element let row">
-        <mat-checkbox [checked]="removeSelectedRows()"
-                      (change)="$event ? selection.toggle(row) : null"
-                      data-toggle="modal"
-                      data-target="#abrircadastroatv"
-                      style="padding-left: 30px;">
+      <td [style.background-color]="getColor(element.dataini)" mat-cell *matCellDef="let element let row">
+        <mat-checkbox [checked]="removeSelectedRows()" (change)="$event ? selection.toggle(row) : null"
+          data-toggle="modal" data-target="#abrircadastroatv" style="padding-left: 30px;">
         </mat-checkbox>
       </td>
     </ng-container>
     <!-- tipo Column -->
-    <ng-container matColumnDef="tipo" >
+    <ng-container matColumnDef="tipo">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         Tipo
       </th>
@@ -302,8 +242,8 @@
       </td>
     </ng-container>
     <!-- DataVenc Column -->
-    <ng-container matColumnDef="data" >
-      <th mat-header-cell *matHeaderCellDef mat-sort-header >
+    <ng-container matColumnDef="data">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
         Data
       </th>
       <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.dataini)">
@@ -315,7 +255,7 @@
       <th mat-header-cell *matHeaderCellDef>
         Nome do Contato
       </th>
-      <td mat-cell *matCellDef="let element"  [style.background-color]="getColor(element.dataini)">
+      <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.dataini)">
         {{element.cliente.nome }}
       </td>
     </ng-container>
@@ -326,7 +266,8 @@
       </th>
       <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.dataini)">
         {{element.org.razaosocial}}
-      </td> <!--.razaosocial-->
+      </td>
+      <!--.razaosocial-->
     </ng-container>
     <!-- Ticket Column -->
     <ng-container matColumnDef="ticket">
@@ -347,14 +288,11 @@
       </td>
     </ng-container>
     <ng-container matColumnDef="columnEdit">
-      <th mat-header-cell *matHeaderCellDef >
+      <th mat-header-cell *matHeaderCellDef>
         Editar
       </th>
-      <td mat-cell
-          *matCellDef="let element"
-          data-toggle="modal"
-          data-target="#abrircadastroatv"
-          [style.background-color]="getColor(element.dataini)">
+      <td mat-cell *matCellDef="let element" data-toggle="modal" data-target="#abrircadastroatv"
+        [style.background-color]="getColor(element.dataini)">
         <button class="none-border-icons-action">
           <mat-icon class="icons-action icon-color-grey">
             create
@@ -363,14 +301,11 @@
       </td>
     </ng-container>
     <ng-container matColumnDef="columnDelete">
-      <th mat-header-cell *matHeaderCellDef >
+      <th mat-header-cell *matHeaderCellDef>
         Excluir
       </th>
-      <td mat-cell
-          *matCellDef="let element"
-          data-toggle="modal"
-          data-target="#modalDelete"
-          [style.background-color]="getColor(element.dataini)">
+      <td mat-cell *matCellDef="let element" data-toggle="modal" data-target="#modalDelete"
+        [style.background-color]="getColor(element.dataini)">
         <button class="none-border-icons-action" (click)="deleteActivity(2)">
           <mat-icon class="icons-action icon-color-red">
             delete
@@ -378,7 +313,7 @@
         </button>
       </td>
     </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>

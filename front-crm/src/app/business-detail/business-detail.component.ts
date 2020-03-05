@@ -88,9 +88,11 @@ export class BusinessDetailComponent implements OnInit {
   }
 
   getterTicket(id) {
+    
     this.crudService.getTicket(id).subscribe(
       data => {
         this.business = data;
+        this.reverseArray()
         if (this.business.status == 'Ganhou') {
           this.stageWin();
         } else if (this.business.status == 'Perdido') {
@@ -244,9 +246,26 @@ export class BusinessDetailComponent implements OnInit {
 
   }
 
-  EditTitleLead() {
+  // EditTitleLead() {
 
+  // }
+
+  reverseArray() {
+    let arrayObs = [];
+    arrayObs = this.business.obs;
+    arrayObs.reverse()
+    
   }
+
+  formatDate(date) {
+    let result = date.split('-').reverse().join('/');
+
+    return result
+  }
+
+  // goTo(id) {
+  //   this.router.navigate([`/company-detail/${id}`]);
+  // }
 
 
   ngOnInit() {
