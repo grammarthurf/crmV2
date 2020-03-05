@@ -129,6 +129,7 @@ table {
 }
 
 .div-calendar{
+    padding: 0px;
     height: 590px; 
     overflow: auto; 
     font-size: 10px; 

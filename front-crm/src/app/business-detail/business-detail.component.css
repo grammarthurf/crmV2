@@ -242,6 +242,7 @@ input[type=range] {
 /* TESTE STEPPER */
 .md-stepper-horizontal {
 	display:table;
+	cursor: pointer;
 	width:100%;
 	margin:0 auto;
 	background-color:#FFFFFF;

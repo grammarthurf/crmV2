@@ -92,7 +92,7 @@ export class OrganizationRegisterComponent implements OnInit {
 
     const contatovar = {
       nome: this.contato.nome, email: this.contato.email, cargo: this.contato.cargo,
-      dep: this.contato.dep, birth: this.contato.birth, tel: this.contato.tel, cel: this.contato.cel, skp: this.contato.skp
+      dep: this.contato.dep, birth: this.contato.birth, tel: this.contato.tel, skp: this.contato.skp, cel: this.contato.cel
     }
 
     this.org.contatos.push(contatovar)
@@ -104,8 +104,8 @@ export class OrganizationRegisterComponent implements OnInit {
     this.contato.dep = '';
     this.contato.birth = '';
     this.contato.tel = '';
-    this.contato.cel = '';
     this.contato.skp = '';
+    this.contato.cel = '';
   }
 
   exit() {
