@@ -74,22 +74,22 @@ export class BusinessComponent implements OnInit {
     };
   }
 
-  // code1: any;
-  // generateCode1() {
-  //   let randomString = function (lenght) {
-  //     let text = "";
-  //     let possible = "0123456789"
+  code1: any;
+  generateCode1() {
+    let randomString = function (lenght) {
+      let text = "";
+      let possible = "0123456789"
 
-  //     for (let i = 0; i < lenght; i++) {
-  //       text += possible.charAt(Math.floor(Math.random() * possible.length));
-  //     }
-  //     return text;
-  //   }
+      for (let i = 0; i < lenght; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return text;
+    }
 
-  //   this.code1 = randomString(3);
-  //   this.produtosapi.codigo = this.code1;
-  //   console.log(this.code1);
-  // }
+    this.code1 = randomString(3);
+    this.produtosapi.codigo = this.code1;
+    console.log(this.code1);
+  }
 
   //FILTRAR SELECT DOS CONTATOS DE ACORDO COM O SELECIONADO EM EMPRESAS
   gettercliorg(id) {
