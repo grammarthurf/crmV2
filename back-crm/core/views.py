@@ -1,6 +1,6 @@
 
 from rest_framework import viewsets
-from .serializers import ClienteSerializer, EstagioSerializer, OrganizacaoSerializer, ProdutoSerializer, TicketSerializer, VendedorSerializer, ErpSerializer, RamoSerializer , AtividadeSerializer, UserSerializer, ObsSerializer
+from .serializers import ClienteSerializer, EstagioSerializer, OrganizacaoSerializer, ProdutoSerializer, TicketSerializer, VendedorSerializer, ErpSerializer, RamoSerializer, AtividadeSerializer, UserSerializer, ObsSerializer
 from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade, Created, Updated, Erp, Ramo, Obs
 from django.core import serializers
 from django.contrib.auth.models import User
@@ -12,19 +12,23 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
 
+
 class ObsViewSet(viewsets.ModelViewSet):
     queryset = Obs.objects.all().order_by('-id')
     serializer_class = ObsSerializer
+
 
 class RamoViewSet(viewsets.ModelViewSet):
 
     queryset = Ramo.objects.all().order_by('-id')
     serializer_class = RamoSerializer
 
+
 class ErpViewSet(viewsets.ModelViewSet):
 
     queryset = Erp.objects.all().order_by('-id')
     serializer_class = ErpSerializer
+
 
 class ClienteViewSet(viewsets.ModelViewSet):
 
@@ -33,10 +37,9 @@ class ClienteViewSet(viewsets.ModelViewSet):
 
     def create(self, request):
         data = request.data
-        
+
         print(data);
-        
-       
+
         C = Cliente()
         C.nome = data['nome']
         C.tipo = data['tipo']
@@ -65,8 +68,7 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
         data = request.data
         print('chamou request')
         print(data);
-        
-       
+
         C = Organizacao()
         C.codigo = data['codigo']
         C.razaosocial = data['razaosocial']
@@ -77,7 +79,7 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
         C.cep = data['cep']
         C.cidade = data['cidade']
         C.uf = data['uf']
-        try: 
+        try:
             C.ramo = Ramo.objects.get(id=int(data['ramo']))
         except:
             pass
@@ -89,8 +91,8 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
         C.save()
         contatos = data['contatos']
         for i in contatos:
-            print('CONTATOS : ' , i);
-            
+            print('CONTATOS : ', i);
+
             o = Cliente()
             o.nome = i['nome']
             o.email = i['email']
@@ -121,9 +123,9 @@ class TicketViewSet(viewsets.ModelViewSet):
 
     def create(self, request):
         data = request.data
-        
+
         print(data['titulo']);
-        
+
         c = Created()
         c.save()
         T = Ticket()
@@ -134,15 +136,24 @@ class TicketViewSet(viewsets.ModelViewSet):
         T.valorestimado = int(data['valorestimado'])
         T.termometro = data['termometro']
         T.status = 'Aberto'
-        
+
         T.created = c
         T.save()
-        for i in data['obs']:
+        try:
+            if data['obs'].length >= 1:
+                for i in data['obs']:
+                    k = Obs()
+                    k.texto = i
+                    k.save()
+                    T.obs.add(k)
+                    T.save()
+        except:
             k = Obs()
-            k.texto =  i
+            k.texto = data['obs']
             k.save()
             T.obs.add(k)
             T.save()
+        
 
         produtos = data['produto']
         for prod in produtos:
