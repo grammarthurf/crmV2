@@ -56,8 +56,9 @@
             <div class="col-7" style="padding: 0px;">
               <div class="col-12 row">
                 <div class="col-6" style="margin-top: 8px;">
-                  <label for="negocios" >Negócio</label><!-- (change)="getterorg($event.target.value)" -->
+                  <label for="negocios" >Negócio</label><!--(change)="getterOrgTick($event.target.value)"  -->
                     <select [(ngModel)]="atv.ticket" 
+                            
                             *ngIf="negociosapi"
                             class="form-control"
                             id="exampleFormControlSelect1">
@@ -146,7 +147,7 @@
                   <div class="col-6">
                     <label for="negocios" >Empresa </label>
                       <select [(ngModel)]="atv.org"
-                              (change)="gettercliorg($event.target.value)"
+                              (change)="getterCliOrg($event.target.value)"
                               *ngIf="orsgapi"
                               class="form-control"
                               id="exampleFormControlSelect1">
@@ -155,7 +156,7 @@
                         </option>
                       </select>
                       <!-- <select [(ngModel)]="atv.org"
-                              (change)="gettercliorg($event.target.value)"
+                              (change)="getterCliOrg($event.target.value)"
                               *ngIf="tckapi"
                               class="form-control"
                               id="exampleFormControlSelect1">
