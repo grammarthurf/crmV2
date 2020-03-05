@@ -402,7 +402,7 @@
           <ul class="list-group list-group-flush">
             <li *ngFor="let item of business.obs"  class="list-group-item p">
               <b class="b-b">
-                {{item.data}} <!--  {{this.dataslv}} -->
+                {{formatDate(item.data)}} <!--  {{this.dataslv}} -->
               </b>
               <br>
               <label class="b">
