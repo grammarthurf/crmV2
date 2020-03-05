@@ -61,7 +61,33 @@ export class AtividadesComponent implements OnInit {
   vendedorapi: any;
 
   calendarEvents = [
-    { title: 'event 1', date: '2019-04-01' }
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
   ];
 
   atv = {position: 0, dataini: '', horaini: '', datafim: '', horafim: '', tipo: '', cliente: '', org: '', ticket: '', assunto: '' };

@@ -248,6 +248,10 @@ export class BusinessDetailComponent implements OnInit {
 
   }
 
+  // goTo(id) {
+  //   this.router.navigate([`/company-detail/${id}`]);
+  // }
+
 
   ngOnInit() {
     // this.loadBusiness();
