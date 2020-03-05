@@ -66,11 +66,8 @@
                       </option>
                     </select>
                 </div>
-                <div class="col-6" style="padding: 0px;">
+                <div class="col-6" style="padding: 0px; margin-top: 8px">
                   <label for="participantes" >Vendedor(es)</label>
-                    <button mat-icon-button (click)="redirectToAdd('/user')">
-                      <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
-                    </button>
                     <select *ngIf="vendedorapi" class="form-control" id="exampleFormControlSelect1">
                       <option *ngFor="let vendedor of vendedorapi" value="{{vendedor.id}}">
                         {{vendedor.nome}}
