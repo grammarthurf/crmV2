@@ -1,7 +1,7 @@
 <div class="maindiv" (click)="stop()">
 
   <div class="flex">
-    <button type="button" class="btn btn-primary loc-button-top" data-toggle="modal" data-target="#exampleModalCenter">
+    <button type="button" class="btn btn-primary loc-button-top" data-toggle="modal" data-target="#modalAddLead">
       <mat-icon>add</mat-icon>
       <p style="margin-left: 5px;">Lead</p>
     </button>
@@ -23,7 +23,7 @@
   <mat-divider style="margin-left: 0px; margin-right: 18px;"></mat-divider>
 
   <div  class="modal fade" 
-        id="exampleModalCenter" 
+        id="modalAddLead" 
         tabindex="-1" 
         role="dialog" 
         aria-labelledby="exampleModalCenterTitle"
@@ -69,7 +69,7 @@
           <div class="row">
             <div class="form-group col-md-6">
               <label for="exampleFormControlSelect2">Produto</label>
-              <button mat-icon-button data-toggle="modal" data-target="#exampleModalProd">
+              <button mat-icon-button data-toggle="modal" data-target="#exampleModalProd" data-dismiss="modal">
                 <mat-icon class="icon-modal-lead">add</mat-icon>
               </button>
               <select [(ngModel)]="ticket.produto" multiple class="form-control" id="exampleFormControlSelect2">
@@ -182,10 +182,10 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#modalAddLead">
             Sair
           </button>
-          <button type="button" (click)="save()" class="btn btn-primary" data-dismiss="modal">
+          <button type="button" (click)="save()" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#modalAddLead">
             Salvar
           </button>
         </div>
