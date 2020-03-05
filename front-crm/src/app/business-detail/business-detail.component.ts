@@ -178,6 +178,7 @@ export class BusinessDetailComponent implements OnInit {
 
 
   stageWin() {
+   
     let btnLose = document.getElementById('lose');
     let btnWin = document.getElementById('win');
     btnLose.style.display = 'none';
@@ -192,6 +193,7 @@ export class BusinessDetailComponent implements OnInit {
     if (this.business.status != 'Ganhou') {
       this.business.status = 'Ganhou';
       this.updatedTicketStatus(this.business);
+      this.changeid(8);
     }
 
 
@@ -242,6 +244,7 @@ export class BusinessDetailComponent implements OnInit {
       console.log('Business : ', this.business);
 
       this.updatedTicketStatus(this.business);
+      
     }
 
   }

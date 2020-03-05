@@ -219,7 +219,7 @@
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">
               highlight_off
             </mat-icon>
           </div>
@@ -253,7 +253,7 @@
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
@@ -284,7 +284,7 @@
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
@@ -314,7 +314,7 @@
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
@@ -344,7 +344,7 @@
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
@@ -373,7 +373,7 @@
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length > 1 && dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
@@ -401,7 +401,7 @@
             <p class="limit-value">{{ item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0  )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>

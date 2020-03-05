@@ -134,8 +134,9 @@ export class BusinessComponent implements OnInit {
   }
 
   dataCheck(dataini){
-    //console.log( 'dataini: ' , dataini);
-    if (dataini.atividades > this.today || dataini.atividades > this.today1){
+    console.log( 'dataini: ' , dataini);
+    console.log("today:" + this.today)
+    if (dataini < this.today || dataini < this.today1){
       return true;
     } else {
       return false;
