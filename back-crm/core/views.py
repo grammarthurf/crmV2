@@ -1,6 +1,6 @@
 
 from rest_framework import viewsets
-from .serializers import ClienteSerializer, EstagioSerializer, OrganizacaoSerializer, ProdutoSerializer, TicketSerializer, VendedorSerializer, ErpSerializer, RamoSerializer , AtividadeSerializer, UserSerializer
+from .serializers import ClienteSerializer, EstagioSerializer, OrganizacaoSerializer, ProdutoSerializer, TicketSerializer, VendedorSerializer, ErpSerializer, RamoSerializer , AtividadeSerializer, UserSerializer, ObsSerializer
 from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade, Created, Updated, Erp, Ramo, Obs
 from django.core import serializers
 from django.contrib.auth.models import User
@@ -11,6 +11,10 @@ class UserViewSet(viewsets.ModelViewSet):
 
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
+
+class ObsViewSet(viewsets.ModelViewSet):
+    queryset = Obs.objects.all().order_by('-id')
+    serializer_class = ObsSerializer
 
 class RamoViewSet(viewsets.ModelViewSet):
 
@@ -112,7 +116,7 @@ class ProdutoViewSet(viewsets.ModelViewSet):
 
 class TicketViewSet(viewsets.ModelViewSet):
 
-    queryset = Ticket.objects.all()
+    queryset = Ticket.objects.all().order_by('-id')
     serializer_class = TicketSerializer
 
     def create(self, request):
@@ -153,11 +157,50 @@ class TicketViewSet(viewsets.ModelViewSet):
     def update(self, request, pk):
       data = request.data
       print(data);
+      
+      try:
+        T = Ticket.objects.get(id=data['id'])
+        T.estagio = Estagio.objects.get(id=data['estagio'])
+        T.status = data['status']
+        if T.status == 'Perdido':
+            T.mtvperd = data['mtvperd']
+            T.cmtperd = data['cmtperd']
+        T.save()
+        print('Ticket salvo : ',T.cmtperd , T.mtvperd)
+      except:
+          pass
 
-      T = Ticket.objects.get(id=data['id'])
-      T.estagio = Estagio.objects.get(id=data['estagio'])
-      T.status = data['status']
-      T.save()
+
+
+      try:
+        if data['opt'] == 'term':
+            print('entrou opt ');
+            
+            T = Ticket.objects.get(id=data['id'])
+            T.termometro = data['term']
+            T.save()
+      except:
+          pass
+
+
+  
+
+      try:  
+        if data['opt'] == 'obs':
+            o = Obs()
+            o.texto = data['obs']
+            T = Ticket.objects.get(id=data['id'])
+            o.save()
+            T.obs.add(o)
+            T.save()
+      except:
+          pass  
+
+    
+
+     
+
+
 
       return JsonResponse({'message': 'Updated'})
       

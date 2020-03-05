@@ -11,9 +11,9 @@
           <h5 class="modal-title" id="exampleModalLabel">
             Marcar como Perdido
           </h5>
-          <button type="button" 
-                  class="close" 
-                  data-dismiss="modal" 
+          <button type="button"
+                  class="close"
+                  data-dismiss="modal"
                   aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -22,12 +22,12 @@
 
           <div class="form-group">
             <label for="motivo">Motivo da Perda</label>
-            <input type="text" class="form-control" id="motivo">
+            <input [(ngModel)]="idobs.mtvperd" type="text" class="form-control" id="motivo">
           </div>
 
           <div class="form-group mg-t-10">
             <label for="exampleFormControlTextarea1">Comentários (opcional) </label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea [(ngModel)]="idobs.cmtperd" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
           </div>
 
         </div>
@@ -35,7 +35,7 @@
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
             Cancelar
           </button>
-          <button type="button" class="btn btn-danger">
+          <button type="button" (click)="stageLose()" data-dismiss="modal" class="btn btn-danger">
             Marcar como Perdido
           </button>
         </div>
@@ -54,21 +54,21 @@
       </div>
       <div class="flex" style="padding: 0;">
         <img src="../../assets/moeda.png" class="img1" />
-        <p class="bold"> 
+        <p class="bold">
           {{business.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}
         </p>
         <img src="../../assets/contato.png" class="img1" />
-        <p> 
-          {{business.cliente.nome}} 
+        <p>
+          {{business.cliente.nome}}
         </p>
         <img src="../../assets/empresa.png" class="img1" />
-        <p> 
-          {{business.org.razaosocial}} 
+        <p>
+          {{business.org.razaosocial}}
         </p>
         <img src="../../assets/termometro.png" class="img1" />
         <p>Termômetro:</p>
         <div class="margin5">
-          <input  type="range"
+          <input [(ngModel)]="idobs.term" (change)="updateTicketTerm()" type="range"
                   id="thermometro"
                   value="{{business.termometro}}"
                   step="49"
@@ -94,7 +94,7 @@
       </button>
       <button class="btn-win-lose btn-danger"
               id="lose"
-              (click)="stageLose()"
+
               data-toggle="modal"
               data-target="#loseModal">
         Perdido
@@ -107,10 +107,10 @@
     </lottie-animation-view>
     <div class="col-1">
       <div class="div-vendedor">
-        <p style="font-size: 13px;"> 
-          Vendedor: 
+        <p style="font-size: 13px;">
+          Vendedor:
         </p>
-        <p style="font-size: 23px;"> 
+        <p style="font-size: 23px;">
           <!-- {{business.vendedor}}  -->
           Brenda
         </p>
@@ -134,7 +134,7 @@
       </div>
       <div  class="md-step process"
             *ngIf="(business.estagio.id == 1)"
-            (click)="changeid(2)"
+            (click)="changeid(1)"
             id="1">
         <div class="md-step-circle ">
           <mat-icon> priority_high </mat-icon>
@@ -145,7 +145,7 @@
       </div>
       <div  class="md-step "
             *ngIf="(business.estagio.id < 1)"
-            id="1"><!-- business.estagio.id != 1 &&  -->
+            id="1" (click)="changeid(1)" ><!-- business.estagio.id != 1 &&  -->
         <div class="md-step-circle"></div>
         <div class="md-step-title">Prospecção</div>
         <div class="md-step-bar-right"></div>
@@ -165,7 +165,7 @@
       </div>
       <div  class="md-step process"
             *ngIf="(business.estagio.id == 2)"
-            (click)="changeid(3)"
+            (click)="changeid(2)"
             id="2">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
@@ -188,7 +188,7 @@
 
       <div  class="md-step process"
             *ngIf="(business.estagio.id==3)"
-            (click)="changeid(4)"
+            (click)="changeid(3)"
             id="3">
         <div class="md-step-circle ">
           <mat-icon> priority_high </mat-icon>
@@ -237,7 +237,7 @@
       </div>
       <div  class="md-step process"
             *ngIf="(business.estagio.id == 4)"
-            (click)="changeid(5)"
+            (click)="changeid(4)"
             id="4">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
@@ -273,7 +273,7 @@
       </div>
       <div  class="md-step process"
             *ngIf="(business.estagio.id == 5)"
-            (click)="changeid(7)"
+            (click)="changeid(5)"
             id="5">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
@@ -307,9 +307,9 @@
         <div class="md-step-bar-left">  </div>
         <div class="md-step-bar-right"> </div>
       </div>
-      <div  class="md-step process" 
-            *ngIf="(business.estagio.id == 7)" 
-            (click)="changeid(8)"
+      <div  class="md-step process"
+            *ngIf="(business.estagio.id == 7)"
+            (click)="changeid(7)"
             id="7">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
@@ -319,11 +319,11 @@
         <div class="md-step-bar-left">  </div>
         <div class="md-step-bar-right"> </div>
       </div>
-      <div  class="md-step" 
-            *ngIf="(business.estagio.id < 7)" 
+      <div  class="md-step"
+            *ngIf="(business.estagio.id < 7)"
             (click)="changeid(7)"
             id="7">
-        <div class="md-step-circle"> 
+        <div class="md-step-circle">
           <mat-icon> </mat-icon>
         </div>
         <div class="md-step-title">Negociações Iniciais</div>
@@ -331,9 +331,9 @@
         <div class="md-step-bar-right"> </div>
       </div>
 
-      <div  class="md-step active" 
-            *ngIf="(business.estagio.id == 8)" 
-            (click)="changeid(7)"
+      <div  class="md-step active"
+            *ngIf="(business.estagio.id == 8)"
+            (click)="changeid(8)"
             id="8">
        <div class="md-step-circle">
           <mat-icon> done </mat-icon>
@@ -342,8 +342,8 @@
         <div class="md-step-optional">10/02/2020</div>
         <div class="md-step-bar-left"></div>
       </div>
-      <div  class="md-step" 
-            *ngIf="(business.estagio.id < 8)" 
+      <div  class="md-step"
+            *ngIf="(business.estagio.id < 8)"
             (click)="changeid(8)"
             id="8">
         <div class="md-step-circle">
@@ -368,24 +368,28 @@
     <div class=" col-10 ">
       <h4> {{business.org.razaosocial}}</h4>
       <div class="mg-t-10">
-        <p  class="pdiv"> 
-          <b>Endereço:</b> 
-          {{business.org.rua}} - {{business.org.bairro}} - {{business.org.cidade}}/{{business.org.uf}} 
+        <p  class="pdiv">
+          <b>Endereço:</b>
+          {{business.org.rua}} - {{business.org.bairro}} - {{business.org.cidade}}/{{business.org.uf}}
         </p>
       </div>
       <div class="mg-t-10">
-        <p class="pdiv"> <b>ERP:</b> {{business.org.erpe}} </p>
+        <p class="pdiv"> <b>ERP:</b> <span *ngIf="business.org.erpe" >  {{business.org.erpe.desc}}</span> </p>
       </div>
     </div>
   </div>
 
+
   <div class="col-8 div-right div-border">
+    <div *ngIf="(business.status == 'Perdido')"  class="alert alert-danger" role="alert">
+      {{business.mtvperd}} :   {{business.cmtperd}}
+    </div>
     <mat-tab-group mat-stretch-tabs class="col-12">
       <mat-tab label="Observações">
         <div class="col-12 mg-t-10 divtab">
-          <textarea rows="5" class="col-12 txtarea">{{business.obs.texto}}</textarea>
-          <button type="button" class="btn btn-success bold btn-sm fltright">
-            Salvar
+          <textarea rows="5" [(ngModel)]="idobs.obs" class="col-12 txtarea"></textarea>
+          <button type="button" (click)="updateTicketObs()"  class="btn btn-success bold btn-sm fltright">
+            Adicionar
           </button>
           <button type="button" class="btn btn-outline-secondary bold btn-sm fltright mg-r-5">
             Cancelar
@@ -396,16 +400,16 @@
         </div>
         <div class="col-12 mg-t-10">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item p">
+            <li *ngFor="let item of business.obs"  class="list-group-item p">
               <b class="b-b">
-                28/02/2020 10:57 <!--  {{this.dataslv}} -->
-              </b> 
+                {{item.data}} <!--  {{this.dataslv}} -->
+              </b>
               <br>
               <label class="b">
                 Conteúdo:
-              </label> 
-              <label> 
-                Demo aprensentada dia 28/02 às 9h <!--  {{this.txtslv}} -->
+              </label>
+              <label>
+                {{item.texto}} <!--  {{this.txtslv}} -->
               </label>
             </li>
           </ul>
@@ -418,7 +422,7 @@
           </div>
           <ul *ngIf="(business.atividades.length > 0)"  class="list-group list-group-flush">
             <li *ngFor="let item of business.atividades"  class="list-group-item p">
-              <b class="b-b"> 
+              <b class="b-b">
                 {{item.dataini | date:'dd/MM/yyyy'}} - {{item.tipo}}
               </b>
               <br>
@@ -468,31 +472,31 @@
     </div>
 
     <div class=" col-10 ">
-      <h4> 
+      <h4>
         {{business.cliente.nome}}
       </h4>
       <div class="mg-t-10">
-        <p class="pdiv"> 
+        <p class="pdiv">
           <b>
             Telefone:
-          </b> 
-          {{business.cliente.tel}} 
+          </b>
+          {{business.cliente.tel}}
         </p>
       </div>
       <div class="mg-t-10">
-        <p class="pdiv"> 
+        <p class="pdiv">
           <b>
             Email:
-          </b> 
-          {{business.cliente.email}} 
+          </b>
+          {{business.cliente.email}}
         </p>
       </div>
       <div class="mg-t-10">
-        <p class="pdiv"> 
+        <p class="pdiv">
           <b>
             Skype:
-          </b> 
-          {{business.cliente.skype}} 
+          </b>
+          {{business.cliente.skype}}
         </p>
       </div>
     </div>

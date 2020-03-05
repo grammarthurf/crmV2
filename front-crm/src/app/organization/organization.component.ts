@@ -59,12 +59,12 @@ export class OrganizationComponent implements OnInit {
               bairro: e.bairro,
               cidade: e.cidade,
               uf: e.uf,
-              erp: e.erp,
+              erp: e.erpe,
           });
         });
 
         this.dataSource = new MatTableDataSource(this.matdata);
-        console.log("DATASOURCE" + this.dataSource);
+        console.log("DATASOURCE : " ,this.dataSource);
         this.dataSource.sort = this.sort;
 
         this.orgapi = data;
