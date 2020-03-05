@@ -117,15 +117,18 @@
                 </div>
                 <div class="col-12 row inputmargin">
                   <div class="col-6">
-                    <label for="negocios">Empresa </label>
-                    <select [(ngModel)]="atv.org" (change)="gettercliorg($event.target.value)" *ngIf="orsgapi"
-                      class="form-control" id="exampleFormControlSelect1">
-                      <option *ngFor="let org of orsgapi" value="{{org.id}}">
-                        {{org.razaosocial}}
-                      </option>
-                    </select>
-                    <!-- <select [(ngModel)]="atv.org"
-                              (change)="gettercliorg($event.target.value)"
+                    <label for="negocios" >Empresa </label>
+                      <select [(ngModel)]="atv.org"
+                              (change)="getterCliOrg($event.target.value)"
+                              *ngIf="orsgapi"
+                              class="form-control"
+                              id="exampleFormControlSelect1">
+                        <option *ngFor="let org of orsgapi" value="{{org.id}}">
+                          {{org.razaosocial}}
+                        </option>
+                      </select>
+                      <!-- <select [(ngModel)]="atv.org"
+                              (change)="getterCliOrg($event.target.value)"
                               *ngIf="tckapi"
                               class="form-control"
                               id="exampleFormControlSelect1">
@@ -135,13 +138,15 @@
                       </select> -->
                   </div>
                   <div class="col-6" style="padding: 0px;">
-                    <label for="participantes"> Contato</label>
-                    <select [(ngModel)]="atv.cliente" *ngIf="orgapi" class="form-control"
-                      id="exampleFormControlSelect1">
-                      <option *ngFor="let orgs of orgapi.contatos" value="{{orgs.id}}">
-                        {{orgs.nome}}
-                      </option>
-                    </select>
+                    <label for="participantes" > Contato</label>
+                      <select [(ngModel)]="atv.cliente" 
+                              *ngIf="orgapi" 
+                              class="form-control" 
+                              id="exampleFormControlSelect1">
+                        <option *ngFor="let orgs of orgapi.contatos" value="{{orgs.id}}">
+                          {{orgs.nome}}
+                        </option>
+                      </select>
                   </div>
                 </div>
               </div>

@@ -82,7 +82,7 @@ export class AtividadesComponent implements OnInit {
     this.getterTickets();
     this.getterActivity();
     this.calendarPlugins = [ listPlugin , bootstrapPlugin ];
-    
+
   }
 
   ngOnInit() {
@@ -91,7 +91,7 @@ export class AtividadesComponent implements OnInit {
   }
 
   //FILTRAR SELECT DOS CONTATOS DE ACORDO COM O SELECIONADO EM EMPRESAS
-  gettercliorg(id) {
+  getterCliOrg(id) {
     // console.log(id)
     this.crudService.getOrg(id).subscribe(
       data => {
@@ -105,18 +105,18 @@ export class AtividadesComponent implements OnInit {
   }
 
   //FILTRAR SELECT DAS EMPRESAS DE ACORDO COM O SELECIONADO EM NEGÓCIOS
-  // getterorgtick(id) {
-  //   // console.log(id)
-  //   this.crudService.getTicket(id).subscribe(
-  //     data => {
-  //       this.tckapi = data;
-  //       console.log(data);
-  //     },
-  //     error => {
-  //       this.erroAtividade = error;
-  //     }
-  //   );
-  // }
+    // getterOrgTick(id) {
+    //  console.log(id)
+    //  this.crudService.getTicket(id).subscribe(
+    //    data => {
+    //      this.tckapi = data;
+    //      console.log(data);
+    //    },
+    //    error => {
+    //      this.erroAtividade = error;
+    //    }
+    //  );
+    // }
 
   gotocalendar(){
     this.router.navigate([]).then(result => { window.open('/calendar/', '_blank'); });
@@ -162,11 +162,11 @@ export class AtividadesComponent implements OnInit {
                 assunto: e.assunto,
                 dataini: e.data,
                 tipo: e.tipo,
-                // ticket: e.ticket,
-                // cliente: {
-                //   nome: ''
-                // },
-                // org: e.org
+                ticket: e.ticket,
+                 cliente: {
+                   nome: ''
+                 },
+                 org: e.org
               });
             } else if (e.org == null) {
               this.matdata.push({
@@ -338,10 +338,6 @@ export class AtividadesComponent implements OnInit {
     this.dataSource.filter = this.dayNextMonth.trim().toLowerCase();
   }
 
-  filtrovenc(){
-    // um filtro que pegue todas as datas antes de this.today
-  }
-
   removeSelectedRows() {
     this.selection.selected.forEach(item => {
       let index: number = this.matdata.findIndex(d => d === item);
@@ -387,7 +383,6 @@ export class AtividadesComponent implements OnInit {
 
   formatDate(date) {
     let result = date.split('-').reverse().join('/');
-
     return result
   }
 }

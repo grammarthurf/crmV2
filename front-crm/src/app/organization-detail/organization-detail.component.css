@@ -120,7 +120,7 @@ hr + div.row {
 }
 
 .align-divs {
-    margin-top: 16px;
+    margin-top: 50px;
     padding-bottom: 16px;
 }
 
@@ -270,6 +270,17 @@ div.col-10.bg-white {
     padding: 10px 0 15px 25px;
 }
 
+.bg-white {
+    margin-top: 10px;
+    border-radius: 10px; 
+	border: 1px solid rgb(226, 226, 226);
+	background-color: #fff
+}
+
+.mg-tp-40 {
+    margin-top: 40px;
+}
+
 .div-plan {
     width: 100px;
     height: 30px;
@@ -308,4 +319,40 @@ mat-checkbox {
 p#day + span {
     margin-left: 16px;
     margin-right: 16px;
+}
+
+/* TAB1: OBSERVAÇÕES */
+
+.divright {
+    padding: 0px;
+}
+
+.txtarea {
+    margin-top: 20px;
+	border-radius: 7px; 
+	border: 1px solid rgb(207, 206, 206);
+}
+
+.fltright {
+	float: right; 
+}
+
+.mg-r-5 {
+	margin-right: 5px;
+}
+
+/* TAB2: ATIVIDADES */
+
+.txtcenter {
+	text-align: center;
+}
+
+.b-b {
+	color: rgb(60, 152, 192);
+}
+
+/* TAB3: ANEXOS */
+
+.mat-list-icon {
+	color: rgba(0, 0, 0, 0.54);
 }
