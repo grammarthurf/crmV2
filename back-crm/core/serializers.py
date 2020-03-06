@@ -1,4 +1,4 @@
-from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade, Erp, Ramo, Obs
+from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade, Erp, Ramo, Obs, VendedorExt
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
@@ -20,6 +20,12 @@ class RamoSerializer(serializers.ModelSerializer):
         depth = 1
 
 
+
+class VendedorExtSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = VendedorExt
+        fields = '__all__'
+        depth = 1
 
 class ErpSerializer(serializers.ModelSerializer):
     class Meta:

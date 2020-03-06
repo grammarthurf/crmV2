@@ -43,7 +43,7 @@
             <div class="col-6" style="padding: 0px;">
               <div class="col-12 row" style="padding: 0px;">
                 <div class="col-6" style="margin-top: 8px;">
-                  <label for="negocios">Negócio</label><!-- (change)="getterorg($event.target.value)" -->
+                  <label for="negocios">Negócio <label style="color: red; font-size: 20px;">*</label></label><!-- (change)="getterorg($event.target.value)" -->
                   <select [(ngModel)]="atv.ticket" *ngIf="negociosapi" class="form-control"
                     id="exampleFormControlSelect1">
                     <option *ngFor="let ticket of negociosapi" value="{{ticket.id}}">
@@ -51,7 +51,7 @@
                     </option>
                   </select>
                 </div>
-                <div class="col-6" style="padding: 0px; margin-top: 8px">
+                <div class="col-6" style="padding: 0px; margin-top: 23px">
                   <label for="participantes">Vendedor(es)</label>
                   <select *ngIf="vendedorapi" class="form-control" id="exampleFormControlSelect1">
                     <option *ngFor="let vendedor of vendedorapi" value="{{vendedor.id}}">
@@ -61,7 +61,7 @@
                 </div>
               </div>
               <div class="col-12 row" style="margin-top: 20px;">
-                <p class="atvinput"><b>Atividade: </b></p>
+                <p class="atvinput" style="color: red;"><b style="color: black;">Atividade:</b>*</p>
                 <div class="div-modal-atv">
                   <button mat-icon-button (click)="selectActivity(1)">
                     <mat-icon class="icon-modal-atv">phone</mat-icon>
@@ -77,14 +77,6 @@
                     <mat-icon class="icon-modal-atv">business</mat-icon>
                   </button>
                 </div>
-                <div class="col-12 row inputmargin">
-                  <div class="col-6">
-                    <input [(ngModel)]="atv.horaini" type="text" class="form-control" placeholder="00:00" mask="99:99">
-                  </div>
-                  <div class="col-6" style="padding: 0px">
-                    <input [(ngModel)]="atv.horafim" type="text" class="form-control" placeholder="00:00" mask="99:99">
-                  </div>
-                </div>
                 <div class="div-modal-atv">
                   <button mat-icon-button (click)="selectActivity(5)">
                     <mat-icon class="icon-modal-atv">watch_later</mat-icon>
@@ -95,7 +87,7 @@
                 <input [(ngModel)]="atv.tipo" type="text" class="form-control" value="{{this.numm}}" placeholder="">
               </div>
               <div class="col-12 row" style="margin-top: 20px; padding: 0px 0px 0px 15px;">
-                <label for="obs">Assunto</label>
+                <label for="obs">Assunto <label style="color: red; font-size: 20px;">*</label></label>
                 <textarea [(ngModel)]="atv.assunto" name="obs" id="obs" cols="50" rows="3" class="form-control">
                 </textarea>
               </div>
@@ -119,7 +111,7 @@
               </div>
               <div class="col-12 row inputmargin">
                 <div class="col-6">
-                  <label for="negocios" >Empresa </label>
+                  <label for="negocios" >Empresa <label style="color: red; font-size: 20px;">*</label></label>
                   <select [(ngModel)]="atv.org"
                           (change)="getterCliOrg($event.target.value)"
                           *ngIf="orsgapi"
@@ -140,7 +132,7 @@
                       </select> -->
                 </div>
                 <div class="col-6" style="padding: 0px;">
-                  <label for="participantes" > Contato</label>
+                  <label for="participantes" > Contato <label style="color: red; font-size: 20px;">*</label></label>
                   <select [(ngModel)]="atv.cliente" 
                           *ngIf="orgapi" 
                           class="form-control" 
@@ -153,11 +145,12 @@
               </div>
             </div>
             <div class="col-6 ml-auto div-calendar">
-              <full-calendar 
-                [defaultView]="'listWeek'" 
-                [plugins]="calendarPlugins" 
+              <full-calendar
+              deepChangeDetection="true"
+                [defaultView]="'listWeek'"
+                [plugins]="calendarPlugins"
                 themeSystem="bootstrap"
-                [events]="calendarEvents" 
+                [events]="calendarEvents"
                 locale="pt-br">
               </full-calendar>
             </div>
@@ -279,9 +272,9 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         Negócio
       </th>
-      <td mat-cell *matCellDef="let element;" 
-          [style.background-color]="getColor(element.dataini)"  
-          (click)="goToLead()" 
+      <td mat-cell *matCellDef="let element;"
+          [style.background-color]="getColor(element.dataini)"
+          (click)="goToLead()"
           style="cursor: pointer;">
         {{element.ticket.titulo}}
       </td>

@@ -35,9 +35,9 @@
         <div class="modal-body row">
           <div class="form-group col-md-6">
             <label for="codeprod"> Código</label>
-            <input type="text" class="form-control" [(ngModel)]="produto.codigo" id="codeprod" />
+            <input type="text" class="form-control" disabled [(ngModel)]="produto.codigo" id="codeprod" />
           </div>
-          <button class="btn btn-primary" (click)="generateCode1()" id="code">
+          <button class="btn btn-primary" [disabled]="disableCode" (click)="generateCode1()" id="code">
             <img src="../../assets/cod.png" id="codigo">
           </button>
 

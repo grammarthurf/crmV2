@@ -1,6 +1,148 @@
 <div class="main-div">
-  <div class="modal fade" id="loseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+  <div class="modal fade bd-example-modal-lg" id="abrircadastroatv" tabindex="-1" role="dialog"
+    aria-labelledby="abrircadastroatv" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            Adicione uma Atividade
+          </h5>
+          <a href="/calendar" target="_blank" class="viewcalendar">
+            Visualizar Calendário
+          </a>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">
+              &times;
+            </span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-12 row">
+            <div class="col-6" style="padding: 0px;">
+              <div class="col-12 row" style="padding: 0px;">
+                <div class="col-6" style="margin-top: 8px;">
+                  <label for="negocios">Negócio <label style="color: red; font-size: 20px;">*</label></label><!-- (change)="getterorg($event.target.value)" -->
+                  <select  class="form-control"
+                    id="exampleFormControlSelect1">
+                    <option>
+                      {{business.titulo}}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-6" style="padding: 0px; margin-top: 23px">
+                  <label for="participantes">Vendedor(es)</label>
+                  <select  class="form-control" id="exampleFormControlSelect1">
+                    <option *ngFor="let vendedor of vendedorapi">
+                      {{vendedor.nome}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-12 row" style="margin-top: 20px;">
+                <p class="atvinput" style="color: red;"><b style="color: black;">Atividade:</b>*</p>
+                <div class="div-modal-atv">
+                  <button mat-icon-button (click)="selectActivity(1)">
+                    <mat-icon class="icon-modal-atv">phone</mat-icon>
+                  </button>
+                </div>
+                <div class="div-modal-atv">
+                  <button mat-icon-button (click)="selectActivity(2)">
+                    <mat-icon class="icon-modal-atv">people</mat-icon>
+                  </button>
+                </div>
+                <div class="div-modal-atv">
+                  <button mat-icon-button (click)="selectActivity(3)">
+                    <mat-icon class="icon-modal-atv">business</mat-icon>
+                  </button>
+                </div>
+                <div class="div-modal-atv">
+                  <button mat-icon-button (click)="selectActivity(4)">
+                    <mat-icon class="icon-modal-atv">email</mat-icon>
+                  </button>
+                </div>
+                <div class="div-modal-atv">
+                  <button mat-icon-button (click)="selectActivity(5)">
+                    <mat-icon class="icon-modal-atv">watch_later</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 row inputmargin2">
+                <input  type="text" class="form-control"  placeholder="">
+              </div>
+              <div class="col-12 row" style="margin-top: 20px; padding: 0px 0px 0px 15px;">
+                <label for="obs">Assunto <label style="color: red; font-size: 20px;">*</label></label>
+                <textarea name="obs" id="obs" cols="50" rows="3" class="form-control">
+                </textarea>
+              </div>
+              <div class="col-12 row inputmargin">
+                <div class="col-6">
+                  <label for="">Início</label>
+                  <input  type="date" class="form-control">
+                </div>
+                <div class="col-6" style="padding: 0px;">
+                  <label for="">Fim</label>
+                  <input  type="date" class="form-control">
+                </div>
+              </div>
+              <div class="col-12 row inputmargin">
+                <div class="col-6">
+                  <input  type="text" class="form-control" placeholder="00:00" mask="99:99">
+                </div>
+                <div class="col-6" style="padding: 0px">
+                  <input type="text" class="form-control" placeholder="00:00" mask="99:99">
+                </div>
+              </div>
+              <div class="col-12 row inputmargin">
+                <div class="col-6">
+                  <label for="negocios" >Empresa <label style="color: red; font-size: 20px;">*</label></label>
+                  <select class="form-control"
+                          id="exampleFormControlSelect1">
+                    <option>
+                      {{business.org.razaosocial}}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-6" style="padding: 0px;">
+                  <label for="participantes" > Contato <label style="color: red; font-size: 20px;">*</label></label>
+                  <select 
+                          class="form-control" 
+                          id="exampleFormControlSelect1">
+                    <option >
+                      {{business.cliente.nome}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 ml-auto div-calendar">
+              <full-calendar 
+                [defaultView]="'listWeek'" 
+                [plugins]="calendarPlugins" 
+                themeSystem="bootstrap"
+                [events]="calendarEvents" 
+                locale="pt-br">
+              </full-calendar>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Sair
+          </button>
+          <button type="button" (click)="save()" class="btn btn-primary" data-dismiss="modal">
+            Salvar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div  class="modal fade"
+        id="loseModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+>>>>>>> a3c2daef73e151610284f161bd0f73f071a5dccd
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">

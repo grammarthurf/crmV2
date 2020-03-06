@@ -1,7 +1,7 @@
 
 from rest_framework import viewsets
-from .serializers import ClienteSerializer, EstagioSerializer, OrganizacaoSerializer, ProdutoSerializer, TicketSerializer, VendedorSerializer, ErpSerializer, RamoSerializer, AtividadeSerializer, UserSerializer, ObsSerializer
-from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade, Created, Updated, Erp, Ramo, Obs
+from .serializers import ClienteSerializer, EstagioSerializer, OrganizacaoSerializer, ProdutoSerializer, TicketSerializer, VendedorSerializer, ErpSerializer, RamoSerializer, AtividadeSerializer, UserSerializer, ObsSerializer, VendedorExtSerializer
+from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade, Created, Updated, Erp, Ramo, Obs, VendedorExt
 from django.core import serializers
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -114,6 +114,13 @@ class ProdutoViewSet(viewsets.ModelViewSet):
 
     queryset = Produto.objects.all().order_by('-id')
     serializer_class = ProdutoSerializer
+
+
+class VendedorExtViewSet(viewsets.ModelViewSet):
+
+    queryset = VendedorExt.objects.all().order_by('-id')
+    serializer_class = VendedorExtSerializer
+
 
 
 class TicketViewSet(viewsets.ModelViewSet):

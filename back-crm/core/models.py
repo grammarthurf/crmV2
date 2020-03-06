@@ -98,6 +98,12 @@ class Vendedor(models.Model):
     def __str__(self):
         return str(self.nome)
 
+class VendedorExt(models.Model):
+    nome = models.CharField(max_length=155)
+
+    def __str__(self):
+        return str(self.nome)
+
 class Obs(models.Model):
     texto = models.CharField(max_length=255, null=True)
     data = models.DateField(auto_now_add=True)
@@ -117,6 +123,7 @@ class Ticket (models.Model):
     termometro = models.CharField(max_length=100, null=True, blank=True)
     vendedor = models.ForeignKey(
         Vendedor,  on_delete=models.CASCADE, null=True)
+    vendedorext = models.ManyToManyField(VendedorExt, related_name='leads', blank=True)
     obs = models.ManyToManyField(Obs, related_name='tickets')
     status = models.CharField(max_length=155, blank=True, default='Aberto')
     mtvperd = models.CharField(max_length=155, null=True, blank=True)

@@ -63,3 +63,7 @@ button.btn-secondary + button.btn-primary {
     display: flex;
     justify-content: flex-end;
 }
+
+.mg-tp-8 {
+    margin-top: 8px;
+}

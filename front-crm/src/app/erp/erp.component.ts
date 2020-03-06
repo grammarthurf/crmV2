@@ -23,6 +23,7 @@ const erps: PeriodicElement[] = [
 export class ErpComponent implements OnInit {
 
   erpsapi:any;
+  disableCode: boolean = false;
   erp: any = { codigo: '', desc: '', empresa: ''}
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -58,6 +59,7 @@ export class ErpComponent implements OnInit {
       this.erp.codigo = this.code1;
       console.log(this.code1);
     }
+    this.disableCode = true;
   }
 
   saveErp(){
@@ -80,7 +82,6 @@ export class ErpComponent implements OnInit {
       error => {
         // this.getterOrg();
         console.error(error);
-        // setTimeout(this.reiniciar, 1001);
       }
     );
   }
@@ -93,7 +94,7 @@ export class ErpComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.erpsapi);
       },
       error => {
-        // this.erroAtividade = error;
+        console.error(error);
       }
     );
   }

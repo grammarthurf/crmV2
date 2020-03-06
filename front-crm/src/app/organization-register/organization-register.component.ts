@@ -12,6 +12,8 @@ export class OrganizationRegisterComponent implements OnInit {
   orgapi:any;
   matdata:any;
   erroOrgs: any;
+  disableCode: boolean = false;
+  disableCode1: boolean = false;
   org = {
     codigo: '', razaosocial: '', nomefantasia: '', ramo: '',
     cnpj: '', ie: '', rua: '', complemento: '', bairro: '', cep: '',
@@ -73,6 +75,7 @@ export class OrganizationRegisterComponent implements OnInit {
       this.org.codigo = this.code1;
       console.log(this.code1);
     }
+    this.disableCode = true;
   }
 
   code2: any;
@@ -98,6 +101,7 @@ export class OrganizationRegisterComponent implements OnInit {
       this.erp.codigo = this.code2;
       console.log(this.code2);
     }
+    this.disableCode1 = true;
   }
 
   getterRamo() {
@@ -233,18 +237,18 @@ export class OrganizationRegisterComponent implements OnInit {
       this.org.ramos.push(this.ramo);
       this.crudService.saveNewOrg(this.org).subscribe(
         data => {
-          // swal({
-          //   icon: "success",
-          //   text: "Empresa salva com sucesso!",
-          //   timer: 1800,
-          //   buttons: {
-          //     buttons: false
-          //   }
-          // });
-          // this.getterOrg();
-          // setTimeout(this.reiniciar, 1001);
+           swal({
+             icon: "success",
+             text: "Empresa salva com sucesso!",
+             timer: 1800,
+             buttons: {
+               buttons: false
+             }
+           });
+           //this.getterOrg();
+           //setTimeout(this.reiniciar, 1001);
           console.log(data);
-          //this.exit();
+          this.exit();
         },
         error => {
           // this.getterOrg();

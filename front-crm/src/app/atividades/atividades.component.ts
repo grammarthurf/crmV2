@@ -52,6 +52,8 @@ export class AtividadesComponent implements OnInit {
 
   tckapi: any;
 
+  calendardata: any = [];
+
   // Lista de atividades:
   erroAtividade: any;
 
@@ -62,33 +64,8 @@ export class AtividadesComponent implements OnInit {
   vendedorapi: any;
 
   calendarEvents = [
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
+    { title: 'Teste', start: '2020-03-20', end: '2020-03-20' },
+
   ];
 
   atv = {position: 0, dataini: '', horaini: '', datafim: '', horafim: '', tipo: '', cliente: '', org: '', ticket: '', assunto: '' };
@@ -164,10 +141,22 @@ export class AtividadesComponent implements OnInit {
   getterActivity() {
     this.crudService.getAtividade().subscribe(
       data => {
+
+
         console.log( ' Atividades' ,data);
 
         this.matdata = []
         data.forEach(e => {
+
+          this.calendarEvents.push({
+            title: e.tipo,
+            start: e.dataini+"T"+e.horaini,
+            end: e.datafim+"T"+e.horafim
+          });
+
+          console.log('EVENTO CALENDÁRIO: ',this.calendarEvents);
+
+
           try {
             if (e.cliente == null && e.org == null && e.ticket == null) {
               this.matdata.push({
