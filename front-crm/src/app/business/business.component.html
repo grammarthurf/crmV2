@@ -80,8 +80,8 @@
             </div>
             <div class="form-group col-md-6">
               <label for="thermometro">Termômetro</label>
-              <input [(ngModel)]="ticket.termometro" type="range" class="form-control-range" id="thermometro" value="1"
-                step="49" />
+              <input [(ngModel)]="ticket.termometro" type="range" class="form-control-range" id="thermometro" value="0"
+                step="50" />
               <div style="display: flex;">
                 <span>Ruim</span>
                 <span>Bom</span>
@@ -207,9 +207,9 @@
         <div class="leads" *ngFor="let item of tickets1.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
-            <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
           <p class="limit-words">
             {{item.org.razaosocial}}
@@ -243,9 +243,9 @@
             <p class="limit-words">
               {{item.titulo}}
             </p>
-            <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
@@ -274,9 +274,9 @@
         <div class="leads" *ngFor="let item of tickets3.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
-            <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
@@ -305,9 +305,9 @@
         <div class="leads" *ngFor="let item of tickets4.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex" >
             <p class="limit-words">{{item.titulo}}</p>
-            <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
@@ -335,9 +335,9 @@
         <div class="leads" *ngFor="let item of tickets5.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
-            <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
@@ -364,9 +364,9 @@
         <div class="leads" *ngFor="let item of tickets6.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
-            <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
@@ -392,9 +392,9 @@
         <div class="leads" *ngFor="let item of tickets7.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
-            <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">

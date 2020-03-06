@@ -9,7 +9,9 @@ import swal from 'sweetalert';
   styleUrls: ['./organization-register.component.css']
 })
 export class OrganizationRegisterComponent implements OnInit {
-
+  orgapi:any;
+  matdata:any;
+  erroOrgs: any;
   org = {
     codigo: '', razaosocial: '', nomefantasia: '', ramo: '',
     cnpj: '', ie: '', rua: '', complemento: '', bairro: '', cep: '',
@@ -27,42 +29,75 @@ export class OrganizationRegisterComponent implements OnInit {
   constructor(private crudService: CrudService, private router: Router) {
     this.getterErp();
     this.getterRamo();
+    this.getterOrgs();
   }
 
   ngOnInit() {
   }
 
+  getterOrgs() {
+    this.crudService.getOrgs().subscribe(
+      data => {
+        this.orgapi = data;
+      },
+      error => {
+        // this.erroAtividade = error;
+      }
+    );
+  }
+
   code1: any;
   generateCode1() {
-    let randomString = function (lenght) {
-      let text = "";
-      let possible = "0123456789"
-
-      for (let i = 0; i < lenght; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    var a = this.orgapi;
+    console.log(a.length);
+    if(a.length > 0){
+      if(a.length < 9 ){
+        this.code1 = "000" + ++this.orgapi[0].codigo;
+        this.org.codigo = this.code1;
+        console.log(this.code1);
+      } else if (a.length < 99) {
+        this.code1 = "00" + ++this.orgapi[0].codigo;
+        this.org.codigo = this.code1;
+        console.log(this.code1);
+      } else if (a.length < 999){
+        this.code1 = "0" + ++this.orgapi[0].codigo;
+        this.org.codigo = this.code1;
+        console.log(this.code1);
+      } else {
+        this.code1 = ++this.orgapi[0].codigo;
+        this.org.codigo = this.code1;
+        console.log(this.code1);
       }
-      return text;
+    } else {
+      this.code1 = "000"+1;
+      this.org.codigo = this.code1;
+      console.log(this.code1);
     }
-
-    this.code1 = randomString(3);
-    this.org.codigo = this.code1;
-    console.log(this.code1);
   }
 
   code2: any;
   generateCode2() {
-    let randomString = function (lenght) {
-      let text = "";
-      let possible = "0123456789"
-
-      for (let i = 0; i < lenght; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    var a = this.erpsapi;
+    if(a.length > 0){
+      if(a.length < 9){
+        this.code2 = "00" + ++this.erpsapi[0].codigo;
+        this.erp.codigo = this.code2;
+        console.log(this.code2);
+      } else if (a.length < 99) {
+        this.code2 = "0" + ++this.erpsapi[0].codigo;
+        this.erp.codigo = this.code2;
+        console.log(this.code2);
+      } else {
+        this.code2 = ++this.erpsapi[0].codigo;
+        this.erp.codigo = this.code2;
+        console.log(this.code2);
       }
-      return text;
+      
+    } else {
+      this.code2 = "00"+1;
+      this.erp.codigo = this.code2;
+      console.log(this.code2);
     }
-
-    this.code2 = randomString(3);
-    console.log(this.code2);
   }
 
   getterRamo() {
@@ -198,18 +233,18 @@ export class OrganizationRegisterComponent implements OnInit {
       this.org.ramos.push(this.ramo);
       this.crudService.saveNewOrg(this.org).subscribe(
         data => {
-          swal({
-            icon: "success",
-            text: "Empresa salva com sucesso!",
-            timer: 1800,
-            buttons: {
-              buttons: false
-            }
-          });
+          // swal({
+          //   icon: "success",
+          //   text: "Empresa salva com sucesso!",
+          //   timer: 1800,
+          //   buttons: {
+          //     buttons: false
+          //   }
+          // });
           // this.getterOrg();
           // setTimeout(this.reiniciar, 1001);
           console.log(data);
-          this.exit();
+          //this.exit();
         },
         error => {
           // this.getterOrg();
@@ -219,6 +254,7 @@ export class OrganizationRegisterComponent implements OnInit {
       );
     }
   }
+
 
 
   // addFields() {

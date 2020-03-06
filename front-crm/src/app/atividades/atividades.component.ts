@@ -7,6 +7,7 @@ import swal from 'sweetalert';
 // import timeGridPlugin from '@fullcalendar/timegrid';
 import bootstrapPlugin from '@fullcalendar/bootstrap';
 import listPlugin from '@fullcalendar/list';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 export interface PeriodicElement {
   position: number;
@@ -63,7 +64,7 @@ export class AtividadesComponent implements OnInit {
   vendedorapi: any;
 
   calendarEvents = [
-    { title: '', date: '' },
+    { title: 'Teste', date: '2020-03-20' },
 
   ];
 
@@ -367,17 +368,26 @@ export class AtividadesComponent implements OnInit {
 
   }
 
+  goToLead(){
+    this.router.navigate([`/business/`]);
+  }
+
   selectActivity(id: number) {
     if (id == 1) {
-      this.numm = "Ligar";
+      this.numm = "Ligação";
+      this.atv.tipo = this.numm;
     } else if (id == 2) {
       this.numm = "Reunião";
+      this.atv.tipo = this.numm;
     } else if (id == 3) {
       this.numm = "Visita";
+      this.atv.tipo = this.numm;
     } else if (id == 4) {
       this.numm = "Email";
+      this.atv.tipo = this.numm;
     } else if (id == 5) {
       this.numm = "Tarefa";
+      this.atv.tipo = this.numm;
     }
   }
 

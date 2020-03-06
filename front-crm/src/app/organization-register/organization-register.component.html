@@ -9,6 +9,7 @@
     <div class="form-group col-md-3">
       <label for="cod">Código</label>
       <input [(ngModel)]="org.codigo" value="{{this.code1}}" type="text" class="form-control">
+      <!-- value="{{orgapi.id}}" -->
     </div>
     <button class="btn btn-primary" (click)="generateCode1()" id="code">
       <img src="../../assets/cod.png" id="codigo">
@@ -175,14 +176,22 @@
           <div class="card-body">
             <h5 class="card-title">{{item.nome}}</h5>
             <p class="card-text">
-              {{item.email}} | 
-              {{item.cargo}} | 
-        dep.  {{item.dep}}   |
-              {{item.skp}}   |
+              {{item.email}} 
+              | 
+              {{item.cargo}} 
+              | 
+        dep.  {{item.dep}}   
+              |
+              {{item.skp}}   
+              |
             </p>
             <p class="card-text">
-              {{item.birth   | date:'dd/MM/yyyy'}} | 
-              {{item.tel}}   | 
+              {{item.birth   
+              | 
+              date:'dd/MM/yyyy'}} 
+              | 
+              {{item.tel}}   
+              | 
               {{item.cel}}
             </p>
           </div>
