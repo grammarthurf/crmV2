@@ -80,7 +80,7 @@
             </div>
             <div class="form-group col-md-6">
               <label for="thermometro">Termômetro</label>
-              <input [(ngModel)]="ticket.termometro" type="range" class="form-control-range" id="thermometro" value="1"
+              <input [(ngModel)]="ticket.termometro" type="range" class="form-control-range" id="thermometro" value="0"
                 step="50" />
               <div style="display: flex;">
                 <span>Ruim</span>
@@ -211,9 +211,9 @@
         <div class="leads" *ngFor="let item of tickets1.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
-            <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
           <p class="limit-words">
             {{item.org.razaosocial}}
@@ -223,7 +223,7 @@
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">
               highlight_off
             </mat-icon>
           </div>
@@ -247,9 +247,9 @@
             <p class="limit-words">
               {{item.titulo}}
             </p>
-            <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
@@ -257,7 +257,7 @@
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
@@ -278,9 +278,9 @@
         <div class="leads" *ngFor="let item of tickets3.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
-            <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
@@ -288,7 +288,7 @@
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
@@ -309,16 +309,16 @@
         <div class="leads" *ngFor="let item of tickets4.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex" >
             <p class="limit-words">{{item.titulo}}</p>
-            <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
@@ -339,16 +339,16 @@
         <div class="leads" *ngFor="let item of tickets5.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
-            <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
@@ -368,16 +368,16 @@
         <div class="leads" *ngFor="let item of tickets6.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
-            <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length > 1 && dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
@@ -396,16 +396,16 @@
         <div class="leads" *ngFor="let item of tickets7.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
             <p class="limit-words">{{item.titulo}}</p>
-            <div *ngIf="(item.termometro=='1');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='99');" class="termometro otimo"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
             <p class="limit-value">{{ item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0  )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(dataCheck(item.atividades))" id="red" (click)="goToAtv(item.titulo)">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>

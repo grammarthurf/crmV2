@@ -62,8 +62,11 @@
         <img src="../../assets/termometro.png" class="img1" />
         <p>Termômetro:</p>
         <div class="margin5">
-          <input [(ngModel)]="idobs.term" (change)="updateTicketTerm()" type="range" id="thermometro"
-            value="{{business.termometro}}" step="49" style="width: 150px;" />
+          <input [(ngModel)]="idobs.term" (change)="updateTicketTerm()" type="range"
+                  id="thermometro"
+                  value="{{business.termometro}}"
+                  step="50"
+                  style="width: 150px;"/>
           <div class=" row">
             <p class="ptherm"> Ruim </p>
             <p class="ptherm2"> Bom </p>

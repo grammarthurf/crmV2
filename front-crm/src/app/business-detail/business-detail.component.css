@@ -62,14 +62,15 @@ mat-icon {
 
 .div-choice {
 	padding-left: 0; 
-	margin-left: -25px; 
-	margin-right: 20px;
+	 margin-left: -1px; 
+	/*margin-right: 5px; */
 }
 
 .div-vendedor {
 	float: right; 
 	text-align: right; 
 	margin-top: 10px;
+	margin-right: 0px;
 }
 
 .flex {
