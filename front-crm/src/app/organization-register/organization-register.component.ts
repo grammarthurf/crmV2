@@ -9,7 +9,9 @@ import swal from 'sweetalert';
   styleUrls: ['./organization-register.component.css']
 })
 export class OrganizationRegisterComponent implements OnInit {
-
+  orgapi:any;
+  matdata:any;
+  erroOrgs: any;
   org = {
     codigo: '', razaosocial: '', nomefantasia: '', ramo: '',
     cnpj: '', ie: '', rua: '', complemento: '', bairro: '', cep: '',
@@ -27,41 +29,34 @@ export class OrganizationRegisterComponent implements OnInit {
   constructor(private crudService: CrudService, private router: Router) {
     this.getterErp();
     this.getterRamo();
+    this.getterOrgs();
   }
 
   ngOnInit() {
   }
 
+  getterOrgs() {
+    this.crudService.getOrgs().subscribe(
+      data => {
+        this.orgapi = data;
+      },
+      error => {
+        // this.erroAtividade = error;
+      }
+    );
+  }
+
   code1: any;
   generateCode1() {
-    let randomString = function (lenght) {
-      let text = "";
-      let possible = "0123456789"
-
-      for (let i = 0; i < lenght; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-      }
-      return text;
-    }
-
-    this.code1 = randomString(3);
+    this.code1 = ++this.orgapi[0].codigo;
     this.org.codigo = this.code1;
     console.log(this.code1);
   }
 
   code2: any;
   generateCode2() {
-    let randomString = function (lenght) {
-      let text = "";
-      let possible = "0123456789"
-
-      for (let i = 0; i < lenght; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-      }
-      return text;
-    }
-
-    this.code2 = randomString(3);
+    this.code2 = ++this.erpsapi[0].codigo;
+    this.erp.codigo = this.code2;
     console.log(this.code2);
   }
 
@@ -219,6 +214,7 @@ export class OrganizationRegisterComponent implements OnInit {
       );
     }
   }
+
 
 
   // addFields() {

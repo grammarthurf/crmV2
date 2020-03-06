@@ -35,20 +35,11 @@ export class ErpComponent implements OnInit {
     this.getterErp();
    }
 
-  code: any;
+  code1: any;
   generateCode() {
-    let randomString = function(lenght) {
-      let text = "";
-      let possible = "0123456789"
-
-      for(let i = 0; i < lenght; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-      }
-      return text;
-    }
-
-    this.code = randomString(3);
-    console.log(this.code);
+    this.code1 = ++this.erpsapi[0].codigo;
+    this.erp.codigo = this.code1;
+    console.log(this.code1);
   }
 
   saveErp(){
