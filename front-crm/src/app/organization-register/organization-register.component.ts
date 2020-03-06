@@ -48,16 +48,56 @@ export class OrganizationRegisterComponent implements OnInit {
 
   code1: any;
   generateCode1() {
-    this.code1 = ++this.orgapi[0].codigo;
-    this.org.codigo = this.code1;
-    console.log(this.code1);
+    var a = this.orgapi;
+    console.log(a.length);
+    if(a.length > 0){
+      if(a.length < 9 ){
+        this.code1 = "000" + ++this.orgapi[0].codigo;
+        this.org.codigo = this.code1;
+        console.log(this.code1);
+      } else if (a.length < 99) {
+        this.code1 = "00" + ++this.orgapi[0].codigo;
+        this.org.codigo = this.code1;
+        console.log(this.code1);
+      } else if (a.length < 999){
+        this.code1 = "0" + ++this.orgapi[0].codigo;
+        this.org.codigo = this.code1;
+        console.log(this.code1);
+      } else {
+        this.code1 = ++this.orgapi[0].codigo;
+        this.org.codigo = this.code1;
+        console.log(this.code1);
+      }
+    } else {
+      this.code1 = "000"+1;
+      this.org.codigo = this.code1;
+      console.log(this.code1);
+    }
   }
 
   code2: any;
   generateCode2() {
-    this.code2 = ++this.erpsapi[0].codigo;
-    this.erp.codigo = this.code2;
-    console.log(this.code2);
+    var a = this.erpsapi;
+    if(a.length > 0){
+      if(a.length < 9){
+        this.code2 = "00" + ++this.erpsapi[0].codigo;
+        this.erp.codigo = this.code2;
+        console.log(this.code2);
+      } else if (a.length < 99) {
+        this.code2 = "0" + ++this.erpsapi[0].codigo;
+        this.erp.codigo = this.code2;
+        console.log(this.code2);
+      } else {
+        this.code2 = ++this.erpsapi[0].codigo;
+        this.erp.codigo = this.code2;
+        console.log(this.code2);
+      }
+      
+    } else {
+      this.code2 = "00"+1;
+      this.erp.codigo = this.code2;
+      console.log(this.code2);
+    }
   }
 
   getterRamo() {
@@ -193,18 +233,18 @@ export class OrganizationRegisterComponent implements OnInit {
       this.org.ramos.push(this.ramo);
       this.crudService.saveNewOrg(this.org).subscribe(
         data => {
-          swal({
-            icon: "success",
-            text: "Empresa salva com sucesso!",
-            timer: 1800,
-            buttons: {
-              buttons: false
-            }
-          });
+          // swal({
+          //   icon: "success",
+          //   text: "Empresa salva com sucesso!",
+          //   timer: 1800,
+          //   buttons: {
+          //     buttons: false
+          //   }
+          // });
           // this.getterOrg();
           // setTimeout(this.reiniciar, 1001);
           console.log(data);
-          this.exit();
+          //this.exit();
         },
         error => {
           // this.getterOrg();

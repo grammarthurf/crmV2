@@ -37,9 +37,27 @@ export class ErpComponent implements OnInit {
 
   code1: any;
   generateCode() {
-    this.code1 = ++this.erpsapi[0].codigo;
-    this.erp.codigo = this.code1;
-    console.log(this.code1);
+    var a = this.erpsapi;
+    if(a.length > 0){
+      if(a.length < 9){
+        this.code1 = "00" + ++this.erpsapi[0].codigo;
+        this.erp.codigo = this.code1;
+        console.log(this.code1);
+      } else if (a.length < 99) {
+        this.code1 = "0" + ++this.erpsapi[0].codigo;
+        this.erp.codigo = this.code1;
+        console.log(this.code1);
+      } else {
+        this.code1 = ++this.erpsapi[0].codigo;
+        this.erp.codigo = this.code1;
+        console.log(this.code1);
+      }
+      
+    } else {
+      this.code1 = "00"+1;
+      this.erp.codigo = this.code1;
+      console.log(this.code1);
+    }
   }
 
   saveErp(){

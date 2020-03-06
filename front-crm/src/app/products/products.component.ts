@@ -45,9 +45,27 @@ export class ProductsComponent implements OnInit {
 
   code1: any;
   generateCode1() {
-    this.code1 = ++this.produtosapi[0].codigo;
-    this.produto.codigo = this.code1;
-    console.log(this.code1);
+    var a = this.produtosapi;
+    console.log(a);
+    if(a.length > 0){
+      if(a.length < 9){
+        this.code1 = "00" + ++this.produtosapi[0].codigo;
+        this.produto.codigo = this.code1;
+        console.log(this.code1);
+      } else if (a.length < 99){
+        this.code1 = "0" + ++this.produtosapi[0].codigo;
+        this.produto.codigo = this.code1;
+        console.log(this.code1);
+      } else {
+        this.code1 = ++this.produtosapi[0].codigo;
+        this.produto.codigo = this.code1;
+        console.log(this.code1);
+      }
+    } else {
+      this.code1 = "00"+1;
+      this.produto.codigo = this.code1;
+      console.log(this.code1);
+    }
   }
 
   displayedColumns: string[] = ['nome', 'codigo', 'columnEdit', 'columnDelete'];
@@ -118,14 +136,14 @@ export class ProductsComponent implements OnInit {
     } else {
       this.crudService.saveNewProduto(this.produto).subscribe(
         data => {
-          swal({
-            icon: "success",
-            text: "Produto salvo com sucesso!",
-            timer: 1800,
-            buttons: {
-              buttons: false
-            }
-          });
+           swal({
+             icon: "success",
+             text: "Produto salvo com sucesso!",
+             timer: 1800,
+             buttons: {
+               buttons: false
+             }
+           });
           console.log(data);
           this.getterProdutos();
         },
