@@ -232,7 +232,7 @@ class VendedorViewSet(viewsets.ModelViewSet):
 
 class AtividadeViewSet(viewsets.ModelViewSet):
 
-    queryset = Atividade.objects.all().order_by('-id')
+    queryset = Atividade.objects.all().order_by('dataini')
     serializer_class = AtividadeSerializer
 
     def create(self, request):

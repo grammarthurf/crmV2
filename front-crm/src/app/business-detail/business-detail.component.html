@@ -437,7 +437,7 @@
             <h2 class="font-26 bold margin5">
               Empresa
             </h2>
-            <mat-icon style="cursor: pointer;" class="mg-t-10 mg-l-auto">create</mat-icon>
+            <mat-icon style="cursor: pointer;" class="mg-t-10 mg-l-auto" (click)="enable1()">create</mat-icon>
           </div>
 
           <div class="col-md-12">
@@ -467,46 +467,46 @@
                   <input type="text" class="form-control mg-l-10" placeholder={{business.org.codigo}} readonly>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.razaosocial}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.razaosocial}} [disabled]="disable1">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.nomefantasia}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.nomefantasia}} [disabled]="disable1">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.cnpj}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.cnpj}} [disabled]="disable1">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.ie}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.ie}} [disabled]="disable1">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.ramo.desc}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.ramo.desc}} [disabled]="disable1">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.cep}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.cep}} [disabled]="disable1">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.rua}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.rua}} [disabled]="disable1">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.bairro}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.bairro}} [disabled]="disable1">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.cidade}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.cidade}} [disabled]="disable1">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.uf}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.uf}} [disabled]="disable1">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.telefone}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.telefone}} [disabled]="disable1">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.email}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.email}} [disabled]="disable1">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.site}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.site}} [disabled]="disable1">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.erpe.desc}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.erpe.desc}} [disabled]="disable1">
                 </div>
               </div>
             </div>
@@ -518,7 +518,7 @@
           <div class="col-12 row">
             <img src="../../assets/contato.png" class="img-empresa" />
             <h2 class="font-26 bold margin5">Contato</h2>
-            <mat-icon class="mg-t-10 mg-l-auto click">create</mat-icon>
+            <mat-icon class="mg-t-10 mg-l-auto click" (click)="enable2()">create</mat-icon>
           </div>
       
           <div class="col-md-12">
@@ -539,25 +539,25 @@
 
               <div class="col-md-7">
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.email}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.email}} [disabled]="disable2">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.cargo}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.cargo}} [disabled]="disable2">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.dep}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.dep}} [disabled]="disable2">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{formatDate(business.cliente.birth)}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{formatDate(business.cliente.birth)}} [disabled]="disable2">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.tel}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.tel}} [disabled]="disable2">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.cel}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.cel}} [disabled]="disable2">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.skype}} readonly>
+                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.skype}} [disabled]="disable2">
                 </div>
               </div>
             </div>
