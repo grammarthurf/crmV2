@@ -8,9 +8,7 @@
       <input class="form-control" type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
     </div>
   </div>
-
-  <div class="modal fade bd-example-modal-lg" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+  <div class="modal fade bd-example-modal-lg" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -20,17 +18,15 @@
           </button>
         </div>
         <div class="modal-body">
-
           <div class="row col-md-12 align-cod-button">
             <div class="form-group col-md-3">
               <label for="cod">Código</label>
-              <input [(ngModel)]="erp.codigo" value="{{this.code1}}" type="text" class="form-control">
+              <input [(ngModel)]="erp.codigo" disabled value="{{this.code1}}" type="text" class="form-control">
             </div>
-            <button class="btn btn-primary" (click)="generateCode()" id="code">
+            <button class="btn btn-primary" [disabled]="disableCode" (click)="generateCode()" id="code">
               <img src="../../assets/cod.png" id="codigo">
             </button>
           </div>
-
           <div class="row col-md-12">
             <div class="form-group col-md-6">
               <label for="empresa">Empresa</label>
@@ -41,7 +37,6 @@
               <input [(ngModel)]="erp.desc" type="text" class="form-control">
             </div>
           </div>
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
@@ -50,9 +45,7 @@
       </div>
     </div>
   </div>
-
   <mat-divider style="margin-left: 15px; margin-right: 15px;"></mat-divider>
-
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="codigo">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -62,7 +55,6 @@
         {{ element.codigo }}
       </td>
     </ng-container>
-
     <ng-container matColumnDef="empresa">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         Empresa
@@ -71,7 +63,6 @@
         {{ element.empresa }}
       </td>
     </ng-container>
-
     <ng-container matColumnDef="desc">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         ERP
@@ -80,7 +71,6 @@
         {{ element.desc }}
       </td>
     </ng-container>
-
     <ng-container matColumnDef="columnEdit">
       <th mat-header-cell *matHeaderCellDef>
         Editar
@@ -93,7 +83,6 @@
         </button>
       </td>
     </ng-container>
-
     <ng-container matColumnDef="columnDelete">
       <th mat-header-cell *matHeaderCellDef>
         Excluir
@@ -106,12 +95,10 @@
         </button>
       </td>
     </ng-container>
-
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 </div>
-
 <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">

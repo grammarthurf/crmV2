@@ -64,7 +64,7 @@ export class AtividadesComponent implements OnInit {
   vendedorapi: any;
 
   calendarEvents = [
-    { title: 'Teste', date: '2020-03-20' },
+    { title: 'Teste', start: '2020-03-20', end: '2020-03-20' },
 
   ];
 
@@ -150,7 +150,8 @@ export class AtividadesComponent implements OnInit {
 
           this.calendarEvents.push({
             title: e.tipo,
-            date: e.dataini
+            start: e.dataini+"T"+e.horaini,
+            end: e.datafim+"T"+e.horafim
           });
 
           console.log('EVENTO CALENDÁRIO: ',this.calendarEvents);

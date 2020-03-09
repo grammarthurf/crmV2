@@ -649,6 +649,7 @@ export class BusinessComponent implements OnInit {
 
   ngOnInit() {
     Inputmask().mask(document.getElementById("value"));
+    this.ticket.termometro = "50";
   }
 
   formatNumberBR(value) {

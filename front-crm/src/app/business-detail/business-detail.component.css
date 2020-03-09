@@ -396,3 +396,80 @@ div.col-8.div-right div.col-10.bg-white.row div.row.col-12 h5 + p {
 .click {
 	cursor: pointer;
 }
+
+/* MODAL ATV */
+
+.div-modal-atv{
+    width: 40x; 
+    height: 40px; 
+    background-color: #6297bd; 
+    color: white; 
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.icon-modal-atv{
+    font-size: 20px; 
+    margin-bottom: 5px;
+    
+}
+
+.icon-dif {
+    margin-right: 10px; 
+    font-weight: bold; 
+    width: 21px; 
+    height: 21px; 
+    font-size: 18px; 
+    border-radius: 100px; 
+    background-color: #c2c2c2; 
+    color: #ffffff;
+}
+
+.atvinput {
+    margin-top: 5px; 
+    font-size: 12.5pt;
+}
+
+.inputmargin {
+    margin-top: 20px; 
+    padding: 0px;
+}
+
+.inputmargin2{
+    margin-top: 20px; 
+    padding: 0px 0px 0px 15px;
+}
+
+/* CALENDAR */
+
+.viewcalendar{
+    margin-left: auto; 
+    color: #007bff; 
+}
+
+.div-calendar{
+    padding: 0px;
+    height: 590px; 
+    overflow: auto; 
+    font-size: 10px; 
+    align-items: flex-end;
+}
+
+.div-calendar::-webkit-scrollbar {
+    width: 10px;
+}::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border: 0.5px solid #ced4da;
+    border-radius: 5px;
+}::-webkit-scrollbar-thumb {
+    background: #6297bd; 
+    border-radius: 5px;
+}::-webkit-scrollbar-thumb:hover {
+    background: #678294; 
+}
+
+.fullcalendar {
+    width: 500px;
+    height: 100px !important;
+    margin: 1px auto;
+}

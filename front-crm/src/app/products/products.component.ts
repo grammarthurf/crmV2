@@ -31,6 +31,7 @@ export class ProductsComponent implements OnInit {
 
   matdata: any = [];
   produtosapi: any;
+  disableCode: boolean = false;
 
   erroProdutos: any;
 
@@ -52,6 +53,7 @@ export class ProductsComponent implements OnInit {
         this.code1 = "00" + ++this.produtosapi[0].codigo;
         this.produto.codigo = this.code1;
         console.log(this.code1);
+        
       } else if (a.length < 99){
         this.code1 = "0" + ++this.produtosapi[0].codigo;
         this.produto.codigo = this.code1;
@@ -66,6 +68,7 @@ export class ProductsComponent implements OnInit {
       this.produto.codigo = this.code1;
       console.log(this.code1);
     }
+    this.disableCode = true;
   }
 
   displayedColumns: string[] = ['nome', 'codigo', 'columnEdit', 'columnDelete'];

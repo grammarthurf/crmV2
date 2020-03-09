@@ -1,7 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { CrudService } from "../services/crud.service";
 import { ActivatedRoute } from "@angular/router";
+import { Router, Data } from "@angular/router";
 import swal from 'sweetalert';
+import listPlugin from '@fullcalendar/list';
+import bootstrapPlugin from '@fullcalendar/bootstrap';
 
 @Component({
   selector: "app-business-detail",
@@ -14,6 +17,7 @@ export class BusinessDetailComponent implements OnInit {
 
   business: any;
   estagiosapi: any;
+  calendarPlugins: any = [];
 
   public lottieConfig: Object;
   private anim: any;
@@ -21,9 +25,39 @@ export class BusinessDetailComponent implements OnInit {
   numm: number;
   idobs = { id: '', obs: '', term: '', mtvperd: '', cmtperd: '' };
 
+  calendarEvents = [
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 1', date: '2020-03-02' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 2', date: '2020-03-09' },
+  ];
+
   // businesss = { id: "", titulo: '', valorestimado: '', termometro: '', obs: '', status: '', estagio: '', cliente: '', org: '', vendedor: '', created: '', updated: '', produto: ''};
 
-  constructor(private route: ActivatedRoute, private crudService: CrudService) {
+  constructor(private route: ActivatedRoute, private crudService: CrudService, private router: Router) {
     this.lottieConfig = {
       path: 'assets/bike.json',
       renderer: 'canvas',
@@ -33,6 +67,7 @@ export class BusinessDetailComponent implements OnInit {
 
     this.getterEstagio();
     this.loadBusiness();
+    this.calendarPlugins = [ listPlugin , bootstrapPlugin ];
   }
 
   updatedTicketStatus(ticket) {
@@ -266,9 +301,9 @@ export class BusinessDetailComponent implements OnInit {
     return result
   }
 
-  // goTo(id) {
-  //   this.router.navigate([`/company-detail/${id}`]);
-  // }
+   goTo(id) {
+     this.router.navigate([`/company-detail/${id}`]);
+   }
 
 
   ngOnInit() {
