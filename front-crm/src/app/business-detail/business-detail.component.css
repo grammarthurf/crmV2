@@ -91,21 +91,15 @@ mat-icon {
 	border: 1px solid rgb(207, 206, 206);
 }
 
-.pdiv {
-	font-size: 15px;
-	margin-left: 15px;
-	margin-top: 5px;
-}
-
 .bold {
     font-weight: bold;
 }
 
 h4 {
-	margin-top: 10px; 
-	font-size: 20px; 
-	font-weight: bold; 
-	margin-left: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 16px;
 }
 
 .fine {
@@ -400,19 +394,6 @@ div.col-8.div-right div.col-10.bg-white.row div.row.col-12 h5 + p {
 
 .click {
 	cursor: pointer;
-}
-
-div.row div.col-md-5 p + p {
-	margin-top: 19.3px;
-	text-align: right;
-}
-
-div.row div.col-md-7 div.form-group + div.form-group {
-	margin-top: 5px;
-}
-
-div.row.mt-5 div.col-md-12 div.form-group {
-	margin-top: 10px;
 }
 
 

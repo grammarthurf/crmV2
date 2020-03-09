@@ -437,77 +437,22 @@
             <h2 class="font-26 bold margin5">
               Empresa
             </h2>
-            <mat-icon style="cursor: pointer;" class="mg-t-10 mg-l-auto" (click)="enable1()">create</mat-icon>
           </div>
 
           <div class="col-md-12">
             <h4> {{business.org.razaosocial}}</h4>
 
-            <div class="row mt-5">
-              <div class="col-md-5">
-                <p style="text-align: right;"><b>Código</b></p>
-                <p><b>Razão Social</b></p>
-                <p><b>Nome Fantasia</b></p>
-                <p><b>CNPJ</b></p>
-                <p><b>IE</b></p>
-                <p><b>Ramo</b></p>
-                <p><b>CEP</b></p>
-                <p><b>Rua</b></p>
-                <p><b>Bairro</b></p>
-                <p><b>Cidade</b></p>
-                <p><b>UF</b></p>
-                <p><b>Telefone</b></p>
-                <p><b>Email</b></p>
-                <p><b>Site</b></p>
-                <p><b>ERP</b></p>
-              </div>
-
-              <div class="col-md-7">
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.codigo}} readonly>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.razaosocial}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.nomefantasia}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.cnpj}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.ie}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.ramo.desc}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.cep}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.rua}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.bairro}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.cidade}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.uf}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{formatPhoneNumber(business.org.telefone)}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.email}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.site}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.erpe.desc}} [disabled]="disable1">
-                </div>
+            <div class="row mt-3">
+              <div class="col-md-12">
+                <p>{{business.org.codigo}}</p>
+                <p>{{business.org.razaosocial}}</p>
+                <p>{{business.org.nomefantasia}}</p>
+                <p>{{business.org.cnpj}}</p>
+                <p>{{business.org.ie}}</p>
+                <p><b>{{business.org.rua}} - {{business.org.bairro}}, {{business.org.cidade}}-{{business.org.uf}}, {{business.org.cep}}</b></p>
+                <p>{{business.org.email}}</p>
+                <p>{{business.org.site}}</p>
+                <p>{{business.org.erpe.desc}}</p>
               </div>
             </div>
           </div>
@@ -518,7 +463,6 @@
           <div class="col-12 row">
             <img src="../../assets/contato.png" class="img-empresa" />
             <h2 class="font-26 bold margin5">Contato</h2>
-            <mat-icon class="mg-t-10 mg-l-auto click" (click)="enable2()">create</mat-icon>
           </div>
       
           <div class="col-md-12">
@@ -526,99 +470,17 @@
               {{business.cliente.nome}}
             </h4>
 
-            <div class="row mt-5">
-              <div class="col-md-5">
-                <p style="text-align: right;"><b>Email</b></p>
-                <p><b>Cargo</b></p>
-                <p><b>Departamento</b></p>
-                <p><b>Data Aniversário</b></p>
-                <p><b>Telefone</b></p>
-                <p><b>Celular</b></p>
-                <p><b>Skype</b></p>
-              </div>
-
-              <div class="col-md-7">
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.email}} [disabled]="disable2">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.cargo}} [disabled]="disable2">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.dep}} [disabled]="disable2">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{formatDate(business.cliente.birth)}} [disabled]="disable2">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{formatPhoneNumber(business.cliente.tel)}} [disabled]="disable2">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{formatCellPhoneNumber(business.cliente.cel)}} [disabled]="disable2">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.skype}} [disabled]="disable2">
-                </div>
+            <div class="row mt-3">
+              <div class="col-md-12">
+                <p>{{business.cliente.email}}</p>
+                <p>{{business.cliente.cargo}}</p>
+                <p>{{business.cliente.dep}}</p>
+                <p>{{formatDate(business.cliente.birth)}}</p>
+                <p>{{formatPhoneNumber(business.cliente.tel)}}</p>
+                <p>{{formatCellPhoneNumber(business.cliente.cel)}}</p>
+                <p>{{business.cliente.skype}}</p>
               </div>
             </div>
-
-
-            <!-- <div class="mg-t-10">
-              <p class="pdiv">
-                <b>
-                  Email:
-                </b>
-                {{business.cliente.email}}
-              </p>
-            </div>
-            <div class="mg-t-10">
-              <p class="pdiv">
-                <b>
-                  Cargo:
-                </b>
-                {{business.cliente.cargo}}
-              </p>
-            </div>
-            <div class="mg-t-10">
-              <p class="pdiv">
-                <b>
-                  Departamento:
-                </b>
-                {{business.cliente.dep}}
-              </p>
-            </div>
-            <div class="mg-t-10">
-              <p class="pdiv">
-                <b>
-                  Data Aniversário:
-                </b>
-                {{formatDate(business.cliente.birth)}}
-              </p>
-            </div>
-            <div class="mg-t-10">
-              <p class="pdiv">
-                <b>
-                  Telefone:
-                </b>
-                {{business.cliente.tel}}
-              </p>
-            </div>
-            <div class="mg-t-10">
-              <p class="pdiv">
-                <b>
-                  Celular:
-                </b>
-                {{business.cliente.cel}}
-              </p>
-            </div>
-            <div class="mg-t-10">
-              <p class="pdiv">
-                <b>
-                  Skype:
-                </b>
-                {{business.cliente.skype}}
-              </p>
-            </div> -->
           </div>
         </div>
       </div>

@@ -18,8 +18,6 @@ export class BusinessDetailComponent implements OnInit {
   business: any;
   estagiosapi: any;
   calendarPlugins: any = [];
-  disable1: boolean = true;
-  disable2: boolean = true;
 
   public lottieConfig: Object;
   private anim: any;
@@ -70,14 +68,6 @@ export class BusinessDetailComponent implements OnInit {
     this.getterEstagio();
     this.loadBusiness();
     this.calendarPlugins = [ listPlugin , bootstrapPlugin ];
-  }
-
-  enable1(){
-    this.disable1= false;
-  }
-
-  enable2(){
-    this.disable2= false;
   }
 
   SaveUpdate(){
