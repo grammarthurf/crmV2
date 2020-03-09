@@ -118,9 +118,9 @@
   <div class="flex">
     <img src="../../assets/contato.png">
     <h5>Cadastrar Contato</h5>
-    <button mat-icon-button (click)="addContato()">
+    <!-- <button mat-icon-button (click)="addContato()">
       <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
-    </button>
+    </button> -->
   </div>
   <div class="row">
     <div class="col-md-6">
@@ -167,8 +167,6 @@
           <input [(ngModel)]="contato.skp" type="text" class="form-control">
         </div>
       </div>
-      <button class="btn btn-secondary" (click)="exit()">Sair</button>
-      <button class="btn btn-primary" (click)="save()" style="margin-left: 10px;">Salvar</button>
     </div>
     <div class="col-md-6">
       <div *ngFor="let item of org.contatos" class="col-sm-12">
@@ -176,29 +174,22 @@
           <div class="card-body">
             <h5 class="card-title">{{item.nome}}</h5>
             <p class="card-text">
-              {{item.email}} 
-              | 
-              {{item.cargo}} 
-              | 
-        dep.  {{item.dep}}   
-              |
-              {{item.skp}}   
-              |
+              {{item.email}} | {{item.cargo}} | dep.  {{item.dep}} | {{item.skp}} |
             </p>
             <p class="card-text">
-              {{item.birth   
-              | 
-              date:'dd/MM/yyyy'}} 
-              | 
-              {{item.tel}}   
-              | 
-              {{item.cel}}
+              {{item.birth | date:'dd/MM/yyyy'}} | {{formatPhoneNumber(item.tel)}} | {{formatCellPhoneNumber(item.cel)}}
             </p>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <button class="btn btn-primary" (click)="addContato()" style="margin-left: 15px;">
+    Salvar Contato
+  </button>
+  <hr>
+  <button class="btn btn-secondary" (click)="exit()">Sair</button>
+  <button class="btn btn-primary" (click)="save()" style="margin-left: 10px;">Salvar Empresa</button>
 </div>
 
 <div class="modal fade bd-example-modal-lg" id="ramo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
