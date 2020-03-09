@@ -280,4 +280,10 @@ export class CrudService {
     {headers: this.htttpHeaders
     });
   }
+
+  public deleteOrg(id: number): Observable<any> {
+    return this.http.delete(this.baseUrl + 'orgs/' + id + '/',
+    {headers: this.htttpHeaders
+    });
+  }
 }
