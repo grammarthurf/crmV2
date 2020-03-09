@@ -144,14 +144,18 @@ export class AtividadesComponent implements OnInit {
 
 
         console.log( ' Atividades' ,data);
+        
 
         this.matdata = []
         data.forEach(e => {
 
+          var timeIni = e.horaini.substring(0,2) + ":" + e.horaini.substring(2,4)
+          var timeEnd = e.horafim.substring(0,2) + ":" + e.horafim.substring(2,4)
+
           this.calendarEvents.push({
             title: e.tipo,
-            start: e.dataini+"T"+e.horaini,
-            end: e.datafim+"T"+e.horafim
+            start: e.dataini + "T" + timeIni,
+            end: e.datafim + "T" + timeEnd
           });
 
           console.log('EVENTO CALENDÁRIO: ',this.calendarEvents);
