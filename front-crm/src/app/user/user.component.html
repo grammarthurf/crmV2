@@ -26,7 +26,7 @@
                             <li class="list-group-item p" *ngFor="let ticket of negociosapi">
                                 <img src="../../assets/profile.jpg" class="img2">
                                 <b>Atualizou a observação de um negócio: </b>
-                                <a href="/business">{{ticket.titulo}} </a>
+                                <a href="/business-detail/{{ticket.id}}">{{ticket.titulo}} </a>
                                 <label class="p1">({{ticket.obs[0].data | date:'dd/MM/yyyy'}})</label>
                                 <mat-icon style="float: right;"> work_outline </mat-icon>
                             </li>
@@ -43,7 +43,7 @@
                                 <mat-icon *ngIf="(atividade.tipo == 'Visita' )"> business </mat-icon>
                                 <mat-icon *ngIf="(atividade.tipo == 'Email' )"> email </mat-icon>
                                 <b>{{atividade.assunto}}:</b>
-                                <a href="/activity"> {{atividade.tipo}}</a>
+                                <a href="/business-detail/{{atividade.ticket.id}}"> {{atividade.tipo}}</a>
                             </li>
                         </ul>
                     </div>

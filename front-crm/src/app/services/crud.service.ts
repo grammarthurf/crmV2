@@ -275,7 +275,15 @@ export class CrudService {
   }
 
   //DELETE API
-  public deleteAtividade(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`);
+  public deleteActivity(id: number): Observable<any> {
+    return this.http.delete(this.baseUrl + 'atividade/' + id + '/',
+    {headers: this.htttpHeaders
+    });
+  }
+
+  public deleteOrg(id: number): Observable<any> {
+    return this.http.delete(this.baseUrl + 'orgs/' + id + '/',
+    {headers: this.htttpHeaders
+    });
   }
 }

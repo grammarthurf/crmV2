@@ -68,6 +68,7 @@ export class BusinessComponent implements OnInit {
   constructor(private crudService: CrudService, private router: Router) {
     this.getterEstagios();
     this.getterTickets('open');
+    this.getterTickets('win');
     //this.getterAtividades(this.orsgapi.id);
     this.getterOrgs();
     this.getterProd();
@@ -185,14 +186,9 @@ export class BusinessComponent implements OnInit {
     var month1 = dataini.substring(5,7);
     var day1 = dataini.substring(8,10);
 
-    console.log("data atual:" + year + "-0" + month + "-0" + day);
-    console.log("data da atividade:" + year1 + "-" + month1 + "-" + day1);
-
-    if (year > year1 ){
-      return true;
-    } else if (year == year1 && month > month1){
-      return true;
-    } else if (year == year1 && month == month1 && day > day1) {
+    if(year > year1 || 
+      (year == year1 && month > month1) || 
+      (year == year1 && month == month1 && day > day1) ){
       return true;
     } else {
       return false;
@@ -233,8 +229,6 @@ export class BusinessComponent implements OnInit {
 
   showOpen() {
     this.getterTickets('open');
-  }
-  showWin() {
     this.getterTickets('win');
   }
   showLose() {

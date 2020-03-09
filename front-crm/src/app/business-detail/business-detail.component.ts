@@ -26,33 +26,7 @@ export class BusinessDetailComponent implements OnInit {
   idobs = { id: '', obs: '', term: '', mtvperd: '', cmtperd: '' };
 
   calendarEvents = [
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 1', start: '2020-03-02T10:00', end: '2020-03-01' }
   ];
 
   // businesss = { id: "", titulo: '', valorestimado: '', termometro: '', obs: '', status: '', estagio: '', cliente: '', org: '', vendedor: '', created: '', updated: '', produto: ''};
@@ -71,7 +45,7 @@ export class BusinessDetailComponent implements OnInit {
   }
 
   SaveUpdate(){
-    console.log("mano qqqqqqqqqqqq")
+    console.log("qqqqqqqqq")
   }
 
   updatedTicketStatus(ticket) {
@@ -127,7 +101,7 @@ export class BusinessDetailComponent implements OnInit {
   }
 
   getterTicket(id) {
-    
+
     this.crudService.getTicket(id).subscribe(
       data => {
         this.business = data;
@@ -217,7 +191,7 @@ export class BusinessDetailComponent implements OnInit {
 
 
   stageWin() {
-   
+
     let btnLose = document.getElementById('lose');
     let btnWin = document.getElementById('win');
     btnLose.style.display = 'none';
@@ -283,7 +257,7 @@ export class BusinessDetailComponent implements OnInit {
       console.log('Business : ', this.business);
 
       this.updatedTicketStatus(this.business);
-      
+
     }
 
   }
@@ -296,7 +270,7 @@ export class BusinessDetailComponent implements OnInit {
     let arrayObs = [];
     arrayObs = this.business.obs;
     arrayObs.reverse()
-    
+
   }
 
   formatDate(date) {

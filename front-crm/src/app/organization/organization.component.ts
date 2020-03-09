@@ -34,6 +34,7 @@ export class OrganizationComponent implements OnInit {
   erroOrgs: any;
 
   code: any;
+  delorg: any;
 
   data = Object.assign(org);
   dataSource = new MatTableDataSource<Element>(this.data);
@@ -49,6 +50,7 @@ export class OrganizationComponent implements OnInit {
   getterOrg() {
     this.crudService.getOrgs().subscribe(
       data => {
+        this.matdata = [];
         data.forEach(e => {
             this.matdata.push({
               id: e.id,
@@ -146,16 +148,44 @@ export class OrganizationComponent implements OnInit {
     this.router.navigate([`/company-register/`]);
   }
 
-  deleteItem() {
-    swal({
-      icon: "error",
-      text: "Empresa excluída com sucesso!",
-      timer: 1800,
-      buttons: {
-        buttons: false
-      }
-    });
+  deleteItem(item) {
+    this.delorg = item.id;
+    console.log(this.delorg);
+
+    // swal({
+    //   icon: "error",
+    //   text: "Empresa excluída com sucesso!",
+    //   timer: 1800,
+    //   buttons: {
+    //     buttons: false
+    //   }
+    // });
   }
 
+  del(){
+    this.crudService.deleteOrg(this.delorg).subscribe(
+      data => {
+        this.getterOrg();
+        swal({
+          icon: "success",
+          text: "Atividade deletada com sucesso!",
+          timer: 1000,
+          buttons: {
+            buttons: false
+          }
+        });
+      },
+      error => {
+        swal({
+          icon: "error",
+          text: "Erro ao deletar !",
+          timer: 1000,
+          buttons: {
+            buttons: false
+          }
+        });
+      }
+    )
+  }
 
 }
