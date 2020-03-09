@@ -10,6 +10,7 @@ import listPlugin from '@fullcalendar/list';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 export interface PeriodicElement {
+  id: number;
   position: number;
   data: string;
   tipo: string;
@@ -19,7 +20,7 @@ export interface PeriodicElement {
 }
 
 const atividade: PeriodicElement[] = [
-  {position: 0, data: '', tipo: '', cliente: '', org: '', ticket: '' },
+  { id: 0 ,position: 0, data: '', tipo: '', cliente: '', org: '', ticket: '' },
 ];
 
 @Component({
@@ -62,6 +63,8 @@ export class AtividadesComponent implements OnInit {
 
   //Lista de vendedor:
   vendedorapi: any;
+
+  delact: any;
 
   calendarEvents = [
     { title: 'Teste', start: '2020-03-20', end: '2020-03-20' },
@@ -126,16 +129,76 @@ export class AtividadesComponent implements OnInit {
     this.router.navigate([]).then(result => { window.open('/calendar/', '_blank'); });
   }
 
+  deleteActivity(idativ){
+    this.delact = idativ;
+    console.log(idativ,  ' id ');
+  }
+
+  del(){
+    this.crudService.deleteActivity(this.delact).subscribe(
+      data => {
+        this.getterActivity();
+        swal({
+          icon: "success",
+          text: "Atividade deletada com sucesso!",
+          timer: 1000,
+          buttons: {
+            buttons: false
+          }
+        });
+      },
+      error => {
+        swal({
+          icon: "error",
+          text: "Erro ao deletar !",
+          timer: 1000,
+          buttons: {
+            buttons: false
+          }
+        });
+      }
+    )
+  }
+
   getColor(dataini) {
-    if(dataini == this.today){
+
+    var year = this.dNow.getFullYear();
+    var month = this.dNow.getMonth()+1;
+    var day = this.dNow.getDate();
+    console.log(year + '' + month + '' + day)
+
+    var year1 = dataini.substring(0,4);
+    var month1 = dataini.substring(5,7);
+    var day1 = dataini.substring(8,10);
+    console.log(year1 + month1 + day1)
+
+    if(year > year1) {
+
       return 'rgb(255, 232, 228)';
-    } else if (dataini == this.today1) {
+
+    } else if (year == year1 && month > month1) {
+
       return 'rgb(255, 232, 228)';
-    } else if (dataini == this.tomorrow){
+
+    } else if (year == year1 && month == month1 && day > day1) {
+
+      return 'rgb(255, 232, 228)';
+
+    } else if (year == year1 && month == month1 && day == day1) {
+
       return '#deeafa';
-    } else if (dataini == this.tomorrow1) {
-      return '#deeafa';
+      
     }
+
+    // if(dataini == this.today){
+    //   return 'rgb(255, 232, 228)';
+    // } else if (dataini == this.today1) {
+    //   return 'rgb(255, 232, 228)';
+    // } else if (dataini == this.tomorrow){
+    //   return '#deeafa';
+    // } else if (dataini == this.tomorrow1) {
+    //   return '#deeafa';
+    // }
   }
 
   getterActivity() {
@@ -144,7 +207,7 @@ export class AtividadesComponent implements OnInit {
 
         this.calendarEvents = [];
         console.log( ' Atividades' ,data);
-        
+
 
         this.matdata = []
         data.forEach(e => {

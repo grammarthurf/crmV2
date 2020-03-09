@@ -104,8 +104,8 @@
                 </div>
                 <div class="col-6" style="padding: 0px;">
                   <label for="participantes" > Contato <label style="color: red; font-size: 20px;">*</label></label>
-                  <select 
-                          class="form-control" 
+                  <select
+                          class="form-control"
                           id="exampleFormControlSelect1">
                     <option >
                       {{business.cliente.nome}}
@@ -115,11 +115,11 @@
               </div>
             </div>
             <div class="col-6 ml-auto div-calendar">
-              <full-calendar 
-                [defaultView]="'listWeek'" 
-                [plugins]="calendarPlugins" 
+              <full-calendar
+                [defaultView]="'listWeek'"
+                [plugins]="calendarPlugins"
                 themeSystem="bootstrap"
-                [events]="calendarEvents" 
+                [events]="calendarEvents"
                 locale="pt-br">
               </full-calendar>
             </div>
@@ -427,6 +427,14 @@
   </div>
 
 
+  <div class="col-4 div-left div-border">
+    <div class=" col-12 row ">
+      <img class="img-empresa" src="../../assets/empresa.png"/>
+      <h2 class="font-26 bold margin5">
+        Empresa
+      </h2>
+      <mat-icon style="cursor: pointer;" class="mg-t-10 mg-l-auto" (click)="goTo(business.org.id)">create</mat-icon>
+    </div>
     <div class="row col-12" style="padding: 0;">
 
       <div class="col-4" style="padding-left: 0;">
@@ -443,6 +451,48 @@
           <div class="col-md-12">
             <h4> {{business.org.razaosocial}}</h4>
 
+  <div class="col-8 div-right div-border">
+    <div *ngIf="(business.status == 'Perdido')"  class="alert alert-danger" role="alert">
+      {{business.mtvperd}} :   {{business.cmtperd}}
+    </div>
+    <mat-tab-group mat-stretch-tabs class="col-12">
+      <mat-tab label="Observações">
+        <div class="col-12 mg-t-10 divtab">
+          <textarea rows="5" [(ngModel)]="idobs.obs" class="col-12 txtarea"></textarea>
+          <button type="button" (click)="updateTicketObs()"  class="btn btn-success bold btn-sm fltright">
+            Adicionar
+          </button>
+          <button type="button" class="btn btn-outline-secondary bold btn-sm fltright mg-r-5">
+            Cancelar
+          </button>
+        </div>
+        <div class="col-12 row txtcenter">
+          <h2 style="margin-left: auto; margin-right: auto;">Histórico</h2>
+        </div>
+        <div class="col-12 mg-t-10">
+          <ul class="list-group list-group-flush">
+            <li *ngFor="let item of business.obs"  class="list-group-item p">
+              <b class="b-b">
+                {{formatDate(item.data)}} <!--  {{this.dataslv}} -->
+              </b>
+              <br>
+              <label class="b">
+                Conteúdo:
+              </label>
+              <label>
+                {{item.texto}}
+              </label>
+            </li>
+          </ul>
+        </div>
+      </mat-tab>
+      <mat-tab label="Atividades">
+        <div class="col-12 mg-t-10 divtab">
+          <div class="col-12">
+            <a data-toggle="modal" data-target="#abrircadastroatv" style="color: royalblue; float: right; cursor: pointer;">+ Adicionar nova atividade</a>
+          </div>
+          <div *ngIf="(business.atividades == 0)" class="b-b txtcenter">
+            <h4>Sem atividades ativas</h4>
             <div class="row mt-5">
               <div class="col-md-5">
                 <p style="text-align: right;"><b>Código</b></p>
@@ -520,7 +570,7 @@
             <h2 class="font-26 bold margin5">Contato</h2>
             <mat-icon class="mg-t-10 mg-l-auto click" >create</mat-icon>
           </div>
-      
+
           <div class="col-md-12">
             <h4>
               {{business.cliente.nome}}
@@ -621,7 +671,7 @@
             </div> -->
           </div>
         </div>
-      </div>
+
 
       <div class="col-1"></div>
 
@@ -713,5 +763,3 @@
           </mat-tab-group>
         </div>
       </div>
-  </div>
-</div>
