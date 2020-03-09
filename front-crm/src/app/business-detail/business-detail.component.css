@@ -473,3 +473,16 @@ div.col-8.div-right div.col-10.bg-white.row div.row.col-12 h5 + p {
     height: 100px !important;
     margin: 1px auto;
 }
+
+.icon-modal-lead{
+	margin-right: 10px; 
+	font-weight: bold; 
+	width: 21px; 
+	height: 21px; 
+	font-size: 18px; 
+	border-radius: 100px; 
+	background-color: #c2c2c2; 
+	color: #ffffff;
+	font-size: 20px; 
+	margin-left: 5px;
+  }
