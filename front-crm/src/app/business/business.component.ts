@@ -31,6 +31,8 @@ export class BusinessComponent implements OnInit {
   //Lista de Produtos
   produtosapi: any;
   produto: any = { nome: '', codigo: ''};
+  vendedorExt: any = {nome: ''}
+  vendedorextapi: any;
 
   // Lista de Orgs:
   orsgapi: any;
@@ -127,6 +129,38 @@ export class BusinessComponent implements OnInit {
 
   }
 
+  getterVendedorExt() {
+    this.crudService.getVendedorExt().subscribe(
+      data => {
+        this.vendedorextapi = data;
+        console.log(data);
+      },
+      error => {
+        this.erroAtividade = error;
+      }
+    );
+  }
+
+  saveVendedorExt(){
+      this.crudService.saveNewVendedorExt(this.vendedorExt).subscribe(
+        data => {
+          swal({
+            icon: "success",
+            text: "Vendedor Externo salvo com sucesso!",
+            timer: 1800,
+            buttons: {
+              buttons: false
+            }
+          });
+            console.log(data);
+            this.getterVendedorExt();
+          },
+          error => {
+            console.error(error);
+          }
+      );
+  }
+
   //FILTRAR SELECT DOS CONTATOS DE ACORDO COM O SELECIONADO EM EMPRESAS
   gettercliorg(id) {
     // console.log(id)
@@ -144,16 +178,22 @@ export class BusinessComponent implements OnInit {
   dataCheck(dataini){
 
     var year = this.dNow.getFullYear();
-    var month = this.dNow.getMonth();
+    var month = this.dNow.getMonth()+1;
     var day = this.dNow.getDate();
-    var data = dataini.split("-", 3);
-     console.log("today:" + year + month + day);
-     console.log( 'dataini: ' , data);
-   
-      console.log( 'tipo data ini' ,typeof(dataini));
-      console.log('tipo today: ' , typeof(day));
 
-    if (data < year ){
+    var year1 = dataini.substring(0,4);
+    var month1 = dataini.substring(5,7);
+    var day1 = dataini.substring(8,10);
+
+    console.log("anohj e anoini:" + year + "e" + year1);
+    console.log("mes hj e mesini:" + month + "e" + month1);
+    console.log("diahj e diaini:" + day + "e" + day1)
+
+    if (year > year1 ){
+      return true;
+    } else if (year == year1 && month > month1){
+      return true;
+    } else if (year == year1 && month == month1 && day > day1) {
       return true;
     } else {
       return false;
