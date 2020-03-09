@@ -174,9 +174,9 @@
         <div class="modal-body row">
           <div class="form-group col-md-6">
             <label for="codeprod"> Código</label>
-            <input [(ngModel)]="produto.codigo" type="text" class="form-control" id="codeprod" value="{{this.code1}}"/>
+            <input [(ngModel)]="produto.codigo" disabled type="text" class="form-control" id="codeprod" value="{{this.code1}}"/>
             </div>
-            <button class="btn btn-primary" (click)="generateCode1()" id="code">
+            <button class="btn btn-primary" [disabled]="disableCode" (click)="generateCode1()" id="code">
               <img src="../../assets/cod.png" id="codigo">
             </button>
           <div class="form-group col-md-12">

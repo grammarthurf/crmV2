@@ -26,6 +26,8 @@ export class BusinessComponent implements OnInit {
   //Lista de Clientes
   clientesapi: any;
 
+  disableCode: boolean = false;
+
   //Lista de Produtos
   produtosapi: any;
   produto: any = { nome: '', codigo: ''};
@@ -80,19 +82,25 @@ export class BusinessComponent implements OnInit {
 
   code1: any;
   generateCode1() {
-    let randomString = function (lenght) {
-      let text = "";
-      let possible = "0123456789"
-
-      for (let i = 0; i < lenght; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    
+    var a = this.produtosapi;
+    if(a.length > 0){
+      if(a.length < 9){
+        this.code1 = "00" + ++this.produtosapi[0].codigo;
+        this.produto.codigo = this.code1;
+      } else if (a.length < 99){
+        this.code1 = "0" + ++this.produtosapi[0].codigo;
+        this.produto.codigo = this.code1;
+      } else {
+        this.code1 = ++this.produtosapi[0].codigo;
+        this.produto.codigo = this.code1;
       }
-      return text;
+    } else {
+      this.code1 = "00"+1;
+      this.produto.codigo = this.code1;
     }
+    this.disableCode = true;
 
-    this.code1 = randomString(3);
-    this.produtosapi.codigo = this.code1;
-    console.log(this.code1);
   }
 
   saveProduto(){
