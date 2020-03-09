@@ -161,44 +161,20 @@ export class AtividadesComponent implements OnInit {
   }
 
   getColor(dataini) {
-
+    //DATA ATUAL
     var year = this.dNow.getFullYear();
     var month = this.dNow.getMonth()+1;
     var day = this.dNow.getDate();
-    console.log(year + '' + month + '' + day)
-
+    //DATA DA ATIVIDADE
     var year1 = dataini.substring(0,4);
     var month1 = dataini.substring(5,7);
     var day1 = dataini.substring(8,10);
-    console.log(year1 + month1 + day1)
 
-    if(year > year1) {
-
+    if(year > year1 || 
+      (year == year1 && month > month1) || 
+      (year == year1 && month == month1 && day > day1) ) {
       return 'rgb(255, 232, 228)';
-
-    } else if (year == year1 && month > month1) {
-
-      return 'rgb(255, 232, 228)';
-
-    } else if (year == year1 && month == month1 && day > day1) {
-
-      return 'rgb(255, 232, 228)';
-
-    } else if (year == year1 && month == month1 && day == day1) {
-
-      return '#deeafa';
-      
     }
-
-    // if(dataini == this.today){
-    //   return 'rgb(255, 232, 228)';
-    // } else if (dataini == this.today1) {
-    //   return 'rgb(255, 232, 228)';
-    // } else if (dataini == this.tomorrow){
-    //   return '#deeafa';
-    // } else if (dataini == this.tomorrow1) {
-    //   return '#deeafa';
-    // }
   }
 
   getterActivity() {
@@ -398,7 +374,7 @@ export class AtividadesComponent implements OnInit {
 
   filterDay(){
     var day = this.dNow.getDate();
-    if(day == 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9){
+    if(day <=9){
       this.dataSource.filter = this.today.trim().toLowerCase();
     } else {
       this.dataSource.filter = this.today1.trim().toLowerCase();
@@ -406,11 +382,14 @@ export class AtividadesComponent implements OnInit {
   }
 
   filterTomorrow(){
+    
     var day = (this.dNow.getDate() + 1);
-    if(day == 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9){
+    if(day < 9){
       this.dataSource.filter = this.tomorrow.trim().toLowerCase();
+      console.log(this.tomorrow)
     } else {
       this.dataSource.filter = this.tomorrow1.trim().toLowerCase();
+      console.log(this.tomorrow1)
     }
   }
 
