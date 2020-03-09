@@ -205,6 +205,19 @@ export class OrganizationRegisterComponent implements OnInit {
     console.log(this.org);
     console.log(this.contato);
 
+    if(this.contato.nome != ""){
+
+      const contatovar = {
+        nome: this.contato.nome, email: this.contato.email, cargo: this.contato.cargo,
+        dep: this.contato.dep, birth: this.contato.birth, tel: this.contato.tel, skp: this.contato.skp, cel: this.contato.cel
+      }
+
+      this.org.contatos.push(contatovar)
+      console.log(this.org);
+    } else {
+      console.log("Contato em branco")
+    }
+
     if (this.org.razaosocial === '') {
       swal({
         icon: "error",

@@ -185,9 +185,8 @@ export class BusinessComponent implements OnInit {
     var month1 = dataini.substring(5,7);
     var day1 = dataini.substring(8,10);
 
-    console.log("anohj e anoini:" + year + "e" + year1);
-    console.log("mes hj e mesini:" + month + "e" + month1);
-    console.log("diahj e diaini:" + day + "e" + day1)
+    console.log("data atual:" + year + "-0" + month + "-0" + day);
+    console.log("data da atividade:" + year1 + "-" + month1 + "-" + day1);
 
     if (year > year1 ){
       return true;
