@@ -127,7 +127,7 @@
                 <mat-icon class="icon-modal-lead">add</mat-icon>
               </button>
               <select class="form-control" id="ven_ext" >
-                <option *ngFor="let vendext of vendedorextapi" value="{{vendext.id}}">
+                <option [(ngModel)]="ticket.vendext" *ngFor="let vendext of vendedorextapi" value="{{vendext.id}}">
                   {{vendext.nome}}
                 </option>
               </select>

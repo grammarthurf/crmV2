@@ -28,33 +28,7 @@ export class BusinessDetailComponent implements OnInit {
   idobs = { id: '', obs: '', term: '', mtvperd: '', cmtperd: '' };
 
   calendarEvents = [
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 1', start: '2020-03-02T10:00', end: '2020-03-01' }
   ];
 
   // businesss = { id: "", titulo: '', valorestimado: '', termometro: '', obs: '', status: '', estagio: '', cliente: '', org: '', vendedor: '', created: '', updated: '', produto: ''};
@@ -81,7 +55,7 @@ export class BusinessDetailComponent implements OnInit {
   }
 
   SaveUpdate(){
-    console.log("mano qqqqqqqqqqqq")
+    console.log("qqqqqqqqq")
   }
 
   updatedTicketStatus(ticket) {
