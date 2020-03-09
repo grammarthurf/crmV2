@@ -145,20 +145,12 @@ export class BusinessComponent implements OnInit {
   saveVendedorExt(){
       this.crudService.saveNewVendedorExt(this.vendedorExt).subscribe(
         data => {
-          swal({
-            icon: "success",
-            text: "Vendedor Externo salvo com sucesso!",
-            timer: 1800,
-            buttons: {
-              buttons: false
-            }
-          });
-            console.log(data);
-            this.getterVendedorExt();
-          },
-          error => {
-            console.error(error);
-          }
+          console.log(data);
+          this.getterVendedorExt();
+        },
+        error => {
+          console.error(error);
+        }
       );
   }
 

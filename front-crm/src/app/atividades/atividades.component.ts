@@ -96,7 +96,6 @@ export class AtividadesComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.matdata);
     console.log(this.calendarEvents)
   }
-
   //FILTRAR SELECT DOS CONTATOS DE ACORDO COM O SELECIONADO EM EMPRESAS
   getterCliOrg(id) {
     // console.log(id)
