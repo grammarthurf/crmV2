@@ -32,6 +32,10 @@ mat-icon {
 	min-height: 220px;
 }
 
+.mg-l-10 {
+	margin-left: 10px;
+}
+
 .b-b {
 	color: rgb(60, 152, 192);
 }
@@ -43,15 +47,17 @@ mat-icon {
 .div-right {
 	padding: 10px;
 	float: right;
-	margin-right: 10px;
 	width: 820px;
-	margin-top: 30px;
+	margin: 30px 10px 100px 0;
 }
 
 .div-border {
-	border-radius: 10px; 
-	border: 1px solid rgb(226, 226, 226);
-	background-color: #fff
+	border-radius: 10px;
+    border: 1px solid rgb(226, 226, 226);
+    background-color: #fff;
+    margin-top: 30px;
+    padding: 10px;
+
 }
 
 .div-choice {
@@ -88,9 +94,8 @@ mat-icon {
 .pdiv {
 	font-size: 15px;
 	margin-left: 15px;
+	margin-top: 5px;
 }
-
-
 
 .bold {
     font-weight: bold;
@@ -374,9 +379,9 @@ input[type=range] {
 
 lottie-animation-view {
 	position: absolute;
-    top: 110%;
+    top: 125%;
     z-index: 1;
-	left: 0;
+	left: 29%;
 }
 
 #null {
@@ -397,6 +402,17 @@ div.col-8.div-right div.col-10.bg-white.row div.row.col-12 h5 + p {
 	cursor: pointer;
 }
 
+<<<<<<< HEAD
+=======
+div.row div.col-md-5 p + p {
+	margin-top: 19.3px;
+	text-align: right;
+}
+
+div.row div.col-md-7 div.form-group + div.form-group {
+	margin-top: 5px;
+}
+>>>>>>> 179853863f3e38c695d13f9c541dd50e77d1b126
 /* MODAL ATV */
 
 .div-modal-atv{

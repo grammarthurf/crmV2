@@ -113,7 +113,7 @@
           </div>
 
           <div class="row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6" style="margin-top: 8px;">
               <label for="ven_int">Vendedor Interno</label>
               <select [(ngModel)]="ticket.vendedor" class="form-control" id="ven_int" required>
                 <option *ngFor="let vendedor of userapi" value="{{vendedor.id}}">
@@ -123,8 +123,13 @@
             </div>
             <div class="form-group col-md-6">
               <label for="ven_ext">Vendedor Externo</label>
-              <select class="form-control" id="ven_ext" required>
-                <option>José</option>
+              <button mat-icon-button data-toggle="modal" data-target="#exampleModalVendedorExt" data-dismiss="modal">
+                <mat-icon class="icon-modal-lead">add</mat-icon>
+              </button>
+              <select class="form-control" id="ven_ext" >
+                <option *ngFor="let vendext of vendedorextapi" value="{{vendext.id}}">
+                  {{vendext.nome}}
+                </option>
               </select>
             </div>
           </div>
@@ -170,15 +175,14 @@
         <div class="modal-body row">
           <div class="form-group col-md-6">
             <label for="codeprod"> Código</label>
-            <input [(ngModel)]="produto.codigo" type="text" class="form-control" id="codeprod" value="{{this.code1}}"/>
+            <input [(ngModel)]="produto.codigo" disabled type="text" class="form-control" id="codeprod" value="{{this.code1}}"/>
             </div>
-            <button class="btn btn-primary" (click)="generateCode1()" id="code">
+            <button class="btn btn-primary" [disabled]="disableCode" (click)="generateCode1()" id="code">
               <img src="../../assets/cod.png" id="codigo">
             </button>
           <div class="form-group col-md-12">
             <label for="nomeprod"> Descrição</label>
             <input [(ngModel)]="produto.nome"  type="text" class="form-control" id="nomeprod" required />
-
           </div>
         </div>
         <div class="modal-footer">
@@ -192,6 +196,41 @@
       </div>
     </div>
   </div>
+
+  <div  class="modal fade" 
+          id="exampleModalVendedorExt" 
+          tabindex="-1" 
+          role="dialog" 
+          aria-labelledby="exampleModalCenterTitle"
+          aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <img src="../../assets/icone-produto.png" class="img-prod"/>
+            <h5 class="modal-title" id="exampleModalLongTitle">
+              Cadastrar Vendedor Externo
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body row">  
+            <div class="form-group col-md-12">
+              <label for="nomeprod"> Nome</label>
+              <input type="text" class="form-control" [(ngModel)]="vendedorExt.nome" id="nomeprod" required />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              Sair
+            </button>
+            <button type="button" (click)="saveVendedorExt()" class="btn btn-primary" data-dismiss="modal">
+              Salvar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
   <div cdkDropListGroup class="nowrap" style="width: 100%;">
     <div class="example-container">
@@ -219,7 +258,7 @@
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[item.atividades.length-1].dataini))" id="red" (click)="goToAtv(item.titulo)">
               highlight_off
             </mat-icon>
           </div>
@@ -253,7 +292,7 @@
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[item.atividades.length-1].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
@@ -284,7 +323,7 @@
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[item.atividades.length-1].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
@@ -314,7 +353,7 @@
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[item.atividades.length-1].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
@@ -344,7 +383,7 @@
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[item.atividades.length-1].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
@@ -373,7 +412,7 @@
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0 )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[item.atividades.length-1].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>
@@ -401,7 +440,7 @@
             <p class="limit-value">{{ item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="(item.atividades.length > 0  )" id="green" (click)="goToAtv(item.titulo)">check_circle_outline</mat-icon>
             <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[0].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
+            <mat-icon *ngIf="(item.atividades.length > 0 && dataCheck(item.atividades[item.atividades.length-1].dataini))" id="red" (click)="goToAtv(item.titulo)">highlight_off
             </mat-icon>
           </div>
         </div>

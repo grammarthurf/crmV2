@@ -62,6 +62,12 @@ export class CrudService {
     });
   }
 
+  public getVendedorExt(): Observable<any> {
+    return this.http.get(`${this.baseUrl}vendext/`, {
+      headers: this.htttpHeaders
+    });
+  }
+
   // GET ID
   public getTicket(id): Observable<any> {
     return this.http.get(`${this.baseUrl}ticket/${id}/`, {
@@ -124,6 +130,12 @@ export class CrudService {
       headers: this.htttpHeaders
     });
 
+  }
+
+  public saveNewVendedorExt(vendext): Observable<any> {
+    return this.http.post(this.baseUrl + "vendext/", vendext, {
+      headers: this.htttpHeaders
+    });
   }
 
   public saveNewCliente(cliente): Observable<any> {
@@ -263,7 +275,9 @@ export class CrudService {
   }
 
   //DELETE API
-  public deleteAtividade(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`);
+  public deleteActivity(id: number): Observable<any> {
+    return this.http.delete(this.baseUrl + 'atividade/' + id + '/',
+    {headers: this.htttpHeaders
+    });
   }
 }

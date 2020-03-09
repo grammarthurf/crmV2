@@ -176,3 +176,8 @@ table {
 div.fc-right {
     display: flex;
 }
+
+@media (min-width: 992px) {}
+    .modal-lg, .modal-xl {
+    max-width: 870px;
+}

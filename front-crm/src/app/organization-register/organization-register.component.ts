@@ -205,6 +205,19 @@ export class OrganizationRegisterComponent implements OnInit {
     console.log(this.org);
     console.log(this.contato);
 
+    if(this.contato.nome != ""){
+
+      const contatovar = {
+        nome: this.contato.nome, email: this.contato.email, cargo: this.contato.cargo,
+        dep: this.contato.dep, birth: this.contato.birth, tel: this.contato.tel, skp: this.contato.skp, cel: this.contato.cel
+      }
+
+      this.org.contatos.push(contatovar)
+      console.log(this.org);
+    } else {
+      console.log("Contato em branco")
+    }
+
     if (this.org.razaosocial === '') {
       swal({
         icon: "error",
@@ -259,6 +272,33 @@ export class OrganizationRegisterComponent implements OnInit {
     }
   }
 
+  formatPhoneNumber(str) {
+    //Filter only numbers from the input
+    let cleaned = ('' + str).replace(/\D/g, '');
+
+    //Check if the input is of correct length
+    let match = cleaned.match(/^(\d{2})(\d{4})(\d{4})$/);
+  
+    if (match) {
+      return '(' + match[1] + ') ' + match[2] + '-' + match[3]
+    };
+  
+    return null
+  };
+
+  formatCellPhoneNumber(str) {
+    //Filter only numbers from the input
+    let cleaned = ('' + str).replace(/\D/g, '');
+    
+    //Check if the input is of correct length
+    let match = cleaned.match(/^(\d{2})(\d{5})(\d{4})$/);
+  
+    if (match) {
+      return '(' + match[1] + ') ' + match[2] + '-' + match[3]
+    };
+  
+    return null
+  };
 
 
   // addFields() {

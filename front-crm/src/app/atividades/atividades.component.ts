@@ -10,6 +10,7 @@ import listPlugin from '@fullcalendar/list';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 export interface PeriodicElement {
+  id: number;
   position: number;
   data: string;
   tipo: string;
@@ -19,7 +20,7 @@ export interface PeriodicElement {
 }
 
 const atividade: PeriodicElement[] = [
-  {position: 0, data: '', tipo: '', cliente: '', org: '', ticket: '' },
+  { id: 0 ,position: 0, data: '', tipo: '', cliente: '', org: '', ticket: '' },
 ];
 
 @Component({
@@ -62,6 +63,8 @@ export class AtividadesComponent implements OnInit {
 
   //Lista de vendedor:
   vendedorapi: any;
+
+  delact: any;
 
   calendarEvents = [
     { title: 'Teste', start: '2020-03-20', end: '2020-03-20' },
@@ -126,6 +129,37 @@ export class AtividadesComponent implements OnInit {
     this.router.navigate([]).then(result => { window.open('/calendar/', '_blank'); });
   }
 
+  deleteActivity(idativ){
+    this.delact = idativ;
+    console.log(idativ,  ' id ');
+  }
+
+  del(){
+    this.crudService.deleteActivity(this.delact).subscribe(
+      data => {
+        this.getterActivity();
+        swal({
+          icon: "success",
+          text: "Atividade deletada com sucesso!",
+          timer: 1000,
+          buttons: {
+            buttons: false
+          }
+        });
+      },
+      error => {
+        swal({
+          icon: "error",
+          text: "Erro ao deletar !",
+          timer: 1000,
+          buttons: {
+            buttons: false
+          }
+        });
+      }
+    )
+  }
+
   getColor(dataini) {
     if(dataini == this.today){
       return 'rgb(255, 232, 228)';
@@ -145,13 +179,17 @@ export class AtividadesComponent implements OnInit {
 
         console.log( ' Atividades' ,data);
 
+
         this.matdata = []
         data.forEach(e => {
 
+          var timeIni = e.horaini.substring(0,2) + ":" + e.horaini.substring(2,4)
+          var timeEnd = e.horafim.substring(0,2) + ":" + e.horafim.substring(2,4)
+
           this.calendarEvents.push({
             title: e.tipo,
-            start: e.dataini+"T"+e.horaini,
-            end: e.datafim+"T"+e.horafim
+            start: e.dataini + "T" + timeIni,
+            end: e.datafim + "T" + timeEnd
           });
 
           console.log('EVENTO CALENDÁRIO: ',this.calendarEvents);

@@ -26,9 +26,13 @@ export class BusinessComponent implements OnInit {
   //Lista de Clientes
   clientesapi: any;
 
+  disableCode: boolean = false;
+
   //Lista de Produtos
   produtosapi: any;
   produto: any = { nome: '', codigo: ''};
+  vendedorExt: any = {nome: ''}
+  vendedorextapi: any;
 
   // Lista de Orgs:
   orsgapi: any;
@@ -80,19 +84,25 @@ export class BusinessComponent implements OnInit {
 
   code1: any;
   generateCode1() {
-    let randomString = function (lenght) {
-      let text = "";
-      let possible = "0123456789"
-
-      for (let i = 0; i < lenght; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    
+    var a = this.produtosapi;
+    if(a.length > 0){
+      if(a.length < 9){
+        this.code1 = "00" + ++this.produtosapi[0].codigo;
+        this.produto.codigo = this.code1;
+      } else if (a.length < 99){
+        this.code1 = "0" + ++this.produtosapi[0].codigo;
+        this.produto.codigo = this.code1;
+      } else {
+        this.code1 = ++this.produtosapi[0].codigo;
+        this.produto.codigo = this.code1;
       }
-      return text;
+    } else {
+      this.code1 = "00"+1;
+      this.produto.codigo = this.code1;
     }
+    this.disableCode = true;
 
-    this.code1 = randomString(3);
-    this.produtosapi.codigo = this.code1;
-    console.log(this.code1);
   }
 
   saveProduto(){
@@ -119,6 +129,38 @@ export class BusinessComponent implements OnInit {
 
   }
 
+  getterVendedorExt() {
+    this.crudService.getVendedorExt().subscribe(
+      data => {
+        this.vendedorextapi = data;
+        console.log(data);
+      },
+      error => {
+        this.erroAtividade = error;
+      }
+    );
+  }
+
+  saveVendedorExt(){
+      this.crudService.saveNewVendedorExt(this.vendedorExt).subscribe(
+        data => {
+          swal({
+            icon: "success",
+            text: "Vendedor Externo salvo com sucesso!",
+            timer: 1800,
+            buttons: {
+              buttons: false
+            }
+          });
+            console.log(data);
+            this.getterVendedorExt();
+          },
+          error => {
+            console.error(error);
+          }
+      );
+  }
+
   //FILTRAR SELECT DOS CONTATOS DE ACORDO COM O SELECIONADO EM EMPRESAS
   gettercliorg(id) {
     // console.log(id)
@@ -136,16 +178,21 @@ export class BusinessComponent implements OnInit {
   dataCheck(dataini){
 
     var year = this.dNow.getFullYear();
-    var month = this.dNow.getMonth();
+    var month = this.dNow.getMonth()+1;
     var day = this.dNow.getDate();
-    var data = dataini.split("-", 3);
-     console.log("today:" + year + month + day);
-     console.log( 'dataini: ' , data);
-   
-      console.log( 'tipo data ini' ,typeof(dataini));
-      console.log('tipo today: ' , typeof(day));
 
-    if (data < year ){
+    var year1 = dataini.substring(0,4);
+    var month1 = dataini.substring(5,7);
+    var day1 = dataini.substring(8,10);
+
+    console.log("data atual:" + year + "-0" + month + "-0" + day);
+    console.log("data da atividade:" + year1 + "-" + month1 + "-" + day1);
+
+    if (year > year1 ){
+      return true;
+    } else if (year == year1 && month > month1){
+      return true;
+    } else if (year == year1 && month == month1 && day > day1) {
       return true;
     } else {
       return false;

@@ -18,6 +18,8 @@ export class BusinessDetailComponent implements OnInit {
   business: any;
   estagiosapi: any;
   calendarPlugins: any = [];
+  disable1: boolean = true;
+  disable2: boolean = true;
 
   public lottieConfig: Object;
   private anim: any;
@@ -68,6 +70,18 @@ export class BusinessDetailComponent implements OnInit {
     this.getterEstagio();
     this.loadBusiness();
     this.calendarPlugins = [ listPlugin , bootstrapPlugin ];
+  }
+
+  enable1(){
+    this.disable1= false;
+  }
+
+  enable2(){
+    this.disable2= false;
+  }
+
+  SaveUpdate(){
+    console.log("mano qqqqqqqqqqqq")
   }
 
   updatedTicketStatus(ticket) {
@@ -123,7 +137,7 @@ export class BusinessDetailComponent implements OnInit {
   }
 
   getterTicket(id) {
-    
+
     this.crudService.getTicket(id).subscribe(
       data => {
         this.business = data;
@@ -213,7 +227,7 @@ export class BusinessDetailComponent implements OnInit {
 
 
   stageWin() {
-   
+
     let btnLose = document.getElementById('lose');
     let btnWin = document.getElementById('win');
     btnLose.style.display = 'none';
@@ -279,7 +293,7 @@ export class BusinessDetailComponent implements OnInit {
       console.log('Business : ', this.business);
 
       this.updatedTicketStatus(this.business);
-      
+
     }
 
   }
@@ -292,7 +306,7 @@ export class BusinessDetailComponent implements OnInit {
     let arrayObs = [];
     arrayObs = this.business.obs;
     arrayObs.reverse()
-    
+
   }
 
   formatDate(date) {

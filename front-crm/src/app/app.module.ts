@@ -59,6 +59,7 @@ import { ErpComponent } from './erp/erp.component';
 import { RamoComponent } from './ramo/ramo.component';
 import { LoginComponent } from './login/login.component';
 import { VendedorComponent } from './vendedor/vendedor.component';
+import { VendedorExternoComponent } from './vendedor-externo/vendedor-externo.component';
 
 registerLocaleData(localePt);
 
@@ -79,7 +80,8 @@ registerLocaleData(localePt);
     ErpComponent,
     RamoComponent,
     LoginComponent,
-    VendedorComponent
+    VendedorComponent,
+    VendedorExternoComponent
   ],
   imports: [
     BrowserModule,
