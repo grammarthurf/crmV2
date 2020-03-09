@@ -410,6 +410,12 @@ div.row div.col-md-5 p + p {
 div.row div.col-md-7 div.form-group + div.form-group {
 	margin-top: 5px;
 }
+
+div.row.mt-5 div.col-md-12 div.form-group {
+	margin-top: 10px;
+}
+
+
 /* MODAL ATV */
 
 .div-modal-atv{

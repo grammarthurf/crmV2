@@ -46,14 +46,6 @@ export class BusinessDetailComponent implements OnInit {
     this.calendarPlugins = [ listPlugin , bootstrapPlugin ];
   }
 
-  enable1(){
-    this.disable1= false;
-  }
-
-  enable2(){
-    this.disable2= false;
-  }
-
   SaveUpdate(){
     console.log("qqqqqqqqq")
   }
@@ -297,4 +289,33 @@ export class BusinessDetailComponent implements OnInit {
   ngOnInit() {
     // this.loadBusiness();
   }
+  
+  formatPhoneNumber(str) {
+    //Filter only numbers from the input
+    let cleaned = ('' + str).replace(/\D/g, '');
+
+    //Check if the input is of correct length
+    let match = cleaned.match(/^(\d{2})(\d{4})(\d{4})$/);
+  
+    if (match) {
+      return '(' + match[1] + ') ' + match[2] + '-' + match[3]
+    };
+  
+    return null
+  };
+
+  formatCellPhoneNumber(str) {
+    //Filter only numbers from the input
+    let cleaned = ('' + str).replace(/\D/g, '');
+    
+    //Check if the input is of correct length
+    let match = cleaned.match(/^(\d{2})(\d{5})(\d{4})$/);
+  
+    if (match) {
+      return '(' + match[1] + ') ' + match[2] + '-' + match[3]
+    };
+  
+    return null
+  };
+  
 }
