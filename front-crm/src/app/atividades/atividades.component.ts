@@ -176,13 +176,12 @@ export class AtividadesComponent implements OnInit {
     this.crudService.getAtividade().subscribe(
       data => {
 
-
+        this.calendarEvents = [];
         console.log( ' Atividades' ,data);
 
 
         this.matdata = []
         data.forEach(e => {
-
           var timeIni = e.horaini.substring(0,2) + ":" + e.horaini.substring(2,4)
           var timeEnd = e.horafim.substring(0,2) + ":" + e.horafim.substring(2,4)
 
@@ -325,7 +324,7 @@ export class AtividadesComponent implements OnInit {
       data => {
         swal({
           icon: "success",
-          text: "Produto salvo com sucesso!",
+          text: "Atividade salva com sucesso!",
           timer: 1000,
           buttons: {
             buttons: false

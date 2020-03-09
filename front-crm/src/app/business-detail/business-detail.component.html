@@ -547,7 +547,7 @@
                   <input type="text" class="form-control mg-l-10" placeholder={{business.org.uf}} [disabled]="disable1">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.telefone}} [disabled]="disable1">
+                  <input type="text" class="form-control mg-l-10" placeholder={{formatPhoneNumber(business.org.telefone)}} [disabled]="disable1">
                 </div>
                 <div class="form-group">
                   <input type="text" class="form-control mg-l-10" placeholder={{business.org.email}} [disabled]="disable1">
@@ -601,10 +601,10 @@
                   <input type="text" class="form-control mg-l-10" placeholder={{formatDate(business.cliente.birth)}} [disabled]="disable2">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.tel}} [disabled]="disable2">
+                  <input type="text" class="form-control mg-l-10" placeholder={{formatPhoneNumber(business.cliente.tel)}} [disabled]="disable2">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.cel}} [disabled]="disable2">
+                  <input type="text" class="form-control mg-l-10" placeholder={{formatCellPhoneNumber(business.cliente.cel)}} [disabled]="disable2">
                 </div>
                 <div class="form-group">
                   <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.skype}} [disabled]="disable2">
