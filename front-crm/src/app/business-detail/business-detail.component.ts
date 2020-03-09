@@ -18,8 +18,6 @@ export class BusinessDetailComponent implements OnInit {
   business: any;
   estagiosapi: any;
   calendarPlugins: any = [];
-  disable1: boolean = true;
-  disable2: boolean = true;
 
   public lottieConfig: Object;
   private anim: any;
