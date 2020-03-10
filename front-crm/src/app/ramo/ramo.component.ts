@@ -20,7 +20,9 @@ const ramos: PeriodicElement[] = [
 export class RamoComponent implements OnInit {
 
   ramosapi:any;
-  ramo: any = { nome: ''}
+  ramo: any = { nome: ''};
+
+  delRamo: any;
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
@@ -29,23 +31,25 @@ export class RamoComponent implements OnInit {
   data = Object.assign(ramos);
   dataSource = new MatTableDataSource<Element>(this.data);
 
-  constructor(private crudservice: CrudService) {
+  constructor(private crudService: CrudService) {
     this.getterRamo();
    }
 
-  deleteItem() {
-    swal({
-      icon: "error",
-      text: "Produto excluído com sucesso!",
-      timer: 1800,
-      buttons: {
-        buttons: false
-      }
-    });
+  deleteItem(item) {
+    this.delRamo = item.id;
+    console.log(this.delRamo);
+    // swal({
+    //   icon: "error",
+    //   text: "Ramo excluído com sucesso!",
+    //   timer: 1800,
+    //   buttons: {
+    //     buttons: false
+    //   }
+    // });
   }
 
   getterRamo() {
-    this.crudservice.getRamo().subscribe(
+    this.crudService.getRamo().subscribe(
       data => {
         this.ramosapi = data;
         console.log(data);
@@ -58,7 +62,7 @@ export class RamoComponent implements OnInit {
   }
 
   saveRamo(){
-    this.crudservice.saveNewRamo(this.ramo).subscribe(
+    this.crudService.saveNewRamo(this.ramo).subscribe(
       data => {
         swal({
           icon: "success",
@@ -79,6 +83,32 @@ export class RamoComponent implements OnInit {
         // setTimeout(this.reiniciar, 1001);
       }
     );
+  }
+
+  del(){
+    this.crudService.deleteRamo(this.delRamo).subscribe(
+      data => {
+        this.getterRamo();
+        swal({
+          icon: "success",
+          text: "Ramo deletada com sucesso!",
+          timer: 1000,
+          buttons: {
+            buttons: false
+          }
+        });
+      },
+      error => {
+        swal({
+          icon: "error",
+          text: "Erro ao deletar !",
+          timer: 1000,
+          buttons: {
+            buttons: false
+          }
+        });
+      }
+    )
   }
 
   ngOnInit() {

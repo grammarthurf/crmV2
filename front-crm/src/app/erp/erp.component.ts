@@ -24,7 +24,9 @@ export class ErpComponent implements OnInit {
 
   erpsapi:any;
   disableCode: boolean = false;
-  erp: any = { codigo: '', desc: '', empresa: ''}
+  erp: any = { codigo: '', desc: '', empresa: ''};
+
+  delERP: any;
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
@@ -32,7 +34,7 @@ export class ErpComponent implements OnInit {
 
   data = Object.assign(erps);
   dataSource = new MatTableDataSource<Element>(this.data);
-  constructor(private crudservice: CrudService) {
+  constructor(private crudService: CrudService) {
     this.getterErp();
    }
 
@@ -63,7 +65,7 @@ export class ErpComponent implements OnInit {
   }
 
   saveErp(){
-    this.crudservice.saveNewErp(this.erp).subscribe(
+    this.crudService.saveNewErp(this.erp).subscribe(
       data => {
         swal({
           icon: "success",
@@ -87,7 +89,7 @@ export class ErpComponent implements OnInit {
   }
 
   getterErp() {
-    this.crudservice.getErp().subscribe(
+    this.crudService.getErp().subscribe(
       data => {
         this.erpsapi = data;
         console.log(data);
@@ -99,15 +101,43 @@ export class ErpComponent implements OnInit {
     );
   }
 
-  deleteItem() {
-    swal({
-      icon: "error",
-      text: "Produto excluído com sucesso!",
-      timer: 1800,
-      buttons: {
-        buttons: false
+  deleteItem(item) {
+    this.delERP = item.id;
+    console.log(this.delERP);
+    // swal({
+    //   icon: "error",
+    //   text: "Produto excluído com sucesso!",
+    //   timer: 1800,
+    //   buttons: {
+    //     buttons: false
+    //   }
+    // });
+  }
+
+  del(){
+    this.crudService.deleteERP(this.delERP).subscribe(
+      data => {
+        this.getterErp();
+        swal({
+          icon: "success",
+          text: "ERP deletado com sucesso!",
+          timer: 1000,
+          buttons: {
+            buttons: false
+          }
+        });
+      },
+      error => {
+        swal({
+          icon: "error",
+          text: "Erro ao deletar !",
+          timer: 1000,
+          buttons: {
+            buttons: false
+          }
+        });
       }
-    });
+    )
   }
 
   ngOnInit() {
