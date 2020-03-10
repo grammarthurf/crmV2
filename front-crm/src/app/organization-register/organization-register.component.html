@@ -94,7 +94,7 @@
   <div class="row col-md-12">
     <div class="form-group col-md-5  mg-tp-8">
       <label for="email">Email</label>
-      <input [(ngModel)]="org.email" type="text" class="form-control" placeholder="exemplo@exemplo.com.br">
+      <input [(ngModel)]="org.email" type="email" class="form-control" placeholder="exemplo@exemplo.com.br">
     </div>
 
     <div class="form-group col-md-4  mg-tp-8">
@@ -178,9 +178,10 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">{{item.nome}}</h5>
-            <p class="card-text">
-              {{item.email}} • {{item.cargo}} • dep.  {{item.dep}} • {{item.skp}} •
-            </p>
+            <p class="card-text">• {{item.email}}</p>
+            <p class="card-text">• {{item.cargo}}</p>
+            <p class="card-text">• dep. {{item.dep}}</p>
+            <p class="card-text">• {{item.skp}}</p>
             <p class="card-text">
               {{item.birth | date:'dd/MM/yyyy'}} • {{formatPhoneNumber(item.tel)}} • {{formatCellPhoneNumber(item.cel)}}
             </p>
