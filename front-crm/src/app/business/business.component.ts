@@ -145,20 +145,12 @@ export class BusinessComponent implements OnInit {
   saveVendedorExt(){
       this.crudService.saveNewVendedorExt(this.vendedorExt).subscribe(
         data => {
-          swal({
-            icon: "success",
-            text: "Vendedor Externo salvo com sucesso!",
-            timer: 1800,
-            buttons: {
-              buttons: false
-            }
-          });
-            console.log(data);
-            this.getterVendedorExt();
-          },
-          error => {
-            console.error(error);
-          }
+          console.log(data);
+          this.getterVendedorExt();
+        },
+        error => {
+          console.error(error);
+        }
       );
   }
 
@@ -579,12 +571,14 @@ export class BusinessComponent implements OnInit {
           });
           this.getterEstagios();
           this.getterTickets('open');
+          this.getterTickets('win');
           console.log(data);
           // setTimeout(this.reiniciar, 1001);
         },
         error => {
           this.getterEstagios();
           this.getterTickets('open');
+          this.getterTickets('win');
           console.error(error);
         }
       );

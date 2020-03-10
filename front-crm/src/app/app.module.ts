@@ -1,7 +1,7 @@
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { LottieAnimationViewModule } from 'ng-lottie';
 import { LOCALE_ID } from '@angular/core';
 
@@ -25,8 +25,6 @@ import { MatSortModule } from "@angular/material/sort";
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatListModule} from '@angular/material/list';
-
-
 
 //CALENDAR
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -113,7 +111,9 @@ registerLocaleData(localePt);
     MatTabsModule,
     MatChipsModule,
     MatListModule,
-    FullCalendarModule
+    FullCalendarModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     HttpClient,

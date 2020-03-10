@@ -114,6 +114,7 @@ export class BusinessDetailComponent implements OnInit {
           this.stageNull();
         }
         console.log("id", data);
+        
       },
       error => {
         console.error(error);
@@ -206,7 +207,8 @@ export class BusinessDetailComponent implements OnInit {
     if (this.business.status != 'Ganhou') {
       this.business.status = 'Ganhou';
       this.updatedTicketStatus(this.business);
-      this.changeid(8);
+      this.business.estagio.id = 8;
+      this.updatedTicket(this.business.estagio.id , this.business)
     }
 
 

@@ -426,20 +426,19 @@
         </div>
 
         <div class="col-md-12">
-          <h4> {{business.org.razaosocial}}</h4>
+          <h4 *ngIf="business.org.razaosocial"> {{business.org.razaosocial}}</h4>
 
           <div class="row mt-3">
             <div class="col-md-12">
-              <p>{{business.org.codigo}}</p>
-              <p>{{business.org.razaosocial}}</p>
-              <p>{{business.org.nomefantasia}}</p>
-              <p>{{business.org.cnpj}}</p>
-              <p>{{business.org.ie}}</p>
+              <p *ngIf="business.org.codigo">{{business.org.codigo}}</p>
+              <p *ngIf="business.org.nomefantasia">{{business.org.nomefantasia}}</p>
+              <p *ngIf="business.org.cnpj">{{business.org.cnpj}}</p>
+              <p *ngIf="business.org.ie">{{business.org.ie}}</p>
               <p><b>{{business.org.rua}} - {{business.org.bairro}}, {{business.org.cidade}}-{{business.org.uf}},
                   {{business.org.cep}}</b></p>
-              <p>{{business.org.email}}</p>
-              <p>{{business.org.site}}</p>
-              <p>{{business.org.erpe.desc}}</p>
+              <p *ngIf="business.org.email">{{business.org.email}}</p>
+              <p *ngIf="business.org.site">{{business.org.site}}</p>
+              <p *ngIf="business.org.erpe">{{business.org.erpe.desc}}</p>
             </div>
           </div>
         </div>
@@ -459,13 +458,13 @@
 
           <div class="row mt-3">
             <div class="col-md-12">
-              <p>{{business.cliente.email}}</p>
-              <p>{{business.cliente.cargo}}</p>
-              <p>{{business.cliente.dep}}</p>
-              <p>{{formatDate(business.cliente.birth)}}</p>
-              <p>{{formatPhoneNumber(business.cliente.tel)}}</p>
-              <p>{{formatCellPhoneNumber(business.cliente.cel)}}</p>
-              <p>{{business.cliente.skype}}</p>
+              <p *ngIf="business.cliente.email">{{business.cliente.email}}</p>
+              <p *ngIf="business.cliente.cargo">{{business.cliente.cargo}}</p>
+              <p *ngIf="business.cliente.dep">{{business.cliente.dep}}</p>
+              <p *ngIf="business.cliente.birth">{{formatDate(business.cliente.birth)}}</p>
+              <p *ngIf="business.cliente.tel">{{formatPhoneNumber(business.cliente.tel)}}</p>
+              <p *ngIf="business.cliente.cel">{{formatCellPhoneNumber(business.cliente.cel)}}</p>
+              <p *ngIf="business.cliente.skype">{{business.cliente.skype}}</p>
             </div>
           </div>
         </div>

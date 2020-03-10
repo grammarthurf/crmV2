@@ -107,7 +107,7 @@
       <button mat-icon-button data-toggle="modal" data-target="#erp">
         <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
       </button>
-      <select [(ngModel)]="org.erp" class="form-control">
+      <select [(ngModel)]="org.erp" class="form-control" >
         <option *ngFor="let item of erpsapi" value="{{item.id}}">{{item.desc}}</option>
       </select>
     </div>
