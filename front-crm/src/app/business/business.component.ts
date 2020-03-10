@@ -571,12 +571,14 @@ export class BusinessComponent implements OnInit {
           });
           this.getterEstagios();
           this.getterTickets('open');
+          this.getterTickets('win');
           console.log(data);
           // setTimeout(this.reiniciar, 1001);
         },
         error => {
           this.getterEstagios();
           this.getterTickets('open');
+          this.getterTickets('win');
           console.error(error);
         }
       );

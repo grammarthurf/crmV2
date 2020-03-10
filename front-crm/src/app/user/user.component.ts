@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../services/crud.service';
 import { ActivatedRoute } from '@angular/router';
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-user',
@@ -12,10 +13,15 @@ export class UserComponent implements OnInit {
   user:any;
   negociosapi: any;
   atvapi: any;
+  InitList: boolean = true;
+  fltr: boolean = false
+
+  filter: any = {inicio: '', fim: ''};
 
   constructor(private route: ActivatedRoute, private crudService: CrudService) {
     this.getterTickets();
     this.getterActivity();
+    
   }
 
   ngOnInit() {
@@ -38,6 +44,38 @@ export class UserComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  Filtrar(){
+    this.InitList = false;
+    this.fltr = true;
+  }
+
+  Filtrar1(){
+    this.InitList = true;
+    this.fltr = false;
+  }
+
+  dataCheck(data){
+
+    var yIniF = this.filter.inicio.substring(0,4);
+    var yEndF = this.filter.fim.substring(0,4);
+
+    var mIniF = this.filter.inicio.substring(5,7);
+    var mEndF = this.filter.fim.substring(5,7);
+    
+    var dIniF = this.filter.inicio.substring(8,10);
+    var dEndF = this.filter.fim.substring(8,10);
+
+    var year1 = data.substring(0,4);
+    var month1 = data.substring(5,7);
+    var day1 = data.substring(8,10);
+
+    if((yIniF > year1) || (yIniF == year1 && mIniF > month1) || (yIniF == year1 && mIniF == month1 && dIniF > day1)){
+      return false;
+    } else if ((yEndF > year1) || (yEndF == year1 && mEndF > month1) || (yEndF == year1 && mEndF == month1 && dEndF >= day1)){
+      return true;
+    }
   }
 
   getterTickets() {
