@@ -89,7 +89,7 @@
                 </div>
               </div>
               <div class="col-12 row inputmargin2">
-                <input [(ngModel)]="atv.tipo" type="text" class="form-control" value="{{this.numm}}" placeholder="">
+                <input [(ngModel)]="atv.tipo" type="text" class="form-control" value="{{this.numm}}" placeholder={{this.numm}} readonly>
               </div>
               <div class="col-12 row" style="margin-top: 20px; padding: 0px 0px 0px 15px;">
                 <label for="obs">Assunto <label style="color: red; font-size: 20px;">*</label></label>
@@ -108,7 +108,7 @@
               </div>
               <div class="col-12 row inputmargin">
                 <div class="col-6">
-                  <input [(ngModel)]="atv.horaini" class="form-control" placeholder="00:00" mask="99:99">
+                  <input [(ngModel)]="atv.horaini" id="horaini" class="form-control" placeholder="00:00" mask="99:99">
                 </div>
                 <div class="col-6" style="padding: 0px">
                   <input [(ngModel)]="atv.horafim" class="form-control" placeholder="00:00" mask="99:99">

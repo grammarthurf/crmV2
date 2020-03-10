@@ -10,9 +10,6 @@
       <button class="btn btn-link" (click)="showOpen()">
         Leads Abertas
       </button>
-      <button class="btn btn-link" (click)="showWin()">
-        Ganhas
-      </button>
       <button class="btn btn-link" (click)="showLose()">
         Perdidas
       </button>
@@ -127,7 +124,7 @@
                 <mat-icon class="icon-modal-lead">add</mat-icon>
               </button>
               <select class="form-control" id="ven_ext" >
-                <option *ngFor="let vendext of vendedorextapi" value="{{vendext.id}}">
+                <option [(ngModel)]="ticket.vendext" *ngFor="let vendext of vendedorextapi" value="{{vendext.id}}">
                   {{vendext.nome}}
                 </option>
               </select>
@@ -221,10 +218,10 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#modalAddLead">
               Sair
             </button>
-            <button type="button" (click)="saveVendedorExt()" class="btn btn-primary" data-dismiss="modal">
+            <button type="button" (click)="saveVendedorExt()" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#modalAddLead">
               Salvar
             </button>
           </div>

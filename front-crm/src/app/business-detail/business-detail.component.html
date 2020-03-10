@@ -21,9 +21,9 @@
             <div class="col-6" style="padding: 0px;">
               <div class="col-12 row" style="padding: 0px;">
                 <div class="col-6" style="margin-top: 8px;">
-                  <label for="negocios">Negócio <label style="color: red; font-size: 20px;">*</label></label><!-- (change)="getterorg($event.target.value)" -->
-                  <select  class="form-control"
-                    id="exampleFormControlSelect1">
+                  <label for="negocios">Negócio <label style="color: red; font-size: 20px;">*</label></label>
+                  <!-- (change)="getterorg($event.target.value)" -->
+                  <select class="form-control" id="exampleFormControlSelect1">
                     <option>
                       {{business.titulo}}
                     </option>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-6" style="padding: 0px; margin-top: 23px">
                   <label for="participantes">Vendedor(es)</label>
-                  <select  class="form-control" id="exampleFormControlSelect1">
+                  <select class="form-control" id="exampleFormControlSelect1">
                     <option *ngFor="let vendedor of vendedorapi">
                       {{vendedor.nome}}
                     </option>
@@ -67,7 +67,7 @@
                 </div>
               </div>
               <div class="col-12 row inputmargin2">
-                <input  type="text" class="form-control"  placeholder="">
+                <input type="text" class="form-control" placeholder="">
               </div>
               <div class="col-12 row" style="margin-top: 20px; padding: 0px 0px 0px 15px;">
                 <label for="obs">Assunto <label style="color: red; font-size: 20px;">*</label></label>
@@ -77,16 +77,16 @@
               <div class="col-12 row inputmargin">
                 <div class="col-6">
                   <label for="">Início</label>
-                  <input  type="date" class="form-control">
+                  <input type="date" class="form-control">
                 </div>
                 <div class="col-6" style="padding: 0px;">
                   <label for="">Fim</label>
-                  <input  type="date" class="form-control">
+                  <input type="date" class="form-control">
                 </div>
               </div>
               <div class="col-12 row inputmargin">
                 <div class="col-6">
-                  <input  type="text" class="form-control" placeholder="00:00" mask="99:99">
+                  <input type="text" class="form-control" placeholder="00:00" mask="99:99">
                 </div>
                 <div class="col-6" style="padding: 0px">
                   <input type="text" class="form-control" placeholder="00:00" mask="99:99">
@@ -94,20 +94,17 @@
               </div>
               <div class="col-12 row inputmargin">
                 <div class="col-6">
-                  <label for="negocios" >Empresa <label style="color: red; font-size: 20px;">*</label></label>
-                  <select class="form-control"
-                          id="exampleFormControlSelect1">
+                  <label for="negocios">Empresa <label style="color: red; font-size: 20px;">*</label></label>
+                  <select class="form-control" id="exampleFormControlSelect1">
                     <option>
                       {{business.org.razaosocial}}
                     </option>
                   </select>
                 </div>
                 <div class="col-6" style="padding: 0px;">
-                  <label for="participantes" > Contato <label style="color: red; font-size: 20px;">*</label></label>
-                  <select
-                          class="form-control"
-                          id="exampleFormControlSelect1">
-                    <option >
+                  <label for="participantes"> Contato <label style="color: red; font-size: 20px;">*</label></label>
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    <option>
                       {{business.cliente.nome}}
                     </option>
                   </select>
@@ -115,12 +112,8 @@
               </div>
             </div>
             <div class="col-6 ml-auto div-calendar">
-              <full-calendar
-                [defaultView]="'listWeek'"
-                [plugins]="calendarPlugins"
-                themeSystem="bootstrap"
-                [events]="calendarEvents"
-                locale="pt-br">
+              <full-calendar [defaultView]="'listWeek'" [plugins]="calendarPlugins" themeSystem="bootstrap"
+                [events]="calendarEvents" locale="pt-br">
               </full-calendar>
             </div>
           </div>
@@ -136,13 +129,8 @@
       </div>
     </div>
   </div>
-  <div  class="modal fade"
-        id="loseModal"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
->>>>>>> a3c2daef73e151610284f161bd0f73f071a5dccd
+  <div class="modal fade" id="loseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -154,18 +142,21 @@
           </button>
         </div>
         <div class="modal-body">
-
           <div class="form-group">
-            <label for="motivo">Motivo da Perda</label>
-            <input [(ngModel)]="idobs.mtvperd" type="text" class="form-control" id="motivo">
+            <label for="exampleFormControlSelect1">Motivo da Perda</label>
+            <button mat-icon-button data-toggle="modal" data-target="#addMotivoPerda" data-dismiss="modal">
+              <mat-icon class="icon-modal-lead">add</mat-icon>
+            </button>
+            <select [(ngModel)]="idobs.mtvperd" id="motivo" class="form-control">
+              <option>Custo</option>
+              <option>Preferiu Concorrência</option>
+            </select>
           </div>
-
           <div class="form-group mg-t-10">
             <label for="exampleFormControlTextarea1">Comentários (opcional) </label>
             <textarea [(ngModel)]="idobs.cmtperd" class="form-control" id="exampleFormControlTextarea1"
               rows="3"></textarea>
           </div>
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -204,11 +195,8 @@
         <img src="../../assets/termometro.png" class="img1" />
         <p>Termômetro:</p>
         <div class="margin5">
-          <input [(ngModel)]="idobs.term" (change)="updateTicketTerm()" type="range"
-                  id="thermometro"
-                  value="{{business.termometro}}"
-                  step="50"
-                  style="width: 150px;"/>
+          <input [(ngModel)]="idobs.term" (change)="updateTicketTerm()" type="range" id="thermometro"
+            value="{{business.termometro}}" step="50" style="width: 150px;"/>
           <div class=" row">
             <p class="ptherm"> Ruim </p>
             <p class="ptherm2"> Bom </p>
@@ -228,10 +216,8 @@
         Perdido
       </button>
     </div>
-    <lottie-animation-view  [options]="lottieConfig"
-                            [width]="250"
-                            [height]="250"
-                            (animCreated)="handleAnimation($event)">
+    <lottie-animation-view [options]="lottieConfig" [width]="250" [height]="250"
+      (animCreated)="handleAnimation($event)">
     </lottie-animation-view>
     <div class="col-1">
       <div class="div-vendedor">
@@ -427,339 +413,184 @@
   </div>
 
 
-  <div class="col-4 div-left div-border">
-    <div class=" col-12 row ">
-      <img class="img-empresa" src="../../assets/empresa.png"/>
-      <h2 class="font-26 bold margin5">
-        Empresa
-      </h2>
-      <mat-icon style="cursor: pointer;" class="mg-t-10 mg-l-auto" (click)="goTo(business.org.id)">create</mat-icon>
-    </div>
-    <div class="row col-12" style="padding: 0;">
+  <div class="row col-12" style="padding: 0;">
 
-      <div class="col-4" style="padding-left: 0;">
-        <!-- EMPRESA -->
-        <div class="div-border">
-          <div class=" col-12 row">
-            <img class="img-empresa" src="../../assets/empresa.png" />
-            <h2 class="font-26 bold margin5">
-              Empresa
-            </h2>
-            <mat-icon style="cursor: pointer;" class="mg-t-10 mg-l-auto" (click)="enable1()">create</mat-icon>
-          </div>
-
-          <div class="col-md-12">
-            <h4> {{business.org.razaosocial}}</h4>
-
-  <div class="col-8 div-right div-border">
-    <div *ngIf="(business.status == 'Perdido')"  class="alert alert-danger" role="alert">
-      {{business.mtvperd}} :   {{business.cmtperd}}
-    </div>
-    <mat-tab-group mat-stretch-tabs class="col-12">
-      <mat-tab label="Observações">
-        <div class="col-12 mg-t-10 divtab">
-          <textarea rows="5" [(ngModel)]="idobs.obs" class="col-12 txtarea"></textarea>
-          <button type="button" (click)="updateTicketObs()"  class="btn btn-success bold btn-sm fltright">
-            Adicionar
-          </button>
-          <button type="button" class="btn btn-outline-secondary bold btn-sm fltright mg-r-5">
-            Cancelar
-          </button>
-        </div>
-        <div class="col-12 row txtcenter">
-          <h2 style="margin-left: auto; margin-right: auto;">Histórico</h2>
-        </div>
-        <div class="col-12 mg-t-10">
-          <ul class="list-group list-group-flush">
-            <li *ngFor="let item of business.obs"  class="list-group-item p">
-              <b class="b-b">
-                {{formatDate(item.data)}} <!--  {{this.dataslv}} -->
-              </b>
-              <br>
-              <label class="b">
-                Conteúdo:
-              </label>
-              <label>
-                {{item.texto}}
-              </label>
-            </li>
-          </ul>
-        </div>
-      </mat-tab>
-      <mat-tab label="Atividades">
-        <div class="col-12 mg-t-10 divtab">
-          <div class="col-12">
-            <a data-toggle="modal" data-target="#abrircadastroatv" style="color: royalblue; float: right; cursor: pointer;">+ Adicionar nova atividade</a>
-          </div>
-          <div *ngIf="(business.atividades == 0)" class="b-b txtcenter">
-            <h4>Sem atividades ativas</h4>
-            <div class="row mt-5">
-              <div class="col-md-5">
-                <p style="text-align: right;"><b>Código</b></p>
-                <p><b>Razão Social</b></p>
-                <p><b>Nome Fantasia</b></p>
-                <p><b>CNPJ</b></p>
-                <p><b>IE</b></p>
-                <p><b>Ramo</b></p>
-                <p><b>CEP</b></p>
-                <p><b>Rua</b></p>
-                <p><b>Bairro</b></p>
-                <p><b>Cidade</b></p>
-                <p><b>UF</b></p>
-                <p><b>Telefone</b></p>
-                <p><b>Email</b></p>
-                <p><b>Site</b></p>
-                <p><b>ERP</b></p>
-              </div>
-
-              <div class="col-md-7">
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.codigo}} readonly>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.razaosocial}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.nomefantasia}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.cnpj}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.ie}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.ramo.desc}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.cep}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.rua}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.bairro}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.cidade}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.uf}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{formatPhoneNumber(business.org.telefone)}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.email}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.site}} [disabled]="disable1">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.org.erpe.desc}} [disabled]="disable1">
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="col-4" style="padding-left: 0;">
+      <!-- EMPRESA -->
+      <div class="div-border">
+        <div class=" col-12 row">
+          <img class="img-empresa" src="../../assets/empresa.png" />
+          <h2 class="font-26 bold margin5">
+            Empresa
+          </h2>
         </div>
 
-        <!-- CONTATO -->
-        <div class="div-border">
-          <div class="col-12 row">
-            <img src="../../assets/contato.png" class="img-empresa" />
-            <h2 class="font-26 bold margin5">Contato</h2>
-            <mat-icon class="mg-t-10 mg-l-auto click" (click)="enable2()">create</mat-icon>
+        <div class="col-md-12">
+          <h4 *ngIf="business.org.razaosocial"> {{business.org.razaosocial}}</h4>
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <p *ngIf="business.org.codigo">{{business.org.codigo}}</p>
+              <p *ngIf="business.org.nomefantasia">{{business.org.nomefantasia}}</p>
+              <p *ngIf="business.org.cnpj">{{business.org.cnpj}}</p>
+              <p *ngIf="business.org.ie">{{business.org.ie}}</p>
+              <p><b>{{business.org.rua}} - {{business.org.bairro}}, {{business.org.cidade}}-{{business.org.uf}},
+                  {{business.org.cep}}</b></p>
+              <p *ngIf="business.org.email">{{business.org.email}}</p>
+              <p *ngIf="business.org.site">{{business.org.site}}</p>
+              <p *ngIf="business.org.erpe">{{business.org.erpe.desc}}</p>
+            </div>
           </div>
-
-          <div class="col-md-12">
-            <h4>
-              {{business.cliente.nome}}
-            </h4>
-
-            <div class="row mt-5">
-              <div class="col-md-5">
-                <p style="text-align: right;"><b>Email</b></p>
-                <p><b>Cargo</b></p>
-                <p><b>Departamento</b></p>
-                <p><b>Data Aniversário</b></p>
-                <p><b>Telefone</b></p>
-                <p><b>Celular</b></p>
-                <p><b>Skype</b></p>
-              </div>
-
-              <div class="col-md-7">
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.email}} [disabled]="disable2">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.cargo}} [disabled]="disable2">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.dep}} [disabled]="disable2">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{formatDate(business.cliente.birth)}} [disabled]="disable2">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{formatPhoneNumber(business.cliente.tel)}} [disabled]="disable2">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{formatCellPhoneNumber(business.cliente.cel)}} [disabled]="disable2">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mg-l-10" placeholder={{business.cliente.skype}} [disabled]="disable2">
-                </div>
-              </div>
-            </div>
-
-
-            <!-- <div class="mg-t-10">
-              <p class="pdiv">
-                <b>
-                  Email:
-                </b>
-                {{business.cliente.email}}
-              </p>
-            </div>
-            <div class="mg-t-10">
-              <p class="pdiv">
-                <b>
-                  Cargo:
-                </b>
-                {{business.cliente.cargo}}
-              </p>
-            </div>
-            <div class="mg-t-10">
-              <p class="pdiv">
-                <b>
-                  Departamento:
-                </b>
-                {{business.cliente.dep}}
-              </p>
-            </div>
-            <div class="mg-t-10">
-              <p class="pdiv">
-                <b>
-                  Data Aniversário:
-                </b>
-                {{formatDate(business.cliente.birth)}}
-              </p>
-            </div>
-            <div class="mg-t-10">
-              <p class="pdiv">
-                <b>
-                  Telefone:
-                </b>
-                {{business.cliente.tel}}
-              </p>
-            </div>
-            <div class="mg-t-10">
-              <p class="pdiv">
-                <b>
-                  Celular:
-                </b>
-                {{business.cliente.cel}}
-              </p>
-            </div>
-            <div class="mg-t-10">
-              <p class="pdiv">
-                <b>
-                  Skype:
-                </b>
-                {{business.cliente.skype}}
-              </p>
-            </div> -->
-          </div>
-        </div>
-
-
-      <div class="col-1"></div>
-
-      <!-- LOG -->
-      <div class="col-7 div-border">
-        <div>
-          <div *ngIf="(business.status == 'Perdido')" class="alert alert-danger" role="alert">
-            {{business.mtvperd}} : {{business.cmtperd}}
-          </div>
-          <mat-tab-group mat-stretch-tabs class="col-12">
-            <mat-tab label="Observações">
-              <div class="col-12 mg-t-10 divtab">
-                <textarea rows="10" [(ngModel)]="idobs.obs" class="col-12 txtarea"></textarea>
-                <button type="button" (click)="updateTicketObs()" class="btn btn-success bold btn-sm fltright">
-                  Adicionar
-                </button>
-                <button type="button" class="btn btn-outline-secondary bold btn-sm fltright mg-r-5">
-                  Cancelar
-                </button>
-              </div>
-              <div class="col-12 row txtcenter">
-                <h2 style="margin-left: auto; margin-right: auto;">Histórico</h2>
-              </div>
-              <div class="col-12 mg-t-10">
-                <ul class="list-group list-group-flush">
-                  <li *ngFor="let item of business.obs" class="list-group-item p">
-                    <b class="b-b">
-                      {{formatDate(item.data)}}
-                      <!--  {{this.dataslv}} -->
-                    </b>
-                    <br>
-                    <label class="b">
-                      Conteúdo:
-                    </label>
-                    <label>
-                      {{item.texto}}
-                    </label>
-                  </li>
-                </ul>
-              </div>
-            </mat-tab>
-            <mat-tab label="Atividades">
-              <div class="col-12 mg-t-10 divtab">
-                <div *ngIf="(business.atividades == 0)" class="b-b txtcenter">
-                  <h4>Sem atividades ativas</h4>
-                </div>
-                <ul *ngIf="(business.atividades.length > 0)" class="list-group list-group-flush">
-                  <li *ngFor="let item of business.atividades" class="list-group-item p">
-                    <b class="b-b">
-                      {{item.dataini | date:'dd/MM/yyyy'}} - {{item.tipo}}
-                    </b>
-                    <br>
-                    <label class="b">
-                      ↪ {{item.assunto}}
-                    </label>
-                  </li>
-                </ul>
-              </div>
-            </mat-tab>
-            <mat-tab label="Anexos">
-              <div class="col-12 mg-t-10 divtab">
-                <mat-list>
-                  <h3 mat-subheader>Pastas</h3>
-                  <mat-list-item>
-                    <mat-icon mat-list-icon>folder</mat-icon>
-                    <h4 mat-line>Fotos</h4>
-                    <p mat-line> Jan 1, 2020 </p>
-                  </mat-list-item>
-                  <mat-list-item>
-                    <mat-icon mat-list-icon>folder</mat-icon>
-                    <h4 mat-line>Projetos</h4>
-                    <p mat-line> Fev 3, 2020 </p>
-                  </mat-list-item>
-                  <mat-divider></mat-divider>
-                  <h3 mat-subheader>Arquivos</h3>
-                  <mat-list-item>
-                    <mat-icon mat-list-icon>note</mat-icon>
-                    <h4 mat-line>Contrato</h4>
-                    <p mat-line> Feb 20, 2020 </p>
-                  </mat-list-item>
-                  <mat-list-item>
-                    <mat-icon mat-list-icon>note</mat-icon>
-                    <h4 mat-line>Requisitos Instalação</h4>
-                    <p mat-line> Feb 22, 2020 </p>
-                  </mat-list-item>
-                </mat-list>
-              </div>
-            </mat-tab>
-          </mat-tab-group>
         </div>
       </div>
+
+      <!-- CONTATO -->
+      <div class="div-border">
+        <div class="col-12 row">
+          <img src="../../assets/contato.png" class="img-empresa" />
+          <h2 class="font-26 bold margin5">Contato</h2>
+        </div>
+
+        <div class="col-md-12">
+          <h4>
+            {{business.cliente.nome}}
+          </h4>
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <p *ngIf="business.cliente.email">{{business.cliente.email}}</p>
+              <p *ngIf="business.cliente.cargo">{{business.cliente.cargo}}</p>
+              <p *ngIf="business.cliente.dep">{{business.cliente.dep}}</p>
+              <p *ngIf="business.cliente.birth">{{formatDate(business.cliente.birth)}}</p>
+              <p *ngIf="business.cliente.tel">{{formatPhoneNumber(business.cliente.tel)}}</p>
+              <p *ngIf="business.cliente.cel">{{formatCellPhoneNumber(business.cliente.cel)}}</p>
+              <p *ngIf="business.cliente.skype">{{business.cliente.skype}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-1"></div>
+
+    <!-- LOG -->
+    <div class="col-7 div-border">
+      <div>
+        <div *ngIf="(business.status == 'Perdido')" class="alert alert-danger" role="alert">
+          {{business.mtvperd}} : {{business.cmtperd}}
+        </div>
+        <mat-tab-group mat-stretch-tabs class="col-12">
+          <mat-tab label="Observações">
+            <div class="col-12 mg-t-10 divtab">
+              <textarea rows="10" [(ngModel)]="idobs.obs" class="col-12 txtarea"></textarea>
+              <button type="button" (click)="updateTicketObs()" class="btn btn-success bold btn-sm fltright">
+                Adicionar
+              </button>
+              <button type="button" class="btn btn-outline-secondary bold btn-sm fltright mg-r-5">
+                Cancelar
+              </button>
+            </div>
+            <div class="col-12 row txtcenter">
+              <h2 style="margin-left: auto; margin-right: auto;">Histórico</h2>
+            </div>
+            <div class="col-12 mg-t-10">
+              <ul class="list-group list-group-flush">
+                <li *ngFor="let item of business.obs" class="list-group-item p">
+                  <b class="b-b">
+                    {{formatDate(item.data)}}
+                    <!--  {{this.dataslv}} -->
+                  </b>
+                  <br>
+                  <label class="b">
+                    Conteúdo:
+                  </label>
+                  <label>
+                    {{item.texto}}
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </mat-tab>
+          <mat-tab label="Atividades">
+            <div class="col-12 mg-t-10 divtab">
+              <div *ngIf="(business.atividades == 0)" class="b-b txtcenter">
+                <h4>Sem atividades ativas</h4>
+              </div>
+              <ul *ngIf="(business.atividades.length > 0)" class="list-group list-group-flush">
+                <li *ngFor="let item of business.atividades" class="list-group-item p">
+                  <b class="b-b">
+                    {{item.dataini | date:'dd/MM/yyyy'}} - {{item.tipo}}
+                  </b>
+                  <br>
+                  <label class="b">
+                    ↪ {{item.assunto}}
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </mat-tab>
+          <mat-tab label="Anexos">
+            <div class="col-12 mg-t-10 divtab">
+              <mat-list>
+                <h3 mat-subheader>Pastas</h3>
+                <mat-list-item>
+                  <mat-icon mat-list-icon>folder</mat-icon>
+                  <h4 mat-line>Fotos</h4>
+                  <p mat-line> Jan 1, 2020 </p>
+                </mat-list-item>
+                <mat-list-item>
+                  <mat-icon mat-list-icon>folder</mat-icon>
+                  <h4 mat-line>Projetos</h4>
+                  <p mat-line> Fev 3, 2020 </p>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <h3 mat-subheader>Arquivos</h3>
+                <mat-list-item>
+                  <mat-icon mat-list-icon>note</mat-icon>
+                  <h4 mat-line>Contrato</h4>
+                  <p mat-line> Feb 20, 2020 </p>
+                </mat-list-item>
+                <mat-list-item>
+                  <mat-icon mat-list-icon>note</mat-icon>
+                  <h4 mat-line>Requisitos Instalação</h4>
+                  <p mat-line> Feb 22, 2020 </p>
+                </mat-list-item>
+              </mat-list>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="addMotivoPerda" tabindex="-1" role="dialog" aria-labelledby="addMotivoPerda"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addMotivoPerda">
+          Adicionar Motivo da Perda
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-12">
+          <label for="">Motivo da Perda</label>
+          <input type="text" class="form-control">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
+          data-target="#loseModal">
+          Cancelar
+        </button>
+        <button type="button" data-dismiss="modal" class="btn btn-primary" data-toggle="modal" data-target="#loseModal">
+          Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

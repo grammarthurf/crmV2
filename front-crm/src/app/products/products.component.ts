@@ -35,6 +35,8 @@ export class ProductsComponent implements OnInit {
 
   erroProdutos: any;
 
+  delProduct: any;
+
   data = Object.assign(produto);
   dataSource = new MatTableDataSource(this.data);
 
@@ -158,14 +160,42 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  deleteItem() {
-    swal({
-      icon: "error",
-      text: "Produto excluído com sucesso!",
-      timer: 1800,
-      buttons: {
-        buttons: false
+  deleteItem(item) {
+    this.delProduct = item.id;
+    console.log(this.delProduct)
+    // swal({
+    //   icon: "error",
+    //   text: "Produto excluído com sucesso!",
+    //   timer: 1800,
+    //   buttons: {
+    //     buttons: false
+    //   }
+    // });
+  }
+
+  del(){
+    this.crudService.deleteProduct(this.delProduct).subscribe(
+      data => {
+        this.getterProdutos();
+        swal({
+          icon: "success",
+          text: "Produto deletado com sucesso!",
+          timer: 1000,
+          buttons: {
+            buttons: false
+          }
+        });
+      },
+      error => {
+        swal({
+          icon: "error",
+          text: "Erro ao deletar !",
+          timer: 1000,
+          buttons: {
+            buttons: false
+          }
+        });
       }
-    });
+    )
   }
 }

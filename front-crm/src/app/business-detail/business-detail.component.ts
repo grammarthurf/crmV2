@@ -18,8 +18,6 @@ export class BusinessDetailComponent implements OnInit {
   business: any;
   estagiosapi: any;
   calendarPlugins: any = [];
-  disable1: boolean = true;
-  disable2: boolean = true;
 
   public lottieConfig: Object;
   private anim: any;
@@ -28,33 +26,7 @@ export class BusinessDetailComponent implements OnInit {
   idobs = { id: '', obs: '', term: '', mtvperd: '', cmtperd: '' };
 
   calendarEvents = [
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 1', date: '2020-03-02' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
-    { title: 'event 2', date: '2020-03-09' },
+    { title: 'event 1', start: '2020-03-02T10:00', end: '2020-03-01' }
   ];
 
   // businesss = { id: "", titulo: '', valorestimado: '', termometro: '', obs: '', status: '', estagio: '', cliente: '', org: '', vendedor: '', created: '', updated: '', produto: ''};
@@ -72,16 +44,8 @@ export class BusinessDetailComponent implements OnInit {
     this.calendarPlugins = [ listPlugin , bootstrapPlugin ];
   }
 
-  enable1(){
-    this.disable1= false;
-  }
-
-  enable2(){
-    this.disable2= false;
-  }
-
   SaveUpdate(){
-    console.log("mano qqqqqqqqqqqq")
+    console.log("qqqqqqqqq")
   }
 
   updatedTicketStatus(ticket) {
@@ -150,6 +114,7 @@ export class BusinessDetailComponent implements OnInit {
           this.stageNull();
         }
         console.log("id", data);
+        
       },
       error => {
         console.error(error);
@@ -242,7 +207,8 @@ export class BusinessDetailComponent implements OnInit {
     if (this.business.status != 'Ganhou') {
       this.business.status = 'Ganhou';
       this.updatedTicketStatus(this.business);
-      this.changeid(8);
+      this.business.estagio.id = 8;
+      this.updatedTicket(this.business.estagio.id , this.business)
     }
 
 

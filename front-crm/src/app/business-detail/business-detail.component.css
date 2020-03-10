@@ -91,21 +91,15 @@ mat-icon {
 	border: 1px solid rgb(207, 206, 206);
 }
 
-.pdiv {
-	font-size: 15px;
-	margin-left: 15px;
-	margin-top: 5px;
-}
-
 .bold {
     font-weight: bold;
 }
 
 h4 {
-	margin-top: 10px; 
-	font-size: 20px; 
-	font-weight: bold; 
-	margin-left: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 16px;
 }
 
 .fine {
@@ -402,26 +396,6 @@ div.col-8.div-right div.col-10.bg-white.row div.row.col-12 h5 + p {
 	cursor: pointer;
 }
 
-<<<<<<< HEAD
-=======
-div.row div.col-md-5 p + p {
-	margin-top: 19.3px;
-	text-align: right;
-}
-
-div.row div.col-md-7 div.form-group + div.form-group {
-	margin-top: 5px;
-}
-<<<<<<< HEAD
->>>>>>> 179853863f3e38c695d13f9c541dd50e77d1b126
-=======
-
-div.row.mt-5 div.col-md-12 div.form-group {
-	margin-top: 10px;
-}
-
-
->>>>>>> 8be7357fb2dc98c317ced596b8a8c3ea15338951
 /* MODAL ATV */
 
 .div-modal-atv{
@@ -498,3 +472,16 @@ div.row.mt-5 div.col-md-12 div.form-group {
     height: 100px !important;
     margin: 1px auto;
 }
+
+.icon-modal-lead{
+	margin-right: 10px; 
+	font-weight: bold; 
+	width: 21px; 
+	height: 21px; 
+	font-size: 18px; 
+	border-radius: 100px; 
+	background-color: #c2c2c2; 
+	color: #ffffff;
+	font-size: 20px; 
+	margin-left: 5px;
+  }
