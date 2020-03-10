@@ -83,6 +83,10 @@ export class OrganizationComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  goToUpdate(id) {
+    this.router.navigate([`/company-register/${id}`]);
+  }
+
   save() {
     console.log(this.org);
 

@@ -51,6 +51,10 @@ const routes: Routes = [
     component: OrganizationRegisterComponent
   },
   {
+    path: "company-register/:id",
+    component: OrganizationRegisterComponent
+  },
+  {
     path: "testapi",
     component: CrudComponent
   },

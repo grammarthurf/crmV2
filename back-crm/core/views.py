@@ -75,10 +75,20 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
         C.nomefantasia = data['nomefantasia']
         C.telefone = data['telefone']
         C.rua = data['rua']
+        C.complemento = data['complemento']
         C.bairro = data['bairro']
         C.cep = data['cep']
         C.cidade = data['cidade']
         C.uf = data['uf']
+        try:
+            C.email = data['email']
+            C.site = data['site']
+        except:
+            pass
+        try:
+            C.cnpj = data['cnpj']
+        except:
+            pass
         try:
             C.ramo = Ramo.objects.get(id=int(data['ramo']))
         except:
