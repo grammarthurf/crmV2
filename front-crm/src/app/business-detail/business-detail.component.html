@@ -224,12 +224,14 @@
         <p style="font-size: 13px;">
           Vendedor:
         </p>
-        <p style="font-size: 23px;">
-          <!-- {{business.vendedor}}  -->
-          Brenda
+        <p style="font-size: 23px;" *ngIf="business.vendedor">
+          {{business.vendedor}}
         </p>
-        <!-- <p style="font-size: 12px;" mask="9999-99-99" *ngIf="(business.created)"> Criado em
-          {{business.created.datetime}} </p> -->
+        <p style="font-size: 20px; color: grey;" *ngIf="!business.vendedor">
+          Sem vendedor
+        </p>
+        <p style="font-size: 12px;" mask="9999-99-99" *ngIf="(business.created)"> Criado em
+          {{business.created.datetime | date: 'dd/MM/yyyy hh:mm'}}
       </div>
     </div>
 
