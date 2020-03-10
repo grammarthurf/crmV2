@@ -99,19 +99,19 @@
               <div class="col-12 row inputmargin">
                 <div class="col-6">
                   <label for="">Início</label>
-                  <input [(ngModel)]="atv.dataini" type="date" class="form-control">
+                  <input [(ngModel)]="atv.dataini" type="date" class="form-control" #one>
                 </div>
                 <div class="col-6" style="padding: 0px;">
                   <label for="">Fim</label>
-                  <input [(ngModel)]="atv.datafim" type="date" class="form-control">
+                  <input [(ngModel)]="atv.datafim"  class="form-control" type="date" value="{{one.value}}">
                 </div>
               </div>
               <div class="col-12 row inputmargin">
                 <div class="col-6">
-                  <input [(ngModel)]="atv.horaini" id="horaini" class="form-control" placeholder="00:00" mask="99:99">
+                  <input [(ngModel)]="atv.horaini" id="horaini" class="form-control" placeholder="00:00" mask="99:99" #two>
                 </div>
                 <div class="col-6" style="padding: 0px">
-                  <input [(ngModel)]="atv.horafim" class="form-control" placeholder="00:00" mask="99:99">
+                  <input [(ngModel)]="atv.horafim" class="form-control" placeholder="00:00" mask="99:99" value="{{two.value}}">
                 </div>
               </div>
               <div class="col-12 row inputmargin">

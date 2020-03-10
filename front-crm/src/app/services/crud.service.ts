@@ -255,6 +255,13 @@ export class CrudService {
     });
   }
 
+  public UpdateOrgMain(org): Observable<any> {
+    return this.http.put(this.baseUrl + 'orgs/' + org.id + '/' , org, {
+      headers: this.htttpHeaders
+    });
+  }
+
+
   public updateOrg(org): Observable<any> {
 
     const body =  { id: parseInt(org.id),

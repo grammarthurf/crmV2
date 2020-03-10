@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute } from "@angular/router";
 import { CrudService } from '../services/crud.service';
 import swal from 'sweetalert';
 
@@ -9,16 +9,26 @@ import swal from 'sweetalert';
   styleUrls: ['./organization-register.component.css']
 })
 export class OrganizationRegisterComponent implements OnInit {
-  orgapi:any;
-  matdata:any;
+
+  constructor(private crudService: CrudService, private route: ActivatedRoute, private router: Router) {
+    this.getterErp();
+    this.getterRamo();
+    this.getterOrgs();
+
+  }
+
+  orgapi: any;
+  matdata: any;
   erroOrgs: any;
   disableCode: boolean = false;
   disableCode1: boolean = false;
   org = {
-    codigo: '', razaosocial: '', nomefantasia: '', ramo: '',
+     id: 0 , codigo: '', razaosocial: '', nomefantasia: '', ramo: '',
     cnpj: '', ie: '', rua: '', complemento: '', bairro: '', cep: '',
     cidade: '', uf: '', telefone: '', erp: '', email: '', site: '', contatos: [], erpe: [], ramos: []
   };
+
+  orgUpdate: any;
 
   contato = { nome: '', email: '', cargo: '', dep: '', birth: '', tel: '', cel: '', skp: '' }
 
@@ -28,13 +38,12 @@ export class OrganizationRegisterComponent implements OnInit {
   erpsapi: any;
   erp = { codigo: '', desc: '', empresa: '' };
 
-  constructor(private crudService: CrudService, private router: Router) {
-    this.getterErp();
-    this.getterRamo();
-    this.getterOrgs();
-  }
+  code1: any;
+
+  code2: any;
 
   ngOnInit() {
+    this.loadOrg()
   }
 
   getterOrgs() {
@@ -48,12 +57,45 @@ export class OrganizationRegisterComponent implements OnInit {
     );
   }
 
-  code1: any;
+  loadOrg() {
+    const id = this.route.snapshot.paramMap.get("id");
+    console.log(id);
+
+    this.getterOrg(id);
+  }
+
+  contatoDelete(item){
+    let index = this.org.contatos.indexOf(item)
+    console.log(this.org.contatos.indexOf(item));
+    this.org.contatos.splice(index, 1);
+
+
+  }
+
+  getterOrg(id) {
+    this.crudService.getOrg(id).subscribe(
+      data => {
+        this.orgUpdate = data;
+        console.log(' Organização pega' , this.orgUpdate);
+
+        this.org = {
+           id: this.orgUpdate.id , codigo: this.orgUpdate.codigo, razaosocial: this.orgUpdate.razaosocial, nomefantasia: this.orgUpdate.nomefantasia, ramo: this.orgUpdate.ramo,
+          cnpj: this.orgUpdate.cnpj, ie: this.orgUpdate.ie, rua: this.orgUpdate.rua, complemento: this.orgUpdate.complemento, bairro: this.orgUpdate.bairro, cep: this.orgUpdate.cep,
+          cidade: this.orgUpdate.cidade, uf: this.orgUpdate.uf, telefone: this.orgUpdate.telefone, erp: this.orgUpdate.erp, email: this.orgUpdate.email,
+          site: this.orgUpdate.site, contatos: this.orgUpdate.contatos, erpe: this.orgUpdate.erpe, ramos: this.orgUpdate.ramo
+        };
+      },
+      error => {
+        // this.erroAtividade = error;
+      }
+    );
+  }
+
   generateCode1() {
     var a = this.orgapi;
     console.log(a.length);
-    if(a.length > 0){
-      if(a.length < 9 ){
+    if (a.length > 0) {
+      if (a.length < 9) {
         this.code1 = "000" + ++this.orgapi[0].codigo;
         this.org.codigo = this.code1;
         console.log(this.code1);
@@ -61,7 +103,7 @@ export class OrganizationRegisterComponent implements OnInit {
         this.code1 = "00" + ++this.orgapi[0].codigo;
         this.org.codigo = this.code1;
         console.log(this.code1);
-      } else if (a.length < 999){
+      } else if (a.length < 999) {
         this.code1 = "0" + ++this.orgapi[0].codigo;
         this.org.codigo = this.code1;
         console.log(this.code1);
@@ -71,18 +113,16 @@ export class OrganizationRegisterComponent implements OnInit {
         console.log(this.code1);
       }
     } else {
-      this.code1 = "000"+1;
+      this.code1 = "000" + 1;
       this.org.codigo = this.code1;
       console.log(this.code1);
     }
     this.disableCode = true;
   }
-
-  code2: any;
   generateCode2() {
     var a = this.erpsapi;
-    if(a.length > 0){
-      if(a.length < 9){
+    if (a.length > 0) {
+      if (a.length < 9) {
         this.code2 = "00" + ++this.erpsapi[0].codigo;
         this.erp.codigo = this.code2;
         console.log(this.code2);
@@ -95,9 +135,9 @@ export class OrganizationRegisterComponent implements OnInit {
         this.erp.codigo = this.code2;
         console.log(this.code2);
       }
-      
+
     } else {
-      this.code2 = "00"+1;
+      this.code2 = "00" + 1;
       this.erp.codigo = this.code2;
       console.log(this.code2);
     }
@@ -151,7 +191,7 @@ export class OrganizationRegisterComponent implements OnInit {
     this.router.navigate([`/company/`]);
   }
 
-  saveRamo(){
+  saveRamo() {
     this.crudService.saveNewRamo(this.ramo).subscribe(
       data => {
         swal({
@@ -176,7 +216,7 @@ export class OrganizationRegisterComponent implements OnInit {
     );
   }
 
-  saveErp(){
+  saveErp() {
     this.crudService.saveNewErp(this.erp).subscribe(
       data => {
         swal({
@@ -205,7 +245,7 @@ export class OrganizationRegisterComponent implements OnInit {
     console.log(this.org);
     console.log(this.contato);
 
-    if(this.contato.nome != ""){
+    if (this.contato.nome != "") {
 
       const contatovar = {
         nome: this.contato.nome, email: this.contato.email, cargo: this.contato.cargo,
@@ -250,16 +290,16 @@ export class OrganizationRegisterComponent implements OnInit {
       this.org.ramos.push(this.ramo);
       this.crudService.saveNewOrg(this.org).subscribe(
         data => {
-           swal({
-             icon: "success",
-             text: "Empresa salva com sucesso!",
-             timer: 1800,
-             buttons: {
-               buttons: false
-             }
-           });
-           //this.getterOrg();
-           //setTimeout(this.reiniciar, 1001);
+          swal({
+            icon: "success",
+            text: "Empresa salva com sucesso!",
+            timer: 1800,
+            buttons: {
+              buttons: false
+            }
+          });
+          //this.getterOrg();
+          //setTimeout(this.reiniciar, 1001);
           console.log(data);
           this.exit();
         },
@@ -272,34 +312,44 @@ export class OrganizationRegisterComponent implements OnInit {
     }
   }
 
+
+  updateOrg(org) {
+    console.log(org);
+
+    this.crudService.UpdateOrgMain(org).subscribe(
+      data => {
+        console.log(data);
+      }, error => {
+        console.error(error);
+      }
+    )
+   }
   formatPhoneNumber(str) {
     //Filter only numbers from the input
     let cleaned = ('' + str).replace(/\D/g, '');
 
     //Check if the input is of correct length
     let match = cleaned.match(/^(\d{2})(\d{4})(\d{4})$/);
-  
+
     if (match) {
       return '(' + match[1] + ') ' + match[2] + '-' + match[3]
     };
-  
-    return null
-  };
 
+    return null
+  }
   formatCellPhoneNumber(str) {
     //Filter only numbers from the input
     let cleaned = ('' + str).replace(/\D/g, '');
-    
+
     //Check if the input is of correct length
     let match = cleaned.match(/^(\d{2})(\d{5})(\d{4})$/);
-  
+
     if (match) {
       return '(' + match[1] + ') ' + match[2] + '-' + match[3]
     };
-  
-    return null
-  };
 
+    return null
+  }
 
   // addFields() {
   //   var currentDiv = document.getElementById('duplicate');

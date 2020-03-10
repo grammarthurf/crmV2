@@ -72,7 +72,7 @@ class OrganizacaoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Organizacao
         fields = ['id', 'codigo', 'razaosocial', 'nomefantasia', 'rua',
-                  'bairro', 'cidade', 'uf', 'erpe', 'ramo', 'telefone' ,  'contatos']
+                  'bairro', 'cidade', 'uf', 'erpe', 'ramo', 'telefone' ,  'contatos', 'complemento', 'cnpj', 'ie', 'cep', 'email', 'site']
         depth = 1
 
 
