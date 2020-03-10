@@ -23,7 +23,7 @@ export class OrganizationRegisterComponent implements OnInit {
   disableCode: boolean = false;
   disableCode1: boolean = false;
   org = {
-    codigo: '', razaosocial: '', nomefantasia: '', ramo: '',
+     id: 0 , codigo: '', razaosocial: '', nomefantasia: '', ramo: '',
     cnpj: '', ie: '', rua: '', complemento: '', bairro: '', cep: '',
     cidade: '', uf: '', telefone: '', erp: '', email: '', site: '', contatos: [], erpe: [], ramos: []
   };
@@ -79,7 +79,7 @@ export class OrganizationRegisterComponent implements OnInit {
         console.log(' Organização pega' , this.orgUpdate);
 
         this.org = {
-          codigo: this.orgUpdate.codigo, razaosocial: this.orgUpdate.razaosocial, nomefantasia: this.orgUpdate.nomefantasia, ramo: this.orgUpdate.ramo,
+           id: this.orgUpdate.id , codigo: this.orgUpdate.codigo, razaosocial: this.orgUpdate.razaosocial, nomefantasia: this.orgUpdate.nomefantasia, ramo: this.orgUpdate.ramo,
           cnpj: this.orgUpdate.cnpj, ie: this.orgUpdate.ie, rua: this.orgUpdate.rua, complemento: this.orgUpdate.complemento, bairro: this.orgUpdate.bairro, cep: this.orgUpdate.cep,
           cidade: this.orgUpdate.cidade, uf: this.orgUpdate.uf, telefone: this.orgUpdate.telefone, erp: this.orgUpdate.erp, email: this.orgUpdate.email,
           site: this.orgUpdate.site, contatos: this.orgUpdate.contatos, erpe: this.orgUpdate.erpe, ramos: this.orgUpdate.ramo
@@ -312,6 +312,18 @@ export class OrganizationRegisterComponent implements OnInit {
     }
   }
 
+
+  updateOrg(org) {
+    console.log(org);
+
+    this.crudService.UpdateOrgMain(org).subscribe(
+      data => {
+        console.log(data);
+      }, error => {
+        console.error(error);
+      }
+    )
+   }
   formatPhoneNumber(str) {
     //Filter only numbers from the input
     let cleaned = ('' + str).replace(/\D/g, '');

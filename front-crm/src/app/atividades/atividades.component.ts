@@ -190,7 +190,7 @@ export class AtividadesComponent implements OnInit {
           var timeEnd = e.horafim.substring(0,2) + ":" + e.horafim.substring(2,4)
 
           this.calendarEvents.push({
-            title: e.tipo,
+            title: e.tipo + ":  " + e.ticket.titulo,
             start: e.dataini + "T" + timeIni,
             end: e.datafim + "T" + timeEnd
           });
@@ -324,6 +324,17 @@ export class AtividadesComponent implements OnInit {
 
   save() {
     console.log("save" + this.atv)
+    if(this.atv.horafim == ""){
+      console.log("horavazia")
+      this.atv.horafim = this.atv.horaini;
+      console.log("arrumado: " + this.atv.horafim)
+    }
+
+    if( this.atv.datafim == ""){
+      console.log("datavazia")
+      this.atv.datafim = this.atv.dataini;
+      console.log("arrumado: " + this.atv.datafim)
+    }
     this.crudService.saveNewAtividade(this.atv).subscribe(
       data => {
         swal({
@@ -419,19 +430,19 @@ export class AtividadesComponent implements OnInit {
 
   selectActivity(id: number) {
     if (id == 1) {
-      this.numm = "Ligação";
+      this.numm = "LIGAÇÃO";
       this.atv.tipo = this.numm;
     } else if (id == 2) {
-      this.numm = "Reunião";
+      this.numm = "REUNIÃO";
       this.atv.tipo = this.numm;
     } else if (id == 3) {
-      this.numm = "Visita";
+      this.numm = "VISITA";
       this.atv.tipo = this.numm;
     } else if (id == 4) {
-      this.numm = "Email";
+      this.numm = "EMAIL";
       this.atv.tipo = this.numm;
     } else if (id == 5) {
-      this.numm = "Tarefa";
+      this.numm = "TAREFA";
       this.atv.tipo = this.numm;
     }
   }

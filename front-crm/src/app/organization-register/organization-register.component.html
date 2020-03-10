@@ -198,7 +198,7 @@
   </button>
   <hr>
   <button class="btn btn-secondary" (click)="exit()">Sair</button>
-  <button class="btn btn-primary" *ngIf="orgUpdate"  style="margin-left: 10px;">Atualizar Empresa</button>
+  <button class="btn btn-primary" *ngIf="orgUpdate" (click)="updateOrg(org)"   style="margin-left: 10px;">Atualizar Empresa</button>
   <button class="btn btn-primary" *ngIf="!orgUpdate" (click)="save()" style="margin-left: 10px;">Salvar Empresa</button>
 </div>
 
