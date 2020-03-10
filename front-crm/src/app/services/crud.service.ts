@@ -276,14 +276,32 @@ export class CrudService {
 
   //DELETE API
   public deleteActivity(id: number): Observable<any> {
-    return this.http.delete(this.baseUrl + 'atividade/' + id + '/',
-    {headers: this.htttpHeaders
+    return this.http.delete(this.baseUrl + 'atividade/' + id + '/', {
+      headers: this.htttpHeaders
     });
   }
 
   public deleteOrg(id: number): Observable<any> {
-    return this.http.delete(this.baseUrl + 'orgs/' + id + '/',
-    {headers: this.htttpHeaders
+    return this.http.delete(this.baseUrl + 'orgs/' + id + '/', {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public deleteProduct(id: number): Observable<any> {
+    return this.http.delete(this.baseUrl + 'produto/' + id + '/', {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public deleteERP(id: number): Observable<any> {
+    return this.http.delete(this.baseUrl + 'erp/' + id + '/', {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public deleteRamo(id: number): Observable<any> {
+    return this.http.delete(this.baseUrl + 'ramo/' + id + '/', {
+      headers: this.htttpHeaders
     });
   }
 }
