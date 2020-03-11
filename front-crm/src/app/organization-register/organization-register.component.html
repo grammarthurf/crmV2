@@ -1,22 +1,22 @@
 <div class="first-div">
-
   <div class="flex">
     <img src="../../assets/empresa.png">
     <h5>Cadastrar Empresa</h5>
   </div>
-
   <div class="row col-md-12 align-cod-button">
     <div class="form-group col-md-3">
       <label for="cod">Código <label style="color: red; font-size: 20px;">*</label></label>
       <input [(ngModel)]="org.codigo" disabled value="{{this.code1}}" type="text" class="form-control">
       <!-- value="{{orgapi.id}}" -->
     </div>
-    <button class="btn btn-primary" style="margin-top:30px;" [disabled]="disableCode" (click)="generateCode1()"
-      id="code">
+    <button class="btn btn-primary" 
+            style="margin-top:30px;" 
+            [disabled]="disableCode || orgUpdate" 
+            (click)="generateCode1()"
+            id="code">
       <img src="../../assets/cod.png" id="codigo">
     </button>
   </div>
-
   <div class="row col-md-12">
     <div class="form-group col-md-6">
       <label for="raz">Razão Social <label style="color: red; font-size: 20px;">*</label></label>
@@ -27,93 +27,81 @@
       <input [(ngModel)]="org.nomefantasia" type="text" class="form-control">
     </div>
   </div>
-
   <div class="row col-md-12">
     <div class="form-group col-md-4 mg-tp-8">
       <label for="cnpj">CNPJ</label>
       <input [(ngModel)]="org.cnpj" type="text" class="form-control" mask="AA.AAA.AAA/AAAA-AA"
         placeholder="00.000.000/0000-00">
     </div>
-
     <div class="form-group col-md-4 mg-tp-8">
       <label for="ie">IE</label>
       <input [(ngModel)]="org.ie" type="text" class="form-control">
     </div>
-
     <div class="form-group col-md-4">
       <label for="ramo">Ramo</label>
       <button mat-icon-button data-toggle="modal" data-target="#ramo">
         <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
       </button>
-      <select [(ngModel)]="org.ramo" class="custom-select">
+      <select [(ngModel)]="org.ramo" class="form-control">
+        <option [value]="undefined" selected >{{org.ramo.desc}}</option>
         <option *ngFor="let item of ramosapi" value="{{item.id}}">{{item.desc}}</option>
       </select>
     </div>
   </div>
-
   <div class="row col-md-12">
     <div class="form-group col-md-3">
       <label for="cep">CEP</label>
       <input [(ngModel)]="org.cep" type="text " class="form-control" mask="AA.AAA-AAA" placeholder="00.000-000">
     </div>
-
     <div class="form-group col-md-6">
       <label for="end">Endereço</label>
       <input [(ngModel)]="org.rua" type="text" class="form-control">
     </div>
-
     <div class="form-group col-md-3">
       <label for="exampleFormControlInput1">Bairro</label>
       <input [(ngModel)]="org.bairro" class="form-control">
     </div>
   </div>
-
   <div class="row col-md-12">
     <div class="form-group col-md-4">
       <label for="comp">Complemento</label>
       <input [(ngModel)]="org.complemento" type="text" class="form-control">
     </div>
-
     <div class="form-group col-md-3">
       <label for="cidade">Cidade</label>
       <input [(ngModel)]="org.cidade" type="text" class="form-control">
     </div>
-
     <div class="form-group col-md-2">
       <label for="estado">Estado</label>
       <input [(ngModel)]="org.uf" type="text" class="form-control" placeholder="SC" maxlength="2">
     </div>
-
     <div class="form-group col-md-3">
       <label for="telefone">Telefone</label>
       <input [(ngModel)]="org.telefone" type="text" class="form-control" mask="(AA) AAAA-AAAA"
         placeholder="(  )          - ">
     </div>
   </div>
-
   <div class="row col-md-12">
     <div class="form-group col-md-5  mg-tp-8">
       <label for="email">Email</label>
       <input [(ngModel)]="org.email" type="email" class="form-control" placeholder="exemplo@exemplo.com.br">
     </div>
-
     <div class="form-group col-md-4  mg-tp-8">
       <label for="site">Site</label>
       <input [(ngModel)]="org.site" type="text" class="form-control" placeholder="www.site.com.br">
     </div>
-
     <div class="form-group col-md-3">
       <label for="erp">ERP</label>
       <button mat-icon-button data-toggle="modal" data-target="#erp">
         <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
       </button>
-      <select [(ngModel)]="org.erp" class="custom-select">
+      <select [(ngModel)]="org.erp" class="form-control">
+        <option [value]="undefined" selected hidden>Protheus</option>
+        <!-- <option [value]="undefined" selected hidden>{{org.erp.desc}}</option> -->
         <option *ngFor="let item of erpsapi" value="{{item.id}}">{{item.desc}}</option>
       </select>
     </div>
   </div>
-
-
   <hr>
   <div class="flex">
     <img src="../../assets/contato.png">
@@ -129,13 +117,11 @@
           <label for="name">Nome</label>
           <input [(ngModel)]="contato.nome" type="text" class="form-control">
         </div>
-
         <div class="form-group col-md-6">
           <label for="email">Email</label>
           <input [(ngModel)]="contato.email" type="text" class="form-control">
         </div>
       </div>
-
       <div class="row col-md-12">
         <div class="form-group col-md-4">
           <label for="email">Cargo</label>
@@ -150,7 +136,6 @@
           <input [(ngModel)]="contato.birth" type="date" class="form-control">
         </div>
       </div>
-
       <div class="row col-md-12">
         <div class="form-group col-md-3">
           <label for="email">Telefone</label>
@@ -171,26 +156,40 @@
           <input [(ngModel)]="contato.skp" type="text" class="form-control">
         </div>
       </div>
-
     </div>
     <div class="col-md-5">
       <div *ngFor="let item of org.contatos" class="col-sm-12">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">{{item.nome}}</h5>
-            <!-- <p class="card-text">• {{item.email}}</p>
-            <p class="card-text">• {{item.cargo}}</p>
-            <p class="card-text">• dep. {{item.dep}}</p>
-            <p class="card-text">• {{item.skp}}</p> -->
-
             <div class="row">
               <div class="col-md-11">
-                <p class="card-text"><span *ngIf="item.email">•</span> {{item.email}}</p>
-                <p class="card-text"><span *ngIf="item.cargo">•</span> {{item.cargo}}</p>
-                <p class="card-text"><span *ngIf="item.dep">• dep. </span> {{item.dep}}</p>
-                <p class="card-text"><span *ngIf="item.skp">•</span> {{item.skp}}</p>
-                <p class="card-text"><span *ngIf="item.birth">•</span> {{item.birth | date:'dd/MM/yyyy'}}</p>
-                <p class="card-text"><span *ngIf="item.tel">•</span> {{formatPhoneNumber(item.tel)}} <span *ngIf="item.cel">•</span> {{formatCellPhoneNumber(item.cel)}}</p>
+                <p class="card-text">
+                  <span *ngIf="item.email">•</span> 
+                  {{item.email}}
+                </p>
+                <p class="card-text">
+                  <span *ngIf="item.cargo">•</span> 
+                  {{item.cargo}}
+                </p>
+                <p class="card-text">
+                  <span *ngIf="item.dep">• dep. </span> 
+                  {{item.dep}}
+                </p>
+                <p class="card-text">
+                  <span *ngIf="item.skp">•</span> 
+                  {{item.skp}}
+                </p>
+                <p class="card-text">
+                  <span *ngIf="item.birth">•</span> 
+                  {{item.birth | date:'dd/MM/yyyy'}}
+                </p>
+                <p class="card-text">
+                  <span *ngIf="item.tel">•</span> 
+                  {{formatPhoneNumber(item.tel)}} 
+                  <span *ngIf="item.cel">•</span> 
+                  {{formatCellPhoneNumber(item.cel)}}
+                </p>
               </div>
               <p class="col-md-1" style="cursor: pointer;">
                 <mat-icon (click)="contatoDelete(item)" class="icons-action icon-color-red">
@@ -208,13 +207,25 @@
   </button>
   <hr>
   <button class="btn btn-secondary" (click)="exit()">Sair</button>
-  <button class="btn btn-primary" *ngIf="orgUpdate" (click)="updateOrg(org)" style="margin-left: 10px;">Atualizar
-    Empresa</button>
-  <button class="btn btn-primary" *ngIf="!orgUpdate" (click)="save()" style="margin-left: 10px;">Salvar Empresa</button>
+  <button class="btn btn-primary"
+          *ngIf="orgUpdate" 
+          (click)="updateOrg()" 
+          style="margin-left: 10px;">
+          Atualizar Empresa
+  </button>
+  <button class="btn btn-primary" 
+          *ngIf="!orgUpdate" 
+          (click)="save()" 
+          style="margin-left: 10px;">
+          Salvar Empresa
+  </button>
 </div>
-
-<div class="modal fade bd-example-modal-lg" id="ramo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
+<div  class="modal fade bd-example-modal-lg" 
+      id="ramo" 
+      tabindex="-1" 
+      role="dialog" 
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -224,14 +235,12 @@
         </button>
       </div>
       <div class="modal-body">
-
         <div class="col-md-12">
           <div class="form-group col-md-12">
             <label for="nome">Nome</label>
             <input [(ngModel)]="ramo.desc" type="text" class="form-control">
           </div>
         </div>
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
@@ -240,9 +249,12 @@
     </div>
   </div>
 </div>
-
-<div class="modal fade bd-example-modal-lg" id="erp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
+<div  class="modal fade bd-example-modal-lg" 
+      id="erp" 
+      tabindex="-1" 
+      role="dialog" 
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -252,7 +264,6 @@
         </button>
       </div>
       <div class="modal-body">
-
         <div class="row col-md-12 align-cod-button">
           <div class="form-group col-md-3">
             <label for="cod">Código</label>
@@ -262,7 +273,6 @@
             <img src="../../assets/cod.png" id="codigo">
           </button>
         </div>
-
         <div class="row col-md-12">
           <div class="form-group col-md-6">
             <label for="empresa">Empresa</label>
@@ -273,7 +283,6 @@
             <input [(ngModel)]="erp.desc" type="text" class="form-control">
           </div>
         </div>
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
