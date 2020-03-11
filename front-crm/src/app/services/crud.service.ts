@@ -82,7 +82,7 @@ export class CrudService {
   }
 
   public getAtividades(id): Observable<any> {
-    return this.http.get(`${this.baseUrl}atividade/${id}/`, {
+    return this.http.get(this.baseUrl + 'atividade/' + id + '/', {
       headers: this.htttpHeaders
     });
   }
@@ -157,6 +157,14 @@ export class CrudService {
   }
 
   // PUT API
+
+
+
+  public updateatv(atv): Observable<any> {
+    return this.http.put(this.baseUrl + 'atividade/' + atv.position + '/' , atv, {
+      headers: this.htttpHeaders
+    });
+  }
 
   public updateTicket(estagioUpdate, ticket): Observable<any> {
 
