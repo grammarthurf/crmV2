@@ -181,9 +181,3 @@ div.fc-right {
     .modal-lg, .modal-xl {
     max-width: 870px;
 }
-
-/* input[type=date]::-webkit-datetime-edit{ color: transparent; }
-input[type=date]:valid::-webkit-datetime-edit{ color: #000; }
-
-input[type=date]{ color: transparent; }
-input[type=date]:valid{ color: #000; } */

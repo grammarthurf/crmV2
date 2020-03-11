@@ -318,6 +318,14 @@ export class OrganizationRegisterComponent implements OnInit {
 
     this.crudService.UpdateOrgMain(org).subscribe(
       data => {
+        swal({
+          icon: "success",
+          text: "Empresa atualizada com sucesso!",
+          timer: 1800,
+          buttons: {
+            buttons: false
+          }
+        });
         console.log(data);
       }, error => {
         console.error(error);

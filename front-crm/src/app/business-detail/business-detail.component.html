@@ -1,5 +1,5 @@
 <div class="main-div">
-  <div class="modal fade bd-example-modal-lg" id="abrircadastroatv" tabindex="-1" role="dialog"
+  <!-- <div class="modal fade bd-example-modal-lg" id="abrircadastroatv" tabindex="-1" role="dialog"
     aria-labelledby="abrircadastroatv" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
@@ -22,7 +22,7 @@
               <div class="col-12 row" style="padding: 0px;">
                 <div class="col-6" style="margin-top: 8px;">
                   <label for="negocios">Negócio <label style="color: red; font-size: 20px;">*</label></label>
-                  <!-- (change)="getterorg($event.target.value)" -->
+                   (change)="getterorg($event.target.value)" 
                   <select class="form-control" id="exampleFormControlSelect1">
                     <option>
                       {{business.titulo}}
@@ -128,7 +128,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="modal fade" id="loseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -500,7 +500,6 @@
                 <li *ngFor="let item of business.obs" class="list-group-item p">
                   <b class="b-b">
                     {{formatDate(item.data)}}
-                    <!--  {{this.dataslv}} -->
                   </b>
                   <br>
                   <label class="b">
@@ -533,6 +532,13 @@
           </mat-tab>
           <mat-tab label="Anexos">
             <div class="col-12 mg-t-10 divtab">
+              <button mat-icon-button >
+                <input type="file"
+                       id="file"
+                       style="margin-left: 15px;
+                              cursor: pointer;">
+              </button>
+                
               <mat-list>
                 <h3 mat-subheader>Pastas</h3>
                 <mat-list-item>

@@ -178,6 +178,7 @@ export class BusinessComponent implements OnInit {
     var month1 = dataini.substring(5,7);
     var day1 = dataini.substring(8,10);
 
+
     if(year > year1 || 
       (year == year1 && month > month1) || 
       (year == year1 && month == month1 && day > day1) ){
@@ -185,6 +186,35 @@ export class BusinessComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  Array(atv){
+
+    var length = atv.length;
+
+    var n = 0;
+
+    if(length == 1){
+
+      var r = this.dataCheck(atv[n].dataini);
+      return r;
+
+    } else if (length >= 2){
+
+      var i;
+      for (i=0; i<length; i++) {
+        n++; 
+        var dates = atv[n-1].dataini;
+        var r = this.dataCheck(dates);
+        console.log(r)
+
+        if (r === false) {
+          r = this.dataCheck(dates);
+        } else if (r === true) {
+          return true;
+        }
+      }
+    } 
   }
 
   calcAllValue() {
