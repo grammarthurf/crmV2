@@ -11,7 +11,8 @@
       <input [(ngModel)]="org.codigo" disabled value="{{this.code1}}" type="text" class="form-control">
       <!-- value="{{orgapi.id}}" -->
     </div>
-    <button class="btn btn-primary" style="margin-top:30px;" [disabled]="disableCode" (click)="generateCode1()" id="code">
+    <button class="btn btn-primary" style="margin-top:30px;" [disabled]="disableCode" (click)="generateCode1()"
+      id="code">
       <img src="../../assets/cod.png" id="codigo">
     </button>
   </div>
@@ -93,7 +94,7 @@
   <div class="row col-md-12">
     <div class="form-group col-md-5  mg-tp-8">
       <label for="email">Email</label>
-      <input [(ngModel)]="org.email" type="text" class="form-control" placeholder="exemplo@exemplo.com.br">
+      <input [(ngModel)]="org.email" type="email" class="form-control" placeholder="exemplo@exemplo.com.br">
     </div>
 
     <div class="form-group col-md-4  mg-tp-8">
@@ -177,17 +178,26 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">{{item.nome}}</h5>
+            <!-- <p class="card-text">• {{item.email}}</p>
+            <p class="card-text">• {{item.cargo}}</p>
+            <p class="card-text">• dep. {{item.dep}}</p>
+            <p class="card-text">• {{item.skp}}</p> -->
+
             <div class="row">
-            <p class="card-text col-md-11">
-              {{item.email}} • {{item.cargo}} • dep.  {{item.dep}} • {{item.skp}} •
-            </p>
-            <p class="col-md-1"> <mat-icon (click)="contatoDelete(item)"  class="icons-action icon-color-red">
-              delete
-            </mat-icon> </p>
-          </div>
-            <p class="card-text">
-              {{item.birth | date:'dd/MM/yyyy'}} • {{formatPhoneNumber(item.tel)}} • {{formatCellPhoneNumber(item.cel)}}
-            </p>
+              <div class="col-md-11">
+                <p class="card-text"><span *ngIf="item.email">•</span> {{item.email}}</p>
+                <p class="card-text"><span *ngIf="item.cargo">•</span> {{item.cargo}}</p>
+                <p class="card-text"><span *ngIf="item.dep">• dep. </span> {{item.dep}}</p>
+                <p class="card-text"><span *ngIf="item.skp">•</span> {{item.skp}}</p>
+                <p class="card-text"><span *ngIf="item.birth">•</span> {{item.birth | date:'dd/MM/yyyy'}}</p>
+                <p class="card-text"><span *ngIf="item.tel">•</span> {{formatPhoneNumber(item.tel)}} <span *ngIf="item.cel">•</span> {{formatCellPhoneNumber(item.cel)}}</p>
+              </div>
+              <p class="col-md-1" style="cursor: pointer;">
+                <mat-icon (click)="contatoDelete(item)" class="icons-action icon-color-red">
+                  delete
+                </mat-icon>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -198,7 +208,8 @@
   </button>
   <hr>
   <button class="btn btn-secondary" (click)="exit()">Sair</button>
-  <button class="btn btn-primary" *ngIf="orgUpdate" (click)="updateOrg(org)"   style="margin-left: 10px;">Atualizar Empresa</button>
+  <button class="btn btn-primary" *ngIf="orgUpdate" (click)="updateOrg(org)" style="margin-left: 10px;">Atualizar
+    Empresa</button>
   <button class="btn btn-primary" *ngIf="!orgUpdate" (click)="save()" style="margin-left: 10px;">Salvar Empresa</button>
 </div>
 
