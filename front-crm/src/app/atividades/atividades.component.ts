@@ -36,6 +36,8 @@ export class AtividadesComponent implements OnInit {
   datamat: any = [];
   calendarPlugins: any = [];
 
+  conf: any = { update: false};
+
   dNow = new Date();
   today = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-0' + this.dNow.getDate();
   today1 = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + this.dNow.getDate();
@@ -52,6 +54,8 @@ export class AtividadesComponent implements OnInit {
   orgapi: any;
 
   tckapi: any;
+
+  selectedatv:any;
 
   calendardata: any = [];
 
@@ -156,6 +160,69 @@ export class AtividadesComponent implements OnInit {
     )
   }
 
+  UpdateAtiv(){
+    this.crudService.updateatv(this.atv).subscribe(
+      data => {
+        this.getterActivity();
+        swal({
+          icon: "success",
+          text: "Atividade atualizada com sucesso!",
+          timer: 1000,
+          buttons: {
+            buttons: false
+          }
+        });
+      },
+      error => {
+
+      }
+    )
+  }
+
+  getActivity(id){
+    this.crudService.getAtividades(id).subscribe(
+      data => {
+        this.selectedatv = data;
+        console.log('atividadeselecionada ', this.selectedatv);
+
+        // swal({
+        //   icon: "success",
+        //   text: "Atividade atualizada com sucesso!",
+        //   timer: 1000,
+        //   buttons: {
+        //     buttons: false
+        //   }
+        // });
+      },
+      error => {
+
+      }
+    )
+  }
+
+  updatefalse(){
+    this.conf.update = false;
+  }
+
+  editAtv(item){
+    this.conf.update = true
+    this.getActivity(item.position);
+    // while (this.getterActivity) {
+    //   try {
+    //     this.atv = {position: this.selectedatv.id, dataini: this.selectedatv.dataini, horaini: this.selectedatv.horaini, datafim: this.selectedatv.datafim, horafim: this.selectedatv.horafim, tipo: this.selectedatv.tipo, cliente: this.selectedatv.cliente, org: this.selectedatv.org, ticket: this.selectedatv.ticket, assunto: this.selectedatv.assunto}
+    //   } catch (error) {
+
+
+    //   }
+    }
+
+
+
+    console.log(this.atv);
+
+
+  }
+
   getColor(dataini) {
     //DATA ATUAL
     var year = this.dNow.getFullYear();
@@ -166,8 +233,8 @@ export class AtividadesComponent implements OnInit {
     var month1 = dataini.substring(5,7);
     var day1 = dataini.substring(8,10);
 
-    if(year > year1 || 
-      (year == year1 && month > month1) || 
+    if(year > year1 ||
+      (year == year1 && month > month1) ||
       (year == year1 && month == month1 && day > day1) ) {
       return 'rgb(255, 232, 228)';
     }
@@ -385,7 +452,7 @@ export class AtividadesComponent implements OnInit {
   }
 
   filterTomorrow(){
-    
+
     var day = (this.dNow.getDate() + 1);
     if(day < 9){
       this.dataSource.filter = this.tomorrow.trim().toLowerCase();
