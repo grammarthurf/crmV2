@@ -70,10 +70,7 @@ export class AtividadesComponent implements OnInit {
 
   delact: any;
 
-  calendarEvents = [
-    { title: 'Teste', start: '2020-03-20', end: '2020-03-20' },
-
-  ];
+  calendarEvents = [];
 
   atv = {position: 0, dataini: '', horaini: '', datafim: '', horafim: '', tipo: '', cliente: '', org: '', ticket: '', assunto: '' };
 
@@ -255,16 +252,12 @@ export class AtividadesComponent implements OnInit {
         data.forEach(e => {
           var timeIni = e.horaini.substring(0,2) + ":" + e.horaini.substring(2,4)
           var timeEnd = e.horafim.substring(0,2) + ":" + e.horafim.substring(2,4)
-
           this.calendarEvents.push({
             title: e.tipo + ":  " + e.ticket.titulo,
             start: e.dataini + "T" + timeIni,
             end: e.datafim + "T" + timeEnd
           });
-
           console.log('EVENTO CALENDÁRIO: ',this.calendarEvents);
-
-
           try {
             if (e.cliente == null && e.org == null && e.ticket == null) {
               this.matdata.push({
@@ -488,11 +481,14 @@ export class AtividadesComponent implements OnInit {
           this.selection = new SelectionModel<Element>(true, []);
       }
     });
-
   }
 
-  goToLead(){
-    this.router.navigate([`/business/`]);
+  goToLead(id){
+    this.router.navigate([`/business-detail/${id}`]);
+  }
+
+  goToOrg(id){
+    this.router.navigate([`/organization-detail/${id}`]);
   }
 
   selectActivity(id: number) {
@@ -514,17 +510,6 @@ export class AtividadesComponent implements OnInit {
     }
   }
 
-  deleteItem() {
-    swal({
-      icon: "error",
-      text: "Atividade excluída com sucesso!",
-      timer: 1800,
-      buttons: {
-        buttons: false
-      }
-    });
-  }
-
   redirectToAdd(url): void {
     window.open(url, '_blank');
     window.focus();
@@ -535,5 +520,3 @@ export class AtividadesComponent implements OnInit {
     return result
   }
 }
-
-

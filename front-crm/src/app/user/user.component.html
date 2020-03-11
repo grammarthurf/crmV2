@@ -7,31 +7,37 @@
                 </div>
                 <div class="col-8">
                     <ul class="list-group list-group-flush" >
-                        <li class="list-group-item p"><b>Nome: </b>Brenda Aguiar</li>
-                        <li class="list-group-item p"><b>Email: </b>brenda.vedois@gmail.com</li>
-                        <li class="list-group-item p"><b>Ultimo acesso: </b>2 horas atrás</li>
-                        <li class="list-group-item p"><a href="user/1">Editar perfil</a></li>
-                        <li class="list-group-item p"><a href="user/1">Painel</a></li>
+                        <li class="list-group-item p">
+                            <b>Nome: </b>
+                            Brenda Aguiar
+                        </li>
+                        <li class="list-group-item p">
+                            <b>Email: </b>
+                            brenda.vedois@gmail.com
+                        </li>
+                        <li class="list-group-item p">
+                            <b>Ultimo acesso: </b>
+                            2 horas atrás
+                        </li>
+                        <li class="list-group-item p">
+                            <a href="user/1">Editar perfil</a>
+                        </li>
+                        <li class="list-group-item p">
+                            <a href="user/1">Painel</a>
+                        </li>
                       </ul>
                 </div>
             </div>
         </div>
         <div class="col-12 real-div" style="margin-top: 20px; text-align: center;">
-
             <label class="periodoLabel">Selecionar Período: </label> <br>
-
             <label class="lblFilter">Início: </label>
             <input [(ngModel)]="filter.inicio" type="date" class="form-control">
-
             <br>
-
             <label class="lblFilter">Fim: </label>
             <input [(ngModel)]="filter.fim" type="date" class="form-control">
-
             <br>
-            
             <button (click)="Filtrar()" class="btn btn-primary"> Filtrar </button>
-
         </div>
         
     </div>
@@ -40,16 +46,39 @@
             <mat-tab-group mat-stretch-tabs>
                 <mat-tab label="Atualizações">
                     <div class="col-12">
-                        <a (click)="Filtrar1()" *ngIf="fltr" style="color: #007bff; cursor: pointer; width: 100%; margin-left: 85%;"> Mostrar todos </a>
+                        <a (click)="Filtrar1()" 
+                            *ngIf="fltr" 
+                            style=" color: #007bff; 
+                                    cursor: pointer; 
+                                    width: 100%; 
+                                    margin-left: 85%;"> 
+                            Mostrar todos 
+                        </a>
                         <ul class="list-group list-group-flush" *ngFor="let ticket of negociosapi">
-                            <li class="list-group-item p" *ngIf="(InitList || dataCheck(ticket.obs[ticket.obs.length-1].data))" >
+                            <li class="list-group-item p" 
+                                *ngIf="(InitList || dataCheck(ticket.obs[ticket.obs.length-1].data))" >
                                 <img src="../../assets/profile.jpg" class="img2" >
-                                <b *ngIf="(ticket.created && ticket.obs.length > 1)">Atualizou a observação de um negócio: </b>
-                                <b *ngIf="(ticket.created && ticket.obs.length == 1)">Adicionou um negócio: </b>
-                                <a *ngIf="(ticket.created && ticket.obs.length > 1)" href="/business-detail/{{ticket.id}}">{{ticket.titulo}} </a>
-                                <a *ngIf="(ticket.created && ticket.obs.length == 1)" href="/business-detail/{{ticket.id}}">{{ticket.titulo}} </a>
-                                <label *ngIf="(ticket.created && ticket.obs.length > 1)" class="p1">({{ticket.obs[ticket.obs.length-1].data | date:'dd/MM/yyyy hh:mm'}})</label>
-                                <label *ngIf="(ticket.created && ticket.obs.length == 1)" class="p1">({{ticket.created.datetime | date: 'dd/MM/yyyy hh:mm'}})</label>
+                                <b *ngIf="(ticket.created && ticket.obs.length > 1)">
+                                    Atualizou a observação de um negócio: 
+                                </b>
+                                <b *ngIf="(ticket.created && ticket.obs.length == 1)">
+                                    Adicionou um negócio: 
+                                </b>
+                                <a *ngIf="(ticket.created && ticket.obs.length > 1)" 
+                                    href="/business-detail/{{ticket.id}}">{{ticket.titulo}} 
+                                </a>
+                                <a *ngIf="(ticket.created && ticket.obs.length == 1)" 
+                                    href="/business-detail/{{ticket.id}}">
+                                    {{ticket.titulo}} 
+                                </a>
+                                <label *ngIf="(ticket.created && ticket.obs.length > 1)" 
+                                        class="p1">
+                                    ({{ticket.obs[ticket.obs.length-1].data | date:'dd/MM/yyyy hh:mm'}})
+                                </label>
+                                <label *ngIf="(ticket.created && ticket.obs.length == 1)" 
+                                        class="p1">
+                                    ({{ticket.created.datetime | date: 'dd/MM/yyyy hh:mm'}})
+                                </label>
                                 <mat-icon style="float: right;"> work_outline </mat-icon>
                             </li>
                         </ul>
@@ -58,15 +87,41 @@
                 <mat-tab label="Atividades">
                     <div class="col-12">
                         <ul class="list-group list-group-flush" *ngFor="let atividade of atvapi">
-                            <li class="list-group-item p" *ngIf="(InitList   || dataCheck(atividade.dataini ) || dataCheck(atividade.datafim) )">
-                                <mat-icon *ngIf="(atividade.tipo == 'TAREFA' || atividade.tipo == 'Tarefa' )"> watch_later </mat-icon>
-                                <mat-icon *ngIf="(atividade.tipo == 'LIGAR'  || atividade.tipo == 'LIGACAO' || atividade.tipo == 'Ligação')"> phone </mat-icon>
-                                <mat-icon *ngIf="(atividade.tipo == 'REUNIAO'|| atividade.tipo == 'Reunião' )"> people </mat-icon>
-                                <mat-icon *ngIf="(atividade.tipo == 'VISITA' || atividade.tipo == 'Visita' )"> business </mat-icon>
-                                <mat-icon *ngIf="(atividade.tipo == 'EMAIL'  || atividade.tipo == 'Email' )"> email </mat-icon>
+                            <li class="list-group-item p" 
+                                *ngIf="(InitList   
+                                       || dataCheck(atividade.dataini ) 
+                                       || dataCheck(atividade.datafim) )">
+                                <mat-icon *ngIf="(atividade.tipo == 'TAREFA' 
+                                                 || atividade.tipo == 'Tarefa' )"> 
+                                    watch_later 
+                                </mat-icon>
+                                <mat-icon *ngIf="(atividade.tipo == 'LIGAR'  
+                                                 || atividade.tipo == 'LIGAÇÃO' 
+                                                 || atividade.tipo == 'Ligação')">
+                                    phone 
+                                </mat-icon>
+                                <mat-icon *ngIf="(atividade.tipo == 'REUNIÃO'
+                                                 || atividade.tipo == 'Reunião' )"> 
+                                    people 
+                                </mat-icon>
+                                <mat-icon *ngIf="(atividade.tipo == 'VISITA' 
+                                                 || atividade.tipo == 'Visita' )"> 
+                                    business 
+                                </mat-icon>
+                                <mat-icon *ngIf="(atividade.tipo == 'EMAIL'  
+                                                 || atividade.tipo == 'Email' )"> 
+                                    email 
+                                </mat-icon>
                                 <b>{{atividade.assunto}}:</b>
-                                <a href="/business-detail/{{atividade.ticket.id}}"> {{atividade.tipo}}  </a>
-                                <label *ngIf="(atividade.dataini && atividade.datafim)" class="p1"> ({{atividade.dataini | date: 'dd/MM/yyyy'}} {{atividade.horaini | mask: '00:00'}} - {{atividade.horafim | mask: '00:00'}} {{atividade.datafim | date: 'dd/MM/yyyy'}}) </label>
+                                <a href="/business-detail/{{atividade.ticket.id}}"> 
+                                    {{atividade.tipo}}  
+                                </a>
+                                <label *ngIf="(atividade.dataini && atividade.datafim)" class="p1"> 
+                                    ({{atividade.dataini | date: 'dd/MM/yyyy'}} 
+                                    {{atividade.horaini | mask: '00:00'}} - 
+                                    {{atividade.horafim | mask: '00:00'}} 
+                                    {{atividade.datafim | date: 'dd/MM/yyyy'}}) 
+                                </label>
                             </li>
                         </ul>
                     </div>
