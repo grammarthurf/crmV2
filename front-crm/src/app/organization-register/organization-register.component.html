@@ -46,7 +46,7 @@
         <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
       </button>
       <select [(ngModel)]="org.ramo" class="custom-select">
-        <option *ngFor="let item of ramosapi" value="{{item.id}}">{{item.desc}}</option>
+        <option *ngFor="let item of ramosapi" value="{{item.id}}" selected="selected">{{item.desc}}</option>
       </select>
     </div>
   </div>
