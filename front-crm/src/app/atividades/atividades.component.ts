@@ -70,11 +70,13 @@ export class AtividadesComponent implements OnInit {
 
   delact: any;
 
+  tckapi1: any;
+
   calendarEvents = [];
 
   atv = {position: 0, dataini: '', horaini: '', datafim: '', horafim: '', tipo: '', cliente: '', org: '', ticket: '', assunto: '' };
 
-  displayedColumns: string[] = ['select', 'tipo', 'data', 'cliente', 'org',
+  displayedColumns: string[] = ['select', 'tipo', 'data', 'org',
     'ticket', 'assunto', 'columnEdit', 'columnDelete'];
 
   dataSource: any;
@@ -98,32 +100,34 @@ export class AtividadesComponent implements OnInit {
     console.log(this.calendarEvents)
   }
   //FILTRAR SELECT DOS CONTATOS DE ACORDO COM O SELECIONADO EM EMPRESAS
-  getterCliOrg(id) {
-    // console.log(id)
-    this.crudService.getOrg(id).subscribe(
+  // getterCliOrg() {
+  //   var id = this.tckapi1;
+  //   console.log(id)
+  //   this.crudService.getOrg(id).subscribe(
+  //     data => {
+  //       this.orgapi = [data.contatos];
+  //       console.log(this.orgapi);
+  //     },
+  //     error => {
+  //       this.erroAtividade = error;
+  //     }
+  //   );
+  // }
+
+  //FILTRAR SELECT DAS EMPRESAS DE ACORDO COM O SELECIONADO EM NEGÓCIOS
+  getterOrgTick(id) {
+    console.log(id)
+    this.crudService.getTicket(id).subscribe(
       data => {
-        this.orgapi = data;
-        console.log(data);
+        this.tckapi = [data.org];
+        this.tckapi1 = data.org.id
+        console.log(this.tckapi);
       },
       error => {
         this.erroAtividade = error;
       }
     );
   }
-
-  //FILTRAR SELECT DAS EMPRESAS DE ACORDO COM O SELECIONADO EM NEGÓCIOS
-    // getterOrgTick(id) {
-    //  console.log(id)
-    //  this.crudService.getTicket(id).subscribe(
-    //    data => {
-    //      this.tckapi = data;
-    //      console.log(data);
-    //    },
-    //    error => {
-    //      this.erroAtividade = error;
-    //    }
-    //  );
-    // }
 
   gotocalendar(){
     this.router.navigate([]).then(result => { window.open('/calendar/', '_blank'); });
@@ -204,24 +208,25 @@ export class AtividadesComponent implements OnInit {
     this.conf.update = false;
   }
 
-  // editAtv(item){
-  //   this.conf.update = true
-  //   this.getActivity(item.position);
+  editAtv(item){
+    this.conf.update = true
+    this.getActivity(item.position);
   //   // while (this.getterActivity) {
-  //   //   try {
-  //   //     this.atv = {position: this.selectedatv.id, dataini: this.selectedatv.dataini, horaini: this.selectedatv.horaini, datafim: this.selectedatv.datafim, horafim: this.selectedatv.horafim, tipo: this.selectedatv.tipo, cliente: this.selectedatv.cliente, org: this.selectedatv.org, ticket: this.selectedatv.ticket, assunto: this.selectedatv.assunto}
-  //   //   } catch (error) {
-
-
-  //   //   }
+      try {
+        this.atv = {position: this.selectedatv.id, 
+                    dataini: this.selectedatv.dataini, 
+                    horaini: this.selectedatv.horaini, 
+                    datafim: this.selectedatv.datafim, 
+                    horafim: this.selectedatv.horafim, 
+                    tipo: this.selectedatv.tipo, 
+                    cliente: this.selectedatv.cliente, 
+                    org: this.selectedatv.org, 
+                    ticket: this.selectedatv.ticket, 
+                    assunto: this.selectedatv.assunto}
+      } catch (error) { }
   //   }
-
-
-
-  //   console.log(this.atv);
-
-
-  // }
+     console.log(this.atv);
+  }
 
   getColor(dataini) {
     //DATA ATUAL
@@ -383,7 +388,6 @@ export class AtividadesComponent implements OnInit {
   }
 
   save() {
-    console.log("save" + this.atv)
     if(this.atv.horafim == ""){
       console.log("horavazia")
       this.atv.horafim = this.atv.horaini;
@@ -395,6 +399,19 @@ export class AtividadesComponent implements OnInit {
       this.atv.datafim = this.atv.dataini;
       console.log("arrumado: " + this.atv.datafim)
     }
+
+    if(this.atv.org == ""){
+      console.log("orgvazio")
+      this.atv.org = this.tckapi[0];
+      console.log("arrumado: " + this.atv.org)
+    }
+
+    if(this.atv.cliente == ""){
+      console.log("clientevazio")
+      this.atv.cliente = this.tckapi[0].contatos;
+      console.log("arrumado: " + this.atv.cliente)
+    }
+    
     this.crudService.saveNewAtividade(this.atv).subscribe(
       data => {
         swal({
