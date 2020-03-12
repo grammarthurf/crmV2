@@ -204,24 +204,24 @@ export class AtividadesComponent implements OnInit {
     this.conf.update = false;
   }
 
-  editAtv(item){
-    this.conf.update = true
-    this.getActivity(item.position);
-    // while (this.getterActivity) {
-    //   try {
-    //     this.atv = {position: this.selectedatv.id, dataini: this.selectedatv.dataini, horaini: this.selectedatv.horaini, datafim: this.selectedatv.datafim, horafim: this.selectedatv.horafim, tipo: this.selectedatv.tipo, cliente: this.selectedatv.cliente, org: this.selectedatv.org, ticket: this.selectedatv.ticket, assunto: this.selectedatv.assunto}
-    //   } catch (error) {
+  // editAtv(item){
+  //   this.conf.update = true
+  //   this.getActivity(item.position);
+  //   // while (this.getterActivity) {
+  //   //   try {
+  //   //     this.atv = {position: this.selectedatv.id, dataini: this.selectedatv.dataini, horaini: this.selectedatv.horaini, datafim: this.selectedatv.datafim, horafim: this.selectedatv.horafim, tipo: this.selectedatv.tipo, cliente: this.selectedatv.cliente, org: this.selectedatv.org, ticket: this.selectedatv.ticket, assunto: this.selectedatv.assunto}
+  //   //   } catch (error) {
 
 
-    //   }
-    // }
+  //   //   }
+  //   }
 
 
 
-    console.log(this.atv);
+  //   console.log(this.atv);
 
 
-  }
+  // }
 
   getColor(dataini) {
     //DATA ATUAL

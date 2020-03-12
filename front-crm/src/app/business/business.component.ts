@@ -189,25 +189,18 @@ export class BusinessComponent implements OnInit {
   }
 
   Array(atv){
-
     var length = atv.length;
-
     var n = 0;
-
     if(length == 1){
-
       var r = this.dataCheck(atv[n].dataini);
       return r;
-
     } else if (length >= 2){
-
       var i;
       for (i=0; i<length; i++) {
         n++; 
         var dates = atv[n-1].dataini;
         var r = this.dataCheck(dates);
         console.log(r)
-
         if (r === false) {
           r = this.dataCheck(dates);
         } else if (r === true) {

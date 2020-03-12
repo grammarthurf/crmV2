@@ -174,7 +174,7 @@ input[type=range] {
   padding-left: 5px;
 }
 
-#red, #green, #orange {
+#red, #green, #orange, #grey {
   border-radius: 50%;
   width: 20px;
   height: 20px;
@@ -182,15 +182,19 @@ input[type=range] {
 }
 
 #red {
-  color: red;
+  color: rgb(255, 4, 4);
 }
 
 #green {
-  color: green;
+  color: rgba(0, 128, 0, 0.671);
 }
 
 #orange {
   color: orange;
+}
+
+#grey {
+  color: #0000005e;
 }
 
 .termometro {
