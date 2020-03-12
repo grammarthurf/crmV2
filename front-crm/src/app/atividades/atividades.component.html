@@ -52,12 +52,15 @@
               <div class="col-12 row" style="padding: 0px;">
                 <div class="col-6" style="margin-top: 8px;">
                   <label for="negocios">Negócio <label style="color: red; font-size: 20px;">*</label></label><!-- (change)="getterorg($event.target.value)" -->
-                  <select [(ngModel)]="atv.ticket" *ngIf="negociosapi" class="form-control"
-                    id="exampleFormControlSelect1">
+                  <select [(ngModel)]="atv.ticket" 
+                          *ngIf="negociosapi" 
+                          class="form-control"
+                          (change)="getterOrgTick($event.target.value)"
+                          id="exampleFormControlSelect1">
                     <option *ngFor="let ticket of negociosapi" value="{{ticket.id}}">
                       {{ticket.titulo}}
                     </option>
-                  </select>
+                  </select><!--  -->
                 </div>
                 <div class="col-6" style="padding: 0px; margin-top: 23px">
                   <label for="participantes">Vendedor(es)</label>
@@ -125,7 +128,7 @@
               <div class="col-12 row inputmargin">
                 <div class="col-6">
                   <label for="negocios" >Empresa <label style="color: red; font-size: 20px;">*</label></label>
-                  <select [(ngModel)]="atv.org"
+                   <!-- <select [(ngModel)]="atv.org"
                           (change)="getterCliOrg($event.target.value)"
                           *ngIf="orsgapi"
                           class="form-control"
@@ -133,27 +136,35 @@
                     <option *ngFor="let org of orsgapi" value="{{org.id}}">
                       {{org.razaosocial}}
                     </option>
-                  </select>
-                  <!-- <select [(ngModel)]="atv.org"
-                              (change)="getterCliOrg($event.target.value)"
-                              *ngIf="tckapi"
-                              class="form-control"
-                              id="exampleFormControlSelect1">
-                        <option *ngFor="let ticket of tckapi.org" value="{{ticket.id}}">
+                  </select> -->
+                 <select  [(ngModel)]="atv.org"
+                          *ngIf="tckapi"
+                          class="form-control"
+                          id="exampleFormControlSelect1"
+                          (click)="getterCliOrg()">
+                        <option *ngFor="let ticket of tckapi" value="">
                           {{ticket.razaosocial}}
                         </option>
-                      </select> -->
+                  </select>
                 </div>
                 <div class="col-6" style="padding: 0px;">
-                  <label for="participantes" > Contato <label style="color: red; font-size: 20px;">*</label></label>
+                  <label for="participantes"> Contato <label style="color: red; font-size: 20px;">*</label></label>
                   <select [(ngModel)]="atv.cliente"
+                          *ngIf="tckapi"
+                          class="form-control"
+                          id="exampleFormControlSelect1">
+                    <option *ngFor="let ticket of tckapi" value="">
+                      {{ticket.contatos[0].nome}}
+                    </option>
+                  </select>
+                  <!--<select [(ngModel)]="atv.cliente"
                           *ngIf="orgapi"
                           class="form-control"
                           id="exampleFormControlSelect1">
                     <option *ngFor="let orgs of orgapi.contatos" value="{{orgs.id}}">
                       {{orgs.nome}}
                     </option>
-                  </select>
+                  </select> -->
                 </div>
               </div>
             </div>
@@ -235,7 +246,7 @@
   </div>
 
   <table mat-table [dataSource]="dataSource " multiTemplateDataRows matSort class="mat-elevation-z8">
-    <!-- Checkbox Column -->
+    <!-- COLUNA FEITO: CHECKBOX -->
     <ng-container matColumnDef="select">
       <th mat-header-cell *matHeaderCellDef>
         Feito?
@@ -246,7 +257,7 @@
         </mat-checkbox>
       </td>
     </ng-container>
-    <!-- tipo Column -->
+    <!-- COLUNA TIPO -->
     <ng-container matColumnDef="tipo">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         Tipo
@@ -255,7 +266,7 @@
         {{element.tipo}}
       </td>
     </ng-container>
-    <!-- DataVenc Column -->
+    <!-- COLUNA DATA INICIAL  -->
     <ng-container matColumnDef="data">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         Data
@@ -264,7 +275,8 @@
         {{element.dataini | date:'dd/MM/yyyy'}}
       </td>
     </ng-container>
-    <!-- NomeContato Column -->
+
+    <!--  COLUNA CONTATO 
     <ng-container matColumnDef="cliente">
       <th mat-header-cell *matHeaderCellDef>
         Nome do Contato
@@ -272,8 +284,9 @@
       <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.dataini)">
         {{element.cliente.nome }}
       </td>
-    </ng-container>
-    <!-- Org Column -->
+    </ng-container> -->
+
+    <!-- COLUNA ORGANIZAÇÃO -->
     <ng-container matColumnDef="org">
       <th mat-header-cell *matHeaderCellDef>
         Organização
@@ -282,9 +295,8 @@
           [style.background-color]="getColor(element.dataini)">
         {{element.org.razaosocial}}
       </td>
-      <!--.razaosocial-->
     </ng-container>
-    <!-- Ticket Column -->
+    <!-- COLUNA TICKET -->
     <ng-container matColumnDef="ticket">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         Negócio
@@ -296,7 +308,7 @@
         {{element.ticket.titulo}}
       </td>
     </ng-container>
-    <!-- UserResp Column -->
+    <!-- COLUNA ASSUNTO -->
     <ng-container matColumnDef="assunto">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         Assunto
@@ -305,6 +317,7 @@
         {{element.assunto}}
       </td>
     </ng-container>
+    <!-- COLUNA EDITAR -->
     <ng-container matColumnDef="columnEdit">
       <th mat-header-cell *matHeaderCellDef>
         Editar
@@ -318,6 +331,7 @@
         </button>
       </td>
     </ng-container>
+    <!-- COLUNA EXCLUIR -->
     <ng-container matColumnDef="columnDelete">
       <th mat-header-cell *matHeaderCellDef>
         Excluir

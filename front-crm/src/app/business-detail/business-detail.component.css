@@ -37,7 +37,8 @@ mat-icon {
 }
 
 .b-b {
-	color: rgb(60, 152, 192);
+	color: #3c98c0;
+	text-align: start;
 }
 
 .b {
@@ -484,4 +485,4 @@ div.col-8.div-right div.col-10.bg-white.row div.row.col-12 h5 + p {
 	color: #ffffff;
 	font-size: 20px; 
 	margin-left: 5px;
-  }
+}

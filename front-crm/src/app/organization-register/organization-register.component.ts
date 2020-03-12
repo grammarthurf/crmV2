@@ -23,9 +23,10 @@ export class OrganizationRegisterComponent implements OnInit {
   disableCode: boolean = false;
   disableCode1: boolean = false;
   org = {
-     id: 0 , codigo: '', razaosocial: '', nomefantasia: '', ramo: '',
+    id: 0 , codigo: '', razaosocial: '', nomefantasia: '', ramo: '',
     cnpj: '', ie: '', rua: '', complemento: '', bairro: '', cep: '',
-    cidade: '', uf: '', telefone: '', erp: '', email: '', site: '', contatos: [], erpe: [], ramos: []
+    cidade: '', uf: '', telefone: '', erp: '', email: '', site: '', 
+    contatos: [], erpe: [], ramos: []
   };
 
   orgUpdate: any;
@@ -60,7 +61,6 @@ export class OrganizationRegisterComponent implements OnInit {
   loadOrg() {
     const id = this.route.snapshot.paramMap.get("id");
     console.log(id);
-
     this.getterOrg(id);
   }
 
@@ -68,8 +68,6 @@ export class OrganizationRegisterComponent implements OnInit {
     let index = this.org.contatos.indexOf(item)
     console.log(this.org.contatos.indexOf(item));
     this.org.contatos.splice(index, 1);
-
-
   }
 
   getterOrg(id) {
@@ -79,11 +77,29 @@ export class OrganizationRegisterComponent implements OnInit {
         console.log(' Organização pega' , this.orgUpdate);
 
         this.org = {
-           id: this.orgUpdate.id , codigo: this.orgUpdate.codigo, razaosocial: this.orgUpdate.razaosocial, nomefantasia: this.orgUpdate.nomefantasia, ramo: this.orgUpdate.ramo,
-          cnpj: this.orgUpdate.cnpj, ie: this.orgUpdate.ie, rua: this.orgUpdate.rua, complemento: this.orgUpdate.complemento, bairro: this.orgUpdate.bairro, cep: this.orgUpdate.cep,
-          cidade: this.orgUpdate.cidade, uf: this.orgUpdate.uf, telefone: this.orgUpdate.telefone, erp: this.orgUpdate.erp, email: this.orgUpdate.email,
-          site: this.orgUpdate.site, contatos: this.orgUpdate.contatos, erpe: this.orgUpdate.erpe, ramos: this.orgUpdate.ramo
+          id: this.orgUpdate.id, 
+          codigo: this.orgUpdate.codigo, 
+          razaosocial: this.orgUpdate.razaosocial, 
+          nomefantasia: this.orgUpdate.nomefantasia, 
+          ramo: this.orgUpdate.ramo,
+          cnpj: this.orgUpdate.cnpj, 
+          ie: this.orgUpdate.ie, 
+          rua: this.orgUpdate.rua, 
+          complemento: this.orgUpdate.complemento, 
+          bairro: this.orgUpdate.bairro, 
+          cep: this.orgUpdate.cep,
+          cidade: this.orgUpdate.cidade, 
+          uf: this.orgUpdate.uf, 
+          telefone: this.orgUpdate.telefone, 
+          erp: this.orgUpdate.erp, 
+          email: this.orgUpdate.email,
+          site: this.orgUpdate.site, 
+          contatos: this.orgUpdate.contatos, 
+          erpe: this.orgUpdate.erpe, 
+          ramos: this.orgUpdate.ramo
         };
+
+        console.log(this.org)
       },
       error => {
         // this.erroAtividade = error;
@@ -170,8 +186,14 @@ export class OrganizationRegisterComponent implements OnInit {
   addContato() {
 
     const contatovar = {
-      nome: this.contato.nome, email: this.contato.email, cargo: this.contato.cargo,
-      dep: this.contato.dep, birth: this.contato.birth, tel: this.contato.tel, skp: this.contato.skp, cel: this.contato.cel
+      nome: this.contato.nome, 
+      email: this.contato.email, 
+      cargo: this.contato.cargo,
+      dep: this.contato.dep, 
+      birth: this.contato.birth, 
+      tel: this.contato.tel, 
+      skp: this.contato.skp, 
+      cel: this.contato.cel
     }
 
     this.org.contatos.push(contatovar)
@@ -248,8 +270,14 @@ export class OrganizationRegisterComponent implements OnInit {
     if (this.contato.nome != "") {
 
       const contatovar = {
-        nome: this.contato.nome, email: this.contato.email, cargo: this.contato.cargo,
-        dep: this.contato.dep, birth: this.contato.birth, tel: this.contato.tel, skp: this.contato.skp, cel: this.contato.cel
+        nome: this.contato.nome, 
+        email: this.contato.email, 
+        cargo: this.contato.cargo,
+        dep: this.contato.dep, 
+        birth: this.contato.birth, 
+        tel: this.contato.tel, 
+        skp: this.contato.skp, 
+        cel: this.contato.cel
       }
 
       this.org.contatos.push(contatovar)
@@ -312,11 +340,10 @@ export class OrganizationRegisterComponent implements OnInit {
     }
   }
 
-
-  updateOrg(org) {
-    console.log(org);
-
-    this.crudService.UpdateOrgMain(org).subscribe(
+  updateOrg() {
+    // this.org.erpe.push(this.erp);
+    // this.org.ramos.push(this.ramo);
+    this.crudService.UpdateOrgMain(this.org).subscribe(
       data => {
         swal({
           icon: "success",
@@ -331,34 +358,30 @@ export class OrganizationRegisterComponent implements OnInit {
         console.error(error);
       }
     )
-   }
+  }
+  
   formatPhoneNumber(str) {
     //Filter only numbers from the input
     let cleaned = ('' + str).replace(/\D/g, '');
-
     //Check if the input is of correct length
     let match = cleaned.match(/^(\d{2})(\d{4})(\d{4})$/);
-
     if (match) {
       return '(' + match[1] + ') ' + match[2] + '-' + match[3]
     };
-
     return null
   }
+
   formatCellPhoneNumber(str) {
     //Filter only numbers from the input
     let cleaned = ('' + str).replace(/\D/g, '');
-
     //Check if the input is of correct length
     let match = cleaned.match(/^(\d{2})(\d{5})(\d{4})$/);
-
     if (match) {
       return '(' + match[1] + ') ' + match[2] + '-' + match[3]
     };
-
     return null
   }
-
+  
   // addFields() {
   //   var currentDiv = document.getElementById('duplicate');
   //   var clonedDiv = currentDiv.cloneNode(true);
