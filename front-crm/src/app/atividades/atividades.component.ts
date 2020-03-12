@@ -74,10 +74,19 @@ export class AtividadesComponent implements OnInit {
 
   calendarEvents = [];
 
-  atv = {position: 0, dataini: '', horaini: '', datafim: '', horafim: '', tipo: '', cliente: '', org: '', ticket: '', assunto: '' };
+  atv = { position: 0, 
+          dataini: '', 
+          horaini: '', 
+          datafim: '', 
+          horafim: '', 
+          tipo: '', 
+          cliente: '', 
+          org: '', 
+          ticket: '', 
+          assunto: '' 
+        };
 
-  displayedColumns: string[] = ['select', 'tipo', 'data', 'org',
-    'ticket', 'assunto', 'columnEdit', 'columnDelete'];
+  displayedColumns: string[] = ['select', 'tipo', 'data', 'org', 'ticket', 'assunto', 'columnEdit', 'columnDelete'];
 
   dataSource: any;
 
@@ -92,20 +101,19 @@ export class AtividadesComponent implements OnInit {
     this.getterTickets();
     this.getterActivity();
     this.calendarPlugins = [ listPlugin , bootstrapPlugin ];
-
   }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.matdata);
     console.log(this.calendarEvents)
   }
+
   //FILTRAR SELECT DOS CONTATOS DE ACORDO COM O SELECIONADO EM EMPRESAS
-  // getterCliOrg() {
-  //   var id = this.tckapi1;
+  // getterCliOrg(id) {
   //   console.log(id)
   //   this.crudService.getOrg(id).subscribe(
   //     data => {
-  //       this.orgapi = [data.contatos];
+  //       this.orgapi = data;
   //       console.log(this.orgapi);
   //     },
   //     error => {
@@ -178,7 +186,7 @@ export class AtividadesComponent implements OnInit {
         });
       },
       error => {
-
+        console.error(error);
       }
     )
   }
@@ -199,7 +207,7 @@ export class AtividadesComponent implements OnInit {
         // });
       },
       error => {
-
+        console.error(error);
       }
     )
   }
@@ -400,17 +408,17 @@ export class AtividadesComponent implements OnInit {
       console.log("arrumado: " + this.atv.datafim)
     }
 
-    if(this.atv.org == ""){
-      console.log("orgvazio")
-      this.atv.org = this.tckapi[0];
-      console.log("arrumado: " + this.atv.org)
-    }
+    // if(this.atv.org == ""){
+    //   console.log("orgvazio")
+    //   this.atv.org = this.tckapi[0];
+    //   console.log("arrumado: " + this.atv.org)
+    // }
 
-    if(this.atv.cliente == ""){
-      console.log("clientevazio")
-      this.atv.cliente = this.tckapi[0].contatos;
-      console.log("arrumado: " + this.atv.cliente)
-    }
+    // if(this.atv.cliente == ""){
+    //   console.log("clientevazio")
+    //   this.atv.cliente = this.tckapi[0].contatos[0];
+    //   console.log("arrumado: " + this.atv.cliente)
+    // }
     
     this.crudService.saveNewAtividade(this.atv).subscribe(
       data => {

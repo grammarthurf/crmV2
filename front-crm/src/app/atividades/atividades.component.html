@@ -60,7 +60,7 @@
                     <option *ngFor="let ticket of negociosapi" value="{{ticket.id}}">
                       {{ticket.titulo}}
                     </option>
-                  </select>
+                  </select><!--  -->
                 </div>
                 <div class="col-6" style="padding: 0px; margin-top: 23px">
                   <label for="participantes">Vendedor(es)</label>
@@ -137,11 +137,11 @@
                       {{org.razaosocial}}
                     </option>
                   </select> -->
-                 <select [(ngModel)]="atv.org"
-                              *ngIf="tckapi"
-                              class="form-control"
-                              id="exampleFormControlSelect1"
-                              (click)="getterCliOrg()">
+                 <select  [(ngModel)]="atv.org"
+                          *ngIf="tckapi"
+                          class="form-control"
+                          id="exampleFormControlSelect1"
+                          (click)="getterCliOrg()">
                         <option *ngFor="let ticket of tckapi" value="">
                           {{ticket.razaosocial}}
                         </option>
@@ -149,14 +149,15 @@
                 </div>
                 <div class="col-6" style="padding: 0px;">
                   <label for="participantes"> Contato <label style="color: red; font-size: 20px;">*</label></label>
-                  <select *ngIf="tckapi"
+                  <select [(ngModel)]="atv.cliente"
+                          *ngIf="tckapi"
                           class="form-control"
                           id="exampleFormControlSelect1">
                     <option *ngFor="let ticket of tckapi" value="">
                       {{ticket.contatos[0].nome}}
                     </option>
                   </select>
-                  <!-- <select [(ngModel)]="atv.cliente"
+                  <!--<select [(ngModel)]="atv.cliente"
                           *ngIf="orgapi"
                           class="form-control"
                           id="exampleFormControlSelect1">
@@ -245,7 +246,7 @@
   </div>
 
   <table mat-table [dataSource]="dataSource " multiTemplateDataRows matSort class="mat-elevation-z8">
-    <!-- Checkbox Column -->
+    <!-- COLUNA FEITO: CHECKBOX -->
     <ng-container matColumnDef="select">
       <th mat-header-cell *matHeaderCellDef>
         Feito?
@@ -256,7 +257,7 @@
         </mat-checkbox>
       </td>
     </ng-container>
-    <!-- tipo Column -->
+    <!-- COLUNA TIPO -->
     <ng-container matColumnDef="tipo">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         Tipo
@@ -265,7 +266,7 @@
         {{element.tipo}}
       </td>
     </ng-container>
-    <!-- DataVenc Column -->
+    <!-- COLUNA DATA INICIAL  -->
     <ng-container matColumnDef="data">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         Data
@@ -274,8 +275,9 @@
         {{element.dataini | date:'dd/MM/yyyy'}}
       </td>
     </ng-container>
-    <!-- NomeContato Column -->
-    <!-- <ng-container matColumnDef="cliente">
+
+    <!--  COLUNA CONTATO 
+    <ng-container matColumnDef="cliente">
       <th mat-header-cell *matHeaderCellDef>
         Nome do Contato
       </th>
@@ -283,7 +285,8 @@
         {{element.cliente.nome }}
       </td>
     </ng-container> -->
-    <!-- Org Column -->
+
+    <!-- COLUNA ORGANIZAÇÃO -->
     <ng-container matColumnDef="org">
       <th mat-header-cell *matHeaderCellDef>
         Organização
@@ -292,9 +295,8 @@
           [style.background-color]="getColor(element.dataini)">
         {{element.org.razaosocial}}
       </td>
-      <!--.razaosocial-->
     </ng-container>
-    <!-- Ticket Column -->
+    <!-- COLUNA TICKET -->
     <ng-container matColumnDef="ticket">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         Negócio
@@ -306,7 +308,7 @@
         {{element.ticket.titulo}}
       </td>
     </ng-container>
-    <!-- UserResp Column -->
+    <!-- COLUNA ASSUNTO -->
     <ng-container matColumnDef="assunto">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         Assunto
@@ -315,6 +317,7 @@
         {{element.assunto}}
       </td>
     </ng-container>
+    <!-- COLUNA EDITAR -->
     <ng-container matColumnDef="columnEdit">
       <th mat-header-cell *matHeaderCellDef>
         Editar
@@ -328,6 +331,7 @@
         </button>
       </td>
     </ng-container>
+    <!-- COLUNA EXCLUIR -->
     <ng-container matColumnDef="columnDelete">
       <th mat-header-cell *matHeaderCellDef>
         Excluir

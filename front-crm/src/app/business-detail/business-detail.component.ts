@@ -166,7 +166,6 @@ export class BusinessDetailComponent implements OnInit {
 
   changeid(idd: number) {
     if (idd == 1) {
-
       this.business.estagio.id = 1;
       this.updatedTicket(this.business.estagio.id , this.business)
     } else if (idd == 2) {
@@ -206,7 +205,6 @@ export class BusinessDetailComponent implements OnInit {
     btnWin.style.outline = 'none';
     if (this.business.status != 'Ganhou') {
       this.business.status = 'Ganhou';
-      this.updatedTicketStatus(this.business);
       this.business.estagio.id = 8;
       this.updatedTicket(this.business.estagio.id , this.business)
     }
