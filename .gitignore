@@ -1,2 +1,2 @@
-back-crm/venv/*
-back-crm/db.sqlite3
+venv
+*.sqlite3
