@@ -140,6 +140,17 @@ export class ErpComponent implements OnInit {
     )
   }
 
+  maiuscula(value: string, id:number){
+    var v = value.toUpperCase();
+
+    if(id == 1){
+      this.erp.empresa = v
+    } else if(id == 2) {
+      this.erp.desc = v
+    }
+    console.log(v)
+  }
+
   ngOnInit() {
   }
 

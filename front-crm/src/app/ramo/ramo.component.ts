@@ -111,6 +111,11 @@ export class RamoComponent implements OnInit {
     )
   }
 
+  maiuscula(value: string){
+    var v = value.toUpperCase();
+    this.ramo.desc = v;
+  }
+
   ngOnInit() {
   }
 

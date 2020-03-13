@@ -55,6 +55,8 @@ export class BusinessComponent implements OnInit {
 
   selectedTicket: any;
 
+  values = '';
+
   ticket = { titulo: "", estagio: '', cliente: '', org: '', produto: '', valorestimado: 0, termometro: '', vendedor: '', obs: '' };
 
   today = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-0' + this.dNow.getDate();
@@ -178,7 +180,6 @@ export class BusinessComponent implements OnInit {
     var month1 = dataini.substring(5,7);
     var day1 = dataini.substring(8,10);
 
-
     if(year > year1 || 
       (year == year1 && month > month1) || 
       (year == year1 && month == month1 && day > day1) ){
@@ -200,7 +201,6 @@ export class BusinessComponent implements OnInit {
         n++; 
         var dates = atv[n-1].dataini;
         var r = this.dataCheck(dates);
-        console.log(r)
         if (r === false) {
           r = this.dataCheck(dates);
         } else if (r === true) {
@@ -272,6 +272,21 @@ export class BusinessComponent implements OnInit {
   setSpeed(speed: number) {
     this.animationSpeed = speed;
     this.anim.setSpeed(speed);
+  }
+
+  maiuscula(value: string, id:number){
+    var v = value.toUpperCase();
+
+    if(id == 2){
+      this.ticket.obs = v;
+    } else if(id == 1) {
+      this.ticket.titulo = v;
+    } else if(id == 3) {
+      this.produto.nome = v;
+    } else if (id==4) {
+      this.vendedorExt.nome = v;
+    }
+    console.log(v)
   }
 
   updatedTicket(id, ticket) {

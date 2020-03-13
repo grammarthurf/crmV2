@@ -104,7 +104,7 @@
               </div>
               <div class="col-12 row" style="margin-top: 20px; padding: 0px 0px 0px 15px;">
                 <label for="obs">Assunto <label style="color: red; font-size: 20px;">*</label></label>
-                <textarea [(ngModel)]="atv.assunto" name="obs" id="obs" cols="50" rows="3" class="form-control">
+                <textarea [(ngModel)]="atv.assunto" name="obs" id="obs" cols="50" rows="3" class="form-control" (keyup)="maiuscula($event.target.value)">
                 </textarea>
               </div>
               <div class="col-12 row inputmargin">
@@ -128,21 +128,11 @@
               <div class="col-12 row inputmargin">
                 <div class="col-6">
                   <label for="negocios" >Empresa <label style="color: red; font-size: 20px;">*</label></label>
-                   <!-- <select [(ngModel)]="atv.org"
-                          (change)="getterCliOrg($event.target.value)"
-                          *ngIf="orsgapi"
-                          class="form-control"
-                          id="exampleFormControlSelect1">
-                    <option *ngFor="let org of orsgapi" value="{{org.id}}">
-                      {{org.razaosocial}}
-                    </option>
-                  </select> -->
                  <select  [(ngModel)]="atv.org"
                           *ngIf="tckapi"
                           class="form-control"
-                          id="exampleFormControlSelect1"
-                          (click)="getterCliOrg()">
-                        <option *ngFor="let ticket of tckapi" value="">
+                          id="exampleFormControlSelect1">
+                        <option *ngFor="let ticket of tckapi" value="{{ticket.id}}">
                           {{ticket.razaosocial}}
                         </option>
                   </select>
@@ -153,18 +143,10 @@
                           *ngIf="tckapi"
                           class="form-control"
                           id="exampleFormControlSelect1">
-                    <option *ngFor="let ticket of tckapi" value="">
+                    <option *ngFor="let ticket of tckapi" value="{{ticket.contatos[0].id}}">
                       {{ticket.contatos[0].nome}}
                     </option>
                   </select>
-                  <!--<select [(ngModel)]="atv.cliente"
-                          *ngIf="orgapi"
-                          class="form-control"
-                          id="exampleFormControlSelect1">
-                    <option *ngFor="let orgs of orgapi.contatos" value="{{orgs.id}}">
-                      {{orgs.nome}}
-                    </option>
-                  </select> -->
                 </div>
               </div>
             </div>

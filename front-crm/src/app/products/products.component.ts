@@ -98,6 +98,11 @@ export class ProductsComponent implements OnInit {
     );
   }
 
+  maiuscula(value: string){
+    var v = value.toUpperCase();
+    this.produto.nome = v;
+  }
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }

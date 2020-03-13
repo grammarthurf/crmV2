@@ -182,11 +182,11 @@ input[type=range] {
 }
 
 #red {
-  color: rgb(255, 4, 4);
+  color: #e23a3a;
 }
 
 #green {
-  color: rgba(0, 128, 0, 0.671);
+  color: #4da84d;
 }
 
 #orange {
