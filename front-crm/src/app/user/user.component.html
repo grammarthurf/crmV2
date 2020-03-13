@@ -73,7 +73,7 @@
                                 </a>
                                 <label *ngIf="(ticket.created && ticket.obs.length > 1)" 
                                         class="p1">
-                                    ({{ticket.obs[ticket.obs.length-1].data | date:'dd/MM/yyyy hh:mm'}})
+                                    ({{ticket.obs[ticket.obs.length-1].data | date:'dd/MM/yyyy'}})
                                 </label>
                                 <label *ngIf="(ticket.created && ticket.obs.length == 1)" 
                                         class="p1">

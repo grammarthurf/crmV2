@@ -177,7 +177,7 @@
         <h2 class="font-26 bold">
           {{business.titulo}}
         </h2>
-        <mat-icon (click)="EditTitleLead" style="cursor: pointer; margin-left: 5px;">create</mat-icon>
+        <mat-icon (click)="Print()"  style="cursor: pointer; margin-left: 15px;">local_printshop</mat-icon>
       </div>
       <div class="flex" style="padding: 0;">
         <img src="../../assets/moeda.png" class="img1" />
@@ -186,11 +186,11 @@
         </p>
         <img src="../../assets/contato.png" class="img1" />
         <p>
-          {{business.cliente.nome}}
+          {{clientName}}
         </p>
         <img src="../../assets/empresa.png" class="img1" />
         <p>
-          {{business.org.razaosocial}}
+          {{business.org.nomefantasia}}
         </p>
         <img src="../../assets/termometro.png" class="img1" />
         <p>Termômetro:</p>
@@ -198,9 +198,9 @@
           <input [(ngModel)]="idobs.term" (change)="updateTicketTerm()" type="range" id="thermometro"
             value="{{business.termometro}}" step="50" style="width: 150px;"/>
           <div class=" row">
-            <p class="ptherm"> Ruim </p>
-            <p class="ptherm2"> Bom </p>
-            <p class="ptherm"> Ótimo </p>
+            <p class="ptherm" > Ruim  </p>
+            <p class="ptherm2"> Bom   </p>
+            <p class="ptherm" > Ótimo </p>
           </div>
         </div>
       </div>
@@ -244,7 +244,7 @@
         <div class="md-step-circle ">
           <mat-icon> done </mat-icon>
         </div>
-        <div class="md-step-title"> Prospecção</div>
+        <div class="md-step-title"   >Prospecção</div>
         <div class="md-step-optional">10/02/2020</div>
         <div class="md-step-bar-right"></div>
       </div>
@@ -255,7 +255,7 @@
         <div class="md-step-circle ">
           <mat-icon> priority_high </mat-icon>
         </div>
-        <div class="md-step-title"> Prospecção </div>
+        <div class="md-step-title"   >Prospecção </div>
         <div class="md-step-optional">Em processo </div>
         <div class="md-step-bar-right"></div>
       </div>
@@ -265,7 +265,7 @@
             id="1">
         <!-- business.estagio.id != 1 &&  -->
         <div class="md-step-circle"></div>
-        <div class="md-step-title">Prospecção</div>
+        <div class="md-step-title" >Prospecção</div>
         <div class="md-step-bar-right"></div>
       </div>
 
@@ -277,9 +277,9 @@
         <div class="md-step-circle ">
           <mat-icon> done </mat-icon>
         </div>
-        <div class="md-step-title"> Contatado </div>
+        <div class="md-step-title"   >Contatado </div>
         <div class="md-step-optional">10/02/2020</div>
-        <div class="md-step-bar-left"> </div>
+        <div class="md-step-bar-left" ></div>
         <div class="md-step-bar-right"></div>
       </div>
       <div  class="md-step process" 
@@ -289,8 +289,8 @@
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
         </div>
-        <div class="md-step-title"> Contatado </div>
-        <div class="md-step-optional">Em processo </div>
+        <div class="md-step-title"   >Contatado  </div>
+        <div class="md-step-optional">Em processo</div>
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
@@ -301,7 +301,7 @@
         <div class="md-step-circle"></div>
         <div class="md-step-title">Contatado</div>
 
-        <div class="md-step-bar-left"> </div>
+        <div class="md-step-bar-left" ></div>
         <div class="md-step-bar-right"></div>
       </div>
 
@@ -312,10 +312,10 @@
         <div class="md-step-circle ">
           <mat-icon> priority_high </mat-icon>
         </div>
-        <div class="md-step-title"> Cliente Potencial </div>
-        <div class="md-step-optional">Em processo </div>
-        <div class="md-step-bar-left"> </div>
-        <div class="md-step-bar-right"> </div>
+        <div class="md-step-title"   >Cliente Potencial</div>
+        <div class="md-step-optional">Em processo      </div>
+        <div class="md-step-bar-left" ></div>
+        <div class="md-step-bar-right"></div>
       </div>
       <div  class="md-step" 
             *ngIf="(business.estagio.id < 3)" 
@@ -326,8 +326,8 @@
         </div>
         <div class="md-step-title">Cliente Potencial</div>
 
-        <div class="md-step-bar-left"> </div>
-        <div class="md-step-bar-right"> </div>
+        <div class="md-step-bar-left" ></div>
+        <div class="md-step-bar-right"></div>
       </div>
       <div  class="md-step active" 
             *ngIf="(business.estagio.id > 3)" 
@@ -636,12 +636,8 @@
                       class="file_selector" 
                       multiple="multiple" 
                       onchange="addInputFiles(this);" 
-                      data-max-file-size="5242880" 
-                      data-max-file-size-message="Este arquivo não pode ser enviado
-                                                porque excede o tamanho máximo permitido (5 MB)" 
-                      data-max-concurrent-uploads="2" 
-                      data-upload-path="/uploads.js"/>(Tamanho máximo: 5MB)
-                
+                      />
+                <!-- data-upload-path="/uploads.js" -->
               <mat-list>
                 <h3 mat-subheader>Pastas</h3>
                 <mat-list-item>
@@ -671,6 +667,42 @@
           </mat-tab>
         </mat-tab-group>
       </div>
+    </div>
+  </div>
+</div>
+
+<div id="printThis">
+  <div id="MyModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+
+    <div class="modal-dialog modal-lg">
+
+      <!-- Modal Content: begins -->
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="gridSystemModalLabel">Your Headings</h4>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <div class="body-message">
+            <h4>Any Heading</h4>
+            <p>And a paragraph with a full sentence or something else...</p>
+          </div>
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        </div>
+
+      </div>
+      <!-- Modal Content: ends -->
+
     </div>
   </div>
 </div>

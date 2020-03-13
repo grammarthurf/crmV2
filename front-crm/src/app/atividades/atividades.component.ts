@@ -108,27 +108,12 @@ export class AtividadesComponent implements OnInit {
     console.log(this.calendarEvents)
   }
 
-  //FILTRAR SELECT DOS CONTATOS DE ACORDO COM O SELECIONADO EM EMPRESAS
-  // getterCliOrg(id) {
-  //   console.log(id)
-  //   this.crudService.getOrg(id).subscribe(
-  //     data => {
-  //       this.orgapi = data;
-  //       console.log(this.orgapi);
-  //     },
-  //     error => {
-  //       this.erroAtividade = error;
-  //     }
-  //   );
-  // }
-
   //FILTRAR SELECT DAS EMPRESAS DE ACORDO COM O SELECIONADO EM NEGÓCIOS
   getterOrgTick(id) {
     console.log(id)
     this.crudService.getTicket(id).subscribe(
       data => {
         this.tckapi = [data.org];
-        this.tckapi1 = data.org.id
         console.log(this.tckapi);
       },
       error => {
@@ -422,18 +407,6 @@ export class AtividadesComponent implements OnInit {
       console.log("arrumado: " + this.atv.datafim)
     }
 
-    // if(this.atv.org == ""){
-    //   console.log("orgvazio")
-    //   this.atv.org = this.tckapi[0];
-    //   console.log("arrumado: " + this.atv.org)
-    // }
-
-    // if(this.atv.cliente == ""){
-    //   console.log("clientevazio")
-    //   this.atv.cliente = this.tckapi[0].contatos[0];
-    //   console.log("arrumado: " + this.atv.cliente)
-    // }
-
     this.crudService.saveNewAtividade(this.atv).subscribe(
       data => {
         swal({
@@ -451,6 +424,12 @@ export class AtividadesComponent implements OnInit {
         console.error(error);
       },
     );
+  }
+
+  maiuscula(value: string){
+    var v = value.toUpperCase();
+    this.atv.assunto = v
+    console.log(v)
   }
 
   applyFilter(value: string) {
