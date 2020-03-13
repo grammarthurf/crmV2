@@ -28,6 +28,9 @@ export class RamoComponent implements OnInit {
 
   displayedColumns: string[] = ['nome', 'columnEdit', 'columnDelete'];
 
+  conf: any = { update: false};
+  selectedramo: any;
+
   data = Object.assign(ramos);
   dataSource = new MatTableDataSource<Element>(this.data);
 
@@ -113,6 +116,30 @@ export class RamoComponent implements OnInit {
         });
       }
     )
+  }
+
+  getterRamos(id) {
+    this.crudService.getRamos(id).subscribe(
+      data => {
+        this.selectedramo = data;
+        this.ramo.id=this.selectedramo.id;
+        this.ramo.desc= this.selectedramo.desc;
+      },
+      error => {
+        console.error(error);
+      }
+    )
+  }
+  
+
+  updatefalse(){
+    this.conf.update = false;
+  }
+
+  editRamo(item){
+    this.conf.update = true
+    this.getterRamos(item.id);
+    console.log(item.id)
   }
 
   maiuscula(value: string){

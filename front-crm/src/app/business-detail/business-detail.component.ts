@@ -337,8 +337,6 @@ export class BusinessDetailComponent implements OnInit {
             + this.business.produto[0].nome + 
           "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Última Observação:  " 
             + this.business.obs[0].texto + " (" + this.business.obs[0].data + ")" +
-          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Última Atividade: " 
-            + this.business.atividades[0].assunto + " (" + this.business.atividades[0].dataini + ")" +
           "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Criado em:  " 
             + this.business.created.datetime +
           "</li>" +

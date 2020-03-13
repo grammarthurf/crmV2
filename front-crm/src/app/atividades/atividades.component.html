@@ -26,6 +26,9 @@
     <button type="button" class="btn btn-link" (click)="filterNextMonth()">
       Próximo mês
     </button>
+    <button type="button" class="btn btn-link" (click)="filterNextMonth()">
+      Feito
+    </button>
   </div>
 
   <!-- MODAL -->
@@ -53,7 +56,7 @@
                 <div class="col-6" style="margin-top: 8px;">
                   <label for="negocios">Negócio <label style="color: red; font-size: 20px;">*</label></label><!-- (change)="getterorg($event.target.value)" -->
                   <select [(ngModel)]="atv.ticket" 
-                          *ngIf="negociosapi" 
+                          *ngIf="negociosapi && !selectedatv" 
                           class="form-control"
                           (change)="getterOrgTick($event.target.value)"
                           id="exampleFormControlSelect1">
@@ -61,6 +64,19 @@
                       {{ticket.titulo}}
                     </option>
                   </select><!--  -->
+                  <select [(ngModel)]="atv.ticket" 
+                          *ngIf="selectedatv" 
+                          class="form-control"
+                          id="exampleFormControlSelect1"
+                          (change)="getterOrgTick($event.target.value)">
+                    <option disabled value="{{selectedatv.ticket.id}}">
+                      {{selectedatv.ticket.titulo}}
+                    </option>
+                    <option disabled></option>
+                    <option *ngFor="let ticket of negociosapi" value="{{ticket.id}}">
+                      {{ticket.titulo}}
+                    </option>
+                  </select>
                 </div>
                 <div class="col-6" style="padding: 0px; margin-top: 23px">
                   <label for="participantes">Vendedor(es)</label>
@@ -104,7 +120,13 @@
               </div>
               <div class="col-12 row" style="margin-top: 20px; padding: 0px 0px 0px 15px;">
                 <label for="obs">Assunto <label style="color: red; font-size: 20px;">*</label></label>
-                <textarea [(ngModel)]="atv.assunto" name="obs" id="obs" cols="50" rows="3" class="form-control" (keyup)="maiuscula($event.target.value)">
+                <textarea [(ngModel)]="atv.assunto" 
+                          name="obs" 
+                          id="obs" 
+                          cols="50" 
+                          rows="3" 
+                          class="form-control" 
+                          (keyup)="maiuscula($event.target.value)">
                 </textarea>
               </div>
               <div class="col-12 row inputmargin">
@@ -129,23 +151,71 @@
                 <div class="col-6">
                   <label for="negocios" >Empresa <label style="color: red; font-size: 20px;">*</label></label>
                  <select  [(ngModel)]="atv.org"
-                          *ngIf="tckapi"
+                          *ngIf="tckapi && !selectedatv"
                           class="form-control"
                           id="exampleFormControlSelect1">
                         <option *ngFor="let ticket of tckapi" value="{{ticket.id}}">
                           {{ticket.razaosocial}}
                         </option>
                   </select>
+                  <select  [(ngModel)]="atv.org"
+                          *ngIf="tckapi && selectedatv"
+                          class="form-control"
+                          id="exampleFormControlSelect1">
+                        <option disabled *ngFor="let ticket of tckapi" value="{{ticket.id}}">
+                          {{ticket.razaosocial}}
+                        </option>
+                        <option disabled></option>
+                        <option *ngFor="let ticket of tckapi" value="{{ticket.id}}">
+                          {{ticket.razaosocial}}
+                        </option>
+                  </select>
+                  <select  [(ngModel)]="atv.org"
+                          *ngIf="selectedatv && !tckapi"
+                          class="form-control"
+                          id="exampleFormControlSelect1">
+                        <option disabled value="{{selectedatv.org.id}}">
+                          {{selectedatv.org.razaosocial}}
+                        </option>
+                        <option disabled></option>
+                        <option *ngFor="let orgs of orsgapi" value="{{orgs.id}}">
+                          {{orgs.razaosocial}}
+                        </option>
+                  </select>
                 </div>
                 <div class="col-6" style="padding: 0px;">
                   <label for="participantes"> Contato <label style="color: red; font-size: 20px;">*</label></label>
                   <select [(ngModel)]="atv.cliente"
-                          *ngIf="tckapi"
+                          *ngIf="tckapi && !selectedatv"
                           class="form-control"
                           id="exampleFormControlSelect1">
                     <option *ngFor="let ticket of tckapi" value="{{ticket.contatos[0].id}}">
                       {{ticket.contatos[0].nome}}
                     </option>
+                  </select>
+                  <select  [(ngModel)]="atv.cliente"
+                          *ngIf="selectedatv && tckapi"
+                          class="form-control"
+                          id="exampleFormControlSelect1">
+                        <option disabled value="{{selectedatv.cliente.id}}">
+                          {{selectedatv.cliente.nome}}
+                        </option>
+                        <option disabled></option>
+                        <option *ngFor="let ticket of tckapi" value="{{ticket.contatos[0].id}}">
+                          {{ticket.contatos[0].nome}}
+                        </option>
+                  </select>
+                  <select  [(ngModel)]="atv.cliente"
+                          *ngIf="selectedatv && !tckapi"
+                          class="form-control"
+                          id="exampleFormControlSelect1">
+                        <option disabled value="{{selectedatv.cliente.id}}">
+                          {{selectedatv.cliente.nome}}
+                        </option>
+                        <option disabled></option>
+                        <option *ngFor="let clientes of clientesapi" value="{{clientes.id}}">
+                          {{clientes.nome}}
+                        </option>
                   </select>
                 </div>
               </div>
@@ -166,7 +236,7 @@
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
             Sair
           </button>
-          <button type="button" *ngIf="conf.update"  (click)="save()" class="btn btn-primary" data-dismiss="modal">
+          <button type="button" *ngIf="conf.update"  (click)="UpdateAtiv()" class="btn btn-primary" data-dismiss="modal">
             Atualizar Atividade
           </button>
           <button type="button" *ngIf="!conf.update"  (click)="save()" class="btn btn-primary" data-dismiss="modal">

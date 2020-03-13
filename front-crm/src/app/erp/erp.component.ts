@@ -24,9 +24,13 @@ export class ErpComponent implements OnInit {
 
   erpsapi:any;
   disableCode: boolean = false;
-  erp: any = { codigo: '', desc: '', empresa: ''};
+  erp: any = { position: 0, codigo: '', desc: '', empresa: ''};
 
   delERP: any;
+
+  selectederp: any;
+
+  conf: any = { update: false};
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
@@ -105,6 +109,53 @@ export class ErpComponent implements OnInit {
     );
   }
 
+ 
+
+  getterErpe(id) {
+    this.crudService.getErps(id).subscribe(
+      data => {
+        this.selectederp = data;
+        console.log('ERPselecionado: ', this.selectederp);
+
+        this.erp.position=this.selectederp.id;
+        this.erp.codigo= this.selectederp.codigo;
+        this.erp.desc=this.selectederp.desc; 
+        this.erp.empresa=this.selectederp.empresa; 
+      },
+      error => {
+        console.error(error);
+      }
+    )
+  }
+
+  updatefalse(){
+    this.conf.update = false;
+  }
+
+  editErp(item){
+    this.conf.update = true
+    this.getterErpe(item.id);
+  }
+
+  // UpdateErp(){
+  //   this.crudService.updateErp(this.erp).subscribe(
+  //     data => {
+  //       this.getterErp();
+  //       swal({
+  //         icon: "success",
+  //         text: "ERP atualizado com sucesso!",
+  //         timer: 1000,
+  //         buttons: {
+  //           buttons: false
+  //         }
+  //       });
+  //     },
+  //     error => {
+  //       console.error(error);
+  //     }
+  //   )
+  // }
+
   deleteItem(item) {
     this.delERP = item.id;
     console.log(this.delERP);
@@ -144,6 +195,8 @@ export class ErpComponent implements OnInit {
     )
   }
 
+
+
   maiuscula(value: string, id:number){
     var v = value.toUpperCase();
 
@@ -153,6 +206,7 @@ export class ErpComponent implements OnInit {
       this.erp.desc = v
     }
     console.log(v)
+
   }
 
   ngOnInit() {
