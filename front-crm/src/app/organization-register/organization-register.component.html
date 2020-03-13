@@ -37,13 +37,20 @@
       <label for="ie">IE</label>
       <input [(ngModel)]="org.ie" type="text" class="form-control">
     </div>
+    <!-- <mat-form-field class="col-md-4">
+      <mat-label>{{orgUpdate.ramo.desc}}</mat-label>
+      <mat-select>
+        <mat-option>Option</mat-option>
+        <mat-option>Option</mat-option>
+      </mat-select>
+    </mat-form-field> -->
     <div class="form-group col-md-4">
       <label for="ramo">Ramo</label>
       <button mat-icon-button data-toggle="modal" data-target="#ramo">
         <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
       </button>
       <select [(ngModel)]="org.ramo" class="form-control">
-        <option [value]="undefined" selected >{{org.ramo.desc}}</option>
+        <!-- <option [value]="undefined" selected hidden>{{orgUpdate.ramo.desc}}</option>  -->
         <option *ngFor="let item of ramosapi" value="{{item.id}}">{{item.desc}}</option>
       </select>
     </div>
@@ -96,8 +103,7 @@
         <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
       </button>
       <select [(ngModel)]="org.erp" class="form-control">
-        <option [value]="undefined" selected hidden>Protheus</option>
-        <!-- <option [value]="undefined" selected hidden>{{org.erp.desc}}</option> -->
+        <option [value]="undefined" selected hidden>{{orgUpdate.erpe.desc}}</option>
         <option *ngFor="let item of erpsapi" value="{{item.id}}">{{item.desc}}</option>
       </select>
     </div>

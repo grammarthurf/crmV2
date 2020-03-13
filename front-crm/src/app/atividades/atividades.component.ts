@@ -74,16 +74,16 @@ export class AtividadesComponent implements OnInit {
 
   calendarEvents = [];
 
-  atv = { position: 0, 
-          dataini: '', 
-          horaini: '', 
-          datafim: '', 
-          horafim: '', 
-          tipo: '', 
-          cliente: '', 
-          org: '', 
-          ticket: '', 
-          assunto: '' 
+  atv = { position: 0,
+          dataini: '',
+          horaini: '',
+          datafim: '',
+          horafim: '',
+          tipo: '',
+          cliente: '',
+          org: '',
+          ticket: '',
+          assunto: ''
         };
 
   displayedColumns: string[] = ['select', 'tipo', 'data', 'org', 'ticket', 'assunto', 'columnEdit', 'columnDelete'];
@@ -204,17 +204,31 @@ export class AtividadesComponent implements OnInit {
   editAtv(item){
     this.conf.update = true
     this.getActivity(item.position);
+    // while (this.getterActivity) {
+    //   try {
+    //     this.atv = {position: this.selectedatv.id, dataini: this.selectedatv.dataini, horaini: this.selectedatv.horaini, datafim: this.selectedatv.datafim, horafim: this.selectedatv.horafim, tipo: this.selectedatv.tipo, cliente: this.selectedatv.cliente, org: this.selectedatv.org, ticket: this.selectedatv.ticket, assunto: this.selectedatv.assunto}
+    //   } catch (error) {
+
+
+    //   }
+    // }
+
+
+
+    console.log(this.atv);
+
+
   //   // while (this.getterActivity) {
       try {
-        this.atv = {position: this.selectedatv.id, 
-                    dataini: this.selectedatv.dataini, 
-                    horaini: this.selectedatv.horaini, 
-                    datafim: this.selectedatv.datafim, 
-                    horafim: this.selectedatv.horafim, 
-                    tipo: this.selectedatv.tipo, 
-                    cliente: this.selectedatv.cliente, 
-                    org: this.selectedatv.org, 
-                    ticket: this.selectedatv.ticket, 
+        this.atv = {position: this.selectedatv.id,
+                    dataini: this.selectedatv.dataini,
+                    horaini: this.selectedatv.horaini,
+                    datafim: this.selectedatv.datafim,
+                    horafim: this.selectedatv.horafim,
+                    tipo: this.selectedatv.tipo,
+                    cliente: this.selectedatv.cliente,
+                    org: this.selectedatv.org,
+                    ticket: this.selectedatv.ticket,
                     assunto: this.selectedatv.assunto}
       } catch (error) { }
   //   }
@@ -392,8 +406,6 @@ export class AtividadesComponent implements OnInit {
       this.atv.datafim = this.atv.dataini;
       console.log("arrumado: " + this.atv.datafim)
     }
-
-    console.log('dados da atividade salvos: ', this.atv)
 
     this.crudService.saveNewAtividade(this.atv).subscribe(
       data => {

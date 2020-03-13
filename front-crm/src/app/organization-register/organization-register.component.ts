@@ -61,6 +61,7 @@ export class OrganizationRegisterComponent implements OnInit {
   loadOrg() {
     const id = this.route.snapshot.paramMap.get("id");
     console.log(id);
+
     this.getterOrg(id);
   }
 
@@ -75,7 +76,7 @@ export class OrganizationRegisterComponent implements OnInit {
       data => {
         this.orgUpdate = data;
         console.log(' Organização pega' , this.orgUpdate);
-
+        console.log('teste' + this.orgUpdate.ramo.desc)
         this.org = {
           id: this.orgUpdate.id, 
           codigo: this.orgUpdate.codigo, 
@@ -99,7 +100,8 @@ export class OrganizationRegisterComponent implements OnInit {
           ramos: this.orgUpdate.ramo
         };
 
-        console.log(this.org)
+        console.log('dados da empresa', this.org.ramos)
+        console.log('desc ramos', this.orgUpdate.ramos)
       },
       error => {
         // this.erroAtividade = error;
