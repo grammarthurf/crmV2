@@ -39,4 +39,9 @@ export class OrganizationDetailComponent implements OnInit {
   this.loadOrg();
   }
 
+  redirectToAdd(url): void {
+    window.open(url, '_blank');
+    window.focus();
+  }
+
 }

@@ -49,8 +49,8 @@
       <button mat-icon-button data-toggle="modal" data-target="#ramo">
         <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
       </button>
-      <select [(ngModel)]="org.ramo" class="form-control">
-        <!-- <option [value]="undefined" selected hidden>{{orgUpdate.ramo.desc}}</option>  -->
+      <select class="form-control" [(ngModel)]="org.ramo">
+        <!-- <option [value]="undefined" selected hidden>{{orgUpdate.ramos.desc}}</option> -->
         <option *ngFor="let item of ramosapi" value="{{item.id}}">{{item.desc}}</option>
       </select>
     </div>
