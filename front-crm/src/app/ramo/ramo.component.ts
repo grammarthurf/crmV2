@@ -35,6 +35,10 @@ export class RamoComponent implements OnInit {
     this.getterRamo();
    }
 
+   applyFilter(value: string) {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
+
   deleteItem(item) {
     this.delRamo = item.id;
     console.log(this.delRamo);

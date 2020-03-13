@@ -443,7 +443,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
                     Sair
                 </button>
-                <button (click)="save()" class="btn btn-primary" data-dismiss="modal">
+                <button class="btn btn-primary" data-dismiss="modal">
                     Salvar
                 </button>
             </div>
@@ -470,7 +470,7 @@
                     <label for="codeprod"> Código</label>
                     <input disabled type="text" class="form-control" id="codeprod"/>
                 </div>
-                <button class="btn btn-primary" [disabled]="disableCode" (click)="generateCode1()" id="code">
+                <button class="btn btn-primary" id="code">
                     <img src="../../assets/cod.png" id="codigo">
                 </button>
                 <div class="form-group col-md-12">
@@ -483,7 +483,7 @@
                     data-target="#modalAddLead">
                     Sair
                 </button>
-                <button type="button" (click)="saveProduto()" class="btn btn-primary" data-dismiss="modal"
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
                     data-toggle="modal" data-target="#modalAddLead">
                     Salvar
                 </button>
@@ -517,7 +517,7 @@
                     data-target="#modalAddLead">
                     Sair
                 </button>
-                <button type="button" (click)="saveVendedorExt()" class="btn btn-primary" data-dismiss="modal"
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
                     data-toggle="modal" data-target="#modalAddLead">
                     Salvar
                 </button>

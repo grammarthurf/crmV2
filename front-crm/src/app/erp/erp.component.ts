@@ -38,6 +38,10 @@ export class ErpComponent implements OnInit {
     this.getterErp();
    }
 
+  applyFilter(value: string) {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
+
   code1: any;
   generateCode() {
     var a = this.erpsapi;

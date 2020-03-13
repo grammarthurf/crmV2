@@ -50,7 +50,7 @@ export class VendedorComponent implements OnInit {
     });
   }
 
-  maiuscula(value: string, id:number){
+  maiuscula(value: string){
     var v = value.toUpperCase();
     this.vendedor.nome = v;
   }
