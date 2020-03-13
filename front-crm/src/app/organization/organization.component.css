@@ -139,3 +139,7 @@ div.row.col-md-12.align-cod-button button.btn {
 img#empresa {
     width: 30px;
 }
+
+.pointer {
+    cursor: pointer;
+}
