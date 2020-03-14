@@ -123,6 +123,36 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
         data = request.data
         print(data)
 
+        O = Organizacao.objects.get(id=int(data['id']))
+        O.codigo = data['codigo']
+        O.razaosocial = data['razaosocial']
+        O.nomefantasia = data['nomefantasia']
+        O.telefone = data['telefone']
+        O.rua = data['rua']
+        O.complemento = data['complemento']
+        O.bairro = data['bairro']
+        O.cep = data['cep']
+        O.cidade = data['cidade']
+        O.uf = data['uf']
+        try:
+            C.email = data['email']
+            C.site = data['site']
+        except:
+            pass
+        try:
+            C.cnpj = data['cnpj']
+        except:
+            pass
+        try:
+            C.ramo = Ramo.objects.get(id=int(data['ramo']))
+        except:
+            pass
+        C.ie = data['ie']
+        try:
+            C.erpe = Erp.objects.get(id=int(data['erp']))
+        except:
+            pass
+
         return JsonResponse({'message': 'Worked'})
 
 
