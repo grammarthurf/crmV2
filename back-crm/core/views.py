@@ -135,24 +135,42 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
         O.cidade = data['cidade']
         O.uf = data['uf']
         try:
-            C.email = data['email']
-            C.site = data['site']
+            O.email = data['email']
+            O.site = data['site']
         except:
             pass
         try:
-            C.cnpj = data['cnpj']
+            O.cnpj = data['cnpj']
         except:
             pass
-        try:
-            C.ramo = Ramo.objects.get(id=int(data['ramo']))
-        except:
-            pass
-        C.ie = data['ie']
-        try:
-            C.erpe = Erp.objects.get(id=int(data['erp']))
-        except:
-            pass
+        
+        O.ramo = Ramo.objects.get(id=int(data['ramos']['id']))
+        O.ie = data['ie']
+        
+        O.erpe = Erp.objects.get(id=int(data['erp']))
+        
+        O.save()
 
+        O.contatos.clear()
+        contatos = data['contatos']
+        for i in contatos:
+            print('CONTATOS : ', i);
+            
+            o = Cliente()
+            o.nome = i['nome']
+            o.email = i['email']
+            o.cargo = i['cargo']
+            o.dep = i['dep']
+            o.birth = i['birth']
+            o.tel = i['tel']
+            o.cel = i['cel']
+            try:
+                o.skype = i['skype']
+            except:
+                o.skype = i['skp']
+            o.save()
+            O.contatos.add(o)
+            O.save()
         return JsonResponse({'message': 'Worked'})
 
 
