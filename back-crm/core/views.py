@@ -118,6 +118,12 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
 
         print(data);
         return JsonResponse({'message': 'Worked'})
+    
+    def update(self, request, pk):
+        data = request.data
+        print(data)
+
+        return JsonResponse({'message': 'Worked'})
 
 
 class ProdutoViewSet(viewsets.ModelViewSet):
