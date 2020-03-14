@@ -177,7 +177,11 @@ export class CrudService {
 
   // PUT API
 
-
+  public UpdateProduct(prod): Observable<any> {
+    return this.http.put(this.baseUrl + 'produto/' + prod.id + '/' , prod, {
+      headers: this.htttpHeaders
+    });
+  }
 
   public updateatv(atv): Observable<any> {
     return this.http.put(this.baseUrl + 'atividade/' + atv.position + '/' , atv, {
@@ -300,6 +304,7 @@ export class CrudService {
       headers: this.htttpHeaders
     });
   }
+
 
 
   public updateOrg(org): Observable<any> {
