@@ -1,7 +1,28 @@
+@media screen {
+	#printSection {
+		display: none;
+	}
+  }
+  
+  @media print {
+	body * {
+	  visibility:hidden;
+	}
+	#printSection, #printSection * {
+	  visibility:visible;
+	}
+	#printSection {
+	  position:absolute;
+	  left:0;
+	  top:0;
+	}
+  }
+  
+
 /* ICON */
 mat-icon {
     font-family: 'Material Icons' !important;
-    margin-top: 3px;
+	margin-top: 3px;
 }
 
 .mat-list-icon {

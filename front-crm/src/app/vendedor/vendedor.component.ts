@@ -26,6 +26,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./vendedor.component.css']
 })
 export class VendedorComponent implements OnInit {
+  vendedor = {
+    nome: "",
+    usuario: "",
+    tipo: "",
+  };
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
@@ -43,6 +48,11 @@ export class VendedorComponent implements OnInit {
         buttons: false
       }
     });
+  }
+
+  maiuscula(value: string, id:number){
+    var v = value.toUpperCase();
+    this.vendedor.nome = v;
   }
 
   ngOnInit() {

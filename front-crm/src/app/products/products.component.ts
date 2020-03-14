@@ -35,6 +35,9 @@ export class ProductsComponent implements OnInit {
 
   erroProdutos: any;
 
+  conf: any = { update: false};
+  selectedproduct: any;
+
   delProduct: any;
 
   data = Object.assign(produto);
@@ -96,6 +99,38 @@ export class ProductsComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  getterProduct(id) {
+    this.crudService.getProduto(id).subscribe(
+      data => {
+        this.selectedproduct = data;
+        console.log('Produtoselecionado: ', this.selectedproduct);
+
+        this.produto.id=this.selectedproduct.id;
+        this.produto.nome= this.selectedproduct.nome;
+        this.produto.modalidade=this.selectedproduct.modalidade; 
+        this.produto.codigo=this.selectedproduct.codigo; 
+      },
+      error => {
+        console.error(error);
+      }
+    )
+  }
+  
+
+  updatefalse(){
+    this.conf.update = false;
+  }
+
+  editProduct(item){
+    this.conf.update = true
+    this.getterProduct(item.id);
+  }
+
+  maiuscula(value: string){
+    var v = value.toUpperCase();
+    this.produto.nome = v;
   }
 
   applyFilter(filterValue: string) {

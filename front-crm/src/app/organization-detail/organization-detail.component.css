@@ -22,42 +22,20 @@ header div#button {
     display: flex;
 }
 
-div.col-md-4.flex h5 {
-    margin-top: 8px;
-}
-
-div + mat-icon {
-    margin-top: 8px;
-    margin-left: 16px;
-    color: #515A5A;
-}
-
-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-left: auto;
-}
-
-img + div {
-    margin-left: 8px;
+div.col-md-7.flex + div.col-md-4.flex {
+    justify-content: center;
+    align-items: center;
 }
 
 button#add + button {
-    margin-left: 16px;
-    margin-top: 8px;
+    margin-left: auto;
     color: #ff0f0f;
-    outline: none;
+    border: 1px solid rgb(165, 163, 163);
 }
 
-.btn {
-    height: 40px;
-}
-
-div.col-md-4.flex + div.col-md-3.flex {
-    justify-content: center;
-    align-items: center;
-
+#contato {
+    width: 30px;
+    margin-right: 8px;
 }
 
 /* MAIN */
@@ -66,7 +44,7 @@ main {
     padding: 0;
 }
 
-h5 + button {
+h5 + button.icons {
     margin-left: auto;
     border: 1px solid rgb(165, 163, 163);
     width: 30px;
@@ -76,15 +54,18 @@ h5 + button {
     margin-right: 16px;
 }
 
-main div div div h5 {
-    margin-left: 16px;
+main div div h5 {
+    margin-left: 8px;
+    margin-top: 8px;
+    font-size: 26px;
+    font-weight: bold;
 }
 
 button mat-icon#edit {
     font-size: 20px;
 }
 
-div h5 + button, div.flex h5, div.bg-white div.flex {
+div h5 + button.icons, div.flex h5, div.bg-white div.flex {
     margin-top: 10px;
 }
 
@@ -99,6 +80,11 @@ div.no-pd-l div.bg-white {
 hr + div.form-group {
     padding-bottom: 16px;
 } 
+
+.b-b {
+	color: #3c98c0;
+	text-align: start;
+}
 
 .only-select {}
 
@@ -356,3 +342,68 @@ p#day + span {
 .mat-list-icon {
 	color: rgba(0, 0, 0, 0.54);
 }
+
+button.btn.btn-success.bold.btn-sm.fltright {
+    margin-bottom: 8px;
+}
+
+/* MODAL */
+.icon-modal-lead{
+    margin-right: 10px; 
+    font-weight: bold; 
+    width: 21px; 
+    height: 21px; 
+    font-size: 18px; 
+    border-radius: 100px; 
+    background-color: #c2c2c2; 
+    color: #ffffff;
+    font-size: 20px; 
+    margin-left: 5px;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    margin-top: 50px;
+}
+  
+::-webkit-slider-runnable-track {
+    height: 3px;
+    background-image: linear-gradient(to right, #e23a3a, #f8ff97, #78ac78);
+}
+  
+::-webkit-slider-thumb {
+    margin-top: -7px;
+}
+
+span {
+    margin-top: 10px;
+}
+  
+span:nth-child(1) {
+    margin-left: -5px;
+}
+  
+span:nth-child(2) {
+    margin-left: 55px;
+}
+  
+span:nth-child(3) {
+    margin-left: 40px;
+}
+
+img#codigo {
+    height: 20px;
+    margin-bottom: 8px;
+}
+  
+button#code {
+    height: 35px;
+    margin-top: 32px;
+}
+
+.img-prod{
+    width: 20px; 
+    height: 20px; 
+    margin-top: 5px; 
+    margin-right: 5px;
+  }

@@ -5,6 +5,7 @@ import { Router, Data } from "@angular/router";
 import swal from 'sweetalert';
 import listPlugin from '@fullcalendar/list';
 import bootstrapPlugin from '@fullcalendar/bootstrap';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: "app-business-detail",
@@ -24,6 +25,8 @@ export class BusinessDetailComponent implements OnInit {
 
   numm: number;
   idobs = { id: '', obs: '', term: '', mtvperd: '', cmtperd: '' };
+
+  clientName: '';
 
   calendarEvents = [
     { title: 'event 1', start: '2020-03-02T10:00', end: '2020-03-01' }
@@ -102,6 +105,7 @@ export class BusinessDetailComponent implements OnInit {
 
   getterTicket(id) {
 
+    
     this.crudService.getTicket(id).subscribe(
       data => {
         this.business = data;
@@ -114,7 +118,7 @@ export class BusinessDetailComponent implements OnInit {
           this.stageNull();
         }
         console.log("id", data);
-        
+        this.clientName = this.business.cliente.nome.split(" ", 1);
       },
       error => {
         console.error(error);
@@ -286,6 +290,8 @@ export class BusinessDetailComponent implements OnInit {
 
   ngOnInit() {
     // this.loadBusiness();
+   // this.businessName = this.business.org.nomefantasia;
+    console.log()
   }
   
   formatPhoneNumber(str) {
@@ -315,5 +321,84 @@ export class BusinessDetailComponent implements OnInit {
   
     return null
   };
-  
+
+  Print(){
+    var myWindow=window.open('','','width=1500,height=800');
+    myWindow.document.write(
+      "<h1 style='text-align: center;'>" + this.business.titulo +"</h1>" +
+      "<h3> Informações do Negócio: </h3>" + 
+      "<div>" + 
+        "<ul style='list-style-type: none;'>" +
+          "<li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Valor Estimado: R$ "
+            + this.business.valorestimado + 
+          ",00</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Estagio: " 
+            + this.business.estagio.nome +
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Produto: "
+            + this.business.produto[0].nome + 
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Última Observação:  " 
+            + this.business.obs[0].texto + " (" + this.business.obs[0].data + ")" +
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Criado em:  " 
+            + this.business.created.datetime +
+          "</li>" +
+        "</ul>" +
+      "</div>" +
+      "<h3> Informações da Empresa: </h3>" + 
+      "<div>" +
+        "<ul style='list-style-type: none;'>" +
+          "<li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Código:  " 
+            + this.business.org.codigo +
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Razão Social: " 
+            + this.business.org.razaosocial +
+          "<li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Nome Fantasia: " 
+            + this.business.org.nomefantasia +
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Estado: " 
+            + this.business.org.uf +
+          "</li> <li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Cidade: " 
+            + this.business.org.cidade + 
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Bairro: " 
+            + this.business.org.bairro + 
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Rua: " 
+            + this.business.org.rua + 
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Complemento: " 
+            + this.business.org.complemento +
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>CEP: " 
+            + this.business.org.cep +
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>ERP:  " 
+            + this.business.org.erpe.desc +
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>CNPJ: " 
+            + this.business.org.cnpj +
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>IE: " 
+            + this.business.org.ie +
+          "</li>" +
+        "</ul>" +
+      "</div>" +
+      "<h3> Informações do Contato: </h3>" +
+      "<div>" +
+        "<ul style='list-style-type: none;'>" +
+          "<li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Nome:  " 
+            + this.business.cliente.nome +
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Cargo: " 
+            + this.business.cliente.cargo +
+          "<li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Telefone: " 
+            + this.business.cliente.tel +
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Celular: " 
+            + this.business.cliente.cel +
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Departamento: " 
+            + this.business.cliente.dep + 
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Email: " 
+            + this.business.cliente.email +
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Skype: " 
+            + this.business.cliente.skype + 
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Data de Nascimento: "
+            + this.business.cliente.birth + 
+          "</li>" +
+        "</ul>" +
+      "</div>"
+    );
+    
+    myWindow.document.close();
+    myWindow.focus();
+    myWindow.print();
+    myWindow.close();
+  }
 }

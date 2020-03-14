@@ -40,7 +40,7 @@
             <div class="form-group col-md-12">
               <label for="exampleInputEmail1">Título</label>
               <input [(ngModel)]="ticket.titulo" type="text" class="form-control" id="title"
-                aria-describedby="emailHelp" placeholder="Título" required />
+                aria-describedby="emailHelp" placeholder="Título" required (keyup)="maiuscula($event.target.value, 1)"/>
             </div>
           </div>
           <div class="row">
@@ -134,7 +134,7 @@
           <div class="row">
             <div class="form-group col-md-12">
               <label for="exampleFormControlTextarea1">Observação</label>
-              <textarea [(ngModel)]="ticket.obs" class="form-control" id="observation" rows="3">
+              <textarea [(ngModel)]="ticket.obs" class="form-control" id="observation" rows="3" (keyup)="maiuscula($event.target.value, 2)">
               </textarea>
             </div>
           </div>
@@ -179,7 +179,7 @@
             </button>
           <div class="form-group col-md-12">
             <label for="nomeprod"> Descrição</label>
-            <input [(ngModel)]="produto.nome"  type="text" class="form-control" id="nomeprod" required />
+            <input [(ngModel)]="produto.nome" (keyup)="maiuscula($event.target.value, 3)" type="text" class="form-control" id="nomeprod" required />
           </div>
         </div>
         <div class="modal-footer">
@@ -214,7 +214,7 @@
           <div class="modal-body row">  
             <div class="form-group col-md-12">
               <label for="nomeprod"> Nome</label>
-              <input type="text" class="form-control" [(ngModel)]="vendedorExt.nome" id="nomeprod" required />
+              <input type="text" class="form-control" [(ngModel)]="vendedorExt.nome" id="nomeprod" required (keyup)="maiuscula($event.target.value, 4)"/>
             </div>
           </div>
           <div class="modal-footer">
@@ -254,7 +254,7 @@
 
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv(item.titulo)">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="grey" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
             <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv(item.titulo)">
               error_outline
             </mat-icon>
@@ -288,7 +288,7 @@
 
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv(item.titulo)">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="grey" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
             <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv(item.titulo)">error_outline
             </mat-icon>
           </div>
@@ -319,7 +319,7 @@
 
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv(item.titulo)">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="grey" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
             <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv(item.titulo)">error_outline
             </mat-icon>
           </div>
@@ -349,7 +349,7 @@
           <div class="flex">
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv(item.titulo)">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="grey" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
             <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv(item.titulo)">error_outline
             </mat-icon>
           </div>
@@ -379,7 +379,7 @@
           <div class="flex">
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv(item.titulo)">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="grey" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
             <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv(item.titulo)">error_outline
             </mat-icon>
           </div>
@@ -408,7 +408,7 @@
           <div class="flex">
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv(item.titulo)">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="grey" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
             <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv(item.titulo)">error_outline
             </mat-icon>
           </div>
@@ -436,7 +436,7 @@
           <div class="flex">
             <p class="limit-value">{{ item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv(item.titulo)">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="grey" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
             <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv(item.titulo)">error_outline
             </mat-icon>
           </div>

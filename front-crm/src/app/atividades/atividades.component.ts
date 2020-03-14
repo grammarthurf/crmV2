@@ -100,7 +100,7 @@ export class AtividadesComponent implements OnInit {
     this.getterVendedor();
     this.getterTickets();
     this.getterActivity();
-    this.calendarPlugins = [ listPlugin , bootstrapPlugin ];
+    this.calendarPlugins = [ listPlugin, bootstrapPlugin ];
   }
 
   ngOnInit() {
@@ -108,27 +108,12 @@ export class AtividadesComponent implements OnInit {
     console.log(this.calendarEvents)
   }
 
-  //FILTRAR SELECT DOS CONTATOS DE ACORDO COM O SELECIONADO EM EMPRESAS
-  // getterCliOrg(id) {
-  //   console.log(id)
-  //   this.crudService.getOrg(id).subscribe(
-  //     data => {
-  //       this.orgapi = data;
-  //       console.log(this.orgapi);
-  //     },
-  //     error => {
-  //       this.erroAtividade = error;
-  //     }
-  //   );
-  // }
-
   //FILTRAR SELECT DAS EMPRESAS DE ACORDO COM O SELECIONADO EM NEGÓCIOS
   getterOrgTick(id) {
     console.log(id)
     this.crudService.getTicket(id).subscribe(
       data => {
         this.tckapi = [data.org];
-        this.tckapi1 = data.org.id
         console.log(this.tckapi);
       },
       error => {
@@ -197,14 +182,16 @@ export class AtividadesComponent implements OnInit {
         this.selectedatv = data;
         console.log('atividadeselecionada ', this.selectedatv);
 
-        // swal({
-        //   icon: "success",
-        //   text: "Atividade atualizada com sucesso!",
-        //   timer: 1000,
-        //   buttons: {
-        //     buttons: false
-        //   }
-        // });
+        this.atv.position=this.selectedatv.id;
+        this.atv.dataini= this.selectedatv.dataini;
+        this.atv.horaini=this.selectedatv.horaini; 
+        this.atv.datafim=this.selectedatv.datafim; 
+        this.atv.horafim=this.selectedatv.horafim; 
+        this.atv.tipo=this.selectedatv.tipo; 
+        this.atv.cliente=this.selectedatv.cliente; 
+        this.atv.org=this.selectedatv.org;
+        this.atv.ticket=this.selectedatv.ticket;
+        this.atv.assunto=this.selectedatv.assunto;
       },
       error => {
         console.error(error);
@@ -219,35 +206,7 @@ export class AtividadesComponent implements OnInit {
   editAtv(item){
     this.conf.update = true
     this.getActivity(item.position);
-    // while (this.getterActivity) {
-    //   try {
-    //     this.atv = {position: this.selectedatv.id, dataini: this.selectedatv.dataini, horaini: this.selectedatv.horaini, datafim: this.selectedatv.datafim, horafim: this.selectedatv.horafim, tipo: this.selectedatv.tipo, cliente: this.selectedatv.cliente, org: this.selectedatv.org, ticket: this.selectedatv.ticket, assunto: this.selectedatv.assunto}
-    //   } catch (error) {
-
-
-    //   }
-    // }
-
-
-
-    console.log(this.atv);
-
-
-  //   // while (this.getterActivity) {
-      try {
-        this.atv = {position: this.selectedatv.id,
-                    dataini: this.selectedatv.dataini,
-                    horaini: this.selectedatv.horaini,
-                    datafim: this.selectedatv.datafim,
-                    horafim: this.selectedatv.horafim,
-                    tipo: this.selectedatv.tipo,
-                    cliente: this.selectedatv.cliente,
-                    org: this.selectedatv.org,
-                    ticket: this.selectedatv.ticket,
-                    assunto: this.selectedatv.assunto}
-      } catch (error) { }
-  //   }
-     console.log(this.atv);
+    // console.log(this.atv);
   }
 
   getColor(dataini) {
@@ -422,18 +381,6 @@ export class AtividadesComponent implements OnInit {
       console.log("arrumado: " + this.atv.datafim)
     }
 
-    // if(this.atv.org == ""){
-    //   console.log("orgvazio")
-    //   this.atv.org = this.tckapi[0];
-    //   console.log("arrumado: " + this.atv.org)
-    // }
-
-    // if(this.atv.cliente == ""){
-    //   console.log("clientevazio")
-    //   this.atv.cliente = this.tckapi[0].contatos[0];
-    //   console.log("arrumado: " + this.atv.cliente)
-    // }
-
     this.crudService.saveNewAtividade(this.atv).subscribe(
       data => {
         swal({
@@ -451,6 +398,12 @@ export class AtividadesComponent implements OnInit {
         console.error(error);
       },
     );
+  }
+
+  maiuscula(value: string){
+    var v = value.toUpperCase();
+    this.atv.assunto = v
+    console.log(v)
   }
 
   applyFilter(value: string) {

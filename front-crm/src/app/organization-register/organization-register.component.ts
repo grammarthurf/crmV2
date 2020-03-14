@@ -61,6 +61,7 @@ export class OrganizationRegisterComponent implements OnInit {
   loadOrg() {
     const id = this.route.snapshot.paramMap.get("id");
     console.log(id);
+
     this.getterOrg(id);
   }
 
@@ -75,7 +76,7 @@ export class OrganizationRegisterComponent implements OnInit {
       data => {
         this.orgUpdate = data;
         console.log(' Organização pega' , this.orgUpdate);
-
+        console.log('teste' + this.orgUpdate.ramo.desc)
         this.org = {
           id: this.orgUpdate.id,
           codigo: this.orgUpdate.codigo,
@@ -99,7 +100,8 @@ export class OrganizationRegisterComponent implements OnInit {
           ramos: this.orgUpdate.ramo
         };
 
-        console.log(this.org)
+        console.log('dados da empresa', this.org.ramos)
+        console.log('desc ramos', this.orgUpdate.ramos)
       },
       error => {
         // this.erroAtividade = error;
@@ -360,6 +362,45 @@ export class OrganizationRegisterComponent implements OnInit {
         console.error(error);
       }
     )
+  }
+
+  maiuscula(value: string, id:number){
+    var v = value.toUpperCase();
+    if(id == 1){
+      this.org.razaosocial = v
+    } else if(id == 2) {
+      this.org.nomefantasia = v
+    } else if(id == 3) {
+      this.org.rua = v
+    } else if(id == 4) {
+      this.org.bairro = v
+    } else if(id == 5) {
+      this.org.complemento = v
+    } else if(id == 6) {
+      this.org.cidade = v
+    } else if(id == 7) {
+      this.org.uf = v
+    } else if(id == 8) {
+      this.org.email = v
+    } else if(id == 9) {
+      this.org.site = v
+    } else if (id== 10){
+      this.contato.nome = v
+    } else if (id== 11){
+      this.contato.email = v
+    } else if (id== 12){
+      this.contato.cargo = v
+    } else if (id== 13){
+      this.contato.dep = v
+    } else if (id== 14){
+      this.contato.skp = v
+    } else if (id== 15){
+      this.ramo.desc = v
+    } else if (id== 16){
+      this.erp.empresa = v
+    } else if (id== 17){
+      this.erp.desc = v
+    }
   }
 
   formatPhoneNumber(str) {

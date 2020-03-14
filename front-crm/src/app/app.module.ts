@@ -25,6 +25,8 @@ import { MatSortModule } from "@angular/material/sort";
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatListModule} from '@angular/material/list';
+import {MatSelectModule} from '@angular/material/select';
+
 
 //CALENDAR
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -114,6 +116,7 @@ registerLocaleData(localePt);
     FullCalendarModule,
     FormsModule,
     ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [
     HttpClient,

@@ -182,11 +182,11 @@ input[type=range] {
 }
 
 #red {
-  color: rgb(255, 4, 4);
+  color: #e23a3a;
 }
 
 #green {
-  color: rgba(0, 128, 0, 0.671);
+  color: #4da84d;
 }
 
 #orange {
@@ -231,7 +231,7 @@ span:nth-child(2) {
 
 span:nth-child(3) {
   margin-left: 40px;
-}z
+}
 
 .example-box:active {
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),

@@ -99,6 +99,24 @@ export class CrudService {
     });
   }
 
+  public getErps(id): Observable<any> {
+    return this.http.get(`${this.baseUrl}erp/${id}/`, {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public getProduto(id): Observable<any> {
+    return this.http.get(`${this.baseUrl}produto/${id}/`, {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public getRamos(id): Observable<any> {
+    return this.http.get(`${this.baseUrl}ramo/${id}/`, {
+      headers: this.htttpHeaders
+    });
+  }
+
   // POST API
 
   public saveNewRamo(ramo): Observable<any> {
@@ -262,6 +280,19 @@ export class CrudService {
       headers: this.htttpHeaders
     });
   }
+
+  // public updateErp(erp): Observable<any> {
+
+  //   const body =  { id: parseInt(erp.id),
+  //                   codigo: erp.codigo,
+  //                   desc: erp.desc,
+  //                   empresa: erp.empresa};
+  //   console.log('body:', body);
+
+  //   return this.http.put(this.baseUrl + 'erp/' + erp.id + '/' , body, {
+  //     headers: this.htttpHeaders
+  //   });
+  // }
 
   public UpdateOrgMain(org): Observable<any> {
     return this.http.put(this.baseUrl + 'orgs/' + org.id + '/' , org, {
