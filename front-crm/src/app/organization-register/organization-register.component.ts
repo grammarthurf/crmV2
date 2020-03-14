@@ -174,7 +174,7 @@ export class OrganizationRegisterComponent implements OnInit {
     );
   }
   getterErp() {
-    this.crudService.getErp().subscribe(
+    this.crudService.getErpes().subscribe(
       data => {
         this.erpsapi = data;
         console.log(data);

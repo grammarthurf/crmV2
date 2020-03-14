@@ -44,7 +44,7 @@ export class ErpComponent implements OnInit {
 
   code1: any;
   generateCode() {
-    var a = this.erpsapi;
+    let a = this.erpsapi;
     if(a.length > 0){
       if(a.length < 9){
         this.code1 = "00" + ++this.erpsapi[0].codigo;
@@ -59,7 +59,7 @@ export class ErpComponent implements OnInit {
         this.erp.codigo = this.code1;
         console.log(this.code1);
       }
-      
+
     } else {
       this.code1 = "00"+1;
       this.erp.codigo = this.code1;
@@ -93,7 +93,7 @@ export class ErpComponent implements OnInit {
   }
 
   getterErp() {
-    this.crudService.getErp().subscribe(
+    this.crudService.getErpes().subscribe(
       data => {
         this.erpsapi = data;
         console.log(data);
@@ -105,52 +105,77 @@ export class ErpComponent implements OnInit {
     );
   }
 
- 
+  updateErp(){
+
+  }
+
 
   getterErpe(id) {
-    this.crudService.getErps(id).subscribe(
+
+    this.crudService.getErp(id).subscribe(
       data => {
         this.selectederp = data;
         console.log('ERPselecionado: ', this.selectederp);
 
-        this.erp.position=this.selectederp.id;
-        this.erp.codigo= this.selectederp.codigo;
-        this.erp.desc=this.selectederp.desc; 
-        this.erp.empresa=this.selectederp.empresa; 
+        this.erp.position = this.selectederp.id;
+        this.erp.codigo = this.selectederp.codigo;
+        this.erp.desc = this.selectederp.desc;
+        this.erp.empresa = this.selectederp.empresa;
+      },
+      error => {
+        console.error(error);
+      }
+    );
+
+    // this.crudService.getErps(id).subscribe(
+    //   data => {
+    //     // this.selectederp = data;
+    //     // console.log('ERPselecionado: ', this.selectederp);
+
+    //     // this.erp.position = this.selectederp.id;
+    //     // this.erp.codigo = this.selectederp.codigo;
+    //     // this.erp.desc = this.selectederp.desc;
+    //     // this.erp.empresa = this.selectederp.empresa;
+    //   },
+    //   error => {
+    //     console.error(error);
+    //   }
+    // );
+  }
+
+  updatefalse(){
+    this.conf.update = false;
+    this.erp.position = 0;
+    this.erp.codigo = '';
+    this.erp.desc = '';
+    this.erp.empresa = '';
+  }
+
+  editErp(item){
+    this.conf.update = true;
+    console.log(item);
+
+    this.getterErpe(item.id);
+  }
+
+  UpdateErp(){
+    this.crudService.updateErp(this.erp).subscribe(
+      data => {
+        this.getterErp();
+        swal({
+          icon: "success",
+          text: "ERP atualizado com sucesso!",
+          timer: 1000,
+          buttons: {
+            buttons: false
+          }
+        });
       },
       error => {
         console.error(error);
       }
     )
   }
-
-  updatefalse(){
-    this.conf.update = false;
-  }
-
-  editErp(item){
-    this.conf.update = true
-    this.getterErpe(item.id);
-  }
-
-  // UpdateErp(){
-  //   this.crudService.updateErp(this.erp).subscribe(
-  //     data => {
-  //       this.getterErp();
-  //       swal({
-  //         icon: "success",
-  //         text: "ERP atualizado com sucesso!",
-  //         timer: 1000,
-  //         buttons: {
-  //           buttons: false
-  //         }
-  //       });
-  //     },
-  //     error => {
-  //       console.error(error);
-  //     }
-  //   )
-  // }
 
   deleteItem(item) {
     this.delERP = item.id;

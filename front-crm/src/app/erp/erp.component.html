@@ -1,6 +1,6 @@
 <div style="margin-top: 15px;">
   <div style="display: flex;">
-    <button type="button" class="btn btn-primary loc-button-top" id="codigo" data-toggle="modal" data-target="#add">
+    <button type="button" class="btn btn-primary loc-button-top" (click)="updatefalse()"  id="codigo" data-toggle="modal" data-target="#add">
       <mat-icon>add</mat-icon>
       <p style="margin-left: 5px;">ERP</p>
     </button>
@@ -21,7 +21,8 @@
           <div class="row col-md-12 align-cod-button">
             <div class="form-group col-md-3">
               <label for="cod">Código</label>
-              <input [(ngModel)]="erp.codigo" disabled value="{{this.code1}}" type="text" class="form-control">
+              <input *ngIf="!conf.update"  [(ngModel)]="erp.codigo" disabled value="{{this.code1}}" type="text" class="form-control">
+              <input *ngIf="conf.update"  [(ngModel)]="erp.codigo"  type="text" class="form-control">
             </div>
             <button class="btn btn-primary" [disabled]="disableCode" (click)="generateCode()" id="code">
               <img src="../../assets/cod.png" id="codigo">
@@ -40,7 +41,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
-          <button type="button" (click)="saveErp()" data-dismiss="modal"  class="btn btn-primary">Salvar</button>
+          <button type="button" *ngIf="!conf.update" (click)="saveErp()" data-dismiss="modal"  class="btn btn-primary">Salvar</button>
+          <button type="button" *ngIf="conf.update" (click)="UpdateErp()" data-dismiss="modal"  class="btn btn-primary">Atualizar</button>
         </div>
       </div>
     </div>
