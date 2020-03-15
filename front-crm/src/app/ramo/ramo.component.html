@@ -1,6 +1,6 @@
 <div style="margin-top: 15px;">
   <div style="display: flex;">
-    <button type="button" class="btn btn-primary loc-button-top" id="codigo" data-toggle="modal" data-target="#add">
+    <button type="button" class="btn btn-primary loc-button-top" id="codigo" (click)="updatefalse()"  data-toggle="modal" data-target="#add">
       <mat-icon>add</mat-icon>
       <p style="margin-left: 5px;">Ramo</p>
     </button>
@@ -31,8 +31,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
-          <button type="button" *ngIf="!selectedramo" (click)="saveRamo()" data-dismiss="modal"  class="btn btn-primary">Salvar</button>
-          <button type="button" *ngIf="selectedramo" (click)="UpdateRamo()" class="btn btn-primary" data-dismiss="modal">
+          <button type="button" *ngIf="!conf.update" (click)="saveRamo()" data-dismiss="modal"  class="btn btn-primary">Salvar</button>
+          <button type="button" *ngIf="conf.update" (click)="UpdateRamo()" class="btn btn-primary" data-dismiss="modal">
             Atualizar Ramo
           </button>
         </div>
