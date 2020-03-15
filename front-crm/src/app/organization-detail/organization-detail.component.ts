@@ -19,6 +19,8 @@ export class OrganizationDetailComponent implements OnInit {
   loadOrg() {
     const id = this.route.snapshot.paramMap.get("id");
     this.getterOrg(id);
+    console.log(this.org);
+
 
   }
 
