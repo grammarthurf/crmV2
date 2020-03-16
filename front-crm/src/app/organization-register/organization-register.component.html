@@ -49,8 +49,13 @@
       <button mat-icon-button data-toggle="modal" data-target="#ramo">
         <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
       </button>
-      <select [(ngModel)]="org.ramo" class="form-control">
-        <option value="undefined" selected >{{orgUpdate.ramo.desc}}</option>
+      <select *ngIf="!selectRamo && orgUpdate" (click)="enableSelect()" class="form-control">
+        <option value="" selected>{{orgUpdate.ramo.desc}}</option>
+      </select>
+      <select [(ngModel)]="org.ramo" *ngIf="selectRamo && orgUpdate" class="form-control" onmouseover="this.size=this.options.length" onmouseout="this.size=1">
+        <option *ngFor="let item of ramosapi" value="{{item.id}}">{{item.desc}}</option>
+      </select>
+      <select [(ngModel)]="org.ramo" *ngIf="!orgUpdate" class="form-control">
         <option *ngFor="let item of ramosapi" value="{{item.id}}">{{item.desc}}</option>
       </select>
     </div>
@@ -103,7 +108,7 @@
         <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
       </button>
       <select [(ngModel)]="org.erp" class="form-control">
-        <option [value]="undefined" selected hidden>{{orgUpdate.erpe.desc}}</option>
+        <option [value]="undefined" *ngIf="orgUpdate" selected hidden>{{orgUpdate.erpe.desc}}</option>
         <option *ngFor="let item of erpsapi" value="{{item.id}}">{{item.desc}}</option>
       </select>
     </div>
@@ -112,9 +117,6 @@
   <div class="flex">
     <img src="../../assets/contato.png">
     <h5>Cadastrar Contato</h5>
-    <!-- <button mat-icon-button (click)="addContato()">
-      <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
-    </button> -->
   </div>
   <div class="row">
     <div class="col-md-7">

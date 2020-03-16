@@ -293,6 +293,13 @@ export class BusinessDetailComponent implements OnInit {
    // this.businessName = this.business.org.nomefantasia;
     console.log()
   }
+
+  maiuscula(value: string){
+    var v = value.toUpperCase();
+
+    this.idobs.obs = v;
+    console.log(v)
+  }
   
   formatPhoneNumber(str) {
     //Filter only numbers from the input

@@ -30,7 +30,7 @@ export class OrganizationComponent implements OnInit {
   matdata: any = [];
   // Lista orgs:
   erroOrg: any;
-  displayedColumns: string[] = ['codigo', 'nome_fantasia', 'razao_social', 'endereco', 'erp', 'columnEdit', 'columnDelete'];
+  displayedColumns: string[] = ['codigo', 'nomefantasia', 'razaosocial', 'rua', 'erp', 'columnEdit', 'columnDelete'];
   erroOrgs: any;
 
   code: any;
@@ -172,7 +172,7 @@ export class OrganizationComponent implements OnInit {
         this.getterOrg();
         swal({
           icon: "success",
-          text: "Atividade deletada com sucesso!",
+          text: "Empresa excluída com sucesso!",
           timer: 1000,
           buttons: {
             buttons: false

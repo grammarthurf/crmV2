@@ -16,6 +16,7 @@ export class UserComponent implements OnInit {
   InitList: boolean = true;
   fltr: boolean = false
 
+  nome: string = "";
   filter: any = {inicio: '', fim: ''};
 
   constructor(private route: ActivatedRoute, private crudService: CrudService) {
@@ -37,7 +38,8 @@ export class UserComponent implements OnInit {
     this.crudService.getVendedores(id).subscribe(
       data => {
         this.user = data;
-        console.log(this.user);
+        this.nome = this.user.nome;
+        console.log("a " + this.nome);
 
       },
       error => {
@@ -54,6 +56,9 @@ export class UserComponent implements OnInit {
   Filtrar1(){
     this.InitList = true;
     this.fltr = false;
+
+    this.filter.fim = null;
+    this.filter.inicio = null;
   }
 
   dataCheck(data){
