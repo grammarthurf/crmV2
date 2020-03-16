@@ -27,10 +27,15 @@ div.col-md-7.flex + div.col-md-4.flex {
     align-items: center;
 }
 
-button#add + button {
+/* button#add + button {
     margin-left: auto;
     color: #ff0f0f;
     border: 1px solid rgb(165, 163, 163);
+} */
+
+button#add {
+    display: grid;
+    margin-left: auto;
 }
 
 #contato {

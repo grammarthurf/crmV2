@@ -1,6 +1,6 @@
 <div style="margin-top: 40px;">
     <header class="row col-md-11 bg-white">
-        <div class="col-md-1" id="button">
+        <!-- <div class="col-md-1" id="button">
             <button mat-icon-button id="button-icon">
                 <mat-icon>business</mat-icon>
             </button>
@@ -12,6 +12,20 @@
             <button type="button" class="btn btn-success" id="add">Adicionar nova Lead</button>
             <button mat-icon-button>
                 <mat-icon>delete</mat-icon>
+            </button>
+        </div> -->
+        <div class="col-md-10" style="display: grid; justify-content: flex-start;">
+            <h2 style="font-weight: bold;">Vedois Tecnologia</h2>
+        </div>
+        <div class="col-md-2">
+            <button 
+                type="button" 
+                class="btn btn-success" 
+                id="add" 
+                data-toggle="modal" 
+                data-target="#modalAddLead"
+            >
+                Adicionar nova Lead
             </button>
         </div>
     </header>
@@ -106,7 +120,7 @@
             <div class="bg-white mg-tp-40">
                 <h5 id="vision">Visão Geral</h5>
                 <hr>
-                <div class="flex">
+                <div class="flex" style="margin-bottom: 10px;">
                     <p id="created_at">Criado em:</p>
                     <p>5 de Fevereiro de 2020</p>
                 </div>
@@ -185,8 +199,7 @@
                     </div>
                     <div class="flex">
                         <p id="day">Hoje</p>
-                        <span>•</span>
-                        <p>Osmir Vieira </p>
+                        <p style="margin-left: 15px">Osmir Vieira </p>
                     </div>
                 </div>
             </div>
@@ -204,8 +217,7 @@
                     </div>
                     <div class="flex">
                         <p id="day">Hoje</p>
-                        <span>•</span>
-                        <p>Osmir Vieira </p>
+                        <p style="margin-left: 15px">Osmir Vieira </p>
                     </div>
                 </div>
             </div>
@@ -223,8 +235,7 @@
                     </div>
                     <div class="flex">
                         <p id="day">Hoje</p>
-                        <span>•</span>
-                        <p>Leandro Vieira </p>
+                        <p style="margin-left: 15px">Leandro Vieira </p>
                     </div>
                 </div>
             </div>
@@ -247,8 +258,7 @@
                     </div>
                     <div class="flex">
                         <p id="day">Hoje</p>
-                        <span>•</span>
-                        <p>Osmir Vieira </p>
+                        <p style="margin-left: 15px">Osmir Vieira </p>
                     </div>
                 </div>
             </div>
