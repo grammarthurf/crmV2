@@ -144,7 +144,7 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
         except:
             pass
         
-        O.ramo = Ramo.objects.get(id=int(data['ramos']['id']))
+        O.ramo = Ramo.objects.get(id=int(data['ramos']))
         O.ie = data['ie']
         
         O.erpe = Erp.objects.get(id=int(data['erp']))
