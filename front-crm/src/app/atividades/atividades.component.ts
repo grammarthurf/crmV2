@@ -57,6 +57,10 @@ export class AtividadesComponent implements OnInit {
 
   selectedatv:any;
 
+  //selects inputs
+  selectTck = false;
+  selectOrg = false;
+
   calendardata: any = [];
 
   // Lista de atividades:
@@ -86,7 +90,7 @@ export class AtividadesComponent implements OnInit {
           assunto: ''
         };
 
-  displayedColumns: string[] = ['select', 'tipo', 'data', 'org', 'ticket', 'assunto', 'columnEdit', 'columnDelete'];
+  displayedColumns: string[] = ['select', 'tipo', 'dataini', 'org', 'cliente', 'ticket.titulo', 'assunto', 'columnEdit', 'columnDelete'];
 
   dataSource: any;
 
@@ -105,6 +109,7 @@ export class AtividadesComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.matdata);
+    this.dataSource.sort = this.sort;
     console.log(this.calendarEvents)
   }
 
@@ -199,6 +204,10 @@ export class AtividadesComponent implements OnInit {
         console.error(error);
       }
     )
+  }
+
+  enableSelectTck(){
+    this.selectTck = true;
   }
 
   updatefalse(){

@@ -9,7 +9,7 @@
                     <ul class="list-group list-group-flush" >
                         <li class="list-group-item p">
                             <b>Nome: </b>
-                            Brenda Aguiar
+                            {{this.nome}}
                         </li>
                         <li class="list-group-item p">
                             <b>Email: </b>
@@ -32,28 +32,20 @@
         <div class="col-12 real-div" style="margin-top: 20px; text-align: center;">
             <label class="periodoLabel">Selecionar Período: </label> <br>
             <label class="lblFilter">Início: </label>
-            <input [(ngModel)]="filter.inicio" type="date" class="form-control">
+            <input [(ngModel)]="filter.inicio" id="1" type="date" class="form-control">
             <br>
             <label class="lblFilter">Fim: </label>
             <input [(ngModel)]="filter.fim" type="date" class="form-control">
             <br>
-            <button (click)="Filtrar()" class="btn btn-primary"> Filtrar </button>
+            <button (click)="Filtrar()" *ngIf="!fltr" class="btn btn-primary"> Filtrar </button>
+            <button (click)="Filtrar1()" *ngIf="fltr" class="btn btn-primary"> Limpar </button>
         </div>
-        
     </div>
     <div class="col-8 div-right scrollbar">
         <div class="col-12 real-div">
             <mat-tab-group mat-stretch-tabs>
                 <mat-tab label="Atualizações">
                     <div class="col-12">
-                        <a (click)="Filtrar1()" 
-                            *ngIf="fltr" 
-                            style=" color: #007bff; 
-                                    cursor: pointer; 
-                                    width: 100%; 
-                                    margin-left: 85%;"> 
-                            Mostrar todos 
-                        </a>
                         <ul class="list-group list-group-flush" *ngFor="let ticket of negociosapi">
                             <li class="list-group-item p" 
                                 *ngIf="(InitList || dataCheck(ticket.obs[ticket.obs.length-1].data))" >

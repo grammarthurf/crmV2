@@ -145,14 +145,6 @@ export class ProductsComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  // filterCrtl(){
-  //   this.dataSource.filter = "Controle".trim().toLowerCase();
-  // }
-
-  // filterPlan(){
-  //   this.dataSource.filter = "Planejamento".trim().toLowerCase();
-  // }
-
   dblclic(){
     this.dataSource.filter = "".trim().toLowerCase();
   }

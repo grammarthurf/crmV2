@@ -583,7 +583,7 @@
         <mat-tab-group mat-stretch-tabs class="col-12">
           <mat-tab label="Observações">
             <div class="col-12 mg-t-10 divtab">
-              <textarea rows="10" [(ngModel)]="idobs.obs" class="col-12 txtarea"></textarea>
+              <textarea rows="10" [(ngModel)]="idobs.obs" class="col-12 txtarea" (keyup)="maiuscula($event.target.value)"></textarea>
               <button type="button" (click)="updateTicketObs()" class="btn btn-success bold btn-sm fltright">
                 Adicionar
               </button>

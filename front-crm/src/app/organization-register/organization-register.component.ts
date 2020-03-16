@@ -17,6 +17,8 @@ export class OrganizationRegisterComponent implements OnInit {
 
   }
 
+  selectRamo = false;
+
   orgapi: any;
   matdata: any;
   erroOrgs: any;
@@ -162,6 +164,10 @@ export class OrganizationRegisterComponent implements OnInit {
     this.disableCode1 = true;
   }
 
+  enableSelect(){
+    this.selectRamo = true;
+  }
+
   getterRamo() {
     this.crudService.getRamo().subscribe(
       data => {
@@ -269,8 +275,8 @@ export class OrganizationRegisterComponent implements OnInit {
     console.log(this.org);
     console.log(this.contato);
 
-    if (this.contato.nome != "") {
-
+    if (this.contato.nome != '') {
+      
       const contatovar = {
         nome: this.contato.nome,
         email: this.contato.email,
@@ -284,23 +290,21 @@ export class OrganizationRegisterComponent implements OnInit {
 
       this.org.contatos.push(contatovar)
       console.log(this.org);
-    } else {
-      console.log("Contato em branco")
-    }
+    } 
 
-    if (this.org.razaosocial === '') {
+    if (this.org.codigo === '') {
       swal({
         icon: "error",
-        text: "Razão Social deve ser preenchida!",
+        text: "Código deve ser preenchido!",
         timer: 1800,
         buttons: {
           buttons: false
         }
       });
-    } else if (this.org.codigo === '') {
+    } else if (this.org.razaosocial === '') {
       swal({
         icon: "error",
-        text: "Código deve ser preenchida!",
+        text: "Razão Social deve ser preenchida!",
         timer: 1800,
         buttons: {
           buttons: false
@@ -315,6 +319,16 @@ export class OrganizationRegisterComponent implements OnInit {
           buttons: false
         }
       });
+    } else if (this.contato.nome == '') {
+      swal({
+        icon: "error",
+        text: "Adicione um contato!",
+        timer: 1800,
+        buttons: {
+          buttons: false
+        }
+      });
+      
     } else {
       this.org.erpe.push(this.erp);
       this.org.ramos.push(this.ramo);
