@@ -79,7 +79,7 @@ export class OrganizationRegisterComponent implements OnInit {
       data => {
         this.orgUpdate = data;
         console.log(' Organização pega' , this.orgUpdate);
-        console.log('teste' + this.orgUpdate.erpe)
+        console.log('teste' + this.orgUpdate.ramo)
         this.org = {
           id: this.orgUpdate.id,
           codigo: this.orgUpdate.codigo,
@@ -335,8 +335,6 @@ export class OrganizationRegisterComponent implements OnInit {
       });
       
     } else {
-      this.org.erpe.push(this.erp);
-      this.org.ramo.push(this.ramos);
       this.crudService.saveNewOrg(this.org).subscribe(
         data => {
           swal({
