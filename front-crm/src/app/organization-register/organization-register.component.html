@@ -49,13 +49,8 @@
       <button mat-icon-button data-toggle="modal" data-target="#ramo">
         <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
       </button>
-      <select *ngIf="!selectRamo && orgUpdate" (click)="enableSelect()" class="form-control">
-        <option value="" selected>{{orgUpdate.ramo.desc}}</option>
-      </select>
-      <select [(ngModel)]="org.ramo" *ngIf="selectRamo && orgUpdate" class="form-control" onmouseover="this.size=this.options.length" onmouseout="this.size=1">
-        <option *ngFor="let item of ramosapi" value="{{item.id}}">{{item.desc}}</option>
-      </select>
-      <select [(ngModel)]="org.ramo" *ngIf="!orgUpdate" class="form-control">
+      <select [(ngModel)]="org.ramos" class="form-control">
+        <option [value]="undefined" *ngIf="orgUpdate" selected hidden>{{orgUpdate.ramo.desc}}</option>
         <option *ngFor="let item of ramosapi" value="{{item.id}}">{{item.desc}}</option>
       </select>
     </div>
@@ -63,7 +58,7 @@
   <div class="row col-md-12">
     <div class="form-group col-md-3">
       <label for="cep">CEP</label>
-      <input [(ngModel)]="org.cep" type="text " class="form-control" mask="AA.AAA-AAA" placeholder="00.000-000">
+      <input [(ngModel)]="org.cep" type="text" class="form-control" mask="AA.AAA-AAA" placeholder="00.000-000">
     </div>
     <div class="form-group col-md-6">
       <label for="end">Endereço</label>
@@ -246,7 +241,7 @@
         <div class="col-md-12">
           <div class="form-group col-md-12">
             <label for="nome">Nome</label>
-            <input [(ngModel)]="ramo.desc" type="text" class="form-control" (keyup)="maiuscula($event.target.value, 15)">
+            <input [(ngModel)]="ramos.desc" type="text" class="form-control" (keyup)="maiuscula($event.target.value, 15)">
           </div>
         </div>
       </div>

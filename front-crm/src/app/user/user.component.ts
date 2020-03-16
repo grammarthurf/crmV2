@@ -22,7 +22,6 @@ export class UserComponent implements OnInit {
   constructor(private route: ActivatedRoute, private crudService: CrudService) {
     this.getterTickets();
     this.getterActivity();
-    
   }
 
   ngOnInit() {
@@ -40,7 +39,6 @@ export class UserComponent implements OnInit {
         this.user = data;
         this.nome = this.user.nome;
         console.log("a " + this.nome);
-
       },
       error => {
         console.error(error);
@@ -56,29 +54,28 @@ export class UserComponent implements OnInit {
   Filtrar1(){
     this.InitList = true;
     this.fltr = false;
-
     this.filter.fim = null;
     this.filter.inicio = null;
   }
 
   dataCheck(data){
-
     var yIniF = this.filter.inicio.substring(0,4);
     var yEndF = this.filter.fim.substring(0,4);
-
     var mIniF = this.filter.inicio.substring(5,7);
     var mEndF = this.filter.fim.substring(5,7);
-    
     var dIniF = this.filter.inicio.substring(8,10);
     var dEndF = this.filter.fim.substring(8,10);
-
     var year1 = data.substring(0,4);
     var month1 = data.substring(5,7);
     var day1 = data.substring(8,10);
 
-    if((yIniF > year1) || (yIniF == year1 && mIniF > month1) || (yIniF == year1 && mIniF == month1 && dIniF > day1)){
+    if((yIniF > year1) 
+      || (yIniF == year1 && mIniF > month1) 
+      || (yIniF == year1 && mIniF == month1 && dIniF > day1)){
       return false;
-    } else if ((yEndF > year1) || (yEndF == year1 && mEndF > month1) || (yEndF == year1 && mEndF == month1 && dEndF >= day1)){
+    } else if ((yEndF > year1) 
+              || (yEndF == year1 && mEndF > month1) 
+              || (yEndF == year1 && mEndF == month1 && dEndF >= day1)){
       return true;
     }
   }

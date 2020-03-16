@@ -25,10 +25,10 @@ export class OrganizationRegisterComponent implements OnInit {
   disableCode: boolean = false;
   disableCode1: boolean = false;
   org = {
-    id: 0 , codigo: '', razaosocial: '', nomefantasia: '', ramo: '',
+    id: 0 , codigo: '', razaosocial: '', nomefantasia: '', ramos: '',
     cnpj: '', ie: '', rua: '', complemento: '', bairro: '', cep: '',
     cidade: '', uf: '', telefone: '', erp: '', email: '', site: '',
-    contatos: [], erpe: [], ramos: []
+    contatos: [], erpe: [], ramo: []
   };
 
   orgUpdate: any;
@@ -36,7 +36,7 @@ export class OrganizationRegisterComponent implements OnInit {
   contato = { nome: '', email: '', cargo: '', dep: '', birth: '', tel: '', cel: '', skp: '' }
 
   ramosapi: any;
-  ramo = { desc: '' };
+  ramos = { desc: '' };
 
   erpsapi: any;
   erp = { codigo: '', desc: '', empresa: '' };
@@ -74,17 +74,21 @@ export class OrganizationRegisterComponent implements OnInit {
   }
 
   getterOrg(id) {
+    
     this.crudService.getOrg(id).subscribe(
       data => {
         this.orgUpdate = data;
         console.log(' Organização pega' , this.orgUpdate);
-        console.log('teste' + this.orgUpdate.ramo.desc)
+        console.log('teste' + this.orgUpdate.erpe)
         this.org = {
           id: this.orgUpdate.id,
           codigo: this.orgUpdate.codigo,
           razaosocial: this.orgUpdate.razaosocial,
           nomefantasia: this.orgUpdate.nomefantasia,
-          ramo: this.orgUpdate.ramo,
+
+          ramos: this.orgUpdate.ramos,
+          erp: this.orgUpdate.erp,
+
           cnpj: this.orgUpdate.cnpj,
           ie: this.orgUpdate.ie,
           rua: this.orgUpdate.rua,
@@ -94,16 +98,17 @@ export class OrganizationRegisterComponent implements OnInit {
           cidade: this.orgUpdate.cidade,
           uf: this.orgUpdate.uf,
           telefone: this.orgUpdate.telefone,
-          erp: this.orgUpdate.erp,
           email: this.orgUpdate.email,
           site: this.orgUpdate.site,
           contatos: this.orgUpdate.contatos,
+
           erpe: this.orgUpdate.erpe,
-          ramos: this.orgUpdate.ramo
+          ramo: this.orgUpdate.ramo
+
         };
 
-        console.log('dados da empresa', this.org.ramos)
-        console.log('desc ramos', this.orgUpdate.ramos)
+        console.log('dados da empresa', this.org.erpe)
+        
       },
       error => {
         // this.erroAtividade = error;
@@ -222,7 +227,7 @@ export class OrganizationRegisterComponent implements OnInit {
   }
 
   saveRamo() {
-    this.crudService.saveNewRamo(this.ramo).subscribe(
+    this.crudService.saveNewRamo(this.ramos).subscribe(
       data => {
         swal({
           icon: "success",
@@ -331,7 +336,7 @@ export class OrganizationRegisterComponent implements OnInit {
       
     } else {
       this.org.erpe.push(this.erp);
-      this.org.ramos.push(this.ramo);
+      this.org.ramo.push(this.ramos);
       this.crudService.saveNewOrg(this.org).subscribe(
         data => {
           swal({
@@ -357,9 +362,24 @@ export class OrganizationRegisterComponent implements OnInit {
   }
 
   updateOrg() {
-    // this.org.erpe.push(this.erp);
-    // this.org.ramos.push(this.ramo);
-    console.log(this.org);
+    //this.org.erpe.push(this.erp);
+    //this.org.ramo.push(this.ramos);
+
+    if(this.org.erp == undefined){
+      this.org.erp = this.orgUpdate.erpe.id;
+      console.log(this.org.erp)
+    } else {
+      console.log(this.org.erp)
+    }
+
+
+    if(this.org.ramos == undefined){
+      this.org.ramos = this.orgUpdate.ramo.id;
+      console.log(this.org.ramos)
+    } else {
+      console.log(this.org.ramos)
+    }
+    
 
     this.crudService.UpdateOrgMain(this.org).subscribe(
       data => {
@@ -409,7 +429,7 @@ export class OrganizationRegisterComponent implements OnInit {
     } else if (id== 14){
       this.contato.skp = v
     } else if (id== 15){
-      this.ramo.desc = v
+      this.ramos.desc = v
     } else if (id== 16){
       this.erp.empresa = v
     } else if (id== 17){
