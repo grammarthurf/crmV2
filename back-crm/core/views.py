@@ -118,6 +118,60 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
 
         print(data);
         return JsonResponse({'message': 'Worked'})
+    
+    def update(self, request, pk):
+        data = request.data
+        print(data)
+
+        O = Organizacao.objects.get(id=int(data['id']))
+        O.codigo = data['codigo']
+        O.razaosocial = data['razaosocial']
+        O.nomefantasia = data['nomefantasia']
+        O.telefone = data['telefone']
+        O.rua = data['rua']
+        O.complemento = data['complemento']
+        O.bairro = data['bairro']
+        O.cep = data['cep']
+        O.cidade = data['cidade']
+        O.uf = data['uf']
+        try:
+            O.email = data['email']
+            O.site = data['site']
+        except:
+            pass
+        try:
+            O.cnpj = data['cnpj']
+        except:
+            pass
+        
+        O.ramo = Ramo.objects.get(id=int(data['ramos']['id']))
+        O.ie = data['ie']
+        
+        O.erpe = Erp.objects.get(id=int(data['erp']))
+        
+        O.save()
+
+        O.contatos.clear()
+        contatos = data['contatos']
+        for i in contatos:
+            print('CONTATOS : ', i);
+            
+            o = Cliente()
+            o.nome = i['nome']
+            o.email = i['email']
+            o.cargo = i['cargo']
+            o.dep = i['dep']
+            o.birth = i['birth']
+            o.tel = i['tel']
+            o.cel = i['cel']
+            try:
+                o.skype = i['skype']
+            except:
+                o.skype = i['skp']
+            o.save()
+            O.contatos.add(o)
+            O.save()
+        return JsonResponse({'message': 'Worked'})
 
 
 class ProdutoViewSet(viewsets.ModelViewSet):
@@ -260,4 +314,23 @@ class AtividadeViewSet(viewsets.ModelViewSet):
         A.org = Organizacao.objects.get(id=int(data['org']))
         A.tipo = data['tipo']
         A.save()
-        return JsonResponse({'message': 'atividadecreated'})    
+        return JsonResponse({'message': 'atividadecreated'})
+
+    def update(self, request, pk):
+      data = request.data
+      print(data);
+      A = Atividade.objects.get(id=data['position'])
+      A.dataini = data['dataini']
+      A.datafim = data['datafim']
+      A.horaini = data['horaini']
+      A.horafim = data['horafim']
+      A.assunto = data['assunto']
+      A.ticket = Ticket.objects.get(id=int(data['ticket']['id']))
+      A.cliente = Cliente.objects.get(id=int(data['cliente']['id']))
+      A.org = Organizacao.objects.get(id=int(data['org']['id']))
+      A.tipo = data['tipo']
+      A.save()
+      
+      return JsonResponse({'message': 'atividadesupdated'})
+        
+      

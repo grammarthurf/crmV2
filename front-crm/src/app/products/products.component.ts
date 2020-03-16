@@ -58,7 +58,7 @@ export class ProductsComponent implements OnInit {
         this.code1 = "00" + ++this.produtosapi[0].codigo;
         this.produto.codigo = this.code1;
         console.log(this.code1);
-        
+
       } else if (a.length < 99){
         this.code1 = "0" + ++this.produtosapi[0].codigo;
         this.produto.codigo = this.code1;
@@ -107,20 +107,28 @@ export class ProductsComponent implements OnInit {
         this.selectedproduct = data;
         console.log('Produtoselecionado: ', this.selectedproduct);
 
-        this.produto.id=this.selectedproduct.id;
-        this.produto.nome= this.selectedproduct.nome;
-        this.produto.modalidade=this.selectedproduct.modalidade; 
-        this.produto.codigo=this.selectedproduct.codigo; 
+        this.produto.id = this.selectedproduct.id;
+        this.produto.nome = this.selectedproduct.nome;
+        this.produto.modalidade = this.selectedproduct.modalidade;
+        this.produto.codigo = this.selectedproduct.codigo;
       },
       error => {
         console.error(error);
       }
     )
   }
-  
+
 
   updatefalse(){
     this.conf.update = false;
+    this.produto.id = this.selectedproduct.id;
+    this.produto.nome = '';
+    this.produto.modalidade = '';
+    this.produto.codigo = '';
+  }
+
+  UpdateProduct(){
+    this.crudService.UpdateProduct(this.produto).subscribe( data => { this.getterProdutos() }, error => {})
   }
 
   editProduct(item){
@@ -176,16 +184,21 @@ export class ProductsComponent implements OnInit {
     } else {
       this.crudService.saveNewProduto(this.produto).subscribe(
         data => {
-           swal({
-             icon: "success",
-             text: "Produto salvo com sucesso!",
-             timer: 1800,
-             buttons: {
-               buttons: false
-             }
-           });
+
+          swal({
+            icon: "success",
+            text: "Produto salvo com sucesso!",
+            timer: 1800,
+            buttons: {
+              buttons: false
+            }
+          });
           console.log(data);
           this.getterProdutos();
+
+          this.produto.nome = '';
+          this.produto.modalidade = '';
+          this.produto.codigo = '';
         },
         error => {
           console.error(error);

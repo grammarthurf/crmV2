@@ -9,9 +9,9 @@
       <input [(ngModel)]="org.codigo" disabled value="{{this.code1}}" type="text" class="form-control">
       <!-- value="{{orgapi.id}}" -->
     </div>
-    <button class="btn btn-primary" 
-            style="margin-top:30px;" 
-            [disabled]="disableCode || orgUpdate" 
+    <button class="btn btn-primary"
+            style="margin-top:30px;"
+            [disabled]="disableCode || orgUpdate"
             (click)="generateCode1()"
             id="code">
       <img src="../../assets/cod.png" id="codigo">
@@ -49,8 +49,8 @@
       <button mat-icon-button data-toggle="modal" data-target="#ramo">
         <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
       </button>
-      <select class="form-control" [(ngModel)]="org.ramo">
-        <!-- <option [value]="undefined" selected hidden>{{orgUpdate.ramos.desc}}</option> -->
+      <select [(ngModel)]="org.ramo" class="form-control">
+        <option value="undefined" selected >{{orgUpdate.ramo.desc}}</option>
         <option *ngFor="let item of ramosapi" value="{{item.id}}">{{item.desc}}</option>
       </select>
     </div>
@@ -171,29 +171,29 @@
             <div class="row">
               <div class="col-md-11">
                 <p class="card-text">
-                  <span *ngIf="item.email">•</span> 
+                  <span *ngIf="item.email">•</span>
                   {{item.email}}
                 </p>
                 <p class="card-text">
-                  <span *ngIf="item.cargo">•</span> 
+                  <span *ngIf="item.cargo">•</span>
                   {{item.cargo}}
                 </p>
                 <p class="card-text">
-                  <span *ngIf="item.dep">• dep. </span> 
+                  <span *ngIf="item.dep">• dep. </span>
                   {{item.dep}}
                 </p>
                 <p class="card-text">
-                  <span *ngIf="item.skp">•</span> 
+                  <span *ngIf="item.skp">•</span>
                   {{item.skp}}
                 </p>
                 <p class="card-text">
-                  <span *ngIf="item.birth">•</span> 
+                  <span *ngIf="item.birth">•</span>
                   {{item.birth | date:'dd/MM/yyyy'}}
                 </p>
                 <p class="card-text">
-                  <span *ngIf="item.tel">•</span> 
-                  {{formatPhoneNumber(item.tel)}} 
-                  <span *ngIf="item.cel">•</span> 
+                  <span *ngIf="item.tel">•</span>
+                  {{formatPhoneNumber(item.tel)}}
+                  <span *ngIf="item.cel">•</span>
                   {{formatCellPhoneNumber(item.cel)}}
                 </p>
               </div>
@@ -214,22 +214,22 @@
   <hr>
   <button class="btn btn-secondary" (click)="exit()">Sair</button>
   <button class="btn btn-primary"
-          *ngIf="orgUpdate" 
-          (click)="updateOrg()" 
+          *ngIf="orgUpdate"
+          (click)="updateOrg()"
           style="margin-left: 10px;">
           Atualizar Empresa
   </button>
-  <button class="btn btn-primary" 
-          *ngIf="!orgUpdate" 
-          (click)="save()" 
+  <button class="btn btn-primary"
+          *ngIf="!orgUpdate"
+          (click)="save()"
           style="margin-left: 10px;">
           Salvar Empresa
   </button>
 </div>
-<div  class="modal fade bd-example-modal-lg" 
-      id="ramo" 
-      tabindex="-1" 
-      role="dialog" 
+<div  class="modal fade bd-example-modal-lg"
+      id="ramo"
+      tabindex="-1"
+      role="dialog"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
@@ -255,10 +255,10 @@
     </div>
   </div>
 </div>
-<div  class="modal fade bd-example-modal-lg" 
-      id="erp" 
-      tabindex="-1" 
-      role="dialog" 
+<div  class="modal fade bd-example-modal-lg"
+      id="erp"
+      tabindex="-1"
+      role="dialog"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">

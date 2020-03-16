@@ -15,13 +15,13 @@
   <div (keyup)="applyFilter($event)" class="btn-group btn-group" role="group" aria-label="btngroup"
     style="float: right; margin: 20px 10px 3px;">
     <button type="button" class="btn btn-link" (click)="filterDay()">
-      Hoje 
+      Hoje
     </button>
     <button type="button" class="btn btn-link" (click)="filterTomorrow()">
-      Amanhã 
+      Amanhã
     </button>
     <button type="button" class="btn btn-link" (click)="filterMonth()">
-      Este mês 
+      Este mês
     </button>
     <button type="button" class="btn btn-link" (click)="filterNextMonth()">
       Próximo mês
@@ -55,8 +55,8 @@
               <div class="col-12 row" style="padding: 0px;">
                 <div class="col-6" style="margin-top: 8px;">
                   <label for="negocios">Negócio <label style="color: red; font-size: 20px;">*</label></label><!-- (change)="getterorg($event.target.value)" -->
-                  <select [(ngModel)]="atv.ticket" 
-                          *ngIf="negociosapi && !selectedatv" 
+                  <select [(ngModel)]="atv.ticket"
+                          *ngIf="negociosapi && !selectedatv"
                           class="form-control"
                           (change)="getterOrgTick($event.target.value)"
                           id="exampleFormControlSelect1">
@@ -64,8 +64,8 @@
                       {{ticket.titulo}}
                     </option>
                   </select><!--  -->
-                  <select [(ngModel)]="atv.ticket" 
-                          *ngIf="selectedatv" 
+                  <select [(ngModel)]="atv.ticket"
+                          *ngIf="selectedatv"
                           class="form-control"
                           id="exampleFormControlSelect1"
                           (change)="getterOrgTick($event.target.value)">
@@ -120,12 +120,12 @@
               </div>
               <div class="col-12 row" style="margin-top: 20px; padding: 0px 0px 0px 15px;">
                 <label for="obs">Assunto <label style="color: red; font-size: 20px;">*</label></label>
-                <textarea [(ngModel)]="atv.assunto" 
-                          name="obs" 
-                          id="obs" 
-                          cols="50" 
-                          rows="3" 
-                          class="form-control" 
+                <textarea [(ngModel)]="atv.assunto"
+                          name="obs"
+                          id="obs"
+                          cols="50"
+                          rows="3"
+                          class="form-control"
                           (keyup)="maiuscula($event.target.value)">
                 </textarea>
               </div>
@@ -328,7 +328,7 @@
       </td>
     </ng-container>
 
-    <!--  COLUNA CONTATO 
+    <!--  COLUNA CONTATO
     <ng-container matColumnDef="cliente">
       <th mat-header-cell *matHeaderCellDef>
         Nome do Contato
@@ -343,7 +343,7 @@
       <th mat-header-cell *matHeaderCellDef>
         Organização
       </th>
-      <td mat-cell *matCellDef="let element" 
+      <td mat-cell *matCellDef="let element"
           [style.background-color]="getColor(element.dataini)">
         {{element.org.razaosocial}}
       </td>

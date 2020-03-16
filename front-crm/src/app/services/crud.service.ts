@@ -14,7 +14,7 @@ export class CrudService {
 
   // GET ALL API
 
-  public getErp(): Observable<any> {
+  public getErpes(): Observable<any> {
     return this.http.get(`${this.baseUrl}erp/`, {
       headers: this.htttpHeaders
     });
@@ -75,6 +75,12 @@ export class CrudService {
     });
   }
 
+  public getErp(id): Observable<any> {
+    return this.http.get(`${this.baseUrl}erp/${id}/`, {
+      headers: this.htttpHeaders
+    });
+  }
+
   public getVendedores(id): Observable<any> {
     return this.http.get(`${this.baseUrl}vendedor/${id}/`, {
       headers: this.htttpHeaders
@@ -99,11 +105,6 @@ export class CrudService {
     });
   }
 
-  public getErps(id): Observable<any> {
-    return this.http.get(`${this.baseUrl}erp/${id}/`, {
-      headers: this.htttpHeaders
-    });
-  }
 
   public getProduto(id): Observable<any> {
     return this.http.get(`${this.baseUrl}produto/${id}/`, {
@@ -176,7 +177,17 @@ export class CrudService {
 
   // PUT API
 
+  public updateRamo(ramo): Observable<any> {
+    return this.http.put(this.baseUrl + 'ramo/' + ramo.id + '/' , ramo, {
+      headers: this.htttpHeaders
+    });
+  }
 
+  public UpdateProduct(prod): Observable<any> {
+    return this.http.put(this.baseUrl + 'produto/' + prod.id + '/' , prod, {
+      headers: this.htttpHeaders
+    });
+  }
 
   public updateatv(atv): Observable<any> {
     return this.http.put(this.baseUrl + 'atividade/' + atv.position + '/' , atv, {
@@ -281,24 +292,25 @@ export class CrudService {
     });
   }
 
-  // public updateErp(erp): Observable<any> {
+  public updateErp(erp): Observable<any> {
 
-  //   const body =  { id: parseInt(erp.id),
-  //                   codigo: erp.codigo,
-  //                   desc: erp.desc,
-  //                   empresa: erp.empresa};
-  //   console.log('body:', body);
+    // const body =  { id: parseInt(erp.id),
+    //                 codigo: erp.codigo,
+    //                 desc: erp.desc,
+    //                 empresa: erp.empresa};
+    // console.log('body:', body);
 
-  //   return this.http.put(this.baseUrl + 'erp/' + erp.id + '/' , body, {
-  //     headers: this.htttpHeaders
-  //   });
-  // }
+    return this.http.put(this.baseUrl + 'erp/' + erp.position + '/' , erp, {
+      headers: this.htttpHeaders
+    });
+  }
 
   public UpdateOrgMain(org): Observable<any> {
     return this.http.put(this.baseUrl + 'orgs/' + org.id + '/' , org, {
       headers: this.htttpHeaders
     });
   }
+
 
 
   public updateOrg(org): Observable<any> {

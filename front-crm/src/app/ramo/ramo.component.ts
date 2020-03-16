@@ -130,14 +130,33 @@ export class RamoComponent implements OnInit {
       }
     )
   }
-  
+  UpdateRamo(){
+    this.crudService.updateRamo(this.ramo).subscribe(
+      data => {
+        this.getterRamo();
+        swal({
+          icon: "success",
+          text: "ERP atualizado com sucesso!",
+          timer: 1000,
+          buttons: {
+            buttons: false
+          }
+        });
+      },
+      error => {
+        console.error(error);
+      }
+    )
+  }
+
 
   updatefalse(){
     this.conf.update = false;
+    this.ramo.desc = '';
   }
 
   editRamo(item){
-    this.conf.update = true
+    this.conf.update = true;
     this.getterRamos(item.id);
     console.log(item.id)
   }

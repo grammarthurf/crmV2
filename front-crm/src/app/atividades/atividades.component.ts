@@ -182,16 +182,18 @@ export class AtividadesComponent implements OnInit {
         this.selectedatv = data;
         console.log('atividadeselecionada ', this.selectedatv);
 
-        this.atv.position=this.selectedatv.id;
-        this.atv.dataini= this.selectedatv.dataini;
-        this.atv.horaini=this.selectedatv.horaini; 
-        this.atv.datafim=this.selectedatv.datafim; 
-        this.atv.horafim=this.selectedatv.horafim; 
-        this.atv.tipo=this.selectedatv.tipo; 
-        this.atv.cliente=this.selectedatv.cliente; 
-        this.atv.org=this.selectedatv.org;
-        this.atv.ticket=this.selectedatv.ticket;
-        this.atv.assunto=this.selectedatv.assunto;
+        this.atv.position = this.selectedatv.id;
+        this.atv.dataini = this.selectedatv.dataini;
+        this.atv.horaini = this.selectedatv.horaini;
+        this.atv.datafim = this.selectedatv.datafim;
+        this.atv.horafim = this.selectedatv.horafim;
+        this.atv.tipo = this.selectedatv.tipo;
+        this.atv.cliente = this.selectedatv.cliente;
+        this.atv.org = this.selectedatv.org;
+        this.atv.ticket = this.selectedatv.ticket;
+        this.atv.assunto = this.selectedatv.assunto;
+        console.log('ATIVIDADEFINAL: ' , this.atv);
+
       },
       error => {
         console.error(error);
@@ -201,6 +203,16 @@ export class AtividadesComponent implements OnInit {
 
   updatefalse(){
     this.conf.update = false;
+
+    this.atv.dataini = '';
+    this.atv.horaini = '';
+    this.atv.datafim = '';
+    this.atv.horafim = '';
+    this.atv.tipo = '';
+    this.atv.cliente = '';
+    this.atv.org = '';
+    this.atv.ticket = '';
+    this.atv.assunto = '';
   }
 
   editAtv(item){
