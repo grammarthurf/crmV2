@@ -325,9 +325,9 @@ class AtividadeViewSet(viewsets.ModelViewSet):
       A.horaini = data['horaini']
       A.horafim = data['horafim']
       A.assunto = data['assunto']
-      A.ticket = Ticket.objects.get(id=int(data['ticket']['id']))
-      A.cliente = Cliente.objects.get(id=int(data['cliente']['id']))
-      A.org = Organizacao.objects.get(id=int(data['org']['id']))
+      A.ticket = Ticket.objects.get(id=int(data['ticket']))
+      A.cliente = Cliente.objects.get(id=int(data['cliente']))
+      A.org = Organizacao.objects.get(id=int(data['org']))
       A.tipo = data['tipo']
       A.save()
       

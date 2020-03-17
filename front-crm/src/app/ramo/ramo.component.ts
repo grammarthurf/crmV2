@@ -83,6 +83,7 @@ export class RamoComponent implements OnInit {
         // setTimeout(this.reiniciar, 1001);
         console.log(data);
         this.getterRamo();
+        this.ramo.desc = "";
       },
       error => {
         // this.getterOrg();

@@ -81,6 +81,7 @@ export class ErpComponent implements OnInit {
           }
         });
         this.getterErp();
+        this.disableCode = false;
       },
       error => {}
     );
@@ -128,6 +129,7 @@ export class ErpComponent implements OnInit {
 
   // UPDATE ERP
   UpdateErp(){
+    this.disableCode = true;
     this.crudService.updateErp(this.erp).subscribe(
       data => {
         this.getterErp();

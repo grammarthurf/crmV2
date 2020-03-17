@@ -3,6 +3,7 @@ img {
 }
 
 a {
+    cursor: pointer;
     font-size: 23px;
 }
 

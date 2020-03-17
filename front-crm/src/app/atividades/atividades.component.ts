@@ -157,8 +157,7 @@ export class AtividadesComponent implements OnInit {
     )
   }
 
-  // UPDATE ACTIVITY
-  UpdateAtiv() {
+  UpdateAtiv(){
     this.crudService.updateatv(this.atv).subscribe(
       data => {
         this.getterActivity();
@@ -191,7 +190,6 @@ export class AtividadesComponent implements OnInit {
         this.atv.org = this.selectedatv.org;
         this.atv.ticket = this.selectedatv.ticket;
         this.atv.assunto = this.selectedatv.assunto;
-
       },
       error => { }
     )
@@ -241,7 +239,6 @@ export class AtividadesComponent implements OnInit {
       data => {
         this.calendarEvents = [];
         this.matdata = [];
-
         data.forEach(e => {
 
           var timeIni = e.horaini.substring(0, 2) + ":" + e.horaini.substring(2, 4);
@@ -399,6 +396,17 @@ export class AtividadesComponent implements OnInit {
             buttons: false
           }
         });
+        this.atv.assunto = "";
+        this.atv.cliente = '0';
+        this.atv.datafim = "";
+        this.atv.dataini = "";
+        this.atv.tipo = "";
+        this.atv.ticket = '0';
+        this.atv.org = '0';
+        this.atv.position = 0;
+        this.atv.horafim = "";
+        this.atv.horaini = "";
+        this.numm = "";
         this.getterActivity();
       },
       error => {
@@ -489,6 +497,7 @@ export class AtividadesComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.matdata);
         this.selection = new SelectionModel<Element>(true, []);
       }
+      this.editAtv(item);
     });
   }
 
