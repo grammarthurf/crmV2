@@ -90,7 +90,7 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
         except:
             pass
         try:
-            C.ramo = Ramo.objects.get(id=int(data['ramo']))
+            C.ramo = Ramo.objects.get(id=int(data['ramos']))
         except:
             pass
         C.ie = data['ie']
