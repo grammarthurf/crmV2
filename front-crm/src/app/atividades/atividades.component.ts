@@ -412,6 +412,17 @@ export class AtividadesComponent implements OnInit {
             buttons: false
           }
         });
+        this.atv.assunto = "";
+        this.atv.cliente = '0';
+        this.atv.datafim = "";
+        this.atv.dataini = "";
+        this.atv.tipo = "";
+        this.atv.ticket = '0';
+        this.atv.org = '0';
+        this.atv.position = 0;
+        this.atv.horafim = "";
+        this.atv.horaini = "";
+        this.numm = "";
         this.getterActivity();
       },
       error => {

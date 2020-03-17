@@ -87,7 +87,7 @@ export class ErpComponent implements OnInit {
         // setTimeout(this.reiniciar, 1001);
         console.log(data);
         this.getterErp();
-
+        this.disableCode = false;
       },
       error => {
         // this.getterOrg();
@@ -163,6 +163,7 @@ export class ErpComponent implements OnInit {
   }
 
   UpdateErp(){
+    this.disableCode = true;
     this.crudService.updateErp(this.erp).subscribe(
       data => {
         this.getterErp();

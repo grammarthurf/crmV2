@@ -608,6 +608,14 @@ export class BusinessComponent implements OnInit {
             }
           });
           this.getterEstagios();
+          this.ticket.titulo = "";
+          this.ticket.termometro = "50";
+          this.ticket.produto = "";
+          this.ticket.valorestimado = 0;
+          this.ticket.org = "";
+          this.ticket.cliente = "";
+          this.ticket.vendedor = "";
+          this.ticket.obs = "";
           this.getterTickets('open');
           this.getterTickets('win');
           console.log(data);
