@@ -187,7 +187,7 @@ export class ProductsComponent implements OnInit {
           });
           console.log(data);
           this.getterProdutos();
-
+          this.disableCode = false;
           this.produto.nome = '';
           this.produto.modalidade = '';
           this.produto.codigo = '';
