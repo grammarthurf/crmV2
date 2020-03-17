@@ -12,6 +12,9 @@ export class UserComponent implements OnInit {
   id: any;
   user:any;
   negociosapi: any;
+  orgsapi: any;
+  ramosapi: any;
+  erpapi: any;
   atvapi: any;
   InitList: boolean = true;
   fltr: boolean = false
@@ -22,6 +25,9 @@ export class UserComponent implements OnInit {
   constructor(private route: ActivatedRoute, private crudService: CrudService) {
     this.getterTickets();
     this.getterActivity();
+    this.getterOrgs();
+    this.getterRamos();
+    this.getterErp();
   }
 
   ngOnInit() {
@@ -92,6 +98,42 @@ export class UserComponent implements OnInit {
     );
   }
 
+  getterRamos() {
+    this.crudService.getRamo().subscribe(
+      data => {
+        this.ramosapi = data;
+        console.log(this.ramosapi)
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  }
+
+  getterErp() {
+    this.crudService.getErpes().subscribe(
+      data => {
+        this.erpapi = data;
+        console.log(this.erpapi)
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  }
+
+  getterOrgs() {
+    this.crudService.getOrgs().subscribe(
+      data => {
+        this.orgsapi = data;
+        console.log(this.orgsapi)
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  }
+
   getterActivity() {
     this.crudService.getAtividade().subscribe(
       data => {
@@ -103,5 +145,4 @@ export class UserComponent implements OnInit {
       }
     );
   }
-
 }
