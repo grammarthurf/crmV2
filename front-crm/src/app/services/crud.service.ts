@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 })
 export class CrudService {
   baseUrl = "http://127.0.0.1:8000/";
+  // baseUrl = "http://192.168.10.205:8000/"
   htttpHeaders = new HttpHeaders({ "Content-Type": "application/json" });
   body:any;
 

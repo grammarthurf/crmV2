@@ -131,7 +131,7 @@ export class OrganizationComponent implements OnInit {
 
   // GO TO COMPANY REGISTER SCREEN
   goToRegister() {
-    this.router.navigate([`/company-register/`]);
+    this.router.navigate(['/company-register']);
   }
 
   // DELETE ITEM

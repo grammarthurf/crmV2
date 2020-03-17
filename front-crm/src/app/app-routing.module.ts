@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: "business",
-    component: BusinessComponent
+    component: BusinessComponent,
   },
   {
     path: "business-detail/:id",
@@ -47,11 +47,11 @@ const routes: Routes = [
     component: OrganizationDetailComponent
   },
   {
-    path: "company-register",
+    path: "company-register/:id",
     component: OrganizationRegisterComponent
   },
   {
-    path: "company-register/:id",
+    path: "company-register",
     component: OrganizationRegisterComponent
   },
   {
