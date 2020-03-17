@@ -6,21 +6,21 @@
   <div class="collapse navbar-collapse" id="navbarSite">
     <ul class="navbar-nav mr-auto ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/business">Lead</a>
+        <a class="nav-link" (click)="goToLead()">Lead</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/activity">Atividade</a>
+        <a class="nav-link" (click)="goToActivity()">Atividade</a>
       </li>
       <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
           Cadastros
         </a>
         <div class="dropdown-menu">
-          <a href="/company" class="dropdown-item">Empresa</a>
-          <a href="/vendedor" class="dropdown-item">Vendedor</a>
-          <a href="/products" class="dropdown-item">Produtos</a>
-          <a href="/erp" class="dropdown-item">ERP</a>
-          <a href="/ramo" class="dropdown-item">Ramo</a>
+          <a (click)="goToCompany()" class="dropdown-item">Empresa</a>
+          <a (click)="goToSeller()" class="dropdown-item">Vendedor</a>
+          <a (click)="goToProducts()" class="dropdown-item">Produtos</a>
+          <a (click)="goToERP()" class="dropdown-item">ERP</a>
+          <a (click)="goToRamo()" class="dropdown-item">Ramo</a>
         </div>
       </li>
     </ul>
@@ -30,8 +30,8 @@
           Brenda
         </a>
         <div class="dropdown-menu">
-          <a href="/user/1" class="dropdown-item">Meu Perfil</a>
-          <a href="/login" class="dropdown-item">Sair</a>
+          <a (click)="goToProfile()" class="dropdown-item">Meu Perfil</a>
+          <a (click)="goToLogin()" class="dropdown-item">Sair</a>
         </div>
       </li>
     </ul>

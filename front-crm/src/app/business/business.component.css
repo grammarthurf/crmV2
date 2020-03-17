@@ -239,38 +239,6 @@ span:nth-child(3) {
               0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
-/* Teste DD */
-
-/* @media (max-width: 1366px) {
-  .example-container {
-    width: 12.4%;
-    max-width: 100%;
-    margin: 0 23px 25px 0;
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  .test {
-    width: 191px;
-    display: flex;
-  }
-}
-
-@media (min-width: 1445px) and (max-width: 1920px) {
-  .example-container {
-    width: 12.95%;
-    max-width: 100%;
-    margin: 0 23px 25px 0;
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  .test {
-    width: 270px;
-    display: flex;
-  }
-} */
-
 .example-container {
   width: 12.4%;
   max-width: 100%;

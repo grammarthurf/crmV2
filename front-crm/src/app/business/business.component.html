@@ -1,5 +1,6 @@
 <div class="maindiv" (click)="stop()">
 
+  <!-- ADD LEAD AND FILTER -->
   <div class="flex">
     <button type="button" class="btn btn-primary loc-button-top" data-toggle="modal" data-target="#modalAddLead">
       <mat-icon>add</mat-icon>
@@ -13,18 +14,250 @@
       <button class="btn btn-link" (click)="showLose()">
         Perdidas
       </button>
-      <!-- <button class="btn btn-link"  (click)="showExclude()">Excluídas     </button> -->
     </div>
   </div>
 
   <mat-divider style="margin-left: 0px; margin-right: 18px;"></mat-divider>
 
-  <div  class="modal fade" 
-        id="modalAddLead" 
-        tabindex="-1" 
-        role="dialog" 
-        aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
+  <!-- LEADS -->
+  <div cdkDropListGroup class="nowrap" style="width: 100%;">
+    <div class="example-container">
+      <div class="tickets test">
+        <div>
+          <p>Prospecção</p>
+          <p>{{tickets1.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets1.tickets.length}} Neg. </p>
+        </div>
+        <img src="../../assets/arrow.png" />
+      </div>
+
+      <div cdkDropList [cdkDropListData]="tickets1.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="leads" *ngFor="let item of tickets1.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+          <div class="flex">
+            <p class="limit-words">{{item.titulo}}</p>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
+          </div>
+          <p class="limit-words">
+            {{item.org.razaosocial}}
+          </p>
+          <div class="flex">
+
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
+            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">
+              error_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">
+              error_outline
+            </mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <div class="tickets test">
+        <div>
+          <p>Contatado</p>
+
+          <p>{{tickets2.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets2.tickets.length}} Neg. </p>
+        </div>
+        <img src="../../assets/arrow.png" />
+      </div>
+
+      <div cdkDropList [cdkDropListData]="tickets2.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="leads" *ngFor="let item of tickets2.tickets;" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+          <div class="flex">
+            <p class="limit-words">
+              {{item.titulo}}
+            </p>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
+          </div>
+          <p class="limit-words">{{item.org.razaosocial}}</p>
+          <div class="flex">
+
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
+            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">
+              error_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">
+              error_outline
+            </mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <div class="tickets test">
+        <div>
+          <p>Cliente Potencial</p>
+
+          <p>{{tickets3.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets3.tickets.length}} Neg. </p>
+        </div>
+        <img src="../../assets/arrow.png" />
+      </div>
+
+      <div cdkDropList [cdkDropListData]="tickets3.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="leads" *ngFor="let item of tickets3.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+          <div class="flex">
+            <p class="limit-words">{{item.titulo}}</p>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
+          </div>
+          <p class="limit-words">{{item.org.razaosocial}}</p>
+          <div class="flex">
+
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
+            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">
+              error_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">
+              error_outline
+            </mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <div class="tickets test">
+        <div>
+          <p>Demo Agendada</p>
+
+          <p>{{tickets4.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets4.tickets.length}} Neg. </p>
+        </div>
+        <img src="../../assets/arrow.png" />
+      </div>
+
+      <div cdkDropList [cdkDropListData]="tickets4.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="leads" *ngFor="let item of tickets4.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+          <div class="flex">
+            <p class="limit-words">{{item.titulo}}</p>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
+          </div>
+          <p class="limit-words">{{item.org.razaosocial}}</p>
+          <div class="flex">
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
+            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">
+              error_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">
+              error_outline
+            </mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <div class="tickets test">
+        <div>
+          <p>Proposta</p>
+
+          <p>{{tickets5.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets5.tickets.length}} Neg. </p>
+        </div>
+        <img src="../../assets/arrow.png" />
+      </div>
+
+      <div cdkDropList [cdkDropListData]="tickets5.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="leads" *ngFor="let item of tickets5.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+          <div class="flex">
+            <p class="limit-words">{{item.titulo}}</p>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
+          </div>
+          <p class="limit-words">{{item.org.razaosocial}}</p>
+          <div class="flex">
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
+            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">
+              error_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">
+              error_outline
+            </mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <div class="tickets test">
+        <div>
+          <p>Negociações Inic.</p>
+          <p>{{tickets6.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets6.tickets.length}} Neg. </p>
+        </div>
+        <img src="../../assets/arrow.png" />
+      </div>
+
+      <div cdkDropList [cdkDropListData]="tickets6.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="leads" *ngFor="let item of tickets6.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+          <div class="flex">
+            <p class="limit-words">{{item.titulo}}</p>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
+          </div>
+          <p class="limit-words">{{item.org.razaosocial}}</p>
+          <div class="flex">
+            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
+            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">
+              error_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">
+              error_outline
+            </mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <div class="tickets test">
+        <div>
+          <p>Clientes</p>
+          <p>{{tickets7.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets7.tickets.length}} Neg. </p>
+        </div>
+      </div>
+
+      <div cdkDropList [cdkDropListData]="tickets7.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="leads" *ngFor="let item of tickets7.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
+          <div class="flex">
+            <p class="limit-words">{{item.titulo}}</p>
+            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
+            <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
+            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
+          </div>
+          <p class="limit-words">{{item.org.razaosocial}}</p>
+          <div class="flex">
+            <p class="limit-value">{{ item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
+            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">
+              error_outline</mat-icon>
+            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">
+              error_outline
+            </mat-icon>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <lottie-animation-view [options]="lottieConfig" [width]="250" [height]="250"
+      (animCreated)="handleAnimation($event)">
+    </lottie-animation-view>
+  </div>
+
+  <!-- MODAL ADD LEAD -->
+  <div class="modal fade" id="modalAddLead" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -40,7 +273,8 @@
             <div class="form-group col-md-12">
               <label for="exampleInputEmail1">Título</label>
               <input [(ngModel)]="ticket.titulo" type="text" class="form-control" id="title"
-                aria-describedby="emailHelp" placeholder="Título" required (keyup)="maiuscula($event.target.value, 1)"/>
+                aria-describedby="emailHelp" placeholder="Título" required
+                (keyup)="maiuscula($event.target.value, 1)" />
             </div>
           </div>
           <div class="row">
@@ -90,10 +324,7 @@
           <div class="row">
             <div class="form-group col-md-6">
               <label for="exampleFormControlSelect1">Contato</label>
-              <select *ngIf="orgapi"
-                      [(ngModel)]="ticket.cliente"
-                      class="form-control"
-                      id="exampleFormControlSelect1">
+              <select *ngIf="orgapi" [(ngModel)]="ticket.cliente" class="form-control" id="exampleFormControlSelect1">
                 <option *ngFor="let orgs of orgapi.contatos" value="{{orgs.id}}">
                   {{orgs.nome}}
                 </option>
@@ -123,10 +354,7 @@
               <button mat-icon-button data-toggle="modal" data-target="#exampleModalVendedorExt" data-dismiss="modal">
                 <mat-icon class="icon-modal-lead">add</mat-icon>
               </button>
-              <select class="form-control" id="ven_ext" >
-                <!-- <option>
-                  Escolha...
-                </option> -->
+              <select class="form-control" id="ven_ext">
                 <option [(ngModel)]="ticket.vendext" *ngFor="let vendext of vendedorextapi" value="{{vendext.id}}">
                   {{vendext.nome}}
                 </option>
@@ -137,7 +365,8 @@
           <div class="row">
             <div class="form-group col-md-12">
               <label for="exampleFormControlTextarea1">Observação</label>
-              <textarea [(ngModel)]="ticket.obs" class="form-control" id="observation" rows="3" (keyup)="maiuscula($event.target.value, 2)">
+              <textarea [(ngModel)]="ticket.obs" class="form-control" id="observation" rows="3"
+                (keyup)="maiuscula($event.target.value, 2)">
               </textarea>
             </div>
           </div>
@@ -155,16 +384,13 @@
     </div>
   </div>
 
-  <div  class="modal fade"
-        id="exampleModalProd"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
+  <!-- ADD PRODUCT -->
+  <div class="modal fade" id="exampleModalProd" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <img src="../../assets/icone-produto.png" class="img-prod"/>
+          <img src="../../assets/icone-produto.png" class="img-prod" />
           <h5 class="modal-title" id="exampleModalLongTitle">
             Cadastrar Produto
           </h5>
@@ -175,21 +401,25 @@
         <div class="modal-body row">
           <div class="form-group col-md-6">
             <label for="codeprod"> Código</label>
-            <input [(ngModel)]="produto.codigo" disabled type="text" class="form-control" id="codeprod" value="{{this.code1}}"/>
-            </div>
-            <button class="btn btn-primary" [disabled]="disableCode" (click)="generateCode1()" id="code">
-              <img src="../../assets/cod.png" id="codigo">
-            </button>
+            <input [(ngModel)]="produto.codigo" disabled type="text" class="form-control" id="codeprod"
+              value="{{this.code1}}" />
+          </div>
+          <button class="btn btn-primary" [disabled]="disableCode" (click)="generateCode1()" id="code">
+            <img src="../../assets/cod.png" id="codigo">
+          </button>
           <div class="form-group col-md-12">
             <label for="nomeprod"> Descrição</label>
-            <input [(ngModel)]="produto.nome" (keyup)="maiuscula($event.target.value, 3)" type="text" class="form-control" id="nomeprod" required />
+            <input [(ngModel)]="produto.nome" (keyup)="maiuscula($event.target.value, 3)" type="text"
+              class="form-control" id="nomeprod" required />
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#modalAddLead">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
+            data-target="#modalAddLead">
             Sair
           </button>
-          <button type="button" (click)="saveProduto()" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#modalAddLead">
+          <button type="button" (click)="saveProduto()" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"
+            data-target="#modalAddLead">
             Salvar
           </button>
         </div>
@@ -197,259 +427,37 @@
     </div>
   </div>
 
-  <div  class="modal fade" 
-          id="exampleModalVendedorExt" 
-          tabindex="-1" 
-          role="dialog" 
-          aria-labelledby="exampleModalCenterTitle"
-          aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <img src="../../assets/icone-produto.png" class="img-prod"/>
-            <h5 class="modal-title" id="exampleModalLongTitle">
-              Cadastrar Vendedor Externo
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+  <!-- ADD SELLER EXTERNAL -->
+  <div class="modal fade" id="exampleModalVendedorExt" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <img src="../../assets/icone-produto.png" class="img-prod" />
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            Cadastrar Vendedor Externo
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body row">
+          <div class="form-group col-md-12">
+            <label for="nomeprod"> Nome</label>
+            <input type="text" class="form-control" [(ngModel)]="vendedorExt.nome" id="nomeprod" required
+              (keyup)="maiuscula($event.target.value, 4)" />
           </div>
-          <div class="modal-body row">  
-            <div class="form-group col-md-12">
-              <label for="nomeprod"> Nome</label>
-              <input type="text" class="form-control" [(ngModel)]="vendedorExt.nome" id="nomeprod" required (keyup)="maiuscula($event.target.value, 4)"/>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#modalAddLead">
-              Sair
-            </button>
-            <button type="button" (click)="saveVendedorExt()" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#modalAddLead">
-              Salvar
-            </button>
-          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
+            data-target="#modalAddLead">
+            Sair
+          </button>
+          <button type="button" (click)="saveVendedorExt()" class="btn btn-primary" data-dismiss="modal"
+            data-toggle="modal" data-target="#modalAddLead">
+            Salvar
+          </button>
         </div>
       </div>
     </div>
-
-  <div cdkDropListGroup class="nowrap" style="width: 100%;">
-    <div class="example-container">
-      <div class="tickets test">
-        <div>
-          <p>Prospecção</p>
-          <p>{{tickets1.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets1.tickets.length}} Neg. </p>
-        </div>
-        <img src="../../assets/arrow.png" />
-      </div>
-
-      <div cdkDropList [cdkDropListData]="tickets1.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets1.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
-          <div class="flex">
-            <p class="limit-words">{{item.titulo}}</p>
-            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
-            <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
-          </div>
-          <p class="limit-words">
-            {{item.org.razaosocial}}
-          </p>
-          <div class="flex">
-
-            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">
-              error_outline
-            </mat-icon>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="example-container">
-      <div class="tickets test">
-        <div>
-          <p>Contatado</p>
-
-          <p>{{tickets2.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets2.tickets.length}} Neg. </p>
-        </div>
-        <img src="../../assets/arrow.png" />
-      </div>
-
-      <div cdkDropList [cdkDropListData]="tickets2.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets2.tickets;" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
-          <div class="flex">
-            <p class="limit-words">
-              {{item.titulo}}
-            </p>
-            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
-            <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
-          </div>
-          <p class="limit-words">{{item.org.razaosocial}}</p>
-          <div class="flex">
-
-            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">error_outline
-            </mat-icon>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="example-container">
-      <div class="tickets test">
-        <div>
-          <p>Cliente Potencial</p>
-
-          <p>{{tickets3.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets3.tickets.length}} Neg. </p>
-        </div>
-        <img src="../../assets/arrow.png" />
-      </div>
-
-      <div cdkDropList [cdkDropListData]="tickets3.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets3.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
-          <div class="flex">
-            <p class="limit-words">{{item.titulo}}</p>
-            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
-            <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
-          </div>
-          <p class="limit-words">{{item.org.razaosocial}}</p>
-          <div class="flex">
-
-            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">error_outline
-            </mat-icon>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="example-container">
-      <div class="tickets test">
-        <div>
-          <p>Demo Agendada</p>
-
-          <p>{{tickets4.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets4.tickets.length}} Neg. </p>
-        </div>
-        <img src="../../assets/arrow.png" />
-      </div>
-
-      <div cdkDropList [cdkDropListData]="tickets4.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets4.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
-          <div class="flex" >
-            <p class="limit-words">{{item.titulo}}</p>
-            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
-            <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
-          </div>
-          <p class="limit-words">{{item.org.razaosocial}}</p>
-          <div class="flex">
-            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">error_outline
-            </mat-icon>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="example-container">
-      <div class="tickets test">
-        <div>
-          <p>Proposta</p>
-
-          <p>{{tickets5.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets5.tickets.length}} Neg. </p>
-        </div>
-        <img src="../../assets/arrow.png" />
-      </div>
-
-      <div cdkDropList [cdkDropListData]="tickets5.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets5.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
-          <div class="flex">
-            <p class="limit-words">{{item.titulo}}</p>
-            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
-            <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
-          </div>
-          <p class="limit-words">{{item.org.razaosocial}}</p>
-          <div class="flex">
-            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">error_outline
-            </mat-icon>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="example-container">
-      <div class="tickets test">
-        <div>
-          <p>Negociações Inic.</p>
-          <p>{{tickets6.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets6.tickets.length}} Neg. </p>
-        </div>
-        <img src="../../assets/arrow.png" />
-      </div>
-
-      <div cdkDropList [cdkDropListData]="tickets6.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets6.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
-          <div class="flex">
-            <p class="limit-words">{{item.titulo}}</p>
-            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
-            <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
-          </div>
-          <p class="limit-words">{{item.org.razaosocial}}</p>
-          <div class="flex">
-            <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">error_outline
-            </mat-icon>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="example-container">
-      <div class="tickets test">
-        <div>
-          <p>Clientes</p>
-          <p>{{tickets7.valor | currency:'BRL':'symbol':'0.2':'pt'}} • {{tickets7.tickets.length}} Neg. </p>
-        </div>
-      </div>
-
-      <div cdkDropList [cdkDropListData]="tickets7.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="leads" *ngFor="let item of tickets7.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
-          <div class="flex">
-            <p class="limit-words">{{item.titulo}}</p>
-            <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
-            <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
-            <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
-          </div>
-          <p class="limit-words">{{item.org.razaosocial}}</p>
-          <div class="flex">
-            <p class="limit-value">{{ item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">error_outline
-            </mat-icon>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-    <lottie-animation-view [options]="lottieConfig" [width]="250" [height]="250"
-      (animCreated)="handleAnimation($event)">
-    </lottie-animation-view>
   </div>
