@@ -145,14 +145,6 @@ export class ProductsComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  // filterCrtl(){
-  //   this.dataSource.filter = "Controle".trim().toLowerCase();
-  // }
-
-  // filterPlan(){
-  //   this.dataSource.filter = "Planejamento".trim().toLowerCase();
-  // }
-
   dblclic(){
     this.dataSource.filter = "".trim().toLowerCase();
   }
@@ -195,7 +187,7 @@ export class ProductsComponent implements OnInit {
           });
           console.log(data);
           this.getterProdutos();
-
+          this.disableCode = false;
           this.produto.nome = '';
           this.produto.modalidade = '';
           this.produto.codigo = '';

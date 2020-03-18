@@ -46,6 +46,7 @@ export class ErpComponent implements OnInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
+  // GENERATE CODE
   code1: any;
   generateCode() {
     let a = this.erpsapi;
@@ -53,25 +54,21 @@ export class ErpComponent implements OnInit {
       if(a.length < 9){
         this.code1 = "00" + ++this.erpsapi[0].codigo;
         this.erp.codigo = this.code1;
-        console.log(this.code1);
       } else if (a.length < 99) {
         this.code1 = "0" + ++this.erpsapi[0].codigo;
         this.erp.codigo = this.code1;
-        console.log(this.code1);
       } else {
         this.code1 = ++this.erpsapi[0].codigo;
         this.erp.codigo = this.code1;
-        console.log(this.code1);
       }
-
     } else {
       this.code1 = "00"+1;
       this.erp.codigo = this.code1;
-      console.log(this.code1);
     }
     this.disableCode = true;
   }
 
+  // SAVE ERP
   saveErp(){
     this.crudService.saveNewErp(this.erp).subscribe(
       data => {
@@ -83,68 +80,37 @@ export class ErpComponent implements OnInit {
             buttons: false
           }
         });
-        // this.getterOrg();
-        // setTimeout(this.reiniciar, 1001);
-        console.log(data);
         this.getterErp();
-
+        this.disableCode = false;
       },
-      error => {
-        // this.getterOrg();
-        console.error(error);
-      }
+      error => {}
     );
   }
 
+  // GET ERP
   getterErp() {
     this.crudService.getErpes().subscribe(
       data => {
         this.erpsapi = data;
-        console.log(data);
         this.dataSource = new MatTableDataSource(this.erpsapi);
       },
-      error => {
-        console.error(error);
-      }
+      error => {}
     );
   }
 
-  updateErp(){
-
-  }
-
-
+  // GET ERP
   getterErpe(id) {
 
     this.crudService.getErp(id).subscribe(
       data => {
         this.selectederp = data;
-        console.log('ERPselecionado: ', this.selectederp);
-
         this.erp.position = this.selectederp.id;
         this.erp.codigo = this.selectederp.codigo;
         this.erp.desc = this.selectederp.desc;
         this.erp.empresa = this.selectederp.empresa;
       },
-      error => {
-        console.error(error);
-      }
+      error => {}
     );
-
-    // this.crudService.getErps(id).subscribe(
-    //   data => {
-    //     // this.selectederp = data;
-    //     // console.log('ERPselecionado: ', this.selectederp);
-
-    //     // this.erp.position = this.selectederp.id;
-    //     // this.erp.codigo = this.selectederp.codigo;
-    //     // this.erp.desc = this.selectederp.desc;
-    //     // this.erp.empresa = this.selectederp.empresa;
-    //   },
-    //   error => {
-    //     console.error(error);
-    //   }
-    // );
   }
 
   updatefalse(){
@@ -155,14 +121,15 @@ export class ErpComponent implements OnInit {
     this.erp.empresa = '';
   }
 
+  // EDIT ERP
   editErp(item){
     this.conf.update = true;
-    console.log(item);
-
     this.getterErpe(item.id);
   }
 
+  // UPDATE ERP
   UpdateErp(){
+    this.disableCode = true;
     this.crudService.updateErp(this.erp).subscribe(
       data => {
         this.getterErp();
@@ -175,25 +142,16 @@ export class ErpComponent implements OnInit {
           }
         });
       },
-      error => {
-        console.error(error);
-      }
+      error => {}
     )
   }
 
+  // DELETE ITEM
   deleteItem(item) {
     this.delERP = item.id;
-    console.log(this.delERP);
-    // swal({
-    //   icon: "error",
-    //   text: "Produto excluído com sucesso!",
-    //   timer: 1800,
-    //   buttons: {
-    //     buttons: false
-    //   }
-    // });
   }
 
+  // DELETE ERP
   del(){
     this.crudService.deleteERP(this.delERP).subscribe(
       data => {
@@ -220,18 +178,14 @@ export class ErpComponent implements OnInit {
     )
   }
 
-
-
+  // TRANSFORM CAPITAL LETTER
   maiuscula(value: string, id:number){
     var v = value.toUpperCase();
-
     if(id == 1){
       this.erp.empresa = v
     } else if(id == 2) {
       this.erp.desc = v
     }
-    console.log(v)
-
   }
 
   ngOnInit() {

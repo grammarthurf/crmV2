@@ -13,32 +13,26 @@ export class OrganizationDetailComponent implements OnInit {
 
   constructor( private route: ActivatedRoute, private crudService: CrudService) {
 
-   }
+  }
 
-
+  // LOAD ORGANIZATION
   loadOrg() {
     const id = this.route.snapshot.paramMap.get("id");
     this.getterOrg(id);
-    console.log(this.org);
-
-
   }
 
+  // GET ORGANIZATION
   getterOrg(id) {
     this.crudService.getOrg(id).subscribe(
       data => {
         this.org = data;
-        console.log(this.org);
-
       },
-      error => {
-        console.error(error);
-      }
+      error => {}
     );
   }
 
   ngOnInit() {
-  this.loadOrg();
+    this.loadOrg();
   }
 
   redirectToAdd(url): void {

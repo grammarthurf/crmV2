@@ -32,8 +32,6 @@ export class BusinessDetailComponent implements OnInit {
     { title: 'event 1', start: '2020-03-02T10:00', end: '2020-03-01' }
   ];
 
-  // businesss = { id: "", titulo: '', valorestimado: '', termometro: '', obs: '', status: '', estagio: '', cliente: '', org: '', vendedor: '', created: '', updated: '', produto: ''};
-
   constructor(private route: ActivatedRoute, private crudService: CrudService, private router: Router) {
     this.lottieConfig = {
       path: 'assets/bike.json',
@@ -47,40 +45,28 @@ export class BusinessDetailComponent implements OnInit {
     this.calendarPlugins = [ listPlugin , bootstrapPlugin ];
   }
 
-  SaveUpdate(){
-    console.log("qqqqqqqqq")
-  }
-
+  // UPDATE STATUS LEADS
   updatedTicketStatus(ticket) {
     this.crudService.updateTicketDetails(ticket, this.idobs.mtvperd, this.idobs.cmtperd).subscribe(
-      data => {
-        console.log(data);
-
-      }, error => {
-        console.error(error);
-      }
+      data => {}, 
+      error => {}
     );
   }
 
+  // UPDATE TERM LEADS
   updateTicketTerm() {
     this.idobs.id = this.business.id;
-    // this.idobs.term = this.business.termometro;
     this.crudService.updateTicketTerm(this.idobs).subscribe(
-      data => {
-        console.log(data);
-
-      }, error => {
-        console.error(error);
-      }
+      data => {}, error => {}
     );
   }
 
+  // UPDATE OBS LEADS
   updateTicketObs() {
     this.idobs.id = this.business.id;
 
     this.crudService.updateTicketObs(this.idobs).subscribe(
       data => {
-        console.log(data);
         this.loadBusiness();
         this.idobs.obs = '';
         swal({
@@ -91,21 +77,18 @@ export class BusinessDetailComponent implements OnInit {
             buttons: false
           }
         });
-
-      }, error => {
-        console.error(error);
-      }
+      }, error => {}
     );
   }
 
+  // LOAD BUSINESS
   loadBusiness() {
     const id = this.route.snapshot.paramMap.get("id");
     this.getterTicket(id);
   }
 
+  // GET LEADS
   getterTicket(id) {
-
-    
     this.crudService.getTicket(id).subscribe(
       data => {
         this.business = data;
@@ -117,57 +100,56 @@ export class BusinessDetailComponent implements OnInit {
         } else {
           this.stageNull();
         }
-        console.log("id", data);
         this.clientName = this.business.cliente.nome.split(" ", 1);
       },
-      error => {
-        console.error(error);
-      }
+      error => {}
     );
   }
 
+  // ANIMATION
   handleAnimation(anim: any) {
     this.anim = anim;
   }
 
+  // STOP ANIMATION
   stop() {
     this.anim.stop();
   }
 
+  // PLAY ANIMATION
   play() {
     this.anim.play();
   }
 
+  // PAUSE ANIMATION
   pause() {
     this.anim.pause();
   }
 
+  // PLAY ANIMATION WHEN WIN TICKET
   ganhou() {
     this.play()
   }
 
+  // GET STAGE
   getterEstagio() {
     this.crudService.getEstagios().subscribe(
       data => {
         this.estagiosapi = data;
-        console.log("idest", data);
       },
-      error => {
-        console.error(error);
-      }
+      error => {}
     );
   }
 
+  // UPDATE LEAD
   updatedTicket(id, ticket) {
     this.crudService.updateTicket(id, ticket).subscribe(
-      data => {
-        console.log(data);
-      }, error => {
-        console.error(error);
-      }
+      data => {}, 
+      error => {}
     )
   }
 
+  // CHANGE ID TICKET
   changeid(idd: number) {
     if (idd == 1) {
       this.business.estagio.id = 1;
@@ -193,13 +175,11 @@ export class BusinessDetailComponent implements OnInit {
     }
   }
 
-
+  // CHANGE STYLES BUTTONS WIN/LOSE
   stageWin() {
-
     let btnLose = document.getElementById('lose');
     let btnWin = document.getElementById('win');
     btnLose.style.display = 'none';
-    console.log('GANHOU!!!!');
 
     let btnNull = document.getElementById('null');
     btnNull.style.display = 'block';
@@ -212,20 +192,17 @@ export class BusinessDetailComponent implements OnInit {
       this.business.estagio.id = 8;
       this.updatedTicket(this.business.estagio.id , this.business)
     }
-
-
     this.play();
     setTimeout(() => {
       this.stop()
-      console.log('funcionou')
     }, 5000);
   }
 
+  // CHANGE STYLES BUTTONS WIND/LOSE
   stageLose() {
     let btnWin = document.getElementById('win');
     let btnLose = document.getElementById('lose');
     btnWin.style.display = 'none';
-    console.log('PERDEU!!!!');
 
     let btnNull = document.getElementById('null');
     btnNull.style.display = 'block';
@@ -241,6 +218,7 @@ export class BusinessDetailComponent implements OnInit {
     }
   }
 
+  // CHANGE STYLES BUTTONS WIND/LOSE
   stageNull() {
     let btnWin = document.getElementById('win');
     let btnLose = document.getElementById('lose');
@@ -258,42 +236,41 @@ export class BusinessDetailComponent implements OnInit {
     btnLose.style.outline = 'solid';
     if (this.business.status != 'Aberto') {
       this.business.status = 'Aberto';
-      console.log('Business : ', this.business);
-
       this.updatedTicketStatus(this.business);
-
     }
-
   }
 
-  // EditTitleLead() {
-
-  // }
-
+  // REVERSE OBS
   reverseArray() {
     let arrayObs = [];
     arrayObs = this.business.obs;
     arrayObs.reverse()
-
   }
 
+  // FORMAT DATE BR
   formatDate(date) {
     let result = date.split('-').reverse().join('/');
 
     return result
   }
 
-   goTo(id) {
-     this.router.navigate([`/company-detail/${id}`]);
-   }
+  // GO TO COMPANY DETAIL SCREEN
+  goTo(id) {
+    this.router.navigate([`/company-detail/${id}`]);
+  }
 
 
   ngOnInit() {
-    // this.loadBusiness();
-   // this.businessName = this.business.org.nomefantasia;
-    console.log()
+
+  }
+
+  // TRANSFORM CAPITAL LETTER
+  maiuscula(value: string){
+    var v = value.toUpperCase();
+    this.idobs.obs = v;
   }
   
+  // FORMAT PHONE NUMBER
   formatPhoneNumber(str) {
     //Filter only numbers from the input
     let cleaned = ('' + str).replace(/\D/g, '');
@@ -308,6 +285,7 @@ export class BusinessDetailComponent implements OnInit {
     return null
   };
 
+  // FORMAT CELL NUMBER
   formatCellPhoneNumber(str) {
     //Filter only numbers from the input
     let cleaned = ('' + str).replace(/\D/g, '');

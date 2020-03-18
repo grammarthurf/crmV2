@@ -28,9 +28,10 @@ const org: PeriodicElement[] = [
 export class OrganizationComponent implements OnInit {
   org = { codigo: '', razaosocial: '', nomefantasia: '', cnpj: '', ie: '',  rua: '', complemento: '', bairro: '', cep: '', cidade: '', uf: '', telefone: '', erp: '', email: '', site: '' }
   matdata: any = [];
+
   // Lista orgs:
   erroOrg: any;
-  displayedColumns: string[] = ['codigo', 'nome_fantasia', 'razao_social', 'endereco', 'erp', 'columnEdit', 'columnDelete'];
+  displayedColumns: string[] = ['codigo', 'nomefantasia', 'razaosocial', 'rua', 'erp', 'columnEdit', 'columnDelete'];
   erroOrgs: any;
 
   code: any;
@@ -47,6 +48,7 @@ export class OrganizationComponent implements OnInit {
 
   orgapi: MatTableDataSource<any>;
 
+  // GET ORGANIZATION
   getterOrg() {
     this.crudService.getOrgs().subscribe(
       data => {
@@ -66,30 +68,27 @@ export class OrganizationComponent implements OnInit {
         });
 
         this.dataSource = new MatTableDataSource(this.matdata);
-        console.log("DATASOURCE : " ,this.dataSource);
         this.dataSource.sort = this.sort;
-
         this.orgapi = data;
-        console.log(data);
       },
       error => {
         this.erroOrgs = error;
-        console.error(error);
       }
     );
   }
 
+  // FILTER
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  // GO TO COMPANY REGISTER UPDATE
   goToUpdate(id) {
     this.router.navigate([`/company-register/${id}`]);
   }
 
+  // SAVE ORGANIZATION
   save() {
-    console.log(this.org);
-
     let razao_s = this.org.razaosocial;
 
     if (razao_s === '') {
@@ -113,66 +112,42 @@ export class OrganizationComponent implements OnInit {
             }
           });
           this.getterOrg();
-          // setTimeout(this.reiniciar, 1001);
-          console.log(data);
         },
         error => {
           this.getterOrg();
-          console.error(error);
-          // setTimeout(this.reiniciar, 1001);
         }
       );
     }
   }
 
-  reiniciar(){
-    location.reload()
-  }
-
-  // newcode(){
-  //   this.code = Math.floor(Math.random() * (999 - 100) + 100);
-  //   console.log(this.code);
-  //   return this.code;
-  // }
-
   ngOnInit() {
 
   }
 
-
-  // goTo(id) {
-  //   this.router.navigate([`/organization-detail/${id}`]);
-  // }
-
+  // GO TO COMPANY DETAIL SCREEN
   goTo(id) {
     this.router.navigate([`/company-detail/${id}`]);
   }
 
+  // GO TO COMPANY REGISTER SCREEN
   goToRegister() {
-    this.router.navigate([`/company-register/`]);
+    this.router.navigate(['/company-register']);
   }
 
+  // DELETE ITEM
   deleteItem(item) {
     this.delorg = item.id;
     console.log(this.delorg);
-
-    // swal({
-    //   icon: "error",
-    //   text: "Empresa excluída com sucesso!",
-    //   timer: 1800,
-    //   buttons: {
-    //     buttons: false
-    //   }
-    // });
   }
 
+  // DELETE ORGANIZATION
   del(){
     this.crudService.deleteOrg(this.delorg).subscribe(
       data => {
         this.getterOrg();
         swal({
           icon: "success",
-          text: "Atividade deletada com sucesso!",
+          text: "Empresa excluída com sucesso!",
           timer: 1000,
           buttons: {
             buttons: false

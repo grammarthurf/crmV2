@@ -4,7 +4,6 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
 import { CrudService } from "../services/crud.service";
 import swal from 'sweetalert';
-// import timeGridPlugin from '@fullcalendar/timegrid';
 import bootstrapPlugin from '@fullcalendar/bootstrap';
 import listPlugin from '@fullcalendar/list';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
@@ -20,7 +19,7 @@ export interface PeriodicElement {
 }
 
 const atividade: PeriodicElement[] = [
-  { id: 0 ,position: 0, data: '', tipo: '', cliente: '', org: '', ticket: '' },
+  { id: 0, position: 0, data: '', tipo: '', cliente: '', org: '', ticket: '' },
 ];
 
 @Component({
@@ -32,19 +31,19 @@ const atividade: PeriodicElement[] = [
 export class AtividadesComponent implements OnInit {
 
   numm: string;
-  matdata:  any = [];
+  matdata: any = [];
   datamat: any = [];
   calendarPlugins: any = [];
 
-  conf: any = { update: false};
+  conf: any = { update: false };
 
   dNow = new Date();
   today = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-0' + this.dNow.getDate();
   today1 = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + this.dNow.getDate();
   tomorrow = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-0' + (this.dNow.getDate() + 1);
   tomorrow1 = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + (this.dNow.getDate() + 1);
-  dayMonth = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) ;
-  dayNextMonth = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 2) ;
+  dayMonth = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1);
+  dayNextMonth = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 2);
 
   // Lista Ticket
   negociosapi: any;
@@ -55,7 +54,11 @@ export class AtividadesComponent implements OnInit {
 
   tckapi: any;
 
-  selectedatv:any;
+  selectedatv: any;
+
+  //selects inputs
+  selectTck = false;
+  selectOrg = false;
 
   calendardata: any = [];
 
@@ -74,25 +77,26 @@ export class AtividadesComponent implements OnInit {
 
   calendarEvents = [];
 
-  atv = { position: 0,
-          dataini: '',
-          horaini: '',
-          datafim: '',
-          horafim: '',
-          tipo: '',
-          cliente: '',
-          org: '',
-          ticket: '',
-          assunto: ''
-        };
+  atv = {
+    position: 0,
+    dataini: '',
+    horaini: '',
+    datafim: '',
+    horafim: '',
+    tipo: '',
+    cliente: '',
+    org: '',
+    ticket: '',
+    assunto: ''
+  };
 
-  displayedColumns: string[] = ['select', 'tipo', 'data', 'org', 'ticket', 'assunto', 'columnEdit', 'columnDelete'];
+  displayedColumns: string[] = ['select', 'tipo', 'dataini', 'org', 'cliente', 'ticket.titulo', 'assunto', 'columnEdit', 'columnDelete'];
 
   dataSource: any;
 
   selection = new SelectionModel<Element>(true, []);
 
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private router: Router, public crudService: CrudService) {
     this.getterCliente();
@@ -100,12 +104,12 @@ export class AtividadesComponent implements OnInit {
     this.getterVendedor();
     this.getterTickets();
     this.getterActivity();
-    this.calendarPlugins = [ listPlugin, bootstrapPlugin ];
+    this.calendarPlugins = [listPlugin, bootstrapPlugin];
   }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.matdata);
-    console.log(this.calendarEvents)
+    this.dataSource.sort = this.sort;
   }
 
   //FILTRAR SELECT DAS EMPRESAS DE ACORDO COM O SELECIONADO EM NEGÓCIOS
@@ -114,7 +118,6 @@ export class AtividadesComponent implements OnInit {
     this.crudService.getTicket(id).subscribe(
       data => {
         this.tckapi = [data.org];
-        console.log(this.tckapi);
       },
       error => {
         this.erroAtividade = error;
@@ -122,16 +125,13 @@ export class AtividadesComponent implements OnInit {
     );
   }
 
-  gotocalendar(){
-    this.router.navigate([]).then(result => { window.open('/calendar/', '_blank'); });
-  }
-
-  deleteActivity(idativ){
+  // DELETE ACTIVITY
+  deleteActivity(idativ) {
     this.delact = idativ;
-    console.log(idativ,  ' id ');
   }
 
-  del(){
+  // DELETE ACTIVITY
+  del() {
     this.crudService.deleteActivity(this.delact).subscribe(
       data => {
         this.getterActivity();
@@ -170,17 +170,15 @@ export class AtividadesComponent implements OnInit {
           }
         });
       },
-      error => {
-        console.error(error);
-      }
+      error => { }
     )
   }
 
-  getActivity(id){
+  // GET ACTIVITY
+  getActivity(id) {
     this.crudService.getAtividades(id).subscribe(
       data => {
         this.selectedatv = data;
-        console.log('atividadeselecionada ', this.selectedatv);
 
         this.atv.position = this.selectedatv.id;
         this.atv.dataini = this.selectedatv.dataini;
@@ -192,18 +190,14 @@ export class AtividadesComponent implements OnInit {
         this.atv.org = this.selectedatv.org;
         this.atv.ticket = this.selectedatv.ticket;
         this.atv.assunto = this.selectedatv.assunto;
-        console.log('ATIVIDADEFINAL: ' , this.atv);
-
       },
-      error => {
-        console.error(error);
-      }
+      error => { }
     )
   }
 
-  updatefalse(){
+  //UPDATE FALSE
+  updateFalse() {
     this.conf.update = false;
-
     this.atv.dataini = '';
     this.atv.horaini = '';
     this.atv.datafim = '';
@@ -215,51 +209,51 @@ export class AtividadesComponent implements OnInit {
     this.atv.assunto = '';
   }
 
-  editAtv(item){
+  //EDIT ACTIVITY
+  editAtv(item) {
     this.conf.update = true
     this.getActivity(item.position);
-    // console.log(this.atv);
   }
 
+  // BACKGROUND COLOR ROW TABLE
   getColor(dataini) {
     //DATA ATUAL
     var year = this.dNow.getFullYear();
-    var month = this.dNow.getMonth()+1;
+    var month = this.dNow.getMonth() + 1;
     var day = this.dNow.getDate();
     //DATA DA ATIVIDADE
-    var year1 = dataini.substring(0,4);
-    var month1 = dataini.substring(5,7);
-    var day1 = dataini.substring(8,10);
+    var year1 = dataini.substring(0, 4);
+    var month1 = dataini.substring(5, 7);
+    var day1 = dataini.substring(8, 10);
 
-    if(year > year1 ||
+    if (year > year1 ||
       (year == year1 && month > month1) ||
-      (year == year1 && month == month1 && day > day1) ) {
+      (year == year1 && month == month1 && day > day1)) {
       return 'rgb(255, 232, 228)';
     }
   }
 
+  // GET ACTIVITY
   getterActivity() {
     this.crudService.getAtividade().subscribe(
       data => {
-
         this.calendarEvents = [];
-        console.log( ' Atividades' ,data);
-
-
-        this.matdata = []
+        this.matdata = [];
         data.forEach(e => {
-          var timeIni = e.horaini.substring(0,2) + ":" + e.horaini.substring(2,4)
-          var timeEnd = e.horafim.substring(0,2) + ":" + e.horafim.substring(2,4)
+
+          var timeIni = e.horaini.substring(0, 2) + ":" + e.horaini.substring(2, 4);
+          var timeEnd = e.horafim.substring(0, 2) + ":" + e.horafim.substring(2, 4);
+
           this.calendarEvents.push({
             title: e.tipo + ":  " + e.ticket.titulo,
             start: e.dataini + "T" + timeIni,
             end: e.datafim + "T" + timeEnd
           });
-          console.log('EVENTO CALENDÁRIO: ',this.calendarEvents);
+
           try {
             if (e.cliente == null && e.org == null && e.ticket == null) {
               this.matdata.push({
-               position: e.id,
+                position: e.id,
                 assunto: e.assunto,
                 dataini: e.dataini,
                 tipo: e.tipo,
@@ -275,19 +269,19 @@ export class AtividadesComponent implements OnInit {
               });
             } else if (e.cliente == null) {
               this.matdata.push({
-               position: e.id,
+                position: e.id,
                 assunto: e.assunto,
                 dataini: e.data,
                 tipo: e.tipo,
                 ticket: e.ticket,
-                 cliente: {
-                   nome: ''
-                 },
-                 org: e.org
+                cliente: {
+                  nome: ''
+                },
+                org: e.org
               });
             } else if (e.org == null) {
               this.matdata.push({
-               position: e.id,
+                position: e.id,
                 assunto: e.assunto,
                 dataini: e.dataini,
                 tipo: e.tipo,
@@ -299,7 +293,7 @@ export class AtividadesComponent implements OnInit {
               });
             } else if (e.ticket == null) {
               this.matdata.push({
-               position: e.id,
+                position: e.id,
                 assunto: e.assunto,
                 dataini: e.dataini,
                 tipo: e.tipo,
@@ -311,7 +305,7 @@ export class AtividadesComponent implements OnInit {
               });
             } else {
               this.matdata.push({
-               position: e.id,
+                position: e.id,
                 assunto: e.assunto,
                 dataini: e.dataini,
                 tipo: e.tipo,
@@ -321,21 +315,20 @@ export class AtividadesComponent implements OnInit {
               });
             }
           } catch (error) {
-            console.log(error);
+
           }
         });
+
         this.dataSource = new MatTableDataSource(this.matdata);
         this.dataSource.sort = this.sort;
-        console.log(this.calendarEvents)
-        console.log('dataSource: ', this.dataSource);
       },
       error => {
         this.erroAtividade = error;
-        console.error(error);
       }
     );
   }
 
+  // GET CLIENT
   getterCliente() {
     this.crudService.getClientes().subscribe(
       data => {
@@ -347,6 +340,7 @@ export class AtividadesComponent implements OnInit {
     );
   }
 
+  // GET SELLER
   getterVendedor() {
     this.crudService.getVendedor().subscribe(
       data => {
@@ -358,6 +352,7 @@ export class AtividadesComponent implements OnInit {
     );
   }
 
+  // GET ORGANIZATIONS
   getterOrgs() {
     this.crudService.getOrgs().subscribe(
       data => {
@@ -369,6 +364,7 @@ export class AtividadesComponent implements OnInit {
     );
   }
 
+  // GET LEADS
   getterTickets() {
     this.crudService.getTickets().subscribe(
       data => {
@@ -380,17 +376,14 @@ export class AtividadesComponent implements OnInit {
     );
   }
 
+  // SAVE ACTIVITY
   save() {
-    if(this.atv.horafim == ""){
-      console.log("horavazia")
+    if (this.atv.horafim == "") {
       this.atv.horafim = this.atv.horaini;
-      console.log("arrumado: " + this.atv.horafim)
     }
 
-    if( this.atv.datafim == ""){
-      console.log("datavazia")
+    if (this.atv.datafim == "") {
       this.atv.datafim = this.atv.dataini;
-      console.log("arrumado: " + this.atv.datafim)
     }
 
     this.crudService.saveNewAtividade(this.atv).subscribe(
@@ -403,98 +396,122 @@ export class AtividadesComponent implements OnInit {
             buttons: false
           }
         });
+        this.atv.assunto = "";
+        this.atv.cliente = '0';
+        this.atv.datafim = "";
+        this.atv.dataini = "";
+        this.atv.tipo = "";
+        this.atv.ticket = '0';
+        this.atv.org = '0';
+        this.atv.position = 0;
+        this.atv.horafim = "";
+        this.atv.horaini = "";
+        this.numm = "";
         this.getterActivity();
       },
       error => {
         this.getterActivity();
-        console.error(error);
       },
     );
   }
 
-  maiuscula(value: string){
+  // TRANSFORM CAPITAL LETTER
+  maiuscula(value: string) {
     var v = value.toUpperCase();
     this.atv.assunto = v
     console.log(v)
   }
 
+  // WORD FILTER 
   applyFilter(value: string) {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
+  // ALL FILTER
   filterAll() {
     this.dataSource.filter = "".trim().toLowerCase();
   }
 
+  // CALL FILTER
   filterCall() {
     this.dataSource.filter = "liga".trim().toLowerCase();
   }
 
+  // REUNION FILTER
   filterReunion() {
     this.dataSource.filter = "reunião".trim().toLowerCase();
   }
 
+  // VISIT FILTER
   filterVisit() {
     this.dataSource.filter = "visita".trim().toLowerCase();
   }
 
+  // EMAIL FILTER
   filterEmail() {
     this.dataSource.filter = "email".trim().toLowerCase();
   }
 
+  // TASK FILTER
   filterTask() {
     this.dataSource.filter = "Tarefa".trim().toLowerCase();
   }
 
-  filterDay(){
+  // DAY FILTER
+  filterDay() {
     var day = this.dNow.getDate();
-    if(day <=9){
+    if (day <= 9) {
       this.dataSource.filter = this.today.trim().toLowerCase();
     } else {
       this.dataSource.filter = this.today1.trim().toLowerCase();
     }
   }
 
-  filterTomorrow(){
-
+  // TOMORROW FILTER
+  filterTomorrow() {
     var day = (this.dNow.getDate() + 1);
-    if(day < 9){
+    if (day < 9) {
       this.dataSource.filter = this.tomorrow.trim().toLowerCase();
-      console.log(this.tomorrow)
     } else {
       this.dataSource.filter = this.tomorrow1.trim().toLowerCase();
-      console.log(this.tomorrow1)
     }
   }
 
-  filterMonth(){
+  // MONTH FILTER
+  filterMonth() {
     this.dataSource.filter = this.dayMonth.trim().toLowerCase();
   }
 
-  filterNextMonth(){
+  // NEXT MONTH FILTER
+  filterNextMonth() {
     this.dataSource.filter = this.dayNextMonth.trim().toLowerCase();
   }
 
+  // REMOVE ROW TABLE
   removeSelectedRows() {
     this.selection.selected.forEach(item => {
       let index: number = this.matdata.findIndex(d => d === item);
       console.log(index);
-      if(index > -1) {
-          this.matdata.splice(index, 1);
-          this.dataSource = new MatTableDataSource(this.matdata);
-          this.selection = new SelectionModel<Element>(true, []);
+      if (index > -1) {
+        this.matdata.splice(index, 1);
+        this.dataSource = new MatTableDataSource(this.matdata);
+        this.selection = new SelectionModel<Element>(true, []);
       }
+      this.editAtv(item);
     });
   }
 
-  goToLead(id){
+  // REDIRECT TO LEAD SCREEN
+  goToLead(id) {
     this.router.navigate([`/business-detail/${id}`]);
   }
 
-  goToOrg(id){
+  // REDIRECT TO ORGANIZATION SCREEN
+  goToOrg(id) {
     this.router.navigate([`/organization-detail/${id}`]);
   }
 
+  // SELECT ACTIVITY ADD 
   selectActivity(id: number) {
     if (id == 1) {
       this.numm = "LIGAÇÃO";
@@ -514,11 +531,7 @@ export class AtividadesComponent implements OnInit {
     }
   }
 
-  redirectToAdd(url): void {
-    window.open(url, '_blank');
-    window.focus();
-  }
-
+  // FORMAT DATE BR
   formatDate(date) {
     let result = date.split('-').reverse().join('/');
     return result

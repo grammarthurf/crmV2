@@ -1,183 +1,13 @@
 <div class="main-div">
-  <!-- <div class="modal fade bd-example-modal-lg" id="abrircadastroatv" tabindex="-1" role="dialog"
-    aria-labelledby="abrircadastroatv" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">
-            Adicione uma Atividade
-          </h5>
-          <a href="/calendar" target="_blank" class="viewcalendar">
-            Visualizar Calendário
-          </a>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">
-              &times;
-            </span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="col-12 row">
-            <div class="col-6" style="padding: 0px;">
-              <div class="col-12 row" style="padding: 0px;">
-                <div class="col-6" style="margin-top: 8px;">
-                  <label for="negocios">Negócio <label style="color: red; font-size: 20px;">*</label></label>
-                   (change)="getterorg($event.target.value)" 
-                  <select class="form-control" id="exampleFormControlSelect1">
-                    <option>
-                      {{business.titulo}}
-                    </option>
-                  </select>
-                </div>
-                <div class="col-6" style="padding: 0px; margin-top: 23px">
-                  <label for="participantes">Vendedor(es)</label>
-                  <select class="form-control" id="exampleFormControlSelect1">
-                    <option *ngFor="let vendedor of vendedorapi">
-                      {{vendedor.nome}}
-                    </option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-12 row" style="margin-top: 20px;">
-                <p class="atvinput" style="color: red;"><b style="color: black;">Atividade:</b>*</p>
-                <div class="div-modal-atv">
-                  <button mat-icon-button (click)="selectActivity(1)">
-                    <mat-icon class="icon-modal-atv">phone</mat-icon>
-                  </button>
-                </div>
-                <div class="div-modal-atv">
-                  <button mat-icon-button (click)="selectActivity(2)">
-                    <mat-icon class="icon-modal-atv">people</mat-icon>
-                  </button>
-                </div>
-                <div class="div-modal-atv">
-                  <button mat-icon-button (click)="selectActivity(3)">
-                    <mat-icon class="icon-modal-atv">business</mat-icon>
-                  </button>
-                </div>
-                <div class="div-modal-atv">
-                  <button mat-icon-button (click)="selectActivity(4)">
-                    <mat-icon class="icon-modal-atv">email</mat-icon>
-                  </button>
-                </div>
-                <div class="div-modal-atv">
-                  <button mat-icon-button (click)="selectActivity(5)">
-                    <mat-icon class="icon-modal-atv">watch_later</mat-icon>
-                  </button>
-                </div>
-              </div>
-              <div class="col-12 row inputmargin2">
-                <input type="text" class="form-control" placeholder="">
-              </div>
-              <div class="col-12 row" style="margin-top: 20px; padding: 0px 0px 0px 15px;">
-                <label for="obs">Assunto <label style="color: red; font-size: 20px;">*</label></label>
-                <textarea name="obs" id="obs" cols="50" rows="3" class="form-control">
-                </textarea>
-              </div>
-              <div class="col-12 row inputmargin">
-                <div class="col-6">
-                  <label for="">Início</label>
-                  <input type="date" class="form-control">
-                </div>
-                <div class="col-6" style="padding: 0px;">
-                  <label for="">Fim</label>
-                  <input type="date" class="form-control">
-                </div>
-              </div>
-              <div class="col-12 row inputmargin">
-                <div class="col-6">
-                  <input type="text" class="form-control" placeholder="00:00" mask="99:99">
-                </div>
-                <div class="col-6" style="padding: 0px">
-                  <input type="text" class="form-control" placeholder="00:00" mask="99:99">
-                </div>
-              </div>
-              <div class="col-12 row inputmargin">
-                <div class="col-6">
-                  <label for="negocios">Empresa <label style="color: red; font-size: 20px;">*</label></label>
-                  <select class="form-control" id="exampleFormControlSelect1">
-                    <option>
-                      {{business.org.razaosocial}}
-                    </option>
-                  </select>
-                </div>
-                <div class="col-6" style="padding: 0px;">
-                  <label for="participantes"> Contato <label style="color: red; font-size: 20px;">*</label></label>
-                  <select class="form-control" id="exampleFormControlSelect1">
-                    <option>
-                      {{business.cliente.nome}}
-                    </option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="col-6 ml-auto div-calendar">
-              <full-calendar [defaultView]="'listWeek'" [plugins]="calendarPlugins" themeSystem="bootstrap"
-                [events]="calendarEvents" locale="pt-br">
-              </full-calendar>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            Sair
-          </button>
-          <button type="button" (click)="save()" class="btn btn-primary" data-dismiss="modal">
-            Salvar
-          </button>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <div class="modal fade" id="loseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">
-            Marcar como Perdido
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Motivo da Perda</label>
-            <button mat-icon-button data-toggle="modal" data-target="#addMotivoPerda" data-dismiss="modal">
-              <mat-icon class="icon-modal-lead">add</mat-icon>
-            </button>
-            <select [(ngModel)]="idobs.mtvperd" id="motivo" class="form-control">
-              <option>Custo</option>
-              <option>Preferiu Concorrência</option>
-            </select>
-          </div>
-          <div class="form-group mg-t-10">
-            <label for="exampleFormControlTextarea1">Comentários (opcional) </label>
-            <textarea [(ngModel)]="idobs.cmtperd" class="form-control" id="exampleFormControlTextarea1"
-              rows="3"></textarea>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            Cancelar
-          </button>
-          <button type="button" (click)="stageLose()" data-dismiss="modal" class="btn btn-danger">
-            Marcar como Perdido
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
 
-
+  <!-- HEADER -->
   <div class="col-12 div-top row div-border">
     <div class="col-9">
       <div class="col-10 row">
         <h2 class="font-26 bold">
           {{business.titulo}}
         </h2>
-        <mat-icon (click)="Print()"  style="cursor: pointer; margin-left: 15px;">local_printshop</mat-icon>
+        <mat-icon (click)="Print()" style="cursor: pointer; margin-left: 15px;">local_printshop</mat-icon>
       </div>
       <div class="flex" style="padding: 0;">
         <img src="../../assets/moeda.png" class="img1" />
@@ -196,11 +26,11 @@
         <p>Termômetro:</p>
         <div class="margin5">
           <input [(ngModel)]="idobs.term" (change)="updateTicketTerm()" type="range" id="thermometro"
-            value="{{business.termometro}}" step="50" style="width: 150px;"/>
+            value="{{business.termometro}}" step="50" style="width: 150px;" />
           <div class=" row">
-            <p class="ptherm" > Ruim  </p>
-            <p class="ptherm2"> Bom   </p>
-            <p class="ptherm" > Ótimo </p>
+            <p class="ptherm"> Ruim </p>
+            <p class="ptherm2"> Bom </p>
+            <p class="ptherm"> Ótimo </p>
           </div>
         </div>
       </div>
@@ -237,102 +67,75 @@
 
     <!-- BARRA DE PROGRESSO -->
     <div class="col-12 flex md-stepper-horizontal green orange">
-      <div  class="md-step active" 
-            *ngIf="(business.estagio.id > 1)" 
-            (click)="changeid(1)" 
-            id="1">
+      <div class="md-step active" *ngIf="(business.estagio.id > 1)" (click)="changeid(1)" id="1">
         <div class="md-step-circle ">
           <mat-icon> done </mat-icon>
         </div>
-        <div class="md-step-title"   >Prospecção</div>
+        <div class="md-step-title">Prospecção</div>
         <div class="md-step-optional">10/02/2020</div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div  class="md-step process" 
-            *ngIf="(business.estagio.id == 1)" 
-            (click)="changeid(1)" 
-            id="1">
+      <div class="md-step process" *ngIf="(business.estagio.id == 1)" (click)="changeid(1)" id="1">
         <div class="md-step-circle ">
           <mat-icon> priority_high </mat-icon>
         </div>
-        <div class="md-step-title"   >Prospecção </div>
+        <div class="md-step-title">Prospecção </div>
         <div class="md-step-optional">Em processo </div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div  class="md-step " 
-            *ngIf="(business.estagio.id < 1)" 
-            (click)="changeid(1)"
-            id="1">
+      <div class="md-step " *ngIf="(business.estagio.id < 1)" (click)="changeid(1)" id="1">
         <!-- business.estagio.id != 1 &&  -->
         <div class="md-step-circle"></div>
-        <div class="md-step-title" >Prospecção</div>
+        <div class="md-step-title">Prospecção</div>
         <div class="md-step-bar-right"></div>
       </div>
 
-      <div  class="md-step active " 
-            *ngIf="(business.estagio.id > 2)" 
-            (click)="changeid(2)" 
-            id="2">
+      <div class="md-step active " *ngIf="(business.estagio.id > 2)" (click)="changeid(2)" id="2">
         <!--  business.estagio.id != 3 &&  -->
         <div class="md-step-circle ">
           <mat-icon> done </mat-icon>
         </div>
-        <div class="md-step-title"   >Contatado </div>
+        <div class="md-step-title">Contatado </div>
         <div class="md-step-optional">10/02/2020</div>
-        <div class="md-step-bar-left" ></div>
+        <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div  class="md-step process" 
-            *ngIf="(business.estagio.id == 2)" 
-            (click)="changeid(2)" 
-            id="2">
+      <div class="md-step process" *ngIf="(business.estagio.id == 2)" (click)="changeid(2)" id="2">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
         </div>
-        <div class="md-step-title"   >Contatado  </div>
+        <div class="md-step-title">Contatado </div>
         <div class="md-step-optional">Em processo</div>
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div  class="md-step md-step-1" 
-            *ngIf="(business.estagio.id < 2)" 
-            (click)="changeid(2)" 
-            id="2">
+      <div class="md-step md-step-1" *ngIf="(business.estagio.id < 2)" (click)="changeid(2)" id="2">
         <div class="md-step-circle"></div>
         <div class="md-step-title">Contatado</div>
 
-        <div class="md-step-bar-left" ></div>
+        <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
 
-      <div  class="md-step process" 
-            *ngIf="(business.estagio.id==3)" 
-            (click)="changeid(3)" 
-            id="3">
+      <div class="md-step process" *ngIf="(business.estagio.id==3)" (click)="changeid(3)" id="3">
         <div class="md-step-circle ">
           <mat-icon> priority_high </mat-icon>
         </div>
-        <div class="md-step-title"   >Cliente Potencial</div>
-        <div class="md-step-optional">Em processo      </div>
-        <div class="md-step-bar-left" ></div>
+        <div class="md-step-title">Cliente Potencial</div>
+        <div class="md-step-optional">Em processo </div>
+        <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div  class="md-step" 
-            *ngIf="(business.estagio.id < 3)" 
-            (click)="changeid(3)" 
-            id="3">
+      <div class="md-step" *ngIf="(business.estagio.id < 3)" (click)="changeid(3)" id="3">
         <div class="md-step-circle ">
           <mat-icon> </mat-icon>
         </div>
         <div class="md-step-title">Cliente Potencial</div>
 
-        <div class="md-step-bar-left" ></div>
+        <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div  class="md-step active" 
-            *ngIf="(business.estagio.id > 3)" 
-            (click)="changeid(3)" 
-            id="3">
+      <div class="md-step active" *ngIf="(business.estagio.id > 3)" (click)="changeid(3)" id="3">
         <div class="md-step-circle ">
           <mat-icon> done </mat-icon>
         </div>
@@ -342,10 +145,7 @@
         <div class="md-step-bar-right"> </div>
       </div>
 
-      <div  class="md-step active" 
-            *ngIf="(business.estagio.id > 4)" 
-            (click)="changeid(4)" 
-            id="4">
+      <div class="md-step active" *ngIf="(business.estagio.id > 4)" (click)="changeid(4)" id="4">
         <div class="md-step-circle">
           <mat-icon> done </mat-icon>
         </div>
@@ -354,10 +154,7 @@
         <div class="md-step-bar-left"> </div>
         <div class="md-step-bar-right"> </div>
       </div>
-      <div  class="md-step process" 
-            *ngIf="(business.estagio.id == 4)" 
-            (click)="changeid(4)" 
-            id="4">
+      <div class="md-step process" *ngIf="(business.estagio.id == 4)" (click)="changeid(4)" id="4">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
         </div>
@@ -366,10 +163,7 @@
         <div class="md-step-bar-left"> </div>
         <div class="md-step-bar-right"> </div>
       </div>
-      <div  class="md-step" 
-            *ngIf="(business.estagio.id < 4)" 
-            (click)="changeid(4)" 
-            id="4">
+      <div class="md-step" *ngIf="(business.estagio.id < 4)" (click)="changeid(4)" id="4">
         <div class="md-step-circle">
           <mat-icon> </mat-icon>
         </div>
@@ -378,10 +172,7 @@
         <div class="md-step-bar-right"> </div>
       </div>
 
-      <div  class="md-step active" 
-            *ngIf="(business.estagio.id > 5)" 
-            (click)="changeid(5)" 
-            id="5">
+      <div class="md-step active" *ngIf="(business.estagio.id > 5)" (click)="changeid(5)" id="5">
         <div class="md-step-circle">
           <mat-icon> done </mat-icon>
         </div>
@@ -390,10 +181,7 @@
         <div class="md-step-bar-left"> </div>
         <div class="md-step-bar-right"> </div>
       </div>
-      <div  class="md-step process" 
-            *ngIf="(business.estagio.id == 5)" 
-            (click)="changeid(5)" 
-            id="5">
+      <div class="md-step process" *ngIf="(business.estagio.id == 5)" (click)="changeid(5)" id="5">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
         </div>
@@ -402,10 +190,7 @@
         <div class="md-step-bar-left"> </div>
         <div class="md-step-bar-right"> </div>
       </div>
-      <div  class="md-step" 
-            *ngIf="(business.estagio.id < 5)" 
-            (click)="changeid(5)" 
-            id="5">
+      <div class="md-step" *ngIf="(business.estagio.id < 5)" (click)="changeid(5)" id="5">
         <div class="md-step-circle">
           <mat-icon> </mat-icon>
         </div>
@@ -414,10 +199,7 @@
         <div class="md-step-bar-right"> </div>
       </div>
 
-      <div  class="md-step active" 
-            *ngIf="(business.estagio.id > 7)" 
-            (click)="changeid(7)" 
-            id="7">
+      <div class="md-step active" *ngIf="(business.estagio.id > 7)" (click)="changeid(7)" id="7">
         <div class="md-step-circle">
           <mat-icon> done </mat-icon>
         </div>
@@ -426,10 +208,7 @@
         <div class="md-step-bar-left"> </div>
         <div class="md-step-bar-right"> </div>
       </div>
-      <div  class="md-step process"
-            *ngIf="(business.estagio.id == 7)" 
-            (click)="changeid(7)" 
-            id="7">
+      <div class="md-step process" *ngIf="(business.estagio.id == 7)" (click)="changeid(7)" id="7">
         <div class="md-step-circle">
           <mat-icon> priority_high </mat-icon>
         </div>
@@ -438,10 +217,7 @@
         <div class="md-step-bar-left"> </div>
         <div class="md-step-bar-right"> </div>
       </div>
-      <div  class="md-step" 
-            *ngIf="(business.estagio.id < 7)" 
-            (click)="changeid(7)" 
-            id="7">
+      <div class="md-step" *ngIf="(business.estagio.id < 7)" (click)="changeid(7)" id="7">
         <div class="md-step-circle">
           <mat-icon> </mat-icon>
         </div>
@@ -477,15 +253,11 @@
             <img class="img-empresa" src="../../assets/empresa.png" />
           </div>
           <div class="col-11 margin5">
-            <h5 class="font-26 bold" 
-                *ngIf="business.org.razaosocial" 
-                style="margin-left: 10px; text-align: center;">
-                {{business.org.razaosocial}}
+            <h5 class="font-26 bold" *ngIf="business.org.razaosocial" style="margin-left: 10px; text-align: center;">
+              {{business.org.razaosocial}}
             </h5>
-            <h2 class="font-26 bold" 
-                *ngIf="!business.org.razaosocial" 
-                style="margin-left: 10px; text-align: center;">
-                EMPRESA
+            <h2 class="font-26 bold" *ngIf="!business.org.razaosocial" style="margin-left: 10px; text-align: center;">
+              EMPRESA
             </h2>
           </div>
         </div>
@@ -493,23 +265,23 @@
         <div class="col-md-12">
           <div class="row mt-3">
             <div class="col-md-12">
-              <p *ngIf="business.org.codigo"><b class="b-b">Código: </b>  {{business.org.codigo}}</p>
+              <p *ngIf="business.org.codigo"><b class="b-b">Código: </b> {{business.org.codigo}}</p>
               <p *ngIf="business.org.nomefantasia">
-              <b class="b-b">Nome Fantasia: </b>                          {{business.org.nomefantasia}}</p>
-              <p *ngIf="business.org.cnpj"><b class="b-b">CNPJ: </b>      {{business.org.cnpj}}</p>
-              <p *ngIf="business.org.ie"><b class="b-b">IE: </b>          {{business.org.ie}}</p>
+                <b class="b-b">Nome Fantasia: </b> {{business.org.nomefantasia}}</p>
+              <p *ngIf="business.org.cnpj"><b class="b-b">CNPJ: </b> {{business.org.cnpj}}</p>
+              <p *ngIf="business.org.ie"><b class="b-b">IE: </b> {{business.org.ie}}</p>
               <p *ngIf="business.org.rua    || 
                         business.org.bairro || 
                         business.org.cidade || 
                         business.org.uf     || 
-                        business.org.cep"><b class="b-b">Endereço: </b><b>{{business.org.rua}} - 
-                                                                          {{business.org.bairro}}, 
-                                                                          {{business.org.cidade}} - 
-                                                                          {{business.org.uf}},
-                                                                          {{business.org.cep}}  </b></p>
-              <p *ngIf="business.org.email"><b class="b-b">Email: </b>    {{business.org.email}}</p>
-              <p *ngIf="business.org.site"><b class="b-b">Site:   </b>    {{business.org.site}}</p>
-              <p *ngIf="business.org.erpe"><b class="b-b">ERP:    </b>    {{business.org.erpe.desc}}</p>
+                        business.org.cep"><b class="b-b">Endereço: </b><b>{{business.org.rua}} -
+                  {{business.org.bairro}},
+                  {{business.org.cidade}} -
+                  {{business.org.uf}},
+                  {{business.org.cep}} </b></p>
+              <p *ngIf="business.org.email"><b class="b-b">Email: </b> {{business.org.email}}</p>
+              <p *ngIf="business.org.site"><b class="b-b">Site: </b> {{business.org.site}}</p>
+              <p *ngIf="business.org.erpe"><b class="b-b">ERP: </b> {{business.org.erpe.desc}}</p>
             </div>
           </div>
         </div>
@@ -518,19 +290,15 @@
       <!-- CONTATO -->
       <div class="div-border">
         <div class=" col-12 row" style="padding: 0px;">
-          <div class="col-1 " >
+          <div class="col-1 ">
             <img src="../../assets/contato.png" class="img-empresa" />
           </div>
           <div class="col-11 margin5">
-            <h2 class="font-26 bold " 
-                *ngIf="business.cliente.nome" 
-                style="margin-left: 10px; text-align: center;">
-                {{business.cliente.nome}}
+            <h2 class="font-26 bold " *ngIf="business.cliente.nome" style="margin-left: 10px; text-align: center;">
+              {{business.cliente.nome}}
             </h2>
-            <h2 class="font-26 bold" 
-                *ngIf="!business.cliente.nome" 
-                style="margin-left: 10px; text-align: center;">
-                CONTATO
+            <h2 class="font-26 bold" *ngIf="!business.cliente.nome" style="margin-left: 10px; text-align: center;">
+              CONTATO
             </h2>
           </div>
         </div>
@@ -583,7 +351,8 @@
         <mat-tab-group mat-stretch-tabs class="col-12">
           <mat-tab label="Observações">
             <div class="col-12 mg-t-10 divtab">
-              <textarea rows="10" [(ngModel)]="idobs.obs" class="col-12 txtarea"></textarea>
+              <textarea rows="10" [(ngModel)]="idobs.obs" class="col-12 txtarea"
+                (keyup)="maiuscula($event.target.value)"></textarea>
               <button type="button" (click)="updateTicketObs()" class="btn btn-success bold btn-sm fltright">
                 Adicionar
               </button>
@@ -631,36 +400,31 @@
           </mat-tab>
           <mat-tab label="Anexos">
             <div class="col-12 mg-t-10 divtab">
-              <input  type="file" 
-                      name="attachments[dummy][file]" 
-                      class="file_selector" 
-                      multiple="multiple" 
-                      onchange="addInputFiles(this);" 
-                      />
-                <!-- data-upload-path="/uploads.js" -->
+              <input type="file" name="attachments[dummy][file]" class="file_selector" multiple="multiple"
+                onchange="addInputFiles(this);" />
               <mat-list>
                 <h3 mat-subheader>Pastas</h3>
                 <mat-list-item>
                   <mat-icon mat-list-icon>folder</mat-icon>
-                  <h4 mat-line> Fotos       </h4>
-                  <p  mat-line> Jan 1, 2020 </p>
+                  <h4 mat-line> Fotos </h4>
+                  <p mat-line> Jan 1, 2020 </p>
                 </mat-list-item>
                 <mat-list-item>
                   <mat-icon mat-list-icon>folder</mat-icon>
-                  <h4 mat-line> Projetos    </h4>
-                  <p  mat-line> Fev 3, 2020 </p>
+                  <h4 mat-line> Projetos </h4>
+                  <p mat-line> Fev 3, 2020 </p>
                 </mat-list-item>
                 <mat-divider></mat-divider>
-                <h3  mat-subheader>Arquivos</h3>
+                <h3 mat-subheader>Arquivos</h3>
                 <mat-list-item>
-                  <mat-icon mat-list-icon>note  </mat-icon>
-                  <h4 mat-line> Contrato      </h4>
-                  <p  mat-line> Feb 20, 2020  </p>
+                  <mat-icon mat-list-icon>note </mat-icon>
+                  <h4 mat-line> Contrato </h4>
+                  <p mat-line> Feb 20, 2020 </p>
                 </mat-list-item>
                 <mat-list-item>
-                  <mat-icon mat-list-icon>note  </mat-icon>
+                  <mat-icon mat-list-icon>note </mat-icon>
                   <h4 mat-line> Requisitos Instalação </h4>
-                  <p  mat-line> Feb 22, 2020          </p >
+                  <p mat-line> Feb 22, 2020 </p>
                 </mat-list-item>
               </mat-list>
             </div>
@@ -671,22 +435,19 @@
   </div>
 </div>
 
+<!-- PRINT  -->
 <div id="printThis">
   <div id="MyModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true">
-
     <div class="modal-dialog modal-lg">
-
       <!-- Modal Content: begins -->
       <div class="modal-content">
-
         <!-- Modal Header -->
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
               aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="gridSystemModalLabel">Your Headings</h4>
         </div>
-
         <!-- Modal Body -->
         <div class="modal-body">
           <div class="body-message">
@@ -694,19 +455,17 @@
             <p>And a paragraph with a full sentence or something else...</p>
           </div>
         </div>
-
         <!-- Modal Footer -->
         <div class="modal-footer">
           <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
         </div>
-
       </div>
       <!-- Modal Content: ends -->
-
     </div>
   </div>
 </div>
 
+<!-- ADD REASON FOR LOSSS -->
 <div class="modal fade" id="addMotivoPerda" tabindex="-1" role="dialog" aria-labelledby="addMotivoPerda"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -732,6 +491,48 @@
         </button>
         <button type="button" data-dismiss="modal" class="btn btn-primary" data-toggle="modal" data-target="#loseModal">
           Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADD LOSS -->
+<div class="modal fade" id="loseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Marcar como Perdido
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Motivo da Perda</label>
+          <button mat-icon-button data-toggle="modal" data-target="#addMotivoPerda" data-dismiss="modal">
+            <mat-icon class="icon-modal-lead">add</mat-icon>
+          </button>
+          <select [(ngModel)]="idobs.mtvperd" id="motivo" class="form-control">
+            <option>Custo</option>
+            <option>Preferiu Concorrência</option>
+          </select>
+        </div>
+        <div class="form-group mg-t-10">
+          <label for="exampleFormControlTextarea1">Comentários (opcional) </label>
+          <textarea [(ngModel)]="idobs.cmtperd" class="form-control" id="exampleFormControlTextarea1"
+            rows="3"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Cancelar
+        </button>
+        <button type="button" (click)="stageLose()" data-dismiss="modal" class="btn btn-danger">
+          Marcar como Perdido
         </button>
       </div>
     </div>

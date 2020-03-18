@@ -90,7 +90,7 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
         except:
             pass
         try:
-            C.ramo = Ramo.objects.get(id=int(data['ramo']))
+            C.ramo = Ramo.objects.get(id=int(data['ramos']))
         except:
             pass
         C.ie = data['ie']
@@ -144,7 +144,7 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
         except:
             pass
         
-        O.ramo = Ramo.objects.get(id=int(data['ramos']['id']))
+        O.ramo = Ramo.objects.get(id=int(data['ramos']))
         O.ie = data['ie']
         
         O.erpe = Erp.objects.get(id=int(data['erp']))
@@ -296,7 +296,7 @@ class VendedorViewSet(viewsets.ModelViewSet):
 
 class AtividadeViewSet(viewsets.ModelViewSet):
 
-    queryset = Atividade.objects.all().order_by('dataini')
+    queryset = Atividade.objects.all().order_by('id')
     serializer_class = AtividadeSerializer
 
     def create(self, request):
@@ -325,9 +325,9 @@ class AtividadeViewSet(viewsets.ModelViewSet):
       A.horaini = data['horaini']
       A.horafim = data['horafim']
       A.assunto = data['assunto']
-      A.ticket = Ticket.objects.get(id=int(data['ticket']['id']))
-      A.cliente = Cliente.objects.get(id=int(data['cliente']['id']))
-      A.org = Organizacao.objects.get(id=int(data['org']['id']))
+      A.ticket = Ticket.objects.get(id=int(data['ticket']))
+      A.cliente = Cliente.objects.get(id=int(data['cliente']))
+      A.org = Organizacao.objects.get(id=int(data['org']))
       A.tipo = data['tipo']
       A.save()
       
