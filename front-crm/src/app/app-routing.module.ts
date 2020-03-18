@@ -19,7 +19,7 @@ import { VendedorExternoComponent } from './vendedor-externo/vendedor-externo.co
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "/business",
+    redirectTo: "/login",
     pathMatch: "full"
   },
   {
@@ -59,7 +59,7 @@ const routes: Routes = [
     component: CrudComponent
   },
   {
-    path: "user/:id",
+    path: "user",
     component: UserComponent
   },
   {
