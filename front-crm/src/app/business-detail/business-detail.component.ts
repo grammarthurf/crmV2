@@ -300,6 +300,10 @@ export class BusinessDetailComponent implements OnInit {
     return null
   };
 
+  cancelObs() {
+    this.idobs.obs = '';
+  }
+
   Print(){
     var myWindow=window.open('','','width=1500,height=800');
     myWindow.document.write(

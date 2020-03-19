@@ -356,7 +356,7 @@
               <button type="button" (click)="updateTicketObs()" class="btn btn-success bold btn-sm fltright">
                 Adicionar
               </button>
-              <button type="button" class="btn btn-outline-secondary bold btn-sm fltright mg-r-5">
+              <button type="button" (click)="cancelObs()" class="btn btn-outline-secondary bold btn-sm fltright mg-r-5">
                 Cancelar
               </button>
             </div>
@@ -400,8 +400,11 @@
           </mat-tab>
           <mat-tab label="Anexos">
             <div class="col-12 mg-t-10 divtab">
-              <input type="file" name="attachments[dummy][file]" class="file_selector" multiple="multiple"
-                onchange="addInputFiles(this);" />
+              <label id="thumbnail">
+                <input type="file" name="attachments[dummy][file]" class="file_selector" multiple="multiple"
+                onchange="addInputFiles(this);"/>
+              </label>
+              <button class="btn btn-success" style="float: right;">Salvar Anexo</button>
               <mat-list>
                 <h3 mat-subheader>Pastas</h3>
                 <mat-list-item>

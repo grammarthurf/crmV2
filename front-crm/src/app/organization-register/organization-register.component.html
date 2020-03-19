@@ -136,7 +136,7 @@
         </div>
         <div class="form-group col-md-4">
           <label for="email">Data Aniversário</label>
-          <input [(ngModel)]="contato.birth" type="date" class="form-control">
+          <input [(ngModel)]="contato.birth" class="form-control" type="text" placeholder="DIA/MÊS" mask="99/99" />
         </div>
       </div>
       <div class="row col-md-12">
@@ -176,7 +176,7 @@
                   {{item.cargo}}
                 </p>
                 <p class="card-text">
-                  <span *ngIf="item.dep">• dep. </span>
+                  <span *ngIf="item.dep">•</span>
                   {{item.dep}}
                 </p>
                 <p class="card-text">
@@ -185,7 +185,7 @@
                 </p>
                 <p class="card-text">
                   <span *ngIf="item.birth">•</span>
-                  {{item.birth | date:'dd/MM/yyyy'}}
+                  {{formatBirth(item.birth)}}
                 </p>
                 <p class="card-text">
                   <span *ngIf="item.tel">•</span>

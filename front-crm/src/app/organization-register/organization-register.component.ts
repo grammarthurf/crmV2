@@ -212,14 +212,14 @@ export class OrganizationRegisterComponent implements OnInit {
     this.org.contatos.push(contatovar)
     console.log(this.org);
 
-    this.contato.nome = '';
-    this.contato.email = '';
-    this.contato.cargo = '';
-    this.contato.dep = '';
-    this.contato.birth = '';
-    this.contato.tel = '';
-    this.contato.skp = '';
-    this.contato.cel = '';
+    this.contato.nome = ''
+    this.contato.email = ''
+    this.contato.cargo = ''
+    this.contato.dep = ''
+    this.contato.birth = ''
+    this.contato.tel = ''
+    this.contato.cel = ''
+    this.contato.skp = ''
   }
 
   exit() {
@@ -324,7 +324,7 @@ export class OrganizationRegisterComponent implements OnInit {
           buttons: false
         }
       });
-    } else if (this.contato.nome == '') {
+    } else if (!this.org.contatos) {
       swal({
         icon: "error",
         text: "Adicione um contato!",
@@ -412,10 +412,6 @@ export class OrganizationRegisterComponent implements OnInit {
       this.org.cidade = v
     } else if(id == 7) {
       this.org.uf = v
-    } else if(id == 8) {
-      this.org.email = v
-    } else if(id == 9) {
-      this.org.site = v
     } else if (id== 10){
       this.contato.nome = v
     } else if (id== 11){
@@ -424,8 +420,6 @@ export class OrganizationRegisterComponent implements OnInit {
       this.contato.cargo = v
     } else if (id== 13){
       this.contato.dep = v
-    } else if (id== 14){
-      this.contato.skp = v
     } else if (id== 15){
       this.ramos.desc = v
     } else if (id== 16){
@@ -453,6 +447,17 @@ export class OrganizationRegisterComponent implements OnInit {
     let match = cleaned.match(/^(\d{2})(\d{5})(\d{4})$/);
     if (match) {
       return '(' + match[1] + ') ' + match[2] + '-' + match[3]
+    };
+    return null
+  }
+
+  formatBirth(str) {
+    //Filter only numbers from the input
+    let cleaned = ('' + str).replace(/\D/g, '');
+    //Check if the input is of correct length
+    let match = cleaned.match(/^(\d{2})(\d{2})$/);
+    if (match) {
+      return match[1] + '/' + match[2]
     };
     return null
   }
