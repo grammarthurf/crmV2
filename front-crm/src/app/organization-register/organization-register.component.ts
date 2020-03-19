@@ -324,7 +324,7 @@ export class OrganizationRegisterComponent implements OnInit {
           buttons: false
         }
       });
-    } else if (!this.org.contatos) {
+    } else if (this.org.contatos.length === 0) {
       swal({
         icon: "error",
         text: "Adicione um contato!",
@@ -333,7 +333,6 @@ export class OrganizationRegisterComponent implements OnInit {
           buttons: false
         }
       });
-      
     } else {
       this.crudService.saveNewOrg(this.org).subscribe(
         data => {
@@ -345,18 +344,15 @@ export class OrganizationRegisterComponent implements OnInit {
               buttons: false
             }
           });
-          //this.getterOrg();
-          //setTimeout(this.reiniciar, 1001);
           console.log(data);
           this.exit();
         },
         error => {
-          // this.getterOrg();
           console.error(error);
-          // setTimeout(this.reiniciar, 1001);
         }
       );
     }
+
   }
 
   updateOrg() {
@@ -414,8 +410,6 @@ export class OrganizationRegisterComponent implements OnInit {
       this.org.uf = v
     } else if (id== 10){
       this.contato.nome = v
-    } else if (id== 11){
-      this.contato.email = v
     } else if (id== 12){
       this.contato.cargo = v
     } else if (id== 13){
