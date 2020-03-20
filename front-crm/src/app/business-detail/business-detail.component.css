@@ -395,9 +395,9 @@ input[type=range] {
 
 lottie-animation-view {
 	position: absolute;
-    top: 125%;
-    z-index: 1;
-	left: 31%;
+    top: 75%;
+    z-index: 2;
+	left: 15%;
 }
 
 #null {
@@ -421,7 +421,7 @@ div.col-8.div-right div.col-10.bg-white.row div.row.col-12 h5 + p {
 /* MODAL ATV */
 
 .div-modal-atv{
-    width: 40x; 
+    width: 40px; 
     height: 40px; 
     background-color: #6297bd; 
     color: white; 

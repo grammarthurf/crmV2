@@ -348,7 +348,15 @@ export class OrganizationRegisterComponent implements OnInit {
           this.exit();
         },
         error => {
-          console.error(error);
+          this.contato = { nome: '', email: '', cargo: '', dep: '', birth: '', tel: '', cel: '', skp: '' }
+          swal({
+            icon: "error",
+            text: "Verifique se não há caracteres especiais (!, #, $, %, &), cedilha ( Ç ) ou acentos nos campos!",
+            timer: 4500,
+            buttons: {
+              buttons: false
+            }
+          });
         }
       );
     }

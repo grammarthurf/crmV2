@@ -50,7 +50,7 @@
         <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
       </button>
       <select [(ngModel)]="org.ramos" class="form-control">
-        <option [value]="undefined" *ngIf="orgUpdate" selected hidden>{{orgUpdate.ramo.desc}}</option>
+        <!-- <option [value]="undefined" *ngIf="orgUpdate" selected hidden>{{orgUpdate.ramo.desc}}</option> -->
         <option *ngFor="let item of ramosapi" value="{{item.id}}">{{item.desc}}</option>
       </select>
     </div>
@@ -95,7 +95,7 @@
     </div>
     <div class="form-group col-md-4  mg-tp-8">
       <label for="site">Site</label>
-      <input [(ngModel)]="org.site" type="text" class="form-control" placeholder="www.site.com.br" (keyup)="maiuscula($event.target.value, 9)">
+      <input [(ngModel)]="org.site" type="text" class="form-control" (keyup)="maiuscula($event.target.value, 9)">
     </div>
     <div class="form-group col-md-3">
       <label for="erp">ERP</label>

@@ -281,6 +281,28 @@
               <div class="col-12 row inputmargin">
                 <div class="col-6">
                   <label for="negocios" >Empresa <label style="color: red; font-size: 20px;">*</label></label>
+                  <select  [(ngModel)]="atv.org"
+                          *ngIf="tckapi && !selectedatv"
+                          class="form-control"
+                          id="exampleFormControlSelect1">
+                        <option *ngFor="let ticket of tckapi" value="{{ticket.id}}">
+                          {{ticket.razaosocial}}
+                        </option>
+                  </select>
+                </div>
+                <div class="col-6" style="padding: 0px;">
+                  <label for="participantes"> Contato <label style="color: red; font-size: 20px;">*</label></label>
+                  <select [(ngModel)]="atv.cliente"
+                          *ngIf="tckapi && !selectedatv"
+                          class="form-control"
+                          id="exampleFormControlSelect1">
+                    <option *ngFor="let ticket of tckapi" value="{{ticket.contatos[0].id}}">
+                      {{ticket.contatos[0].nome}}
+                    </option>
+                  </select>
+                </div>
+                <!-- <div class="col-6">
+                  <label for="negocios" >Empresa <label style="color: red; font-size: 20px;">*</label></label>
                  <select  [(ngModel)]="atv.org"
                           *ngIf="tckapi && !selectedatv"
                           class="form-control"
@@ -313,8 +335,8 @@
                           {{orgs.razaosocial}}
                         </option>
                   </select>
-                </div>
-                <div class="col-6" style="padding: 0px;">
+                </div> -->
+                <!-- <div class="col-6" style="padding: 0px;">
                   <label for="participantes"> Contato <label style="color: red; font-size: 20px;">*</label></label>
                   <select [(ngModel)]="atv.cliente"
                           *ngIf="tckapi && !selectedatv"
@@ -348,7 +370,7 @@
                           {{clientes.nome}}
                         </option>
                   </select>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="col-6 ml-auto div-calendar">

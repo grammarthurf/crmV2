@@ -239,6 +239,7 @@ export class AtividadesComponent implements OnInit {
       data => {
         this.calendarEvents = [];
         this.matdata = [];
+        
         data.forEach(e => {
 
           var timeIni = e.horaini.substring(0, 2) + ":" + e.horaini.substring(2, 4);
@@ -397,22 +398,34 @@ export class AtividadesComponent implements OnInit {
           }
         });
         this.atv.assunto = "";
-        this.atv.cliente = '0';
+        // this.atv.cliente = '0';
         this.atv.datafim = "";
         this.atv.dataini = "";
         this.atv.tipo = "";
         this.atv.ticket = '0';
-        this.atv.org = '0';
+        // this.atv.org = '0';
         this.atv.position = 0;
         this.atv.horafim = "";
         this.atv.horaini = "";
         this.numm = "";
+
+        this.atv.org = "";
+        this.atv.cliente = "";
         this.getterActivity();
+
+        // setTimeout(() => {
+        //   this.reiniciar()
+        // }, 500)
       },
       error => {
+        
         this.getterActivity();
       },
     );
+  }
+
+  reiniciar() {
+    location.reload()
   }
 
   // TRANSFORM CAPITAL LETTER
