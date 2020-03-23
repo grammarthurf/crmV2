@@ -387,41 +387,58 @@ export class AtividadesComponent implements OnInit {
       this.atv.datafim = this.atv.dataini;
     }
 
-    this.crudService.saveNewAtividade(this.atv).subscribe(
-      data => {
-        swal({
-          icon: "success",
-          text: "Atividade salva com sucesso!",
-          timer: 1000,
-          buttons: {
-            buttons: false
-          }
-        });
-        this.atv.assunto = "";
-        // this.atv.cliente = '0';
-        this.atv.datafim = "";
-        this.atv.dataini = "";
-        this.atv.tipo = "";
-        this.atv.ticket = '0';
-        // this.atv.org = '0';
-        this.atv.position = 0;
-        this.atv.horafim = "";
-        this.atv.horaini = "";
-        this.numm = "";
+    let dataIniAno = parseInt(this.atv.dataini.substring(0, 4))
+    let dataIniMes = parseInt(this.atv.dataini.substring(5, 7))
+    let dataIniDia = parseInt(this.atv.dataini.substring(8, 10))
+    let dataInputIni = new Date(dataIniAno, dataIniMes, dataIniDia)
+    let dataHoje = new Date(this.dNow.getFullYear(), (this.dNow.getMonth() + 1), this.dNow.getDate())
 
-        this.atv.org = "";
-        this.atv.cliente = "";
-        this.getterActivity();
-
-        // setTimeout(() => {
-        //   this.reiniciar()
-        // }, 500)
-      },
-      error => {
-        
-        this.getterActivity();
-      },
-    );
+    if (dataInputIni < dataHoje) {
+      swal({
+        icon: "error",
+        text: "Data da atividade já passou!",
+        timer: 1000,
+        buttons: {
+          buttons: false
+        }
+      });
+    } else {
+      this.crudService.saveNewAtividade(this.atv).subscribe(
+        data => {
+          swal({
+            icon: "success",
+            text: "Atividade salva com sucesso!",
+            timer: 1000,
+            buttons: {
+              buttons: false
+            }
+          });
+          this.atv.assunto = "";
+          this.atv.cliente = '0';
+          this.atv.datafim = "";
+          this.atv.dataini = "";
+          this.atv.tipo = "";
+          this.atv.ticket = '0';
+          this.atv.org = '0';
+          this.atv.position = 0;
+          this.atv.horafim = "";
+          this.atv.horaini = "";
+          this.numm = "";
+          this.getterActivity();
+  
+          setTimeout(() => {
+            this.reiniciar()
+          }, 600)
+        },
+        error => {
+          this.getterActivity();
+        },
+      );
+    }
+    // console.log(this.atv.dataini);
+    // console.log(this.atv.dataini.substring(0, 4))
+    // console.log(this.atv.dataini.substring(5, 7))
+    // console.log(this.atv.dataini.substring(8, 10))
   }
 
   reiniciar() {

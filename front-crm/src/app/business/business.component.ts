@@ -678,7 +678,7 @@ export class BusinessComponent implements OnInit {
   }
 
   // REDIRECT PAGE
-  redirectToAdd(url) {
+  redirectToAdd(url): void {
     window.open(url);
     window.focus();
   }

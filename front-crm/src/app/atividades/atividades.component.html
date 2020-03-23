@@ -263,7 +263,7 @@
               <div class="col-12 row inputmargin">
                 <div class="col-6">
                   <label for="">Início</label>
-                  <input [(ngModel)]="atv.dataini" type="date" class="form-control" #one>
+                  <input [(ngModel)]="atv.dataini" type="date" class="form-control" #one min="{{dNow}}">
                 </div>
                 <div class="col-6" style="padding: 0px;">
                   <label for="">Fim</label>

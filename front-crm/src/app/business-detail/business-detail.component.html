@@ -46,9 +46,9 @@
         Perdido
       </button>
     </div>
-    <!-- <lottie-animation-view [options]="lottieConfig" [width]="500" [height]="500"
+    <lottie-animation-view [options]="lottieConfig" [width]="400" [height]="400"
       (animCreated)="handleAnimation($event)" id="lottie">
-    </lottie-animation-view> -->
+    </lottie-animation-view>
     <div class="col-1">
       <div class="div-vendedor">
         <p style="font-size: 13px;">
@@ -400,11 +400,13 @@
           </mat-tab>
           <mat-tab label="Anexos">
             <div class="col-12 mg-t-10 divtab">
-              <label id="thumbnail">
-                <input type="file" name="attachments[dummy][file]" class="file_selector" multiple="multiple"
-                onchange="addInputFiles(this);"/>
-              </label>
-              <button class="btn btn-success" style="float: right;">Salvar Anexo</button>
+              <form>
+                <label id="thumbnail">
+                  <input type="file" name="attachments[dummy][file]" class="file_selector" multiple="multiple"
+                  onchange="addInputFiles(this);"/>
+                </label>
+                <button class="btn btn-success" type="submit" style="float: right;">Salvar Anexo</button>
+              </form>
               <mat-list>
                 <h3 mat-subheader>Pastas</h3>
                 <mat-list-item>

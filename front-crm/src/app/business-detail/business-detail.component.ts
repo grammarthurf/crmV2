@@ -126,9 +126,13 @@ export class BusinessDetailComponent implements OnInit {
     this.anim.pause();
   }
 
+  destroy() {
+    this.anim.destroy();
+  }
+
   // PLAY ANIMATION WHEN WIN TICKET
   ganhou() {
-    this.play()
+    this.play();
   }
 
   // GET STAGE
@@ -194,8 +198,8 @@ export class BusinessDetailComponent implements OnInit {
     }
     this.play();
     setTimeout(() => {
-      this.stop()
-    }, 5000);
+      this.stop();
+    }, 4500);
   }
 
   // CHANGE STYLES BUTTONS WIND/LOSE
