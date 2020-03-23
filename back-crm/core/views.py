@@ -5,6 +5,8 @@ from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, At
 from django.core import serializers
 from django.contrib.auth.models import User
 from django.http import JsonResponse
+from rest_framework.authentication import TokenAuthentication, SessionAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -16,29 +18,69 @@ class UserViewSet(viewsets.ModelViewSet):
 class ObsViewSet(viewsets.ModelViewSet):
     queryset = Obs.objects.all().order_by('-id')
     serializer_class = ObsSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
 
 class RamoViewSet(viewsets.ModelViewSet):
 
     queryset = Ramo.objects.all().order_by('-id')
     serializer_class = RamoSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def create(self, request):
+        data = request.data
+        print(data)
+        r = Ramo()
+        c = Created()
+        c.user = request.user
+        c.save()
+        r.desc = data['desc']
+        r.created = c
+        r.save()
+        return JsonResponse({'messsage': 'worked'})
+        
+
 
 
 class ErpViewSet(viewsets.ModelViewSet):
 
     queryset = Erp.objects.all().order_by('-id')
     serializer_class = ErpSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def create(self, request):
+        data = request.data
+        print(data)
+        c = Created()
+        c.user = request.user
+        c.save()
+        e = Erp()
+        e.codigo = data['codigo']
+        e.desc = data['desc']
+        e.empresa = data['empresa']
+        e.save()
+        
+        return JsonResponse({'messsage': 'worked'})
+        
+
 
 
 class ClienteViewSet(viewsets.ModelViewSet):
 
     queryset = Cliente.objects.all().order_by('-id')
     serializer_class = ClienteSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def create(self, request):
         data = request.data
 
-        print(data);
+        create = Created()
+        create.user = request.User
+        create.save()
 
         C = Cliente()
         C.nome = data['nome']
@@ -48,6 +90,7 @@ class ClienteViewSet(viewsets.ModelViewSet):
         C.email = data['email']
         C.skype = data['skype']
         # C.org = Organizacao.objects.get(id=data['org'])
+        C.created = create
         C.save()
         print(data);
         return JsonResponse({'message': 'Worked'})
@@ -63,11 +106,19 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
 
     queryset = Organizacao.objects.all().order_by('-id')
     serializer_class = OrganizacaoSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def create(self, request):
         data = request.data
+        print(request.user);
+        
         print('chamou request')
         print(data);
+
+        create = Created()
+        create.user = request.user
+        create.save()
 
         C = Organizacao()
         C.codigo = data['codigo']
@@ -80,6 +131,7 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
         C.cep = data['cep']
         C.cidade = data['cidade']
         C.uf = data['uf']
+        C.created = create
         try:
             C.email = data['email']
             C.site = data['site']
@@ -104,6 +156,9 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
             print('CONTATOS : ', i);
 
             o = Cliente()
+            cr = Create()
+            cr.user = request.user
+            cr.save()
             o.nome = i['nome']
             o.email = i['email']
             o.cargo = i['cargo']
@@ -112,6 +167,7 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
             o.tel = i['tel']
             o.cel = i['cel']
             o.skype = i['skp']
+            o.created = cr
             o.save()
             C.contatos.add(o)
             C.save()
@@ -178,12 +234,30 @@ class ProdutoViewSet(viewsets.ModelViewSet):
 
     queryset = Produto.objects.all().order_by('-id')
     serializer_class = ProdutoSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def create(self, request):
+        data = request.data
+        print(data);
+        c = Created()
+        c.user = request.User
+        c.save()
+        p = Produto()
+        p.nome = data['nome']
+        p.codigo = data['codigo']
+        p.created = c
+        p.save()
+        
+        return JsonResponse({'message':'worked'})
 
 
 class VendedorExtViewSet(viewsets.ModelViewSet):
 
     queryset = VendedorExt.objects.all().order_by('-id')
     serializer_class = VendedorExtSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
 
 
@@ -191,6 +265,8 @@ class TicketViewSet(viewsets.ModelViewSet):
 
     queryset = Ticket.objects.all().order_by('-id')
     serializer_class = TicketSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def create(self, request):
         data = request.data
@@ -198,6 +274,7 @@ class TicketViewSet(viewsets.ModelViewSet):
         print(data['titulo']);
 
         c = Created()
+        c.user = request.user
         c.save()
         T = Ticket()
         T.titulo = data['titulo']
@@ -256,7 +333,7 @@ class TicketViewSet(viewsets.ModelViewSet):
 
       try:
         if data['opt'] == 'term':
-            print('entrou opt ');
+            print('entrou opt ')
             
             T = Ticket.objects.get(id=data['id'])
             T.termometro = data['term']
@@ -298,11 +375,16 @@ class AtividadeViewSet(viewsets.ModelViewSet):
 
     queryset = Atividade.objects.all().order_by('id')
     serializer_class = AtividadeSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def create(self, request):
         data = request.data
         print(data)
 
+        c = Created()
+        c.user = request.user
+        c.save()
         A = Atividade()
         A.dataini = data['dataini']
         A.datafim = data['datafim']
@@ -313,12 +395,13 @@ class AtividadeViewSet(viewsets.ModelViewSet):
         A.cliente = Cliente.objects.get(id=int(data['cliente']))
         A.org = Organizacao.objects.get(id=int(data['org']))
         A.tipo = data['tipo']
+        A.created = c
         A.save()
         return JsonResponse({'message': 'atividadecreated'})
 
     def update(self, request, pk):
       data = request.data
-      print(data);
+      print(data)
       A = Atividade.objects.get(id=data['position'])
       A.dataini = data['dataini']
       A.datafim = data['datafim']

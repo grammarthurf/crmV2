@@ -1,20 +1,49 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from rest_framework.authtoken.models import Token
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from front import settings
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 
+class Vendedor(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    nome = models.CharField(max_length=155, null=True, blank=True)
+    isAdmin = models.BooleanField(null=True, blank=True)
+
+    def __str__(self):
+        return str(self.user) + str(self.nome)
+
+@receiver(post_save, sender=User)
+def create_user_vendedor(sender, instance, created, **kwargs):
+    if created:
+        Vendedor.objects.create(user=instance)
+        Token.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_vendedor(sender, instance, **kwargs):
+    instance.vendedor.save()
 
 
 class Created (models.Model):
     datetime = models.DateTimeField(auto_now_add=True)
-    user = models.CharField(max_length=255, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return str(self.datetime) + str(self.user.username)
 class Updated (models.Model):
     datetime = models.DateTimeField(auto_now_add=True)
-    user = models.CharField(max_length=255, null=True)
+    desc = models.CharField(max_length=255, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class Ramo(models.Model):
     desc = models.CharField( default='Semnome' ,max_length=65, blank=True)
+    created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True)
+    updated = models.ManyToManyField(Updated)
 
     def __str__(self):
         return str(self.desc)
@@ -23,6 +52,8 @@ class Erp(models.Model):
     codigo = models.CharField(max_length=64, null=True, blank=True)
     desc = models.CharField(max_length=65, null=True, blank=True)
     empresa = models.CharField(max_length=65, null=True, blank=True)
+    created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True)
+    updated = models.ManyToManyField(Updated )
 
     def __str__(self):
         return str(self.desc)
@@ -47,7 +78,7 @@ class Cliente(models.Model):
     email = models.CharField(max_length=100, null=True, blank=True)
     skype = models.CharField(max_length=65, null=True, blank=True)
     created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True)
-    updated = models.ForeignKey(Updated, on_delete=models.CASCADE, null=True)
+    updated = models.ManyToManyField(Updated)
 
     def __str__(self):
         return str(self.nome) if self.nome else ' '
@@ -74,7 +105,7 @@ class Organizacao (models.Model):
     erpe = models.ForeignKey(Erp, related_name='orgs', blank=True, null=True ,on_delete=models.CASCADE)
     contatos = models.ManyToManyField(Cliente, related_name='orgs',blank=True)
     created = models.ForeignKey(Created, on_delete=models.CASCADE, null=True, blank=True)
-    updated = models.ForeignKey(Updated, on_delete=models.CASCADE, null=True, blank=True)
+    updated = models.ManyToManyField(Updated)
 
     def __str__(self):
         return str(self.razaosocial)
@@ -86,20 +117,16 @@ class Produto (models.Model):
     modalidade = models.CharField(max_length=155, null=True, blank=True)
     codigo = models.CharField(max_length=255, blank=True, null=True)
     created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True)
-    updated = models.ForeignKey(Updated, on_delete=models.CASCADE, null=True)
+    updated = models.ManyToManyField(Updated)
 
     def __str__(self):
         return str(self.nome)
 
-
-class Vendedor(models.Model):
-    nome = models.CharField(max_length=155)
-
-    def __str__(self):
-        return str(self.nome)
 
 class VendedorExt(models.Model):
     nome = models.CharField(max_length=155)
+    created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True)
+    updated = models.ManyToManyField(Updated)
 
     def __str__(self):
         return str(self.nome)
@@ -107,6 +134,8 @@ class VendedorExt(models.Model):
 class Obs(models.Model):
     texto = models.CharField(max_length=255, null=True)
     data = models.DateField(auto_now_add=True)
+    created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True)
+    updated = models.ManyToManyField(Updated)
 
     def __str__(self):
         return str(self.data)
@@ -128,8 +157,8 @@ class Ticket (models.Model):
     status = models.CharField(max_length=155, blank=True, default='Aberto')
     mtvperd = models.CharField(max_length=155, null=True, blank=True)
     cmtperd = models.CharField(max_length=155, null=True, blank=True)
-    created = models.ForeignKey(Created, on_delete=models.CASCADE, null=True)
-    updated = models.ForeignKey(Updated, on_delete=models.CASCADE, null=True)
+    created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True)
+    updated = models.ManyToManyField(Updated)
 
 
     def __str__(self):
@@ -147,8 +176,8 @@ class Atividade (models.Model):
     ticket = models.ForeignKey(Ticket, related_name='atividades', on_delete=models.CASCADE, null=True)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True)
     org = models.ForeignKey(Organizacao, on_delete=models.CASCADE, null=True)
-    created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True, blank=True)
-    updated = models.ForeignKey(Updated, on_delete=models.CASCADE, null=True, blank=True)
+    created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True)
+    updated = models.ManyToManyField(Updated)
 
     def __str__(self):
         return str(self.assunto)

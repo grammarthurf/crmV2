@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Atividade, Ramo, Erp, VendedorExt
+from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Atividade, Ramo, Erp, VendedorExt, Vendedor
 
 # Register your models here.
 
@@ -12,3 +12,4 @@ admin.site.register(Atividade)
 admin.site.register(Ramo)
 admin.site.register(Erp)
 admin.site.register(VendedorExt)
+admin.site.register(Vendedor)
