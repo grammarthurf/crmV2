@@ -68,13 +68,6 @@ export class BusinessComponent implements OnInit {
   private animationSpeed: number = 1;
 
   constructor(private crudService: CrudService, private router: Router) {
-    this.getterEstagios();
-    this.getterTickets('open');
-    this.getterTickets('win');
-    this.getterOrgs();
-    this.getterProd();
-    this.getterCliente();
-    this.getterUser();
 
     this.lottieConfig = {
       path: 'assets/handshake.json',
@@ -147,7 +140,7 @@ export class BusinessComponent implements OnInit {
     );
   }
 
-  //FILTRAR SELECT DOS CONTATOS DE ACORDO COM O SELECIONADO EM EMPRESAS
+  // FILTRAR SELECT DOS CONTATOS DE ACORDO COM O SELECIONADO EM EMPRESAS
   gettercliorg(id) {
     this.crudService.getOrg(id).subscribe(
       data => {
@@ -277,7 +270,7 @@ export class BusinessComponent implements OnInit {
       data => {
         this.calcAllValue();
       }, error => { }
-    )
+    );
   }
 
   // GET CLIENT
@@ -577,7 +570,7 @@ export class BusinessComponent implements OnInit {
     }
   }
 
-  // REDIRECT TO BUSINESS DETAIL SCREEN 
+  // REDIRECT TO BUSINESS DETAIL SCREEN
   goTo(id) {
     this.router.navigate([`/business-detail/${id}`]);
   }
@@ -670,6 +663,14 @@ export class BusinessComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getterEstagios();
+    this.getterTickets('open');
+    this.getterTickets('win');
+    this.getterOrgs();
+    this.getterProd();
+    this.getterCliente();
+    this.getterUser();
+
     Inputmask().mask(document.getElementById("value"));
     this.ticket.termometro = "50";
   }

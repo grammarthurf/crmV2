@@ -9,7 +9,7 @@
                     <ul class="list-group list-group-flush" >
                         <li class="list-group-item p">
                             <b>Nome: </b>
-                            Nome do usuário
+                            {{user}}
                         </li>
                         <li class="list-group-item p">
                             <b>Email: </b>
@@ -48,11 +48,11 @@
                     <div class="col-12">
                         <ul class="list-group list-group-flush" >
                             <ng-template ngFor let-ticket [ngForOf]="negociosapi">
-                                <li class="list-group-item p" 
+                                <li class="list-group-item p"
                                 *ngIf="((InitList || dataCheck(ticket.obs[ticket.obs.length-1].data)) && (ticket.created && ticket.obs.length > 1))" >
                                     <img src="../../assets/profile.jpg" class="img2" >
                                     <b>
-                                        Atualizou a observação de um negócio: 
+                                        Atualizou a observação de um negócio:
                                     </b>
                                     <a href="/business-detail/{{ticket.id}}">{{ticket.titulo}} </a>
                                     <label class="p1">
@@ -60,11 +60,11 @@
                                     </label>
                                     <mat-icon style="float: right;">autorenew</mat-icon>
                                 </li>
-                                <li class="list-group-item p" 
+                                <li class="list-group-item p"
                                     *ngIf="((InitList || dataCheck(ticket.obs[0].data)) && (ticket.created && ticket.obs.length > 1))" >
                                     <img src="../../assets/profile.jpg" class="img2" >
                                     <b>
-                                        Adicionou um negócio: 
+                                        Adicionou um negócio:
                                     </b>
                                     <a href="/business-detail/{{ticket.id}}">{{ticket.titulo}} </a>
                                     <label class="p1">
@@ -72,25 +72,25 @@
                                     </label>
                                     <mat-icon style="float: right;">work_outline</mat-icon>
                                 </li>
-                                <li class="list-group-item p" 
+                                <li class="list-group-item p"
                                     *ngIf="((InitList || dataCheck(ticket.obs[0].data)) && (ticket.created && ticket.obs.length == 1))" >
                                     <img src="../../assets/profile.jpg" class="img2" >
                                     <b>
-                                        Adicionou um negócio: 
+                                        Adicionou um negócio:
                                     </b>
                                     <a href="/business-detail/{{ticket.id}}">{{ticket.titulo}} </a>
                                     <label class="p1">
                                         ({{ticket.created.datetime | date: 'dd/MM/yyyy hh:mm'}})
                                     </label>
                                     <mat-icon style="float: right;">work_outline</mat-icon>
-                                </li> 
+                                </li>
                             </ng-template>
                             <ng-template ngFor let-orgs [ngForOf]="orgsapi">
                                 <li class="list-group-item p"
                                     *ngIf="InitList">
                                     <img src="../../assets/profile.jpg" class="img2" >
                                     <b>
-                                        Adicionou uma empresa: 
+                                        Adicionou uma empresa:
                                     </b>
                                     <a href="/company-detail/{{orgs.id}}">{{orgs.razaosocial}} </a>
                                     <mat-icon style="float: right;">business</mat-icon>
@@ -101,7 +101,7 @@
                                     *ngIf="InitList">
                                     <img src="../../assets/profile.jpg" class="img2" >
                                     <b>
-                                        Adicionou um novo ramo: 
+                                        Adicionou um novo ramo:
                                     </b>
                                     <a href="/ramo">{{ramo.desc}} </a>
                                     <mat-icon style="float: right;">bookmark_border</mat-icon>
@@ -112,7 +112,7 @@
                                     *ngIf="InitList">
                                     <img src="../../assets/profile.jpg" class="img2" >
                                     <b>
-                                        Adicionou uma nova erp: 
+                                        Adicionou uma nova erp:
                                     </b>
                                     <a href="/erp">{{erp.desc}} </a>
                                     <label class="p1">
@@ -127,40 +127,40 @@
                 <mat-tab label="Atividades">
                     <div class="col-12">
                         <ul class="list-group list-group-flush" *ngFor="let atividade of atvapi">
-                            <li class="list-group-item p" 
-                                *ngIf="(InitList   
-                                       || dataCheck(atividade.dataini ) 
+                            <li class="list-group-item p"
+                                *ngIf="(InitList
+                                       || dataCheck(atividade.dataini )
                                        || dataCheck(atividade.datafim) )">
-                                <mat-icon *ngIf="(atividade.tipo == 'TAREFA' 
-                                                 || atividade.tipo == 'Tarefa' )"> 
-                                    watch_later 
+                                <mat-icon *ngIf="(atividade.tipo == 'TAREFA'
+                                                 || atividade.tipo == 'Tarefa' )">
+                                    watch_later
                                 </mat-icon>
-                                <mat-icon *ngIf="(atividade.tipo == 'LIGAR'  
-                                                 || atividade.tipo == 'LIGAÇÃO' 
+                                <mat-icon *ngIf="(atividade.tipo == 'LIGAR'
+                                                 || atividade.tipo == 'LIGAÇÃO'
                                                  || atividade.tipo == 'Ligação')">
-                                    phone 
+                                    phone
                                 </mat-icon>
                                 <mat-icon *ngIf="(atividade.tipo == 'REUNIÃO'
-                                                 || atividade.tipo == 'Reunião' )"> 
-                                    people 
+                                                 || atividade.tipo == 'Reunião' )">
+                                    people
                                 </mat-icon>
-                                <mat-icon *ngIf="(atividade.tipo == 'VISITA' 
-                                                 || atividade.tipo == 'Visita' )"> 
-                                    business 
+                                <mat-icon *ngIf="(atividade.tipo == 'VISITA'
+                                                 || atividade.tipo == 'Visita' )">
+                                    business
                                 </mat-icon>
-                                <mat-icon *ngIf="(atividade.tipo == 'EMAIL'  
-                                                 || atividade.tipo == 'Email' )"> 
-                                    email 
+                                <mat-icon *ngIf="(atividade.tipo == 'EMAIL'
+                                                 || atividade.tipo == 'Email' )">
+                                    email
                                 </mat-icon>
                                 <b>{{atividade.assunto}}:</b>
-                                <a href="/business-detail/{{atividade.ticket.id}}"> 
-                                    {{atividade.tipo}}  
+                                <a href="/business-detail/{{atividade.ticket.id}}">
+                                    {{atividade.tipo}}
                                 </a>
-                                <label *ngIf="(atividade.dataini && atividade.datafim)" class="p1"> 
-                                    ({{atividade.dataini | date: 'dd/MM/yyyy'}} 
-                                    {{atividade.horaini | mask: '00:00'}} - 
-                                    {{atividade.horafim | mask: '00:00'}} 
-                                    {{atividade.datafim | date: 'dd/MM/yyyy'}}) 
+                                <label *ngIf="(atividade.dataini && atividade.datafim)" class="p1">
+                                    ({{atividade.dataini | date: 'dd/MM/yyyy'}}
+                                    {{atividade.horaini | mask: '00:00'}} -
+                                    {{atividade.horafim | mask: '00:00'}}
+                                    {{atividade.datafim | date: 'dd/MM/yyyy'}})
                                 </label>
                             </li>
                         </ul>
@@ -169,4 +169,4 @@
             </mat-tab-group>
         </div>
     </div>
-</div> 
+</div>

@@ -1,10 +1,14 @@
+
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  baseUrl = "http://127.0.0.1:8000/";
+  htttpHeaders = new HttpHeaders({ "Content-Type": "application/json" });
   // http options used for making API calls
   private httpOptions: any;
   // the actual JWT token
@@ -20,16 +24,7 @@ export class UserService {
 
 
   // Uses http.post() to get an auth token from djangorestframework-jwt endpoint
-  public login(user) {
-    this.http.post('/api-token-auth/', JSON.stringify(user), this.httpOptions).subscribe(
-      data => {
-        this.updateData(data['token']);
-      },
-      err => {
-        this.errors = err['error'];
-      }
-    );
-  }
+
 
   // Refreshes the JWT token, to extend the time the user is logged in
   public refreshToken() {
@@ -41,12 +36,6 @@ export class UserService {
         this.errors = err['error'];
       }
     );
-  }
-
-  public logout() {
-    this.token = null;
-    this.tokenExpires = null;
-    this.username = null;
   }
 
   private updateData(token) {

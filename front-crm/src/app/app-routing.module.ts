@@ -55,10 +55,6 @@ const routes: Routes = [
     component: OrganizationRegisterComponent
   },
   {
-    path: "testapi",
-    component: CrudComponent
-  },
-  {
     path: "user",
     component: UserComponent
   },
@@ -85,7 +81,7 @@ const routes: Routes = [
   {
     path: "vendedor-externo",
     component: VendedorExternoComponent
-  }
+  },  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

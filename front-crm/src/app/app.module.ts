@@ -1,3 +1,5 @@
+import { CrudService } from './services/crud.service';
+import { CookieService } from 'ngx-cookie-service';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -119,9 +121,11 @@ registerLocaleData(localePt);
     MatSelectModule
   ],
   providers: [
+    CrudService,
+    CookieService,
     HttpClient,
     {
-      provide: LOCALE_ID, 
+      provide: LOCALE_ID,
       useValue: 'pt-BR'
     }
   ],

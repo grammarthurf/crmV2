@@ -1,3 +1,5 @@
+import { CrudService } from './../services/crud.service';
+import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, Data } from "@angular/router";
 
@@ -7,10 +9,13 @@ import { Router, Data } from "@angular/router";
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  username = JSON.parse(localStorage.getItem('username'));
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private crudservice: CrudService) {}
 
   ngOnInit() {
+    // console.log(this.username);
+
   }
 
   goToLead() {
@@ -46,7 +51,22 @@ export class NavbarComponent implements OnInit {
   }
 
   goToLogin() {
+    this.crudservice.logout()
+    this.username = '';
     this.router.navigate(['/login']);
+    this.changeUsername();
   }
-  
+
+  changeUsername(){
+    // while (this.username == '' || this.username == null) {
+
+    //   setTimeout(() => {
+    //     this.username = JSON.parse(localStorage.getItem('username'))
+    //     console.log(this.username);
+    //    }, 20000)
+
+
+    // }
+  }
+
 }

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { CrudService } from "../services/crud.service";
 import { MatTableDataSource, MatSort } from "@angular/material";
@@ -13,10 +14,6 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {nome: 'Fabiana', usuario: 'fabiana', tipo: 'Vendedor Interno'},
   {nome: 'Fabiana', usuario: 'fabiana', tipo: 'Vendedor Interno'},
   {nome: 'Fabiana', usuario: 'fabiana', tipo: 'Vendedor Interno'},
-  {nome: 'Fabiana', usuario: 'fabiana', tipo: 'Vendedor Interno'},
-  {nome: 'Fabiana', usuario: 'fabiana', tipo: 'Vendedor Interno'},
-  {nome: 'Fabiana', usuario: 'fabiana', tipo: 'Vendedor Interno'},
-  {nome: 'Fabiana', usuario: 'fabiana', tipo: 'Vendedor Interno'},
 ];
 
 
@@ -28,8 +25,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class VendedorComponent implements OnInit {
   vendedor = {
     nome: "",
-    usuario: "",
-    tipo: "",
+    username: "",
+    password: "",
   };
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -37,7 +34,7 @@ export class VendedorComponent implements OnInit {
   displayedColumns: string[] = ['nome', 'usuario', 'tipo', 'columnEdit', 'columnDelete'];
   dataSource = ELEMENT_DATA;
 
-  constructor() { }
+  constructor(private http: HttpClient, private crudservice: CrudService) { }
 
   deleteItem() {
     swal({
@@ -48,6 +45,17 @@ export class VendedorComponent implements OnInit {
         buttons: false
       }
     });
+  }
+
+  register() {
+    console.log(this.vendedor);
+    this.crudservice.registerUser(this.vendedor).subscribe( data => { console.log(data);
+    }, err => {console.log(err);
+    });
+    this.vendedor.username = '';
+    this.vendedor.password = '';
+    this.vendedor.nome = '';
+
   }
 
   maiuscula(value: string){

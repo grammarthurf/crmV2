@@ -1,3 +1,5 @@
+import { CookieService } from 'ngx-cookie-service';
+import { UserService } from './user.service';
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
@@ -6,12 +8,47 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
   providedIn: "root"
 })
 export class CrudService {
+  username: any;
   baseUrl = "http://127.0.0.1:8000/";
   // baseUrl = "http://192.168.10.205:8000/"
-  htttpHeaders = new HttpHeaders({ "Content-Type": "application/json" });
-  body:any;
+  basetoken = JSON.parse(localStorage.getItem('token'));
+  token = 'Token ' + this.basetoken;
+  htttpHeaders = new HttpHeaders().set("Content-Type", "application/json" ).set('Authorization', this.token);
+  httploginheaders = new HttpHeaders().set("Content-Type", "application/json");
+  body: any;
+  constructor(private http: HttpClient, private user: UserService, private cookies: CookieService) {}
 
-  constructor(private http: HttpClient) {}
+  // User Authentication
+
+  public login(user): Observable<any>  {
+    // this.prilogin(user);
+    this.username = user.username;
+    return this.http.post(this.baseUrl + 'api-token-auth/', JSON.stringify(user),{
+      headers: this.httploginheaders
+    });
+  }
+
+  public logout() {
+    localStorage.clear();
+    this.basetoken = '';
+    console.log('logout clikce');
+    console.log(this.token);
+
+
+  }
+
+  public registerUser(user): Observable<any>{
+    this.username = user.username;
+    return this.http.post(`${this.baseUrl}auth/users/`, user , {
+      headers: this.htttpHeaders
+    });
+  }
+
+  public getUsers(): Observable<any> {
+    return this.http.get(`${this.baseUrl}auth/users/`, {
+      headers: this.htttpHeaders
+    });
+  }
 
   // GET ALL API
 
@@ -48,6 +85,8 @@ export class CrudService {
     });
   }
   public getTickets(): Observable<any> {
+    console.log(this.token);
+
     return this.http.get(`${this.baseUrl}ticket/`, {
       headers: this.htttpHeaders
     });

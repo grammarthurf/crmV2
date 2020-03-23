@@ -32,6 +32,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.loadUser();
+    this.user = JSON.parse(localStorage.getItem('username'))
   }
 
   loadUser(){
@@ -75,12 +76,12 @@ export class UserComponent implements OnInit {
     var month1 = data.substring(5,7);
     var day1 = data.substring(8,10);
 
-    if((yIniF > year1) 
-      || (yIniF == year1 && mIniF > month1) 
+    if((yIniF > year1)
+      || (yIniF == year1 && mIniF > month1)
       || (yIniF == year1 && mIniF == month1 && dIniF > day1)){
       return false;
-    } else if ((yEndF > year1) 
-              || (yEndF == year1 && mEndF > month1) 
+    } else if ((yEndF > year1)
+              || (yEndF == year1 && mEndF > month1)
               || (yEndF == year1 && mEndF == month1 && dEndF >= day1)){
       return true;
     }

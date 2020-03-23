@@ -1,3 +1,4 @@
+import { UserService } from './services/user.service';
 import { Component } from "@angular/core";
 
 @Component({
@@ -7,4 +8,8 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   title = "front-crm";
+  token: any;
+  username: any;
+
+  constructor(private userservice: UserService){}
 }
