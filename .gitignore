@@ -3,4 +3,5 @@ venv
 .idea
 __pycache__
 *.pyc
-*.sqlite3
+.angulardoc.json
+.vscode

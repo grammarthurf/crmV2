@@ -8,21 +8,23 @@
                 <div class="col-8 divright">
                     <h4 class="title toright">
                         ACESSO AO SISTEMA
-                    </h4> 
-                    <input  type="text" 
-                            class="form-control mg-tp-70" 
-                            placeholder="Login">  
-                    <input  type="password" 
-                            class="form-control mg-tp-10" 
-                            placeholder="Senha"> 
+                    </h4>
+                    <input  type="text"
+                            class="form-control mg-tp-70"
+                            placeholder="Login"
+                            [(ngModel)]='user.username'>
+                    <input  type="password"
+                            class="form-control mg-tp-10"
+                            placeholder="Senha"
+                            [(ngModel)]='user.password'>
                     <a href="" class="mg-tp-10 toright">
                         Esqueci minha senha
                     </a>
-                    <button type="button" class="mg-tp-10 toright form-control btn1">
+                    <button type="button" (click)="login()"  class="mg-tp-10 toright form-control btn1">
                         Acessar
                     </button>
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
 </div>
