@@ -50,7 +50,7 @@
         <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
       </button>
       <select [(ngModel)]="org.ramos" class="form-control">
-        <option [value]="undefined" *ngIf="orgUpdate" selected hidden>{{orgUpdate.ramo.desc}}</option>
+        <!-- <option [value]="undefined" *ngIf="orgUpdate" selected hidden>{{orgUpdate.ramo.desc}}</option> -->
         <option *ngFor="let item of ramosapi" value="{{item.id}}">{{item.desc}}</option>
       </select>
     </div>
@@ -80,7 +80,7 @@
     </div>
     <div class="form-group col-md-2">
       <label for="estado">Estado</label>
-      <input [(ngModel)]="org.uf" type="text" class="form-control" placeholder="SC" maxlength="2" (keyup)="maiuscula($event.target.value, 7)">
+      <input [(ngModel)]="org.uf" type="text" class="form-control" maxlength="2" (keyup)="maiuscula($event.target.value, 7)">
     </div>
     <div class="form-group col-md-3">
       <label for="telefone">Telefone</label>
@@ -95,7 +95,7 @@
     </div>
     <div class="form-group col-md-4  mg-tp-8">
       <label for="site">Site</label>
-      <input [(ngModel)]="org.site" type="text" class="form-control" placeholder="www.site.com.br" (keyup)="maiuscula($event.target.value, 9)">
+      <input [(ngModel)]="org.site" type="text" class="form-control" (keyup)="maiuscula($event.target.value, 9)">
     </div>
     <div class="form-group col-md-3">
       <label for="erp">ERP</label>
@@ -136,7 +136,7 @@
         </div>
         <div class="form-group col-md-4">
           <label for="email">Data Aniversário</label>
-          <input [(ngModel)]="contato.birth" type="date" class="form-control">
+          <input [(ngModel)]="contato.birth" class="form-control" type="text" placeholder="DIA/MÊS" mask="99/99" />
         </div>
       </div>
       <div class="row col-md-12">
@@ -176,7 +176,7 @@
                   {{item.cargo}}
                 </p>
                 <p class="card-text">
-                  <span *ngIf="item.dep">• dep. </span>
+                  <span *ngIf="item.dep">•</span>
                   {{item.dep}}
                 </p>
                 <p class="card-text">
@@ -185,7 +185,7 @@
                 </p>
                 <p class="card-text">
                   <span *ngIf="item.birth">•</span>
-                  {{item.birth | date:'dd/MM/yyyy'}}
+                  {{formatBirth(item.birth)}}
                 </p>
                 <p class="card-text">
                   <span *ngIf="item.tel">•</span>

@@ -1,26 +1,26 @@
 <nav  class="navbar navbar-expand-lg navbar-light bg-white"><!--  -->
-  <a href="business" class="navbar-brand h1 mb-0"><img src="../../assets/logo-crm.png" /></a>
+  <a routerLink="/business" class="navbar-brand h1 mb-0"><img src="../../assets/logo-crm.png" /></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSite">
     <ul class="navbar-nav mr-auto ml-auto">
       <li class="nav-item">
-        <a class="nav-link" (click)="goToLead()">Lead</a>
+        <a class="nav-link" routerLink="/business" routerLinkActive="business">Lead</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)="goToActivity()">Atividade</a>
+        <a class="nav-link" routerLink="/activity" routerLinkActive="activity">Atividade</a>
       </li>
       <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
           Cadastros
         </a>
         <div class="dropdown-menu">
-          <a (click)="goToCompany()" class="dropdown-item">Empresa</a>
-          <a (click)="goToSeller()" class="dropdown-item">Vendedor</a>
-          <a (click)="goToProducts()" class="dropdown-item">Produtos</a>
-          <a (click)="goToERP()" class="dropdown-item">ERP</a>
-          <a (click)="goToRamo()" class="dropdown-item">Ramo</a>
+          <a routerLink="/company" routerLinkActive="company" class="dropdown-item">Empresa</a>
+          <a routerLink="/vendedor" routerLinkActive="vendedor" class="dropdown-item">Vendedor</a>
+          <a routerLink="/products" routerLinkActive="products" class="dropdown-item">Produtos</a>
+          <a routerLink="/erp" routerLinkActive="erp" class="dropdown-item">ERP</a>
+          <a routerLink="/ramo" routerLinkActive="ramo" class="dropdown-item">Ramo</a>
         </div>
       </li>
     </ul>
@@ -31,8 +31,8 @@
           <span *ngIf="!username" >Logout</span>
         </a>
         <div class="dropdown-menu">
-          <a (click)="goToProfile()" class="dropdown-item">Meu Perfil</a>
-          <a (click)="goToLogin()" class="dropdown-item">Sair</a>
+          <a routerLink="/user" routerLinkActive="user" class="dropdown-item">Meu Perfil</a>
+          <a routerLink="/login" routerLinkActive="login" class="dropdown-item">Sair</a>
         </div>
       </li>
     </ul>

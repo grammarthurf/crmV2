@@ -39,7 +39,7 @@ mat-icon {
 
 .div-top {
 	padding-top: 10px;
-	height: 300px; 
+	height: 330px; 
 }
 
 .div-left {
@@ -265,8 +265,8 @@ input[type=range] {
 .md-stepper-horizontal {
 	display:table;
 	cursor: pointer;
-	width:100%;
-	margin:0 auto;
+	width: 100%;
+	margin: 0 auto;
 	background-color:#FFFFFF;
 }
 .md-stepper-horizontal .md-step {
@@ -395,9 +395,9 @@ input[type=range] {
 
 lottie-animation-view {
 	position: absolute;
-    top: 125%;
+    top: 50%;
     z-index: 1;
-	left: 31%;
+    left: 20%;
 }
 
 #null {
@@ -421,7 +421,7 @@ div.col-8.div-right div.col-10.bg-white.row div.row.col-12 h5 + p {
 /* MODAL ATV */
 
 .div-modal-atv{
-    width: 40x; 
+    width: 40px; 
     height: 40px; 
     background-color: #6297bd; 
     color: white; 
@@ -507,3 +507,15 @@ div.col-8.div-right div.col-10.bg-white.row div.row.col-12 h5 + p {
 	font-size: 20px; 
 	margin-left: 5px;
 }
+
+label#thumbnail {
+    margin-bottom: 20px;
+    border: 1px dashed #ddd;
+    background-size: cover;
+    cursor: pointer;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

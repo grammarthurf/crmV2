@@ -129,8 +129,13 @@
                             </div>
                         </div>
                     </mat-tab>
-                    <mat-tab label="Arquivos">
+                    <mat-tab label="Anexos">
                         <div class="col-12">
+                        <label id="thumbnail">
+                            <input type="file" name="attachments[dummy][file]" class="file_selector" multiple="multiple"
+                            onchange="addInputFiles(this);"/>
+                          </label>
+                          <button class="btn btn-success" style="float: right;">Salvar Anexo</button>
                             <mat-list>
                                 <h3 mat-subheader>Pastas</h3>
                                 <mat-list-item>

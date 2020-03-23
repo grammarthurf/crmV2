@@ -280,7 +280,7 @@
           <div class="row">
             <div class="form-group col-md-6">
               <label for="exampleFormControlSelect1">Empresa</label>
-              <button mat-icon-button (click)="redirectToAdd('/company-register')">
+              <button mat-icon-button (click)="redirectToAdd('#/company-register')">
                 <mat-icon class="icon-modal-lead">add</mat-icon>
               </button>
               <select *ngIf="orsgapi" [(ngModel)]="ticket.org" class="form-control" id="exampleFormControlSelect1"
@@ -354,8 +354,8 @@
               <button mat-icon-button data-toggle="modal" data-target="#exampleModalVendedorExt" data-dismiss="modal">
                 <mat-icon class="icon-modal-lead">add</mat-icon>
               </button>
-              <select class="form-control" id="ven_ext">
-                <option [(ngModel)]="ticket.vendext" *ngFor="let vendext of vendedorextapi" value="{{vendext.id}}">
+              <select [(ngModel)]="ticket.vendext" class="form-control" id="ven_ext">
+                <option *ngFor="let vendext of vendedorextapi" value="{{vendext.id}}">
                   {{vendext.nome}}
                 </option>
               </select>
@@ -373,7 +373,7 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          <button (click)="exitCreateLead()" type="button" class="btn btn-secondary" data-dismiss="modal">
             Sair
           </button>
           <button (click)="save()" class="btn btn-primary" data-dismiss="modal">

@@ -123,6 +123,7 @@ export class BusinessComponent implements OnInit {
     this.crudService.getVendedorExt().subscribe(
       data => {
         this.vendedorextapi = data;
+        console.log('vendedor externo')
       },
       error => {
         this.erroAtividade = error;
@@ -582,8 +583,8 @@ export class BusinessComponent implements OnInit {
 
   // DRAG AND DROP LEADS
   drop(event: CdkDragDrop<string[]>) {
+    console.log('qualquer coisa')
     this.calcAllValue();
-
     if (event.distance.x > 600) {
       this.calcAllValue();
       this.play();
@@ -656,13 +657,26 @@ export class BusinessComponent implements OnInit {
     }
   }
 
+  exitCreateLead() {
+    this.ticket.titulo = '';
+    this.ticket.org = '';
+    this.ticket.valorestimado = 0;
+    this.ticket.produto = '';
+    this.ticket.termometro = '50';
+    this.ticket.cliente = '';
+    this.ticket.estagio = '';
+    this.ticket.vendedor = '';
+    this.ticket.obs = ''
+  }
+
   // REDIRECT PAGE
   redirectToAdd(url): void {
-    window.open(url, '_blank');
+    window.open(url);
     window.focus();
   }
 
   ngOnInit() {
+    this.getterVendedorExt();
     this.getterEstagios();
     this.getterTickets('open');
     this.getterTickets('win');
