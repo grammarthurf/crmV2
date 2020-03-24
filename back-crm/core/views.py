@@ -116,9 +116,9 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
         print('chamou request')
         print(data);
 
-        create = Created()
-        create.user = request.user
-        create.save()
+        cr = Created()
+        cr.user = request.user
+        cr.save()
 
         C = Organizacao()
         C.codigo = data['codigo']
@@ -131,7 +131,7 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
         C.cep = data['cep']
         C.cidade = data['cidade']
         C.uf = data['uf']
-        C.created = create
+        C.created = cr
         try:
             C.email = data['email']
             C.site = data['site']
@@ -156,7 +156,7 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
             print('CONTATOS : ', i);
 
             o = Cliente()
-            cr = Create()
+            cr = Created()
             cr.user = request.user
             cr.save()
             o.nome = i['nome']
@@ -241,7 +241,7 @@ class ProdutoViewSet(viewsets.ModelViewSet):
         data = request.data
         print(data);
         c = Created()
-        c.user = request.User
+        c.user = request.user
         c.save()
         p = Produto()
         p.nome = data['nome']
