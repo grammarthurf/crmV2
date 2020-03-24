@@ -12,7 +12,7 @@ SECRET_KEY = '=e6ks)3d7q+d%+lidw(hjwvta@ajzd#7h4b6u=217b!n!c+6qf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['vedois-crm.herokuapp.com', 'localhost:8000', 'localhost:4200', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

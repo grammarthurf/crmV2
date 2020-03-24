@@ -402,6 +402,9 @@ export class AtividadesComponent implements OnInit {
           buttons: false
         }
       });
+      setTimeout(() => {
+        this.reiniciar()
+      }, 600)
     } else {
       this.crudService.saveNewAtividade(this.atv).subscribe(
         data => {

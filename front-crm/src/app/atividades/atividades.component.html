@@ -213,7 +213,7 @@
                   <label for="participantes">Vendedor(es)</label>
                   <select *ngIf="vendedorapi" class="form-control" id="exampleFormControlSelect1">
                     <option *ngFor="let vendedor of vendedorapi" value="{{vendedor.id}}">
-                      {{vendedor.nome}}
+                      {{vendedor.username}}
                     </option>
                   </select>
                 </div>

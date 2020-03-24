@@ -156,7 +156,7 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
             print('CONTATOS : ', i);
 
             o = Cliente()
-            cr = Create()
+            cr = Created()
             cr.user = request.user
             cr.save()
             o.nome = i['nome']
