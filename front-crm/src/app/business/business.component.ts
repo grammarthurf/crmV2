@@ -675,6 +675,10 @@ export class BusinessComponent implements OnInit {
     window.focus();
   }
 
+  reloadpage(){
+    location.reload()
+  }
+
   ngOnInit() {
     this.getterVendedorExt();
     this.getterEstagios();
@@ -684,6 +688,9 @@ export class BusinessComponent implements OnInit {
     this.getterProd();
     this.getterCliente();
     this.getterUser();
+    if (!localStorage.getItem('token')) {
+      this.reloadpage();
+    }
 
     Inputmask().mask(document.getElementById("value"));
     this.ticket.termometro = "50";

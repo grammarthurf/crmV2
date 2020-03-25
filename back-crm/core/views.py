@@ -239,7 +239,7 @@ class ProdutoViewSet(viewsets.ModelViewSet):
 
     def create(self, request):
         data = request.data
-        print(data);
+        print(data)
         c = Created()
         c.user = request.user
         c.save()
