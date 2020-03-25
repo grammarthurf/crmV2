@@ -383,8 +383,11 @@ export class OrganizationRegisterComponent implements OnInit {
             buttons: false
           }
         });
+        this.exit();
         console.log(data);
+        console.log('atualizou')
       }, error => {
+        console.log('nao atualizou')
         console.error(error);
       }
     )

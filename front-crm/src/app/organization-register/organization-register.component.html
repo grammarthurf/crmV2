@@ -51,6 +51,7 @@
       </button>
       <select [(ngModel)]="org.ramos" class="form-control">
         <!-- <option [value]="undefined" *ngIf="orgUpdate" selected hidden>{{orgUpdate.ramo.desc}}</option> -->
+        <option value="">Selecione...</option>
         <option *ngFor="let item of ramosapi" value="{{item.id}}">{{item.desc}}</option>
       </select>
     </div>
@@ -103,7 +104,8 @@
         <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
       </button>
       <select [(ngModel)]="org.erp" class="form-control">
-        <option [value]="undefined" *ngIf="orgUpdate" selected hidden>{{orgUpdate.erpe.desc}}</option>
+        <!-- <option value="{{orgUpdate.erpe.id}}" *ngIf="orgUpdate" selected hidden>{{orgUpdate.erpe.desc}}</option> -->
+        <option value="">Selecione...</option>
         <option *ngFor="let item of erpsapi" value="{{item.id}}">{{item.desc}}</option>
       </select>
     </div>

@@ -7,7 +7,7 @@
         <h2 class="font-26 bold">
           {{business.titulo}}
         </h2>
-        <mat-icon (click)="Print()" style="cursor: pointer; margin-left: 15px;">local_printshop</mat-icon>
+        <!-- <mat-icon (click)="Print()" style="cursor: pointer; margin-left: 15px;">local_printshop</mat-icon> -->
       </div>
       <div class="flex" style="padding: 0;">
         <img src="../../assets/moeda.png" class="img1" />
@@ -55,7 +55,7 @@
           Vendedor:
         </p>
         <p style="font-size: 23px;" *ngIf="business.vendedor">
-          {{business.vendedor}}
+          {{business.vendedor.username}}
         </p>
         <p style="font-size: 20px; color: grey;" *ngIf="!business.vendedor">
           Sem vendedor
