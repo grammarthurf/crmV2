@@ -34,7 +34,22 @@ export class VendedorComponent implements OnInit {
   displayedColumns: string[] = ['nome', 'usuario', 'tipo', 'columnEdit', 'columnDelete'];
   dataSource = ELEMENT_DATA;
 
-  constructor(private http: HttpClient, private crudservice: CrudService) { }
+  usersapi: any;
+
+  constructor(private http: HttpClient, private crudservice: CrudService) {
+    this.getterUsers();
+   }
+
+   getterUsers(){
+    this.crudservice.getVendedor().subscribe(
+      data => {
+        this.usersapi = data;
+        console.log(this.usersapi);
+
+      },
+      error => { }
+    );
+   }
 
   deleteItem() {
     swal({

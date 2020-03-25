@@ -10,8 +10,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 export class CrudService {
   username: any;
   // baseUrl = "http://127.0.0.1:8000/";
-  // baseUrl = "http://192.168.10.205:8000/"
-  baseUrl = "http://remoto.vedois.com.br:8001/";
+  baseUrl = "http://142.93.204.68:8000/";
+  // baseUrl = "http://remoto.vedois.com.br:8001/";
   basetoken = JSON.parse(localStorage.getItem('token'));
   token = 'Token ' + this.basetoken;
   htttpHeaders = new HttpHeaders().set("Content-Type", "application/json" ).set('Authorization', this.token);

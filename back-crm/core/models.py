@@ -20,6 +20,10 @@ class Vendedor(models.Model):
 @receiver(post_save, sender=User)
 def create_user_vendedor(sender, instance, created, **kwargs):
     if created:
+        try:
+            print(sender.username, instance, created )
+        except:
+            pass
         Vendedor.objects.create(user=instance)
         Token.objects.create(user=instance)
 
