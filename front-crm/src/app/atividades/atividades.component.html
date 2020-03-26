@@ -191,6 +191,7 @@
                           class="form-control"
                           (change)="getterOrgTick($event.target.value)"
                           id="exampleFormControlSelect1">
+                          <option selected value="">Selecione ...</option>
                     <option *ngFor="let ticket of negociosapi" value="{{ticket.id}}">
                       {{ticket.titulo}}
                     </option>
@@ -200,6 +201,7 @@
                           class="form-control"
                           id="exampleFormControlSelect1"
                           (change)="getterOrgTick($event.target.value)">
+                          <option selected value="">Selecione ...</option>
                     <!-- <option value="null">
                       {{selectedatv.ticket.titulo}}
                     </option>
