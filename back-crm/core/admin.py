@@ -4,7 +4,7 @@ from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Atividade, R
 # Register your models here.
 
 admin.site.register(Cliente)
-# admin.site.register(Estagio)
+admin.site.register(Estagio)
 admin.site.register(Organizacao)
 admin.site.register(Produto)
 admin.site.register(Ticket)

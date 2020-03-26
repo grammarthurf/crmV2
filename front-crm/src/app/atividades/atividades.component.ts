@@ -125,6 +125,26 @@ export class AtividadesComponent implements OnInit {
     );
   }
 
+  delDoneActivity(idact) {
+    this.crudService.deleteActivity(idact).subscribe(
+      data => {
+        this.getterActivity();
+        console.log('Atividade Feita!');
+
+      },
+      error => {
+        swal({
+          icon: "error",
+          text: "Erro ao deletar !",
+          timer: 1000,
+          buttons: {
+            buttons: false
+          }
+        });
+      }
+    );
+  }
+
   // DELETE ACTIVITY
   deleteActivity(idativ) {
     this.delact = idativ;
@@ -157,7 +177,7 @@ export class AtividadesComponent implements OnInit {
     )
   }
 
-  UpdateAtiv(){
+  UpdateAtiv() {
     this.crudService.updateatv(this.atv).subscribe(
       data => {
         this.getterActivity();
@@ -239,7 +259,7 @@ export class AtividadesComponent implements OnInit {
       data => {
         this.calendarEvents = [];
         this.matdata = [];
-        
+
         data.forEach(e => {
 
           var timeIni = e.horaini.substring(0, 2) + ":" + e.horaini.substring(2, 4);
@@ -428,7 +448,7 @@ export class AtividadesComponent implements OnInit {
           this.atv.horaini = "";
           this.numm = "";
           this.getterActivity();
-  
+
           setTimeout(() => {
             this.reiniciar()
           }, 600)
@@ -455,7 +475,7 @@ export class AtividadesComponent implements OnInit {
     console.log(v)
   }
 
-  // WORD FILTER 
+  // WORD FILTER
   applyFilter(value: string) {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
@@ -524,6 +544,10 @@ export class AtividadesComponent implements OnInit {
   removeSelectedRows() {
     this.conf.update = false
     this.selection.selected.forEach(item => {
+      console.log(item['position']);
+      this.delDoneActivity(item['position']);
+
+
       let index: number = this.matdata.findIndex(d => d === item);
       // console.log(index);
       if (index > -1) {
@@ -544,7 +568,7 @@ export class AtividadesComponent implements OnInit {
     this.router.navigate([`/organization-detail/${id}`]);
   }
 
-  // SELECT ACTIVITY ADD 
+  // SELECT ACTIVITY ADD
   selectActivity(id: number) {
     if (id == 1) {
       this.numm = "LIGAÇÃO";
