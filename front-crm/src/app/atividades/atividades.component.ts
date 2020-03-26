@@ -35,7 +35,7 @@ export class AtividadesComponent implements OnInit {
   datamat: any = [];
   calendarPlugins: any = [];
 
-  conf: any = { update: false };
+  conf: any = { update: null };
 
   dNow = new Date();
   today = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-0' + this.dNow.getDate();
@@ -117,7 +117,12 @@ export class AtividadesComponent implements OnInit {
     console.log(id)
     this.crudService.getTicket(id).subscribe(
       data => {
-        this.tckapi = [data.org];
+
+
+        this.tckapi = data;
+        console.log('Ticket pego: ', this.tckapi);
+        this.atv.org = this.tckapi.org;
+        this.atv.cliente = this.tckapi.cliente;
       },
       error => {
         this.erroAtividade = error;
@@ -196,9 +201,22 @@ export class AtividadesComponent implements OnInit {
 
   // GET ACTIVITY
   getActivity(id) {
+    console.log(this.conf.update);
+
     this.crudService.getAtividades(id).subscribe(
       data => {
         this.selectedatv = data;
+
+        this.atv.position = 0;
+        this.atv.dataini = '';
+        this.atv.horaini = '';
+        this.atv.datafim = '';
+        this.atv.horafim = '';
+        this.atv.tipo = '';
+        this.atv.cliente = '';
+        this.atv.org = '';
+        this.atv.ticket = '';
+        this.atv.assunto = '';
 
         this.atv.position = this.selectedatv.id;
         this.atv.dataini = this.selectedatv.dataini;
@@ -206,9 +224,9 @@ export class AtividadesComponent implements OnInit {
         this.atv.datafim = this.selectedatv.datafim;
         this.atv.horafim = this.selectedatv.horafim;
         this.atv.tipo = this.selectedatv.tipo;
-        this.atv.cliente = this.selectedatv.cliente;
-        this.atv.org = this.selectedatv.org;
-        this.atv.ticket = this.selectedatv.ticket;
+        // this.atv.cliente = this.selectedatv.cliente;
+        // this.atv.org = this.selectedatv.org;
+        // this.atv.ticket = this.selectedatv.ticket;
         this.atv.assunto = this.selectedatv.assunto;
       },
       error => { }
@@ -231,7 +249,7 @@ export class AtividadesComponent implements OnInit {
 
   //EDIT ACTIVITY
   editAtv(item) {
-    this.conf.update = true
+    this.conf.update = true;
     this.getActivity(item.position);
   }
 
@@ -399,69 +417,80 @@ export class AtividadesComponent implements OnInit {
 
   // SAVE ACTIVITY
   save() {
-    if (this.atv.horafim == "") {
-      this.atv.horafim = this.atv.horaini;
-    }
+    console.log(this.conf.update);
 
-    if (this.atv.datafim == "") {
-      this.atv.datafim = this.atv.dataini;
-    }
+    if (this.conf.update) {
+      console.log('calledupdate');
 
-    let dataIniAno = parseInt(this.atv.dataini.substring(0, 4))
-    let dataIniMes = parseInt(this.atv.dataini.substring(5, 7))
-    let dataIniDia = parseInt(this.atv.dataini.substring(8, 10))
-    let dataInputIni = new Date(dataIniAno, dataIniMes, dataIniDia)
-    let dataHoje = new Date(this.dNow.getFullYear(), (this.dNow.getMonth() + 1), this.dNow.getDate())
-
-    if (dataInputIni < dataHoje) {
-      swal({
-        icon: "error",
-        text: "Data da atividade já passou!",
-        timer: 1000,
-        buttons: {
-          buttons: false
-        }
-      });
-      setTimeout(() => {
-        this.reiniciar()
-      }, 600)
+      this.UpdateAtiv();
     } else {
-      this.crudService.saveNewAtividade(this.atv).subscribe(
-        data => {
-          swal({
-            icon: "success",
-            text: "Atividade salva com sucesso!",
-            timer: 1000,
-            buttons: {
-              buttons: false
-            }
-          });
-          this.atv.assunto = "";
-          this.atv.cliente = '0';
-          this.atv.datafim = "";
-          this.atv.dataini = "";
-          this.atv.tipo = "";
-          this.atv.ticket = '0';
-          this.atv.org = '0';
-          this.atv.position = 0;
-          this.atv.horafim = "";
-          this.atv.horaini = "";
-          this.numm = "";
-          this.getterActivity();
+      console.log('calledcreated');
+      if (this.atv.horafim == "") {
+        this.atv.horafim = this.atv.horaini;
+      }
 
-          setTimeout(() => {
-            this.reiniciar()
-          }, 600)
-        },
-        error => {
-          this.getterActivity();
-        },
-      );
+      if (this.atv.datafim == "") {
+        this.atv.datafim = this.atv.dataini;
+      }
+
+      let dataIniAno = parseInt(this.atv.dataini.substring(0, 4))
+      let dataIniMes = parseInt(this.atv.dataini.substring(5, 7))
+      let dataIniDia = parseInt(this.atv.dataini.substring(8, 10))
+      let dataInputIni = new Date(dataIniAno, dataIniMes, dataIniDia)
+      let dataHoje = new Date(this.dNow.getFullYear(), (this.dNow.getMonth() + 1), this.dNow.getDate())
+
+      if (dataInputIni < dataHoje) {
+        swal({
+          icon: "error",
+          text: "Data da atividade já passou!",
+          timer: 1000,
+          buttons: {
+            buttons: false
+          }
+        });
+        setTimeout(() => {
+          this.reiniciar()
+        }, 600)
+      } else {
+        this.crudService.saveNewAtividade(this.atv).subscribe(
+          data => {
+            swal({
+              icon: "success",
+              text: "Atividade salva com sucesso!",
+              timer: 1000,
+              buttons: {
+                buttons: false
+              }
+            });
+            this.atv.assunto = "";
+            this.atv.cliente = '0';
+            this.atv.datafim = "";
+            this.atv.dataini = "";
+            this.atv.tipo = "";
+            this.atv.ticket = '0';
+            this.atv.org = '0';
+            this.atv.position = 0;
+            this.atv.horafim = "";
+            this.atv.horaini = "";
+            this.numm = "";
+            this.getterActivity();
+
+            setTimeout(() => {
+              this.reiniciar()
+            }, 600)
+          },
+          error => {
+            this.getterActivity();
+          },
+        );
+      }
+      // console.log(this.atv.dataini);
+      // console.log(this.atv.dataini.substring(0, 4))
+      // console.log(this.atv.dataini.substring(5, 7))
+      // console.log(this.atv.dataini.substring(8, 10))
     }
-    // console.log(this.atv.dataini);
-    // console.log(this.atv.dataini.substring(0, 4))
-    // console.log(this.atv.dataini.substring(5, 7))
-    // console.log(this.atv.dataini.substring(8, 10))
+
+
   }
 
   reiniciar() {
@@ -542,7 +571,7 @@ export class AtividadesComponent implements OnInit {
 
   // REMOVE ROW TABLE
   removeSelectedRows() {
-    this.conf.update = false
+    // this.conf.update = false
     this.selection.selected.forEach(item => {
       console.log(item['position']);
       this.delDoneActivity(item['position']);

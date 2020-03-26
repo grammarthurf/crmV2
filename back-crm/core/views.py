@@ -380,7 +380,7 @@ class AtividadeViewSet(viewsets.ModelViewSet):
 
     def create(self, request):
         data = request.data
-        print(data)
+        print('CREATING')
 
         c = Created()
         c.user = request.user
@@ -392,8 +392,8 @@ class AtividadeViewSet(viewsets.ModelViewSet):
         A.horafim = data['horafim']
         A.assunto = data['assunto']
         A.ticket = Ticket.objects.get(id=int(data['ticket']))
-        A.cliente = Cliente.objects.get(id=int(data['cliente']))
-        A.org = Organizacao.objects.get(id=int(data['org']))
+        A.cliente = Cliente.objects.get(id=int(data['cliente']['id']))
+        A.org = Organizacao.objects.get(id=int(data['org']['id']))
         A.tipo = data['tipo']
         A.created = c
         A.save()
@@ -401,16 +401,20 @@ class AtividadeViewSet(viewsets.ModelViewSet):
 
     def update(self, request, pk):
       data = request.data
-      print(data)
+    #   print(data)
       A = Atividade.objects.get(id=data['position'])
       A.dataini = data['dataini']
       A.datafim = data['datafim']
       A.horaini = data['horaini']
       A.horafim = data['horafim']
       A.assunto = data['assunto']
+      print('CLIENTE: ',data['cliente'])
+      print('ORG: ',data['org'])
+      
+      
       A.ticket = Ticket.objects.get(id=int(data['ticket']))
-      A.cliente = Cliente.objects.get(id=int(data['cliente']))
-      A.org = Organizacao.objects.get(id=int(data['org']))
+      A.cliente = Cliente.objects.get(id=int(data['cliente']['id']))
+      A.org = Organizacao.objects.get(id=int(data['org']['id']))
       A.tipo = data['tipo']
       A.save()
       
