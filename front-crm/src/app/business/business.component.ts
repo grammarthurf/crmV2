@@ -62,6 +62,8 @@ export class BusinessComponent implements OnInit {
   today = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-0' + this.dNow.getDate();
   today1 = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + this.dNow.getDate();
 
+  calendarPlugins: any = [];
+  
   // Lottie:
   public lottieConfig: Object;
   private anim: any;
@@ -75,6 +77,7 @@ export class BusinessComponent implements OnInit {
       autoplay: false,
       loop: false
     };
+
   }
 
   // GENERATE CODE
