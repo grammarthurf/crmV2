@@ -200,10 +200,10 @@
                           class="form-control"
                           id="exampleFormControlSelect1"
                           (change)="getterOrgTick($event.target.value)">
-                    <option value="null">
+                    <!-- <option value="null">
                       {{selectedatv.ticket.titulo}}
                     </option>
-                    <option disabled></option>
+                    <option disabled></option> -->
                     <option *ngFor="let ticket of negociosapi" value="{{ticket.id}}">
                       {{ticket.titulo}}
                     </option>
@@ -281,25 +281,27 @@
               <div class="col-12 row inputmargin">
                 <div class="col-6">
                   <label for="negocios" >Empresa <label style="color: red; font-size: 20px;">*</label></label>
-                  <select  [(ngModel)]="atv.org"
-                          *ngIf="tckapi && !selectedatv"
+                  <input type="text" [(ngModel)]="atv.org['razaosocial']" disabled class="form-control">
+                  <!-- <select  [(ngModel)]="atv.org"
+                          *ngIf="tckapi"
                           class="form-control"
                           id="exampleFormControlSelect1">
                         <option *ngFor="let ticket of tckapi" value="{{ticket.id}}">
                           {{ticket.razaosocial}}
                         </option>
-                  </select>
+                  </select> -->
                 </div>
                 <div class="col-6" style="padding: 0px;">
                   <label for="participantes"> Contato <label style="color: red; font-size: 20px;">*</label></label>
-                  <select [(ngModel)]="atv.cliente"
+                  <input type="text" [(ngModel)]="atv.cliente['nome']" disabled class="form-control">
+                  <!-- <select [(ngModel)]="atv.cliente"
                           *ngIf="tckapi && !selectedatv"
                           class="form-control"
                           id="exampleFormControlSelect1">
                     <option *ngFor="let ticket of tckapi" value="{{ticket.contatos[0].id}}">
                       {{ticket.contatos[0].nome}}
                     </option>
-                  </select>
+                  </select> -->
                 </div>
                 <!-- <div class="col-6">
                   <label for="negocios" >Empresa <label style="color: red; font-size: 20px;">*</label></label>
@@ -389,10 +391,10 @@
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
             Sair
           </button>
-          <button type="button" *ngIf="conf.update"  (click)="UpdateAtiv()" class="btn btn-primary" data-dismiss="modal">
+          <!-- <button type="button"  (click)="UpdateAtiv()" class="btn btn-primary" data-dismiss="modal">
             Atualizar Atividade
-          </button>
-          <button type="button" *ngIf="!conf.update"  (click)="save()" class="btn btn-primary" data-dismiss="modal">
+          </button> -->
+          <button type="button"  (click)="save()" class="btn btn-primary" data-dismiss="modal">
             Salvar
           </button>
         </div>
