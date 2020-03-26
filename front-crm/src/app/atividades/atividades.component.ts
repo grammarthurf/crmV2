@@ -94,7 +94,7 @@ export class AtividadesComponent implements OnInit {
 
   dataSource: any;
 
-  selection = new SelectionModel<Element>(true, []);
+  selection = new SelectionModel<Element>(false, []);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
@@ -522,15 +522,15 @@ export class AtividadesComponent implements OnInit {
 
   // REMOVE ROW TABLE
   removeSelectedRows() {
+    this.conf.update = false
     this.selection.selected.forEach(item => {
       let index: number = this.matdata.findIndex(d => d === item);
-      console.log(index);
+      // console.log(index);
       if (index > -1) {
         this.matdata.splice(index, 1);
         this.dataSource = new MatTableDataSource(this.matdata);
         this.selection = new SelectionModel<Element>(true, []);
       }
-      this.editAtv(item);
     });
   }
 

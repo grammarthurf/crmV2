@@ -113,6 +113,7 @@ export class BusinessComponent implements OnInit {
           }
         });
         this.getterProd();
+        this.disableCode = false;
       },
       error => { }
     );
