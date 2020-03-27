@@ -36,6 +36,7 @@ export class AtividadesComponent implements OnInit {
   calendarPlugins: any = [];
 
   conf: any = { update: null };
+  feito: boolean = false;
 
   dNow = new Date();
   today = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-0' + this.dNow.getDate();
@@ -241,9 +242,9 @@ export class AtividadesComponent implements OnInit {
     this.atv.datafim = '';
     this.atv.horafim = '';
     this.atv.tipo = '';
-    this.atv.cliente = '';
-    this.atv.org = '';
-    this.atv.ticket = '';
+    this.atv.cliente = null;
+    this.atv.org = "0";
+    this.atv.ticket = null;
     this.atv.assunto = '';
   }
 
@@ -419,6 +420,20 @@ export class AtividadesComponent implements OnInit {
   save() {
     console.log(this.conf.update);
 
+    if(this.atv.ticket == ""){
+      this.atv.ticket = this.selectedatv.ticket.id.toString();
+    }
+
+    if(this.atv.org == ""){
+      this.atv.org = this.selectedatv.org;
+    }
+
+    if(this.atv.cliente == ""){
+      this.atv.cliente = this.selectedatv.cliente;
+    }
+
+    console.log(this.atv.ticket + this.atv.org + this.atv.cliente)
+
     if (this.conf.update) {
       console.log('calledupdate');
 
@@ -474,20 +489,16 @@ export class AtividadesComponent implements OnInit {
             this.atv.horaini = "";
             this.numm = "";
             this.getterActivity();
-
-            setTimeout(() => {
-              this.reiniciar()
-            }, 600)
+            
+            // setTimeout(() => {
+            //   this.reiniciar()
+            // }, 600)
           },
           error => {
             this.getterActivity();
           },
         );
       }
-      // console.log(this.atv.dataini);
-      // console.log(this.atv.dataini.substring(0, 4))
-      // console.log(this.atv.dataini.substring(5, 7))
-      // console.log(this.atv.dataini.substring(8, 10))
     }
 
 
@@ -571,11 +582,12 @@ export class AtividadesComponent implements OnInit {
 
   // REMOVE ROW TABLE
   removeSelectedRows() {
-    // this.conf.update = false
+    
     this.selection.selected.forEach(item => {
       console.log(item['position']);
+      this.conf.update = false;
+      this.getActivity(item['position']);
       this.delDoneActivity(item['position']);
-
 
       let index: number = this.matdata.findIndex(d => d === item);
       // console.log(index);
