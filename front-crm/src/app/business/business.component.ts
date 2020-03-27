@@ -369,7 +369,7 @@ export class BusinessComponent implements OnInit {
 
           data.forEach(e => {
             console.log(e.created.user.username);
-            if (e.created.user.username == username) {
+            if (e.created.user.username == username || username == 'Fabiana' || username == 'Osmir' || username == 'Leandro' || username == 'admin') {
               if (e.status == 'Aberto') {
                 switch (e.estagio.id) {
                   case 1:
