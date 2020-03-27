@@ -285,8 +285,9 @@
                 </div>
                 <div class="col-6" style="padding: 0px;">
                   <label for="participantes"> Contato <label style="color: red; font-size: 20px;">*</label></label>
-                  <input type="text" *ngIf="!selectedatv" [(ngModel)]="atv.cliente['nome']" disabled class="form-control">
-                  <input type="text" *ngIf="selectedatv" [(ngModel)]="selectedatv.cliente.nome" disabled class="form-control">
+                  <input type="text" *ngIf="!selectedatv && atv.cliente['nome']" [(ngModel)]="atv.cliente['nome']" disabled class="form-control">
+                  <input type="text" *ngIf="selectedatv && !atv.cliente['nome']" [(ngModel)]="selectedatv.cliente.nome" disabled class="form-control">
+                  <input type="text" *ngIf="selectedatv && atv.cliente['nome']" [(ngModel)]="atv.cliente['nome']" disabled class="form-control">
                 </div>
               </div>
             </div>
