@@ -45,10 +45,19 @@ export class BusinessDetailComponent implements OnInit {
     this.calendarPlugins = [ listPlugin , bootstrapPlugin ];
   }
 
+  addInputFiles(e){
+    console.log(e);
+
+  }
+
+  formAnexo(){
+
+  }
+
   // UPDATE STATUS LEADS
   updatedTicketStatus(ticket) {
     this.crudService.updateTicketDetails(ticket, this.idobs.mtvperd, this.idobs.cmtperd).subscribe(
-      data => {}, 
+      data => {},
       error => {}
     );
   }
@@ -148,7 +157,7 @@ export class BusinessDetailComponent implements OnInit {
   // UPDATE LEAD
   updatedTicket(id, ticket) {
     this.crudService.updateTicket(id, ticket).subscribe(
-      data => {}, 
+      data => {},
       error => {}
     )
   }
@@ -273,7 +282,7 @@ export class BusinessDetailComponent implements OnInit {
     var v = value.toUpperCase();
     this.idobs.obs = v;
   }
-  
+
   // FORMAT PHONE NUMBER
   formatPhoneNumber(str) {
     //Filter only numbers from the input
@@ -281,11 +290,11 @@ export class BusinessDetailComponent implements OnInit {
 
     //Check if the input is of correct length
     let match = cleaned.match(/^(\d{2})(\d{4})(\d{4})$/);
-  
+
     if (match) {
       return '(' + match[1] + ') ' + match[2] + '-' + match[3]
     };
-  
+
     return null
   };
 
@@ -293,14 +302,14 @@ export class BusinessDetailComponent implements OnInit {
   formatCellPhoneNumber(str) {
     //Filter only numbers from the input
     let cleaned = ('' + str).replace(/\D/g, '');
-    
+
     //Check if the input is of correct length
     let match = cleaned.match(/^(\d{2})(\d{5})(\d{4})$/);
-  
+
     if (match) {
       return '(' + match[1] + ') ' + match[2] + '-' + match[3]
     };
-  
+
     return null
   };
 
@@ -322,48 +331,48 @@ export class BusinessDetailComponent implements OnInit {
     var myWindow=window.open('','','width=1500,height=800');
     myWindow.document.write(
       "<h1 style='text-align: center;'>" + this.business.titulo +"</h1>" +
-      "<h3> Informações do Negócio: </h3>" + 
-      "<div>" + 
+      "<h3> Informações do Negócio: </h3>" +
+      "<div>" +
         "<ul style='list-style-type: none;'>" +
           "<li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Valor Estimado: R$ "
-            + this.business.valorestimado + 
-          ",00</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Estagio: " 
+            + this.business.valorestimado +
+          ",00</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Estagio: "
             + this.business.estagio.nome +
           "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Produto: "
-            + this.business.produto[0].nome + 
-          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Última Observação:  " 
+            + this.business.produto[0].nome +
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Última Observação:  "
             + this.business.obs[0].texto + " (" + this.business.obs[0].data + ")" +
-          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Criado em:  " 
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Criado em:  "
             + this.business.created.datetime +
           "</li>" +
         "</ul>" +
       "</div>" +
-      "<h3> Informações da Empresa: </h3>" + 
+      "<h3> Informações da Empresa: </h3>" +
       "<div>" +
         "<ul style='list-style-type: none;'>" +
-          "<li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Código:  " 
+          "<li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Código:  "
             + this.business.org.codigo +
-          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Razão Social: " 
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Razão Social: "
             + this.business.org.razaosocial +
-          "<li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Nome Fantasia: " 
+          "<li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Nome Fantasia: "
             + this.business.org.nomefantasia +
-          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Estado: " 
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Estado: "
             + this.business.org.uf +
-          "</li> <li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Cidade: " 
-            + this.business.org.cidade + 
-          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Bairro: " 
-            + this.business.org.bairro + 
-          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Rua: " 
-            + this.business.org.rua + 
-          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Complemento: " 
+          "</li> <li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Cidade: "
+            + this.business.org.cidade +
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Bairro: "
+            + this.business.org.bairro +
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Rua: "
+            + this.business.org.rua +
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Complemento: "
             + this.business.org.complemento +
-          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>CEP: " 
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>CEP: "
             + this.business.org.cep +
-          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>ERP:  " 
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>ERP:  "
             + this.business.org.erpe.desc +
-          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>CNPJ: " 
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>CNPJ: "
             + this.business.org.cnpj +
-          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>IE: " 
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>IE: "
             + this.business.org.ie +
           "</li>" +
         "</ul>" +
@@ -371,27 +380,27 @@ export class BusinessDetailComponent implements OnInit {
       "<h3> Informações do Contato: </h3>" +
       "<div>" +
         "<ul style='list-style-type: none;'>" +
-          "<li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Nome:  " 
+          "<li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Nome:  "
             + this.business.cliente.nome +
-          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Cargo: " 
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Cargo: "
             + this.business.cliente.cargo +
-          "<li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Telefone: " 
+          "<li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Telefone: "
             + this.business.cliente.tel +
-          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Celular: " 
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Celular: "
             + this.business.cliente.cel +
-          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Departamento: " 
-            + this.business.cliente.dep + 
-          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Email: " 
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Departamento: "
+            + this.business.cliente.dep +
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Email: "
             + this.business.cliente.email +
-          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Skype: " 
-            + this.business.cliente.skype + 
+          "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Skype: "
+            + this.business.cliente.skype +
           "</li><li style='margin-top: 20px; border-bottom: 1px solid #DDDDDD;'>Data de Nascimento: "
-            + this.business.cliente.birth + 
+            + this.business.cliente.birth +
           "</li>" +
         "</ul>" +
       "</div>"
     );
-    
+
     myWindow.document.close();
     myWindow.focus();
     myWindow.print();
