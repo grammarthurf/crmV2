@@ -362,14 +362,16 @@ export class BusinessComponent implements OnInit {
       this.tickets7.tickets = [];
       this.crudService.getTickets().subscribe(
         data => {
-          let username = localStorage.getItem('username');
+          let username = JSON.parse(localStorage.getItem('username'));
           this.ticketsapi = data;
           console.log(username);
           console.log(this.ticketsapi);
 
           data.forEach(e => {
-            console.log(e.created.user.username);
-            if (e.created.user.username == username || e.created.user.username == 'Fabiana' || e.created.user.username == 'Osmir' || e.created.user.username == 'Leandro' || e.created.user.username == 'admin') {
+            console.log('Usario que criou: ', e.created.user.username);
+            console.log('Username: ', username);
+
+            if (e.created.user.username == username || username === 'Fabiana' || username == 'Osmir' || username == 'Leandro' || username == 'admin') {
               if (e.status == 'Aberto') {
                 switch (e.estagio.id) {
                   case 1:
