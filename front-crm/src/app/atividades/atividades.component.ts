@@ -278,85 +278,91 @@ export class AtividadesComponent implements OnInit {
       data => {
         this.calendarEvents = [];
         this.matdata = [];
+        let username = JSON.parse(localStorage.getItem('username'))
 
         data.forEach(e => {
+          if (e.created.user.username == username || username === 'Fabiana' || username == 'Osmir' || username == 'Leandro' || username == 'admin'){
+            var timeIni = e.horaini.substring(0, 2) + ":" + e.horaini.substring(2, 4);
+            var timeEnd = e.horafim.substring(0, 2) + ":" + e.horafim.substring(2, 4);
 
-          var timeIni = e.horaini.substring(0, 2) + ":" + e.horaini.substring(2, 4);
-          var timeEnd = e.horafim.substring(0, 2) + ":" + e.horafim.substring(2, 4);
+            this.calendarEvents.push({
+              title: e.tipo + ":  " + e.ticket.titulo,
+              start: e.dataini + "T" + timeIni,
+              end: e.datafim + "T" + timeEnd
+            });
 
-          this.calendarEvents.push({
-            title: e.tipo + ":  " + e.ticket.titulo,
-            start: e.dataini + "T" + timeIni,
-            end: e.datafim + "T" + timeEnd
-          });
+            try {
+              if (e.cliente == null && e.org == null && e.ticket == null) {
+                this.matdata.push({
+                  position: e.id,
+                  assunto: e.assunto,
+                  dataini: e.dataini,
+                  tipo: e.tipo,
+                  ticket: {
+                    titulo: ''
+                  },
+                  cliente: {
+                    nome: ''
+                  },
+                  org: {
+                    razaosocial: ''
+                  }
+                });
+              } else if (e.cliente == null) {
+                this.matdata.push({
+                  position: e.id,
+                  assunto: e.assunto,
+                  dataini: e.data,
+                  tipo: e.tipo,
+                  ticket: e.ticket,
+                  cliente: {
+                    nome: ''
+                  },
+                  org: e.org
+                });
+              } else if (e.org == null) {
+                this.matdata.push({
+                  position: e.id,
+                  assunto: e.assunto,
+                  dataini: e.dataini,
+                  tipo: e.tipo,
+                  ticket: e.ticket,
+                  cliente: e.cliente,
+                  org: {
+                    razaosocial: ''
+                  }
+                });
+              } else if (e.ticket == null) {
+                this.matdata.push({
+                  position: e.id,
+                  assunto: e.assunto,
+                  dataini: e.dataini,
+                  tipo: e.tipo,
+                  ticket: {
+                    titulo: ''
+                  },
+                  cliente: e.cliente,
+                  org: e.org
+                });
+              } else {
+                this.matdata.push({
+                  position: e.id,
+                  assunto: e.assunto,
+                  dataini: e.dataini,
+                  tipo: e.tipo,
+                  ticket: e.ticket,
+                  cliente: e.cliente,
+                  org: e.org
+                });
+              }
+            } catch (error) {
 
-          try {
-            if (e.cliente == null && e.org == null && e.ticket == null) {
-              this.matdata.push({
-                position: e.id,
-                assunto: e.assunto,
-                dataini: e.dataini,
-                tipo: e.tipo,
-                ticket: {
-                  titulo: ''
-                },
-                cliente: {
-                  nome: ''
-                },
-                org: {
-                  razaosocial: ''
-                }
-              });
-            } else if (e.cliente == null) {
-              this.matdata.push({
-                position: e.id,
-                assunto: e.assunto,
-                dataini: e.data,
-                tipo: e.tipo,
-                ticket: e.ticket,
-                cliente: {
-                  nome: ''
-                },
-                org: e.org
-              });
-            } else if (e.org == null) {
-              this.matdata.push({
-                position: e.id,
-                assunto: e.assunto,
-                dataini: e.dataini,
-                tipo: e.tipo,
-                ticket: e.ticket,
-                cliente: e.cliente,
-                org: {
-                  razaosocial: ''
-                }
-              });
-            } else if (e.ticket == null) {
-              this.matdata.push({
-                position: e.id,
-                assunto: e.assunto,
-                dataini: e.dataini,
-                tipo: e.tipo,
-                ticket: {
-                  titulo: ''
-                },
-                cliente: e.cliente,
-                org: e.org
-              });
-            } else {
-              this.matdata.push({
-                position: e.id,
-                assunto: e.assunto,
-                dataini: e.dataini,
-                tipo: e.tipo,
-                ticket: e.ticket,
-                cliente: e.cliente,
-                org: e.org
-              });
             }
-          } catch (error) {
-
           }
+
+
+
+
         });
 
         this.dataSource = new MatTableDataSource(this.matdata);
@@ -489,7 +495,7 @@ export class AtividadesComponent implements OnInit {
             this.atv.horaini = "";
             this.numm = "";
             this.getterActivity();
-            
+
             // setTimeout(() => {
             //   this.reiniciar()
             // }, 600)
@@ -582,7 +588,7 @@ export class AtividadesComponent implements OnInit {
 
   // REMOVE ROW TABLE
   removeSelectedRows() {
-    
+
     this.selection.selected.forEach(item => {
       console.log(item['position']);
       this.conf.update = false;

@@ -38,7 +38,7 @@ class AtividadeSerializer(serializers.ModelSerializer):
         model = Atividade
         # cliente = ClienteSerializer(many=False, read_only=True)
         fields = '__all__'
-        depth = 1
+        depth = 2
 
 
 
