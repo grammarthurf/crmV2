@@ -31,7 +31,6 @@ def create_user_vendedor(sender, instance, created, **kwargs):
 def save_user_vendedor(sender, instance, **kwargs):
     instance.vendedor.save()
 
-
 class Created (models.Model):
     datetime = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
