@@ -201,11 +201,7 @@
                           class="form-control"
                           id="exampleFormControlSelect1"
                           (change)="getterOrgTick($event.target.value)">
-                          <option selected value="">Selecione ...</option>
-                    <!-- <option value="null">
-                      {{selectedatv.ticket.titulo}}
-                    </option>
-                    <option disabled></option> -->
+                    <option selected value="" hidden>{{selectedatv.ticket.titulo}}</option>
                     <option *ngFor="let ticket of negociosapi" value="{{ticket.id}}">
                       {{ticket.titulo}}
                     </option>
@@ -283,98 +279,15 @@
               <div class="col-12 row inputmargin">
                 <div class="col-6">
                   <label for="negocios" >Empresa <label style="color: red; font-size: 20px;">*</label></label>
-                  <input type="text" [(ngModel)]="atv.org['razaosocial']" disabled class="form-control">
-                  <!-- <select  [(ngModel)]="atv.org"
-                          *ngIf="tckapi"
-                          class="form-control"
-                          id="exampleFormControlSelect1">
-                        <option *ngFor="let ticket of tckapi" value="{{ticket.id}}">
-                          {{ticket.razaosocial}}
-                        </option>
-                  </select> -->
+                  <input type="text" *ngIf="!selectedatv && atv.org['razaosocial']" [(ngModel)]="atv.org['razaosocial']" disabled class="form-control">
+                  <input type="text" *ngIf="selectedatv && atv.org['razaosocial']" [(ngModel)]="atv.org['razaosocial']" disabled class="form-control">
+                  <input type="text" *ngIf="selectedatv && !atv.org['razaosocial']" [(ngModel)]="selectedatv.org.razaosocial" disabled class="form-control">
                 </div>
                 <div class="col-6" style="padding: 0px;">
                   <label for="participantes"> Contato <label style="color: red; font-size: 20px;">*</label></label>
-                  <input type="text" [(ngModel)]="atv.cliente['nome']" disabled class="form-control">
-                  <!-- <select [(ngModel)]="atv.cliente"
-                          *ngIf="tckapi && !selectedatv"
-                          class="form-control"
-                          id="exampleFormControlSelect1">
-                    <option *ngFor="let ticket of tckapi" value="{{ticket.contatos[0].id}}">
-                      {{ticket.contatos[0].nome}}
-                    </option>
-                  </select> -->
+                  <input type="text" *ngIf="!selectedatv" [(ngModel)]="atv.cliente['nome']" disabled class="form-control">
+                  <input type="text" *ngIf="selectedatv" [(ngModel)]="selectedatv.cliente.nome" disabled class="form-control">
                 </div>
-                <!-- <div class="col-6">
-                  <label for="negocios" >Empresa <label style="color: red; font-size: 20px;">*</label></label>
-                 <select  [(ngModel)]="atv.org"
-                          *ngIf="tckapi && !selectedatv"
-                          class="form-control"
-                          id="exampleFormControlSelect1">
-                        <option *ngFor="let ticket of tckapi" value="{{ticket.id}}">
-                          {{ticket.razaosocial}}
-                        </option>
-                  </select>
-                  <select  [(ngModel)]="atv.org"
-                          *ngIf="tckapi && selectedatv"
-                          class="form-control"
-                          id="exampleFormControlSelect1">
-                        <option disabled *ngFor="let ticket of tckapi" value="{{ticket.id}}">
-                          {{ticket.razaosocial}}
-                        </option>
-                        <option disabled></option>
-                        <option *ngFor="let ticket of tckapi" value="{{ticket.id}}">
-                          {{ticket.razaosocial}}
-                        </option>
-                  </select>
-                  <select  [(ngModel)]="atv.org"
-                          *ngIf="selectedatv && !tckapi"
-                          class="form-control"
-                          id="exampleFormControlSelect1">
-                        <option value="{{selectedatv.org.id}}">
-                          {{selectedatv.org.razaosocial}}
-                        </option>
-                        <option disabled></option>
-                        <option *ngFor="let orgs of orsgapi" value="{{orgs.id}}">
-                          {{orgs.razaosocial}}
-                        </option>
-                  </select>
-                </div> -->
-                <!-- <div class="col-6" style="padding: 0px;">
-                  <label for="participantes"> Contato <label style="color: red; font-size: 20px;">*</label></label>
-                  <select [(ngModel)]="atv.cliente"
-                          *ngIf="tckapi && !selectedatv"
-                          class="form-control"
-                          id="exampleFormControlSelect1">
-                    <option *ngFor="let ticket of tckapi" value="{{ticket.contatos[0].id}}">
-                      {{ticket.contatos[0].nome}}
-                    </option>
-                  </select>
-                  <select  [(ngModel)]="atv.cliente"
-                          *ngIf="selectedatv && tckapi"
-                          class="form-control"
-                          id="exampleFormControlSelect1">
-                        <option value="{{selectedatv.cliente.id}}">
-                          {{selectedatv.cliente.nome}}
-                        </option>
-                        <option disabled></option>
-                        <option *ngFor="let ticket of tckapi" value="{{ticket.contatos[0].id}}">
-                          {{ticket.contatos[0].nome}}
-                        </option>
-                  </select>
-                  <select  [(ngModel)]="atv.cliente"
-                          *ngIf="selectedatv && !tckapi"
-                          class="form-control"
-                          id="exampleFormControlSelect1">
-                        <option value="{{selectedatv.cliente.id}}">
-                          {{selectedatv.cliente.nome}}
-                        </option>
-                        <option disabled></option>
-                        <option *ngFor="let clientes of clientesapi" value="{{clientes.id}}">
-                          {{clientes.nome}}
-                        </option>
-                  </select>
-                </div> -->
               </div>
             </div>
             <div class="col-6 ml-auto div-calendar">
