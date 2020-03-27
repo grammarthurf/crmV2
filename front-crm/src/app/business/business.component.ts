@@ -589,13 +589,6 @@ export class BusinessComponent implements OnInit {
   drop(event: CdkDragDrop<string[]>) {
     console.log('qualquer coisa')
     this.calcAllValue();
-    if (event.distance.x > 600) {
-      this.calcAllValue();
-      this.play();
-      setTimeout(() => {
-        this.stop()
-      }, 4000);
-    }
 
     this.ticketsapi.forEach(e => {
       if (e.id == event.item.element.nativeElement.id) {
@@ -609,6 +602,10 @@ export class BusinessComponent implements OnInit {
         console.log('8');
         this.updatedTicket(8, this.selectedBusiness)
         this.calcAllValue();
+        this.play();
+          setTimeout(() => {
+          this.stop()
+        }, 4000);
         break;
 
       case 'cdk-drop-list-5':
