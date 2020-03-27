@@ -252,11 +252,11 @@ export class BusinessDetailComponent implements OnInit {
   }
 
   // FORMAT DATE BR
-  formatDate(date) {
-    let result = date.split('-').reverse().join('/');
+  // formatDate(date) {
+  //   let result = date.split('-').reverse().join('/');
 
-    return result
-  }
+  //   return result
+  // }
 
   // GO TO COMPANY DETAIL SCREEN
   goTo(id) {
@@ -303,6 +303,16 @@ export class BusinessDetailComponent implements OnInit {
   
     return null
   };
+
+  formatBirthday(str) {
+    const re = /^(\d{2})(\d{2})$/;
+
+    const [, day, month] = str.match(re);
+
+    const result = `${day}/${month}`;
+
+    return result
+  }
 
   cancelObs() {
     this.idobs.obs = '';
