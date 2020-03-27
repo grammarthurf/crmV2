@@ -56,7 +56,7 @@ class TicketSerializer(serializers.ModelSerializer):
         fields = ['id', 'titulo', 'estagio', 'cliente',
         'org', 'produto', 'valorestimado', 'termometro',
         'vendedor', 'obs', 'status', 'created', 'updated',
-        'atividades', 'mtvperd', 'cmtperd']
+        'atividades', 'vendedorext' ,'mtvperd', 'cmtperd']
         depth = 2
 
 
