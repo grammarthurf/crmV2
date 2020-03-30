@@ -237,6 +237,12 @@ export class CrudService {
     });
   }
 
+  public updatestatusatv(atv): Observable<any> {
+    return this.http.put(this.baseUrl + 'atividade/' + atv.id + '/' , atv, {
+      headers: this.htttpHeaders
+    });
+  }
+
   public updateTicket(estagioUpdate, ticket): Observable<any> {
 
     console.log('ESTAGIOUPDADE :' , typeof(estagioUpdate));

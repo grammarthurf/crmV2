@@ -179,6 +179,7 @@ class Atividade (models.Model):
     ticket = models.ForeignKey(Ticket, related_name='atividades', on_delete=models.CASCADE, null=True)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True)
     org = models.ForeignKey(Organizacao, on_delete=models.CASCADE, null=True)
+    feito = models.BooleanField(null=True, blank=True)
     created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True)
     updated = models.ManyToManyField(Updated)
 

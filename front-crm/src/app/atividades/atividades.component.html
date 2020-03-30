@@ -28,7 +28,7 @@
     <button type="button" class="btn btn-link" (click)="filterNextMonth()">
       Próximo mês
     </button>
-    <button type="button" class="btn btn-link" (click)="filterNextMonth()">
+    <button type="button" class="btn btn-link" (click)="getterActivity(true)">
       Feito
     </button>
   </div>
@@ -67,7 +67,7 @@
         Feito?
       </th>
       <td [style.background-color]="getColor(element.dataini)" mat-cell *matCellDef="let element let row">
-        <mat-checkbox [checked]="removeSelectedRows()" (change)="$event ? selection.toggle(row) : null"
+        <mat-checkbox [checked]="element.feito" id="{{element.position}}"  (change)="ChangeStatus($event)"
           data-toggle="modal" data-target="#abrircadastroatv" style="padding-left: 30px;">
         </mat-checkbox>
       </td>

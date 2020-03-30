@@ -261,11 +261,11 @@ export class BusinessDetailComponent implements OnInit {
   }
 
   // FORMAT DATE BR
-  // formatDate(date) {
-  //   let result = date.split('-').reverse().join('/');
+  formatDate(date) {
+    let result = date.split('-').reverse().join('/');
 
-  //   return result
-  // }
+    return result
+  }
 
   // GO TO COMPANY DETAIL SCREEN
   goTo(id) {
