@@ -166,7 +166,7 @@ export class OrganizationRegisterComponent implements OnInit {
       this.erp.codigo = this.code2;
       console.log(this.code2);
     }
-    this.disableCode1 = true;
+    this.disableCode1 = false;
   }
 
   enableSelect(){

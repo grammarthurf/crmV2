@@ -34,7 +34,7 @@ export class BusinessDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private crudService: CrudService, private router: Router) {
     this.lottieConfig = {
-      path: 'assets/bike.json',
+      path: 'assets/trophy.json',
       renderer: 'canvas',
       autoplay: false,
       loop: false
@@ -207,8 +207,8 @@ export class BusinessDetailComponent implements OnInit {
     }
     this.play();
     setTimeout(() => {
-      this.stop();
-    }, 4500);
+      this.destroy();
+    }, 4000);
   }
 
   // CHANGE STYLES BUTTONS WIND/LOSE
@@ -261,11 +261,11 @@ export class BusinessDetailComponent implements OnInit {
   }
 
   // FORMAT DATE BR
-  // formatDate(date) {
-  //   let result = date.split('-').reverse().join('/');
+  formatDate(date) {
+    let result = date.split('-').reverse().join('/');
 
-  //   return result
-  // }
+    return result
+  }
 
   // GO TO COMPANY DETAIL SCREEN
   goTo(id) {

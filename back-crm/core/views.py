@@ -391,6 +391,7 @@ class AtividadeViewSet(viewsets.ModelViewSet):
         A.horaini = data['horaini']
         A.horafim = data['horafim']
         A.assunto = data['assunto']
+        A.feito = False
         A.ticket = Ticket.objects.get(id=int(data['ticket']))
         A.cliente = Cliente.objects.get(id=int(data['cliente']['id']))
         A.org = Organizacao.objects.get(id=int(data['org']['id']))
@@ -402,21 +403,34 @@ class AtividadeViewSet(viewsets.ModelViewSet):
     def update(self, request, pk):
       data = request.data
     #   print(data)
-      A = Atividade.objects.get(id=data['position'])
-      A.dataini = data['dataini']
-      A.datafim = data['datafim']
-      A.horaini = data['horaini']
-      A.horafim = data['horafim']
-      A.assunto = data['assunto']
-      print('CLIENTE: ',data['cliente'])
-      print('ORG: ',data['org'])
+      try:
+        if data['id']:
+            print(data)
+            
+            A = Atividade.objects.get(id=data['id'])
+            A.feito = data['feito']
+            A.save()
+            print('entrouaqui')
+
+      except:
+            A = Atividade.objects.get(id=data['position'])
+            A.dataini = data['dataini']
+            A.datafim = data['datafim']
+            A.horaini = data['horaini']
+            A.horafim = data['horafim']
+            A.assunto = data['assunto']
+            A.feito = data['feito']
+            print('CLIENTE: ',data['cliente'])
+            print('ORG: ',data['org'])
+            
+            
+            A.ticket = Ticket.objects.get(id=int(data['ticket']))
+            A.cliente = Cliente.objects.get(id=int(data['cliente']['id']))
+            A.org = Organizacao.objects.get(id=int(data['org']['id']))
+            A.tipo = data['tipo']
+            A.save()    
       
-      
-      A.ticket = Ticket.objects.get(id=int(data['ticket']))
-      A.cliente = Cliente.objects.get(id=int(data['cliente']['id']))
-      A.org = Organizacao.objects.get(id=int(data['org']['id']))
-      A.tipo = data['tipo']
-      A.save()
+
       
       return JsonResponse({'message': 'atividadesupdated'})
         
