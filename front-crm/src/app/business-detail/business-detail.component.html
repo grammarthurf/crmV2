@@ -270,10 +270,10 @@
                 <b class="b-b">Nome Fantasia: </b> {{business.org.nomefantasia}}</p>
               <p *ngIf="business.org.cnpj"><b class="b-b">CNPJ: </b> {{business.org.cnpj}}</p>
               <p *ngIf="business.org.ie"><b class="b-b">IE: </b> {{business.org.ie}}</p>
-              <p *ngIf="business.org.rua    || 
-                        business.org.bairro || 
-                        business.org.cidade || 
-                        business.org.uf     || 
+              <p *ngIf="business.org.rua    ||
+                        business.org.bairro ||
+                        business.org.cidade ||
+                        business.org.uf     ||
                         business.org.cep"><b class="b-b">Endereço: </b><b>{{business.org.rua}} -
                   {{business.org.bairro}},
                   {{business.org.cidade}} -
@@ -320,7 +320,7 @@
               </p>
               <p *ngIf="business.cliente.birth">
                 <b class="b-b">Aniversário: </b>
-                {{formatDate(business.cliente.birth)}}
+                {{formatBirthday(business.cliente.birth)}}
               </p>
               <p *ngIf="business.cliente.tel">
                 <b class="b-b">Telefone: </b>
@@ -402,10 +402,9 @@
             <div class="col-12 mg-t-10 divtab">
               <form>
                 <label id="thumbnail">
-                  <input type="file" name="attachments[dummy][file]" class="file_selector" multiple="multiple"
-                  onchange="addInputFiles(this);"/>
+                  <input type="file" name="attachments[dummy][file]"  class="file_selector" multiple="multiple"/>
                 </label>
-                <button class="btn btn-success" type="submit" style="float: right;">Salvar Anexo</button>
+                <button class="btn btn-success" (click)="formAnexo()" style="float: right;">Salvar Anexo</button>
               </form>
               <mat-list>
                 <h3 mat-subheader>Pastas</h3>

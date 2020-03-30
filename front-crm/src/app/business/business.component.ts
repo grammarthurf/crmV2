@@ -63,7 +63,7 @@ export class BusinessComponent implements OnInit {
   today1 = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + this.dNow.getDate();
 
   calendarPlugins: any = [];
-  
+
   // Lottie:
   public lottieConfig: Object;
   private anim: any;
@@ -351,6 +351,7 @@ export class BusinessComponent implements OnInit {
   // GET LEADS
   getterTickets(status) {
 
+
     if (status == undefined || status == 'open') {
       this.tickets1.tickets = [];
       this.tickets2.tickets = [];
@@ -361,45 +362,46 @@ export class BusinessComponent implements OnInit {
       this.tickets7.tickets = [];
       this.crudService.getTickets().subscribe(
         data => {
+          let username = JSON.parse(localStorage.getItem('username'));
           this.ticketsapi = data;
+          console.log(username);
+          console.log(this.ticketsapi);
+
           data.forEach(e => {
+            console.log('Usario que criou: ', e.created.user.username);
+            console.log('Username: ', username);
 
-            if (e.status == 'Aberto') {
-              switch (e.estagio.id) {
-
-                case 1:
-                  this.tickets1.tickets.push(e);
-                  break;
-
-                case 2:
-                  this.tickets2.tickets.push(e);
-                  break;
-
-                case 3:
-                  this.tickets3.tickets.push(e);
-                  break;
-
-                case 4:
-                  this.tickets4.tickets.push(e);
-                  break;
-
-                case 5:
-                  this.tickets5.tickets.push(e);
-                  break;
-
-                case 7:
-                  this.tickets6.tickets.push(e);
-                  break;
-
-                case 8:
-                  this.tickets7.tickets.push(e);
-                  break;
-
-                default:
-                  break;
+            if (e.created.user.username == username || username === 'Fabiana' || username == 'Osmir' || username == 'Leandro' || username == 'admin') {
+              if (e.status == 'Aberto') {
+                switch (e.estagio.id) {
+                  case 1:
+                    this.tickets1.tickets.push(e);
+                    break;
+                  case 2:
+                    this.tickets2.tickets.push(e);
+                    break;
+                  case 3:
+                    this.tickets3.tickets.push(e);
+                    break;
+                  case 4:
+                    this.tickets4.tickets.push(e);
+                    break;
+                  case 5:
+                    this.tickets5.tickets.push(e);
+                    break;
+                  case 7:
+                    this.tickets6.tickets.push(e);
+                    break;
+                  case 8:
+                    this.tickets7.tickets.push(e);
+                    break;
+                  default:
+                    break;
+                }
+                this.calcAllValue();
               }
-              this.calcAllValue();
             }
+
           });
         },
         error => {
