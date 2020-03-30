@@ -116,6 +116,7 @@ export class AtividadesComponent implements OnInit {
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.matdata);
     this.dataSource.sort = this.sort;
+    this.atv.dataini = this.today1;
   }
 
   // FILTRAR SELECT DAS EMPRESAS DE ACORDO COM O SELECIONADO EM NEGÓCIOS
@@ -210,7 +211,6 @@ export class AtividadesComponent implements OnInit {
         this.selectedatv = data;
 
         this.atv.position = 0;
-        this.atv.dataini = '';
         this.atv.horaini = '';
         this.atv.datafim = '';
         this.atv.horafim = '';
@@ -238,7 +238,6 @@ export class AtividadesComponent implements OnInit {
   //UPDATE FALSE
   updateFalse() {
     this.conf.update = false;
-    this.atv.dataini = '';
     this.atv.horaini = '';
     this.atv.datafim = '';
     this.atv.horafim = '';
@@ -514,6 +513,7 @@ export class AtividadesComponent implements OnInit {
   // SAVE ACTIVITY
   save() {
     console.log(this.conf.update);
+    console.log(this.atv.dataini)
 
     if(this.atv.ticket == ""){
       this.atv.ticket = this.selectedatv.ticket.id.toString();
@@ -575,7 +575,6 @@ export class AtividadesComponent implements OnInit {
             this.atv.assunto = "";
             this.atv.cliente = '0';
             this.atv.datafim = "";
-            this.atv.dataini = "";
             this.atv.tipo = "";
             this.atv.ticket = '0';
             this.atv.org = '0';
