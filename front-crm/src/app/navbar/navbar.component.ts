@@ -11,11 +11,13 @@ import { Router, Data } from "@angular/router";
 export class NavbarComponent implements OnInit {
   username = JSON.parse(localStorage.getItem('username'));
 
-  constructor(private router: Router, private crudservice: CrudService) {}
+  constructor(private router: Router, private crudservice: CrudService, public user: UserService) {}
 
   ngOnInit() {
-    // console.log(this.username);
-
+    //console.log(this.token);
   }
 
+  sair(){
+    this.user.hide();
+  }
 }

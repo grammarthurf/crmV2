@@ -367,7 +367,7 @@
               <ul class="list-group list-group-flush">
                 <li *ngFor="let item of business.obs" class="list-group-item p">
                   <b class="b-b">
-                    {{formatDate(item.data)}}
+                    {{item.data | date:'dd/MM/yyyy'}}
                   </b>
                   <br>
                   <label class="b">
