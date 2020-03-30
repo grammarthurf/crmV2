@@ -55,7 +55,7 @@ const routes: Routes = [
     component: OrganizationRegisterComponent
   },
   {
-    path: "user/:id",
+    path: "user",
     component: UserComponent
   },
   {

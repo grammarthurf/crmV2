@@ -20,7 +20,13 @@ export class UserService {
   // error messages received from the login attempt
   public errors: any = [];
 
-  constructor(private http: HttpClient) { }
+  visible: boolean;
+
+  constructor(private http: HttpClient) { this.visible = true; }
+
+  hide() { this.visible = false; }
+
+  show() { this.visible = true; }
 
 
   // Uses http.post() to get an auth token from djangorestframework-jwt endpoint
