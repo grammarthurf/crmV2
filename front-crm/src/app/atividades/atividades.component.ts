@@ -616,7 +616,7 @@ export class AtividadesComponent implements OnInit {
 
   // ALL FILTER
   filterAll() {
-    this.dataSource.filter = "".trim().toLowerCase();
+    this.getterActivity(false);
   }
 
   // CALL FILTER
