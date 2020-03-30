@@ -11,9 +11,9 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {nome: 'Fabiana', usuario: 'fabiana', tipo: 'Vendedor Interno'},
-  {nome: 'Fabiana', usuario: 'fabiana', tipo: 'Vendedor Interno'},
-  {nome: 'Fabiana', usuario: 'fabiana', tipo: 'Vendedor Interno'},
+  // {nome: 'Fabiana', usuario: 'fabiana', tipo: 'Vendedor Interno'},
+  // {nome: 'Fabiana', usuario: 'fabiana', tipo: 'Vendedor Interno'},
+  // {nome: 'Fabiana', usuario: 'fabiana', tipo: 'Vendedor Interno'},
 ];
 
 

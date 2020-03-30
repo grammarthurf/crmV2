@@ -283,6 +283,8 @@ export class AtividadesComponent implements OnInit {
         const username = JSON.parse(localStorage.getItem('username'))
 
         data.forEach(e => {
+          console.log('Usario que criou: ', e.created.user.username);
+          console.log('Username: ', username);
           if (e.created.user.username == username || username === 'Fabiana' || username == 'Osmir' || username == 'Leandro' || username == 'admin'){
             var timeIni = e.horaini.substring(0, 2) + ":" + e.horaini.substring(2, 4);
             var timeEnd = e.horafim.substring(0, 2) + ":" + e.horafim.substring(2, 4);
