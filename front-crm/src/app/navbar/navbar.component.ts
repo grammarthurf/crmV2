@@ -16,8 +16,4 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     //console.log(this.token);
   }
-
-  sair(){
-    this.user.hide();
-  }
 }

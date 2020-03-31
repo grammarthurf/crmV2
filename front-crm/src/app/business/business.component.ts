@@ -158,6 +158,7 @@ export class BusinessComponent implements OnInit {
   }
 
   dataCheck(dataini) {
+    
     var year = this.dNow.getFullYear();
     var month = this.dNow.getMonth() + 1;
     var day = this.dNow.getDate();
@@ -177,23 +178,60 @@ export class BusinessComponent implements OnInit {
 
   Array(atv) {
     var length = atv.length;
-    var n = 0;
+    var n = 0;    
     if (length == 1) {
-      var r = this.dataCheck(atv[n].dataini);
+      var date = atv[n].dataini;
+      var feito = atv[n].feito;
+      if(feito === false){
+        var r = this.dataCheck(date);
       return r;
+      }
     } else if (length >= 2) {
       var i;
       for (i = 0; i < length; i++) {
         n++;
         var dates = atv[n - 1].dataini;
+        var feito = atv[n - 1].feito;
         var r = this.dataCheck(dates);
-        if (r === false) {
-          r = this.dataCheck(dates);
-        } else if (r === true) {
-          return true;
+        if(feito === false){
+          if (r === false) {
+            r = this.dataCheck(dates);
+          } else if (r === true) {
+            return true;
+          }
         }
       }
     }
+  }
+
+  emptyAtv(atv){
+    var length = atv.length;
+    var n = 0
+    var a = 1
+    if(length == 0){
+      return true;
+    } else if (length == 1){
+      var feito = atv[n].feito;
+      if(feito === false){
+        return false;
+      } else {
+        return true;
+      }
+    } else if( length >= 2){
+      var i;
+      for (i = 0; i < length; i++) {
+        n++;
+        var feito = atv[n - 1].feito;
+        if(feito === false){
+          return false;
+        } else if (feito === true){
+          var count = a++;
+          if(count == length){
+            return true
+          } 
+        }
+      }
+    }    
   }
 
   // CALC ALL VALUES FROM STAGE
