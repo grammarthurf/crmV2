@@ -71,7 +71,10 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', JSON.stringify(res['token']));
       localStorage.setItem('username', JSON.stringify(this.user.username))
       this.loading = true;
-      setTimeout(() => { this.router.navigate(['/business']); }, 3900)
+      setTimeout(() => { 
+        this.router.navigate(['/business']); 
+        this.userservice.show();
+      }, 3900)
     }, error => {
       swal({
         icon: "error",

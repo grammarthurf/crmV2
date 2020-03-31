@@ -149,7 +149,7 @@
         </div>
         <div class="form-group col-md-2">
           <label for="ramal">Ramal</label>
-          <input type="text" class="form-control" maxlength="6">
+          <input type="text" class="form-control" maxlength="6" id="input-ramal">
         </div>
         <div class="form-group col-md-3">
           <label for="email">Celular/WhatsApp</label>
@@ -161,6 +161,9 @@
           <input [(ngModel)]="contato.skp" type="text" class="form-control" (keyup)="maiuscula($event.target.value, 14)">
         </div>
       </div>
+      <button class="btn btn-primary" (click)="addContato()" style="margin-left: 15px;">
+        Salvar Contato
+      </button>
     </div>
     <div class="col-md-5">
       <div *ngFor="let item of org.contatos" class="col-sm-12">
@@ -197,7 +200,7 @@
                 </p>
               </div>
               <p class="col-md-1" style="cursor: pointer;">
-                <mat-icon (click)="contatoDelete(item)" class="icons-action icon-color-red">
+                <mat-icon (click)="contatoDelete(item)" class="icons-action" style="color: red;">
                   delete
                 </mat-icon>
               </p>
@@ -207,9 +210,6 @@
       </div>
     </div>
   </div>
-  <button class="btn btn-primary" (click)="addContato()" style="margin-left: 15px;">
-    Salvar Contato
-  </button>
   <hr>
   <button class="btn btn-secondary" (click)="exit()">Sair</button>
   <button class="btn btn-primary"

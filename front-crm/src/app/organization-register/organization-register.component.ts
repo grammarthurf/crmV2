@@ -211,7 +211,7 @@ export class OrganizationRegisterComponent implements OnInit {
 
     this.org.contatos.push(contatovar)
     console.log(this.org);
-
+    
     this.contato.nome = ''
     this.contato.email = ''
     this.contato.cargo = ''
@@ -220,6 +220,7 @@ export class OrganizationRegisterComponent implements OnInit {
     this.contato.tel = ''
     this.contato.cel = ''
     this.contato.skp = ''
+    let inputRamal = (<HTMLInputElement>document.getElementById('input-ramal')).value = '';
   }
 
   exit() {

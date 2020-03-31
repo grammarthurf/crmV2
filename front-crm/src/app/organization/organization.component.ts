@@ -125,9 +125,9 @@ export class OrganizationComponent implements OnInit {
   }
 
   // GO TO COMPANY DETAIL SCREEN
-  goTo(id) {
-    this.router.navigate([`/company-detail/${id}`]);
-  }
+  // goTo(id) {
+  //   this.router.navigate([`/company-detail/${id}`]);
+  // }
 
   // GO TO COMPANY REGISTER SCREEN
   goToRegister() {
