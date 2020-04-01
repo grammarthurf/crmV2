@@ -40,8 +40,6 @@ class RamoViewSet(viewsets.ModelViewSet):
         r.created = c
         r.save()
         return JsonResponse({'messsage': 'worked'})
-        
-
 
 
 class ErpViewSet(viewsets.ModelViewSet):
@@ -62,10 +60,8 @@ class ErpViewSet(viewsets.ModelViewSet):
         e.desc = data['desc']
         e.empresa = data['empresa']
         e.save()
-        
-        return JsonResponse({'messsage': 'worked'})
-        
 
+        return JsonResponse({'messsage': 'worked'})
 
 
 class ClienteViewSet(viewsets.ModelViewSet):
@@ -92,7 +88,7 @@ class ClienteViewSet(viewsets.ModelViewSet):
         # C.org = Organizacao.objects.get(id=data['org'])
         C.created = create
         C.save()
-        print(data);
+        print(data)
         return JsonResponse({'message': 'Worked'})
 
 
@@ -111,10 +107,10 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
 
     def create(self, request):
         data = request.data
-        print(request.user);
-        
+        print(request.user)
+
         print('chamou request')
-        print(data);
+        print(data)
 
         cr = Created()
         cr.user = request.user
@@ -153,7 +149,7 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
         C.save()
         contatos = data['contatos']
         for i in contatos:
-            print('CONTATOS : ', i);
+            print('CONTATOS : ', i)
 
             o = Cliente()
             cr = Created()
@@ -172,9 +168,9 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
             C.contatos.add(o)
             C.save()
 
-        print(data);
+        print(data)
         return JsonResponse({'message': 'Worked'})
-    
+
     def update(self, request, pk):
         data = request.data
         print(data)
@@ -199,19 +195,19 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
             O.cnpj = data['cnpj']
         except:
             pass
-        
+
         O.ramo = Ramo.objects.get(id=int(data['ramos']))
         O.ie = data['ie']
-        
+
         O.erpe = Erp.objects.get(id=int(data['erp']))
-        
+
         O.save()
 
         O.contatos.clear()
         contatos = data['contatos']
         for i in contatos:
-            print('CONTATOS : ', i);
-            
+            print('CONTATOS : ', i)
+
             o = Cliente()
             o.nome = i['nome']
             o.email = i['email']
@@ -248,8 +244,8 @@ class ProdutoViewSet(viewsets.ModelViewSet):
         p.codigo = data['codigo']
         p.created = c
         p.save()
-        
-        return JsonResponse({'message':'worked'})
+
+        return JsonResponse({'message': 'worked'})
 
 
 class VendedorExtViewSet(viewsets.ModelViewSet):
@@ -258,7 +254,6 @@ class VendedorExtViewSet(viewsets.ModelViewSet):
     serializer_class = VendedorExtSerializer
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
-
 
 
 class TicketViewSet(viewsets.ModelViewSet):
@@ -274,11 +269,13 @@ class TicketViewSet(viewsets.ModelViewSet):
         print(data['titulo'])
         print(request.user)
         print(request.headers)
-        
 
         c = Created()
         c.user = request.user
         c.save()
+        V = Vendedor.objects.get(id=int(data['vendedor']))
+        print(V)
+
         T = Ticket()
         T.titulo = data['titulo']
         T.estagio = Estagio.objects.get(id=int(data['estagio']))
@@ -286,6 +283,7 @@ class TicketViewSet(viewsets.ModelViewSet):
         T.org = Organizacao.objects.get(id=int(data['org']))
         T.valorestimado = int(data['valorestimado'])
         T.termometro = data['termometro']
+        T.vendedor = V
         T.status = 'Aberto'
 
         T.created = c
@@ -304,68 +302,53 @@ class TicketViewSet(viewsets.ModelViewSet):
             k.save()
             T.obs.add(k)
             T.save()
-        
 
         produtos = data['produto']
         for prod in produtos:
             T.produto.add(Produto.objects.get(id=prod))
-        
+
         T.save()
-        print(data);
+        print(data)
         return JsonResponse({'message': 'Saved'})
 
-
-        
     def update(self, request, pk):
-      data = request.data
-      print(data);
-      
-      try:
-        T = Ticket.objects.get(id=data['id'])
-        T.estagio = Estagio.objects.get(id=data['estagio'])
-        T.status = data['status']
-        if T.status == 'Perdido':
-            T.mtvperd = data['mtvperd']
-            T.cmtperd = data['cmtperd']
-        T.save()
-        print('Ticket salvo : ',T.cmtperd , T.mtvperd)
-      except:
-          pass
+        data = request.data
+        print(data)
 
-
-
-      try:
-        if data['opt'] == 'term':
-            print('entrou opt ')
-            
+        try:
             T = Ticket.objects.get(id=data['id'])
-            T.termometro = data['term']
+            T.estagio = Estagio.objects.get(id=data['estagio'])
+            T.status = data['status']
+            if T.status == 'Perdido':
+                T.mtvperd = data['mtvperd']
+                T.cmtperd = data['cmtperd']
             T.save()
-      except:
-          pass
+            print('Ticket salvo : ', T.cmtperd, T.mtvperd)
+        except:
+            pass
 
+        try:
+            if data['opt'] == 'term':
+                print('entrou opt ')
 
-  
+                T = Ticket.objects.get(id=data['id'])
+                T.termometro = data['term']
+                T.save()
+        except:
+            pass
 
-      try:  
-        if data['opt'] == 'obs':
-            o = Obs()
-            o.texto = data['obs']
-            T = Ticket.objects.get(id=data['id'])
-            o.save()
-            T.obs.add(o)
-            T.save()
-      except:
-          pass  
+        try:
+            if data['opt'] == 'obs':
+                o = Obs()
+                o.texto = data['obs']
+                T = Ticket.objects.get(id=data['id'])
+                o.save()
+                T.obs.add(o)
+                T.save()
+        except:
+            pass
 
-    
-
-     
-
-
-
-      return JsonResponse({'message': 'Updated'})
-      
+        return JsonResponse({'message': 'Updated'})
 
 
 class VendedorViewSet(viewsets.ModelViewSet):
@@ -384,6 +367,9 @@ class AtividadeViewSet(viewsets.ModelViewSet):
     def create(self, request):
         data = request.data
         print('CREATING')
+        print(data)
+
+        V = Vendedor.objects.get(id=int(data['vendedor']))
 
         c = Created()
         c.user = request.user
@@ -395,6 +381,7 @@ class AtividadeViewSet(viewsets.ModelViewSet):
         A.horafim = data['horafim']
         A.assunto = data['assunto']
         A.feito = False
+        A.vendedor = V
         A.ticket = Ticket.objects.get(id=int(data['ticket']))
         A.cliente = Cliente.objects.get(id=int(data['cliente']['id']))
         A.org = Organizacao.objects.get(id=int(data['org']['id']))
@@ -404,18 +391,18 @@ class AtividadeViewSet(viewsets.ModelViewSet):
         return JsonResponse({'message': 'atividadecreated'})
 
     def update(self, request, pk):
-      data = request.data
+        data = request.data
     #   print(data)
-      try:
-        if data['id']:
-            print(data)
-            
-            A = Atividade.objects.get(id=data['id'])
-            A.feito = data['feito']
-            A.save()
-            print('entrouaqui')
+        try:
+            if data['id']:
+                print(data)
 
-      except:
+                A = Atividade.objects.get(id=data['id'])
+                A.feito = data['feito']
+                A.save()
+                print('entrouaqui')
+
+        except:
             A = Atividade.objects.get(id=data['position'])
             A.dataini = data['dataini']
             A.datafim = data['datafim']
@@ -423,18 +410,13 @@ class AtividadeViewSet(viewsets.ModelViewSet):
             A.horafim = data['horafim']
             A.assunto = data['assunto']
             A.feito = data['feito']
-            print('CLIENTE: ',data['cliente'])
-            print('ORG: ',data['org'])
-            
-            
+            print('CLIENTE: ', data['cliente'])
+            print('ORG: ', data['org'])
+
             A.ticket = Ticket.objects.get(id=int(data['ticket']))
             A.cliente = Cliente.objects.get(id=int(data['cliente']['id']))
             A.org = Organizacao.objects.get(id=int(data['org']['id']))
             A.tipo = data['tipo']
-            A.save()    
-      
+            A.save()
 
-      
-      return JsonResponse({'message': 'atividadesupdated'})
-        
-      
+        return JsonResponse({'message': 'atividadesupdated'})
