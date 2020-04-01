@@ -33,7 +33,7 @@ export class OrganizationRegisterComponent implements OnInit {
 
   orgUpdate: any;
 
-  contato = { nome: '', email: '', cargo: '', dep: '', birth: '', tel: '', cel: '', skp: '' }
+  contato = { nome: '', email: '', cargo: '', dep: '', birth: '', ramal:'', tel: '', cel: '', skp: '' }
 
   ramosapi: any;
   ramos = { desc: '' };
@@ -219,9 +219,15 @@ export class OrganizationRegisterComponent implements OnInit {
       birth: this.contato.birth,
       tel: this.contato.tel,
       skp: this.contato.skp,
-      cel: this.contato.cel
+      cel: this.contato.cel,
+      ramal: this.contato.ramal
     }
 
+    if(contatovar.skp == undefined) {
+      contatovar.skp = '';
+    }
+
+    console.log(this.contato.ramal)
     this.org.contatos.push(contatovar)
   
     this.contato.nome = ''
@@ -232,7 +238,8 @@ export class OrganizationRegisterComponent implements OnInit {
     this.contato.tel = ''
     this.contato.cel = ''
     this.contato.skp = ''
-    let inputRamal = (<HTMLInputElement>document.getElementById('input-ramal')).value = '';
+    this.contato.ramal = ''
+    // let inputRamal = (<HTMLInputElement>document.getElementById('input-ramal')).value = '';
   }
 
   exit() {
@@ -303,7 +310,8 @@ export class OrganizationRegisterComponent implements OnInit {
         birth: this.contato.birth,
         tel: this.contato.tel,
         skp: this.contato.skp,
-        cel: this.contato.cel
+        cel: this.contato.cel,
+        ramal: this.contato.ramal
       }
 
       this.org.contatos.push(contatovar)
@@ -395,7 +403,6 @@ export class OrganizationRegisterComponent implements OnInit {
       console.log(this.org.ramos)
     }
     
-
     this.crudService.UpdateOrgMain(this.org).subscribe(
       data => {
         swal({

@@ -1,14 +1,14 @@
-input#title-lead {
-    border: 1px solid #ddd;
-    border-radius: 2px;
-    height: 40px;
-    padding: 0 15px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 10px;
+input#update-title {
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	height: 40px;
+	padding: 0 15px;
+	font-size: 16px;
+	font-weight: bold;
+	border-radius: 10px;
 }
 
-input#title-lead + button {
+input#update-title + button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -17,13 +17,28 @@ input#title-lead + button {
 	margin: 0 15px;
 }
 
-input#title-lead + button + button {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	outline: none;
-	color: #007bff;
-	margin: 0 15px;
+input#update-value {
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	height: 40px;
+	width: 95px;
+	margin: 5px 10px 0 10px;
+	padding: 0 2px;
+	font-size: 16px;
+	font-weight: bold;
+	border-radius: 10px;
+}
+
+select#update-contact {
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	height: 40px;
+	width: 230px;
+	margin: 5px 10px 0 10px;
+	padding: 0 2px;
+	font-size: 16px;
+	font-weight: bold;
+	border-radius: 10px;
 }
 
 /* ICON */

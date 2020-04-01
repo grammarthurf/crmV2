@@ -165,6 +165,7 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
             o.dep = i['dep']
             o.birth = i['birth']
             o.tel = i['tel']
+            o.ramal = i['ramal']
             o.cel = i['cel']
             o.skype = i['skp']
             o.created = cr

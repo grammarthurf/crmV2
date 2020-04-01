@@ -72,12 +72,12 @@ export class BusinessDetailComponent implements OnInit {
 
   updateTicketTitle(){
     console.log(this.business);
-    this.crudService.updateTicketTitle(this.business.id, this.business.titulo).subscribe(
+    this.crudService.updateTicketTitle(this.business.id, this.business.titulo, this.business.valorestimado, this.business.cliente).subscribe(
       data => {
         console.log(data)
         swal({
           icon: "success",
-          text: "Título alterado com sucesso!",
+          text: "Informações alteradas com sucesso!",
           timer: 1450,
           buttons: {
             buttons: false

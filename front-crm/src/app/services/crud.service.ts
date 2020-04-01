@@ -327,9 +327,9 @@ export class CrudService {
     });
   }
 
-  public updateTicketTitle(id, title): Observable<any> {
+  public updateTicketTitle(id, title, value, contact): Observable<any> {
 
-    const body =  { id: parseInt(id), title: title };
+    const body =  { id: parseInt(id), title: title, value: value, contact: contact.id };
     console.log('body:', body);
 
     return this.http.put(this.baseUrl + 'ticket/' + id + '/' , body, {
@@ -368,6 +368,8 @@ export class CrudService {
   }
 
   public UpdateOrgMain(org): Observable<any> {
+    console.log(org);
+    console.log(org.contatos);
     return this.http.put(this.baseUrl + 'orgs/' + org.id + '/' , org, {
       headers: this.htttpHeaders
     });
