@@ -20,7 +20,7 @@ export interface PeriodicElement {
 }
 
 const atividade: PeriodicElement[] = [
-  { id: 0, position: 0, data: '', tipo: '', feito: false,  cliente: '', org: '', ticket: '' },
+  { id: 0, position: 0, data: '', tipo: '', feito: false, cliente: '', org: '', ticket: '' },
 ];
 
 @Component({
@@ -79,7 +79,7 @@ export class AtividadesComponent implements OnInit {
 
   calendarEvents = [];
 
-  statusUpdate = { id: 0, feito: false};
+  statusUpdate = { id: 0, feito: false };
 
   atv = {
     position: 0,
@@ -172,7 +172,7 @@ export class AtividadesComponent implements OnInit {
     )
   }
 
-  UpdateStatusAtiv(){
+  UpdateStatusAtiv() {
     this.crudService.updatestatusatv(this.statusUpdate).subscribe(
       data => {
         this.getterActivity(false);
@@ -276,14 +276,18 @@ export class AtividadesComponent implements OnInit {
   getterActivity(mode) {
     this.crudService.getAtividade().subscribe(
       data => {
-        console.log('Atividades: ' , data);
+        console.log('Atividades: ', data);
 
         this.calendarEvents = [];
         this.matdata = [];
         const username = JSON.parse(localStorage.getItem('username'))
 
         data.forEach(e => {
-          if (e.created.user.username == username || username === 'Fabiana' || username == 'Osmir' || username == 'Leandro' || username == 'admin'){
+          console.log('Usuario logado: ', username);
+          console.log('Usuario Criou: ', e.created.user.username);
+
+
+          if (e.created.user.username == username || username === 'Fabiana' || username == 'Osmir' || username == 'Leandro' || username == 'admin') {
             var timeIni = e.horaini.substring(0, 2) + ":" + e.horaini.substring(2, 4);
             var timeEnd = e.horafim.substring(0, 2) + ":" + e.horafim.substring(2, 4);
 
@@ -515,15 +519,15 @@ export class AtividadesComponent implements OnInit {
     console.log(this.conf.update);
     console.log(this.atv.dataini)
 
-    if(this.atv.ticket == ""){
+    if (this.atv.ticket == "") {
       this.atv.ticket = this.selectedatv.ticket.id.toString();
     }
 
-    if(this.atv.org == ""){
+    if (this.atv.org == "") {
       this.atv.org = this.selectedatv.org;
     }
 
-    if(this.atv.cliente == ""){
+    if (this.atv.cliente == "") {
       this.atv.cliente = this.selectedatv.cliente;
     }
 

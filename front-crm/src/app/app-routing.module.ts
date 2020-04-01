@@ -1,7 +1,6 @@
 import { BusinessComponent } from "./business/business.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { CrudComponent } from "./components/crud/crud.component";
 import { AtividadesComponent } from "./atividades/atividades.component";
 import { ProductsComponent } from "./products/products.component";
 import { OrganizationComponent } from "./organization/organization.component";

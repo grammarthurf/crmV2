@@ -19,5 +19,9 @@ export class NavbarComponent implements OnInit {
 
   sair(){
     this.user.hide();
+    this.crudservice.logout()
+    this.username = '';
+    this.router.navigate(['/login']);
+
   }
 }

@@ -271,7 +271,10 @@ class TicketViewSet(viewsets.ModelViewSet):
     def create(self, request):
         data = request.data
 
-        print(data['titulo']);
+        print(data['titulo'])
+        print(request.user)
+        print(request.headers)
+        
 
         c = Created()
         c.user = request.user

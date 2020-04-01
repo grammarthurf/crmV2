@@ -175,6 +175,10 @@ export class CrudService {
   }
 
   public saveNewTicket(ticket): Observable<any> {
+    console.log('cabeçalho: ',this.htttpHeaders);
+    console.log('token: ', this.basetoken);
+
+
     return this.http.post(this.baseUrl + "ticket/", ticket, {
       headers: this.htttpHeaders
     });
