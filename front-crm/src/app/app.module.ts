@@ -46,7 +46,6 @@ import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { AtividadesComponent } from "./atividades/atividades.component";
 import { BusinessComponent } from "./business/business.component";
-import { CrudComponent } from "./components/crud/crud.component";
 import { ProductsComponent } from "./products/products.component";
 import { OrganizationComponent } from "./organization/organization.component";
 import { BusinessDetailComponent } from "./business-detail/business-detail.component";
@@ -71,7 +70,7 @@ registerLocaleData(localePt);
     NavbarComponent,
     AtividadesComponent,
     BusinessComponent,
-    CrudComponent,
+
     ProductsComponent,
     OrganizationComponent,
     BusinessDetailComponent,

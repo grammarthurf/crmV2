@@ -79,6 +79,7 @@ class Cliente(models.Model):
     dep = models.CharField(max_length=100, null=True, blank=True)
     birth = models.CharField(max_length=55, null=True, blank=True)
     email = models.CharField(max_length=100, null=True, blank=True)
+    ramal = models.CharField(max_length=5, null=True, blank=True)
     skype = models.CharField(max_length=65, null=True, blank=True)
     created = models.ForeignKey(Created, on_delete=models.CASCADE , null=True)
     updated = models.ManyToManyField(Updated)

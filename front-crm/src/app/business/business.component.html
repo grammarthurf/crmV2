@@ -44,10 +44,10 @@
           <div class="flex">
 
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">
+            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)  && !emptyAtv(item.atividades)  && !emptyAtv(item.atividades)" id="green" (click)="goToAtv()">
               error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">
+            <mat-icon *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)  && !emptyAtv(item.atividades)" id="red" (click)="goToAtv()">
               error_outline
             </mat-icon>
           </div>
@@ -79,10 +79,10 @@
           <div class="flex">
 
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">
+            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)  && !emptyAtv(item.atividades)" id="green" (click)="goToAtv()">
               error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">
+            <mat-icon *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)  && !emptyAtv(item.atividades)" id="red" (click)="goToAtv()">
               error_outline
             </mat-icon>
           </div>
@@ -112,10 +112,10 @@
           <div class="flex">
 
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">
+            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades) && !emptyAtv(item.atividades)" id="green" (click)="goToAtv()">
               error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">
+            <mat-icon *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades) && !emptyAtv(item.atividades)" id="red" (click)="goToAtv()">
               error_outline
             </mat-icon>
           </div>
@@ -144,10 +144,10 @@
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">
+            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)  && !emptyAtv(item.atividades)" id="green" (click)="goToAtv()">
               error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">
+            <mat-icon *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)  && !emptyAtv(item.atividades)" id="red" (click)="goToAtv()">
               error_outline
             </mat-icon>
           </div>
@@ -176,10 +176,10 @@
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">
+            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)  && !emptyAtv(item.atividades)" id="green" (click)="goToAtv()">
               error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">
+            <mat-icon *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)  && !emptyAtv(item.atividades)" id="red" (click)="goToAtv()">
               error_outline
             </mat-icon>
           </div>
@@ -207,10 +207,10 @@
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">
+            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)  && !emptyAtv(item.atividades)" id="green" (click)="goToAtv()">
               error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">
+            <mat-icon *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)  && !emptyAtv(item.atividades)" id="red" (click)="goToAtv()">
               error_outline
             </mat-icon>
           </div>
@@ -237,10 +237,10 @@
           <p class="limit-words">{{item.org.razaosocial}}</p>
           <div class="flex">
             <p class="limit-value">{{ item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)" id="green" (click)="goToAtv()">
+            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)  && !emptyAtv(item.atividades)" id="green" (click)="goToAtv()">
               error_outline</mat-icon>
-            <mat-icon *ngIf="(item.atividades.length == 0)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)" id="red" (click)="goToAtv()">
+            <mat-icon *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
+            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)  && !emptyAtv(item.atividades)" id="red" (click)="goToAtv()">
               error_outline
             </mat-icon>
           </div>

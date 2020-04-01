@@ -68,14 +68,17 @@ export class LoginComponent implements OnInit {
     this.crudservice.login(this.user).subscribe(res => {
       // this.cookies.set('token', JSON.stringify(res['token']) )
       // console.log('COOKIEEEE: ' , this.cookies.get('token'));
+      console.log(res['token']);
+
       localStorage.setItem('token', JSON.stringify(res['token']));
-      localStorage.setItem('username', JSON.stringify(this.user.username))
+      localStorage.setItem('username', JSON.stringify(this.user.username));
+
+
       this.loading = true;
-      setTimeout(() => { 
-        this.router.navigate(['/business']); 
-        console.log('redirecionou')
-        this.userservice.show();
-      }, 3900)
+
+      setTimeout(()=>{this.router.navigate(['/business']); this.userservice.show();}, 3900 )
+
+
     }, error => {
       swal({
         icon: "error",

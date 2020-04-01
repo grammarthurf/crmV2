@@ -370,8 +370,14 @@ export class OrganizationRegisterComponent implements OnInit {
     //this.org.erpe.push(this.erp);
     //this.org.ramo.push(this.ramos);
 
+    console.log(this.org.erp)
+
     if(this.org.erp == undefined){
-      this.org.erp = this.orgUpdate.erpe.id;
+      if(this.orgUpdate.erpe == null){
+        // this.org.erp = "";
+      } else {
+        this.org.erp = this.orgUpdate.erpe.id;
+      }
       console.log(this.org.erp)
     } else {
       console.log(this.org.erp)
@@ -379,7 +385,11 @@ export class OrganizationRegisterComponent implements OnInit {
 
 
     if(this.org.ramos == undefined){
-      this.org.ramos = this.orgUpdate.ramo.id;
+      if(this.orgUpdate.ramo == null){
+        // this.org.ramos = "";
+      } else {
+        this.org.ramos = this.orgUpdate.ramo.id;
+      }
       console.log(this.org.ramos)
     } else {
       console.log(this.org.ramos)
