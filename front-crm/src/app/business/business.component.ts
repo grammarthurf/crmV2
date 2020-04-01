@@ -158,7 +158,7 @@ export class BusinessComponent implements OnInit {
   }
 
   dataCheck(dataini) {
-    
+
     var year = this.dNow.getFullYear();
     var month = this.dNow.getMonth() + 1;
     var day = this.dNow.getDate();
@@ -178,13 +178,13 @@ export class BusinessComponent implements OnInit {
 
   Array(atv) {
     var length = atv.length;
-    var n = 0;    
+    var n = 0;
     if (length == 1) {
       var date = atv[n].dataini;
       var feito = atv[n].feito;
-      if(feito === false){
+      if (feito === false) {
         var r = this.dataCheck(date);
-      return r;
+        return r;
       }
     } else if (length >= 2) {
       var i;
@@ -193,7 +193,7 @@ export class BusinessComponent implements OnInit {
         var dates = atv[n - 1].dataini;
         var feito = atv[n - 1].feito;
         var r = this.dataCheck(dates);
-        if(feito === false){
+        if (feito === false) {
           if (r === false) {
             r = this.dataCheck(dates);
           } else if (r === true) {
@@ -204,34 +204,34 @@ export class BusinessComponent implements OnInit {
     }
   }
 
-  emptyAtv(atv){
+  emptyAtv(atv) {
     var length = atv.length;
     var n = 0
     var a = 1
-    if(length == 0){
+    if (length == 0) {
       return true;
-    } else if (length == 1){
+    } else if (length == 1) {
       var feito = atv[n].feito;
-      if(feito === false){
+      if (feito === false) {
         return false;
       } else {
         return true;
       }
-    } else if( length >= 2){
+    } else if (length >= 2) {
       var i;
       for (i = 0; i < length; i++) {
         n++;
         var feito = atv[n - 1].feito;
-        if(feito === false){
+        if (feito === false) {
           return false;
-        } else if (feito === true){
+        } else if (feito === true) {
           var count = a++;
-          if(count == length){
+          if (count == length) {
             return true
-          } 
+          }
         }
       }
-    }    
+    }
   }
 
   // CALC ALL VALUES FROM STAGE
@@ -406,10 +406,11 @@ export class BusinessComponent implements OnInit {
           console.log(this.ticketsapi);
 
           data.forEach(e => {
-            console.log('Usario que criou: ', e.created.user.username);
+            console.log('Vendedor responsavel: ', e.vendedor.user.username);
             console.log('Username: ', username);
 
-            if (e.created.user.username == username || username === 'Fabiana' || username == 'Osmir' || username == 'Leandro' || username == 'admin') {
+            if (e.vendedor.user.username == username || username === 'Fabiana' || username == 'Osmir' || username == 'Leandro' || username == 'admin') {
+              console.log(e);
               if (e.status == 'Aberto') {
                 switch (e.estagio.id) {
                   case 1:
@@ -643,7 +644,7 @@ export class BusinessComponent implements OnInit {
         this.updatedTicket(8, this.selectedBusiness)
         this.calcAllValue();
         this.play();
-          setTimeout(() => {
+        setTimeout(() => {
           this.stop()
         }, 4000);
         break;
@@ -716,7 +717,7 @@ export class BusinessComponent implements OnInit {
     window.focus();
   }
 
-  reloadpage(){
+  reloadpage() {
     location.reload()
   }
 

@@ -48,7 +48,7 @@ export class AtividadesComponent implements OnInit {
   dayNextMonth = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 2);
 
   // Lista Ticket
-  negociosapi: any;
+  negociosapi: any = []
 
   // Lista de Orgs:
   orsgapi: any;
@@ -87,6 +87,11 @@ export class AtividadesComponent implements OnInit {
     horaini: '',
     datafim: '',
     horafim: '',
+    vendedor: {
+      id: 0, user: {
+        username: ''
+      }
+    },
     tipo: '',
     feito: false,
     cliente: '',
@@ -226,10 +231,13 @@ export class AtividadesComponent implements OnInit {
         this.atv.datafim = this.selectedatv.datafim;
         this.atv.horafim = this.selectedatv.horafim;
         this.atv.tipo = this.selectedatv.tipo;
+        this.atv.vendedor = this.selectedatv.vendedor;
         // this.atv.cliente = this.selectedatv.cliente;
         // this.atv.org = this.selectedatv.org;
         // this.atv.ticket = this.selectedatv.ticket;
         this.atv.assunto = this.selectedatv.assunto;
+        console.log('Vendedor: ', this.atv.vendedor);
+
       },
       error => { }
     )
@@ -284,12 +292,21 @@ export class AtividadesComponent implements OnInit {
 
         data.forEach(e => {
           console.log('Usuario logado: ', username);
-          console.log('Usuario Criou: ', e.created.user.username);
+          console.log('Usuario Responsavel: ', e.vendedor.user.username);
+
+          if (e.vendedor.user.username == username || username === 'Fabiana' || username == 'Osmir' || username == 'Leandro' || username == 'admin') {
+            console.log('true');
+
+          } else {
+            console.log('false');
+
+          }
 
 
-          if (e.created.user.username == username || username === 'Fabiana' || username == 'Osmir' || username == 'Leandro' || username == 'admin') {
+          if (e.vendedor.user.username === username || username === 'Fabiana' || username == 'Osmir' || username == 'Leandro' || username == 'admin') {
             var timeIni = e.horaini.substring(0, 2) + ":" + e.horaini.substring(2, 4);
             var timeEnd = e.horafim.substring(0, 2) + ":" + e.horafim.substring(2, 4);
+            console.log(e);
 
             this.calendarEvents.push({
               title: e.tipo + ":  " + e.ticket.titulo,
@@ -506,7 +523,14 @@ export class AtividadesComponent implements OnInit {
   getterTickets() {
     this.crudService.getTickets().subscribe(
       data => {
-        this.negociosapi = data;
+        const username = JSON.parse(localStorage.getItem('username'))
+        console.log('ticket', data);
+        data.forEach(element => {
+          if (element.vendedor.user.username == username || username == 'Fabiana' || username == 'Osmir') {
+            this.negociosapi.push(element);
+          }
+        });
+
       },
       error => {
         this.erroAtividade = error;
