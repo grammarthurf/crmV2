@@ -4,10 +4,13 @@
   <div class="col-12 div-top row div-border">
     <div class="col-9">
       <div class="col-10 row">
-        <h2 class="font-26 bold">
-          {{business.titulo}}
-        </h2>
-        <!-- <mat-icon (click)="Print()" style="cursor: pointer; margin-left: 15px;">local_printshop</mat-icon> -->
+
+
+        <input type="text" [(ngModel)]="business.titulo" id="title-lead"> 
+        <button mat-icon-button (click)="updateTicketTitle()">
+          <mat-icon>check</mat-icon>
+        </button>
+        
       </div>
       <div class="flex" style="padding: 0;">
         <img src="../../assets/moeda.png" class="img1" />
@@ -435,36 +438,6 @@
           </mat-tab>
         </mat-tab-group>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- PRINT  -->
-<div id="printThis">
-  <div id="MyModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <!-- Modal Content: begins -->
-      <div class="modal-content">
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-              aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="gridSystemModalLabel">Your Headings</h4>
-        </div>
-        <!-- Modal Body -->
-        <div class="modal-body">
-          <div class="body-message">
-            <h4>Any Heading</h4>
-            <p>And a paragraph with a full sentence or something else...</p>
-          </div>
-        </div>
-        <!-- Modal Footer -->
-        <div class="modal-footer">
-          <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-        </div>
-      </div>
-      <!-- Modal Content: ends -->
     </div>
   </div>
 </div>

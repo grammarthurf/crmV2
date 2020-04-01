@@ -1,23 +1,30 @@
-@media screen {
-	#printSection {
-		display: none;
-	}
-  }
-  
-  @media print {
-	body * {
-	  visibility:hidden;
-	}
-	#printSection, #printSection * {
-	  visibility:visible;
-	}
-	#printSection {
-	  position:absolute;
-	  left:0;
-	  top:0;
-	}
-  }
-  
+input#title-lead {
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    height: 40px;
+    padding: 0 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+input#title-lead + button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	outline: none;
+	color: #007bff;
+	margin: 0 15px;
+}
+
+input#title-lead + button + button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	outline: none;
+	color: #007bff;
+	margin: 0 15px;
+}
 
 /* ICON */
 mat-icon {

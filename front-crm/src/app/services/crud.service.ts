@@ -323,6 +323,16 @@ export class CrudService {
     });
   }
 
+  public updateTicketTitle(id, title): Observable<any> {
+
+    const body =  { id: parseInt(id), title: title };
+    console.log('body:', body);
+
+    return this.http.put(this.baseUrl + 'ticket/' + id + '/' , body, {
+      headers: this.htttpHeaders
+    });
+  }
+
   public updatePerson(person): Observable<any> {
 
     const body =  { id: parseInt(person.id),

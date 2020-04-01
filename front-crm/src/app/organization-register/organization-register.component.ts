@@ -67,12 +67,6 @@ export class OrganizationRegisterComponent implements OnInit {
     this.getterOrg(id);
   }
 
-  contatoDelete(item){
-    let index = this.org.contatos.indexOf(item)
-    console.log(this.org.contatos.indexOf(item));
-    this.org.contatos.splice(index, 1);
-  }
-
   getterOrg(id) {
     
     this.crudService.getOrg(id).subscribe(
@@ -196,6 +190,25 @@ export class OrganizationRegisterComponent implements OnInit {
     );
   }
 
+  updateContato(item) {
+    let index = this.org.contatos.indexOf(item);
+
+    console.log(this.org.contatos.indexOf(item), 'antes')
+    // console.log(item.nome, 'cadastrou');
+
+    this.contato.nome = item.nome;
+    this.contato.email = item.email;
+    this.contato.cargo = item.cargo
+    this.contato.dep = item.dep;
+    this.contato.birth = item.birth;
+    this.contato.tel = item.tel;
+    this.contato.skp = item.skp;
+    this.contato.cel = item.cel;
+
+    this.org.contatos.splice(index, 1);
+    console.log(this.org.contatos.indexOf(item), 'depois')
+  }
+
   addContato() {
 
     const contatovar = {
@@ -210,8 +223,7 @@ export class OrganizationRegisterComponent implements OnInit {
     }
 
     this.org.contatos.push(contatovar)
-    console.log(this.org);
-    
+  
     this.contato.nome = ''
     this.contato.email = ''
     this.contato.cargo = ''

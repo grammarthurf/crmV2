@@ -355,11 +355,15 @@ class TicketViewSet(viewsets.ModelViewSet):
       except:
           pass  
 
+      try:
+        if data['title']:
+            id = data['id']
+            T = Ticket.objects.get(id=data['id'])
+            T.titulo = data['title']
+            T.save()
     
-
-     
-
-
+      except:
+          pass
 
       return JsonResponse({'message': 'Updated'})
       

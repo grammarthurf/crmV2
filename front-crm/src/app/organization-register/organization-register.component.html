@@ -199,11 +199,9 @@
                   {{formatCellPhoneNumber(item.cel)}}
                 </p>
               </div>
-              <p class="col-md-1" style="cursor: pointer;">
-                <mat-icon (click)="contatoDelete(item)" class="icons-action" style="color: red;">
-                  delete
-                </mat-icon>
-              </p>
+              <button mat-icon-button class="col-md-1" (click)="updateContato(item)">
+                <mat-icon class="icons-action" style="color: red;">edit</mat-icon>
+              </button>
             </div>
           </div>
         </div>

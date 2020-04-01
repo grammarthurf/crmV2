@@ -73,6 +73,7 @@ export class LoginComponent implements OnInit {
       this.loading = true;
       setTimeout(() => { 
         this.router.navigate(['/business']); 
+        console.log('redirecionou')
         this.userservice.show();
       }, 3900)
     }, error => {
