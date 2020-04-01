@@ -14,18 +14,18 @@
       </div>
       <div class="flex" style="padding: 0;">
         <img src="../../assets/moeda.png" class="img1" />
-        <input type="text" [(ngModel)]="business.valorestimado" id="update-value">
-        <!-- <p class="bold">
+        <!-- <input type="text" [(ngModel)]="business.valorestimado" id="update-value"> -->
+        <p class="bold">
           {{business.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}
-        </p> -->
+        </p>
         <img src="../../assets/contato.png" class="img1" />
-        <select [(ngModel)]="business.cliente" id="update-contact">
+        <!-- <select [(ngModel)]="business.cliente" id="update-contact">
           <option value="undefined" hidden>{{business.org.contatos.nome}}</option>
           <option *ngFor="let i of business.org.contatos" value="i.id">{{i.nome}}</option>
-        </select>
-        <!-- <p>
+        </select> -->
+        <p>
           {{clientName}}
-        </p> -->
+        </p>
         <img src="../../assets/empresa.png" class="img1" />
         <p>
           {{business.org.nomefantasia}}

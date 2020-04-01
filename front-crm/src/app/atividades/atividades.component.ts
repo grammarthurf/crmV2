@@ -15,12 +15,11 @@ export interface PeriodicElement {
   tipo: string;
   feito: boolean;
   cliente: string;
-  org: string;
   ticket: string;
 }
 
 const atividade: PeriodicElement[] = [
-  { id: 0, position: 0, data: '', tipo: '', feito: false, cliente: '', org: '', ticket: '' },
+  { id: 0, position: 0, data: '', tipo: '', feito: false, cliente: '', ticket: '' },
 ];
 
 @Component({
@@ -100,7 +99,7 @@ export class AtividadesComponent implements OnInit {
     assunto: ''
   };
 
-  displayedColumns: string[] = ['select', 'tipo', 'dataini', 'org', 'cliente', 'ticket.titulo', 'assunto', 'columnEdit', 'columnDelete'];
+  displayedColumns: string[] = ['select', 'tipo', 'dataini', 'cliente', 'ticket.titulo', 'assunto', 'columnEdit', 'columnDelete'];
 
   dataSource: any;
 
