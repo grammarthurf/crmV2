@@ -327,15 +327,18 @@ class TicketViewSet(viewsets.ModelViewSet):
         except:
           pass  
 
-        try:
-            if data['title']:
-                id = data['id']
-                T = Ticket.objects.get(id=data['id'])
-                T.titulo = data['title']
-                T.save()
+        # try:
+        if data['title']:
+            id = data['id']
+            T = Ticket.objects.get(id=data['id'])
+            T.titulo = data['title']
+            T.value = data['value']
+            C = Cliente.objects.get(id=int(data['contact']))
+            T.cliente = C
+            T.save()
     
-        except:
-          pass
+        # except:
+        #   pass
 
         try:
             if data['opt'] == 'term':

@@ -99,7 +99,7 @@ export class AtividadesComponent implements OnInit {
     assunto: ''
   };
 
-  displayedColumns: string[] = ['select', 'tipo', 'dataini', 'cliente', 'ticket.titulo', 'assunto', 'columnEdit', 'columnDelete'];
+  displayedColumns: string[] = ['select', 'tipo', 'dataini', 'ticket.titulo', 'cliente', 'assunto', 'columnEdit', 'columnDelete'];
 
   dataSource: any;
 
@@ -499,6 +499,7 @@ export class AtividadesComponent implements OnInit {
     this.crudService.getVendedor().subscribe(
       data => {
         this.vendedorapi = data;
+        console.log(this.vendedorapi)
       },
       error => {
         this.erroAtividade = error;

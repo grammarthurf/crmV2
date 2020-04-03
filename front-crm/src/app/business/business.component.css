@@ -354,3 +354,38 @@ lottie-animation-view {
 .modal-title {
   font-weight: bold;
 }
+
+/* .information-activity {
+  position: absolute;
+  top: 45%;
+  left: 40%;
+  box-shadow: 9px 10px 55px 34px rgba(117,117,117,0.38);
+  width: 18rem; 
+  border-radius: 8px;
+}
+
+.item:hover .descricao{
+  display: block;
+}
+
+.descricao {
+  display: none;
+} */
+
+label#label-input {
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px dashed #ddd;
+  background-size: cover;
+  cursor: pointer;
+  height: 160px;
+  width: 440px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* label#label-input input {
+  display: none;
+} */

@@ -87,39 +87,6 @@ export class OrganizationComponent implements OnInit {
     this.router.navigate([`/company-register/${id}`]);
   }
 
-  // SAVE ORGANIZATION
-  save() {
-    let razao_s = this.org.razaosocial;
-
-    if (razao_s === '') {
-      swal({
-        icon: "error",
-        text: "Razão Social não preenchida!",
-        timer: 1800,
-        buttons: {
-          buttons: false
-        }
-      });
-    } else {
-      this.crudService.saveNewOrg(this.org).subscribe(
-        data => {
-          swal({
-            icon: "success",
-            text: "Empresa salva com sucesso!",
-            timer: 1800,
-            buttons: {
-              buttons: false
-            }
-          });
-          this.getterOrg();
-        },
-        error => {
-          this.getterOrg();
-        }
-      );
-    }
-  }
-
   ngOnInit() {
 
   }
