@@ -15,17 +15,19 @@ export class CrudService {
   // baseUrl = "http://142.93.204.68:8000/";
   basetoken = JSON.parse(localStorage.getItem('token'));
   token = 'Token ' + this.basetoken;
-  htttpHeaders = new HttpHeaders().set("Content-Type", "application/json" ).set('Authorization', this.token);
+  htttpHeaders = new HttpHeaders().set("Content-Type", "application/json").set('Authorization', this.token);
   httploginheaders = new HttpHeaders().set("Content-Type", "application/json");
   body: any;
-  constructor(private http: HttpClient, private user: UserService, private cookies: CookieService) {}
+  htttpHeadersFormData = new HttpHeaders().set("Content-Type", "multipart/form-data").set('Authorization', this.token);
+
+  constructor(private http: HttpClient, private user: UserService, private cookies: CookieService) { }
 
   // User Authentication
 
-  public login(user): Observable<any>  {
+  public login(user): Observable<any> {
     // this.prilogin(user);
     this.username = user.username;
-    return this.http.post(this.baseUrl + 'api-token-auth/', JSON.stringify(user),{
+    return this.http.post(this.baseUrl + 'api-token-auth/', JSON.stringify(user), {
       headers: this.httploginheaders
     });
   }
@@ -39,9 +41,9 @@ export class CrudService {
 
   }
 
-  public registerUser(user): Observable<any>{
+  public registerUser(user): Observable<any> {
     this.username = user.username;
-    return this.http.post(`${this.baseUrl}auth/users/`, user , {
+    return this.http.post(`${this.baseUrl}auth/users/`, user, {
       headers: this.htttpHeaders
     });
   }
@@ -175,7 +177,7 @@ export class CrudService {
   }
 
   public saveNewTicket(ticket): Observable<any> {
-    console.log('cabeçalho: ',this.htttpHeaders);
+    console.log('cabeçalho: ', this.htttpHeadersFormData);
     console.log('token: ', this.basetoken);
 
 
@@ -224,46 +226,48 @@ export class CrudService {
   // PUT API
 
   public updateRamo(ramo): Observable<any> {
-    return this.http.put(this.baseUrl + 'ramo/' + ramo.id + '/' , ramo, {
+    return this.http.put(this.baseUrl + 'ramo/' + ramo.id + '/', ramo, {
       headers: this.htttpHeaders
     });
   }
 
   public UpdateProduct(prod): Observable<any> {
-    return this.http.put(this.baseUrl + 'produto/' + prod.id + '/' , prod, {
+    return this.http.put(this.baseUrl + 'produto/' + prod.id + '/', prod, {
       headers: this.htttpHeaders
     });
   }
 
   public updateatv(atv): Observable<any> {
-    return this.http.put(this.baseUrl + 'atividade/' + atv.position + '/' , atv, {
+    return this.http.put(this.baseUrl + 'atividade/' + atv.position + '/', atv, {
       headers: this.htttpHeaders
     });
   }
 
   public updatestatusatv(atv): Observable<any> {
-    return this.http.put(this.baseUrl + 'atividade/' + atv.id + '/' , atv, {
+    return this.http.put(this.baseUrl + 'atividade/' + atv.id + '/', atv, {
       headers: this.htttpHeaders
     });
   }
 
   public updateTicket(estagioUpdate, ticket): Observable<any> {
 
-    console.log('ESTAGIOUPDADE :' , typeof(estagioUpdate));
-    const body =  { id: parseInt(ticket.id),
-                    titulo: ticket.titulo,
-                    estagio: estagioUpdate.toString(),
-                    cliente: ticket.cliente.id.toString(),
-                    org: ticket.org.id.toString(),
-                    produto: ticket.produto,
-                    valorestimado: ticket.valorestimado,
-                    termometro: ticket.termometro,
-                    vendedor: ticket.vendedor,
-                    obs: ticket.obs,
-                    status: ticket.status};
+    console.log('ESTAGIOUPDADE :', typeof (estagioUpdate));
+    const body = {
+      id: parseInt(ticket.id),
+      titulo: ticket.titulo,
+      estagio: estagioUpdate.toString(),
+      cliente: ticket.cliente.id.toString(),
+      org: ticket.org.id.toString(),
+      produto: ticket.produto,
+      valorestimado: ticket.valorestimado,
+      termometro: ticket.termometro,
+      vendedor: ticket.vendedor,
+      obs: ticket.obs,
+      status: ticket.status
+    };
     console.log('body:', body);
 
-    return this.http.put(this.baseUrl + 'ticket/' + ticket.id + '/' , body, {
+    return this.http.put(this.baseUrl + 'ticket/' + ticket.id + '/', body, {
       headers: this.htttpHeaders
     });
   }
@@ -271,8 +275,9 @@ export class CrudService {
   public updateTicketDetails(ticket, mtvperd, cmtperd): Observable<any> {
 
     if (ticket.status === 'Perdido') {
-        console.log('caiu if')
-        this.body =  { id: parseInt(ticket.id),
+      console.log('caiu if')
+      this.body = {
+        id: parseInt(ticket.id),
         titulo: ticket.titulo,
         estagio: ticket.estagio.id,
         cliente: ticket.cliente.id.toString(),
@@ -284,10 +289,12 @@ export class CrudService {
         obs: ticket.obs,
         status: ticket.status,
         mtvperd: mtvperd,
-        cmtperd: cmtperd };
+        cmtperd: cmtperd
+      };
     } else {
       console.log('caiu else')
-      this.body =  { id: parseInt(ticket.id),
+      this.body = {
+        id: parseInt(ticket.id),
         titulo: ticket.titulo,
         estagio: ticket.estagio.id,
         cliente: ticket.cliente.id.toString(),
@@ -297,59 +304,62 @@ export class CrudService {
         termometro: ticket.termometro,
         vendedor: ticket.vendedor,
         obs: ticket.obs,
-        status: ticket.status };
+        status: ticket.status
+      };
     }
 
     console.log('body:', this.body);
 
-    return this.http.put(this.baseUrl + 'ticket/' + ticket.id + '/' , this.body, {
+    return this.http.put(this.baseUrl + 'ticket/' + ticket.id + '/', this.body, {
       headers: this.htttpHeaders
     });
   }
 
   public updateTicketTerm(idterm): Observable<any> {
 
-    const body =  { id: parseInt(idterm.id), term: idterm.term, opt: 'term' };
+    const body = { id: parseInt(idterm.id), term: idterm.term, opt: 'term' };
     console.log('body:', body);
 
-    return this.http.put(this.baseUrl + 'ticket/' + idterm.id + '/' , body, {
+    return this.http.put(this.baseUrl + 'ticket/' + idterm.id + '/', body, {
       headers: this.htttpHeaders
     });
   }
 
   public updateTicketObs(idobs): Observable<any> {
 
-    const body =  { id: parseInt(idobs.id), obs: idobs.obs, opt: 'obs' };
+    const body = { id: parseInt(idobs.id), obs: idobs.obs, opt: 'obs' };
     console.log('body:', body);
 
-    return this.http.put(this.baseUrl + 'ticket/' + idobs.id + '/' , body, {
+    return this.http.put(this.baseUrl + 'ticket/' + idobs.id + '/', body, {
       headers: this.htttpHeaders
     });
   }
 
   public updateTicketTitle(id, title, value, contact): Observable<any> {
 
-    const body =  { id: parseInt(id), title: title, value: value, contact: contact.id };
+    const body = { id: parseInt(id), title: title, value: value, contact: contact.id };
     console.log('body:', body);
 
-    return this.http.put(this.baseUrl + 'ticket/' + id + '/' , body, {
+    return this.http.put(this.baseUrl + 'ticket/' + id + '/', body, {
       headers: this.htttpHeaders
     });
   }
 
   public updatePerson(person): Observable<any> {
 
-    const body =  { id: parseInt(person.id),
-                    nome: person.nome,
-                    tipo: person.tipo,
-                    fone: person.fone,
-                    celular: person.celular.id,
-                    email: person.email,
-                    skype: person.skype,
-                    org: person.org.id };
+    const body = {
+      id: parseInt(person.id),
+      nome: person.nome,
+      tipo: person.tipo,
+      fone: person.fone,
+      celular: person.celular.id,
+      email: person.email,
+      skype: person.skype,
+      org: person.org.id
+    };
     console.log('body:', body);
 
-    return this.http.put(this.baseUrl + 'clientes/' + person.id + '/' , body, {
+    return this.http.put(this.baseUrl + 'clientes/' + person.id + '/', body, {
       headers: this.htttpHeaders
     });
   }
@@ -362,7 +372,7 @@ export class CrudService {
     //                 empresa: erp.empresa};
     // console.log('body:', body);
 
-    return this.http.put(this.baseUrl + 'erp/' + erp.position + '/' , erp, {
+    return this.http.put(this.baseUrl + 'erp/' + erp.position + '/', erp, {
       headers: this.htttpHeaders
     });
   }
@@ -370,7 +380,7 @@ export class CrudService {
   public UpdateOrgMain(org): Observable<any> {
     console.log(org);
     console.log(org.contatos);
-    return this.http.put(this.baseUrl + 'orgs/' + org.id + '/' , org, {
+    return this.http.put(this.baseUrl + 'orgs/' + org.id + '/', org, {
       headers: this.htttpHeaders
     });
   }
@@ -379,19 +389,21 @@ export class CrudService {
 
   public updateOrg(org): Observable<any> {
 
-    const body =  { id: parseInt(org.id),
-                    codigo: org.codigo,
-                    razaosocial: org.razaosocial,
-                    nomefantasia: org.nomefantasia,
-                    rua: org.rua,
-                    bairro: org.bairro,
-                    cep: org.cep,
-                    cidade: org.cidade,
-                    uf: org.uf,
-                    erp: org.erp };
+    const body = {
+      id: parseInt(org.id),
+      codigo: org.codigo,
+      razaosocial: org.razaosocial,
+      nomefantasia: org.nomefantasia,
+      rua: org.rua,
+      bairro: org.bairro,
+      cep: org.cep,
+      cidade: org.cidade,
+      uf: org.uf,
+      erp: org.erp
+    };
     console.log('body:', body);
 
-    return this.http.put(this.baseUrl + 'orgs/' + org.id + '/' , body, {
+    return this.http.put(this.baseUrl + 'orgs/' + org.id + '/', body, {
       headers: this.htttpHeaders
     });
   }

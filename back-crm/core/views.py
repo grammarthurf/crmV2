@@ -1,7 +1,7 @@
 
 from rest_framework import viewsets
 from .serializers import ClienteSerializer, EstagioSerializer, OrganizacaoSerializer, ProdutoSerializer, TicketSerializer, VendedorSerializer, ErpSerializer, RamoSerializer, AtividadeSerializer, UserSerializer, ObsSerializer, VendedorExtSerializer
-from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade, Created, Updated, Erp, Ramo, Obs, VendedorExt
+from .models import Cliente, Estagio, Organizacao, Produto, Ticket, Vendedor, Atividade, Created, Updated, Erp, Ramo, Obs, VendedorExt, File
 from django.core import serializers
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -271,6 +271,11 @@ class TicketViewSet(viewsets.ModelViewSet):
         print(request.user)
         print(request.headers)
 
+        f = File()
+        f.titulo = data['titulo']
+        f.file = data['file']
+        f.save()
+
         c = Created()
         c.user = request.user
         c.save()
@@ -308,6 +313,7 @@ class TicketViewSet(viewsets.ModelViewSet):
         for prod in produtos:
             T.produto.add(Produto.objects.get(id=prod))
 
+        T.file.add(f)
         T.save()
         print(data)
         return JsonResponse({'message': 'Saved'})
@@ -325,7 +331,7 @@ class TicketViewSet(viewsets.ModelViewSet):
                 T.cmtperd = data['cmtperd']
             T.save()
         except:
-          pass  
+            pass
 
         try:
             if data['title']:
@@ -333,9 +339,9 @@ class TicketViewSet(viewsets.ModelViewSet):
                 T = Ticket.objects.get(id=data['id'])
                 T.titulo = data['title']
                 T.save()
-    
+
         except:
-          pass
+            pass
 
         try:
             if data['opt'] == 'term':
@@ -413,12 +419,16 @@ class AtividadeViewSet(viewsets.ModelViewSet):
                 print('entrouaqui')
 
         except:
+            print(data)
+
             A = Atividade.objects.get(id=data['position'])
             A.dataini = data['dataini']
             A.datafim = data['datafim']
             A.horaini = data['horaini']
             A.horafim = data['horafim']
             A.assunto = data['assunto']
+            V = Vendedor.objects.get(id=int(data['vendedor']))
+            A.vendedor = V
             A.feito = data['feito']
             print('CLIENTE: ', data['cliente'])
             print('ORG: ', data['org'])

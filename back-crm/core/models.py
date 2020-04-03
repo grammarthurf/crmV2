@@ -7,7 +7,11 @@ from front import settings
 from django.contrib.auth.models import User
 
 
+def upload_path(instance, filename):
+    return '/'.join(['files', str(instance.titulo), filename])
+
 # Create your models here.
+
 
 class Vendedor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -68,7 +72,6 @@ class Erp(models.Model):
         return str(self.desc)
 
 
-
 class Estagio (models.Model):
     nome = models.CharField(max_length=100)
 
@@ -91,7 +94,6 @@ class Cliente(models.Model):
 
     def __str__(self):
         return str(self.nome) if self.nome else ' '
-
 
 
 class Organizacao (models.Model):
@@ -152,8 +154,17 @@ class Obs(models.Model):
         return str(self.data)
 
 
+class File(models.Model):
+    titulo = models.CharField(max_length=154, null=False, blank=False)
+    file = models.FileField(upload_to=upload_path, null=False)
+
+
 class Ticket (models.Model):
     titulo = models.CharField(max_length=100, blank=True)
+    created = models.ForeignKey(Created, on_delete=models.CASCADE, null=True)
+    file = models.ManyToManyField(
+        File, blank=True, related_name='ticket_files')
+
     estagio = models.ForeignKey(
         Estagio, related_name='tickets', on_delete=models.CASCADE, null=True)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True)
@@ -195,4 +206,3 @@ class Atividade (models.Model):
 
     def __str__(self):
         return str(self.assunto)
-
