@@ -2,76 +2,114 @@
 
   <!-- HEADER -->
   <div class="col-12 div-top row div-border">
-    <div class="col-9">
-      <div class="col-10 row">
+    <div class="col-12">
+      <div class="col-12 row">
 
-
-        <input type="text" [(ngModel)]="business.titulo" id="update-title"> 
+        <input type="text" [(ngModel)]="business.titulo" id="update-title" (keyup)="maiuscula($event.target.value, 2)">
         <button mat-icon-button (click)="updateTicketTitle()">
           <mat-icon>check</mat-icon>
         </button>
-        
-      </div>
-      <div class="flex" style="padding: 0;">
-        <img src="../../assets/moeda.png" class="img1" />
-        <!-- <input type="text" [(ngModel)]="business.valorestimado" id="update-value"> -->
-        <p class="bold">
-          {{business.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}
-        </p>
-        <img src="../../assets/contato.png" class="img1" />
-        <!-- <select [(ngModel)]="business.cliente" id="update-contact">
-          <option value="undefined" hidden>{{business.org.contatos.nome}}</option>
-          <option *ngFor="let i of business.org.contatos" value="i.id">{{i.nome}}</option>
-        </select> -->
-        <p>
-          {{clientName}}
-        </p>
-        <img src="../../assets/empresa.png" class="img1" />
-        <p>
-          {{business.org.nomefantasia}}
-        </p>
-        <img src="../../assets/termometro.png" class="img1" />
-        <p>Termômetro:</p>
-        <div class="margin5">
-          <input [(ngModel)]="idobs.term" (change)="updateTicketTerm()" type="range" id="thermometro"
-            value="{{business.termometro}}" step="50" style="width: 150px;" />
-          <div class=" row">
-            <p class="ptherm"> Regular </p>
-            <p class="ptherm2"> Bom </p>
-            <p class="ptherm"> Ótimo </p>
+
+        <div class="col-4">
+          <div class="div-vendedor">
+            <div class="flex">
+              <p style="font-size: 13px;">
+                Vendedor:
+              </p>
+              <p style="font-size: 16px; margin-top: -4px;" *ngIf="business.vendedor.user.username">
+                {{business.vendedor.user.username}}
+              </p>
+              <p style="font-size: 16px; margin-top: -4px;" *ngIf="!business.vendedor.user.username">
+                Sem vendedor
+              </p>
+            </div>
+
+
+            <p style="font-size: 12px;" mask="9999-99-99" *ngIf="(business.created)"> Criado em
+              {{business.created.datetime | date: 'dd/MM/yyyy hh:mm'}}
           </div>
         </div>
+
+        <div class="col-3 row div-choice">
+          <button class="btn-win-lose btn-success" id="win" (click)="stageWin()">
+            Ganho
+          </button>
+          <button class="btn-win-lose" id="null" (click)="stageNull()">
+            Reabrir
+          </button>
+          <button class="btn-win-lose btn-danger" id="lose" data-toggle="modal" data-target="#loseModal">
+            Perdido
+          </button>
+        </div>
+      </div>
+
+
+      <div class="flex" style="padding: 0;">
+
+        <div class="flex col-3">
+          <img src="../../assets/moeda.png" class="img1" />
+          <!-- <input type="text" [(ngModel)]="business.valorestimado" id="update-value" currencyMask
+            [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"> -->
+          <p class="bold">
+            {{business.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}
+          </p>
+        </div>
+
+        <div class="flex col-3">
+          <img src="../../assets/contato.png" class="img1" />
+          <!-- <mat-form-field style="width: 100%;">
+            <mat-label *ngIf="business.org.clientes">{{this.business.cliente.nome}}</mat-label>
+            <mat-select [(ngModel)]="business.cliente">
+              <mat-option *ngFor="let i of business.org.contatos" value="{{i.id}}">
+                {{i.nome}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+
+
+          <!-- <select [(ngModel)]="business.cliente" id="update-contact">
+            <option value="undefined" hidden>{{business.org.contatos.nome}}</option>
+            <option *ngFor="let i of business.org.contatos" value="i.id">{{i.nome}}</option>
+          </select> -->
+          <p>
+            {{this.business.cliente.nome}}
+          </p>
+        </div>
+
+        <div class="flex col-3">
+          <img src="../../assets/empresa.png" class="img1" />
+          <p>
+            {{business.org.nomefantasia}}
+          </p>
+        </div>
+
+        
+
+        <!-- <p>
+          {{clientName}}
+        </p> -->
+
+        <div class="flex col-3">
+          <img src="../../assets/termometro.png" class="img1" />
+          <p>Termômetro:</p>
+          <div class="margin5">
+            <input [(ngModel)]="idobs.term" (change)="updateTicketTerm()" type="range" id="thermometro"
+              value="{{business.termometro}}" step="{{business.termometro}}" style="width: 150px;" />
+            <div class=" row">
+              <p class="ptherm"> Regular </p>
+              <p class="ptherm2"> Bom </p>
+              <p class="ptherm"> Ótimo </p>
+            </div>
+          </div>
+        </div>
+
+
       </div>
     </div>
-    <div class="col-2 row div-choice">
-      <button class="btn-win-lose btn-success" id="win" (click)="stageWin()">
-        Ganho
-      </button>
-      <button class="btn-win-lose" id="null" (click)="stageNull()">
-        Reabrir
-      </button>
-      <button class="btn-win-lose btn-danger" id="lose" data-toggle="modal" data-target="#loseModal">
-        Perdido
-      </button>
-    </div>
-    <lottie-animation-view [options]="lottieConfig" [width]="400" [height]="400"
-      (animCreated)="handleAnimation($event)" id="lottie">
+    <lottie-animation-view [options]="lottieConfig" [width]="400" [height]="400" (animCreated)="handleAnimation($event)"
+      id="lottie">
     </lottie-animation-view>
-    <div class="col-1">
-      <div class="div-vendedor">
-        <p style="font-size: 13px;">
-          Vendedor:
-        </p>
-        <p style="font-size: 23px;" *ngIf="business.vendedor">
-          {{business.vendedor.username}}
-        </p>
-        <p style="font-size: 20px; color: grey;" *ngIf="!business.vendedor">
-          Sem vendedor
-        </p>
-        <p style="font-size: 12px;" mask="9999-99-99" *ngIf="(business.created)"> Criado em
-          {{business.created.datetime | date: 'dd/MM/yyyy hh:mm'}}
-      </div>
-    </div>
+
 
     <!-- BARRA DE PROGRESSO -->
     <div class="col-12 flex md-stepper-horizontal green orange">
@@ -360,7 +398,7 @@
           <mat-tab label="Observações">
             <div class="col-12 mg-t-10 divtab">
               <textarea rows="10" [(ngModel)]="idobs.obs" class="col-12 txtarea"
-                (keyup)="maiuscula($event.target.value)"></textarea>
+                (keyup)="maiuscula($event.target.value, 1)"></textarea>
               <button type="button" (click)="updateTicketObs()" class="btn btn-success bold btn-sm fltright">
                 Adicionar
               </button>
@@ -410,7 +448,7 @@
             <div class="col-12 mg-t-10 divtab">
               <form>
                 <label id="thumbnail">
-                  <input type="file" name="attachments[dummy][file]"  class="file_selector" multiple="multiple"/>
+                  <input type="file" name="attachments[dummy][file]" class="file_selector" multiple="multiple" />
                 </label>
                 <button class="btn btn-success" (click)="formAnexo()" style="float: right;">Salvar Anexo</button>
               </form>

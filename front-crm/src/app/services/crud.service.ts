@@ -337,7 +337,7 @@ export class CrudService {
 
   public updateTicketTitle(id, title, value, contact): Observable<any> {
 
-    const body = { id: parseInt(id), title: title, value: value, contact: contact.id };
+    const body = { id: parseInt(id), title: title, value: value, contact: contact };
     console.log('body:', body);
 
     return this.http.put(this.baseUrl + 'ticket/' + id + '/', body, {

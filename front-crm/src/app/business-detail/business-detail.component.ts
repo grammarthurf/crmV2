@@ -71,8 +71,10 @@ export class BusinessDetailComponent implements OnInit {
   }
 
   updateTicketTitle(){
-    console.log(this.business);
-    this.crudService.updateTicketTitle(this.business.id, this.business.titulo, this.business.valorestimado, this.business.cliente).subscribe(
+    // console.log("business: ", this.business.termometro);
+    console.log("business: ", this.business);
+
+    this.crudService.updateTicketTitle(this.business.id, this.business.titulo, this.business.valorestimado, this.business.cliente.id).subscribe(
       data => {
         console.log(data)
         swal({
@@ -92,6 +94,7 @@ export class BusinessDetailComponent implements OnInit {
   // UPDATE OBS LEADS
   updateTicketObs() {
     this.idobs.id = this.business.id;
+    console.log('OBSERVAÇÕES', this.business.obs)
 
     this.crudService.updateTicketObs(this.idobs).subscribe(
       data => {
@@ -128,7 +131,7 @@ export class BusinessDetailComponent implements OnInit {
         } else {
           this.stageNull();
         }
-        this.clientName = this.business.cliente.nome.split(" ", 1);
+        // this.clientName = this.business.cliente.nome.split(" ", 1);
       },
       error => {}
     );
@@ -293,13 +296,19 @@ export class BusinessDetailComponent implements OnInit {
 
 
   ngOnInit() {
-
+    
   }
 
   // TRANSFORM CAPITAL LETTER
-  maiuscula(value: string){
+  maiuscula(value: string, id: number){
     var v = value.toUpperCase();
-    this.idobs.obs = v;
+
+    if (id == 1) {
+      this.idobs.obs = v;
+    } else (id == 2) 
+      this.business.titulo = v
+    
+    // this.idobs.obs = v;
   }
 
   // FORMAT PHONE NUMBER

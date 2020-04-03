@@ -181,3 +181,8 @@ div.fc-right {
     .modal-lg, .modal-xl {
     max-width: 870px;
 }
+
+.assunto-quebra {
+    width: 440px;
+    word-wrap: break-word;
+}

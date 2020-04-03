@@ -79,7 +79,7 @@ export class BusinessComponent implements OnInit {
     };
 
   }
-
+  
   // GENERATE CODE
   code1: any;
   generateCode1() {

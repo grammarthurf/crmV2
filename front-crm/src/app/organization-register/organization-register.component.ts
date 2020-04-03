@@ -368,7 +368,16 @@ export class OrganizationRegisterComponent implements OnInit {
           console.log(data);
           this.exit();
         },
-        error => {}
+        error => {
+          swal({
+            icon: "error",
+            text: "Erro no cadastro, tente novamente!",
+            timer: 1800,
+            buttons: {
+              buttons: false
+            }
+          });
+        }
       );
     }
 
@@ -378,7 +387,7 @@ export class OrganizationRegisterComponent implements OnInit {
     //this.org.erpe.push(this.erp);
     //this.org.ramo.push(this.ramos);
 
-    console.log(this.org.erp)
+    // console.log(this.org.erp)
 
     if(this.org.erp == undefined){
       if(this.orgUpdate.erpe == null){
@@ -402,6 +411,7 @@ export class OrganizationRegisterComponent implements OnInit {
     } else {
       console.log(this.org.ramos)
     }
+
     
     this.crudService.UpdateOrgMain(this.org).subscribe(
       data => {
