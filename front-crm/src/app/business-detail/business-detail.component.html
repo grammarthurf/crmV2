@@ -10,9 +10,21 @@
           <mat-icon>check</mat-icon>
         </button>
 
+        <div class="col-3 row div-choice">
+          <button class="btn-win-lose btn-success" id="win" (click)="stageWin()">
+            Ganho
+          </button>
+          <button class="btn-win-lose" id="null" (click)="stageNull()">
+            Reabrir
+          </button>
+          <button class="btn-win-lose btn-danger" id="lose" data-toggle="modal" data-target="#loseModal">
+            Perdido
+          </button>
+        </div>
+
         <div class="col-4">
           <div class="div-vendedor">
-            <div class="flex">
+            <div class="flex" style="justify-content: center;">
               <p style="font-size: 13px;">
                 Vendedor:
               </p>
@@ -25,22 +37,12 @@
             </div>
 
 
-            <p style="font-size: 12px;" mask="9999-99-99" *ngIf="(business.created)"> Criado em
+            <p style="font-size: 12px; text-align: center;" mask="9999-99-99" *ngIf="(business.created)"> Criado em
               {{business.created.datetime | date: 'dd/MM/yyyy hh:mm'}}
           </div>
         </div>
 
-        <div class="col-3 row div-choice">
-          <button class="btn-win-lose btn-success" id="win" (click)="stageWin()">
-            Ganho
-          </button>
-          <button class="btn-win-lose" id="null" (click)="stageNull()">
-            Reabrir
-          </button>
-          <button class="btn-win-lose btn-danger" id="lose" data-toggle="modal" data-target="#loseModal">
-            Perdido
-          </button>
-        </div>
+        
       </div>
 
 

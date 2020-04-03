@@ -107,13 +107,12 @@ mat-icon {
 .div-choice {
 	padding-left: 0;
 	margin-left: auto;
-	justify-content: flex-end;
+	justify-content: end;
 	margin-bottom: 15px
 }
 
 .div-vendedor {
-	float: right; 
-	text-align: right; 
+	text-align: center; 
 	margin-top: 10px;
 	margin-right: 0px;
 }
