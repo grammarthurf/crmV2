@@ -8,7 +8,9 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         model = User
         fields = ['id', 'username', 'email', 'password']
 
-    def create(self, validated_data):
+    def create(self, request, validated_data):
+        print('USERSENDOCRIADO: ', request.data)
+
         user = User.objects.create(**validated_data)
         return user
 
@@ -20,12 +22,12 @@ class RamoSerializer(serializers.ModelSerializer):
         depth = 1
 
 
-
 class VendedorExtSerializer(serializers.ModelSerializer):
     class Meta:
         model = VendedorExt
         fields = '__all__'
         depth = 1
+
 
 class ErpSerializer(serializers.ModelSerializer):
     class Meta:
@@ -33,13 +35,13 @@ class ErpSerializer(serializers.ModelSerializer):
         fields = '__all__'
         depth = 1
 
+
 class AtividadeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Atividade
         # cliente = ClienteSerializer(many=False, read_only=True)
         fields = '__all__'
         depth = 2
-
 
 
 class ClienteSerializer(serializers.ModelSerializer):
@@ -54,9 +56,9 @@ class TicketSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ticket
         fields = ['id', 'titulo', 'estagio', 'cliente',
-        'org', 'produto', 'valorestimado', 'termometro',
-        'vendedor', 'obs', 'status', 'created', 'updated',
-        'atividades', 'vendedorext' ,'mtvperd', 'cmtperd']
+                  'org', 'produto', 'valorestimado', 'termometro',
+                  'vendedor', 'obs', 'status', 'created', 'updated',
+                  'atividades', 'vendedorext', 'mtvperd', 'cmtperd', 'file']
         depth = 2
 
 
@@ -72,7 +74,7 @@ class OrganizacaoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Organizacao
         fields = ['id', 'codigo', 'razaosocial', 'nomefantasia', 'rua',
-                  'bairro', 'cidade', 'uf', 'erpe', 'ramo', 'telefone' ,  'contatos', 'complemento', 'cnpj', 'ie', 'cep', 'email', 'site']
+                  'bairro', 'cidade', 'uf', 'erpe', 'ramo', 'telefone',  'contatos', 'complemento', 'cnpj', 'ie', 'cep', 'email', 'site']
         depth = 1
 
 
@@ -87,12 +89,9 @@ class VendedorSerializer(serializers.ModelSerializer):
         model = Vendedor
         fields = ['id', 'nome']
 
+
 class ObsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Obs
         fields = ['id', 'texto', 'data']
         depth = 2
-
-
-
-
