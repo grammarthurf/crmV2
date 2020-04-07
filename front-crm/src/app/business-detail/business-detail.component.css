@@ -33,7 +33,7 @@ select#update-contact {
 	border: 1px solid #ddd;
 	border-radius: 2px;
 	height: 40px;
-	/* width: 180px; */
+	width: 100%;
 	margin: 5px 10px 0 10px;
 	padding: 0 2px;
 	font-size: 16px;

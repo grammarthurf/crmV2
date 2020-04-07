@@ -46,7 +46,7 @@ export class OrganizationRegisterComponent implements OnInit {
   code2: any;
 
   ngOnInit() {
-    this.loadOrg()
+    this.loadOrg();
   }
 
   getterOrgs() {
@@ -227,6 +227,9 @@ export class OrganizationRegisterComponent implements OnInit {
       contatovar.skp = '';
     }
 
+    console.log(this.orgUpdate)
+    // console.log(this.orgUpdate)
+
     console.log(this.contato.ramal)
     this.org.contatos.push(contatovar)
   
@@ -389,29 +392,39 @@ export class OrganizationRegisterComponent implements OnInit {
 
     // console.log(this.org.erp)
 
-    if(this.org.erp == undefined){
-      if(this.orgUpdate.erpe == null){
-        // this.org.erp = "";
-      } else {
-        this.org.erp = this.orgUpdate.erpe.id;
-      }
-      console.log(this.org.erp)
-    } else {
-      console.log(this.org.erp)
+    // if(this.org.erp == undefined){
+    //   if(this.orgUpdate.erpe == null){
+    //     // this.org.erp = "";
+    //   } else {
+    //     this.org.erp = this.orgUpdate.erpe.id;
+    //   }
+    //   console.log(this.org.erp)
+    // } else {
+    //   console.log(this.org.erp)
+    // }
+
+
+    // if(this.org.ramos == undefined){
+    //   if(this.orgUpdate.ramo == null){
+    //     // this.org.ramos = "";
+    //   } else {
+    //     this.org.ramos = this.orgUpdate.ramo.id;
+    //   }
+    //   console.log(this.org.ramos)
+    // } else {
+    //   console.log(this.org.ramos)
+    // }
+
+    if(this.org.erp == undefined) {
+      this.org.erp = "";
     }
 
-
-    if(this.org.ramos == undefined){
-      if(this.orgUpdate.ramo == null){
-        // this.org.ramos = "";
-      } else {
-        this.org.ramos = this.orgUpdate.ramo.id;
-      }
-      console.log(this.org.ramos)
-    } else {
-      console.log(this.org.ramos)
+    if(this.org.ramos == undefined) {
+      this.org.ramos = "";
     }
 
+    console.log('ERP', this.org.erpe)
+    console.log('RAMOS', this.org.ramos)
     
     this.crudService.UpdateOrgMain(this.org).subscribe(
       data => {

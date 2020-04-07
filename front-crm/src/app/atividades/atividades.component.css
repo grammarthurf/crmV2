@@ -177,12 +177,18 @@ div.fc-right {
     display: flex;
 }
 
-@media (min-width: 992px) {}
+@media (min-width: 992px) {
     .modal-lg, .modal-xl {
-    max-width: 870px;
+        max-width: 870px;
+    }
 }
+    
 
 .assunto-quebra {
     width: 440px;
     word-wrap: break-word;
+}
+
+.md-select-menu-container {
+    z-index: 99999 !important;
 }

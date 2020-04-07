@@ -196,12 +196,16 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
             O.cnpj = data['cnpj']
         except:
             pass
-
-        O.ramo = Ramo.objects.get(id=int(data['ramos']))
+        try:
+            O.ramo = Ramo.objects.get(id=int(data['ramos']))
+        except:
+            pass
+        try:
+            O.erpe = Erp.objects.get(id=int(data['erp']))
+        except:
+            pass
+            
         O.ie = data['ie']
-
-        O.erpe = Erp.objects.get(id=int(data['erp']))
-
         O.save()
 
         O.contatos.clear()

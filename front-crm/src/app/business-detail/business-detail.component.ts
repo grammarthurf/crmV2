@@ -73,6 +73,7 @@ export class BusinessDetailComponent implements OnInit {
   updateTicketTitle(){
     // console.log("business: ", this.business.termometro);
     console.log("business: ", this.business);
+    console.log("VALOR TERMOMETRO: ", this.business.termometro)
 
     this.crudService.updateTicketTitle(this.business.id, this.business.titulo, this.business.valorestimado, this.business.cliente.id).subscribe(
       data => {
