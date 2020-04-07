@@ -371,7 +371,7 @@
           <div class="row">
             <label style="margin-left: 10px;">Anexos</label>
             <label id="label-input">
-              <input type="file" multiple id="input-file">
+              <input [(ngModel)]="ticket.file" type="file" single id="input-file">
             </label>
           </div>
 
@@ -481,7 +481,7 @@
       <h6 class="card-subtitle mb-2 text-muted" style="text-align: center;">atividade atrelada á Lead</h6>
       <p class="card-text">
         <b style="color: red;">Vermelho:</b> Atividade Atrasada
-        <b style="color: orange;">Laranja:</b> Nenhuma Atividade 
+        <b style="color: orange;">Laranja:</b> Nenhuma Atividade
         <b style="color: green;">Verde:</b> Atividade em Dia
       </p>
     </div>

@@ -297,14 +297,22 @@ class TicketViewSet(viewsets.ModelViewSet):
         try:
             if data['obs'].length >= 1:
                 for i in data['obs']:
+                    c = Created()
+                    c.user = request.user
+                    c.save()
                     k = Obs()
                     k.texto = i
+                    k.created = c
                     k.save()
                     T.obs.add(k)
                     T.save()
         except:
             k = Obs()
+            c = Created()
+            c.user = request.user
+            c.save()
             k.texto = data['obs']
+            k.created = c
             k.save()
             T.obs.add(k)
             T.save()
@@ -324,6 +332,21 @@ class TicketViewSet(viewsets.ModelViewSet):
 
         try:
             T = Ticket.objects.get(id=data['id'])
+            c = Created()
+            c.user = request.user
+            c.save()
+            f = File()
+            f.titulo = data['filetitle']
+            f.file = data['files']
+            f.created = c
+            f.save()
+            T.file.add(f)
+            T.save()
+        except:
+            pass
+
+        try:
+            T = Ticket.objects.get(id=data['id'])
             T.estagio = Estagio.objects.get(id=data['estagio'])
             T.status = data['status']
             if T.status == 'Perdido':
@@ -333,18 +356,18 @@ class TicketViewSet(viewsets.ModelViewSet):
         except:
             pass
 
-        # try:
-        if data['title']:
-            id = data['id']
-            T = Ticket.objects.get(id=data['id'])
-            T.titulo = data['title']
-            T.value = data['value']
-            C = Cliente.objects.get(id=int(data['contact']))
-            T.cliente = C
-            T.save()
+        try:
+            if data['title']:
+                id = data['id']
+                T = Ticket.objects.get(id=data['id'])
+                T.titulo = data['title']
+                T.value = data['value']
+                C = Cliente.objects.get(id=int(data['contact']))
+                T.cliente = C
+                T.save()
 
-        # except:
-        #   pass
+        except:
+            pass
 
         try:
             if data['opt'] == 'term':
@@ -359,9 +382,13 @@ class TicketViewSet(viewsets.ModelViewSet):
         try:
             if data['opt'] == 'obs':
                 o = Obs()
+                c = Created()
+                c.user = request.user
+                c.save()
+                o.created = c
                 o.texto = data['obs']
-                T = Ticket.objects.get(id=data['id'])
                 o.save()
+                T = Ticket.objects.get(id=data['id'])
                 T.obs.add(o)
                 T.save()
         except:

@@ -5,7 +5,7 @@ import { Router, Data } from "@angular/router";
 import swal from 'sweetalert';
 import listPlugin from '@fullcalendar/list';
 import bootstrapPlugin from '@fullcalendar/bootstrap';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 
 @Component({
   selector: "app-business-detail",
@@ -32,6 +32,10 @@ export class BusinessDetailComponent implements OnInit {
     { title: 'event 1', start: '2020-03-02T10:00', end: '2020-03-01' }
   ];
 
+  file: File = null
+  filetitle: string;
+
+
   constructor(private route: ActivatedRoute, private crudService: CrudService, private router: Router) {
     this.lottieConfig = {
       path: 'assets/trophy.json',
@@ -42,23 +46,47 @@ export class BusinessDetailComponent implements OnInit {
 
     this.getterEstagio();
     this.loadBusiness();
-    this.calendarPlugins = [ listPlugin , bootstrapPlugin ];
+    this.calendarPlugins = [listPlugin, bootstrapPlugin];
   }
 
-  addInputFiles(e){
-    console.log(e);
+  onFileSelected(e) {
+    this.file = e.target.files[0];
 
   }
 
-  formAnexo(){
+  files(e) {
+    this.filetitle = e;
 
   }
+
+  onUpload() {
+
+    if (this.filetitle && this.file) {
+      this.crudService.updateFile(this.business.id, this.file, this.filetitle).subscribe(data => {
+        console.log(data);
+      }, err => {
+        console.error(err);
+      });
+    } else {
+      swal({
+        icon: "error",
+        text: "Digte um titulo e escolha um arquivo !",
+        timer: 1450,
+        buttons: {
+          buttons: false
+        }
+      });
+    }
+
+
+  }
+
 
   // UPDATE STATUS LEADS
   updatedTicketStatus(ticket) {
     this.crudService.updateTicketDetails(ticket, this.idobs.mtvperd, this.idobs.cmtperd).subscribe(
-      data => {},
-      error => {}
+      data => { },
+      error => { }
     );
   }
 
@@ -66,11 +94,11 @@ export class BusinessDetailComponent implements OnInit {
   updateTicketTerm() {
     this.idobs.id = this.business.id;
     this.crudService.updateTicketTerm(this.idobs).subscribe(
-      data => {}, error => {}
+      data => { }, error => { }
     );
   }
 
-  updateTicketTitle(){
+  updateTicketTitle() {
     // console.log("business: ", this.business.termometro);
     console.log("business: ", this.business);
 
@@ -108,7 +136,7 @@ export class BusinessDetailComponent implements OnInit {
             buttons: false
           }
         });
-      }, error => {}
+      }, error => { }
     );
   }
 
@@ -116,6 +144,7 @@ export class BusinessDetailComponent implements OnInit {
   loadBusiness() {
     const id = this.route.snapshot.paramMap.get("id");
     this.getterTicket(id);
+
   }
 
   // GET LEADS
@@ -123,6 +152,9 @@ export class BusinessDetailComponent implements OnInit {
     this.crudService.getTicket(id).subscribe(
       data => {
         this.business = data;
+
+        console.log(this.business);
+
         this.reverseArray()
         if (this.business.status == 'Ganhou') {
           this.stageWin();
@@ -133,7 +165,7 @@ export class BusinessDetailComponent implements OnInit {
         }
         // this.clientName = this.business.cliente.nome.split(" ", 1);
       },
-      error => {}
+      error => { }
     );
   }
 
@@ -172,15 +204,15 @@ export class BusinessDetailComponent implements OnInit {
       data => {
         this.estagiosapi = data;
       },
-      error => {}
+      error => { }
     );
   }
 
   // UPDATE LEAD
   updatedTicket(id, ticket) {
     this.crudService.updateTicket(id, ticket).subscribe(
-      data => {},
-      error => {}
+      data => { },
+      error => { }
     )
   }
 
@@ -188,25 +220,25 @@ export class BusinessDetailComponent implements OnInit {
   changeid(idd: number) {
     if (idd == 1) {
       this.business.estagio.id = 1;
-      this.updatedTicket(this.business.estagio.id , this.business)
+      this.updatedTicket(this.business.estagio.id, this.business)
     } else if (idd == 2) {
       this.business.estagio.id = 2;
-      this.updatedTicket(this.business.estagio.id , this.business)
+      this.updatedTicket(this.business.estagio.id, this.business)
     } else if (idd == 3) {
       this.business.estagio.id = 3;
-      this.updatedTicket(this.business.estagio.id , this.business)
+      this.updatedTicket(this.business.estagio.id, this.business)
     } else if (idd == 4) {
       this.business.estagio.id = 4;
-      this.updatedTicket(this.business.estagio.id , this.business)
+      this.updatedTicket(this.business.estagio.id, this.business)
     } else if (idd == 5) {
       this.business.estagio.id = 5;
-      this.updatedTicket(this.business.estagio.id , this.business)
+      this.updatedTicket(this.business.estagio.id, this.business)
     } else if (idd == 7) {
       this.business.estagio.id = 7;
-      this.updatedTicket(this.business.estagio.id , this.business)
+      this.updatedTicket(this.business.estagio.id, this.business)
     } else if (idd == 8) {
       this.business.estagio.id = 8;
-      this.updatedTicket(this.business.estagio.id , this.business)
+      this.updatedTicket(this.business.estagio.id, this.business)
     }
   }
 
@@ -225,7 +257,7 @@ export class BusinessDetailComponent implements OnInit {
     if (this.business.status != 'Ganhou') {
       this.business.status = 'Ganhou';
       this.business.estagio.id = 8;
-      this.updatedTicket(this.business.estagio.id , this.business)
+      this.updatedTicket(this.business.estagio.id, this.business)
     }
     this.play();
     setTimeout(() => {
@@ -296,18 +328,18 @@ export class BusinessDetailComponent implements OnInit {
 
 
   ngOnInit() {
-    
+
   }
 
   // TRANSFORM CAPITAL LETTER
-  maiuscula(value: string, id: number){
+  maiuscula(value: string, id: number) {
     var v = value.toUpperCase();
 
     if (id == 1) {
       this.idobs.obs = v;
-    } else (id == 2) 
-      this.business.titulo = v
-    
+    } else (id == 2)
+    this.business.titulo = v
+
     // this.idobs.obs = v;
   }
 

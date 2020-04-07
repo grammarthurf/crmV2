@@ -57,7 +57,7 @@ export class BusinessComponent implements OnInit {
 
   values = '';
 
-  ticket = { titulo: "", estagio: '', cliente: '', org: '', produto: '', valorestimado: 0, termometro: '', vendedor: '', obs: '', vendext: '' };
+  ticket = { titulo: "", estagio: '', cliente: '', org: '', produto: '', file: '', valorestimado: 0, termometro: '', vendedor: '', obs: '', vendext: '' };
 
   today = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-0' + this.dNow.getDate();
   today1 = this.dNow.getFullYear() + '-0' + (this.dNow.getMonth() + 1) + '-' + this.dNow.getDate();
@@ -79,7 +79,7 @@ export class BusinessComponent implements OnInit {
     };
 
   }
-  
+
   // GENERATE CODE
   code1: any;
   generateCode1() {

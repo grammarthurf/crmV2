@@ -157,11 +157,12 @@ class Obs(models.Model):
 class File(models.Model):
     titulo = models.CharField(max_length=154, null=False, blank=False)
     file = models.FileField(upload_to=upload_path, null=False)
+    created = models.ForeignKey(Created, on_delete=models.CASCADE, null=True)
 
 
 class Ticket (models.Model):
     titulo = models.CharField(max_length=100, blank=True)
-    created = models.ForeignKey(Created, on_delete=models.CASCADE, null=True)
+
     file = models.ManyToManyField(
         File, blank=True, related_name='ticket_files')
 

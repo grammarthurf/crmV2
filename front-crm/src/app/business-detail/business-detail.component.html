@@ -5,7 +5,7 @@
     <div class="col-12">
       <div class="col-12 row">
 
-        <input type="text" [(ngModel)]="business.titulo" id="update-title" (keyup)="maiuscula($event.target.value, 2)">
+        <input type="text" [(ngModel)]="business.titulo " id="update-title" (keyup)="maiuscula($event.target.value, 2)">
         <button mat-icon-button (click)="updateTicketTitle()">
           <mat-icon>check</mat-icon>
         </button>
@@ -83,7 +83,7 @@
           </p>
         </div>
 
-        
+
 
         <!-- <p>
           {{clientName}}
@@ -413,12 +413,14 @@
               <ul class="list-group list-group-flush">
                 <li *ngFor="let item of business.obs" class="list-group-item p">
                   <b class="b-b">
-                    {{item.data | date:'dd/MM/yyyy'}}
+                    <span *ngIf="item.created">{{item.created.datetime | date: 'dd/MM/yyyy hh:mm'}}</span>
+                    <span *ngIf="item.created"> &nbsp; {{item.created.user.username}}</span>
+                    <span *ngIf="!item.created">{{item.data | date: 'dd/MM/yyyy'}}</span>
+                    <span *ngIf="!item.created"> &nbsp; {{business.created.user.username}}</span>
+
                   </b>
                   <br>
-                  <label class="b">
-                    Conteúdo:
-                  </label>
+
                   <label>
                     {{item.texto}}
                   </label>
@@ -447,34 +449,18 @@
           <mat-tab label="Anexos">
             <div class="col-12 mg-t-10 divtab">
               <form>
+                <input type="text" placeholder="Titulo do Arquivo" (change)="files($event.target.value)"
+                  class="form-control" style="margin: 10px auto;">
                 <label id="thumbnail">
-                  <input type="file" name="attachments[dummy][file]" class="file_selector" multiple="multiple" />
+                  <input type="file" class="file_selector" (change)=(onFileSelected($event)) />
                 </label>
-                <button class="btn btn-success" (click)="formAnexo()" style="float: right;">Salvar Anexo</button>
+                <button class="btn btn-success" (click)="onUpload()" style="float: right;">Salvar Anexo</button>
               </form>
               <mat-list>
-                <h3 mat-subheader>Pastas</h3>
-                <mat-list-item>
-                  <mat-icon mat-list-icon>folder</mat-icon>
-                  <h4 mat-line> Fotos </h4>
-                  <p mat-line> Jan 1, 2020 </p>
-                </mat-list-item>
-                <mat-list-item>
-                  <mat-icon mat-list-icon>folder</mat-icon>
-                  <h4 mat-line> Projetos </h4>
-                  <p mat-line> Fev 3, 2020 </p>
-                </mat-list-item>
-                <mat-divider></mat-divider>
-                <h3 mat-subheader>Arquivos</h3>
-                <mat-list-item>
+                <mat-list-item *ngFor="let i of business.file">
                   <mat-icon mat-list-icon>note </mat-icon>
-                  <h4 mat-line> Contrato </h4>
-                  <p mat-line> Feb 20, 2020 </p>
-                </mat-list-item>
-                <mat-list-item>
-                  <mat-icon mat-list-icon>note </mat-icon>
-                  <h4 mat-line> Requisitos Instalação </h4>
-                  <p mat-line> Feb 22, 2020 </p>
+                  <h4 mat-line> <a href={{i.file}}>{{i.titulo}}</a> </h4>
+                  <p mat-line *ngIf="i.created"> {{i.created.datetime | date: 'dd/MM/yyyy hh:mm'}} </p>
                 </mat-list-item>
               </mat-list>
             </div>

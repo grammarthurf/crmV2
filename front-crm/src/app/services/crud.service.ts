@@ -18,7 +18,7 @@ export class CrudService {
   htttpHeaders = new HttpHeaders().set("Content-Type", "application/json").set('Authorization', this.token);
   httploginheaders = new HttpHeaders().set("Content-Type", "application/json");
   body: any;
-  htttpHeadersFormData = new HttpHeaders().set("Content-Type", "multipart/form-data").set('Authorization', this.token);
+  htttpHeadersFormData = new HttpHeaders().set('Authorization', this.token);
 
   constructor(private http: HttpClient, private user: UserService, private cookies: CookieService) { }
 
@@ -177,9 +177,6 @@ export class CrudService {
   }
 
   public saveNewTicket(ticket): Observable<any> {
-    console.log('cabeçalho: ', this.htttpHeadersFormData);
-    console.log('token: ', this.basetoken);
-
 
     return this.http.post(this.baseUrl + "ticket/", ticket, {
       headers: this.htttpHeaders
@@ -224,6 +221,20 @@ export class CrudService {
   }
 
   // PUT API
+
+  public updateFile(ticketid, file, filetitle): Observable<any> {
+    const body = new FormData();
+    body.append('id', ticketid);
+    body.append('files', file, file.name);
+    body.append('filetitle', filetitle)
+    console.log(body);
+
+    return this.http.put(this.baseUrl + 'ticket/' + ticketid + '/', body, {
+      headers: this.htttpHeadersFormData
+    });
+  }
+
+
 
   public updateRamo(ramo): Observable<any> {
     return this.http.put(this.baseUrl + 'ramo/' + ramo.id + '/', ramo, {

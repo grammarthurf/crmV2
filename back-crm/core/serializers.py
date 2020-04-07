@@ -59,7 +59,7 @@ class TicketSerializer(serializers.ModelSerializer):
                   'org', 'produto', 'valorestimado', 'termometro',
                   'vendedor', 'obs', 'status', 'created', 'updated',
                   'atividades', 'vendedorext', 'mtvperd', 'cmtperd', 'file']
-        depth = 2
+        depth = 3
 
 
 class EstagioSerializer(serializers.ModelSerializer):
