@@ -99,7 +99,7 @@ export class AtividadesComponent implements OnInit {
     assunto: ''
   };
 
-  displayedColumns: string[] = ['select', 'tipo', 'dataini', 'ticket.titulo', 'cliente', 'assunto', 'columnEdit', 'columnDelete'];
+  displayedColumns: string[] = ['select', 'tipo', 'dataini', 'ticket.titulo', 'cliente', 'assunto', 'vendedor', 'columnEdit', 'columnDelete'];
 
   dataSource: any;
 
@@ -235,7 +235,7 @@ export class AtividadesComponent implements OnInit {
         // this.atv.org = this.selectedatv.org;
         // this.atv.ticket = this.selectedatv.ticket;
         this.atv.assunto = this.selectedatv.assunto;
-        console.log('Vendedor: ', this.atv.vendedor);
+        console.log('VENDEDOR: ', this.atv.vendedor);
 
       },
       error => { }
@@ -331,7 +331,8 @@ export class AtividadesComponent implements OnInit {
                       },
                       org: {
                         razaosocial: ''
-                      }
+                      },
+                      vendedor: e.vendedor.user.username
                     });
                   } else if (e.cliente == null) {
                     this.matdata.push({
@@ -344,7 +345,8 @@ export class AtividadesComponent implements OnInit {
                       cliente: {
                         nome: ''
                       },
-                      org: e.org
+                      org: e.org,
+                      vendedor: e.vendedor.user.username
                     });
                   } else if (e.org == null) {
                     this.matdata.push({
@@ -357,7 +359,8 @@ export class AtividadesComponent implements OnInit {
                       cliente: e.cliente,
                       org: {
                         razaosocial: ''
-                      }
+                      },
+                      vendedor: e.vendedor.user.username
                     });
                   } else if (e.ticket == null) {
                     this.matdata.push({
@@ -370,7 +373,8 @@ export class AtividadesComponent implements OnInit {
                         titulo: ''
                       },
                       cliente: e.cliente,
-                      org: e.org
+                      org: e.org,
+                      vendedor: e.vendedor.user.username
                     });
                   } else {
                     this.matdata.push({
@@ -381,7 +385,8 @@ export class AtividadesComponent implements OnInit {
                       feito: e.feito,
                       ticket: e.ticket,
                       cliente: e.cliente,
-                      org: e.org
+                      org: e.org,
+                      vendedor: e.vendedor.user.username
                     });
                   }
                 } catch (error) {
@@ -406,7 +411,8 @@ export class AtividadesComponent implements OnInit {
                       },
                       org: {
                         razaosocial: ''
-                      }
+                      },
+                      vendedor: e.vendedor.user.username
                     });
                   } else if (e.cliente == null) {
                     this.matdata.push({
@@ -419,7 +425,8 @@ export class AtividadesComponent implements OnInit {
                       cliente: {
                         nome: ''
                       },
-                      org: e.org
+                      org: e.org,
+                      vendedor: e.vendedor.user.username
                     });
                   } else if (e.org == null) {
                     this.matdata.push({
@@ -432,7 +439,8 @@ export class AtividadesComponent implements OnInit {
                       cliente: e.cliente,
                       org: {
                         razaosocial: ''
-                      }
+                      },
+                      vendedor: e.vendedor.user.username
                     });
                   } else if (e.ticket == null) {
                     this.matdata.push({
@@ -445,7 +453,8 @@ export class AtividadesComponent implements OnInit {
                         titulo: ''
                       },
                       cliente: e.cliente,
-                      org: e.org
+                      org: e.org,
+                      vendedor: e.vendedor.user.username
                     });
                   } else {
                     this.matdata.push({
@@ -456,7 +465,8 @@ export class AtividadesComponent implements OnInit {
                       feito: e.feito,
                       ticket: e.ticket,
                       cliente: e.cliente,
-                      org: e.org
+                      org: e.org,
+                      vendedor: e.vendedor.user.username
                     });
                   }
                 } catch (error) {
@@ -612,9 +622,9 @@ export class AtividadesComponent implements OnInit {
             this.numm = "";
             this.getterActivity(false);
 
-            // setTimeout(() => {
-            //   this.reiniciar()
-            // }, 600)
+            setTimeout(() => {
+              this.reiniciar()
+            }, 600)
           },
           error => {
             this.getterActivity(false);
@@ -754,5 +764,11 @@ export class AtividadesComponent implements OnInit {
   formatDate(date) {
     let result = date.split('-').reverse().join('/');
     return result
+  }
+
+  somethingChanged(e) {
+    console.log('CAIU CHANGE')
+    console.log(e);
+    this.atv.vendedor = e;
   }
 }

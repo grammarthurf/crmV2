@@ -42,13 +42,37 @@
 
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
             <mat-icon
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
               *ngIf="item.atividades.length > 0 && !Array(item.atividades)  && !emptyAtv(item.atividades)  && !emptyAtv(item.atividades)"
-              id="green" (click)="goToAtv()">
-              error_outline</mat-icon>
-            <mat-icon *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)  && !emptyAtv(item.atividades)"
-              id="red" (click)="goToAtv()">
+              id="green" 
+              (click)="goToAtv()"
+            >
               error_outline
+            </mat-icon>
+            <mat-icon
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura" 
+              *ngIf="emptyAtv(item.atividades)" 
+              id="orange" 
+              (click)="goToAtv()"
+            >
+            error_outline
+            </mat-icon>
+            <mat-icon
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura" 
+              *ngIf="item.atividades.length > 0 && Array(item.atividades)  && !emptyAtv(item.atividades)"
+              id="red" 
+              (click)="goToAtv()"
+            >
+            error_outline
             </mat-icon>
           </div>
         </div>
@@ -78,13 +102,38 @@
           <div class="flex" style="margin-top: 15px;">
 
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)  && !emptyAtv(item.atividades)"
-              id="green" (click)="goToAtv()">
-              error_outline</mat-icon>
-            <mat-icon *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)  && !emptyAtv(item.atividades)"
-              id="red" (click)="goToAtv()">
-              error_outline
+            <mat-icon 
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              *ngIf="item.atividades.length > 0 && !Array(item.atividades)  && !emptyAtv(item.atividades)"
+              id="green" 
+              (click)="goToAtv()"
+            >
+            error_outline
+            </mat-icon>
+            <mat-icon 
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              *ngIf="emptyAtv(item.atividades)" 
+              id="orange" 
+              (click)="goToAtv()"
+            >
+            error_outline
+            </mat-icon>
+            <mat-icon 
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              *ngIf="item.atividades.length > 0 && Array(item.atividades)  && !emptyAtv(item.atividades)"
+              id="red" 
+              (click)="goToAtv()"
+            >
+            error_outline
             </mat-icon>
           </div>
         </div>
@@ -112,13 +161,38 @@
           <div class="flex" style="margin-top: 15px;">
 
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades) && !emptyAtv(item.atividades)"
-              id="green" (click)="goToAtv()">
-              error_outline</mat-icon>
-            <mat-icon *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades) && !emptyAtv(item.atividades)"
-              id="red" (click)="goToAtv()">
-              error_outline
+            <mat-icon 
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              *ngIf="item.atividades.length > 0 && !Array(item.atividades) && !emptyAtv(item.atividades)"
+              id="green" 
+              (click)="goToAtv()"
+            >
+            error_outline
+            </mat-icon>
+            <mat-icon 
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              *ngIf="emptyAtv(item.atividades)" 
+              id="orange" 
+              (click)="goToAtv()"
+            >
+            error_outline
+            </mat-icon>
+            <mat-icon 
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              *ngIf="item.atividades.length > 0 && Array(item.atividades) && !emptyAtv(item.atividades)"
+              id="red" 
+              (click)="goToAtv()"
+            >
+            error_outline
             </mat-icon>
           </div>
         </div>
@@ -145,13 +219,38 @@
           </div>
           <div class="flex" style="margin-top: 15px;">
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)  && !emptyAtv(item.atividades)"
-              id="green" (click)="goToAtv()">
-              error_outline</mat-icon>
-            <mat-icon *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)  && !emptyAtv(item.atividades)"
-              id="red" (click)="goToAtv()">
-              error_outline
+            <mat-icon 
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              *ngIf="item.atividades.length > 0 && !Array(item.atividades)  && !emptyAtv(item.atividades)"
+              id="green" 
+              (click)="goToAtv()"
+            >
+            error_outline
+            </mat-icon>
+            <mat-icon 
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              *ngIf="emptyAtv(item.atividades)" 
+              id ="orange" 
+              (click)="goToAtv()"
+            >
+            error_outline
+            </mat-icon>
+            <mat-icon 
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              *ngIf="item.atividades.length > 0 && Array(item.atividades)  && !emptyAtv(item.atividades)"
+              id="red" 
+              (click)="goToAtv()"
+            >
+            error_outline
             </mat-icon>
           </div>
         </div>
@@ -178,13 +277,38 @@
           </div>
           <div class="flex" style="margin-top: 15px;">
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)  && !emptyAtv(item.atividades)"
-              id="green" (click)="goToAtv()">
-              error_outline</mat-icon>
-            <mat-icon *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)  && !emptyAtv(item.atividades)"
-              id="red" (click)="goToAtv()">
-              error_outline
+            <mat-icon 
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              *ngIf="item.atividades.length > 0 && !Array(item.atividades)  && !emptyAtv(item.atividades)"
+              id="green" 
+              (click)="goToAtv()"
+            >
+            error_outline
+            </mat-icon>
+            <mat-icon 
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              *ngIf="emptyAtv(item.atividades)" 
+              id="orange" 
+              (click)="goToAtv()"
+            >
+            error_outline
+            </mat-icon>
+            <mat-icon 
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              *ngIf="item.atividades.length > 0 && Array(item.atividades)  && !emptyAtv(item.atividades)"
+              id="red" 
+              (click)="goToAtv()"
+            >
+            error_outline
             </mat-icon>
           </div>
         </div>
@@ -210,13 +334,38 @@
           </div>
           <div class="flex" style="margin-top: 15px;">
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)  && !emptyAtv(item.atividades)"
-              id="green" (click)="goToAtv()">
-              error_outline</mat-icon>
-            <mat-icon *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)  && !emptyAtv(item.atividades)"
-              id="red" (click)="goToAtv()">
-              error_outline
+            <mat-icon 
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              *ngIf="item.atividades.length > 0 && !Array(item.atividades)  && !emptyAtv(item.atividades)"
+              id="green" 
+              (click)="goToAtv()"
+            >
+            error_outline
+            </mat-icon>
+            <mat-icon 
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              *ngIf="emptyAtv(item.atividades)" 
+              id="orange" 
+              (click)="goToAtv()"
+            >
+            error_outline
+            </mat-icon>
+            <mat-icon 
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              *ngIf="item.atividades.length > 0 && Array(item.atividades)  && !emptyAtv(item.atividades)"
+              id="red" 
+              (click)="goToAtv()"
+            >
+            error_outline
             </mat-icon>
           </div>
         </div>
@@ -241,13 +390,38 @@
           </div>
           <div class="flex" style="margin-top: 15px;">
             <p class="limit-value">{{ item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon *ngIf="item.atividades.length > 0 && !Array(item.atividades)  && !emptyAtv(item.atividades)"
-              id="green" (click)="goToAtv()">
-              error_outline</mat-icon>
-            <mat-icon *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">error_outline</mat-icon>
-            <mat-icon *ngIf="item.atividades.length > 0 && Array(item.atividades)  && !emptyAtv(item.atividades)"
-              id="red" (click)="goToAtv()">
-              error_outline
+            <mat-icon 
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              *ngIf="item.atividades.length > 0 && !Array(item.atividades)  && !emptyAtv(item.atividades)"
+              id="green" 
+              (click)="goToAtv()"
+            >
+            error_outline
+            </mat-icon>
+            <mat-icon 
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              *ngIf="emptyAtv(item.atividades)" 
+              id="orange" 
+              (click)="goToAtv()"
+            >
+            error_outline
+          </mat-icon>
+            <mat-icon 
+              data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              *ngIf="item.atividades.length > 0 && Array(item.atividades)  && !emptyAtv(item.atividades)"
+              id="red" 
+              (click)="goToAtv()"
+            >
+            error_outline
             </mat-icon>
           </div>
         </div>

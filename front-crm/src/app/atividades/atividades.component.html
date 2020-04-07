@@ -123,6 +123,17 @@
         {{element.assunto}}
       </td>
     </ng-container>
+
+    <!-- COLUNA VENDEDOR -->
+    <ng-container matColumnDef="vendedor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 15%;">
+        Vendedor
+      </th>
+      <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.dataini)" class="assunto-quebra" style="width: 15%;">
+        {{element.vendedor}}
+      </td>
+    </ng-container>
+
     <!-- COLUNA EDITAR -->
     <ng-container matColumnDef="columnEdit">
       <th mat-header-cell *matHeaderCellDef>
@@ -193,16 +204,47 @@
                   </option>
                 </select>
               </div>
+
+
               <div class="col-6" style="padding: 0px; margin-top: 23px">
                 <label for="participantes">Vendedor(es)</label>
-                <select [(ngModel)]="atv.vendedor" *ngIf="vendedorapi" class="form-control"
-                  id="exampleFormControlSelect1">
-                  <!-- <option selected value="{{atv.vendedor}}">{{atv.vendedor.user.username}}</option> -->
+                <select *ngIf="vendedorapi" class="form-control"
+              id="exampleFormControlSelect1" (change)="somethingChanged($event.target.value)">
+                  <option value="undefined" *ngIf="atv.vendedor" hidden selected>{{atv.vendedor ? atv.vendedor.user.username : ''}}</option>
                   <option *ngFor="let vendedor of vendedorapi" value="{{vendedor.id}}">
                     {{vendedor.username}}
                   </option>
                 </select>
               </div>
+
+
+              <!-- <div class="col-6" style="padding: 0px; margin-top: 23px">
+                <label for="participantes">Vendedor(es)</label>
+                <select [(ngModel)]="atv.vendedor" *ngIf="vendedorapi" class="form-control"
+                  id="exampleFormControlSelect1">
+                  <option selected="selected">oi</option>
+                  <option value="undefined" *ngIf="atv.vendedor" hidden>{{atv.vendedor ? atv.vendedor.user.username : ''}}</option>
+                  <option *ngFor="let vendedor of vendedorapi" value="{{vendedor.id}}">
+                    {{vendedor.username}}
+                  </option>
+                </select>
+              </div> -->
+
+              <!-- <div class="col 6" style="padding: 0px; margin-top: 23px">
+                <h4>Vendedores</h4>
+                <mat-form-field>
+                  <mat-label>{{atv.vendedor ? atv.vendedor.user.username : ''}}</mat-label>
+                  <mat-select [(ngModel)]="atv.vendedor" *ngIf="vendedorapi" >
+                    <mat-option *ngFor="let vendedor of vendedorapi" [value]="vendedor.id">
+                      {{vendedor.username}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div> -->
+              
+
+
+
             </div>
             <div class="col-12 row" style="margin-top: 20px;">
               <p class="atvinput" style="color: red;"><b style="color: black;">Atividade:</b>*</p>

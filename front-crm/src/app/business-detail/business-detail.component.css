@@ -33,7 +33,7 @@ select#update-contact {
 	border: 1px solid #ddd;
 	border-radius: 2px;
 	height: 40px;
-	/* width: 180px; */
+	width: 100%;
 	margin: 5px 10px 0 10px;
 	padding: 0 2px;
 	font-size: 16px;
@@ -107,13 +107,12 @@ mat-icon {
 .div-choice {
 	padding-left: 0;
 	margin-left: auto;
-	justify-content: flex-end;
+	justify-content: end;
 	margin-bottom: 15px
 }
 
 .div-vendedor {
-	float: right; 
-	text-align: right; 
+	text-align: center; 
 	margin-top: 10px;
 	margin-right: 0px;
 }

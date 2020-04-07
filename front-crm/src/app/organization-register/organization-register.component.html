@@ -44,19 +44,19 @@
     </mat-form-field> -->
 
 
-    <!-- <div class="form-group col-md-4">
+    <div class="form-group col-md-4">
       <label for="ramo">Ramo</label>
       <button mat-icon-button data-toggle="modal" data-target="#ramo">
         <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
       </button>
       <select [(ngModel)]="org.ramos" class="form-control">
-        <option value="undefined" *ngIf="orgUpdate" hidden>{{orgUpdate.ramo.desc}}</option>
-        <option value="" *ngIf="!orgUpdate" hidden>Selecione...</option>
+        <option value="undefined" *ngIf="orgUpdate" hidden>{{orgUpdate.ramo ? orgUpdate.ramo.desc : ''}}</option>
+        <option value="" *ngIf="!orgUpdate">Selecione...</option>
         <option *ngFor="let item of ramosapi" value="{{item.id}}">{{item.desc}}</option>
       </select>
-    </div> -->
+    </div>
 
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
       <div style="display: flex;">
         <p>Ramo</p>
         <button mat-icon-button data-toggle="modal" data-target="#ramo" style="margin-top: -5px;">
@@ -71,7 +71,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-    </div>
+    </div> -->
 
 
 
@@ -125,19 +125,19 @@
 
 
 
-    <!-- <div class="form-group col-md-3">
+    <div class="form-group col-md-3">
       <label for="erp">ERP</label>
       <button mat-icon-button data-toggle="modal" data-target="#erp">
         <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
       </button>
       <select [(ngModel)]="org.erp" class="form-control">
-        <option value="undefined" *ngIf="orgUpdate" hidden>{{orgUpdate.erpe.desc}}</option>
-        <option value="" *ngIf="!orgUpdate" hidden>Selecione...</option>
+        <option value="undefined" *ngIf="orgUpdate" hidden>{{orgUpdate.erpe ? orgUpdate.erpe.desc : ''}}</option>
+        <option value="" *ngIf="!orgUpdate">Selecione...</option>
         <option *ngFor="let item of erpsapi" value="{{item.id}}">{{item.desc}}</option>
       </select>
-    </div> -->
+    </div>
 
-    <div class="col-md-3">
+    <!-- <div class="col-md-3">
       <div style="display: flex;">
         <p>ERP</p>
         <button mat-icon-button data-toggle="modal" data-target="#erp" style="margin-top: -5px;">
@@ -152,7 +152,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-    </div>
+    </div> -->
 
 
 
