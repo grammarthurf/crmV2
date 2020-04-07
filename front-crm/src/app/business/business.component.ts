@@ -604,6 +604,9 @@ export class BusinessComponent implements OnInit {
           this.ticket.cliente = "";
           this.ticket.vendedor = "";
           this.ticket.obs = "";
+          this.ticket.estagio = "";
+          this.ticket.vendext = "";
+          this.ticket.file= "";
           this.getterTickets('open');
           this.getterTickets('win');
         },

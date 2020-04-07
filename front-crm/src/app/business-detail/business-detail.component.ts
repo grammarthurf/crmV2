@@ -60,10 +60,20 @@ export class BusinessDetailComponent implements OnInit {
   }
 
   onUpload() {
-
     if (this.filetitle && this.file) {
       this.crudService.updateFile(this.business.id, this.file, this.filetitle).subscribe(data => {
         console.log(data);
+        swal({
+          icon: "success",
+          text: "Anexo salvo com sucesso!",
+          timer: 1450,
+          buttons: {
+            buttons: false
+          }
+        });
+        setTimeout(() => {
+          this.reiniciar()
+        }, 600)
       }, err => {
         console.error(err);
       });
@@ -77,10 +87,11 @@ export class BusinessDetailComponent implements OnInit {
         }
       });
     }
-
-
   }
 
+  reiniciar() {
+    location.reload()
+  }
 
   // UPDATE STATUS LEADS
   updatedTicketStatus(ticket) {
