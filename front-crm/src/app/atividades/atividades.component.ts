@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ɵCompiler_compileModuleAndAllComponentsAsync__POST_R3__ } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
@@ -564,6 +564,8 @@ export class AtividadesComponent implements OnInit {
     if (this.atv.cliente == "") {
       this.atv.cliente = this.selectedatv.cliente;
     }
+
+    console.log('VENDEDOR CAIU: ', this.atv.vendedor)
 
     console.log(this.atv.ticket + this.atv.org + this.atv.cliente)
 

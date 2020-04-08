@@ -212,7 +212,7 @@
                 <label for="participantes">Vendedor(es)</label>
                 <select *ngIf="vendedorapi" class="form-control" id="exampleFormControlSelect1"
                   (change)="somethingChanged($event.target.value)">
-                  <option value="undefined" *ngIf="atv.vendedor" hidden selected>
+                  <option value="" *ngIf="atv.vendedor" hidden selected>
                     {{atv.vendedor ? atv.vendedor.user.username : ''}}</option>
                   <option *ngFor="let vendedor of vendedorapi" value="{{vendedor.id}}">
                     {{vendedor.username}}
@@ -287,8 +287,7 @@
             <div class="col-12 row inputmargin">
               <div class="col-6">
                 <label for="">Início</label>
-                <input [(ngModel)]="atv.dataini" type="date" class="form-control" #one min="{{dNow}}"
-                  value="this.today1">
+                <input [(ngModel)]="atv.dataini" type="date" class="form-control" #one value="this.today1">
               </div>
               <div class="col-6" style="padding: 0px;">
                 <label for="">Fim</label>

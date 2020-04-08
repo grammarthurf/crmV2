@@ -193,7 +193,6 @@ export class CrudService {
     return this.http.post(this.baseUrl + "atividade/", atividade, {
       headers: this.htttpHeaders
     });
-
   }
 
   public saveNewVendedorExt(vendext): Observable<any> {

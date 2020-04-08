@@ -446,7 +446,7 @@ class AtividadeViewSet(viewsets.ModelViewSet):
 
     def update(self, request, pk):
         data = request.data
-    #   print(data)
+        print(data)
         try:
             if data['id']:
                 print(data)
@@ -465,7 +465,8 @@ class AtividadeViewSet(viewsets.ModelViewSet):
             A.horaini = data['horaini']
             A.horafim = data['horafim']
             A.assunto = data['assunto']
-            V = Vendedor.objects.get(id=int(data['vendedor']))
+            print(data['vendedor'])
+            V = Vendedor.objects.get(id=int(data['vendedor']['id']))
             A.vendedor = V
             A.feito = data['feito']
             print('CLIENTE: ', data['cliente'])
