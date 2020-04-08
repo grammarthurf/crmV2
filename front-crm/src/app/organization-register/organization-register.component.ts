@@ -232,6 +232,8 @@ export class OrganizationRegisterComponent implements OnInit {
 
     console.log(this.contato.ramal)
     this.org.contatos.push(contatovar)
+
+    console.log('CONTATO: ', this.org.contatos)
   
     this.contato.nome = ''
     this.contato.email = ''

@@ -87,7 +87,9 @@ mat-icon {
 }
 
 .b {
-  font-weight: bold;
+	font-weight: bold;
+	color: black;
+	cursor: pointer;
 }
 
 .div-right {

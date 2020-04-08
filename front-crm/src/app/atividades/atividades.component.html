@@ -129,7 +129,8 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 15%;">
         Vendedor
       </th>
-      <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.dataini)" class="assunto-quebra" style="width: 15%;">
+      <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.dataini)" class="assunto-quebra"
+        style="width: 15%;">
         {{element.vendedor}}
       </td>
     </ng-container>
@@ -186,7 +187,7 @@
         <div class="col-12 row">
           <div class="col-6" style="padding: 0px;">
             <div class="col-12 row" style="padding: 0px;">
-              <div class="col-6" style="margin-top: 8px;">
+              <div class="col-12" style="margin-top: 8px;">
                 <label for="negocios">Negócio <label style="color: red; font-size: 20px;">*</label></label>
                 <!-- (change)="getterorg($event.target.value)" -->
                 <select [(ngModel)]="atv.ticket" *ngIf="negociosapi && !selectedatv" class="form-control"
@@ -204,13 +205,15 @@
                   </option>
                 </select>
               </div>
+            </div>
 
-
-              <div class="col-6" style="padding: 0px; margin-top: 23px">
+            <div class="col-12 row">
+              <div class="col-12" style="padding: 0px; margin-top: 23px">
                 <label for="participantes">Vendedor(es)</label>
-                <select *ngIf="vendedorapi" class="form-control"
-              id="exampleFormControlSelect1" (change)="somethingChanged($event.target.value)">
-                  <option value="undefined" *ngIf="atv.vendedor" hidden selected>{{atv.vendedor ? atv.vendedor.user.username : ''}}</option>
+                <select *ngIf="vendedorapi" class="form-control" id="exampleFormControlSelect1"
+                  (change)="somethingChanged($event.target.value)">
+                  <option value="undefined" *ngIf="atv.vendedor" hidden selected>
+                    {{atv.vendedor ? atv.vendedor.user.username : ''}}</option>
                   <option *ngFor="let vendedor of vendedorapi" value="{{vendedor.id}}">
                     {{vendedor.username}}
                   </option>
@@ -241,11 +244,8 @@
                   </mat-select>
                 </mat-form-field>
               </div> -->
-              
-
-
-
             </div>
+
             <div class="col-12 row" style="margin-top: 20px;">
               <p class="atvinput" style="color: red;"><b style="color: black;">Atividade:</b>*</p>
               <div class="div-modal-atv">

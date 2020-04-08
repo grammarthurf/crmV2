@@ -428,14 +428,15 @@
                 <h4>Sem atividades ativas</h4>
               </div>
               <ul *ngIf="(business.atividades.length > 0)" class="list-group list-group-flush">
+                <button class="btn btn-primary" (click)="reverseArray(this.business.atividades)" style="width: 250px;">Inverter Atividades</button>
                 <li *ngFor="let item of business.atividades" class="list-group-item p">
                   <b class="b-b">
                     {{item.dataini | date:'dd/MM/yyyy'}} - {{item.tipo}}
                   </b>
                   <br>
-                  <label class="b">
+                  <a class="b" href="/#/activity">
                     ↪ {{item.assunto}}
-                  </label>
+                  </a>
                 </li>
               </ul>
             </div>

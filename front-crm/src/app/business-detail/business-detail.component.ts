@@ -188,7 +188,7 @@ export class BusinessDetailComponent implements OnInit {
 
         console.log(this.business);
 
-        this.reverseArray()
+        this.reverseArray(this.business.obs)
         if (this.business.status == 'Ganhou') {
           this.stageWin();
         } else if (this.business.status == 'Perdido') {
@@ -341,9 +341,9 @@ export class BusinessDetailComponent implements OnInit {
   }
 
   // REVERSE OBS
-  reverseArray() {
+  reverseArray(array) {
     let arrayObs = [];
-    arrayObs = this.business.obs;
+    arrayObs = array;
     arrayObs.reverse()
   }
 
