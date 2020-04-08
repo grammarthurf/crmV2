@@ -144,21 +144,33 @@ export class BusinessDetailComponent implements OnInit {
   updateTicketObs() {
     this.idobs.id = this.business.id;
     console.log('OBSERVAÇÕES', this.business.obs)
+    console.log('ID OBS: ', this.idobs.obs)
 
-    this.crudService.updateTicketObs(this.idobs).subscribe(
-      data => {
-        this.loadBusiness();
-        this.idobs.obs = '';
-        swal({
-          icon: "success",
-          text: "Observação adicionada com sucesso!",
-          timer: 1450,
-          buttons: {
-            buttons: false
-          }
-        });
-      }, error => { }
-    );
+    if (this.idobs.obs) {
+      this.crudService.updateTicketObs(this.idobs).subscribe(
+        data => {
+          this.loadBusiness();
+          this.idobs.obs = '';
+          swal({
+            icon: "success",
+            text: "Observação adicionada com sucesso!",
+            timer: 1450,
+            buttons: {
+              buttons: false
+            }
+          });
+        }, error => { }
+      );
+    } else {
+      swal({
+        icon: "error",
+        text: "Campo está vazio!",
+        timer: 1450,
+        buttons: {
+          buttons: false
+        }
+      });
+    }
   }
 
   // LOAD BUSINESS
