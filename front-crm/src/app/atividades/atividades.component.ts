@@ -771,6 +771,7 @@ export class AtividadesComponent implements OnInit {
   somethingChanged(e) {
     console.log('CAIU CHANGE')
     console.log(e);
-    this.atv.vendedor = e;
+    this.atv.vendedor = {id: e, user: { username: '' }};
+    console.log(this.atv.vendedor)
   }
 }

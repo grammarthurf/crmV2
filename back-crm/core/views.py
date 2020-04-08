@@ -423,7 +423,7 @@ class AtividadeViewSet(viewsets.ModelViewSet):
         print('CREATING')
         print(data)
 
-        V = Vendedor.objects.get(id=int(data['vendedor']))
+        V = Vendedor.objects.get(id=int(data['vendedor']['id']))
 
         c = Created()
         c.user = request.user
