@@ -49,6 +49,15 @@ export class BusinessDetailComponent implements OnInit {
     this.calendarPlugins = [listPlugin, bootstrapPlugin];
   }
 
+  changeContato(e) {
+    console.log(e);
+    this.business.cliente = { id: e };
+    console.log(this.business);
+
+
+
+  }
+
   onFileSelected(e) {
     this.file = e.target.files[0];
 
@@ -112,11 +121,11 @@ export class BusinessDetailComponent implements OnInit {
   updateTicketTitle() {
     // console.log("business: ", this.business.termometro);
     console.log("business: ", this.business);
-    console.log("VALOR TERMOMETRO: ", this.business.termometro)
 
-    this.crudService.updateTicketTitle(this.business.id, this.business.titulo, this.business.valorestimado, this.business.cliente.id).subscribe(
+
+    this.crudService.updateTicketTitle(this.business.id, this.business.titulo, this.business.valorestimado, this.business.cliente).subscribe(
       data => {
-        console.log(data)
+        console.log(data);
         swal({
           icon: "success",
           text: "Informações alteradas com sucesso!",
@@ -126,9 +135,9 @@ export class BusinessDetailComponent implements OnInit {
           }
         });
       }, error => {
-        console.log(error)
+        console.log(error);
       }
-    )
+    );
   }
 
   // UPDATE OBS LEADS

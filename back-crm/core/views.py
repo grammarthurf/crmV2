@@ -204,7 +204,7 @@ class OrganizacaoViewSet(viewsets.ModelViewSet):
             O.erpe = Erp.objects.get(id=int(data['erp']))
         except:
             pass
-            
+
         O.ie = data['ie']
         O.save()
 
@@ -362,11 +362,15 @@ class TicketViewSet(viewsets.ModelViewSet):
 
         try:
             if data['title']:
+                print("VALORRECEBIDO: ", data['value'])
                 id = data['id']
                 T = Ticket.objects.get(id=data['id'])
                 T.titulo = data['title']
-                T.value = data['value']
-                C = Cliente.objects.get(id=int(data['contact']))
+                T.valorestimado = int(data['value'])
+                try:
+                    C = Cliente.objects.get(id=int(data['contact']['id']))
+                except:
+                    pass
                 T.cliente = C
                 T.save()
 
