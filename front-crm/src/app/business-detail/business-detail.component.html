@@ -3,7 +3,7 @@
   <!-- HEADER -->
   <div class="col-12 div-top row div-border">
     <div class="col-12">
-      <div class="col-12 row">
+      <div class="col-12 row" style="margin-left: 35px;">
 
         <input type="text" [(ngModel)]="business.titulo " id="update-title" (keyup)="maiuscula($event.target.value, 2)">
         <button mat-icon-button (click)="updateTicketTitle()">
@@ -42,7 +42,7 @@
           </div>
         </div>
 
-        
+
       </div>
 
 
@@ -61,9 +61,9 @@
           <img src="../../assets/contato.png" class="img1" />
 
           <!-- FAZER O CHANGE -->
-          <select id="update-contact">
+          <select id="update-contact" (change)="changeContato($event.target.value)">
             <option selected hidden>{{business.cliente.nome}}</option>
-            <option *ngFor="let i of business.org.contatos" value="i.id">{{i.nome}}</option>
+            <option *ngFor="let i of business.org.contatos" value={{i.id}}>{{i.nome}}</option>
           </select>
           <!-- <p>
             {{this.business.cliente.nome}}
