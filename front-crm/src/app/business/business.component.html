@@ -1,13 +1,17 @@
 <div class="maindiv" (click)="stop()">
 
   <!-- ADD LEAD AND FILTER -->
-  <div class="flex">
+  <div class="row col-12" style="align-items: center; justify-content: space-between;">
     <button type="button" class="btn btn-primary loc-button-top" data-toggle="modal" data-target="#modalAddLead">
       <mat-icon>add</mat-icon>
       <p style="margin-left: 5px;">Lead</p>
     </button>
-
-    <div style="margin-left: auto; margin-right: 5px;">
+    <select class="form-control" id="exampleFormControlSelect1" style="width: 180px; margin: 10px 40px;">
+      <option *ngFor="let vendedor of userapi" value="{{vendedor.id}}">
+        {{vendedor.username}}
+      </option>
+    </select>
+    <div style="margin-right: 5px;">
       <button class="btn btn-link" (click)="showOpen()">
         Leads Abertas
       </button>

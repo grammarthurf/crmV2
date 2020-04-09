@@ -4,26 +4,28 @@
             <div class="row">
                 <div class="col-4">
                     <img src="../../assets/profile.jpg" class="img1">
+                    <label id="thumbnail">
+                        <p>Mudar foto</p>
+                        <input type="file" class="file_selector" (change)=(onFileSelected($event)) />
+                    </label>
                 </div>
                 <div class="col-8">
                     <ul class="list-group list-group-flush" >
                         <li class="list-group-item p">
                             <b>Nome: </b>
-                            {{user}}
+                            <input type="text" [(ngModel)]="user" style="border: 0;"/> 
                         </li>
                         <li class="list-group-item p">
                             <b>Email: </b>
-                            usuario@vedois.com
+                            <input type="text" placeholder="usuario@vedois.com" style="border: 0;"/>
                         </li>
                         <li class="list-group-item p">
                             <b>Ultimo acesso: </b>
                             2 horas atrás
                         </li>
-                        <li class="list-group-item p">
-                            <a href="user/1">Editar perfil</a>
-                        </li>
-                        <li class="list-group-item p">
-                            <a href="user/1">Painel</a>
+                        <li class="list-group-item p flex">
+                            <button href="user/1">Atualizar Perfil</button>
+                            <button href="user/1">Painel</button>
                         </li>
                       </ul>
                 </div>
