@@ -237,8 +237,9 @@
                   {{item.dep}}
                 </p>
                 <p class="card-text">
-                  <span *ngIf="item.skp">•</span>
-                  {{item.skp}}
+                  <span *ngIf="item.skp">• {{item.skp}}</span>
+                  <span *ngIf="item.skype">• {{item.skype}}</span>
+
                 </p>
                 <p class="card-text">
                   <span *ngIf="item.birth">•</span>

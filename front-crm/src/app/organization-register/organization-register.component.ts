@@ -25,7 +25,7 @@ export class OrganizationRegisterComponent implements OnInit {
   disableCode: boolean = false;
   disableCode1: boolean = false;
   org = {
-    id: 0 , codigo: '', razaosocial: '', nomefantasia: '', ramos: '',
+    id: 0, codigo: '', razaosocial: '', nomefantasia: '', ramos: '',
     cnpj: '', ie: '', rua: '', complemento: '', bairro: '', cep: '',
     cidade: '', uf: '', telefone: '', erp: '', email: '', site: '',
     contatos: [], erpe: [], ramo: []
@@ -33,7 +33,7 @@ export class OrganizationRegisterComponent implements OnInit {
 
   orgUpdate: any;
 
-  contato = { nome: '', email: '', cargo: '', dep: '', birth: '', ramal:'', tel: '', cel: '', skp: '' }
+  contato = { nome: '', email: '', cargo: '', dep: '', birth: '', ramal: '', tel: '', cel: '', skp: '' }
 
   ramosapi: any;
   ramos = { desc: '' };
@@ -68,12 +68,12 @@ export class OrganizationRegisterComponent implements OnInit {
   }
 
   getterOrg(id) {
-    
+
     this.crudService.getOrg(id).subscribe(
       data => {
         this.orgUpdate = data;
-        console.log(' Organização pega' , this.orgUpdate);
-        console.log('teste' + this.orgUpdate.ramo)
+        console.log(' Organização pega contato: ', this.orgUpdate.contatos);
+        // console.log('teste' + this.orgUpdate.ramo)
         this.org = {
           id: this.orgUpdate.id,
           codigo: this.orgUpdate.codigo,
@@ -101,8 +101,8 @@ export class OrganizationRegisterComponent implements OnInit {
 
         };
 
-        console.log('dados da empresa', this.org.erpe)
-        
+        console.log('contatos org: ', this.org.contatos)
+
       },
       error => {
         // this.erroAtividade = error;
@@ -163,7 +163,7 @@ export class OrganizationRegisterComponent implements OnInit {
     this.disableCode1 = false;
   }
 
-  enableSelect(){
+  enableSelect() {
     this.selectRamo = true;
   }
 
@@ -202,7 +202,7 @@ export class OrganizationRegisterComponent implements OnInit {
     this.contato.dep = item.dep;
     this.contato.birth = item.birth;
     this.contato.tel = item.tel;
-    this.contato.skp = item.skp;
+    this.contato.skp = item.skype;
     this.contato.cel = item.cel;
 
     this.org.contatos.splice(index, 1);
@@ -223,7 +223,7 @@ export class OrganizationRegisterComponent implements OnInit {
       ramal: this.contato.ramal
     }
 
-    if(contatovar.skp == undefined) {
+    if (contatovar.skp == undefined) {
       contatovar.skp = '';
     }
 
@@ -234,7 +234,7 @@ export class OrganizationRegisterComponent implements OnInit {
     this.org.contatos.push(contatovar)
 
     console.log('CONTATO: ', this.org.contatos)
-  
+
     this.contato.nome = ''
     this.contato.email = ''
     this.contato.cargo = ''
@@ -306,7 +306,7 @@ export class OrganizationRegisterComponent implements OnInit {
     console.log(this.contato);
 
     if (this.contato.nome != '') {
-      
+
       const contatovar = {
         nome: this.contato.nome,
         email: this.contato.email,
@@ -321,7 +321,7 @@ export class OrganizationRegisterComponent implements OnInit {
 
       this.org.contatos.push(contatovar)
       console.log(this.org);
-    } 
+    }
 
     if (this.org.codigo === '') {
       swal({
@@ -417,17 +417,17 @@ export class OrganizationRegisterComponent implements OnInit {
     //   console.log(this.org.ramos)
     // }
 
-    if(this.org.erp == undefined) {
+    if (this.org.erp == undefined) {
       this.org.erp = "";
     }
 
-    if(this.org.ramos == undefined) {
+    if (this.org.ramos == undefined) {
       this.org.ramos = "";
     }
 
     console.log('ERP', this.org.erpe)
     console.log('RAMOS', this.org.ramos)
-    
+
     this.crudService.UpdateOrgMain(this.org).subscribe(
       data => {
         swal({
@@ -448,33 +448,33 @@ export class OrganizationRegisterComponent implements OnInit {
     )
   }
 
-  maiuscula(value: string, id:number){
+  maiuscula(value: string, id: number) {
     var v = value.toUpperCase();
-    if(id == 1){
+    if (id == 1) {
       this.org.razaosocial = v
-    } else if(id == 2) {
+    } else if (id == 2) {
       this.org.nomefantasia = v
-    } else if(id == 3) {
+    } else if (id == 3) {
       this.org.rua = v
-    } else if(id == 4) {
+    } else if (id == 4) {
       this.org.bairro = v
-    } else if(id == 5) {
+    } else if (id == 5) {
       this.org.complemento = v
-    } else if(id == 6) {
+    } else if (id == 6) {
       this.org.cidade = v
-    } else if(id == 7) {
+    } else if (id == 7) {
       this.org.uf = v
-    } else if (id== 10){
+    } else if (id == 10) {
       this.contato.nome = v
-    } else if (id== 12){
+    } else if (id == 12) {
       this.contato.cargo = v
-    } else if (id== 13){
+    } else if (id == 13) {
       this.contato.dep = v
-    } else if (id== 15){
+    } else if (id == 15) {
       this.ramos.desc = v
-    } else if (id== 16){
+    } else if (id == 16) {
       this.erp.empresa = v
-    } else if (id== 17){
+    } else if (id == 17) {
       this.erp.desc = v
     }
   }
