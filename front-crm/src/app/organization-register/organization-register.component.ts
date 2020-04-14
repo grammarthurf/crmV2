@@ -193,9 +193,6 @@ export class OrganizationRegisterComponent implements OnInit {
   updateContato(item) {
     let index = this.org.contatos.indexOf(item);
 
-    console.log(this.org.contatos.indexOf(item), 'antes')
-    // console.log(item.nome, 'cadastrou');
-
     this.contato.nome = item.nome;
     this.contato.email = item.email;
     this.contato.cargo = item.cargo
@@ -205,8 +202,9 @@ export class OrganizationRegisterComponent implements OnInit {
     this.contato.skp = item.skype;
     this.contato.cel = item.cel;
 
+    console.log('SKYPE: ', this.contato.skp)
+
     this.org.contatos.splice(index, 1);
-    console.log(this.org.contatos.indexOf(item), 'depois')
   }
 
   addContato() {
@@ -228,7 +226,6 @@ export class OrganizationRegisterComponent implements OnInit {
     }
 
     console.log(this.orgUpdate)
-    // console.log(this.orgUpdate)
 
     console.log(this.contato.ramal)
     this.org.contatos.push(contatovar)

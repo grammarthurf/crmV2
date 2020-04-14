@@ -14,31 +14,10 @@
 
   <mat-divider style="margin-left: 15px; margin-right: 15px;"></mat-divider>
 
-  <!-- FILTERS -->
-  <div (keyup)="applyFilter($event)" class="btn-group btn-group" role="group" aria-label="btngroup"
-    style="float: right; margin: 20px 10px 3px;">
-    <button type="button" class="btn btn-link" (click)="filterDay()">
-      Hoje
-    </button>
-    <button type="button" class="btn btn-link" (click)="filterTomorrow()">
-      Amanhã
-    </button>
-    <button type="button" class="btn btn-link" (click)="filterMonth()">
-      Este mês
-    </button>
-    <button type="button" class="btn btn-link" (click)="filterNextMonth()">
-      Próximo mês
-    </button>
-    <button type="button" class="btn btn-link" (click)="getterActivity(true)">
-      Feito
-    </button>
-  </div>
-
-  <div style="display: flex;">
+  <div class="row col-12">
     <button type="button" class="btn btn-outline-dark button-all" (click)="filterAll()">
       Ativos
     </button>
-    <mat-divider [vertical]="true" class="divider-vertical"></mat-divider>
     <button mat-icon-button class="buttons-filter dif" (keyup)="applyFilter($event)" (click)="filterCall()">
       <mat-icon>phone</mat-icon>
       Ligação
@@ -58,6 +37,26 @@
     <button mat-icon-button class="buttons-filter" (keyup)="applyFilter($event)" (click)="filterTask()">
       <mat-icon>watch_later</mat-icon>
       Tarefa
+    </button>
+    <select class="form-control" id="exampleFormControlSelect1" style="width: 180px; margin: 10px 40px;">
+      <option *ngFor="let vendedor of vendedorapi" value="{{vendedor.id}}">
+        {{vendedor.username}}
+      </option>
+    </select>
+    <button type="button" class="btn btn-link" (click)="filterDay()">
+      Hoje
+    </button>
+    <button type="button" class="btn btn-link" (click)="filterTomorrow()">
+      Amanhã
+    </button>
+    <button type="button" class="btn btn-link" (click)="filterMonth()">
+      Este mês
+    </button>
+    <button type="button" class="btn btn-link" (click)="filterNextMonth()">
+      Próximo mês
+    </button>
+    <button type="button" class="btn btn-link" (click)="getterActivity(true)">
+      Feito
     </button>
   </div>
 

@@ -209,8 +209,7 @@
         </div>
         <div class="form-group col-md-4">
           <label for="email">Skype</label>
-          <input [(ngModel)]="contato.skp" type="text" class="form-control"
-            (keyup)="maiuscula($event.target.value, 14)">
+          <input [(ngModel)]="contato.skp" type="text" class="form-control">
         </div>
       </div>
       <button class="btn btn-primary" (click)="addContato()" style="margin-left: 15px;">

@@ -107,7 +107,12 @@ table {
 }
 
 .mat-icon-button {
-    border-radius: 0 !important;
+    border-radius: 8px;
+}
+
+.mat-icon-button:hover {
+    background: #c5dbf7;
+    transition: 0.2s;
 }
 
 .mat-icon {

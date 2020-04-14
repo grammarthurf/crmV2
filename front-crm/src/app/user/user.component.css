@@ -60,3 +60,37 @@ mat-icon {
     color: #007bff;
     float: left;
 }
+
+label#thumbnail {
+    margin-bottom: 20px;
+    border: 1px dashed rgb(184, 183, 183);
+    background-size: cover;
+    cursor: pointer;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+label#thumbnail input {
+    display: none;
+}
+
+li.flex {
+    justify-content: space-between;
+}
+
+li.flex button {
+    border: 0;
+    height: 35px;
+    width: 47%;
+    color: white;
+    background: #6F77F0;
+    border-radius: 6px;
+}
+
+li.flex button:hover {
+    background: #3945F5;
+    transition: 0.2s;
+}
