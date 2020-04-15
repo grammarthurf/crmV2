@@ -364,17 +364,7 @@ export class BusinessDetailComponent implements OnInit {
 
   }
 
-  // TRANSFORM CAPITAL LETTER
-  maiuscula(value: string, id: number) {
-    var v = value.toUpperCase();
 
-    if (id == 1) {
-      this.idobs.obs = v;
-    } else (id == 2)
-    this.business.titulo = v
-
-    // this.idobs.obs = v;
-  }
 
   // FORMAT PHONE NUMBER
   formatPhoneNumber(str) {

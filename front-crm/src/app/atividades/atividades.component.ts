@@ -6,7 +6,6 @@ import { CrudService } from "../services/crud.service";
 import swal from 'sweetalert';
 import bootstrapPlugin from '@fullcalendar/bootstrap';
 import listPlugin from '@fullcalendar/list';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 export interface PeriodicElement {
   id: number;
@@ -112,15 +111,17 @@ export class AtividadesComponent implements OnInit {
     this.getterCliente();
     this.getterOrgs();
     this.getterVendedor();
-    this.getterTickets();
-    this.getterActivity(this.mode);
     this.calendarPlugins = [listPlugin, bootstrapPlugin];
+    this.getterActivity(this.mode);
+
   }
 
   ngOnInit() {
+    this.getterTickets();
     this.dataSource = new MatTableDataSource(this.matdata);
     this.dataSource.sort = this.sort;
     this.atv.dataini = this.today1;
+
   }
 
   // FILTRAR SELECT DAS EMPRESAS DE ACORDO COM O SELECIONADO EM NEGÓCIOS
@@ -771,7 +772,7 @@ export class AtividadesComponent implements OnInit {
   somethingChanged(e) {
     console.log('CAIU CHANGE')
     console.log(e);
-    this.atv.vendedor = {id: e, user: { username: '' }};
+    this.atv.vendedor = { id: e, user: { username: '' } };
     console.log(this.atv.vendedor)
   }
 }
