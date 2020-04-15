@@ -17,6 +17,7 @@ class Vendedor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     nome = models.CharField(max_length=155, null=True, blank=True)
     isAdmin = models.BooleanField(null=True, blank=True)
+    photo = models.ImageField(upload_to=upload_path, null=True)
 
     def __str__(self):
         return str(self.user) + str(self.nome)

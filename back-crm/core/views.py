@@ -14,6 +14,12 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
 
+    def create(self, request):
+        data = request.data
+        print('received data:', data)
+
+        return JsonResponse({"message": "successs"})
+
 
 class ObsViewSet(viewsets.ModelViewSet):
     queryset = Obs.objects.all().order_by('-id')
