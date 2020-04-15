@@ -36,16 +36,16 @@
 
       <div cdkDropList [cdkDropListData]="tickets1.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets1.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
-          <div class="flex">
-            <p class="limit-words">{{item.titulo}}</p>
+          <div class="flex" style="white-space: normal;">
+            <p>{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
             <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
-          <div class="flex" style="margin-top: 15px;">
+          <div class="flex">
 
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura"
@@ -53,13 +53,13 @@
               id="green" (click)="goToAtv()">
               error_outline
             </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura" *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">
               error_outline
             </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura"
@@ -84,18 +84,18 @@
 
       <div cdkDropList [cdkDropListData]="tickets2.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets2.tickets;" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
-          <div class="flex">
-            <p class="limit-words">
+          <div class="flex" style="white-space: normal;">
+            <p>
               {{item.titulo}}
             </p>
             <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
             <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
-          <div class="flex" style="margin-top: 15px;">
+          <div class="flex">
 
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura"
@@ -103,13 +103,13 @@
               (click)="goToAtv()">
               error_outline
             </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura" *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">
               error_outline
             </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura"
@@ -134,16 +134,16 @@
 
       <div cdkDropList [cdkDropListData]="tickets3.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets3.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
-          <div class="flex">
-            <p class="limit-words">{{item.titulo}}</p>
+          <div class="flex" style="white-space: normal;">
+            <p>{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
             <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
-          <div class="flex" style="margin-top: 15px;">
+          <div class="flex">
 
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura"
@@ -151,13 +151,13 @@
               (click)="goToAtv()">
               error_outline
             </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura" *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">
               error_outline
             </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura"
@@ -182,15 +182,15 @@
 
       <div cdkDropList [cdkDropListData]="tickets4.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets4.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
-          <div class="flex">
-            <p class="limit-words">{{item.titulo}}</p>
+          <div class="flex" style="white-space: normal;">
+            <p>{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
             <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
-          <div class="flex" style="margin-top: 15px;">
+          <div class="flex">
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura"
@@ -198,13 +198,13 @@
               (click)="goToAtv()">
               error_outline
             </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura" *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">
               error_outline
             </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura"
@@ -229,15 +229,15 @@
 
       <div cdkDropList [cdkDropListData]="tickets5.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets5.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
-          <div class="flex">
-            <p class="limit-words">{{item.titulo}}</p>
+          <div class="flex" style="white-space: normal;">
+            <p>{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
             <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
-          <div class="flex" style="margin-top: 15px;">
+          <div class="flex">
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura"
@@ -245,13 +245,13 @@
               (click)="goToAtv()">
               error_outline
             </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura" *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">
               error_outline
             </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura"
@@ -276,14 +276,14 @@
       <div cdkDropList [cdkDropListData]="tickets6.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets6.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
           <div class="flex">
-            <p class="limit-words">{{item.titulo}}</p>
+            <p>{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
             <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
-          <div class="flex" style="margin-top: 15px;">
+          <div class="flex">
             <p class="limit-value">{{item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura"
@@ -291,13 +291,13 @@
               (click)="goToAtv()">
               error_outline
             </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura" *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">
               error_outline
             </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura"
@@ -320,15 +320,15 @@
 
       <div cdkDropList [cdkDropListData]="tickets7.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets7.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
-          <div class="flex">
-            <p class="limit-words">{{item.titulo}}</p>
+          <div class="flex" style="white-space: normal;">
+            <p>{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
             <div *ngIf="(item.termometro=='100');" class="termometro otimo"></div>
           </div>
-          <div class="flex" style="margin-top: 15px;">
+          <div class="flex">
             <p class="limit-value">{{ item.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura"
@@ -336,13 +336,13 @@
               (click)="goToAtv()">
               error_outline
             </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura" *ngIf="emptyAtv(item.atividades)" id="orange" (click)="goToAtv()">
               error_outline
             </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Esse ícone significa se tem alguma atividade atrelada a essa leads
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura"

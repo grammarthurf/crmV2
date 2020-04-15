@@ -195,7 +195,7 @@ export class OrganizationRegisterComponent implements OnInit {
 
     this.contato.nome = item.nome;
     this.contato.email = item.email;
-    this.contato.cargo = item.cargo
+    this.contato.cargo = item.cargo;
     this.contato.dep = item.dep;
     this.contato.birth = item.birth;
     this.contato.tel = item.tel;
@@ -225,9 +225,7 @@ export class OrganizationRegisterComponent implements OnInit {
       contatovar.skp = '';
     }
 
-    console.log(this.orgUpdate)
-
-    console.log(this.contato.ramal)
+    console.log('CONTATOVAR: ', contatovar)
     this.org.contatos.push(contatovar)
 
     console.log('CONTATO: ', this.org.contatos)
