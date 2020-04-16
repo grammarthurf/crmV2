@@ -606,7 +606,7 @@ export class BusinessComponent implements OnInit {
           this.ticket.obs = "";
           this.ticket.estagio = "";
           this.ticket.vendext = "";
-          this.ticket.file= "";
+          this.ticket.file = "";
           this.getterTickets('open');
           this.getterTickets('win');
         },
@@ -728,7 +728,7 @@ export class BusinessComponent implements OnInit {
     this.getterVendedorExt();
     this.getterEstagios();
     this.getterTickets('open');
-    this.getterTickets('win');
+    // this.getterTickets('win');
     this.getterOrgs();
     this.getterProd();
     this.getterCliente();

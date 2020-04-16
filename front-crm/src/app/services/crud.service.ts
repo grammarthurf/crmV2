@@ -337,7 +337,7 @@ export class CrudService {
 
   public updateTicketObs(idobs): Observable<any> {
 
-    const body = { id: parseInt(idobs.id), obs: idobs.obs, opt: 'obs' };
+    const body = { id: parseInt(idobs.id), obs: idobs.obs.toUpperCase(), opt: 'obs' };
     console.log('body:', body);
 
     return this.http.put(this.baseUrl + 'ticket/' + idobs.id + '/', body, {
