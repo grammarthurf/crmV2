@@ -200,7 +200,17 @@ export class ProductsComponent implements OnInit {
     }
   }
 
+  disableDelete() {
+    let username = JSON.parse(localStorage.getItem('username'));
+    console.log('Username: ', username);
+
+    if(username === 'Fabiana' || username === 'Osmir' || username === 'Leandro' || username === 'admin') {
+      (<HTMLButtonElement>document.getElementById('delete')).disabled = false;
+    }
+  }
+
   deleteItem(item) {
+    this.disableDelete();
     this.delProduct = item.id;
     console.log(this.delProduct)
     // swal({

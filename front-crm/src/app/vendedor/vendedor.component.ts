@@ -51,7 +51,17 @@ export class VendedorComponent implements OnInit {
     );
    }
 
+  disableDelete() {
+    let username = JSON.parse(localStorage.getItem('username'));
+    console.log('Username: ', username);
+
+    if(username === 'Fabiana' || username === 'Osmir' || username === 'Leandro' || username === 'admin') {
+      (<HTMLButtonElement>document.getElementById('delete')).disabled = false;
+    }
+  }
+
   deleteItem() {
+    this.disableDelete();
     swal({
       icon: "error",
       text: "Vendedor excluído com sucesso!",

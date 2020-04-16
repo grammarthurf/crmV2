@@ -57,6 +57,7 @@ div p + p {
   padding: 10px;
   width: 170px;
   height: 85px;
+  font-size: 15px;
 }
 
 .font-grey-cards {

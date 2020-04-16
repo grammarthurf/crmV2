@@ -36,13 +36,23 @@ export class RamoComponent implements OnInit {
 
   constructor(private crudService: CrudService) {
     this.getterRamo();
-   }
+  }
 
    applyFilter(value: string) {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
+  disableDelete() {
+    let username = JSON.parse(localStorage.getItem('username'));
+    console.log('Username: ', username);
+
+    if(username === 'Fabiana' || username === 'Osmir' || username === 'Leandro' || username === 'admin') {
+      (<HTMLButtonElement>document.getElementById('delete')).disabled = false;
+    }
+  }
+
   deleteItem(item) {
+    this.disableDelete();
     this.delRamo = item.id;
     console.log(this.delRamo);
     // swal({

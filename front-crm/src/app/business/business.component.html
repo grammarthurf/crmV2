@@ -275,7 +275,7 @@
 
       <div cdkDropList [cdkDropListData]="tickets6.tickets" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="leads" *ngFor="let item of tickets6.tickets" id="{{item.id}}" cdkDrag (dblclick)="goTo(item.id)">
-          <div class="flex">
+          <div class="flex" style="white-space: normal;">
             <p>{{item.titulo}}</p>
             <div *ngIf="(item.termometro=='0');" class="termometro ruim"></div>
             <div *ngIf="(item.termometro=='50');" class="termometro medio"></div>
@@ -378,10 +378,15 @@
         <div class="modal-body">
           <div class="row">
             <div class="form-group col-md-12">
-              <label for="exampleInputEmail1">Título</label>
+              <label for="exampleInputEmail1" data-toggle="tooltip" data-placement="top" 
+              title="
+              O título deve ser uma descrição breve, para manter um padrão no layout no dashboard, seguir o padrão: 
+              [nome da empresa] - [nome do produto], por exemplo: Vedois - OEE">
+              Título
+              </label>
               <input [(ngModel)]="ticket.titulo" type="text" class="form-control" id="title"
                 aria-describedby="emailHelp" placeholder="Título" required
-                (keyup)="maiuscula($event.target.value, 1)" />
+                (keyup)="maiuscula($event.target.value, 1)" maxlength="30"/>
             </div>
           </div>
           <div class="row">

@@ -142,10 +142,18 @@ export class AtividadesComponent implements OnInit {
     );
   }
 
+  disableDelete() {
+    let username = JSON.parse(localStorage.getItem('username'));
+    console.log('Username: ', username);
 
+    if(username === 'Fabiana' || username === 'Osmir' || username === 'Leandro' || username === 'admin') {
+      (<HTMLButtonElement>document.getElementById('delete')).disabled = false;
+    }
+  }
 
   // DELETE ACTIVITY
   deleteActivity(idativ) {
+    this.disableDelete();
     this.delact = idativ;
   }
 
