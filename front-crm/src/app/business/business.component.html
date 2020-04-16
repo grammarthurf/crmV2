@@ -421,10 +421,10 @@
                 </option>
               </select>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6" style="display: grid; align-items: center;">
               <label for="thermometro">Termômetro</label>
               <input [(ngModel)]="ticket.termometro" type="range" class="form-control-range" id="thermometro" value="0"
-                step="50" />
+                step="50" class="slider"/>
               <div style="display: flex;">
                 <span>Regular</span>
                 <span>Bom</span>

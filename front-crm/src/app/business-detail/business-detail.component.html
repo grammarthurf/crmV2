@@ -5,7 +5,7 @@
     <div class="col-12">
       <div class="col-12 row" style="margin-left: 35px;">
 
-        <input type="text" [(ngModel)]="business.titulo " id="update-title" (keyup)="maiuscula($event.target.value, 2)">
+        <input type="text" [(ngModel)]="business.titulo " id="update-title">
         <button mat-icon-button (click)="updateTicketTitle()">
           <mat-icon>check</mat-icon>
         </button>
@@ -88,7 +88,7 @@
           <p>Termômetro:</p>
           <div class="margin5">
             <input (change)="updateTicketTerm()" type="range" id="thermometro" value="{{business.termometro}}" step="50"
-              style="width: 150px;" />
+              class="slider" />
             <div class=" row">
               <p class="ptherm"> Regular </p>
               <p class="ptherm2"> Bom </p>
@@ -391,8 +391,7 @@
         <mat-tab-group mat-stretch-tabs class="col-12">
           <mat-tab label="Observações">
             <div class="col-12 mg-t-10 divtab">
-              <textarea rows="10" [(ngModel)]="idobs.obs" class="col-12 txtarea"
-                (keyup)="maiuscula($event.target.value, 1)"></textarea>
+              <textarea rows="10" [(ngModel)]="idobs.obs" class="col-12 txtarea"></textarea>
               <button type="button" (click)="updateTicketObs()" class="btn btn-success bold btn-sm fltright">
                 Adicionar
               </button>
