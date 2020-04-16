@@ -87,8 +87,8 @@
           <img src="../../assets/termometro.png" class="img1" />
           <p>Termômetro:</p>
           <div class="margin5">
-            <input (change)="updateTicketTerm()" type="range" id="thermometro" value="{{business.termometro}}" step="50"
-              class="slider" />
+            <input (change)="updateTicketTerm($event.target.value)" type="range" id="thermometro"
+              value="{{business.termometro}}" step="50" class="slider" />
             <div class=" row">
               <p class="ptherm"> Regular </p>
               <p class="ptherm2"> Bom </p>
