@@ -111,8 +111,13 @@ export class BusinessDetailComponent implements OnInit {
   }
 
   // UPDATE TERM LEADS
-  updateTicketTerm() {
+  updateTicketTerm(value) {
     this.idobs.id = this.business.id;
+    this.idobs.term = value
+    console.log(this.idobs);
+    console.log(value);
+
+
     this.crudService.updateTicketTerm(this.idobs).subscribe(
       data => { }, error => { }
     );
