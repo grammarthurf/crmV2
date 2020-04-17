@@ -411,7 +411,7 @@ export class BusinessComponent implements OnInit {
 
             if (e.vendedor.user.username == username || username === 'Fabiana' || username == 'Osmir' || username == 'Leandro' || username == 'admin') {
               console.log(e);
-              if (e.status == 'Aberto') {
+              if (e.status === 'Aberto' || e.status === 'Ganhou') {
                 switch (e.estagio.id) {
                   case 1:
                     this.tickets1.tickets.push(e);

@@ -1,174 +1,170 @@
 <div class="main-div" style="margin-top: 15px;">
-    <div class="col-4 div-left">
-        <div class="col-12 real-div">
-            <div class="row">
-                <div class="col-4">
-                    <img src="../../assets/profile.jpg" class="img1">
-                    <label id="thumbnail">
-                        <p>Mudar foto</p>
-                        <input type="file" class="file_selector" (change)=(onFileSelected($event)) />
-                    </label>
-                </div>
-                <div class="col-8">
-                    <ul class="list-group list-group-flush" >
-                        <li class="list-group-item p">
-                            <b>Nome: </b>
-                            <input type="text" [(ngModel)]="user" style="border: 0;"/> 
-                        </li>
-                        <li class="list-group-item p">
-                            <b>Email: </b>
-                            <input type="text" placeholder="usuario@vedois.com" style="border: 0;"/>
-                        </li>
-                        <li class="list-group-item p">
-                            <b>Ultimo acesso: </b>
-                            2 horas atrás
-                        </li>
-                        <li class="list-group-item p flex">
-                            <button href="user/1">Atualizar Perfil</button>
-                            <button href="user/1">Painel</button>
-                        </li>
-                      </ul>
-                </div>
-            </div>
+  <div class="col-4 div-left">
+    <div class="col-12 real-div">
+      <div class="row">
+        <div class="col-4">
+          <img src="../../assets/profile.jpg" class="img1">
+          <label id="thumbnail">
+            <p>Mudar foto</p>
+            <input type="file" class="file_selector" />
+          </label>
         </div>
-        <div class="col-12 real-div" style="margin-top: 20px; text-align: center;">
-            <label class="periodoLabel">Selecionar Período: </label> <br>
-            <label class="lblFilter">Início: </label>
-            <input [(ngModel)]="filter.inicio" id="1" type="date" class="form-control">
-            <br>
-            <label class="lblFilter">Fim: </label>
-            <input [(ngModel)]="filter.fim" type="date" class="form-control">
-            <br>
-            <button (click)="Filtrar()" *ngIf="!fltr" class="btn btn-primary"> Filtrar </button>
-            <button (click)="Filtrar1()" *ngIf="fltr" class="btn btn-primary"> Limpar </button>
+        <div class="col-8">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item p">
+              <b>Nome: </b>
+              <input type="text" [(ngModel)]="user" style="border: 0;" />
+            </li>
+            <li class="list-group-item p">
+              <b>Email: </b>
+              <input type="text" placeholder="usuario@vedois.com" style="border: 0;" />
+            </li>
+            <li class="list-group-item p">
+              <b>Ultimo acesso: </b>
+              2 horas atrás
+            </li>
+            <li class="list-group-item p flex">
+              <button href="user/1">Atualizar Perfil</button>
+              <button href="user/1">Painel</button>
+            </li>
+          </ul>
         </div>
+      </div>
     </div>
-    <div class="col-8 div-right scrollbar">
-        <div class="col-12 real-div">
-            <mat-tab-group mat-stretch-tabs>
-                <mat-tab label="Atualizações">
-                    <div class="col-12">
-                        <ul class="list-group list-group-flush" >
-                            <ng-template ngFor let-ticket [ngForOf]="negociosapi">
-                                <li class="list-group-item p"
-                                *ngIf="((InitList || dataCheck(ticket.obs[ticket.obs.length-1].data)) && (ticket.created && ticket.obs.length > 1))" >
-                                    <img src="../../assets/profile.jpg" class="img2" >
-                                    <b>
-                                        Atualizou a observação de um negócio:
-                                    </b>
-                                    <a href="/business-detail/{{ticket.id}}">{{ticket.titulo}} </a>
-                                    <label class="p1">
-                                        ({{ticket.obs[ticket.obs.length-1].data | date:'dd/MM/yyyy'}})
-                                    </label>
-                                    <mat-icon style="float: right;">autorenew</mat-icon>
-                                </li>
-                                <li class="list-group-item p"
-                                    *ngIf="((InitList || dataCheck(ticket.obs[0].data)) && (ticket.created && ticket.obs.length > 1))" >
-                                    <img src="../../assets/profile.jpg" class="img2" >
-                                    <b>
-                                        Adicionou um negócio:
-                                    </b>
-                                    <a href="/business-detail/{{ticket.id}}">{{ticket.titulo}} </a>
-                                    <label class="p1">
-                                        ({{ticket.created.datetime | date: 'dd/MM/yyyy hh:mm'}})
-                                    </label>
-                                    <mat-icon style="float: right;">work_outline</mat-icon>
-                                </li>
-                                <li class="list-group-item p"
-                                    *ngIf="((InitList || dataCheck(ticket.obs[0].data)) && (ticket.created && ticket.obs.length == 1))" >
-                                    <img src="../../assets/profile.jpg" class="img2" >
-                                    <b>
-                                        Adicionou um negócio:
-                                    </b>
-                                    <a href="/business-detail/{{ticket.id}}">{{ticket.titulo}} </a>
-                                    <label class="p1">
-                                        ({{ticket.created.datetime | date: 'dd/MM/yyyy hh:mm'}})
-                                    </label>
-                                    <mat-icon style="float: right;">work_outline</mat-icon>
-                                </li>
-                            </ng-template>
-                            <ng-template ngFor let-orgs [ngForOf]="orgsapi">
-                                <li class="list-group-item p"
-                                    *ngIf="InitList">
-                                    <img src="../../assets/profile.jpg" class="img2" >
-                                    <b>
-                                        Adicionou uma empresa:
-                                    </b>
-                                    <a href="/company-detail/{{orgs.id}}">{{orgs.razaosocial}} </a>
-                                    <mat-icon style="float: right;">business</mat-icon>
-                                </li>
-                            </ng-template>
-                            <ng-template ngFor let-ramo [ngForOf]="ramosapi">
-                                <li class="list-group-item p"
-                                    *ngIf="InitList">
-                                    <img src="../../assets/profile.jpg" class="img2" >
-                                    <b>
-                                        Adicionou um novo ramo:
-                                    </b>
-                                    <a href="/ramo">{{ramo.desc}} </a>
-                                    <mat-icon style="float: right;">bookmark_border</mat-icon>
-                                </li>
-                            </ng-template>
-                            <ng-template ngFor let-erp [ngForOf]="erpapi">
-                                <li class="list-group-item p"
-                                    *ngIf="InitList">
-                                    <img src="../../assets/profile.jpg" class="img2" >
-                                    <b>
-                                        Adicionou uma nova erp:
-                                    </b>
-                                    <a href="/erp">{{erp.desc}} </a>
-                                    <label class="p1">
-                                        |   empresa: {{erp.empresa}}
-                                    </label>
-                                    <mat-icon style="float: right;">settings</mat-icon>
-                                </li>
-                            </ng-template>
-                        </ul>
-                    </div>
-                </mat-tab>
-                <mat-tab label="Atividades">
-                    <div class="col-12">
-                        <ul class="list-group list-group-flush" *ngFor="let atividade of atvapi">
-                            <li class="list-group-item p"
-                                *ngIf="(InitList
+    <div class="col-12 real-div" style="margin-top: 20px; text-align: center;">
+      <label class="periodoLabel">Selecionar Período: </label> <br>
+      <label class="lblFilter">Início: </label>
+      <input [(ngModel)]="filter.inicio" id="1" type="date" class="form-control">
+      <br>
+      <label class="lblFilter">Fim: </label>
+      <input [(ngModel)]="filter.fim" type="date" class="form-control">
+      <br>
+      <button (click)="Filtrar()" *ngIf="!fltr" class="btn btn-primary"> Filtrar </button>
+      <button (click)="Filtrar1()" *ngIf="fltr" class="btn btn-primary"> Limpar </button>
+    </div>
+  </div>
+  <div class="col-8 div-right scrollbar">
+    <div class="col-12 real-div">
+      <mat-tab-group mat-stretch-tabs>
+        <mat-tab label="Atualizações">
+          <div class="col-12">
+            <ul class="list-group list-group-flush">
+              <ng-template ngFor let-ticket [ngForOf]="negociosapi">
+                <li class="list-group-item p"
+                  *ngIf="((InitList || dataCheck(ticket.obs[ticket.obs.length-1].data)) && (ticket.created && ticket.obs.length > 1))">
+                  <img src="../../assets/profile.jpg" class="img2">
+                  <b>
+                    Atualizou a observação de um negócio:
+                  </b>
+                  <a href="/business-detail/{{ticket.id}}">{{ticket.titulo}} </a>
+                  <label class="p1">
+                    ({{ticket.obs[ticket.obs.length-1].data | date:'dd/MM/yyyy'}})
+                  </label>
+                  <mat-icon style="float: right;">autorenew</mat-icon>
+                </li>
+                <li class="list-group-item p"
+                  *ngIf="((InitList || dataCheck(ticket.obs[0].data)) && (ticket.created && ticket.obs.length > 1))">
+                  <img src="../../assets/profile.jpg" class="img2">
+                  <b>
+                    Adicionou um negócio:
+                  </b>
+                  <a href="/business-detail/{{ticket.id}}">{{ticket.titulo}} </a>
+                  <label class="p1">
+                    ({{ticket.created.datetime | date: 'dd/MM/yyyy hh:mm'}})
+                  </label>
+                  <mat-icon style="float: right;">work_outline</mat-icon>
+                </li>
+                <li class="list-group-item p"
+                  *ngIf="((InitList || dataCheck(ticket.obs[0].data)) && (ticket.created && ticket.obs.length == 1))">
+                  <img src="../../assets/profile.jpg" class="img2">
+                  <b>
+                    Adicionou um negócio:
+                  </b>
+                  <a href="/business-detail/{{ticket.id}}">{{ticket.titulo}} </a>
+                  <label class="p1">
+                    ({{ticket.created.datetime | date: 'dd/MM/yyyy hh:mm'}})
+                  </label>
+                  <mat-icon style="float: right;">work_outline</mat-icon>
+                </li>
+              </ng-template>
+              <ng-template ngFor let-orgs [ngForOf]="orgsapi">
+                <li class="list-group-item p" *ngIf="InitList">
+                  <img src="../../assets/profile.jpg" class="img2">
+                  <b>
+                    Adicionou uma empresa:
+                  </b>
+                  <a href="/company-detail/{{orgs.id}}">{{orgs.razaosocial}} </a>
+                  <mat-icon style="float: right;">business</mat-icon>
+                </li>
+              </ng-template>
+              <ng-template ngFor let-ramo [ngForOf]="ramosapi">
+                <li class="list-group-item p" *ngIf="InitList">
+                  <img src="../../assets/profile.jpg" class="img2">
+                  <b>
+                    Adicionou um novo ramo:
+                  </b>
+                  <a href="/ramo">{{ramo.desc}} </a>
+                  <mat-icon style="float: right;">bookmark_border</mat-icon>
+                </li>
+              </ng-template>
+              <ng-template ngFor let-erp [ngForOf]="erpapi">
+                <li class="list-group-item p" *ngIf="InitList">
+                  <img src="../../assets/profile.jpg" class="img2">
+                  <b>
+                    Adicionou uma nova erp:
+                  </b>
+                  <a href="/erp">{{erp.desc}} </a>
+                  <label class="p1">
+                    | empresa: {{erp.empresa}}
+                  </label>
+                  <mat-icon style="float: right;">settings</mat-icon>
+                </li>
+              </ng-template>
+            </ul>
+          </div>
+        </mat-tab>
+        <mat-tab label="Atividades">
+          <div class="col-12">
+            <ul class="list-group list-group-flush" *ngFor="let atividade of atvapi">
+              <li class="list-group-item p" *ngIf="(InitList
                                        || dataCheck(atividade.dataini )
                                        || dataCheck(atividade.datafim) )">
-                                <mat-icon *ngIf="(atividade.tipo == 'TAREFA'
+                <mat-icon *ngIf="(atividade.tipo == 'TAREFA'
                                                  || atividade.tipo == 'Tarefa' )">
-                                    watch_later
-                                </mat-icon>
-                                <mat-icon *ngIf="(atividade.tipo == 'LIGAR'
+                  watch_later
+                </mat-icon>
+                <mat-icon *ngIf="(atividade.tipo == 'LIGAR'
                                                  || atividade.tipo == 'LIGAÇÃO'
                                                  || atividade.tipo == 'Ligação')">
-                                    phone
-                                </mat-icon>
-                                <mat-icon *ngIf="(atividade.tipo == 'REUNIÃO'
+                  phone
+                </mat-icon>
+                <mat-icon *ngIf="(atividade.tipo == 'REUNIÃO'
                                                  || atividade.tipo == 'Reunião' )">
-                                    people
-                                </mat-icon>
-                                <mat-icon *ngIf="(atividade.tipo == 'VISITA'
+                  people
+                </mat-icon>
+                <mat-icon *ngIf="(atividade.tipo == 'VISITA'
                                                  || atividade.tipo == 'Visita' )">
-                                    business
-                                </mat-icon>
-                                <mat-icon *ngIf="(atividade.tipo == 'EMAIL'
+                  business
+                </mat-icon>
+                <mat-icon *ngIf="(atividade.tipo == 'EMAIL'
                                                  || atividade.tipo == 'Email' )">
-                                    email
-                                </mat-icon>
-                                <b>{{atividade.assunto}}:</b>
-                                <a href="/business-detail/{{atividade.ticket.id}}">
-                                    {{atividade.tipo}}
-                                </a>
-                                <label *ngIf="(atividade.dataini && atividade.datafim)" class="p1">
-                                    ({{atividade.dataini | date: 'dd/MM/yyyy'}}
-                                    {{atividade.horaini | mask: '00:00'}} -
-                                    {{atividade.horafim | mask: '00:00'}}
-                                    {{atividade.datafim | date: 'dd/MM/yyyy'}})
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                </mat-tab>
-            </mat-tab-group>
-        </div>
+                  email
+                </mat-icon>
+                <b>{{atividade.assunto}}:</b>
+                <a href="/business-detail/{{atividade.ticket.id}}">
+                  {{atividade.tipo}}
+                </a>
+                <label *ngIf="(atividade.dataini && atividade.datafim)" class="p1">
+                  ({{atividade.dataini | date: 'dd/MM/yyyy'}}
+                  {{atividade.horaini | mask: '00:00'}} -
+                  {{atividade.horafim | mask: '00:00'}}
+                  {{atividade.datafim | date: 'dd/MM/yyyy'}})
+                </label>
+              </li>
+            </ul>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
     </div>
+  </div>
 </div>

@@ -6,11 +6,11 @@
       <mat-icon>add</mat-icon>
       <p style="margin-left: 5px;">Lead</p>
     </button>
-    <select class="form-control" id="exampleFormControlSelect1" style="width: 180px; margin: 10px 40px;">
+    <!-- <select class="form-control" id="exampleFormControlSelect1" style="width: 180px; margin: 10px 40px;">
       <option *ngFor="let vendedor of userapi" value="{{vendedor.id}}">
         {{vendedor.username}}
       </option>
-    </select>
+    </select> -->
     <div style="margin-right: 5px;">
       <button class="btn btn-link" (click)="showOpen()">
         Leads Abertas
@@ -378,15 +378,14 @@
         <div class="modal-body">
           <div class="row">
             <div class="form-group col-md-12">
-              <label for="exampleInputEmail1" data-toggle="tooltip" data-placement="top" 
-              title="
-              O título deve ser uma descrição breve, para manter um padrão no layout no dashboard, seguir o padrão: 
+              <label for="exampleInputEmail1" data-toggle="tooltip" data-placement="top" title="
+              O título deve ser uma descrição breve, para manter um padrão no layout no dashboard, seguir o padrão:
               [nome da empresa] - [nome do produto], por exemplo: Vedois - OEE">
-              Título
+                Título
               </label>
               <input [(ngModel)]="ticket.titulo" type="text" class="form-control" id="title"
-                aria-describedby="emailHelp" placeholder="Título" required
-                (keyup)="maiuscula($event.target.value, 1)" maxlength="30"/>
+                aria-describedby="emailHelp" placeholder="Título" required (keyup)="maiuscula($event.target.value, 1)"
+                maxlength="30" />
             </div>
           </div>
           <div class="row">
@@ -424,7 +423,7 @@
             <div class="form-group col-md-6" style="display: grid; align-items: center;">
               <label for="thermometro">Termômetro</label>
               <input [(ngModel)]="ticket.termometro" type="range" class="form-control-range" id="thermometro" value="0"
-                step="50" class="slider"/>
+                step="50" class="slider" />
               <div style="display: flex;">
                 <span>Regular</span>
                 <span>Bom</span>
