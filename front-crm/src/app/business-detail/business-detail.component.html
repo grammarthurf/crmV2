@@ -1,0 +1,541 @@
+<div class="main-div">
+
+  <!-- HEADER -->
+  <div class="col-12 div-top row div-border">
+    <div class="col-12">
+      <div class="col-12 row" style="margin-left: 35px;">
+
+        <input type="text" [(ngModel)]="business.titulo " id="update-title">
+        <button mat-icon-button (click)="updateTicketTitle()">
+          <mat-icon>check</mat-icon>
+        </button>
+
+        <div class="col-3 row div-choice">
+          <button class="btn-win-lose btn-success" id="win" (click)="stageWin()">
+            Ganho
+          </button>
+          <button class="btn-win-lose" id="null" (click)="stageNull()">
+            Reabrir
+          </button>
+          <button class="btn-win-lose btn-danger" id="lose" data-toggle="modal" data-target="#loseModal">
+            Perdido
+          </button>
+        </div>
+
+        <div class="col-4">
+          <div class="div-vendedor">
+            <div class="flex" style="justify-content: center;">
+              <p style="font-size: 13px;">
+                Vendedor:
+              </p>
+              <p style="font-size: 16px; margin-top: -4px;" *ngIf="business.vendedor.user.username">
+                {{business.vendedor.user.username}}
+              </p>
+              <p style="font-size: 16px; margin-top: -4px;" *ngIf="!business.vendedor.user.username">
+                Sem vendedor
+              </p>
+            </div>
+
+
+            <p style="font-size: 12px; text-align: center;" mask="9999-99-99" *ngIf="(business.created)"> Criado em
+              {{business.created.datetime | date: 'dd/MM/yyyy hh:mm'}}
+          </div>
+        </div>
+
+
+      </div>
+
+
+      <div class="flex" style="padding: 0;">
+
+        <div class="flex col-3">
+          <img src="../../assets/moeda.png" class="img1" />
+          <input type="text" [(ngModel)]="business.valorestimado" id="update-value" currencyMask
+            [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+          <!-- <p class="bold">
+            {{business.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}
+          </p> -->
+        </div>
+
+        <div class="flex col-3">
+          <img src="../../assets/contato.png" class="img1" />
+
+          <!-- FAZER O CHANGE -->
+          <select id="update-contact" (change)="changeContato($event.target.value)">
+            <option selected hidden>{{business.cliente.nome}}</option>
+            <option *ngFor="let i of business.org.contatos" value={{i.id}}>{{i.nome}}</option>
+          </select>
+          <!-- <p>
+            {{this.business.cliente.nome}}
+          </p> -->
+        </div>
+
+        <div class="flex col-3">
+          <img src="../../assets/empresa.png" class="img1" />
+          <p>
+            {{business.org.nomefantasia}}
+          </p>
+        </div>
+
+
+
+        <!-- <p>
+          {{clientName}}
+        </p> -->
+
+        <div class="flex col-3">
+          <img src="../../assets/termometro.png" class="img1" />
+          <p>Termômetro:</p>
+          <div class="margin5">
+            <input (change)="updateTicketTerm($event.target.value)" type="range" id="thermometro"
+              value="{{business.termometro}}" step="50" class="slider" />
+            <div class=" row">
+              <p class="ptherm"> Regular </p>
+              <p class="ptherm2"> Bom </p>
+              <p class="ptherm"> Ótimo </p>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <lottie-animation-view [options]="lottieConfig" [width]="400" [height]="400" (animCreated)="handleAnimation($event)"
+      id="lottie">
+    </lottie-animation-view>
+
+
+    <!-- BARRA DE PROGRESSO -->
+    <div class="col-12 flex md-stepper-horizontal green orange">
+      <div class="md-step active" *ngIf="(business.estagio.id > 1)" (click)="changeid(1)" id="1">
+        <div class="md-step-circle ">
+          <mat-icon> done </mat-icon>
+        </div>
+        <div class="md-step-title">Prospecção</div>
+        <div class="md-step-optional">10/02/2020</div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step process" *ngIf="(business.estagio.id == 1)" (click)="changeid(1)" id="1">
+        <div class="md-step-circle ">
+          <mat-icon> priority_high </mat-icon>
+        </div>
+        <div class="md-step-title">Prospecção </div>
+        <div class="md-step-optional">Em processo </div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step " *ngIf="(business.estagio.id < 1)" (click)="changeid(1)" id="1">
+        <!-- business.estagio.id != 1 &&  -->
+        <div class="md-step-circle"></div>
+        <div class="md-step-title">Prospecção</div>
+        <div class="md-step-bar-right"></div>
+      </div>
+
+      <div class="md-step active " *ngIf="(business.estagio.id > 2)" (click)="changeid(2)" id="2">
+        <!--  business.estagio.id != 3 &&  -->
+        <div class="md-step-circle ">
+          <mat-icon> done </mat-icon>
+        </div>
+        <div class="md-step-title">Contatado </div>
+        <div class="md-step-optional">10/02/2020</div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step process" *ngIf="(business.estagio.id == 2)" (click)="changeid(2)" id="2">
+        <div class="md-step-circle">
+          <mat-icon> priority_high </mat-icon>
+        </div>
+        <div class="md-step-title">Contatado </div>
+        <div class="md-step-optional">Em processo</div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step md-step-1" *ngIf="(business.estagio.id < 2)" (click)="changeid(2)" id="2">
+        <div class="md-step-circle"></div>
+        <div class="md-step-title">Contatado</div>
+
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+
+      <div class="md-step process" *ngIf="(business.estagio.id==3)" (click)="changeid(3)" id="3">
+        <div class="md-step-circle ">
+          <mat-icon> priority_high </mat-icon>
+        </div>
+        <div class="md-step-title">Cliente Potencial</div>
+        <div class="md-step-optional">Em processo </div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step" *ngIf="(business.estagio.id < 3)" (click)="changeid(3)" id="3">
+        <div class="md-step-circle ">
+          <mat-icon> </mat-icon>
+        </div>
+        <div class="md-step-title">Cliente Potencial</div>
+
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step active" *ngIf="(business.estagio.id > 3)" (click)="changeid(3)" id="3">
+        <div class="md-step-circle ">
+          <mat-icon> done </mat-icon>
+        </div>
+        <div class="md-step-title"> Cliente Potencial </div>
+        <div class="md-step-optional">10/02/2020 </div>
+        <div class="md-step-bar-left"> </div>
+        <div class="md-step-bar-right"> </div>
+      </div>
+
+      <div class="md-step active" *ngIf="(business.estagio.id > 4)" (click)="changeid(4)" id="4">
+        <div class="md-step-circle">
+          <mat-icon> done </mat-icon>
+        </div>
+        <div class="md-step-title"> Demo Agendada </div>
+        <div class="md-step-optional">10/02/2020 </div>
+        <div class="md-step-bar-left"> </div>
+        <div class="md-step-bar-right"> </div>
+      </div>
+      <div class="md-step process" *ngIf="(business.estagio.id == 4)" (click)="changeid(4)" id="4">
+        <div class="md-step-circle">
+          <mat-icon> priority_high </mat-icon>
+        </div>
+        <div class="md-step-title">Demo Agendada </div>
+        <div class="md-step-optional">Em processo </div>
+        <div class="md-step-bar-left"> </div>
+        <div class="md-step-bar-right"> </div>
+      </div>
+      <div class="md-step" *ngIf="(business.estagio.id < 4)" (click)="changeid(4)" id="4">
+        <div class="md-step-circle">
+          <mat-icon> </mat-icon>
+        </div>
+        <div class="md-step-title">Demo Agendada</div>
+        <div class="md-step-bar-left"> </div>
+        <div class="md-step-bar-right"> </div>
+      </div>
+
+      <div class="md-step active" *ngIf="(business.estagio.id > 5)" (click)="changeid(5)" id="5">
+        <div class="md-step-circle">
+          <mat-icon> done </mat-icon>
+        </div>
+        <div class="md-step-title"> Proposta </div>
+        <div class="md-step-optional">10/02/2020</div>
+        <div class="md-step-bar-left"> </div>
+        <div class="md-step-bar-right"> </div>
+      </div>
+      <div class="md-step process" *ngIf="(business.estagio.id == 5)" (click)="changeid(5)" id="5">
+        <div class="md-step-circle">
+          <mat-icon> priority_high </mat-icon>
+        </div>
+        <div class="md-step-title"> Proposta </div>
+        <div class="md-step-optional">Em processo </div>
+        <div class="md-step-bar-left"> </div>
+        <div class="md-step-bar-right"> </div>
+      </div>
+      <div class="md-step" *ngIf="(business.estagio.id < 5)" (click)="changeid(5)" id="5">
+        <div class="md-step-circle">
+          <mat-icon> </mat-icon>
+        </div>
+        <div class="md-step-title">Proposta</div>
+        <div class="md-step-bar-left"> </div>
+        <div class="md-step-bar-right"> </div>
+      </div>
+
+      <div class="md-step active" *ngIf="(business.estagio.id > 7)" (click)="changeid(7)" id="7">
+        <div class="md-step-circle">
+          <mat-icon> done </mat-icon>
+        </div>
+        <div class="md-step-title"> Negociações Iniciais</div>
+        <div class="md-step-optional">10/02/2020 </div>
+        <div class="md-step-bar-left"> </div>
+        <div class="md-step-bar-right"> </div>
+      </div>
+      <div class="md-step process" *ngIf="(business.estagio.id == 7)" (click)="changeid(7)" id="7">
+        <div class="md-step-circle">
+          <mat-icon> priority_high </mat-icon>
+        </div>
+        <div class="md-step-title"> Negociações Iniciais</div>
+        <div class="md-step-optional">Em processo </div>
+        <div class="md-step-bar-left"> </div>
+        <div class="md-step-bar-right"> </div>
+      </div>
+      <div class="md-step" *ngIf="(business.estagio.id < 7)" (click)="changeid(7)" id="7">
+        <div class="md-step-circle">
+          <mat-icon> </mat-icon>
+        </div>
+        <div class="md-step-title">Negociações Iniciais</div>
+        <div class="md-step-bar-left"> </div>
+        <div class="md-step-bar-right"> </div>
+      </div>
+
+      <div class="md-step active" *ngIf="(business.estagio.id == 8)" (click)="changeid(8)" id="8">
+        <div class="md-step-circle">
+          <mat-icon> done </mat-icon>
+        </div>
+        <div class="md-step-title"> Cliente </div>
+        <div class="md-step-optional">10/02/2020</div>
+        <div class="md-step-bar-left"></div>
+      </div>
+      <div class="md-step" *ngIf="(business.estagio.id < 8)" (click)="changeid(8)" id="8">
+        <div class="md-step-circle">
+          <mat-icon> </mat-icon>
+        </div>
+        <div class="md-step-title">Cliente</div>
+        <div class="md-step-bar-left"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-12" style="padding: 0;">
+    <div class="col-4" style="padding-left: 0;">
+      <!-- EMPRESA -->
+      <div class="div-border">
+        <div class=" col-12 row" style="padding: 0px;">
+          <div class="col-1">
+            <img class="img-empresa" src="../../assets/empresa.png" />
+          </div>
+          <div class="col-11 margin5">
+            <h5 class="font-26 bold" *ngIf="business.org.razaosocial" style="margin-left: 10px; text-align: center;">
+              {{business.org.razaosocial}}
+            </h5>
+            <h2 class="font-26 bold" *ngIf="!business.org.razaosocial" style="margin-left: 10px; text-align: center;">
+              EMPRESA
+            </h2>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <p *ngIf="business.org.codigo"><b class="b-b">Código: </b> {{business.org.codigo}}</p>
+              <p *ngIf="business.org.nomefantasia">
+                <b class="b-b">Nome Fantasia: </b> {{business.org.nomefantasia}}</p>
+              <p *ngIf="business.org.cnpj"><b class="b-b">CNPJ: </b> {{business.org.cnpj}}</p>
+              <p *ngIf="business.org.ie"><b class="b-b">IE: </b> {{business.org.ie}}</p>
+              <p *ngIf="business.org.rua    ||
+                        business.org.bairro ||
+                        business.org.cidade ||
+                        business.org.uf     ||
+                        business.org.cep"><b class="b-b">Endereço: </b><b>{{business.org.rua}} -
+                  {{business.org.bairro}},
+                  {{business.org.cidade}} -
+                  {{business.org.uf}},
+                  {{business.org.cep}} </b></p>
+              <p *ngIf="business.org.email"><b class="b-b">Email: </b> {{business.org.email}}</p>
+              <p *ngIf="business.org.site"><b class="b-b">Site: </b> {{business.org.site}}</p>
+              <p *ngIf="business.org.erpe"><b class="b-b">ERP: </b> {{business.org.erpe.desc}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTATO -->
+      <div class="div-border">
+        <div class=" col-12 row" style="padding: 0px;">
+          <div class="col-1 ">
+            <img src="../../assets/contato.png" class="img-empresa" />
+          </div>
+          <div class="col-11 margin5">
+            <h2 class="font-26 bold " *ngIf="business.cliente.nome" style="margin-left: 10px; text-align: center;">
+              {{business.cliente.nome}}
+            </h2>
+            <h2 class="font-26 bold" *ngIf="!business.cliente.nome" style="margin-left: 10px; text-align: center;">
+              CONTATO
+            </h2>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <p *ngIf="business.cliente.email">
+                <b class="b-b">Email: </b>
+                {{business.cliente.email}}
+              </p>
+              <p *ngIf="business.cliente.cargo">
+                <b class="b-b">Cargo: </b>
+                {{business.cliente.cargo}}
+              </p>
+              <p *ngIf="business.cliente.dep">
+                <b class="b-b">Departamento: </b>
+                {{business.cliente.dep}}
+              </p>
+              <p *ngIf="business.cliente.birth">
+                <b class="b-b">Aniversário: </b>
+                {{formatBirthday(business.cliente.birth)}}
+              </p>
+              <p *ngIf="business.cliente.tel">
+                <b class="b-b">Telefone: </b>
+                {{formatPhoneNumber(business.cliente.tel)}}
+              </p>
+              <p *ngIf="business.cliente.cel">
+                <b class="b-b">Celular: </b>
+                {{formatCellPhoneNumber(business.cliente.cel)}}
+              </p>
+              <p *ngIf="business.cliente.skype">
+                <b class="b-b">Skype: </b>
+                {{business.cliente.skype}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-1"></div>
+
+    <!-- LOG -->
+    <div class="col-7">
+      <div class="div-border">
+        <div *ngIf="(business.status == 'Perdido')" class="alert alert-danger" role="alert">
+          {{business.mtvperd}} : {{business.cmtperd}}
+        </div>
+        <mat-tab-group mat-stretch-tabs class="col-12">
+          <mat-tab label="Observações">
+            <div class="col-12 mg-t-10 divtab">
+              <textarea rows="10" [(ngModel)]="idobs.obs" class="col-12 txtarea"></textarea>
+              <button type="button" (click)="updateTicketObs()" class="btn btn-success bold btn-sm fltright">
+                Adicionar
+              </button>
+              <button type="button" (click)="cancelObs()" class="btn btn-outline-secondary bold btn-sm fltright mg-r-5">
+                Cancelar
+              </button>
+            </div>
+            <div class="col-12 row txtcenter">
+              <h2 style="margin-left: auto; margin-right: auto;">Histórico</h2>
+            </div>
+            <div class="col-12 mg-t-10">
+              <ul class="list-group list-group-flush">
+                <li *ngFor="let item of business.obs" class="list-group-item p">
+                  <b class="b-b">
+                    <span *ngIf="item.created">{{item.created.datetime | date: 'dd/MM/yyyy hh:mm'}}</span>
+                    <span *ngIf="item.created"> &nbsp; {{item.created.user.username}}</span>
+                    <span *ngIf="!item.created">{{item.data | date: 'dd/MM/yyyy'}}</span>
+                    <span *ngIf="!item.created"> &nbsp; {{business.created.user.username}}</span>
+
+                  </b>
+                  <br>
+
+                  <label>
+                    {{item.texto}}
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </mat-tab>
+          <mat-tab label="Atividades">
+            <div class="col-12 mg-t-10 divtab">
+              <div *ngIf="(business.atividades == 0)" class="b-b txtcenter">
+                <h4>Sem atividades ativas</h4>
+              </div>
+              <ul *ngIf="(business.atividades.length > 0)" class="list-group list-group-flush">
+                <button class="btn btn-primary" (click)="reverseArray(this.business.atividades)"
+                  style="width: 250px;">Inverter Atividades</button>
+                <li *ngFor="let item of business.atividades" class="list-group-item p">
+                  <b class="b-b">
+                    {{item.dataini | date:'dd/MM/yyyy'}} - {{item.tipo}}
+                  </b>
+                  <br>
+                  <a class="b" href="/#/activity">
+                    ↪ {{item.assunto}}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </mat-tab>
+          <mat-tab label="Anexos">
+            <div class="col-12 mg-t-10 divtab">
+              <form>
+                <input type="text" placeholder="Titulo do Arquivo" (change)="files($event.target.value)"
+                  class="form-control" style="margin: 10px auto;">
+                <label id="thumbnail">
+                  <input type="file" class="file_selector" (change)=(onFileSelected($event)) />
+                </label>
+                <button class="btn btn-success" (click)="onUpload()" style="float: right;">Salvar Anexo</button>
+              </form>
+              <mat-list>
+                <mat-list-item *ngFor="let i of business.file">
+                  <mat-icon mat-list-icon>note </mat-icon>
+                  <h4 mat-line> <a href={{i.file}}>{{i.titulo}}</a> </h4>
+                  <p mat-line *ngIf="i.created"> {{i.created.datetime | date: 'dd/MM/yyyy hh:mm'}} </p>
+                </mat-list-item>
+              </mat-list>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADD REASON FOR LOSSS -->
+<div class="modal fade" id="addMotivoPerda" tabindex="-1" role="dialog" aria-labelledby="addMotivoPerda"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addMotivoPerda">
+          Adicionar Motivo da Perda
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-12">
+          <label for="">Motivo da Perda</label>
+          <input type="text" class="form-control">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
+          data-target="#loseModal">
+          Cancelar
+        </button>
+        <button type="button" data-dismiss="modal" class="btn btn-primary" data-toggle="modal" data-target="#loseModal">
+          Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADD LOSS -->
+<div class="modal fade" id="loseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Marcar como Perdido
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Motivo da Perda</label>
+          <button mat-icon-button data-toggle="modal" data-target="#addMotivoPerda" data-dismiss="modal">
+            <mat-icon class="icon-modal-lead">add</mat-icon>
+          </button>
+          <select [(ngModel)]="idobs.mtvperd" id="motivo" class="form-control">
+            <option>Custo</option>
+            <option>Preferiu Concorrência</option>
+          </select>
+        </div>
+        <div class="form-group mg-t-10">
+          <label for="exampleFormControlTextarea1">Comentários (opcional) </label>
+          <textarea [(ngModel)]="idobs.cmtperd" class="form-control" id="exampleFormControlTextarea1"
+            rows="3"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Cancelar
+        </button>
+        <button type="button" (click)="stageLose()" data-dismiss="modal" class="btn btn-danger">
+          Marcar como Perdido
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

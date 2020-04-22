@@ -1,0 +1,77 @@
+/* FILTROS */
+
+.div-filter {
+    margin-left: auto;
+    margin-right: 15px; 
+    width: 185px;
+}
+
+.iconfiltro {
+    margin: 5px 15.5px;
+    color: rgb(10, 24, 64);
+}
+
+.div-filters {
+    display: flex; 
+    margin-bottom: 5px;
+}
+
+.loc-button-top {
+    display: flex;
+    margin-bottom: 15px;
+    padding-left: 5px; 
+    margin-left: 15px;
+}
+
+/* ICONS */
+.mat-icon-button {
+    border-radius: 0 !important;
+    width: 120px;
+}
+
+.icons-action {
+    font-size: 24px;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+.none-border-icons-action {
+    border: 0;
+    background-color: transparent;
+}
+
+.mat-icon {
+    margin-right: 5px; 
+}
+
+.icon-color-red {
+    color: red;
+}
+
+.icon-color-grey {
+    color: #3E3F47;
+}
+
+/* TABLE */
+
+table {
+    width: 98%;
+    margin: 20px auto 20px auto;
+}
+
+.mat-row:nth-child(even){
+    background-color: #F4F4F4;
+}
+
+.mat-row:nth-child(odd){
+    background-color: #FFFFFF;
+}
+
+.align-cod-button {
+    display: flex;
+    align-items: center;
+}
+
+.columnIcon {
+    width: 5%;
+}

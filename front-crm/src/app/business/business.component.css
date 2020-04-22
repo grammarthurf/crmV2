@@ -1,0 +1,418 @@
+/* TICKETS */
+.tickets {
+  background-color: #a8a8a8;
+  color: #fff;
+}
+
+div.tickets div {
+  padding: 10px;
+}
+
+.space {
+  width: 5%;
+}
+
+.row {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+/* DIV */
+
+.maindiv {
+  margin-top: 15px; 
+  margin-left: 15px;
+}
+
+div p {
+  text-align: left;
+  margin-left: 5px;
+}
+
+div p + p {
+  text-align: left;
+  margin-left: 5px;
+  font-size: 14px;
+}
+
+.btn-circle.btn-sm {
+  width: 25px;
+  height: 25px;
+  padding: 0px 0px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 22px;
+  color: #7e7e7e;
+  float: right;
+  background-color: #fff;
+} 
+
+.leads {
+  border: 1px solid #c7c7c7;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 10px 1px 5px -5px;
+  cursor: pointer;
+  padding: 10px;
+  width: 170px;
+  height: 85px;
+  font-size: 15px;
+}
+
+.font-grey-cards {
+  color: #898989;
+}
+
+.limit-words {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.buttons-informations {
+  display: flex;
+  border: 0;
+  border-radius: 15px;
+  padding: 0px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  margin-left: 4px;
+}
+
+.good {
+  background-color: #4dc426;
+}
+
+.regular {
+  background-color: #e5f72b;
+}
+
+.bad {
+  background-color: #e22f2f;
+}
+
+.flex {
+  display: flex;
+}
+
+button i {
+  margin-top: 2px;
+  font-size: 14px;
+}
+
+.btn-add {
+  color: #fff;
+  background-color: #5460E0;
+  border-color: #5460E0;
+}
+/* TOPO */
+h1 {
+  margin-left: 20px;
+  font-size: 35px;
+  color: #0a1840;
+}
+
+h1 {
+  font-size: 35px;
+  color: #0a1840;
+}
+
+.btn1 {
+  background-color: white;
+  color: #0a1840;
+  box-shadow: 2px black;
+  margin-left: 30px;
+}
+
+mat-divider {
+  margin: 20px;
+  margin-top: 10px;
+}
+
+::-webkit-slider-runnable-track {
+  margin-top: 18px;
+  height: 10px;
+  border-radius: 10px;
+  background-image: linear-gradient(to right, #e23a3a, #f8ff97, #78ac78);
+}
+
+::-webkit-slider-thumb {
+  margin-top: -7px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;  
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 20px;
+  border-radius: 25%; 
+  background: #3c98c0;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 10px;
+  height: 20px;
+  border-radius: 25%;
+  background: #3c98c0;
+  cursor: pointer;
+}
+
+.next-ativ {
+  background-color: #e22f2f;
+  border-radius: 8%;
+  padding: 2%;
+}
+
+.col-md-2 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  max-width: 14.29% !important;
+}
+
+.fz-13 {
+  font-size: 13px;
+}
+
+.fz-15 {
+  font-size: 15px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.loc-button-top {
+  display: flex;
+  padding-left: 5px;
+}
+
+#red, #green, #orange, #grey {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+}
+
+#red {
+  color: #e23a3a;
+}
+
+#green {
+  color: #4da84d;
+}
+
+#orange {
+  color: orange;
+}
+
+#grey {
+  color: #0000005e;
+}
+
+.termometro {
+  margin-left: auto;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  background-color: #FF0000;
+}
+
+.ruim {
+  background-color: red;
+}
+
+.medio {
+  background-color: yellow;
+}
+
+.otimo {
+  background-color: green;
+}
+
+span {
+  margin-top: 10px;
+}
+
+span:nth-child(1) {
+  margin-left: -5px;
+}
+
+span:nth-child(2) {
+  margin-left: 55px;
+}
+
+span:nth-child(3) {
+  margin-left: 40px;
+}
+
+.example-box:active {
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.example-container {
+  width: 12.4%;
+  max-width: 100%;
+  margin: 0 23px 25px 0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.test {
+  width: 114%;
+  display: flex;
+}
+
+img {
+  margin-left: auto;
+  margin-right: 2px; /*teste*/
+}
+
+img#codigo {
+  height: 20px;
+  margin-bottom: 8px;
+}
+
+button#code {
+  height: 35px;
+  margin-top: 32px;
+}
+
+.img-prod{
+  width: 20px; 
+  height: 20px; 
+  margin-top: 5px; 
+  margin-right: 5px;
+}
+
+img#arrow {
+  height: 64px;
+  margin-left: auto;
+}
+
+.example-list {
+  min-height: 60px;
+  background: transparent;
+  border-radius: 4px;
+  display: block;
+}
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+@keyframes move {
+  from {
+      left: 5%;
+  }
+  to {
+      left: 85%;
+  }
+}
+
+/* assign animation to ball element */
+.ball {
+  animation: 1s move;
+}
+
+lottie-animation-view {
+  position: absolute;
+  left: 40%;
+  top: -4%;
+  z-index: -1;
+}
+
+.icon-modal-lead{
+  margin-right: 10px; 
+  font-weight: bold; 
+  width: 21px; 
+  height: 21px; 
+  font-size: 18px; 
+  border-radius: 100px; 
+  background-color: #c2c2c2; 
+  color: #ffffff;
+  font-size: 20px; 
+  margin-left: 5px;
+}
+
+.limit-value {
+  overflow: hidden;
+}
+
+.modal-title {
+  font-weight: bold;
+}
+
+/* .information-activity {
+  position: absolute;
+  top: 45%;
+  left: 40%;
+  box-shadow: 9px 10px 55px 34px rgba(117,117,117,0.38);
+  width: 18rem; 
+  border-radius: 8px;
+}
+
+.item:hover .descricao{
+  display: block;
+}
+
+.descricao {
+  display: none;
+} */
+
+label#label-input {
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px dashed #ddd;
+  background-size: cover;
+  cursor: pointer;
+  height: 160px;
+  width: 440px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* label#label-input input {
+  display: none;
+} */

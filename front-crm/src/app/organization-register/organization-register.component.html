@@ -1,0 +1,336 @@
+<div class="first-div">
+  <div class="flex">
+    <img src="../../assets/empresa.png">
+    <h5>Cadastrar Empresa</h5>
+  </div>
+  <div class="row col-md-12 align-cod-button">
+    <div class="form-group col-md-3">
+      <label for="cod">Código <label style="color: red; font-size: 20px;">*</label></label>
+      <input [(ngModel)]="org.codigo" disabled value="{{this.code1}}" type="text" class="form-control">
+      <!-- value="{{orgapi.id}}" -->
+    </div>
+    <button class="btn btn-primary" style="margin-top:30px;" [disabled]="disableCode || orgUpdate"
+      (click)="generateCode1()" id="code">
+      <img src="../../assets/cod.png" id="codigo">
+    </button>
+  </div>
+  <div class="row col-md-12">
+    <div class="form-group col-md-6">
+      <label for="raz">Razão Social <label style="color: red; font-size: 20px;">*</label></label>
+      <input [(ngModel)]="org.razaosocial" type="text" class="form-control" (keyup)="maiuscula($event.target.value, 1)">
+    </div>
+    <div class="form-group col-md-6" style="margin-top: 15px;">
+      <label for="name">Nome Fantasia</label>
+      <input [(ngModel)]="org.nomefantasia" type="text" class="form-control"
+        (keyup)="maiuscula($event.target.value, 2)">
+    </div>
+  </div>
+  <div class="row col-md-12">
+    <div class="form-group col-md-4 mg-tp-8">
+      <label for="cnpj">CNPJ</label>
+      <input [(ngModel)]="org.cnpj" type="text" class="form-control" mask="AA.AAA.AAA/AAAA-AA"
+        placeholder="00.000.000/0000-00">
+    </div>
+    <div class="form-group col-md-4 mg-tp-8">
+      <label for="ie">IE</label>
+      <input [(ngModel)]="org.ie" type="text" class="form-control">
+    </div>
+    <!-- <mat-form-field class="col-md-4">
+      <mat-label>{{orgUpdate.ramo.desc}}</mat-label>
+      <mat-select>
+        <mat-option>Option</mat-option>
+        <mat-option>Option</mat-option>
+      </mat-select>
+    </mat-form-field> -->
+
+
+    <div class="form-group col-md-4">
+      <label for="ramo">Ramo</label>
+      <button mat-icon-button data-toggle="modal" data-target="#ramo">
+        <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
+      </button>
+      <select [(ngModel)]="org.ramos" class="form-control">
+        <option value="undefined" *ngIf="orgUpdate" hidden>{{orgUpdate.ramo ? orgUpdate.ramo.desc : ''}}</option>
+        <option value="" *ngIf="!orgUpdate">Selecione...</option>
+        <option *ngFor="let item of ramosapi" value="{{item.id}}">{{item.desc}}</option>
+      </select>
+    </div>
+
+    <!-- <div class="col-md-4">
+      <div style="display: flex;">
+        <p>Ramo</p>
+        <button mat-icon-button data-toggle="modal" data-target="#ramo" style="margin-top: -5px;">
+          <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
+        </button>
+      </div>
+      <mat-form-field style="width: 100%;">
+        <mat-label *ngIf="orgUpdate">{{orgUpdate.ramo.desc}}</mat-label>
+        <mat-select [(ngModel)]="org.ramos">
+          <mat-option *ngFor="let item of ramosapi" value="{{item.id}}">
+            {{item.desc}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div> -->
+
+
+
+
+
+  </div>
+  <div class="row col-md-12">
+    <div class="form-group col-md-3">
+      <label for="cep">CEP</label>
+      <input [(ngModel)]="org.cep" type="text" class="form-control" mask="AA.AAA-AAA" placeholder="00.000-000">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="end">Endereço</label>
+      <input [(ngModel)]="org.rua" type="text" class="form-control" (keyup)="maiuscula($event.target.value, 3)">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="exampleFormControlInput1">Bairro</label>
+      <input [(ngModel)]="org.bairro" class="form-control" (keyup)="maiuscula($event.target.value, 4)">
+    </div>
+  </div>
+  <div class="row col-md-12">
+    <div class="form-group col-md-4">
+      <label for="comp">Complemento</label>
+      <input [(ngModel)]="org.complemento" type="text" class="form-control" (keyup)="maiuscula($event.target.value, 5)">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="cidade">Cidade</label>
+      <input [(ngModel)]="org.cidade" type="text" class="form-control" (keyup)="maiuscula($event.target.value, 6)">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="estado">Estado</label>
+      <input [(ngModel)]="org.uf" type="text" class="form-control" maxlength="2"
+        (keyup)="maiuscula($event.target.value, 7)">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="telefone">Telefone</label>
+      <input [(ngModel)]="org.telefone" type="text" class="form-control" mask="(AA) AAAA-AAAA"
+        placeholder="(  )          - ">
+    </div>
+  </div>
+  <div class="row col-md-12">
+    <div class="form-group col-md-5  mg-tp-8">
+      <label for="email">Email</label>
+      <input [(ngModel)]="org.email" type="email" class="form-control" placeholder="exemplo@exemplo.com.br"
+        (keyup)="maiuscula($event.target.value, 8)">
+    </div>
+    <div class="form-group col-md-4  mg-tp-8">
+      <label for="site">Site</label>
+      <input [(ngModel)]="org.site" type="text" class="form-control" (keyup)="maiuscula($event.target.value, 9)">
+    </div>
+
+
+
+    <div class="form-group col-md-3">
+      <label for="erp">ERP</label>
+      <button mat-icon-button data-toggle="modal" data-target="#erp">
+        <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
+      </button>
+      <select [(ngModel)]="org.erp" class="form-control">
+        <option value="undefined" *ngIf="orgUpdate" hidden>{{orgUpdate.erpe ? orgUpdate.erpe.desc : ''}}</option>
+        <option value="" *ngIf="!orgUpdate">Selecione...</option>
+        <option *ngFor="let item of erpsapi" value="{{item.id}}">{{item.desc}}</option>
+      </select>
+    </div>
+
+    <!-- <div class="col-md-3">
+      <div style="display: flex;">
+        <p>ERP</p>
+        <button mat-icon-button data-toggle="modal" data-target="#erp" style="margin-top: -5px;">
+          <mat-icon class="icon-modal-atv icon-dif">add</mat-icon>
+        </button>
+      </div>
+      <mat-form-field style="width: 100%;">
+        <mat-label *ngIf="orgUpdate">{{orgUpdate.erpe.desc}}</mat-label>
+        <mat-select [(ngModel)]="org.erp">
+          <mat-option *ngFor="let item of erpsapi" value="{{item.id}}">
+            {{item.desc}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div> -->
+
+
+
+  </div>
+  <hr>
+  <div class="flex">
+    <img src="../../assets/contato.png">
+    <h5>Cadastrar Contato</h5>
+  </div>
+  <div class="row">
+    <div class="col-md-7">
+      <div class="row col-md-12">
+        <div class="form-group col-md-6">
+          <label for="name">Nome</label>
+          <input [(ngModel)]="contato.nome" type="text" class="form-control"
+            (keyup)="maiuscula($event.target.value, 10)">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="email">Email</label>
+          <input [(ngModel)]="contato.email" type="text" class="form-control"
+            (keyup)="maiuscula($event.target.value, 11)">
+        </div>
+      </div>
+      <div class="row col-md-12">
+        <div class="form-group col-md-4">
+          <label for="email">Cargo</label>
+          <input [(ngModel)]="contato.cargo" type="text" class="form-control"
+            (keyup)="maiuscula($event.target.value, 12)">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="email">Departamento</label>
+          <input [(ngModel)]="contato.dep" type="text" class="form-control"
+            (keyup)="maiuscula($event.target.value, 13)">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="email">Data Aniversário</label>
+          <input [(ngModel)]="contato.birth" class="form-control" type="text" placeholder="DIA/MÊS" mask="99/99" />
+        </div>
+      </div>
+      <div class="row col-md-12">
+        <div class="form-group col-md-3">
+          <label for="email">Telefone</label>
+          <input [(ngModel)]="contato.tel" type="text" class="form-control" mask="(AA) AAAA-AAAA"
+            placeholder="(  )          - ">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="ramal">Ramal</label>
+          <input [(ngModel)]="contato.ramal" type="text" class="form-control" maxlength="6" id="input-ramal">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="email">Celular/WhatsApp</label>
+          <input [(ngModel)]="contato.cel" type="text" class="form-control" mask="(AA) AAAAA-AAAA"
+            placeholder="(  )          - ">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="email">Skype</label>
+          <input [(ngModel)]="contato.skp" type="text" class="form-control">
+        </div>
+      </div>
+      <button class="btn btn-primary" (click)="addContato()" style="margin-left: 15px;">
+        Salvar Contato
+      </button>
+    </div>
+    <div class="col-md-5">
+      <div *ngFor="let item of org.contatos" class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{item.nome}}</h5>
+            <div class="row">
+              <div class="col-md-11">
+                <p class="card-text">
+                  <span *ngIf="item.email">•</span>
+                  {{item.email}}
+                </p>
+                <p class="card-text">
+                  <span *ngIf="item.cargo">•</span>
+                  {{item.cargo}}
+                </p>
+                <p class="card-text">
+                  <span *ngIf="item.dep">•</span>
+                  {{item.dep}}
+                </p>
+                <p class="card-text">
+                  <span *ngIf="item.skp">• {{item.skp}}</span>
+                  <span *ngIf="item.skype">• {{item.skype}}</span>
+
+                </p>
+                <p class="card-text">
+                  <span *ngIf="item.birth">•</span>
+                  {{formatBirth(item.birth)}}
+                </p>
+                <p class="card-text">
+                  <span *ngIf="item.tel">•</span>
+                  {{formatPhoneNumber(item.tel)}}
+                  <span *ngIf="item.cel">•</span>
+                  {{formatCellPhoneNumber(item.cel)}}
+                </p>
+              </div>
+              <button mat-icon-button class="col-md-1" (click)="updateContato(item)">
+                <mat-icon class="icons-action" style="color: red;">edit</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <button class="btn btn-secondary" (click)="exit()">Sair</button>
+  <button class="btn btn-primary" *ngIf="orgUpdate" (click)="updateOrg()" style="margin-left: 10px;">
+    Atualizar Empresa
+  </button>
+  <button class="btn btn-primary" *ngIf="!orgUpdate" (click)="save()" style="margin-left: 10px;">
+    Salvar Empresa
+  </button>
+</div>
+<div class="modal fade bd-example-modal-lg" id="ramo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ramo">Adicionar Ramo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12">
+          <div class="form-group col-md-12">
+            <label for="nome">Nome</label>
+            <input [(ngModel)]="ramos.desc" type="text" class="form-control"
+              (keyup)="maiuscula($event.target.value, 15)">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
+        <button type="button" (click)="saveRamo()" data-dismiss="modal" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade bd-example-modal-lg" id="erp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="erp">Adicionar ERP</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row col-md-12 align-cod-button">
+          <div class="form-group col-md-3">
+            <label for="cod">Código</label>
+            <input [(ngModel)]="erp.codigo" disabled value="{{this.code2}}" type="text" class="form-control">
+          </div>
+          <button class="btn btn-primary" [disabled]="disableCode1" (click)="generateCode2()" id="code">
+            <img src="../../assets/cod.png" id="codigo">
+          </button>
+        </div>
+        <div class="row col-md-12">
+          <div class="form-group col-md-6">
+            <label for="empresa">Empresa</label>
+            <input [(ngModel)]="erp.empresa" type="text" class="form-control"
+              (keyup)="maiuscula($event.target.value, 16)">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="erp">ERP</label>
+            <input [(ngModel)]="erp.desc" type="text" class="form-control" (keyup)="maiuscula($event.target.value, 17)">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
+        <button type="button" (click)="saveErp()" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>

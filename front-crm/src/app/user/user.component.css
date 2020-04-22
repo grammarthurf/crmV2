@@ -1,0 +1,96 @@
+.main-div {
+    width: 97%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.div-left {
+	float: left;
+}
+
+.div-right {
+    float: right;
+}
+
+.real-div {
+    border-radius: 10px; 
+    border-style: solid; 
+    border-color: rgb(226, 226, 226); 
+    border-width: 1px;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.p {
+    padding-top: 25px;
+    font-size: 13px;
+    margin: 1px;
+}
+
+.p1 {
+    color: rgb(156, 156, 156);
+}
+
+mat-icon {
+    float: left;
+    margin-right: 10px;
+    font-size: 25px;
+    color: rgb(60, 152, 192);
+}
+
+.img1 {
+    width: 100px; 
+    height: 100px; 
+    margin-left: 15px;
+    margin-top: 15px;
+    border-radius: 100px;
+}
+
+.img2 {
+    width: 25px; 
+    height: 25px; 
+    margin-right: 15px;
+}
+
+.periodoLabel {
+    font-weight: bold;
+}
+
+.lblFilter {
+    color: #007bff;
+    float: left;
+}
+
+label#thumbnail {
+    margin-bottom: 20px;
+    border: 1px dashed rgb(184, 183, 183);
+    background-size: cover;
+    cursor: pointer;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+label#thumbnail input {
+    display: none;
+}
+
+li.flex {
+    justify-content: space-between;
+}
+
+li.flex button {
+    border: 0;
+    height: 35px;
+    width: 47%;
+    color: white;
+    background: #6F77F0;
+    border-radius: 6px;
+}
+
+li.flex button:hover {
+    background: #3945F5;
+    transition: 0.2s;
+}

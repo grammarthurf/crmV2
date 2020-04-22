@@ -1,0 +1,22 @@
+app-sidebar {
+  transition: all 300ms;
+  background: #f8f9fa;
+}
+
+.hide {
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  margin-left: -150px;
+}
+
+@media (max-width: 756px) {
+  app-funil, app-prospeccoes, app-leads-ganhas, app-leads-perdidas {
+    margin: 0 auto;
+  }
+}
+
+#sidebar-wrapper {
+  height: 100%;
+  width: 25vh;
+}

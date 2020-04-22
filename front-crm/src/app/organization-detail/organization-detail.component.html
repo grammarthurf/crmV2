@@ -1,0 +1,521 @@
+<div style="margin-top: 40px;">
+    <header class="row col-md-11 bg-white">
+        <div class="col-md-9" style="display: grid; justify-content: flex-start;">
+            <h2 style="font-weight: bold;">Vedois Tecnologia</h2>
+        </div>
+        <div class="col-md-3">
+            <button 
+                type="button" 
+                class="btn btn-success" 
+                id="add" 
+                data-toggle="modal" 
+                data-target="#modalAddLead"
+            >
+                Adicionar nova Lead
+            </button>
+        </div>
+    </header>
+
+
+    <main class="row col-11">
+        <div class="col-4 no-pd-l">
+            <div class="bg-white">
+                <h5>Detalhes</h5>
+                <hr>
+                <div class="col-md-12 mb-3">
+                    <p><b class="b-b">Código: </b>0006</p>
+                    <p><b class="b-b">Nome Fantasia: </b>Vedois Tecnologia</p>
+                    <p><b class="b-b">CNPJ: </b>82.1232/0001-42</p>
+                    <p><b class="b-b">IE: </b>25.463.29/8</p>
+                    <p><b class="b-b">Endereço: </b><b>RUA AUSTRÁLIA, 211 - TIMBÓ - SC, 89120000</b></p>
+                    <p><b class="b-b">ERP: </b>Vedois OEE</p>
+                </div>
+            </div>
+
+            <div class="bg-white  mg-tp-40">
+                <div class="flex only-select">
+                    <h5>Contatos</h5>
+                    <button class="icons" data-toggle="modal" data-target="#addContact">
+                        <mat-icon id="add">add</mat-icon>
+                    </button>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="flex only-select">
+                            <mat-icon>person_pin</mat-icon>
+                            <p>Arthur</p>
+                        </div>
+                        <div class="flex only-select">
+                            <mat-icon>person_pin</mat-icon>
+                            <p>Arthur</p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="flex only-select">
+                            <mat-icon>person_pin</mat-icon>
+                            <p>Arthur</p>
+                        </div>
+                        <div class="flex only-select">
+                            <mat-icon>person_pin</mat-icon>
+                            <p>Arthur</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white  mg-tp-40">
+                <div class="flex">
+                    <h5>Negócios</h5>
+                    <button class="icons" data-toggle="modal" data-target="#modalAddLead">
+                        <mat-icon id="edit">edit</mat-icon>
+                    </button>
+                </div>
+                <hr>
+                <div class="leads">
+                    <p class="limit-words">Negócio Vedois</p>
+                    <div class="flex">
+                        <p>{{123456 | currency:'BRL':'symbol':'0.2':'pt'}}</p>
+                        <mat-icon id="orange">error_outline</mat-icon>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="leads">
+                    <p class="limit-words">Negócio Vedois</p>
+                    <div class="flex">
+                        <p>{{123456 | currency:'BRL':'symbol':'0.2':'pt'}}</p>
+                        <mat-icon id="orange">error_outline</mat-icon>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white mg-tp-40">
+                <h5 id="vision">Visão Geral</h5>
+                <hr>
+                <div class="flex" style="margin-bottom: 10px;">
+                    <p id="created_at">Criado em:</p>
+                    <p>5 de Fevereiro de 2020</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-1">
+
+        </div>
+        <div class="col-7 divright">
+            <div class="bg-white">
+                <mat-tab-group mat-stretch-tabs class="col-12">
+                    <mat-tab label="Observações">
+                        <div class="form-group col-12">
+                            <textarea rows="5" class="col-12 txtarea"></textarea>
+                            <button type="button" class="btn btn-success bold btn-sm fltright">
+                                Adicionar
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary bold btn-sm fltright mg-r-5">
+                                Cancelar
+                            </button>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Atividade">
+                        <div class="col-12 mg-t-10 divtab">
+                            <div class="b-b txtcenter">
+                                <h4>Sem atividades ativas</h4>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Anexos">
+                        <div class="col-12">
+                        <label id="thumbnail">
+                            <input type="file" name="attachments[dummy][file]" class="file_selector" multiple="multiple"
+                            onchange="addInputFiles(this);"/>
+                          </label>
+                          <button class="btn btn-success" style="float: right;">Salvar Anexo</button>
+                            <mat-list>
+                                <h3 mat-subheader>Pastas</h3>
+                                <mat-list-item>
+                                    <mat-icon mat-list-icon>folder</mat-icon>
+                                    <h4 mat-line>Fotos</h4>
+                                    <p mat-line> Jan 1, 2020 </p>
+                                </mat-list-item>
+                                <mat-list-item>
+                                    <mat-icon mat-list-icon>folder</mat-icon>
+                                    <h4 mat-line>Projetos</h4>
+                                    <p mat-line> Fev 3, 2020 </p>
+                                </mat-list-item>
+                                <mat-divider></mat-divider>
+                                <h3 mat-subheader>Arquivos</h3>
+                                <mat-list-item>
+                                    <mat-icon mat-list-icon>note</mat-icon>
+                                    <h4 mat-line>Contrato</h4>
+                                    <p mat-line> Feb 20, 2020 </p>
+                                </mat-list-item>
+                                <mat-list-item>
+                                    <mat-icon mat-list-icon>note</mat-icon>
+                                    <h4 mat-line>Requisitos Instalação</h4>
+                                    <p mat-line> Feb 22, 2020 </p>
+                                </mat-list-item>
+                            </mat-list>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+
+            <div class="div-plan">
+                <p>Planejado</p>
+            </div>
+
+            <div class="row col-12">
+                <div class="col-2 align-button-icons-center">
+                    <div class="icons-hist">
+                        <mat-icon>phone</mat-icon>
+                    </div>
+                </div>
+                <div class="col-10 bg-white">
+                    <div class="flex">
+                        <mat-checkbox></mat-checkbox>
+                        <h4>Ligar para Vedois</h4>
+                    </div>
+                    <div class="flex">
+                        <p id="day">Hoje</p>
+                        <p style="margin-left: 15px">Osmir Vieira </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row col-12">
+                <div class="col-2 align-button-icons-center">
+                    <div class="icons-hist">
+                        <mat-icon>phone</mat-icon>
+                    </div>
+                </div>
+                <div class="col-10 bg-white">
+                    <div class="flex">
+                        <mat-checkbox></mat-checkbox>
+                        <h4>Reunião com Sull</h4>
+                    </div>
+                    <div class="flex">
+                        <p id="day">Hoje</p>
+                        <p style="margin-left: 15px">Osmir Vieira </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row col-12">
+                <div class="col-2 align-button-icons-center">
+                    <div class="icons-hist">
+                        <mat-icon>business</mat-icon>
+                    </div>
+                </div>
+                <div class="col-10 bg-white">
+                    <div class="flex">
+                        <mat-checkbox></mat-checkbox>
+                        <h4>Reunião com Madesp</h4>
+                    </div>
+                    <div class="flex">
+                        <p id="day">Hoje</p>
+                        <p style="margin-left: 15px">Leandro Vieira </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="div-plan">
+                <p>Concluído</p>
+            </div>
+
+            <div class="row col-12">
+                <div class="col-2 align-button-icons-center">
+                    <div class="icons-hist">
+                        <mat-icon>phone</mat-icon>
+                    </div>
+                </div>
+                <div class="col-10 bg-white">
+                    <div class="flex">
+                        <mat-checkbox></mat-checkbox>
+                        <h4>Ligar para Vedois</h4>
+                    </div>
+                    <div class="flex">
+                        <p id="day">Hoje</p>
+                        <p style="margin-left: 15px">Osmir Vieira </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- MODALS -->
+<!-- ADD CONTATO -->
+<div class="modal fade bd-example-modal-lg" id="addContact" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="../../assets/contato.png" id="contato">
+                <h5 class="modal-title" id="addContatct">Cadastrar Contato</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="row col-md-12">
+                        <div class="form-group col-md-6">
+                            <label for="name">Nome</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row col-md-12">
+                        <div class="form-group col-md-4">
+                            <label for="email">Cargo</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="email">Departamento</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="email">Data Aniversário</label>
+                            <input type="date" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row col-md-12">
+                        <div class="form-group col-md-3">
+                            <label for="email">Telefone</label>
+                            <input type="text" class="form-control" mask="(AA) AAAA-AAAA"
+                                placeholder="(  )          - ">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="ramal">Ramal</label>
+                            <input type="text" class="form-control" maxlength="6">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="email">Celular/WhatsApp</label>
+                            <input type="text" class="form-control" mask="(AA) AAAAA-AAAA"
+                                placeholder="(  )          - ">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="email">Skype</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
+                <button type="button" class="btn btn-primary">Salvar Contato</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ADD LEAD -->
+<div class="modal fade" id="modalAddLead" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    Adicione uma Lead
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="exampleInputEmail1">Título</label>
+                        <input type="text" class="form-control" id="title" aria-describedby="emailHelp"
+                            placeholder="Título" required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="exampleFormControlSelect1">Empresa</label>
+                        <button mat-icon-button (click)="redirectToAdd('/company-register')">
+                            <mat-icon class="icon-modal-lead">add</mat-icon>
+                        </button>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>
+                                Vedois Tecnologia
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="exampleInputEmail1">Valor Estimado</label>
+                        <input type="text" class="form-control" id="value" aria-describedby="emailHelp"
+                            placeholder="Valor" currencyMask
+                            [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="exampleFormControlSelect2">Produto</label>
+                        <button mat-icon-button data-toggle="modal" data-target="#exampleModalProd"
+                            data-dismiss="modal">
+                            <mat-icon class="icon-modal-lead">add</mat-icon>
+                        </button>
+                        <select multiple class="form-control" id="exampleFormControlSelect2">
+                            <option>
+                                Vedois OEE
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="thermometro">Termômetro</label>
+                        <input type="range" class="form-control-range" id="thermometro" value="0" step="50" />
+                        <div style="display: flex;">
+                            <span>Ruim</span>
+                            <span>Bom</span>
+                            <span>Ótimo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="exampleFormControlSelect1">Contato</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>
+                                Leandro Vieira
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="exampleFormControlSelect1">Estágio Inicial</label>
+                        <select class="form-control" id="exampleFormControlSelect1" required>
+                            <option>
+                                Cliente
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-6" style="margin-top: 8px;">
+                        <label for="ven_int">Vendedor Interno</label>
+                        <select class="form-control" id="ven_int" required>
+                            <option>
+                                Fabiana Vieira
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="ven_ext">Vendedor Externo</label>
+                        <button mat-icon-button data-toggle="modal" data-target="#exampleModalVendedorExt"
+                            data-dismiss="modal">
+                            <mat-icon class="icon-modal-lead">add</mat-icon>
+                        </button>
+                        <select class="form-control" id="ven_ext">
+                            <option>
+                                João da Silva
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="exampleFormControlTextarea1">Observação</label>
+                        <textarea class="form-control" id="observation" rows="3"></textarea>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    Sair
+                </button>
+                <button class="btn btn-primary" data-dismiss="modal">
+                    Salvar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ADD PRODUTO -->
+<div class="modal fade" id="exampleModalProd" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="../../assets/icone-produto.png" class="img-prod" />
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    Cadastrar Produto
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body row">
+                <div class="form-group col-md-6">
+                    <label for="codeprod"> Código</label>
+                    <input disabled type="text" class="form-control" id="codeprod"/>
+                </div>
+                <button class="btn btn-primary" id="code">
+                    <img src="../../assets/cod.png" id="codigo">
+                </button>
+                <div class="form-group col-md-12">
+                    <label for="nomeprod"> Descrição</label>
+                    <input type="text" class="form-control" id="nomeprod" required />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
+                    data-target="#modalAddLead">
+                    Sair
+                </button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                    data-toggle="modal" data-target="#modalAddLead">
+                    Salvar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ADD VENDEDOR EXTERNO -->
+<div class="modal fade" id="exampleModalVendedorExt" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="../../assets/icone-produto.png" class="img-prod" />
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    Cadastrar Vendedor Externo
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body row">
+                <div class="form-group col-md-12">
+                    <label for="nomeprod"> Nome</label>
+                    <input type="text" class="form-control" id="nomeprod" required />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
+                    data-target="#modalAddLead">
+                    Sair
+                </button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                    data-toggle="modal" data-target="#modalAddLead">
+                    Salvar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+.first-div {
+    background-color: white;
+    margin: 25px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+img#codigo {
+    height: 20px;
+    margin-bottom: 8px;
+}
+
+.align-cod-button {
+    display: flex;
+    align-items: center;
+}
+
+button#code {
+    height: 35px;
+    margin-top: 15px;
+}
+
+div.first-div div.flex img {
+    height: 25px;
+}
+
+div.first-div div.flex h5 {
+    font-weight: bold;
+    font-size: 25px;
+    margin-left: 8px;
+}
+
+div.first-div div.flex {
+    padding: 10px;
+}
+
+.icon-modal-atv{
+    font-size: 20px; 
+    margin-left: 5px;
+    
+}
+
+.icon-dif {
+    margin-right: 10px; 
+    font-weight: bold; 
+    width: 21px; 
+    height: 21px; 
+    font-size: 18px; 
+    border-radius: 100px; 
+    background-color: #c2c2c2; 
+    color: #ffffff;
+}
+
+button.btn-secondary {
+    margin-left: 15px;
+}
+
+button.btn-secondary + button.btn-primary {
+    margin-left: 10px;
+}
+
+.btns {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mg-tp-8 {
+    margin-top: 8px;
+}
+
+.selectErp {
+    content: 'aaaaaaaaa';
+}

@@ -1,0 +1,371 @@
+<div style="margin-top: 15px">
+
+  <!-- ADD ACTIVITY AND FILTER -->
+  <div style="display: flex;">
+    <button type="button" class="btn btn-primary loc-button-top " (click)="updateFalse()" data-toggle="modal"
+      data-target="#abrircadastroatv">
+      <mat-icon>add</mat-icon>
+      <p style="margin-left: 5px;">Atividade</p>
+    </button>
+    <div class="div-filter">
+      <input class="form-control" type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+    </div>
+  </div>
+
+  <mat-divider style="margin-left: 15px; margin-right: 15px;"></mat-divider>
+
+  <div class="row col-12">
+    <button type="button" class="btn btn-outline-dark button-all" (click)="filterAll()">
+      Ativos
+    </button>
+    <button mat-icon-button class="buttons-filter dif" (keyup)="applyFilter($event)" (click)="filterCall()">
+      <mat-icon>phone</mat-icon>
+      Ligação
+    </button>
+    <button mat-icon-button class="buttons-filter" (keyup)="applyFilter($event)" (click)="filterReunion()">
+      <mat-icon>people</mat-icon>
+      Reunião
+    </button>
+    <button mat-icon-button class="buttons-filter" (keyup)="applyFilter($event)" (click)="filterVisit()">
+      <mat-icon>business</mat-icon>
+      Visita
+    </button>
+    <button mat-icon-button class="buttons-filter" (keyup)="applyFilter($event)" (click)="filterEmail()">
+      <mat-icon>email</mat-icon>
+      Email
+    </button>
+    <button mat-icon-button class="buttons-filter" (keyup)="applyFilter($event)" (click)="filterTask()">
+      <mat-icon>watch_later</mat-icon>
+      Tarefa
+    </button>
+    <select class="form-control" id="exampleFormControlSelect1" style="width: 180px; margin: 10px 40px;">
+      <option *ngFor="let vendedor of vendedorapi" value="{{vendedor.id}}">
+        {{vendedor.username}}
+      </option>
+    </select>
+    <button type="button" class="btn btn-link" (click)="filterDay()">
+      Hoje
+    </button>
+    <button type="button" class="btn btn-link" (click)="filterTomorrow()">
+      Amanhã
+    </button>
+    <button type="button" class="btn btn-link" (click)="filterMonth()">
+      Este mês
+    </button>
+    <button type="button" class="btn btn-link" (click)="filterNextMonth()">
+      Próximo mês
+    </button>
+    <button type="button" class="btn btn-link" (click)="getterActivity(true)">
+      Feito
+    </button>
+  </div>
+
+  <table mat-table [dataSource]="dataSource " multiTemplateDataRows matSort class="mat-elevation-z8">
+    <!-- COLUNA FEITO: CHECKBOX -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        Feito?
+      </th>
+      <td [style.background-color]="getColor(element.dataini)" mat-cell *matCellDef="let element let row">
+        <mat-checkbox [checked]="element.feito" id="{{element.position}}" (change)="ChangeStatus($event)"
+          data-toggle="modal" data-target="#abrircadastroatv" style="padding-left: 30px;">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+    <!-- COLUNA TIPO -->
+    <ng-container matColumnDef="tipo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Tipo
+      </th>
+      <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.dataini)">
+        {{element.tipo}}
+      </td>
+    </ng-container>
+    <!-- COLUNA DATA INICIAL  -->
+    <ng-container matColumnDef="dataini">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Data
+      </th>
+      <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.dataini)">
+        {{element.dataini | date:'dd/MM/yyyy'}}
+      </td>
+    </ng-container>
+
+    <!-- COLUNA TICKET -->
+    <ng-container matColumnDef="ticket.titulo">
+      <th mat-header-cell *matHeaderCellDef>
+        Negócio
+      </th>
+      <td mat-cell *matCellDef="let element;" [style.background-color]="getColor(element.dataini)"
+        (click)="goToLead(element.ticket.id)" style="cursor: pointer;">
+        {{element.ticket.titulo}}
+      </td>
+    </ng-container>
+
+    <!-- COLUNA CONTATO -->
+    <ng-container matColumnDef="cliente">
+      <th mat-header-cell *matHeaderCellDef>
+        Nome do Contato
+      </th>
+      <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.dataini)">
+        {{element.cliente.nome }}
+      </td>
+    </ng-container>
+
+    <!-- COLUNA ASSUNTO -->
+    <ng-container matColumnDef="assunto">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Assunto
+      </th>
+      <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.dataini)"
+        class="assunto-quebra">
+        {{element.assunto}}
+      </td>
+    </ng-container>
+
+    <!-- COLUNA VENDEDOR -->
+    <ng-container matColumnDef="vendedor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 15%;">
+        Vendedor
+      </th>
+      <td mat-cell *matCellDef="let element" [style.background-color]="getColor(element.dataini)" class="assunto-quebra"
+        style="width: 15%;">
+        {{element.vendedor}}
+      </td>
+    </ng-container>
+
+    <!-- COLUNA EDITAR -->
+    <ng-container matColumnDef="columnEdit">
+      <th mat-header-cell *matHeaderCellDef>
+        Editar
+      </th>
+      <td mat-cell *matCellDef="let element" data-toggle="modal" data-target="#abrircadastroatv"
+        [style.background-color]="getColor(element.dataini)">
+        <button (click)="editAtv(element)" class="none-border-icons-action">
+          <mat-icon class="icons-action icon-color-grey">
+            create
+          </mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <!-- COLUNA EXCLUIR -->
+    <ng-container matColumnDef="columnDelete">
+      <th mat-header-cell *matHeaderCellDef>
+        Excluir
+      </th>
+      <td mat-cell *matCellDef="let element" data-toggle="modal" data-target="#modalDelete"
+        [style.background-color]="getColor(element.dataini)">
+        <button class="none-border-icons-action" (click)="deleteActivity(element.position)">
+          <mat-icon class="icons-action icon-color-red">
+            delete
+          </mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<!-- MODAL ADD ACTIVITY-->
+<div class="modal fade bd-example-modal-lg" id="abrircadastroatv" tabindex="-1" role="dialog"
+  aria-labelledby="abrircadastroatv" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          Adicione uma Atividade
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            &times;
+          </span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-12 row">
+          <div class="col-6" style="padding: 0px;">
+            <div class="col-12 row" style="padding: 0px;">
+              <div class="col-12" style="margin-top: 8px;">
+                <label for="negocios">Negócio <label style="color: red; font-size: 20px;">*</label></label>
+                <!-- (change)="getterorg($event.target.value)" -->
+                <select [(ngModel)]="atv.ticket" *ngIf="negociosapi && !selectedatv" class="form-control"
+                  (change)="getterOrgTick($event.target.value)" id="exampleFormControlSelect1">
+                  <option selected value="" hidden>Selecione ...</option>
+                  <option *ngFor="let ticket of negociosapi" value="{{ticket.id}}">
+                    {{ticket.titulo}}
+                  </option>
+                </select><!--  -->
+                <select [(ngModel)]="atv.ticket" *ngIf="selectedatv" class="form-control" id="exampleFormControlSelect1"
+                  (change)="getterOrgTick($event.target.value)">
+                  <option selected value="" hidden>{{selectedatv.ticket.titulo}}</option>
+                  <option *ngFor="let ticket of negociosapi" value="{{ticket.id}}">
+                    {{ticket.titulo}}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-12 row">
+              <div class="col-12" style="padding: 0px; margin-top: 23px">
+                <label for="participantes">Vendedor(es)</label>
+                <select *ngIf="vendedorapi" class="form-control" id="exampleFormControlSelect1"
+                  (change)="somethingChanged($event.target.value)">
+                  <option value="" *ngIf="atv.vendedor" hidden selected>
+                    {{atv.vendedor ? atv.vendedor.user.username : ''}}</option>
+                  <option *ngFor="let vendedor of vendedorapi" value="{{vendedor.id}}">
+                    {{vendedor.username}}
+                  </option>
+                </select>
+              </div>
+
+
+              <!-- <div class="col-6" style="padding: 0px; margin-top: 23px">
+                <label for="participantes">Vendedor(es)</label>
+                <select [(ngModel)]="atv.vendedor" *ngIf="vendedorapi" class="form-control"
+                  id="exampleFormControlSelect1">
+                  <option selected="selected">oi</option>
+                  <option value="undefined" *ngIf="atv.vendedor" hidden>{{atv.vendedor ? atv.vendedor.user.username : ''}}</option>
+                  <option *ngFor="let vendedor of vendedorapi" value="{{vendedor.id}}">
+                    {{vendedor.username}}
+                  </option>
+                </select>
+              </div> -->
+
+              <!-- <div class="col 6" style="padding: 0px; margin-top: 23px">
+                <h4>Vendedores</h4>
+                <mat-form-field>
+                  <mat-label>{{atv.vendedor ? atv.vendedor.user.username : ''}}</mat-label>
+                  <mat-select [(ngModel)]="atv.vendedor" *ngIf="vendedorapi" >
+                    <mat-option *ngFor="let vendedor of vendedorapi" [value]="vendedor.id">
+                      {{vendedor.username}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div> -->
+            </div>
+
+            <div class="col-12 row" style="margin-top: 20px;">
+              <p class="atvinput" style="color: red;"><b style="color: black;">Atividade:</b>*</p>
+              <div class="div-modal-atv">
+                <button mat-icon-button (click)="selectActivity(1)">
+                  <mat-icon class="icon-modal-atv">phone</mat-icon>
+                </button>
+              </div>
+              <div class="div-modal-atv">
+                <button mat-icon-button (click)="selectActivity(2)">
+                  <mat-icon class="icon-modal-atv">people</mat-icon>
+                </button>
+              </div>
+              <div class="div-modal-atv">
+                <button mat-icon-button (click)="selectActivity(3)">
+                  <mat-icon class="icon-modal-atv">business</mat-icon>
+                </button>
+              </div>
+              <div class="div-modal-atv">
+                <button mat-icon-button (click)="selectActivity(4)">
+                  <mat-icon class="icon-modal-atv">email</mat-icon>
+                </button>
+              </div>
+              <div class="div-modal-atv">
+                <button mat-icon-button (click)="selectActivity(5)">
+                  <mat-icon class="icon-modal-atv">watch_later</mat-icon>
+                </button>
+              </div>
+            </div>
+            <div class="col-12 row inputmargin2">
+              <input [(ngModel)]="atv.tipo" type="text" class="form-control" value="{{this.numm}}"
+                placeholder={{this.numm}}>
+            </div>
+            <div class="col-12 row" style="margin-top: 20px; padding: 0px 0px 0px 15px;">
+              <label for="obs">Assunto <label style="color: red; font-size: 20px;">*</label></label>
+              <textarea [(ngModel)]="atv.assunto" name="obs" id="obs" cols="50" rows="3" class="form-control"
+                (keyup)="maiuscula($event.target.value)">
+                </textarea>
+            </div>
+            <div class="col-12 row inputmargin">
+              <div class="col-6">
+                <label for="">Início</label>
+                <input [(ngModel)]="atv.dataini" type="date" class="form-control" #one value="this.today1">
+              </div>
+              <div class="col-6" style="padding: 0px;">
+                <label for="">Fim</label>
+                <input [(ngModel)]="atv.datafim" class="form-control" type="date" value="{{one.value}}">
+              </div>
+            </div>
+            <div class="col-12 row inputmargin">
+              <div class="col-6">
+                <input [(ngModel)]="atv.horaini" id="horaini" class="form-control" placeholder="00:00" mask="99:99"
+                  #two>
+              </div>
+              <div class="col-6" style="padding: 0px">
+                <input [(ngModel)]="atv.horafim" class="form-control" placeholder="00:00" mask="99:99"
+                  value="{{two.value}}">
+              </div>
+            </div>
+            <div class="col-12 row inputmargin">
+              <div class="col-6">
+                <label for="negocios"> Empresa <label style="color: red; font-size: 20px;">*</label></label>
+                <input type="text" *ngIf="!selectedatv && atv.org['razaosocial']" [(ngModel)]="atv.org['razaosocial']"
+                  disabled class="form-control">
+                <input type="text" *ngIf="selectedatv && atv.org['razaosocial']" [(ngModel)]="atv.org['razaosocial']"
+                  disabled class="form-control">
+                <input type="text" *ngIf="selectedatv && !atv.org['razaosocial']"
+                  [(ngModel)]="selectedatv.org.razaosocial" disabled class="form-control">
+              </div>
+              <div class="col-6" style="padding: 0px;">
+                <label for="participantes"> Contato <label style="color: red; font-size: 20px;">*</label></label>
+                <input type="text" *ngIf="!selectedatv && atv.cliente['nome']" [(ngModel)]="atv.cliente['nome']"
+                  disabled class="form-control">
+                <input type="text" *ngIf="selectedatv && !atv.cliente['nome']" [(ngModel)]="selectedatv.cliente.nome"
+                  disabled class="form-control">
+                <input type="text" *ngIf="selectedatv && atv.cliente['nome']" [(ngModel)]="atv.cliente['nome']" disabled
+                  class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-6 ml-auto div-calendar">
+            <full-calendar deepChangeDetection="true" [defaultView]="'listWeek'" [plugins]="calendarPlugins"
+              themeSystem="bootstrap" [events]="calendarEvents" locale="pt-br">
+            </full-calendar>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Sair
+        </button>
+        <!-- <button type="button"  (click)="UpdateAtiv()" class="btn btn-primary" data-dismiss="modal">
+            Atualizar Atividade
+          </button> -->
+        <button type="button" (click)="save()" class="btn btn-primary" data-dismiss="modal">
+          Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DELETE -->
+<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          Tem certeza que deseja excluir a atividade ?
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Não
+        </button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="del()" disabled id="delete">
+          Sim
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

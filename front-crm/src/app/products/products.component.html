@@ -1,0 +1,153 @@
+<div style="margin-top: 15px;">
+  <div style="display: flex;">
+    <button type="button"
+            class="btn btn-primary loc-button-top"
+            data-toggle="modal"
+            data-target="#exampleModalCenter"
+            (click)="updatefalse()" >
+        <mat-icon>add</mat-icon>
+        <p style="margin-left: 5px;">Produto</p>
+    </button>
+    <div class="div-filter">
+      <input  class="form-control"
+              type="text"
+              (keyup)="applyFilter($event.target.value)"
+              placeholder="Filtro">
+    </div>
+  </div>
+
+  <div  class="modal fade"
+        id="exampleModalCenter"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <img src="../../assets/icone-produto.png" class="img-prod"/>
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            Cadastrar Produto
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body row">
+          <div class="form-group col-md-6">
+            <label for="codeprod"> Código</label>
+            <input type="text" class="form-control" disabled [(ngModel)]="produto.codigo" id="codeprod" />
+          </div>
+          <button class="btn btn-primary" [disabled]="disableCode" (click)="generateCode1()" id="code">
+            <img src="../../assets/cod.png" id="codigo">
+          </button>
+
+          <div class="form-group col-md-12">
+            <label for="nomeprod"> Descrição</label>
+            <input type="text" class="form-control" [(ngModel)]="produto.nome" id="nomeprod" required (keyup)="maiuscula($event.target.value)"/>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Sair
+          </button>
+          <button type="button" *ngIf="!conf.update" (click)="save()" class="btn btn-primary" data-dismiss="modal">
+            Salvar
+          </button>
+          <button type="button" *ngIf="conf.update" (click)="UpdateProduct()" class="btn btn-primary" data-dismiss="modal">
+            Atualizar Produto
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div  class="modal fade"
+        id="modalDelete"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="modalDelete"
+        aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            Tem certeza que deseja excluir o produto ?
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Não
+          </button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="del()" disabled id="delete">
+            Sim
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <mat-divider style="margin: 0px 15px 15px 15px;"></mat-divider>
+
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Nome
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.nome }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="codigo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Código
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.codigo }}
+      </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="modalidade">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Modalidade
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.modalidade }}
+      </td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="columnEdit">
+      <th mat-header-cell *matHeaderCellDef>
+        Editar
+      </th>
+      <td mat-cell *matCellDef="let element" data-toggle="modal" data-target="#exampleModalCenter" class="columnIcon">
+        <button class="none-border-icons-action" (click)="editProduct(element)">
+          <mat-icon class="icons-action icon-color-grey">
+            create
+          </mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="columnDelete">
+      <th mat-header-cell *matHeaderCellDef>
+        Excluir
+      </th>
+      <td mat-cell *matCellDef="let element" data-toggle="modal" data-target="#modalDelete" class="columnIcon">
+        <button class="none-border-icons-action" (click)="deleteItem(element)">
+          <mat-icon class="icons-action icon-color-red">
+            delete
+          </mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
