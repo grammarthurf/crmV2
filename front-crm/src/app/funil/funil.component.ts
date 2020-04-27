@@ -136,8 +136,6 @@ export class FunilComponent implements OnInit {
   perdidas: any = { tickets: [], valor: '' };
 
 
-
-
   constructor() {
     this.getTickets();
   }

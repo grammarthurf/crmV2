@@ -25,15 +25,19 @@
         <p>Clayton</p>
         <p>R$ 21.000,00 • 11 Neg.</p>
       </div>
-      <div class="lead">
+      <div *ngFor="let ticket of this.clayton.tickets" class="lead">
         <div class="align-header-lead">
-          <p>ALL4LABELS</p>
-          <p>Vedois OEE</p>
-          <p>100</p>
+          <p *ngIf="ticket.empresa" class="company-name">{{ticket.empresa}}</p>
+          <div class="flex">
+            <p *ngFor="let produto of ticket.product" class="product-name">{{cutVedois(produto.title)}}</p>
+          </div>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">{{ticket.termometro.text}}</p>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">{{ticket.termometro.text}}</p>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">{{ticket.termometro.text}}</p>
         </div>
 
         <div class="align-footer-lead">
-          <p>RS 30.000</p>
+          <p>{{ticket.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
           <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
@@ -57,114 +61,21 @@
             </mat-icon> -->
         </div>
       </div>
-      <div class="lead">
-        <div class="align-header-lead">
-          <p>ALL4LABELS</p>
-          <p>Vedois OEE</p>
-          <p>100</p>
-        </div>
-
-        <div class="align-footer-lead">
-          <p>RS 30.000</p>
-          <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura" id="green">
-            error_outline
-          </mat-icon>
-          <!-- <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura"
-              id="orange">
-              error_outline
-            </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura"
-              id="red"
-              >
-              error_outline
-            </mat-icon> -->
-        </div>
-      </div>
-      <div class="lead">
-        <div class="align-header-lead">
-          <p>ALL4LABELS</p>
-          <p>Vedois OEE</p>
-          <p>100</p>
-        </div>
-
-        <div class="align-footer-lead">
-          <p>RS 30.000</p>
-          <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura" id="green">
-            error_outline
-          </mat-icon>
-          <!-- <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura"
-              id="orange">
-              error_outline
-            </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura"
-              id="red"
-              >
-              error_outline
-            </mat-icon> -->
-        </div>
-      </div>
-
     </div>
     <div class="repeat-stage">
       <div class="stage">
         <p>Gisela</p>
         <p>R$ 21.000,00 • 11 Neg.</p>
       </div>
-      <div class="lead">
+      <div *ngFor="let ticket of this.gisela.tickets" class="lead">
         <div class="align-header-lead">
-          <p>ALL4LABELS</p>
-          <p>Vedois OEE</p>
-          <p>100</p>
-        </div>
-
-        <div class="align-footer-lead">
-          <p>RS 30.000</p>
-          <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura" id="green">
-            error_outline
-          </mat-icon>
-          <!-- <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura"
-              id="orange">
-              error_outline
-            </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura"
-              id="red"
-              >
-              error_outline
-            </mat-icon> -->
-        </div>
-      </div>
-      <div class="lead">
-        <div class="align-header-lead">
-          <p>ALL4LABELS</p>
-          <p>Vedois OEE</p>
-          <p>100</p>
+          <p *ngIf="ticket.empresa" class="company-name">{{ticket.empresa}}</p>
+          <div class="flex">
+            <p *ngFor="let produto of ticket.product" class="product-name">{{cutVedois(produto.title)}}</p>
+          </div>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">{{ticket.termometro.text}}</p>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">{{ticket.termometro.text}}</p>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">{{ticket.termometro.text}}</p>
         </div>
 
         <div class="align-footer-lead">
@@ -198,75 +109,15 @@
         <p>Jéssica</p>
         <p>R$ 21.000,00 • 11 Neg.</p>
       </div>
-      <div class="lead">
+      <div *ngFor="let ticket of this.jessica.tickets" class="lead">
         <div class="align-header-lead">
-          <p>ALL4LABELS</p>
-          <p>Vedois OEE</p>
-          <p>100</p>
-        </div>
-
-        <div class="align-footer-lead">
-          <p>RS 30.000</p>
-          <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura" id="green">
-            error_outline
-          </mat-icon>
-          <!-- <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura"
-              id="orange">
-              error_outline
-            </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura"
-              id="red"
-              >
-              error_outline
-            </mat-icon> -->
-        </div>
-      </div>
-      <div class="lead">
-        <div class="align-header-lead">
-          <p>ALL4LABELS</p>
-          <p>Vedois OEE</p>
-          <p>100</p>
-        </div>
-
-        <div class="align-footer-lead">
-          <p>RS 30.000</p>
-          <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura" id="green">
-            error_outline
-          </mat-icon>
-          <!-- <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura"
-              id="orange">
-              error_outline
-            </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura"
-              id="red"
-              >
-              error_outline
-            </mat-icon> -->
-        </div>
-      </div>
-      <div class="lead">
-        <div class="align-header-lead">
-          <p>ALL4LABELS</p>
-          <p>Vedois OEE</p>
-          <p>100</p>
+          <p *ngIf="ticket.empresa" class="company-name">{{ticket.empresa}}</p>
+          <div class="flex">
+            <p *ngFor="let produto of ticket.product" class="product-name">{{cutVedois(produto.title)}}</p>
+          </div>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">{{ticket.termometro.text}}</p>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">{{ticket.termometro.text}}</p>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">{{ticket.termometro.text}}</p>
         </div>
 
         <div class="align-footer-lead">
@@ -300,43 +151,15 @@
         <p>Fabiana</p>
         <p>R$ 21.000,00 • 11 Neg.</p>
       </div>
-      <div class="lead">
+      <div *ngFor="let ticket of this.fabiana.tickets" class="lead">
         <div class="align-header-lead">
-          <p>ALL4LABELS</p>
-          <p>Vedois OEE</p>
-          <p>100</p>
-        </div>
-
-        <div class="align-footer-lead">
-          <p>RS 30.000</p>
-          <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura" id="green">
-            error_outline
-          </mat-icon>
-          <!-- <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura"
-              id="orange">
-              error_outline
-            </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura"
-              id="red"
-              >
-              error_outline
-            </mat-icon> -->
-        </div>
-      </div>
-      <div class="lead">
-        <div class="align-header-lead">
-          <p>ALL4LABELS</p>
-          <p>Vedois OEE</p>
-          <p>100</p>
+          <p *ngIf="ticket.empresa" class="company-name">{{ticket.empresa}}</p>
+          <div class="flex">
+            <p *ngFor="let produto of ticket.product" class="product-name">{{cutVedois(produto.title)}}</p>
+          </div>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">{{ticket.termometro.text}}</p>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">{{ticket.termometro.text}}</p>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">{{ticket.termometro.text}}</p>
         </div>
 
         <div class="align-footer-lead">
@@ -509,7 +332,7 @@
 </div>
 
 <!-- ADD PRODUCT -->
-<div class="modal fade" id="exampleModalProd" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<!-- <div class="modal fade" id="exampleModalProd" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -549,7 +372,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- ADD SELLER EXTERNAL -->
 <div class="modal fade" id="exampleModalVendedorExt" tabindex="-1" role="dialog"
@@ -568,7 +391,7 @@
       <div class="modal-body row">
         <div class="form-group col-md-12">
           <label for="nomeprod"> Nome</label>
-          <input type="text" class="form-control" [(ngModel)]="vendedorExt.nome" id="nomeprod" required
+          <input type="text" class="form-control" id="nomeprod" required
             (keyup)="maiuscula($event.target.value, 4)" />
         </div>
       </div>
