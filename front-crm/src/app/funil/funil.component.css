@@ -33,7 +33,7 @@ label {
   width: 110px;
   height: 35px;
   border: 0;
-  background: #3741DC;
+  background: #3741dc;
   border-radius: 4px;
   padding: 5px 20px;
   font-size: 16px;
@@ -43,7 +43,7 @@ label {
 }
 
 .buttons:hover {
-  background: #858CF0;
+  background: #858cf0;
 }
 
 .buttons + .buttons {
@@ -87,7 +87,7 @@ label {
   }
 
   .stage {
-    margin: 0 auto
+    margin: 0 auto;
   }
 
   .row-filters {
@@ -134,8 +134,9 @@ label {
 }
 
 .lead:hover {
-  background: #6E6F71;
-  color: #fff;
+  background: rgb(236, 234, 234);
+  /* background: #6E6F71; */
+  /* color: #fff; */
 }
 
 .align-header-lead p.company-name {
@@ -188,22 +189,21 @@ label {
   align-items: center;
 }
 
-
 ::-webkit-scrollbar {
   height: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #A4A5AB;
+  background: #a4a5ab;
   border-radius: 10px;
   transition: 0.2s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #7C7C7E;
+  background: #7c7c7e;
 }
 
-.icon-modal-lead{
+.icon-modal-lead {
   margin-right: 10px;
   font-weight: bold;
   width: 21px;
@@ -216,7 +216,7 @@ label {
   margin-left: 5px;
 }
 
-.img-prod{
+.img-prod {
   width: 20px;
   height: 20px;
   margin-top: 5px;
@@ -289,7 +289,9 @@ span:nth-child(3) {
   margin-left: 40px;
 }
 
-#red, #green, #orange {
+#red,
+#green,
+#orange {
   border-radius: 50%;
   width: 20px;
   height: 20px;
@@ -317,4 +319,3 @@ p.company-name + div.flex {
 p.company-name + div.flex p {
   margin-right: 5px;
 }
-

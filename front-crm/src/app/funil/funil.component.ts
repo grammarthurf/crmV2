@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-funil',
@@ -27,10 +28,10 @@ export class FunilComponent implements OnInit {
     id: 1,
     // titulo: 'ROSINA PORTAS - VEDOIS OEE',
     empresa: 'VEDOIS TECNOLOGIA',
-    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
     estagio: { id: 2 },
     valorestimado: 3500,
-    termometro: {value: '0', text: 'Regular'},
+    termometro: { value: '0', text: 'Regular' },
     vendedor: { id: 0, user: { username: 'Arthur' } },
     status: 'Ganhou',
     atividades: [{ id: 0 }, { id: 1 }]
@@ -39,10 +40,10 @@ export class FunilComponent implements OnInit {
     id: 1,
     // titulo: 'ROSINA PORTAS - VEDOIS OEE',
     empresa: 'VEDOIS TECNOLOGIA',
-    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
     estagio: { id: 2 },
     valorestimado: 3500,
-    termometro: {value: '50', text: 'Bom'},
+    termometro: { value: '50', text: 'Bom' },
     vendedor: { id: 0, user: { username: 'Arthur' } },
     status: 'Aberto',
     atividades: [{ id: 0 }, { id: 1 }]
@@ -51,10 +52,10 @@ export class FunilComponent implements OnInit {
     id: 1,
     // titulo: 'ROSINA PORTAS - VEDOIS OEE',
     empresa: 'VEDOIS TECNOLOGIA',
-    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
     estagio: { id: 2 },
     valorestimado: 15000,
-    termometro: {value: '100', text: 'Ótimo'},
+    termometro: { value: '100', text: 'Ótimo' },
     vendedor: { id: 0, user: { username: 'Arthur' } },
     status: 'Aberto',
     atividades: [{ id: 0 }, { id: 1 }]
@@ -62,10 +63,10 @@ export class FunilComponent implements OnInit {
     id: 1,
     // titulo: 'ROSINA PORTAS - VEDOIS OEE',
     empresa: 'SULL AUTO',
-    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}, { id: 5, title: 'Vedois Logística'}],
+    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }, { id: 5, title: 'Vedois Logística' }],
     estagio: { id: 5 },
     valorestimado: 3500,
-    termometro: {value: '0', text: 'Regular'},
+    termometro: { value: '0', text: 'Regular' },
     vendedor: { id: 0, user: { username: 'Arthur' } },
     status: 'Aberto',
     atividades: [{ id: 0 }, { id: 1 }]
@@ -74,10 +75,10 @@ export class FunilComponent implements OnInit {
     id: 1,
     // titulo: 'ROSINA PORTAS - VEDOIS OEE',
     empresa: 'VEDOIS TECNOLOGIA',
-    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
     estagio: { id: 4 },
     valorestimado: 10000,
-    termometro: {value: '0', text: 'Regular'},
+    termometro: { value: '0', text: 'Regular' },
     vendedor: { id: 0, user: { username: 'Arthur' } },
     status: 'Aberto',
     atividades: [{ id: 0 }, { id: 1 }]
@@ -86,10 +87,10 @@ export class FunilComponent implements OnInit {
     id: 1,
     // titulo: 'ROSINA PORTAS - VEDOIS OEE',
     empresa: 'VEDOIS TECNOLOGIA',
-    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
     estagio: { id: 3 },
     valorestimado: 0,
-    termometro: {value: '50', text: 'Bom'},
+    termometro: { value: '50', text: 'Bom' },
     vendedor: { id: 0, user: { username: 'Arthur' } },
     status: 'Aberto',
     atividades: [{ id: 0 }, { id: 1 }]
@@ -98,22 +99,22 @@ export class FunilComponent implements OnInit {
     id: 1,
     // titulo: 'ROSINA PORTAS - VEDOIS OEE',
     empresa: 'SULL AUTOMAÇÃO',
-    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
     estagio: { id: 5 },
     valorestimado: 3500,
-    termometro: {value: '50', text: 'Bom'},
+    termometro: { value: '50', text: 'Bom' },
     vendedor: { id: 0, user: { username: 'Arthur' } },
     status: 'Perdido',
     atividades: [{ id: 0 }, { id: 1 }]
 
-  },{
+  }, {
     id: 1,
     // titulo: 'ROSINA PORTAS - VEDOIS OEE',
     empresa: 'VEDOIS TECNOLOGIA',
-    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
     estagio: { id: 7 },
     // valorestimado: 50000,
-    termometro: {value: '50', text: 'Bom'},
+    termometro: { value: '50', text: 'Bom' },
     vendedor: { id: 0, user: { username: 'Arthur' } },
     status: 'Perdido',
     atividades: [{ id: 0 }, { id: 1 }]
@@ -191,6 +192,20 @@ export class FunilComponent implements OnInit {
   cutVedois(word) {
     const newWord = word.replace('Vedois', ' ');
     return newWord;
+  }
+
+
+
+  // DRAG AND DROP LEADS
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
 
   redirectToAdd(url): void {
