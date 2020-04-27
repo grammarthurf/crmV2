@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+
 
 @Component({
   selector: 'app-prospeccoes',
@@ -103,7 +105,7 @@ export class ProspeccoesComponent implements OnInit {
     status: 'Perdido',
     atividades: [{ id: 0 }, { id: 1 }]
 
-  },{
+  }, {
     id: 1,
     // titulo: 'ROSINA PORTAS - VEDOIS OEE',
     empresa: 'VEDOIS TECNOLOGIA',
@@ -119,6 +121,18 @@ export class ProspeccoesComponent implements OnInit {
 
   constructor() {
 
+  }
+
+  // DRAG AND DROP LEADS
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
 
   redirectToAdd(url): void {

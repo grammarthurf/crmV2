@@ -8,7 +8,7 @@
       <div class="form-group" class="flex first-input">
         <!-- <label for="seller">Vendedor: </label> -->
         <select class="form-control" id="seller">
-          <option>Vendedor:</option>
+          <option selected>Vendedor</option>
           <option>Fabiana</option>
           <option>Gisela</option>
           <option>Jessica</option>
@@ -20,7 +20,7 @@
       <div class="form-group" class="flex">
         <!-- <label for="date" style="width: 150px;">Data Inicial: </label> -->
         <select class="form-control" id="date">
-          <option>Data Inicial:</option>
+          <option selected>Data Inicial</option>
           <option>Mês Atual</option>
           <option>Mês Passado</option>
           <option>Antigos</option>
@@ -33,33 +33,37 @@
 
   <!-- Estágios  -->
 
-  <div class="responsive">
-    <div class="repeat-stage">
+  <div cdkDropListGroup class="responsive">
+    <div class="repeat-stage ">
       <div class="stage">
         <p>Contatado</p>
         <p>R$ 20.000 • {{this.contatado.tickets.length}} Neg.</p>
       </div>
 
-      <div *ngFor="let ticket of this.contatado.tickets" class="lead">
-        <div class="align-header-lead">
-          <p *ngIf="ticket.empresa" class="company-name">{{ticket.empresa}}</p>
-          <div class="flex">
-            <p *ngFor="let produto of ticket.product" class="product-name">{{cutVedois(produto.title)}}</p>
+      <div cdkDropList [cdkDropListData]="contatado.tickets" (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let ticket of this.contatado.tickets" cdkDrag class="lead">
+          <div class="align-header-lead">
+            <p *ngIf="ticket.empresa" class="company-name">{{ticket.empresa}}</p>
+            <div class="flex">
+              <p *ngFor="let produto of ticket.product" class="product-name">{{cutVedois(produto.title)}}</p>
+            </div>
+            <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">
+              {{ticket.termometro.text}}</p>
+            <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">
+              {{ticket.termometro.text}}</p>
+            <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">
+              {{ticket.termometro.text}}</p>
           </div>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">{{ticket.termometro.text}}</p>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">{{ticket.termometro.text}}</p>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">{{ticket.termometro.text}}</p>
-        </div>
 
-        <div class="align-footer-lead">
-          <p>{{ticket.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-          <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
+          <div class="align-footer-lead">
+            <p>{{ticket.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
           Vermelho: Atividade Atrasada
           Laranja: Nenhuma Atividade Atrelada
           Verde: Atividade Futura" id="green">
-        error_outline
-      </mat-icon>
-      <!-- <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
+              error_outline
+            </mat-icon>
+            <!-- <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
           Vermelho: Atividade Atrasada
           Laranja: Nenhuma Atividade Atrelada
           Verde: Atividade Futura"
@@ -74,167 +78,42 @@
           >
           error_outline
         </mat-icon> -->
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="repeat-stage">
+
+    <div class="repeat-stage ">
       <div class="stage">
         <p>Cliente Potencial</p>
-        <p>R$ 20.000 • {{this.clienteP.tickets.length}} Neg.</p>
+        <p>R$ 20.000 • {{clienteP.tickets.length}} Neg.</p>
       </div>
 
-      <div *ngFor="let ticket of this.clienteP.tickets" class="lead">
-        <div class="align-header-lead">
-          <p *ngIf="ticket.empresa" class="company-name">{{ticket.empresa}}</p>
-          <div class="flex">
-            <p *ngFor="let produto of ticket.product" class="product-name">{{cutVedois(produto.title)}}</p>
-          </div>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">{{ticket.termometro.text}}</p>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">{{ticket.termometro.text}}</p>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">{{ticket.termometro.text}}</p>
-        </div>
-
-        <div class="align-footer-lead">
-          <p>{{ticket.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-           <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura" id="green">
-            error_outline
-          </mat-icon>
-          <!-- <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura"
-              id="orange">
-              error_outline
-            </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura"
-              id="red"
-              >
-              error_outline
-            </mat-icon> -->
-        </div>
-      </div>
-    </div>
-    <div class="repeat-stage">
-      <div class="stage">
-        <p>Demo Agendada</p>
-        <p>R$ 20.000 • {{this.demoA.tickets.length}} Neg.</p>
-      </div>
-
-      <div *ngFor="let ticket of this.demoA.tickets" class="lead">
-        <div class="align-header-lead">
-          <p *ngIf="ticket.empresa" class="company-name">{{ticket.empresa}}</p>
-          <div class="flex">
-            <p *ngFor="let produto of ticket.product" class="product-name">{{cutVedois(produto.title)}}</p>
-          </div>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">{{ticket.termometro.text}}</p>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">{{ticket.termometro.text}}</p>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">{{ticket.termometro.text}}</p>
-        </div>
-
-        <div class="align-footer-lead">
-          <p *ngIf="ticket.valorestimado">{{ticket.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-           <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura" id="green">
-            error_outline
-          </mat-icon>
-          <!-- <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura"
-              id="orange">
-              error_outline
-            </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura"
-              id="red"
-              >
-              error_outline
-            </mat-icon> -->
-        </div>
-      </div>
-    </div>
-    <div class="repeat-stage">
-      <div class="stage">
-        <p>Proposta</p>
-        <p>R$ 20.000 • {{this.proposta.tickets.length}} Neg.</p>
-      </div>
-
-      <div *ngFor="let ticket of this.proposta.tickets" class="lead">
-        <div class="align-header-lead">
-          <p *ngIf="ticket.empresa" class="company-name">{{ticket.empresa}}</p>
-          <div class="flex">
-            <p *ngFor="let produto of ticket.product" class="product-name">{{cutVedois(produto.title)}}</p>
-          </div>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">{{ticket.termometro.text}}</p>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">{{ticket.termometro.text}}</p>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">{{ticket.termometro.text}}</p>
-        </div>
-
-        <div class="align-footer-lead">
-          <p>{{ticket.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-           <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura" id="green">
-            error_outline
-          </mat-icon>
-          <!-- <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura"
-              id="orange">
-              error_outline
-            </mat-icon>
-            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
-              Vermelho: Atividade Atrasada
-              Laranja: Nenhuma Atividade Atrelada
-              Verde: Atividade Futura"
-              id="red"
-              >
-              error_outline
-            </mat-icon> -->
-        </div>
-      </div>
-    </div>
-    <div class="repeat-stage">
-      <div class="stage">
-        <p>Negociações Inic.</p>
-        <p>R$ 20.000 • {{this.negociaI.tickets.length}} Neg.</p>
-      </div>
-
-      <div *ngFor="let ticket of this.negociaI.tickets" class="lead">
-        <div class="align-header-lead">
+      <div cdkDropList [cdkDropListData]="clienteP.tickets" (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let ticket of clienteP.tickets" cdkDrag class="lead">
           <div class="align-header-lead">
             <p *ngIf="ticket.empresa" class="company-name">{{ticket.empresa}}</p>
             <div class="flex">
               <p *ngFor="let produto of ticket.product" class="product-name">{{cutVedois(produto.title)}}</p>
             </div>
-            <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">{{ticket.termometro.text}}</p>
-            <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">{{ticket.termometro.text}}</p>
-            <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">{{ticket.termometro.text}}</p>
+            <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">
+              {{ticket.termometro.text}}</p>
+            <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">
+              {{ticket.termometro.text}}</p>
+            <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">
+              {{ticket.termometro.text}}</p>
           </div>
-        </div>
 
-        <div class="align-footer-lead">
-          <p>{{ticket.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
-           <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
+          <div class="align-footer-lead">
+            <p>{{ticket.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura" id="green">
-            error_outline
-          </mat-icon>
-          <!-- <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
+              error_outline
+            </mat-icon>
+            <!-- <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
               Vermelho: Atividade Atrasada
               Laranja: Nenhuma Atividade Atrelada
               Verde: Atividade Futura"
@@ -249,124 +128,274 @@
               >
               error_outline
             </mat-icon> -->
+          </div>
         </div>
       </div>
     </div>
 
-  </div>
 
-</div>
-
-
-<!-- MODAL ADD LEAD -->
-<div class="modal fade" id="modalAddLead" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">
-          Adicione uma Lead
-        </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    <div class="repeat-stage ">
+      <div class="stage">
+        <p>Demo Agendada</p>
+        <p>R$ 20.000 • {{demoA.tickets.length}} Neg.</p>
       </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="form-group col-md-12">
-            <label for="title" data-toggle="tooltip" data-placement="top" title="
-              O título deve ser uma descrição breve, para manter um padrão no layout no dashboard, seguir o padrão:
-              [nome da empresa] - [nome do produto], por exemplo: Vedois - OEE">
-              Título
-            </label>
-            <input type="text" class="form-control" id="title" aria-describedby="emailHelp"
-              placeholder="Título" required maxlength="30"/>
+
+      <div cdkDropList [cdkDropListData]="demoA.tickets" (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let ticket of demoA.tickets" cdkDrag class="lead">
+          <div class="align-header-lead">
+            <p *ngIf="ticket.empresa" class="company-name">{{ticket.empresa}}</p>
+            <div class="flex">
+              <p *ngFor="let produto of ticket.product" class="product-name">{{cutVedois(produto.title)}}</p>
+            </div>
+            <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">
+              {{ticket.termometro.text}}</p>
+            <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">
+              {{ticket.termometro.text}}</p>
+            <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">
+              {{ticket.termometro.text}}</p>
+          </div>
+
+          <div class="align-footer-lead">
+            <p *ngIf="ticket.valorestimado">{{ticket.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura" id="green">
+              error_outline
+            </mat-icon>
+            <!-- <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              id="orange">
+              error_outline
+            </mat-icon>
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              id="red"
+              >
+              error_outline
+            </mat-icon> -->
           </div>
         </div>
-        <div class="row">
-          <div class="form-group col-md-6">
-            <label for="company">Empresa</label>
-            <button mat-icon-button (click)="redirectToAdd('#/company-register')">
-              <mat-icon class="icon-modal-lead">add</mat-icon>
-            </button>
-            <select class="form-control" id="company">
-              <option>
-                Teste
-              </option>
-            </select>
+      </div>
+    </div>
+
+    <div class="repeat-stage ">
+      <div class="stage">
+        <p>Proposta</p>
+        <p>R$ 20.000 • {{this.proposta.tickets.length}} Neg.</p>
+      </div>
+
+      <div cdkDropList [cdkDropListData]="proposta.tickets" (cdkDropListDropped)="drop($event)">
+
+        <div *ngFor="let ticket of proposta.tickets" cdkDrag class="lead">
+          <div class="align-header-lead">
+            <p *ngIf="ticket.empresa" class="company-name">{{ticket.empresa}}</p>
+            <div class="flex">
+              <p *ngFor="let produto of ticket.product" class="product-name">{{cutVedois(produto.title)}}</p>
+            </div>
+            <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">
+              {{ticket.termometro.text}}</p>
+            <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">
+              {{ticket.termometro.text}}</p>
+            <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">
+              {{ticket.termometro.text}}</p>
           </div>
-          <div class="form-group col-md-6" style="margin-top: 15px;">
-            <label for="value">Valor Estimado</label>
-            <input type="text" class="form-control" id="value"
-              aria-describedby="emailHelp" placeholder="Valor" currencyMask
-              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" />
+
+          <div class="align-footer-lead">
+            <p>{{ticket.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura" id="green">
+              error_outline
+            </mat-icon>
+            <!-- <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              id="orange">
+              error_outline
+            </mat-icon>
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              id="red"
+              >
+              error_outline
+            </mat-icon> -->
           </div>
         </div>
-        <div class="row">
-          <div class="form-group col-md-6">
-            <label for="product">Produto</label>
-            <button mat-icon-button data-toggle="modal" data-target="#exampleModalProd" data-dismiss="modal">
-              <mat-icon class="icon-modal-lead">add</mat-icon>
-            </button>
-            <select multiple class="form-control" id="product">
-              <option>
-                Teste
-              </option>
-            </select>
-          </div>
-          <div class="form-group col-md-6" style="display: grid; align-items: center;">
-            <label for="thermometro">Termômetro</label>
-            <input type="range" class="form-control-range" id="thermometro" value="0"
-              step="50" class="slider" />
-            <div style="display: flex;">
-              <span>Regular</span>
-              <span>Bom</span>
-              <span>Ótimo</span>
+      </div>
+    </div>
+
+    <div class="repeat-stage ">
+      <div class="stage">
+        <p>Negociações Inic.</p>
+        <p>R$ 20.000 • {{this.negociaI.tickets.length}} Neg.</p>
+      </div>
+
+      <div cdkDropList [cdkDropListData]="negociaI.tickets" (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let ticket of negociaI.tickets" cdkDrag class="lead">
+          <div class="align-header-lead">
+            <div class="align-header-lead">
+              <p *ngIf="ticket.empresa" class="company-name">{{ticket.empresa}}</p>
+              <div class="flex">
+                <p *ngFor="let produto of ticket.product" class="product-name">{{cutVedois(produto.title)}}</p>
+              </div>
+              <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">
+                {{ticket.termometro.text}}</p>
+              <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">
+                {{ticket.termometro.text}}</p>
+              <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">
+                {{ticket.termometro.text}}</p>
             </div>
           </div>
-        </div>
 
-        <div class="row">
-          <div class="form-group col-md-6">
-            <label for="contact">Contato</label>
-            <select class="form-control" id="contact">
-              <option>
-                Teste
-              </option>
-            </select>
-          </div>
-          <div class="form-group col-md-6">
-            <label for="stage">Estágio Inicial</label>
-            <select class="form-control" id="stage" required>
-              <option>
-                Teste
-              </option>
-            </select>
+          <div class="align-footer-lead">
+            <p>{{ticket.valorestimado | currency:'BRL':'symbol':'0.2':'pt'}}</p>
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura" id="green">
+              error_outline
+            </mat-icon>
+            <!-- <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              id="orange">
+              error_outline
+            </mat-icon>
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Este ícone significa se tem alguma atividade atrelada a essa lead
+              Vermelho: Atividade Atrasada
+              Laranja: Nenhuma Atividade Atrelada
+              Verde: Atividade Futura"
+              id="red"
+              >
+              error_outline
+            </mat-icon> -->
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="row">
-          <div class="form-group col-md-6" style="margin-top: 8px;">
-            <label for="ven_int">Vendedor Interno</label>
-            <select class="form-control" id="ven_int" required>
-              <option>
-                Teste
-              </option>
-            </select>
-          </div>
-          <div class="form-group col-md-6">
-            <label for="ven_ext">Vendedor Externo</label>
-            <button mat-icon-button data-toggle="modal" data-target="#exampleModalVendedorExt" data-dismiss="modal">
-              <mat-icon class="icon-modal-lead">add</mat-icon>
-            </button>
-            <select class="form-control" id="ven_ext">
-              <option>
-                Teste
-              </option>
-            </select>
-          </div>
+
+
+  </div>
+
+
+  <!-- MODAL ADD LEAD -->
+  <div class="modal fade" id="modalAddLead" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            Adicione uma Lead
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <!--
+        <div class="modal-body">
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label for="title" data-toggle="tooltip" data-placement="top" title="
+              O título deve ser uma descrição breve, para manter um padrão no layout no dashboard, seguir o padrão:
+              [nome da empresa] - [nome do produto], por exemplo: Vedois - OEE">
+                Título
+              </label>
+              <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Título"
+                required maxlength="30" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="company">Empresa</label>
+              <button mat-icon-button (click)="redirectToAdd('#/company-register')">
+                <mat-icon class="icon-modal-lead">add</mat-icon>
+              </button>
+              <select class="form-control" id="company">
+                <option>
+                  Teste
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-md-6" style="margin-top: 15px;">
+              <label for="value">Valor Estimado</label>
+              <input type="text" class="form-control" id="value" aria-describedby="emailHelp" placeholder="Valor"
+                currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="product">Produto</label>
+              <button mat-icon-button data-toggle="modal" data-target="#exampleModalProd" data-dismiss="modal">
+                <mat-icon class="icon-modal-lead">add</mat-icon>
+              </button>
+              <select multiple class="form-control" id="product">
+                <option>
+                  Teste
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-md-6" style="display: grid; align-items: center;">
+              <label for="thermometro">Termômetro</label>
+              <input type="range" class="form-control-range" id="thermometro" value="0" step="50" class="slider" />
+              <div style="display: flex;">
+                <span>Regular</span>
+                <span>Bom</span>
+                <span>Ótimo</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="contact">Contato</label>
+              <select class="form-control" id="contact">
+                <option>
+                  Teste
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="stage">Estágio Inicial</label>
+              <select class="form-control" id="stage" required>
+                <option>
+                  Teste
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-6" style="margin-top: 8px;">
+              <label for="ven_int">Vendedor Interno</label>
+              <select class="form-control" id="ven_int" required>
+                <option>
+                  Teste
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="ven_ext">Vendedor Externo</label>
+              <button mat-icon-button data-toggle="modal" data-target="#exampleModalVendedorExt" data-dismiss="modal">
+                <mat-icon class="icon-modal-lead">add</mat-icon>
+              </button>
+              <select class="form-control" id="ven_ext">
+                <option>
+                  Teste
+                </option>
+              </select>
+            </div>
+          </div>
+          <!--
           <div class="row">
             <label style="margin-left: 10px;">Anexos</label>
             <label id="label-input">
@@ -374,102 +403,100 @@
             </label>
           </div> -->
 
-        <div class="row">
-          <div class="form-group col-md-12">
-            <label for="obs">Observação</label>
-            <textarea class="form-control" id="obs" rows="3"
-              (keyup)="maiuscula($event.target.value, 2)">
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label for="obs">Observação</label>
+              <textarea class="form-control" id="obs" rows="3" (keyup)="maiuscula($event.target.value, 2)">
             </textarea>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button (click)="exitCreateLead()" type="button" class="btn btn-secondary" data-dismiss="modal">
+            Sair
+          </button>
+          <button (click)="addLeads()" class="btn btn-primary" data-dismiss="modal">
+            Salvar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD PRODUCT -->
+  <div class="modal fade" id="exampleModalProd" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <img src="../../assets/icone-produto.png" class="img-prod" />
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            Cadastrar Produto
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body row">
+          <div class="form-group col-md-6">
+            <label for="codeprod"> Código</label>
+            <input disabled type="text" class="form-control" id="codeprod" value="{{this.code1}}" />
+          </div>
+          <button class="btn btn-primary" [disabled]="disableCode" (click)="generateCode1()" id="code">
+            <img src="../../assets/cod.png" id="codigo">
+          </button>
+          <div class="form-group col-md-12">
+            <label for="nomeprod"> Descrição</label>
+            <input (keyup)="maiuscula($event.target.value, 3)" type="text" class="form-control" id="nomeprod"
+              required />
           </div>
         </div>
-
-      </div>
-      <div class="modal-footer">
-        <button (click)="exitCreateLead()" type="button" class="btn btn-secondary" data-dismiss="modal">
-          Sair
-        </button>
-        <button (click)="addLeads()" class="btn btn-primary" data-dismiss="modal">
-          Salvar
-        </button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
+            data-target="#modalAddLead">
+            Sair
+          </button>
+          <button type="button" (click)="saveProduto()" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"
+            data-target="#modalAddLead">
+            Salvar
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- ADD PRODUCT -->
-<div class="modal fade" id="exampleModalProd" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <img src="../../assets/icone-produto.png" class="img-prod" />
-        <h5 class="modal-title" id="exampleModalLongTitle">
-          Cadastrar Produto
-        </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body row">
-        <div class="form-group col-md-6">
-          <label for="codeprod"> Código</label>
-          <input disabled type="text" class="form-control" id="codeprod"
-            value="{{this.code1}}" />
+  <!-- ADD SELLER EXTERNAL -->
+  <div class="modal fade" id="exampleModalVendedorExt" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <img src="../../assets/icone-produto.png" class="img-prod" />
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            Cadastrar Vendedor Externo
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <button class="btn btn-primary" [disabled]="disableCode" (click)="generateCode1()" id="code">
-          <img src="../../assets/cod.png" id="codigo">
-        </button>
-        <div class="form-group col-md-12">
-          <label for="nomeprod"> Descrição</label>
-          <input (keyup)="maiuscula($event.target.value, 3)" type="text" class="form-control"
-            id="nomeprod" required />
+        <div class="modal-body row">
+          <div class="form-group col-md-12">
+            <label for="nomeprod"> Nome</label>
+            <input type="text" class="form-control" id="nomeprod" required
+              (keyup)="maiuscula($event.target.value, 4)" />
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
-          data-target="#modalAddLead">
-          Sair
-        </button>
-        <button type="button" (click)="saveProduto()" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"
-          data-target="#modalAddLead">
-          Salvar
-        </button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
+            data-target="#modalAddLead">
+            Sair
+          </button>
+          <button type="button" (click)="saveVendedorExt()" class="btn btn-primary" data-dismiss="modal"
+            data-toggle="modal" data-target="#modalAddLead">
+            Salvar
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<!-- ADD SELLER EXTERNAL -->
-<div class="modal fade" id="exampleModalVendedorExt" tabindex="-1" role="dialog"
-  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <img src="../../assets/icone-produto.png" class="img-prod" />
-        <h5 class="modal-title" id="exampleModalLongTitle">
-          Cadastrar Vendedor Externo
-        </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body row">
-        <div class="form-group col-md-12">
-          <label for="nomeprod"> Nome</label>
-          <input type="text" class="form-control" id="nomeprod" required
-            (keyup)="maiuscula($event.target.value, 4)" />
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
-          data-target="#modalAddLead">
-          Sair
-        </button>
-        <button type="button" (click)="saveVendedorExt()" class="btn btn-primary" data-dismiss="modal"
-          data-toggle="modal" data-target="#modalAddLead">
-          Salvar
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
