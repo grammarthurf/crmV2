@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-funil',
@@ -26,11 +27,11 @@ export class FunilComponent implements OnInit {
   tickets: any = [{
     id: 1,
     // titulo: 'ROSINA PORTAS - VEDOIS OEE',
-    empresa: 'VEDOIS TECNOLOGIA',
-    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
-    estagio: { id: 2 },
+    empresa: '1',
+    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
+    estagio: { id: 1 },
     valorestimado: 3500,
-    termometro: {value: '0', text: 'Regular'},
+    termometro: { value: '0', text: 'Regular' },
     vendedor: { id: 0, user: { username: 'Arthur' } },
     status: 'Ganhou',
     atividades: [{ id: 0 }, { id: 1 }]
@@ -38,11 +39,11 @@ export class FunilComponent implements OnInit {
   }, {
     id: 1,
     // titulo: 'ROSINA PORTAS - VEDOIS OEE',
-    empresa: 'VEDOIS TECNOLOGIA',
-    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+    empresa: '2',
+    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
     estagio: { id: 2 },
     valorestimado: 3500,
-    termometro: {value: '50', text: 'Bom'},
+    termometro: { value: '50', text: 'Bom' },
     vendedor: { id: 0, user: { username: 'Arthur' } },
     status: 'Aberto',
     atividades: [{ id: 0 }, { id: 1 }]
@@ -50,46 +51,22 @@ export class FunilComponent implements OnInit {
   }, {
     id: 1,
     // titulo: 'ROSINA PORTAS - VEDOIS OEE',
-    empresa: 'VEDOIS TECNOLOGIA',
-    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
-    estagio: { id: 2 },
-    valorestimado: 15000,
-    termometro: {value: '100', text: 'Ótimo'},
-    vendedor: { id: 0, user: { username: 'Arthur' } },
-    status: 'Aberto',
-    atividades: [{ id: 0 }, { id: 1 }]
-  }, {
-    id: 1,
-    // titulo: 'ROSINA PORTAS - VEDOIS OEE',
-    empresa: 'SULL AUTO',
-    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}, { id: 5, title: 'Vedois Logística'}],
-    estagio: { id: 5 },
-    valorestimado: 3500,
-    termometro: {value: '0', text: 'Regular'},
-    vendedor: { id: 0, user: { username: 'Arthur' } },
-    status: 'Aberto',
-    atividades: [{ id: 0 }, { id: 1 }]
-
-  }, {
-    id: 1,
-    // titulo: 'ROSINA PORTAS - VEDOIS OEE',
-    empresa: 'VEDOIS TECNOLOGIA',
-    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
-    estagio: { id: 4 },
-    valorestimado: 10000,
-    termometro: {value: '0', text: 'Regular'},
-    vendedor: { id: 0, user: { username: 'Arthur' } },
-    status: 'Aberto',
-    atividades: [{ id: 0 }, { id: 1 }]
-
-  }, {
-    id: 1,
-    // titulo: 'ROSINA PORTAS - VEDOIS OEE',
-    empresa: 'VEDOIS TECNOLOGIA',
-    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+    empresa: '3',
+    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
     estagio: { id: 3 },
-    valorestimado: 0,
-    termometro: {value: '50', text: 'Bom'},
+    valorestimado: 15000,
+    termometro: { value: '100', text: 'Ótimo' },
+    vendedor: { id: 0, user: { username: 'Arthur' } },
+    status: 'Aberto',
+    atividades: [{ id: 0 }, { id: 1 }]
+  }, {
+    id: 1,
+    // titulo: 'ROSINA PORTAS - VEDOIS OEE',
+    empresa: '4',
+    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }, { id: 5, title: 'Vedois Logística' }],
+    estagio: { id: 4 },
+    valorestimado: 3500,
+    termometro: { value: '0', text: 'Regular' },
     vendedor: { id: 0, user: { username: 'Arthur' } },
     status: 'Aberto',
     atividades: [{ id: 0 }, { id: 1 }]
@@ -97,23 +74,35 @@ export class FunilComponent implements OnInit {
   }, {
     id: 1,
     // titulo: 'ROSINA PORTAS - VEDOIS OEE',
-    empresa: 'SULL AUTOMAÇÃO',
-    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+    empresa: '5',
+    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
     estagio: { id: 5 },
-    valorestimado: 3500,
-    termometro: {value: '50', text: 'Bom'},
+    valorestimado: 10000,
+    termometro: { value: '0', text: 'Regular' },
     vendedor: { id: 0, user: { username: 'Arthur' } },
-    status: 'Perdido',
+    status: 'Aberto',
     atividades: [{ id: 0 }, { id: 1 }]
 
-  },{
+  }, {
     id: 1,
     // titulo: 'ROSINA PORTAS - VEDOIS OEE',
-    empresa: 'VEDOIS TECNOLOGIA',
-    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+    empresa: '6',
+    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
+    estagio: { id: 6 },
+    valorestimado: 0,
+    termometro: { value: '50', text: 'Bom' },
+    vendedor: { id: 0, user: { username: 'Arthur' } },
+    status: 'Aberto',
+    atividades: [{ id: 0 }, { id: 1 }]
+
+  }, {
+    id: 1,
+    // titulo: 'ROSINA PORTAS - VEDOIS OEE',
+    empresa: '7',
+    product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
     estagio: { id: 7 },
     // valorestimado: 50000,
-    termometro: {value: '50', text: 'Bom'},
+    termometro: { value: '50', text: 'Bom' },
     vendedor: { id: 0, user: { username: 'Arthur' } },
     status: 'Perdido',
     atividades: [{ id: 0 }, { id: 1 }]
@@ -140,6 +129,26 @@ export class FunilComponent implements OnInit {
     this.getTickets();
   }
 
+  // CALC ALL VALUES FROM STAGE
+  calcAllValue() {
+    const listaTicketslist: any = [this.contatado, this.clienteP, this.demoA, this.proposta,
+    this.negociaI]
+
+    listaTicketslist.forEach(e => {
+      this.calcValueStage(e);
+    });
+  }
+
+  calcValueStage(ticketest) {
+    let i = 0;
+    ticketest.valor = i;
+    ticketest.tickets.forEach(e => {
+      i += e.valorestimado;
+    });
+
+    ticketest.valor = i;
+  }
+
   getTickets() {
     this.tickets.forEach(ticket => {
       if (ticket.status == 'Aberto') {
@@ -159,15 +168,16 @@ export class FunilComponent implements OnInit {
           case 5:
             this.proposta.tickets.push(ticket);
             break;
-          case 7:
+          case 6:
             this.negociaI.tickets.push(ticket);
             break;
-          case 8:
+          case 7:
             this.ganhas.tickets.push(ticket);
             break;
           default:
             break;
         }
+        this.calcAllValue();
       } else if (ticket.status === 'Ganhou') {
         this.ganhas.tickets.push(ticket);
       } else if (ticket.status === 'Perdido') {
@@ -189,6 +199,20 @@ export class FunilComponent implements OnInit {
   cutVedois(word) {
     const newWord = word.replace('Vedois', ' ');
     return newWord;
+  }
+
+
+
+  // DRAG AND DROP LEADS
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
 
   redirectToAdd(url): void {

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+
 
 @Component({
   selector: 'app-prospeccoes',
@@ -125,6 +127,18 @@ export class ProspeccoesComponent implements OnInit {
   cutVedois(word) {
     const newWord = word.replace('Vedois', ' ');
     return newWord;
+  }
+
+  // DRAG AND DROP LEADS
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
 
   redirectToAdd(url): void {

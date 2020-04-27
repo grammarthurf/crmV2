@@ -7,7 +7,6 @@
 
     <div class="div-inputs-filters">
       <div class="form-group" class="input-filters">
-        <label for="exampleFormControlSelect1" style="width: 150px;">Data Inicial: </label>
         <select class="form-control" id="exampleFormControlSelect1">
           <option>Mês Atual</option>
           <option>Mês Passado</option>
@@ -31,9 +30,12 @@
           <div class="flex">
             <p *ngFor="let produto of ticket.product" class="product-name">{{cutVedois(produto.title)}}</p>
           </div>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">{{ticket.termometro.text}}</p>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">{{ticket.termometro.text}}</p>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">{{ticket.termometro.text}}</p>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">
+            {{ticket.termometro.text}}</p>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">
+            {{ticket.termometro.text}}</p>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">
+            {{ticket.termometro.text}}</p>
         </div>
 
         <div class="align-footer-lead">
@@ -73,9 +75,12 @@
           <div class="flex">
             <p *ngFor="let produto of ticket.product" class="product-name">{{cutVedois(produto.title)}}</p>
           </div>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">{{ticket.termometro.text}}</p>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">{{ticket.termometro.text}}</p>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">{{ticket.termometro.text}}</p>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">
+            {{ticket.termometro.text}}</p>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">
+            {{ticket.termometro.text}}</p>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">
+            {{ticket.termometro.text}}</p>
         </div>
 
         <div class="align-footer-lead">
@@ -115,9 +120,12 @@
           <div class="flex">
             <p *ngFor="let produto of ticket.product" class="product-name">{{cutVedois(produto.title)}}</p>
           </div>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">{{ticket.termometro.text}}</p>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">{{ticket.termometro.text}}</p>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">{{ticket.termometro.text}}</p>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">
+            {{ticket.termometro.text}}</p>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">
+            {{ticket.termometro.text}}</p>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">
+            {{ticket.termometro.text}}</p>
         </div>
 
         <div class="align-footer-lead">
@@ -157,9 +165,12 @@
           <div class="flex">
             <p *ngFor="let produto of ticket.product" class="product-name">{{cutVedois(produto.title)}}</p>
           </div>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">{{ticket.termometro.text}}</p>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">{{ticket.termometro.text}}</p>
-          <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">{{ticket.termometro.text}}</p>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '0'" class="term-value term-regular">
+            {{ticket.termometro.text}}</p>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '50'" class="term-value term-bom">
+            {{ticket.termometro.text}}</p>
+          <p *ngIf="ticket.termometro && ticket.termometro.value == '100'" class="term-value term-otimo">
+            {{ticket.termometro.text}}</p>
         </div>
 
         <div class="align-footer-lead">
@@ -208,17 +219,6 @@
       </div>
       <div class="modal-body">
         <div class="row">
-          <div class="form-group col-md-12">
-            <label for="title" data-toggle="tooltip" data-placement="top" title="
-              O título deve ser uma descrição breve, para manter um padrão no layout no dashboard, seguir o padrão:
-              [nome da empresa] - [nome do produto], por exemplo: Vedois - OEE">
-              Título
-            </label>
-            <input type="text" class="form-control" id="title" aria-describedby="emailHelp"
-              placeholder="Título" required (keyup)="maiuscula($event.target.value, 1)" maxlength="30" />
-          </div>
-        </div>
-        <div class="row">
           <div class="form-group col-md-6">
             <label for="company">Empresa</label>
             <button mat-icon-button (click)="redirectToAdd('#/company-register')">
@@ -232,11 +232,28 @@
           </div>
           <div class="form-group col-md-6" style="margin-top: 15px;">
             <label for="value">Valor Estimado</label>
-            <input type="text" class="form-control" id="value"
-              aria-describedby="emailHelp" placeholder="Valor" currencyMask
-              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" />
+            <input type="text" class="form-control" id="value" aria-describedby="emailHelp" placeholder="Valor"
+              currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" />
           </div>
         </div>
+
+        <div class="row" style="justify-content: space-around; align-items: center; margin: 30px 0 10px 0;">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
+              checked>
+            <label class="form-check-label" for="exampleRadios1">
+              Produto
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
+              checked>
+            <label class="form-check-label" for="exampleRadios1">
+              DDP
+            </label>
+          </div>
+        </div>
+
         <div class="row">
           <div class="form-group col-md-6">
             <label for="product">Produto</label>
@@ -249,11 +266,25 @@
               </option>
             </select>
           </div>
-          <div class="form-group col-md-6" style="display: grid; align-items: center;">
+          <div class="form-group col-md-6">
+            <label for="ddp">DDP</label>
+            <button mat-icon-button data-toggle="modal" data-target="#addDdp" data-dismiss="modal">
+              <mat-icon class="icon-modal-lead">add</mat-icon>
+            </button>
+            <select multiple class="form-control" id="ddp">
+              <option>
+                Teste
+              </option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-12" style="margin: 20px 0 15px 0;">
             <label for="thermometro">Termômetro</label>
-            <input type="range" class="form-control-range" id="thermometro" value="0"
-              step="50" class="slider" />
-            <div style="display: flex;">
+            <input type="range" class="form-control-range" id="thermometro" value="0" step="50" class="slider" />
+            <div style="display: flex; justify-content: space-between">
               <span>Regular</span>
               <span>Bom</span>
               <span>Ótimo</span>
@@ -312,8 +343,7 @@
         <div class="row">
           <div class="form-group col-md-12">
             <label for="obs">Observação</label>
-            <textarea class="form-control" id="obs" rows="3"
-              (keyup)="maiuscula($event.target.value, 2)">
+            <textarea class="form-control" id="obs" rows="3" (keyup)="maiuscula($event.target.value, 2)">
             </textarea>
           </div>
         </div>
@@ -323,7 +353,7 @@
         <button (click)="exitCreateLead()" type="button" class="btn btn-secondary" data-dismiss="modal">
           Sair
         </button>
-        <button (click)="save()" class="btn btn-primary" data-dismiss="modal">
+        <button (click)="addLeads()" class="btn btn-primary" data-dismiss="modal">
           Salvar
         </button>
       </div>
@@ -391,8 +421,7 @@
       <div class="modal-body row">
         <div class="form-group col-md-12">
           <label for="nomeprod"> Nome</label>
-          <input type="text" class="form-control" id="nomeprod" required
-            (keyup)="maiuscula($event.target.value, 4)" />
+          <input type="text" class="form-control" id="nomeprod" required (keyup)="maiuscula($event.target.value, 4)" />
         </div>
       </div>
       <div class="modal-footer">
@@ -407,4 +436,46 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- ADD DDP -->
+<div class="modal fade" id="addDdp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <img src="../../assets/icone-produto.png" class="img-prod" />
+      <h5 class="modal-title" id="exampleModalLongTitle">
+        Cadastrar DDP
+      </h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body row">
+      <div class="form-group col-md-6">
+        <label for="codeddp"> Código</label>
+        <input disabled type="text" class="form-control" id="codeddp" value="{{this.code1}}" />
+      </div>
+      <button class="btn btn-primary" [disabled]="disableCode" (click)="generateCode1()" id="code">
+        <img src="../../assets/cod.png" id="codigo">
+      </button>
+      <div class="form-group col-md-12">
+        <label for="nameddp"> Descrição</label>
+        <input (keyup)="maiuscula($event.target.value, 3)" type="text" class="form-control" id="nameddp"
+          required />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
+        data-target="#modalAddLead">
+        Sair
+      </button>
+      <button type="button" (click)="saveProduto()" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"
+        data-target="#modalAddLead">
+        Salvar
+      </button>
+    </div>
+  </div>
+</div>
 </div>
