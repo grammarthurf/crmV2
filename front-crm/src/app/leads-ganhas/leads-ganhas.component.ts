@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+
 
 @Component({
   selector: 'app-leads-ganhas',
@@ -23,10 +25,10 @@ export class LeadsGanhasComponent implements OnInit {
     {
       id: 1,
       empresa: 'VEDOIS TECNOLOGIA',
-      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
       estagio: { id: 1 },
       valorestimado: 3500,
-      termometro: {value: '0', text: 'Regular'},
+      termometro: { value: '0', text: 'Regular' },
       vendedor: { id: 1, user: { username: 'Clayton' } },
       status: 'Aberto',
       atividades: [{ id: 0 }, { id: 1 }]
@@ -34,10 +36,10 @@ export class LeadsGanhasComponent implements OnInit {
     {
       id: 2,
       empresa: 'VEDOIS TECNOLOGIA',
-      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
       estagio: { id: 2 },
       valorestimado: 3500,
-      termometro: {value: '50', text: 'Bom'},
+      termometro: { value: '50', text: 'Bom' },
       vendedor: { id: 2, user: { username: 'Gisela' } },
       status: 'Aberto',
       atividades: [{ id: 0 }, { id: 1 }]
@@ -45,10 +47,10 @@ export class LeadsGanhasComponent implements OnInit {
     {
       id: 3,
       empresa: 'VEDOIS TECNOLOGIA',
-      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
       estagio: { id: 3 },
       valorestimado: 3500,
-      termometro: {value: '100', text: 'Ótimo'},
+      termometro: { value: '100', text: 'Ótimo' },
       vendedor: { id: 3, user: { username: 'Jessica' } },
       status: 'Aberto',
       atividades: [{ id: 0 }, { id: 1 }]
@@ -56,10 +58,10 @@ export class LeadsGanhasComponent implements OnInit {
     {
       id: 4,
       empresa: 'VEDOIS TECNOLOGIA',
-      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
       estagio: { id: 4 },
       valorestimado: 3500,
-      termometro: {value: '100', text: 'Ótimo'},
+      termometro: { value: '100', text: 'Ótimo' },
       vendedor: { id: 4, user: { username: 'Fabiana' } },
       status: 'Aberto',
       atividades: [{ id: 0 }, { id: 1 }]
@@ -67,10 +69,10 @@ export class LeadsGanhasComponent implements OnInit {
     {
       id: 5,
       empresa: 'VEDOIS TECNOLOGIA',
-      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
       estagio: { id: 4 },
       valorestimado: 3500,
-      termometro: {value: '50', text: 'Bom'},
+      termometro: { value: '50', text: 'Bom' },
       vendedor: { id: 4, user: { username: 'Fabiana' } },
       status: 'Aberto',
       atividades: [{ id: 0 }, { id: 1 }]
@@ -78,20 +80,20 @@ export class LeadsGanhasComponent implements OnInit {
     {
       id: 6,
       empresa: 'VEDOIS TECNOLOGIA',
-      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
       estagio: { id: 2 },
       valorestimado: 3500,
-      termometro: {value: '0', text: 'Ruim'},
+      termometro: { value: '0', text: 'Ruim' },
       vendedor: { id: 2, user: { username: 'Gisela' } },
       status: 'Aberto',
       atividades: [{ id: 0 }, { id: 1 }]
     }
   ];
 
-  clayton: any = { tickets: [], valor: ''};
-  gisela: any = { tickets: [], valor: ''};
-  jessica: any = { tickets: [], valor: ''};
-  fabiana: any = { tickets: [], valor: ''};
+  clayton: any = { tickets: [], valor: '' };
+  gisela: any = { tickets: [], valor: '' };
+  jessica: any = { tickets: [], valor: '' };
+  fabiana: any = { tickets: [], valor: '' };
 
   constructor() {
     this.getTickets();
@@ -125,6 +127,18 @@ export class LeadsGanhasComponent implements OnInit {
   cutVedois(word) {
     const newWord = word.replace('Vedois', ' ');
     return newWord;
+  }
+
+  // DRAG AND DROP LEADS
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
 
   ngOnInit() {

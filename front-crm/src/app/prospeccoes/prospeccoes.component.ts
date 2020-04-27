@@ -25,10 +25,10 @@ export class ProspeccoesComponent implements OnInit {
     {
       id: 1,
       empresa: 'VEDOIS TECNOLOGIA',
-      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
       estagio: { id: 1 },
       valorestimado: 3500,
-      termometro: {value: '0', text: 'Regular'},
+      termometro: { value: '0', text: 'Regular' },
       vendedor: { id: 1, user: { username: 'Clayton' } },
       status: 'Aberto',
       atividades: [{ id: 0 }, { id: 1 }]
@@ -36,10 +36,10 @@ export class ProspeccoesComponent implements OnInit {
     {
       id: 2,
       empresa: 'VEDOIS TECNOLOGIA',
-      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
       estagio: { id: 2 },
       valorestimado: 3500,
-      termometro: {value: '50', text: 'Bom'},
+      termometro: { value: '50', text: 'Bom' },
       vendedor: { id: 2, user: { username: 'Gisela' } },
       status: 'Aberto',
       atividades: [{ id: 0 }, { id: 1 }]
@@ -47,10 +47,10 @@ export class ProspeccoesComponent implements OnInit {
     {
       id: 3,
       empresa: 'VEDOIS TECNOLOGIA',
-      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
       estagio: { id: 3 },
       valorestimado: 3500,
-      termometro: {value: '100', text: 'Ótimo'},
+      termometro: { value: '100', text: 'Ótimo' },
       vendedor: { id: 3, user: { username: 'Jessica' } },
       status: 'Aberto',
       atividades: [{ id: 0 }, { id: 1 }]
@@ -58,10 +58,10 @@ export class ProspeccoesComponent implements OnInit {
     {
       id: 4,
       empresa: 'VEDOIS TECNOLOGIA',
-      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
       estagio: { id: 4 },
       valorestimado: 3500,
-      termometro: {value: '100', text: 'Ótimo'},
+      termometro: { value: '100', text: 'Ótimo' },
       vendedor: { id: 4, user: { username: 'Fabiana' } },
       status: 'Aberto',
       atividades: [{ id: 0 }, { id: 1 }]
@@ -69,10 +69,10 @@ export class ProspeccoesComponent implements OnInit {
     {
       id: 5,
       empresa: 'VEDOIS TECNOLOGIA',
-      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
       estagio: { id: 4 },
       valorestimado: 3500,
-      termometro: {value: '50', text: 'Bom'},
+      termometro: { value: '50', text: 'Bom' },
       vendedor: { id: 4, user: { username: 'Fabiana' } },
       status: 'Aberto',
       atividades: [{ id: 0 }, { id: 1 }]
@@ -80,20 +80,20 @@ export class ProspeccoesComponent implements OnInit {
     {
       id: 6,
       empresa: 'VEDOIS TECNOLOGIA',
-      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM'}, { id: 3, title: 'Vedois Saúde'}, { id: 4, title: 'Vedois Planejamento'}],
+      product: [{ id: 1, title: 'Vedois OEE' }, { id: 2, title: 'Vedois CRM' }, { id: 3, title: 'Vedois Saúde' }, { id: 4, title: 'Vedois Planejamento' }],
       estagio: { id: 2 },
       valorestimado: 3500,
-      termometro: {value: '0', text: 'Ruim'},
+      termometro: { value: '0', text: 'Ruim' },
       vendedor: { id: 2, user: { username: 'Gisela' } },
       status: 'Aberto',
       atividades: [{ id: 0 }, { id: 1 }]
     }
   ];
 
-  clayton: any = { tickets: [], valor: ''};
-  gisela: any = { tickets: [], valor: ''};
-  jessica: any = { tickets: [], valor: ''};
-  fabiana: any = { tickets: [], valor: ''};
+  clayton: any = { tickets: [], valor: '' };
+  gisela: any = { tickets: [], valor: '' };
+  jessica: any = { tickets: [], valor: '' };
+  fabiana: any = { tickets: [], valor: '' };
 
   constructor() {
     this.getTickets();
@@ -102,8 +102,8 @@ export class ProspeccoesComponent implements OnInit {
   getTickets() {
     console.log(this.tickets)
     this.tickets.forEach(ticket => {
-      console.log(ticket.empresa)
-      if (ticket.status == 'Aberto') {
+      console.log(ticket.empresa);
+      if (ticket.status === 'Aberto') {
         switch (ticket.vendedor.id) {
           case 1:
             this.clayton.tickets.push(ticket);
